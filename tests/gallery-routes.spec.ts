@@ -145,6 +145,24 @@ const sampleRouteSmokeCases = [
 ] as const;
 
 const routeSmokeCases = [
+  { group: "without-design-skill", model: "union-alpha", iteration: "1", source: "union-alpha" } as const,
+  { group: "without-design-skill", model: "union-alpha", iteration: "2", source: "union-alpha" } as const,
+  { group: "without-design-skill", model: "union-alpha", iteration: "3", source: "union-alpha" } as const,
+  { group: "without-design-skill", model: "union-alpha", iteration: "4", source: "union-alpha" } as const,
+  { group: "without-design-skill", model: "union-alpha", iteration: "5", source: "union-alpha" } as const,
+
+  { group: "with-taste-skill", model: "union-alpha", iteration: "1", source: "union-alpha" } as const,
+  { group: "with-taste-skill", model: "union-alpha", iteration: "2", source: "union-alpha" } as const,
+  { group: "with-taste-skill", model: "union-alpha", iteration: "3", source: "union-alpha" } as const,
+  { group: "with-taste-skill", model: "union-alpha", iteration: "4", source: "union-alpha" } as const,
+  { group: "with-taste-skill", model: "union-alpha", iteration: "5", source: "union-alpha" } as const,
+
+  { group: "with-design-skill", model: "union-alpha", iteration: "1", source: "union-alpha" } as const,
+  { group: "with-design-skill", model: "union-alpha", iteration: "2", source: "union-alpha" } as const,
+  { group: "with-design-skill", model: "union-alpha", iteration: "3", source: "union-alpha" } as const,
+  { group: "with-design-skill", model: "union-alpha", iteration: "4", source: "union-alpha" } as const,
+  { group: "with-design-skill", model: "union-alpha", iteration: "5", source: "union-alpha" } as const,
+
   ...latestRouteSmokeCases,
   ...sampleRouteSmokeCases.map((route) => ({ ...route, source: "sample" })),
 ];
@@ -156,7 +174,16 @@ test("GLM 5.3 Flash uses the revealed Z.ai identity", () => {
   expect(entries.every((entry) => entry.modelLabel === "GLM 5.3 Flash")).toBe(true);
   expect(getModelLab("glm-5.3-flash")).toEqual({ slug: "z-ai", label: "Z.ai" });
   expect(getModelBrandLogoPath("glm-5.3-flash")).toBe("/glm.webp");
-  expect(LAB_OPTIONS.map((lab) => lab.label)).not.toContain("Anonymous");
+});
+
+test("Union Alpha has fifteen generations and anonymous branding", () => {
+  const entries = galleryManifest.filter((entry) => entry.model === "union-alpha");
+  expect(entries).toHaveLength(3);
+  expect(entries.flatMap((entry) => entry.iterations)).toHaveLength(15);
+  expect(entries.every((entry) => entry.modelLabel === "Union Alpha")).toBe(true);
+  expect(LAB_OPTIONS.map((lab) => lab.label)).toContain("Anonymous");
+  expect(getModelLab("union-alpha")).toEqual({ slug: "anonymous", label: "Anonymous" });
+  expect(getModelBrandLogoPath("union-alpha")).toBe("/anonymous-light.svg");
 });
 
 test("legacy Ox Alpha routes redirect to GLM 5.3 Flash", async ({ page }) => {

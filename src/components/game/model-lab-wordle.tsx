@@ -56,6 +56,7 @@ const pickerOptionClass = (selected: boolean, disabled = false) =>
 const pickerWidthClass = "w-[min(18rem,calc(100vw-3rem))]";
 
 const GUESS_OPTIONS: GuessOption[] = [
+  { slug: "anonymous", label: "Anonymous", logoLightPath: "/anonymous-light.svg", logoDarkPath: "/anonymous-dark.svg" },
   { slug: "xiaomi", label: "MiMo", logoLightPath: "/xiaomi.svg" },
   { slug: "gpt", label: "GPT", logoLightPath: "/openai-gpt.svg", logoDarkPath: "/openai-gpt-dark.svg" },
   { slug: "anthropic", label: "Claude", logoLightPath: "/anthropic-claude.webp" },
