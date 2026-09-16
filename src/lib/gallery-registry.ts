@@ -99,9 +99,16 @@ import withoutMuseSpark12 from "@/variants/without-design-skill/muse-spark-1.2";
 import withoutMuseSpark13 from "@/variants/without-design-skill/muse-spark-1.3";
 import withoutSwe2 from "@/variants/without-design-skill/swe-2";
 
+import withUnionAlpha from "@/variants/with-design-skill/union-alpha";
+import withTasteUnionAlpha from "@/variants/with-taste-skill/union-alpha";
+import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
+
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "without-design-skill:union-alpha": withoutUnionAlpha,
+  "with-taste-skill:union-alpha": withTasteUnionAlpha,
+  "with-design-skill:union-alpha": withUnionAlpha,
   "with-taste-skill:mimo-x-flash-preview": withTasteMimoFlash,
   "with-design-skill:mimo-x-flash-preview": withMimoFlash,
   "without-design-skill:mimo-x-flash-preview": withoutMimoFlash,

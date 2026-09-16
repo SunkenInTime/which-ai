@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+.union-alpha-fonts, .font-sans { font-family: var(--font-union-sans), sans-serif; }
+.font-display { font-family: var(--font-union-display), sans-serif; }
+.font-serif { font-family: var(--font-union-serif), serif; }
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.animate-rise {
+  animation: rise 0.5s ease-out both;
+}
+
+.animate-twinkle {
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-rise, .animate-twinkle {
+    animation: none;
+  }
+}
