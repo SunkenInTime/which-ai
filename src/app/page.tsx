@@ -8,8 +8,14 @@ import {
 } from "@/lib/gallery-anthropic-skill";
 import { galleryManifest } from "@/lib/gallery-manifest";
 import { sortGalleryEntriesForHome } from "@/lib/gallery-model-order";
+import { getGalleryReferenceTime } from "@/lib/gallery-recency";
+
+/** Re-render daily so new-arrival badges expire on schedule without a redeploy. */
+export const revalidate = 86400;
 
 export default function HomePage() {
+  // One reference clock for both the sort and the card badges.
+  const now = getGalleryReferenceTime();
   const groups = [
     "with-design-skill",
     "with-taste-skill",
@@ -83,8 +89,10 @@ export default function HomePage() {
             group,
             entries: sortGalleryEntriesForHome(
               galleryManifest.filter((entry) => entry.group === group),
+              { now },
             ),
           }))}
+          referenceTime={now}
         />
 
         <section

@@ -14,6 +14,8 @@ const HOME_GALLERY_GROUPS = [
 const LATEST_ROUTE_SMOKE_COUNT = 5;
 
 const forceArchivedModels = [
+  { model: "mimo-x-flash-preview", label: "MiMo X Flash" },
+  { model: "union-alpha", label: "Union Alpha" },
   { model: "composer-2.5", label: "Composer 2.5" },
   { model: "gemini-3.5-flash", label: "Gemini 3.5 Flash" },
   { model: "luna", label: "GPT-5.6 Luna" },

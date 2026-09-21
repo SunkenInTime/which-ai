@@ -129,6 +129,38 @@ body {
     var(--gallery-shadow-md);
 }
 
+/* New-arrival cards: Signal Pink used as signal, not decoration. No motion beyond the shared lift. */
+.gallery-card-shell[data-new-arrival="true"],
+.dark .gallery-card-shell[data-new-arrival="true"] {
+  border-color: color-mix(in oklab, var(--gallery-accent) 55%, var(--gallery-divider-strong));
+  box-shadow:
+    inset 0 1px 0 var(--gallery-surface-highlight),
+    0 0 0 4px color-mix(in oklab, var(--gallery-accent) 11%, transparent);
+}
+
+.gallery-card-shell[data-new-arrival="true"]:hover {
+  border-color: var(--gallery-accent);
+  box-shadow:
+    0 0 0 4px color-mix(in oklab, var(--gallery-accent) 18%, transparent),
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+.dark .gallery-card-shell[data-new-arrival="true"]:hover {
+  border-color: var(--gallery-accent);
+  box-shadow:
+    inset 0 1px 0 var(--gallery-surface-highlight),
+    0 0 0 4px color-mix(in oklab, var(--gallery-accent) 20%, transparent),
+    var(--gallery-shadow-md);
+}
+
+.gallery-new-arrival-tag {
+  /* Surface-colored halo keeps the tag legible over any generated screenshot. */
+  box-shadow:
+    0 0 0 2px var(--gallery-surface),
+    0 2px 8px color-mix(in oklab, var(--gallery-accent) 35%, transparent);
+}
+
 .dark .gallery-elevated-surface:hover {
   box-shadow:
     inset 0 1px 0 var(--gallery-surface-highlight),

@@ -1,3 +1,4 @@
+import { sortGalleryEntriesNewFirst } from "@/lib/gallery-recency";
 import type { GalleryEntry, ModelSlug } from "@/lib/gallery-types";
 
 const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }> = {
@@ -40,7 +41,20 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "swe-2": { familyOrder: 8, tier: 20 },
 };
 
-export function sortGalleryEntriesForHome(entries: GalleryEntry[]) {
+/**
+ * Family order (lab, then newest tier first). When `now` is given, new arrivals are hoisted
+ * ahead of the family order, newest first; see `gallery-recency.ts` for the policy.
+ * Callers that want a stable, time-independent order (e.g. the variant switcher) omit `now`.
+ */
+export function sortGalleryEntriesForHome(
+  entries: GalleryEntry[],
+  options: { now?: number } = {},
+) {
+  const byFamily = sortGalleryEntriesByFamily(entries);
+  return options.now === undefined ? byFamily : sortGalleryEntriesNewFirst(byFamily, options.now);
+}
+
+export function sortGalleryEntriesByFamily(entries: GalleryEntry[]) {
   return entries.toSorted((a, b) => {
     const aOrder = MODEL_HOME_ORDER[a.model];
     const bOrder = MODEL_HOME_ORDER[b.model];

@@ -7,9 +7,11 @@ const FORCE_ARCHIVED_MODELS = new Set<ModelSlug>([
   "gemini-3.5-flash",
   "kimi-k-2.6",
   "luna",
+  "mimo-x-flash-preview",
   "opus-4.7",
   "opus-4.8",
   "terra",
+  "union-alpha",
 ]);
 
 /** Visible on the home page with a sunset bookmark on gallery cards. */
