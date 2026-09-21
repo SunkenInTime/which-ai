@@ -28,7 +28,6 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "gpt-5.5-low": ["gpt5.5", "gpt 5.5", "low reasoning", "5.5 low"],
   "gpt-5.5-high": ["gpt5.5", "gpt 5.5", "high reasoning", "5.5 high"],
   "gpt-6-astra": ["gpt6", "gpt 6", "astra"],
-  "gpt-6-astra-preview": ["gpt6", "gpt 6", "astra", "theo", "t3", "t3dotgg", "preview"],
   sol: ["gpt 5.6", "gpt5.6", "codename"],
   luna: ["gpt 5.6", "gpt5.6", "codename"],
   terra: ["gpt 5.6", "gpt5.6", "codename"],
@@ -85,7 +84,7 @@ export function normalizeGalleryQuery(query: string): string {
 /**
  * Every whitespace-separated term has to appear somewhere in the entry's
  * model, lab, or group text (labels, slugs, and the hidden aliases above).
- * Matching is substring-based so "5.5" hits "GPT 5.5 low", "astra" hits both
+ * Matching is substring-based so "5.5" hits "GPT 5.5 low", "astra" hits the
  * Astra rows, and "claude" hits every Anthropic model.
  */
 export function galleryEntryMatchesQuery(entry: GalleryEntry, query: string): boolean {
