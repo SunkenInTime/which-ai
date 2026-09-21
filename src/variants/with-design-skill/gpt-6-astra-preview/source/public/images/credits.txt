@@ -1,9 +1,0 @@
-Morrow concept photography
-
-Images served locally, downloaded from Unsplash:
-forest.jpg — https://images.unsplash.com/photo-1448375240586-882707db888b
-garden.jpg — https://images.unsplash.com/photo-1441974231531-c6227db76b6e
-coast.jpg — https://images.unsplash.com/photo-1475924156734-496f6cac6ec1
-mountains.jpg — https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05
-
-Fonts are Google Fonts open-source families: DM Sans, Newsreader, Space Grotesk, Fraunces, and Bricolage Grotesque.

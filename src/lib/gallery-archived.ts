@@ -2,7 +2,6 @@ import type { GalleryEntry, ModelSlug } from "@/lib/gallery-types";
 
 /** Always hidden on the home page until "Show Archived" (all groups). */
 const FORCE_ARCHIVED_MODELS = new Set<ModelSlug>([
-  "gpt-6-astra-preview",
   "composer-2.0",
   "composer-2.5",
   "gemini-3.5-flash",
@@ -37,7 +36,6 @@ const MODEL_GALLERY_GENERATION = {
   "gpt-5.5-high": { family: "gpt", tier: 3 },
   "gpt-6-astra": { family: "gpt", tier: 6 },
   sol: { family: "gpt", tier: 4 },
-  "gpt-6-astra-preview": { family: "gpt", tier: 4 },
   luna: { family: "gpt", tier: 4 },
   terra: { family: "gpt", tier: 4 },
   "kimi-k-2.5": { family: "kimi", tier: 1 },
