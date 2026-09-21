@@ -1,0 +1,246 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .page {
+  min-height: 100dvh;
+  position: relative;
+  overflow: hidden;
+  background: #d5ddd4;
+  color: #1c2b24;
+  padding: 4.5vh 4vw 7.5rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .page ::selection {
+  background: #f7f4ea;
+  color: #1c2b24;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .terrain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .wash {
+  position: absolute;
+  left: 30%;
+  top: 46%;
+  width: min(340px, 36vw);
+  height: min(200px, 24vw);
+  background: rgba(63, 122, 150, 0.22);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .stage {
+  position: relative;
+  z-index: 1;
+  min-height: calc(100dvh - 9rem);
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: auto auto auto auto;
+  gap: 1.25rem 1rem;
+  align-items: start;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .titleBlock {
+  grid-column: 1 / 6;
+  grid-row: 1;
+  max-width: 28rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .product {
+  margin: 0;
+  font-size: clamp(2.4rem, 4.4vw, 3.6rem);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .deck {
+  margin: 0.8rem 0 0;
+  max-width: 34ch;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  margin-top: 1.15rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .start {
+  appearance: none;
+  border: 0;
+  background: #1c2b24;
+  color: #f7f4ea;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.95rem;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .start:hover {
+  background: #31443b;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .status {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .place {
+  margin: 0;
+  max-width: 16rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .placeName,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+.placeDetail,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+.region {
+  display: block;
+  width: fit-content;
+  margin: 0;
+  background: #f4f1e6;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  padding: 0.08rem 0.28rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .placeName {
+  font-size: 1.18rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .placeDetail {
+  margin-top: 0.35rem;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .mark {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  margin-right: 0.4rem;
+  background: #b8430f;
+  vertical-align: 0.08rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .morning {
+  grid-column: 9 / 13;
+  grid-row: 1;
+  justify-self: end;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .oranges {
+  grid-column: 1 / 5;
+  grid-row: 2;
+  margin-top: 1.5rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .regionWrap {
+  grid-column: 6 / 9;
+  grid-row: 2;
+  align-self: end;
+  justify-self: start;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .region {
+  color: #1e4a63;
+  font-size: 1.05rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .band {
+  grid-column: 1 / -1;
+  grid-row: 3;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 13.5rem minmax(0, 1fr);
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .chapter {
+  justify-self: end;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .talk {
+  justify-self: start;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .path {
+  width: 100%;
+  height: 4.5rem;
+  overflow: visible;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .pathLabel {
+  margin: 0.15rem 0 0;
+  color: #7a2e0c;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .nia {
+  grid-column: 3 / 7;
+  grid-row: 4;
+  margin-top: 0.4rem;
+}
+
+@media (max-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .page {
+    overflow: visible;
+    padding: 1.5rem 1.2rem 7rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .terrain,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .wash,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .regionWrap,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .path {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .stage {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+    min-height: 0;
+  }
+
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .morning,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .oranges,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .regionWrap,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .nia,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .chapter,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .talk {
+    justify-self: start;
+  }
+
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .band {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .pathLabel {
+    text-align: left;
+    margin: 0.15rem 0 0.15rem 0.15rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) .chapter,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) 
+  .talk {
+    border-left: 3px solid #b8430f;
+    padding-left: 0.7rem;
+  }
+}

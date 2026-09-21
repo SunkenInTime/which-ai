@@ -1,0 +1,223 @@
+@import "tailwindcss";
+
+:root {
+  --background: #e7e9ee;
+  --foreground: #1b1e27;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #12141a;
+    --foreground: #eceef4;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+section[id],
+footer[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/*
+ * Each route locks one palette, one accent, and one radius.
+ * Dark values stay in the same hue family so a section never flips theme.
+ */
+.theme-instrument,
+.theme-field,
+.theme-graph,
+.theme-studio,
+.theme-thread {
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100dvh;
+}
+
+.theme-instrument {
+  color-scheme: light;
+  --bg: #f3f4f6;
+  --fg: #1b1e27;
+  --muted: #3e4656;
+  --line: #cfd3dc;
+  --surface: #fbfbfc;
+  --soft: #e6e8ee;
+  --accent: #1e3a8a;
+  --accent-fg: #f5f7ff;
+  --danger: #9f1239;
+  --radius: 10px;
+}
+
+.theme-field {
+  color-scheme: light;
+  --bg: #e4efe6;
+  --fg: #13241c;
+  --muted: #244536;
+  --line: #b7cbb9;
+  --surface: #f5faf6;
+  --soft: #d3e4d6;
+  --accent: #1b4d36;
+  --accent-fg: #f3fff6;
+  --danger: #9f1239;
+  --radius: 0px;
+}
+
+.theme-graph {
+  color-scheme: light;
+  --bg: #f2f4f4;
+  --fg: #14201f;
+  --muted: #334542;
+  --line: #c9d2d0;
+  --surface: #fbfcfc;
+  --soft: #e3ecea;
+  --accent: #115e59;
+  --accent-fg: #f3fffc;
+  --danger: #9f1239;
+  --radius: 0px;
+}
+
+.theme-studio {
+  color-scheme: light;
+  --bg: #e8ebf0;
+  --fg: #1c2333;
+  --muted: #3a445c;
+  --line: #c9cfda;
+  --surface: #f7f8fb;
+  --soft: #dce2ec;
+  --accent: #1e3a8a;
+  --accent-fg: #f5f7ff;
+  --danger: #9f1239;
+  --radius: 16px;
+}
+
+.theme-thread {
+  color-scheme: light;
+  --bg: #e6e8eb;
+  --fg: #1c2128;
+  --muted: #3d4654;
+  --line: #c5cad1;
+  --surface: #f6f7f8;
+  --soft: #d5d9df;
+  --accent: #9a3412;
+  --accent-fg: #fff7f4;
+  --danger: #9f1239;
+  --radius: 0px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-instrument {
+    color-scheme: dark;
+    --bg: #12141a;
+    --fg: #eceef4;
+    --muted: #c6cbd6;
+    --line: #323744;
+    --surface: #1c1f29;
+    --soft: #232733;
+    --accent: #c9d6ff;
+    --accent-fg: #101426;
+    --danger: #ffb3c0;
+  }
+
+  .theme-field {
+    color-scheme: dark;
+    --bg: #0f1f19;
+    --fg: #e8f3ea;
+    --muted: #c5d9c9;
+    --line: #2c4638;
+    --surface: #173028;
+    --soft: #1e3a2e;
+    --accent: #b7e3a4;
+    --accent-fg: #102117;
+    --danger: #ffb3c0;
+  }
+
+  .theme-graph {
+    color-scheme: dark;
+    --bg: #101616;
+    --fg: #e7f1ef;
+    --muted: #c5d5d1;
+    --line: #2c3c39;
+    --surface: #182220;
+    --soft: #1e2e2b;
+    --accent: #9ee6d6;
+    --accent-fg: #062421;
+    --danger: #ffb3c0;
+  }
+
+  .theme-studio {
+    color-scheme: dark;
+    --bg: #12151c;
+    --fg: #eceef5;
+    --muted: #c9cfdb;
+    --line: #323846;
+    --surface: #1b1f2a;
+    --soft: #242938;
+    --accent: #c5d4ff;
+    --accent-fg: #101426;
+    --danger: #ffb3c0;
+  }
+
+  .theme-thread {
+    color-scheme: dark;
+    --bg: #15181e;
+    --fg: #eceff3;
+    --muted: #c9ced6;
+    --line: #343a44;
+    --surface: #1e232b;
+    --soft: #282e38;
+    --accent: #f0b9a4;
+    --accent-fg: #2a120c;
+    --danger: #ffb3c0;
+  }
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--accent-fg);
+}
+
+@keyframes halden-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  animation: halden-marquee 48s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .marquee-track {
+    animation: none;
+    width: 100%;
+    max-width: 1400px;
+    flex-wrap: wrap;
+    margin-inline: auto;
+    row-gap: 0.75rem;
+  }
+
+  .marquee-track [data-dup="true"] {
+    display: none;
+  }
+}

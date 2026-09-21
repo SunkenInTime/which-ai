@@ -31,6 +31,21 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "without-design-skill", model: "grok-4.7", iteration: "1" },
+  { group: "without-design-skill", model: "grok-4.7", iteration: "2" },
+  { group: "without-design-skill", model: "grok-4.7", iteration: "3" },
+  { group: "without-design-skill", model: "grok-4.7", iteration: "4" },
+  { group: "without-design-skill", model: "grok-4.7", iteration: "5" },
+  { group: "with-taste-skill", model: "grok-4.7", iteration: "1" },
+  { group: "with-taste-skill", model: "grok-4.7", iteration: "2" },
+  { group: "with-taste-skill", model: "grok-4.7", iteration: "3" },
+  { group: "with-taste-skill", model: "grok-4.7", iteration: "4" },
+  { group: "with-taste-skill", model: "grok-4.7", iteration: "5" },
+  { group: "with-design-skill", model: "grok-4.7", iteration: "1" },
+  { group: "with-design-skill", model: "grok-4.7", iteration: "2" },
+  { group: "with-design-skill", model: "grok-4.7", iteration: "3" },
+  { group: "with-design-skill", model: "grok-4.7", iteration: "4" },
+  { group: "with-design-skill", model: "grok-4.7", iteration: "5" },
   { group: "with-taste-skill", model: "mimo-x-flash-preview", iteration: "1" },
   { group: "with-taste-skill", model: "mimo-x-flash-preview", iteration: "2" },
   { group: "with-taste-skill", model: "mimo-x-flash-preview", iteration: "3" },
@@ -174,6 +189,16 @@ test("GLM 5.3 Flash uses the revealed Z.ai identity", () => {
   expect(entries.every((entry) => entry.modelLabel === "GLM 5.3 Flash")).toBe(true);
   expect(getModelLab("glm-5.3-flash")).toEqual({ slug: "z-ai", label: "Z.ai" });
   expect(getModelBrandLogoPath("glm-5.3-flash")).toBe("/glm.webp");
+});
+
+test("Grok 4.7 is visible in each group and supersedes Grok 4.6", async ({ page }) => {
+  await page.goto("/");
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {
+    await expect(page.locator(`a[href="/${group}/grok-4.7/1"]`).first()).toBeVisible();
+    await expect(page.locator(`a[href="/${group}/grok-4.6/1"]`)).toHaveCount(0);
+  }
+  expect(getModelLab("grok-4.7")).toEqual({ slug: "x-ai", label: "X AI" });
+  expect(getModelBrandLogoPath("grok-4.7")).toBe("/xai-light.svg");
 });
 
 test("Union Alpha has fifteen generations and anonymous branding", () => {

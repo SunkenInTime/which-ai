@@ -55,6 +55,7 @@ const MODEL_GALLERY_GENERATION = {
   "glm-5.2": { family: "glm", tier: 3 },
   "grok-4.5": { family: "x-ai-grok", tier: 45 },
   "grok-4.6": { family: "x-ai-grok", tier: 46 },
+  "grok-4.7": { family: "x-ai-grok", tier: 47 },
   "muse-spark-1.2": { family: "meta-muse-spark", tier: 12 },
   "muse-spark-1.3": { family: "meta-muse-spark", tier: 13 },
   "swe-2": { family: "cognition-swe", tier: 2 },

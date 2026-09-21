@@ -25,6 +25,7 @@ export type ModelSlug =
   | "glm-5.3-flash"
   | "grok-4.5"
   | "grok-4.6"
+  | "grok-4.7"
   | "gpt-6-astra"
   | "gpt-5.4"
   | "gpt-5.5-low"

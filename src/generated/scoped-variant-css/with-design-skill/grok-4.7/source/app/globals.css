@@ -1,0 +1,51 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+*::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+*::after {
+  box-sizing: border-box;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) {
+  height: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) {
+  margin: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) button,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+input,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) button {
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) a {
+  color: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) :focus {
+  outline: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

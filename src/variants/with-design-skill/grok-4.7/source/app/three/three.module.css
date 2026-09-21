@@ -1,0 +1,168 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: safe center;
+  background: #2f363b;
+  color: #f3f1ec;
+  color-scheme: dark;
+  padding: 3rem 1.5rem 7.5rem;
+  font-family: var(--font-public-sans), system-ui, sans-serif;
+}
+
+.drawer {
+  width: min(48rem, 100%);
+}
+
+.label {
+  display: inline-block;
+  margin: 0 0 1.25rem;
+  padding: 0.7rem 1rem;
+  background: #1b2125;
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+.pitch {
+  margin: 0 0 2rem;
+  max-width: 38ch;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.35rem;
+  align-items: flex-end;
+  padding-left: 0.8rem;
+  overflow-x: auto;
+}
+
+.tab,
+.tabActive {
+  flex: none;
+  border: 0;
+  background: #d5d2cb;
+  color: #241c16;
+  padding: 0.55rem 0.9rem 0.45rem;
+  font-size: 1rem;
+}
+
+.tab:hover {
+  background: #e6e3dc;
+}
+
+.tabActive {
+  position: relative;
+  z-index: 1;
+  background: #f7f6f2;
+  margin-bottom: -1px;
+  padding-bottom: 0.85rem;
+}
+
+.stack {
+  max-width: 40rem;
+}
+
+.card {
+  background: #f7f6f2;
+  color: #241c16;
+  padding: 1.8rem 1.7rem 1.6rem;
+  font-family: var(--font-cardo), Georgia, serif;
+}
+
+.title {
+  margin: 0 0 0.9rem;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.body {
+  margin: 0 0 1.25rem;
+  max-width: 36ch;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.meta,
+.seeAlso,
+.start,
+.status {
+  font-family: var(--font-public-sans), system-ui, sans-serif;
+}
+
+.meta {
+  margin: 0 0 1rem;
+  color: #1e3a5f;
+  font-size: 0.98rem;
+}
+
+.seeAlso {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.cross {
+  border: 0;
+  background: transparent;
+  color: #1e3a5f;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  font-size: 1rem;
+}
+
+.cross:hover {
+  color: #15283f;
+}
+
+.start {
+  border: 0;
+  background: #1e3a5f;
+  color: #f7f6f2;
+  padding: 0.8rem 1.05rem;
+}
+
+.start:hover {
+  background: #162c49;
+}
+
+.status {
+  margin: 0;
+  max-width: 32ch;
+  font-size: 1rem;
+  line-height: 1.45;
+}
+
+.peek,
+.peekDeep {
+  height: 0.7rem;
+}
+
+.peek {
+  margin: 0 0.7rem;
+  background: #e4e1da;
+}
+
+.peekDeep {
+  margin: 0 1.4rem;
+  background: #cfcbc3;
+}
+
+@media (max-width: 640px) {
+  .page {
+    justify-content: flex-start;
+    padding-top: 1.35rem;
+  }
+
+  .card {
+    min-height: 0;
+    padding: 1.4rem 1.15rem 1.3rem;
+  }
+}

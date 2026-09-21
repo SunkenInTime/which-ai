@@ -1,0 +1,150 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  background: #2c241e;
+  color: #f4e7d4;
+  color-scheme: dark;
+  padding: 3rem 1.75rem 7.5rem;
+  font-family: var(--font-schibsted), system-ui, sans-serif;
+}
+
+.layout {
+  width: min(68rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 36rem) minmax(14rem, 18rem);
+  column-gap: 3.5rem;
+  row-gap: 1.25rem;
+  align-items: start;
+}
+
+.name,
+.pitch,
+.lamp,
+.action {
+  grid-column: 1;
+}
+
+.side {
+  grid-column: 2;
+  grid-row: 3;
+}
+
+.name {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.pitch {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.lamp {
+  background: #f4e7d4;
+  color: #2a211c;
+  border: 4px solid #b08d57;
+  padding: 2.8rem 2.5rem 2.5rem;
+  font-family: var(--font-petrona), Georgia, serif;
+}
+
+.title {
+  margin: 0 0 1.1rem;
+  max-width: 14ch;
+  font-size: clamp(2.3rem, 4vw, 3.2rem);
+  font-weight: 560;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.body {
+  margin: 0;
+  max-width: 32ch;
+  font-size: 1.45rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.sideTitle {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.noteButton {
+  display: block;
+  width: 100%;
+  margin: 0 0 0.35rem;
+  padding: 0.7rem 0 0.7rem 0.9rem;
+  border: 0;
+  border-left: 3px solid transparent;
+  background: transparent;
+  text-align: left;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: #f4e7d4;
+}
+
+.noteButton:hover {
+  border-left-color: #b08d57;
+  text-decoration: underline;
+  text-underline-offset: 0.16em;
+}
+
+.action {
+  margin-top: 0.5rem;
+}
+
+.start {
+  border: 1px solid #f4e7d4;
+  background: transparent;
+  color: #f4e7d4;
+  padding: 0.8rem 1.05rem;
+}
+
+.start:hover {
+  background: rgba(244, 231, 212, 0.08);
+}
+
+.status {
+  margin: 0;
+  max-width: 32ch;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 800px) {
+  .page {
+    justify-content: flex-start;
+    padding-top: 1.35rem;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .name,
+  .pitch,
+  .lamp,
+  .action,
+  .side {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .lamp {
+    padding: 1.5rem 1.25rem 1.35rem;
+  }
+}

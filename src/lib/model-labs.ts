@@ -37,6 +37,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   "glm-5.3-flash": { slug: "z-ai", label: "Z.ai" },
   "grok-4.5": { slug: "x-ai", label: "X AI" },
   "grok-4.6": { slug: "x-ai", label: "X AI" },
+  "grok-4.7": { slug: "x-ai", label: "X AI" },
   "gpt-5.4": { slug: "gpt", label: "GPT" },
   "gpt-5.5-low": { slug: "gpt", label: "GPT" },
   "gpt-5.5-high": { slug: "gpt", label: "GPT" },
