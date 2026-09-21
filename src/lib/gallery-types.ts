@@ -30,7 +30,6 @@ export type ModelSlug =
   | "gpt-5.4"
   | "gpt-5.5-low"
   | "gpt-5.5-high"
-  | "gpt-6-astra-preview"
   | "kimi-k-2.5"
   | "kimi-k-2.6"
   | "kimi-k3"

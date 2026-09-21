@@ -1,10 +1,6 @@
 import withoutGrok47 from "@/variants/without-design-skill/grok-4.7";
 import withTasteGrok47 from "@/variants/with-taste-skill/grok-4.7";
 import withGrok47 from "@/variants/with-design-skill/grok-4.7";
-import withoutAstraPreview from "@/variants/without-design-skill/gpt-6-astra-preview";
-import withAstraPreview from "@/variants/with-design-skill/gpt-6-astra-preview";
-import withTasteAstraPreview from "@/variants/with-taste-skill/gpt-6-astra-preview";
-import miscAstraPreview from "@/variants/miscellaneous/gpt-6-astra-preview";
 import withoutMimo from "@/variants/without-design-skill/mimo-x-pro-preview";
 import withMimo from "@/variants/with-design-skill/mimo-x-pro-preview";
 import withTasteMimo from "@/variants/with-taste-skill/mimo-x-pro-preview";
@@ -121,11 +117,6 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-design-skill:gpt-6-astra": withAstra,
   "with-taste-skill:gpt-6-astra": withTasteAstra,
   "without-design-skill:gpt-6-astra": withoutAstra,
-
-  "without-design-skill:gpt-6-astra-preview": withoutAstraPreview,
-  "with-design-skill:gpt-6-astra-preview": withAstraPreview,
-  "with-taste-skill:gpt-6-astra-preview": withTasteAstraPreview,
-  "miscellaneous:gpt-6-astra-preview": miscAstraPreview,
   "with-design-skill:composer-1.5": withComposer15,
   "with-design-skill:composer-2.0": withComposer20,
   "with-design-skill:composer-2.5": withComposer25,
