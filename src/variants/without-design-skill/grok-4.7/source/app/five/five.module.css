@@ -1,0 +1,210 @@
+.page {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  background: #f7f6f3;
+  color: #161616;
+}
+
+.page ::selection {
+  background: #d5e2f4;
+  color: #161616;
+}
+
+.thumb {
+  position: sticky;
+  top: 0;
+  align-self: start;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.05rem;
+  width: 2.8rem;
+  max-height: 100dvh;
+  min-height: 100dvh;
+  padding: 0.7rem 0.25rem 5.5rem;
+  overflow: auto;
+  background: #1e4d8c;
+}
+
+.letterBtn,
+.quiet {
+  display: grid;
+  place-items: center;
+  width: 1.7rem;
+  height: 1.28rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.letterBtn {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #f7f6f3;
+  cursor: pointer;
+  border-radius: 2px;
+}
+
+.letterBtn[aria-current="true"] {
+  background: #f7f6f3;
+  color: #1e4d8c;
+}
+
+.letterBtn:focus-visible {
+  outline: 2px solid #f7f6f3;
+  outline-offset: 2px;
+}
+
+.quiet {
+  color: #c5d7ee;
+}
+
+.spread {
+  padding: 6vh 5vw 7.5rem 3.5vw;
+  display: grid;
+  grid-template-columns: minmax(4.5rem, 0.35fr) minmax(0, 38rem);
+  gap: 0.5rem 2rem;
+  align-items: start;
+}
+
+.header {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 1.25rem 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.product {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.deck {
+  margin: 0.55rem 0 0;
+  max-width: 34ch;
+  font-size: 1.12rem;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
+.mark {
+  margin: 0;
+  color: #1e4d8c;
+  font-size: clamp(6.5rem, 14vw, 11rem);
+  font-weight: 700;
+  line-height: 0.78;
+  letter-spacing: -0.05em;
+}
+
+.list {
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  margin: 0 0 1.35rem;
+}
+
+.head {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: 1.45rem;
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.2;
+  text-align: left;
+  cursor: pointer;
+}
+
+.head:hover {
+  color: #1e4d8c;
+}
+
+.gloss {
+  margin: 0.28rem 0 0;
+  max-width: 46ch;
+  font-size: 1.05rem;
+  line-height: 1.4;
+}
+
+.note {
+  margin: 0.75rem 0 0;
+  padding-left: 0.85rem;
+  border-left: 3px solid #1e4d8c;
+  max-width: 46ch;
+  font-size: 1.18rem;
+  line-height: 1.55;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.start {
+  appearance: none;
+  border: 0;
+  background: #1e4d8c;
+  color: #f7f6f3;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.95rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.start:hover {
+  background: #16396a;
+}
+
+.status {
+  margin: 0;
+  max-width: 36ch;
+  font-size: 0.98rem;
+  line-height: 1.4;
+  text-wrap: balance;
+}
+
+@media (max-width: 720px) {
+  .page {
+    grid-template-columns: 1fr;
+  }
+
+  .thumb {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    flex-direction: row;
+    width: auto;
+    min-height: 0;
+    max-height: none;
+    padding: 0.35rem 0.45rem;
+    overflow-x: auto;
+  }
+
+  .spread {
+    grid-template-columns: 1fr;
+    padding: 1.4rem 1.15rem 7rem;
+  }
+
+  .mark {
+    font-size: 5.5rem;
+  }
+}

@@ -24,6 +24,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "gemini-3.8-flash": { familyOrder: 3, tier: 38 },
   "grok-4.5": { familyOrder: 4, tier: 45 },
   "grok-4.6": { familyOrder: 4, tier: 46 },
+  "grok-4.7": { familyOrder: 4, tier: 47 },
   "muse-spark-1.2": { familyOrder: 4.5, tier: 12 },
   "muse-spark-1.3": { familyOrder: 4.5, tier: 13 },
   "composer-1.5": { familyOrder: 5, tier: 15 },

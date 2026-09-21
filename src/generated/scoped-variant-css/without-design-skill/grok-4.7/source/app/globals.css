@@ -1,0 +1,14 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]),:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) {
+  height: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) {
+  margin: 0;
+  background: #f7f6f3;
+  color: #161616;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="grok-4.7"]) :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}

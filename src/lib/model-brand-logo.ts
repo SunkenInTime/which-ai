@@ -24,6 +24,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "glm-5.3-flash": { light: "/glm.webp" },
   "grok-4.5": { light: "/xai-light.svg", dark: "/xai-dark.svg" },
   "grok-4.6": { light: "/xai-light.svg", dark: "/xai-dark.svg" },
+  "grok-4.7": { light: "/xai-light.svg", dark: "/xai-dark.svg" },
   "gpt-5.4": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "gpt-5.5-low": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "gpt-5.5-high": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },

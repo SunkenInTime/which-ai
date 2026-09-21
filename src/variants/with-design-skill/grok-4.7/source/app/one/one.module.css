@@ -1,0 +1,152 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  background: #d5e2ea;
+  color: #1a2744;
+  color-scheme: light;
+  padding: 3rem 1.75rem 7.5rem;
+}
+
+.layout {
+  width: min(76rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 52rem) minmax(16rem, 1fr);
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16.5rem;
+  background: #f7fbfc;
+}
+
+.writing {
+  min-width: 0;
+  padding: 3.25rem 2.25rem 3rem 2.75rem;
+}
+
+.title {
+  margin: 0 0 1.6rem;
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 4vw, 3.35rem);
+  font-weight: 620;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+.sentence,
+.sentenceActive {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 0.9rem;
+  padding: 0.2rem 0.35rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-size: 1.28rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+.sentence:hover {
+  background: rgba(26, 39, 68, 0.06);
+}
+
+.sentenceActive {
+  background: #ffe56a;
+}
+
+.margin {
+  margin: 0;
+  border-left: 2px solid #c5363a;
+  padding: 3.5rem 1.4rem 2rem 1.2rem;
+}
+
+.marginText {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+.aside {
+  padding-top: 0.4rem;
+  max-width: 28ch;
+}
+
+.name {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+.pitch {
+  margin: 0 0 1.75rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+.start {
+  border: 0;
+  background: #1a2744;
+  color: #f7fbfc;
+  padding: 0.85rem 1.1rem;
+}
+
+.start:hover {
+  background: #24365f;
+}
+
+.status {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  .page {
+    justify-content: flex-start;
+    padding-top: 1.25rem;
+  }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sheet {
+    grid-template-columns: 1fr;
+  }
+
+  .writing {
+    padding: 1.15rem 1.15rem 0.35rem;
+  }
+
+  .title {
+    margin-bottom: 1rem;
+  }
+
+  .sentence,
+  .sentenceActive {
+    margin-bottom: 0.55rem;
+  }
+
+  .margin {
+    padding: 0.35rem 1.15rem 1rem 0.9rem;
+  }
+
+  .pitch {
+    margin-bottom: 1.1rem;
+  }
+
+  .aside {
+    max-width: 40ch;
+  }
+}

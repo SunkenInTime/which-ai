@@ -1,0 +1,121 @@
+.page {
+  min-height: 100dvh;
+  background: #f3f6f1;
+  color: #17241c;
+  padding: 11vh 7vw 8rem;
+}
+
+.page ::selection {
+  background: #c9e3d2;
+  color: #17241c;
+}
+
+.sheet {
+  position: relative;
+  max-width: 46rem;
+  margin-inline: auto;
+}
+
+.spine {
+  position: absolute;
+  left: 0.32rem;
+  top: 0.45rem;
+  bottom: 5.5rem;
+  width: 2px;
+  background: #1f6b45;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 9.4rem minmax(0, 42ch);
+  column-gap: 1.35rem;
+  padding-bottom: 2.6rem;
+}
+
+.date {
+  margin: 0;
+  padding-top: 0.28rem;
+  padding-left: 1.15rem;
+  color: #1f6b45;
+  white-space: nowrap;
+  font-size: 0.98rem;
+  line-height: 1.35;
+}
+
+.note {
+  margin: 0;
+  font-size: 1.22rem;
+  font-weight: 400;
+  line-height: 1.58;
+}
+
+.source {
+  margin: 0.55rem 0 0;
+  color: #3d5246;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+
+.title {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.7rem, 3vw, 2.15rem);
+  font-weight: 600;
+  line-height: 1.2;
+  text-wrap: balance;
+  max-width: 22ch;
+}
+
+.action {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  margin-top: 1.15rem;
+}
+
+.start {
+  appearance: none;
+  border: 0;
+  background: #174f34;
+  color: #f3f6f1;
+  min-height: 2.75rem;
+  padding: 0.65rem 0.95rem;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.start:hover {
+  background: #123d28;
+}
+
+.status {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 0.98rem;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .page {
+    padding: 2.5rem 1.25rem 7rem;
+  }
+
+  .spine {
+    display: none;
+  }
+
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    border-left: 2px solid #1f6b45;
+    padding-left: 0.95rem;
+    margin-left: 0.1rem;
+  }
+
+  .date {
+    padding-left: 0;
+    padding-top: 0;
+  }
+}

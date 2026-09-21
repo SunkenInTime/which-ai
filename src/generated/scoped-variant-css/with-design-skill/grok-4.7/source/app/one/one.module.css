@@ -1,0 +1,152 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe center;
+  background: #d5e2ea;
+  color: #1a2744;
+  color-scheme: light;
+  padding: 3rem 1.75rem 7.5rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .layout {
+  width: min(76rem, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 52rem) minmax(16rem, 1fr);
+  gap: 3.5rem;
+  align-items: start;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 16.5rem;
+  background: #f7fbfc;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .writing {
+  min-width: 0;
+  padding: 3.25rem 2.25rem 3rem 2.75rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .title {
+  margin: 0 0 1.6rem;
+  max-width: 14ch;
+  font-size: clamp(2.4rem, 4vw, 3.35rem);
+  font-weight: 620;
+  line-height: 1.12;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .sentence,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+.sentenceActive {
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 0 0.9rem;
+  padding: 0.2rem 0.35rem;
+  border: 0;
+  background: transparent;
+  text-align: left;
+  font-size: 1.28rem;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .sentence:hover {
+  background: rgba(26, 39, 68, 0.06);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .sentenceActive {
+  background: #ffe56a;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .margin {
+  margin: 0;
+  border-left: 2px solid #c5363a;
+  padding: 3.5rem 1.4rem 2rem 1.2rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .marginText {
+  margin: 0;
+  font-size: 1.08rem;
+  line-height: 1.45;
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .aside {
+  padding-top: 0.4rem;
+  max-width: 28ch;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .name {
+  margin: 0 0 1rem;
+  font-size: 1.35rem;
+  font-weight: 650;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .pitch {
+  margin: 0 0 1.75rem;
+  font-size: 1.125rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .start {
+  border: 0;
+  background: #1a2744;
+  color: #f7fbfc;
+  padding: 0.85rem 1.1rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .start:hover {
+  background: #24365f;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .status {
+  margin: 0;
+  max-width: 28ch;
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+@media (max-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .page {
+    justify-content: flex-start;
+    padding-top: 1.25rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .sheet {
+    grid-template-columns: 1fr;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .writing {
+    padding: 1.15rem 1.15rem 0.35rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .title {
+    margin-bottom: 1rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .sentence,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) 
+  .sentenceActive {
+    margin-bottom: 0.55rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .margin {
+    padding: 0.35rem 1.15rem 1rem 0.9rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .pitch {
+    margin-bottom: 1.1rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="grok-4.7"]) .aside {
+    max-width: 40ch;
+  }
+}
