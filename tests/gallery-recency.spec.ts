@@ -59,7 +59,7 @@ test.describe("new-arrival policy", () => {
         if (!isGalleryModelArchivedWithinGroup(entries, entry)) continue;
         const addedAt = getGalleryEntryAddedAt(entry);
         if (!addedAt) continue;
-        // Evaluate on the entry's own added day so only the archive rule can suppress it.
+        // An archived entry must stay unbadged even on its own added day.
         expect(
           getGalleryEntryNewArrival(entries, entry, isoDateToUtcMs(addedAt)),
           `${group}/${entry.model}`,
@@ -68,13 +68,15 @@ test.describe("new-arrival policy", () => {
     }
   });
 
-  test("older models are not new on the day Grok 4.7 landed", () => {
-    const entries = groupEntries("with-design-skill");
-    const fresh = entries
-      .filter((entry) => getGalleryEntryNewArrival(entries, entry, GROK_47_ADDED))
-      .map((entry) => entry.model)
-      .toSorted();
-    expect(fresh).toEqual(["grok-4.7", "mimo-x-pro-preview", "swe-2"]);
+  test("only Grok 4.7 is new in every group, including other recent additions", () => {
+    for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
+      const entries = groupEntries(group);
+      const fresh = entries
+        .filter((entry) => getGalleryEntryNewArrival(entries, entry, GROK_47_ADDED))
+        .map((entry) => entry.model)
+        .toSorted();
+      expect(fresh).toEqual(["grok-4.7"]);
+    }
   });
 });
 
@@ -85,9 +87,7 @@ test.describe("home sort", () => {
     const models = sorted.map((entry) => entry.model);
 
     expect(models[0]).toBe("grok-4.7");
-    expect(models.slice(1, 3).toSorted()).toEqual(["mimo-x-pro-preview", "swe-2"]);
-
-    const rest = sorted.slice(3);
+    const rest = sorted.slice(1);
     expect(rest.map((entry) => entry.model)).toEqual(
       sortGalleryEntriesByFamily(rest).map((entry) => entry.model),
     );

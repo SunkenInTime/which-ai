@@ -8,12 +8,13 @@ export type GalleryIsoDate = `${number}-${number}-${number}`;
  * New-arrival policy
  * ------------------
  * An entry is a "new arrival" when all of the following hold:
- *   1. it has an added-at date (model default, or a per-entry override below),
+ *   1. its model is selected in `NEW_ARRIVAL_MODELS` and it has an added-at date,
  *   2. the date is not in the future and fewer than `NEW_ARRIVAL_WINDOW_DAYS` have elapsed
  *      since it, measured against the reference time the home page was rendered with, and
  *   3. it is not archived within its group (archived rows are never badged).
  *
- * Maintenance: when a new model lands, add it to `MODEL_ADDED_AT` with the merge date.
+ * Maintenance: when a new model lands, add it to `MODEL_ADDED_AT` with the merge date
+ * and select it in `NEW_ARRIVAL_MODELS` if it should receive the new-arrival treatment.
  * When an existing model gains a new group later, add a `"{group}/{model}"` key to
  * `ENTRY_ADDED_AT` instead of bumping the model date, so only the new condition is badged.
  * Archived rows need no date. Dates are never removed; the window handles expiry.
@@ -24,6 +25,9 @@ export type GalleryIsoDate = `${number}-${number}-${number}`;
  * Dates are the git addition dates of `src/variants/{group}/{model}/index.tsx`.
  */
 export const NEW_ARRIVAL_WINDOW_DAYS = 14;
+
+/** Explicitly selected arrivals; a recent date alone does not earn a New badge. */
+const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["grok-4.7"]);
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -107,6 +111,7 @@ export function getGalleryEntryNewArrival(
   entry: GalleryEntry,
   now: number,
 ): GalleryIsoDate | null {
+  if (!NEW_ARRIVAL_MODELS.has(entry.model)) return null;
   const addedAt = getGalleryEntryAddedAt(entry);
   if (!addedAt) return null;
   const elapsed = now - isoDateToUtcMs(addedAt);
