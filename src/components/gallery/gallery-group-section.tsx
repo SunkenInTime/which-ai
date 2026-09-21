@@ -13,6 +13,7 @@ import {
   filterGalleryEntriesForArchiveVisibility,
   isGalleryModelArchivedWithinGroup,
 } from "@/lib/gallery-archived";
+import { getGalleryEntryNewArrival } from "@/lib/gallery-recency";
 
 function groupHasArchivedRow(entries: GalleryEntry[]): boolean {
   const visibleWhenHidden = filterGalleryEntriesForArchiveVisibility(entries, false);
@@ -24,6 +25,7 @@ export function GalleryGroupSection({
   entries,
   allEntries = entries,
   searching = false,
+  referenceTime,
 }: {
   group: GalleryGroupSlug;
   entries: GalleryEntry[];
@@ -31,6 +33,8 @@ export function GalleryGroupSection({
   allEntries?: GalleryEntry[];
   /** While a search is active every match is shown, archived or not, and the toggle is hidden. */
   searching?: boolean;
+  /** Server render time (ms). Shared with the sort so badges and order never disagree. */
+  referenceTime: number;
 }) {
   const [showArchived, setShowArchived] = useState(false);
   const visibleEntries = searching
@@ -118,6 +122,7 @@ export function GalleryGroupSection({
             key={`${entry.group}-${entry.model}`}
             entry={entry}
             archived={searching && isGalleryModelArchivedWithinGroup(allEntries, entry)}
+            newSince={getGalleryEntryNewArrival(allEntries, entry, referenceTime)}
           />
         ))}
       </div>

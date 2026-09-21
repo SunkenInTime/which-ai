@@ -2,24 +2,31 @@ import Image from "next/image";
 import Link from "next/link";
 import { Archive, ArrowLeftRight } from "lucide-react";
 import { GalleryCardLeavingSoonBookmark } from "@/components/gallery/gallery-card-leaving-soon";
+import { GalleryCardNewArrivalTag } from "@/components/gallery/gallery-card-new-arrival";
 import { ModelBrandLogo } from "@/components/gallery/model-brand-logo";
 import { buildCompareHrefForSelection } from "@/lib/compare";
 import { isGalleryModelLeavingSoon } from "@/lib/gallery-archived";
+import { formatGalleryAddedDate, type GalleryIsoDate } from "@/lib/gallery-recency";
 import type { GalleryEntry } from "@/lib/gallery-types";
 import { buildVariantHref } from "@/lib/gallery-paths";
 
 export function GalleryCard({
   entry,
   archived = false,
+  newSince = null,
 }: {
   entry: GalleryEntry;
   /** Shown when an archived row surfaces outside its "Show Archived" fold, e.g. in search results. */
   archived?: boolean;
+  /** Added-at date when the entry is a new arrival; drives the "hey, I'm here" treatment. */
+  newSince?: GalleryIsoDate | null;
 }) {
   const leavingSoon = isGalleryModelLeavingSoon(entry.model);
+  const isNew = newSince !== null && !archived;
   return (
     <article
       data-testid="gallery-card"
+      data-new-arrival={isNew ? "true" : undefined}
       className="group gallery-card-shell gallery-elevated-surface relative flex flex-col overflow-hidden rounded-lg border bg-[var(--gallery-surface)] transition-transform duration-300 ease-out hover:-translate-y-1.5"
     >
       <Link
@@ -38,6 +45,7 @@ export function GalleryCard({
             aria-hidden
             className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_top,rgb(0_0_0_/_0.05)_0%,transparent_38%)]"
           />
+          {isNew ? <GalleryCardNewArrivalTag /> : null}
           {leavingSoon ? <GalleryCardLeavingSoonBookmark /> : null}
         </div>
       </Link>
@@ -45,6 +53,15 @@ export function GalleryCard({
         <div className="space-y-1">
           <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-[var(--gallery-text-tertiary)]">
             <span>{entry.groupLabel}</span>
+            {isNew ? (
+              <span
+                data-testid="gallery-card-new-arrival"
+                className="inline-flex items-center gap-1 font-medium text-[var(--gallery-accent)]"
+              >
+                <span className="sr-only">New arrival, </span>
+                <time dateTime={newSince}>Added {formatGalleryAddedDate(newSince)}</time>
+              </span>
+            ) : null}
             {archived ? (
               <span className="inline-flex items-center gap-1 rounded border border-[var(--gallery-border)] bg-[var(--gallery-surface-subtle)] px-1.5 py-px text-[11px] font-medium text-[var(--gallery-text-quaternary)]">
                 <Archive className="size-3 opacity-80" aria-hidden />

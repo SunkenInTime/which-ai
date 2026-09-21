@@ -10,8 +10,11 @@ const QUERY_PARAM = "q";
 
 export function GalleryHomeGroups({
   groups,
+  referenceTime,
 }: {
   groups: { group: GalleryGroupSlug; entries: GalleryEntry[] }[];
+  /** Server render time (ms) used for new-arrival badges; see `gallery-recency.ts`. */
+  referenceTime: number;
 }) {
   const [query, setQuery] = useState("");
 
@@ -87,6 +90,7 @@ export function GalleryHomeGroups({
               entries={entries}
               allEntries={allEntries}
               searching={searching}
+              referenceTime={referenceTime}
             />
           ))}
         </div>
