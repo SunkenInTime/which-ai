@@ -1,0 +1,328 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .page {
+  --paper: #f6f7f9;
+  --ink: #25262b;
+  --ballpoint: #2140c4;
+  --highlight: #f9e547;
+  --pencil: #6b7079;
+  --edge: #dfe2e7;
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-book), Georgia, serif;
+  font-size: 21px;
+  line-height: 1.6;
+  font-feature-settings: "onum", "liga", "kern";
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .page a:focus-visible {
+  outline: 2px solid var(--ballpoint);
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 28px 40px 12px;
+  border-bottom: 1px solid var(--edge);
+  font-size: 17px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .wordmark {
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .nav {
+  display: flex;
+  gap: 28px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .nav a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .nav a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--ballpoint);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .book {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .row {
+  display: grid;
+  grid-template-columns: minmax(0, 33em) minmax(0, 250px);
+  justify-content: space-between;
+  column-gap: 56px;
+  padding-top: 72px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .row:first-child {
+  padding-top: 112px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .text p {
+  margin: 0 0 1em;
+  hyphens: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .h1 {
+  margin: 0 0 32px;
+  font-size: clamp(56px, 9vw, 112px);
+  line-height: 0.95;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .text .lede {
+  font-size: 26px;
+  line-height: 1.5;
+  margin-bottom: 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .mark {
+  color: inherit;
+  background-color: transparent;
+  background-image: linear-gradient(
+    100deg,
+    rgba(249, 229, 71, 0) 0,
+    var(--highlight) 0.4em,
+    var(--highlight) calc(100% - 0.3em),
+    rgba(249, 229, 71, 0.4) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 70%;
+  background-size: 0% 72%;
+  mix-blend-mode: multiply;
+  animation: gallery-with-design-skill-opus-5-5-source-app-3-styles-module-sweep 1.3s cubic-bezier(0.55, 0.1, 0.4, 1) 0.5s forwards;
+}
+
+@keyframes gallery-with-design-skill-opus-5-5-source-app-3-styles-module-sweep {
+  to {
+    background-size: 100% 72%;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .h2 {
+  margin: 0 0 16px;
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 20px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .primary {
+  display: inline-block;
+  padding: 12px 24px 13px;
+  background: var(--ballpoint);
+  color: #fff;
+  border-radius: 3px;
+  font-size: 19px;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .primary:hover {
+  background: #1a33a0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .aside {
+  font-style: italic;
+  color: var(--pencil);
+  font-size: 18px;
+}
+
+/* Margin column */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .margin {
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .hand {
+  margin: 0;
+  hyphens: none;
+  font-family: var(--f-hand), cursive;
+  font-size: 25px;
+  line-height: 1.15;
+  color: var(--ballpoint);
+  transform: rotate(-2deg);
+  transform-origin: left top;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .handFirst {
+  position: relative;
+  margin-top: 220px;
+  clip-path: inset(0 100% 0 0);
+  animation: gallery-with-design-skill-opus-5-5-source-app-3-styles-module-write 0.9s steps(18, end) 1.9s forwards;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .handSecond {
+  margin-top: 36px;
+  transform: rotate(1.5deg);
+  clip-path: inset(0 100% 0 0);
+  animation: gallery-with-design-skill-opus-5-5-source-app-3-styles-module-write 0.9s steps(18, end) 2.6s forwards;
+}
+
+@keyframes gallery-with-design-skill-opus-5-5-source-app-3-styles-module-appear {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes gallery-with-design-skill-opus-5-5-source-app-3-styles-module-write {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .arrow {
+  position: absolute;
+  left: -92px;
+  top: 202px;
+  opacity: 0;
+  animation: gallery-with-design-skill-opus-5-5-source-app-3-styles-module-appear 0.3s ease-out 1.7s forwards;
+  width: 80px;
+  fill: none;
+  stroke: var(--ballpoint);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .mark {
+    background-size: 100% 72%;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .handFirst,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) 
+  .handSecond {
+    clip-path: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .arrow {
+    opacity: 1;
+  }
+}
+
+/* Clipping figure */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .clipping {
+  margin: 32px 0 8px;
+  padding: 28px 32px 24px;
+  background: #fff;
+  border: 1px solid var(--edge);
+  border-radius: 2px;
+  transform: rotate(-0.6deg);
+  box-shadow: 0 10px 24px -18px rgba(37, 38, 43, 0.5);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .clipping blockquote {
+  margin: 0;
+  font-size: 25px;
+  line-height: 1.4;
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .clipping figcaption {
+  margin-top: 12px;
+  font-size: 16px;
+  color: var(--pencil);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .text .clippingNote {
+  margin: 18px 0 0;
+  padding-top: 14px;
+  border-top: 1px dashed var(--edge);
+  font-family: var(--f-hand), cursive;
+  font-size: 24px;
+  line-height: 1.2;
+  color: var(--ballpoint);
+  hyphens: none;
+}
+
+/* Pricing */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .pricing {
+  padding-bottom: 96px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .plans {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 32px;
+  margin: 8px 0 40px;
+  padding: 20px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .plans dt {
+  font-size: 26px;
+  line-height: 1.3;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .plans dd {
+  margin: 0;
+  padding-top: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .foot {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px 0 96px;
+  border-top: 1px solid var(--edge);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--pencil);
+}
+
+@media (max-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .row {
+    grid-template-columns: 1fr;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .margin {
+    padding-left: 24px;
+    border-left: 2px solid var(--ballpoint);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .handFirst {
+    margin-top: 32px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .arrow {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .nav a:not(:last-child) {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .page {
+    font-size: 19px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .head,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) 
+  .book {
+    padding-left: 22px;
+    padding-right: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .text .lede {
+    font-size: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) .clipping {
+    padding: 20px;
+  }
+}

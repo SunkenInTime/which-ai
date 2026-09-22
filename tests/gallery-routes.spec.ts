@@ -33,6 +33,36 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "with-design-skill", model: "sol-6", iteration: "1" },
+  { group: "with-design-skill", model: "sol-6", iteration: "2" },
+  { group: "with-design-skill", model: "sol-6", iteration: "3" },
+  { group: "with-design-skill", model: "sol-6", iteration: "4" },
+  { group: "with-design-skill", model: "sol-6", iteration: "5" },
+  { group: "with-taste-skill", model: "sol-6", iteration: "1" },
+  { group: "with-taste-skill", model: "sol-6", iteration: "2" },
+  { group: "with-taste-skill", model: "sol-6", iteration: "3" },
+  { group: "with-taste-skill", model: "sol-6", iteration: "4" },
+  { group: "with-taste-skill", model: "sol-6", iteration: "5" },
+  { group: "without-design-skill", model: "sol-6", iteration: "1" },
+  { group: "without-design-skill", model: "sol-6", iteration: "2" },
+  { group: "without-design-skill", model: "sol-6", iteration: "3" },
+  { group: "without-design-skill", model: "sol-6", iteration: "4" },
+  { group: "without-design-skill", model: "sol-6", iteration: "5" },
+  { group: "with-design-skill", model: "opus-5.5", iteration: "1" },
+  { group: "with-design-skill", model: "opus-5.5", iteration: "2" },
+  { group: "with-design-skill", model: "opus-5.5", iteration: "3" },
+  { group: "with-design-skill", model: "opus-5.5", iteration: "4" },
+  { group: "with-design-skill", model: "opus-5.5", iteration: "5" },
+  { group: "with-taste-skill", model: "opus-5.5", iteration: "1" },
+  { group: "with-taste-skill", model: "opus-5.5", iteration: "2" },
+  { group: "with-taste-skill", model: "opus-5.5", iteration: "3" },
+  { group: "with-taste-skill", model: "opus-5.5", iteration: "4" },
+  { group: "with-taste-skill", model: "opus-5.5", iteration: "5" },
+  { group: "without-design-skill", model: "opus-5.5", iteration: "1" },
+  { group: "without-design-skill", model: "opus-5.5", iteration: "2" },
+  { group: "without-design-skill", model: "opus-5.5", iteration: "3" },
+  { group: "without-design-skill", model: "opus-5.5", iteration: "4" },
+  { group: "without-design-skill", model: "opus-5.5", iteration: "5" },
   { group: "without-design-skill", model: "grok-4.7", iteration: "1" },
   { group: "without-design-skill", model: "grok-4.7", iteration: "2" },
   { group: "without-design-skill", model: "grok-4.7", iteration: "3" },
@@ -224,9 +254,8 @@ test("home page hides superseded-generation cards until Show Archived", async ({
     galleryManifest.filter((e) => HOME_GALLERY_GROUPS.includes(e.group) && e.model === "sonnet-5").length,
   );
   await expect(page.getByTestId("gallery-card").filter({ hasText: "GPT 5.5 low" })).toHaveCount(0);
-  await expect(page.getByTestId("gallery-card").filter({ hasText: "Opus 5" })).toHaveCount(
-    galleryManifest.filter((e) => HOME_GALLERY_GROUPS.includes(e.group) && e.model === "opus-5").length,
-  );
+  await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
   for (const { label } of forceArchivedModels) {
     await expect(page.getByTestId("gallery-card").filter({ hasText: label })).toHaveCount(0);
   }
@@ -258,7 +287,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   const lowCards = page.getByTestId("gallery-card").filter({ hasText: "GPT 5.5 low" });
   await expect(lowCards).toHaveCount(3);
   await expect(lowCards.first()).toContainText("Archived");
-  await expect(page.getByTestId("gallery-card").filter({ hasText: "Opus 5" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
   await expect(page.getByRole("button", { name: "Show Archived" })).toHaveCount(0);
   await expect(page).toHaveURL(/\?q=5\.5$/);
 
@@ -267,7 +297,7 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(page.getByText("No models match")).toBeVisible();
 
   await page.getByRole("button", { name: "Clear search" }).last().click();
-  await expect(page.getByTestId("gallery-card").filter({ hasText: "Opus 5" })).not.toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -295,7 +325,8 @@ test("home search opens from a ?q= link and the slash key focuses it", async ({ 
   const search = page.getByRole("searchbox", { name: "Search models" });
   await expect(search).toHaveValue("astra");
   await expect(page.getByTestId("gallery-card").filter({ hasText: "GPT-6 Astra" })).not.toHaveCount(0);
-  await expect(page.getByTestId("gallery-card").filter({ hasText: "Opus 5" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(0);
 
   await page.getByRole("heading", { level: 1 }).click();
   await page.keyboard.press("/");
@@ -475,3 +506,16 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
     await expect(page.getByRole("main").first()).toBeVisible();
   });
 }
+
+test("Sol 6 and Opus 5.5 appear in all groups with the correct labs", async ({ page }) => {
+  await page.goto("/");
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {
+    for (const model of ["sol-6", "opus-5.5"]) {
+      await expect(page.locator(`a[href="/${group}/${model}/1"]`).first()).toBeVisible();
+    }
+  }
+  expect(getModelLab("sol-6")).toEqual({ slug: "gpt", label: "GPT" });
+  expect(getModelLab("opus-5.5")).toEqual({ slug: "anthropic", label: "Anthropic" });
+  expect(getModelBrandLogoPath("sol-6")).toBe("/openai-gpt.svg");
+  expect(getModelBrandLogoPath("opus-5.5")).toBe("/anthropic-claude.webp");
+});

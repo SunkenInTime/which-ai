@@ -1,0 +1,75 @@
+// Sample vault used by the hero graph. Titles read like a real person's notes.
+export const NOTES: string[] = [
+  // 0-6 cities and research
+  "Jacobs: eyes on the street",
+  "Third places",
+  "Desire paths",
+  "Why our office floor feels empty",
+  "Density is not crowding",
+  "The Death and Life of Great American Cities",
+  "Seeing Like a State",
+  // 7-12 local-first and engineering
+  "Local-first software (Kleppmann)",
+  "CRDTs reading list",
+  "Sync conflict cases",
+  "Postgres partial indexes",
+  "Incident 2026-06 postmortem",
+  "Rust ownership cheatsheet",
+  // 13-19 thinking about notes
+  "Zettelkasten method",
+  "Evergreen notes",
+  "How to Take Smart Notes",
+  "Spaced repetition",
+  "Weekly review",
+  "Daily 2026-09-21",
+  "Daily 2026-09-22",
+  // 20-25 PhD
+  "Lit review: memory consolidation",
+  "Interleaving effect",
+  "Desirable difficulties",
+  "Thesis chapter 2",
+  "Meeting with advisor 09-12",
+  "Range (David Epstein)",
+  // 26-30 novel
+  "Novel: chapter 4 outline",
+  "Character: Ilse",
+  "Scene: the flooded archive",
+  "Borges on libraries",
+  "Critique group notes",
+  // 31-36 product
+  "Q4 roadmap bets",
+  "Interview: Hana, ops lead",
+  "Onboarding friction",
+  "Jobs to be done",
+  "Pricing page teardown",
+  "Thinking, Fast and Slow highlights",
+  // 37-47 life and misc
+  "Sourdough schedule",
+  "Lisbon trip ideas",
+  "Running log",
+  "Podcast: search without links",
+  "Gödel, Escher, Bach",
+  "Walkability and health",
+  "Deep work blocks",
+  "Reading queue",
+  "Quote: Ursula K. Le Guin",
+  "Bike commute route",
+  "Ideas for the team offsite",
+];
+
+// Undirected links by index.
+export const LINKS: [number, number][] = [
+  [0, 5], [0, 1], [0, 3], [0, 4], [1, 3], [1, 42], [2, 5], [2, 6], [2, 46],
+  [3, 31], [3, 47], [3, 4], [4, 5], [4, 42], [5, 44], [6, 44], [6, 34],
+  [7, 8], [7, 9], [8, 9], [9, 11], [10, 11], [11, 31], [12, 8], [7, 40],
+  [13, 14], [13, 15], [14, 15], [14, 16], [15, 44], [16, 21], [17, 18],
+  [17, 19], [18, 19], [19, 3], [18, 39], [17, 43], [17, 31],
+  [20, 21], [20, 22], [21, 22], [22, 23], [23, 24], [24, 19], [25, 22],
+  [25, 44], [16, 20], [36, 22],
+  [26, 27], [26, 28], [27, 28], [28, 29], [29, 41], [26, 30], [30, 45],
+  [45, 27], [29, 44],
+  [31, 32], [31, 33], [32, 33], [33, 34], [34, 32], [35, 34], [35, 36],
+  [36, 44], [31, 47],
+  [37, 18], [38, 42], [38, 46], [39, 46], [39, 42], [40, 7], [40, 14],
+  [41, 44], [43, 23], [43, 13], [47, 1],
+];

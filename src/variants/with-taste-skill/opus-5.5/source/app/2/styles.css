@@ -1,0 +1,149 @@
+/* Version 2, "Commonplace". Every selector is scoped under .v2. */
+
+.v2 {
+  --paper: #f6f7f6;
+  --paper-deep: #eceeed;
+  --ink: #131a2a;
+  --ink-soft: #4a5264;
+  --rule: color-mix(in oklab, var(--ink) 16%, transparent);
+  --accent: #d6452b;
+  --accent-text: #c43d24;
+  --on-accent: #f7f8f7;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-v2-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-color-scheme: dark) {
+  .v2 {
+    --paper: #0e1422;
+    --paper-deep: #151c2d;
+    --ink: #e8eae6;
+    --ink-soft: #a4aab7;
+    --rule: color-mix(in oklab, var(--ink) 16%, transparent);
+    /* Same vermilion for fills and marks; lifted a step only where it sets small text. */
+    --accent-text: #ee6c52;
+  }
+}
+
+.v2 .font-serif-v2 {
+  font-family: var(--font-v2-serif), ui-serif, Georgia, serif;
+  font-feature-settings: "onum" 1, "liga" 1, "dlig" 0;
+}
+
+.v2 .lining {
+  font-feature-settings: "lnum" 1;
+}
+
+.v2 ::selection {
+  background: color-mix(in oklab, var(--accent) 28%, transparent);
+}
+
+.v2 :focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Link underline: a thin rule that thickens and turns vermilion on hover. */
+.v2 .ink-link {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+  text-decoration-color: var(--rule);
+  transition:
+    text-decoration-color 200ms ease,
+    text-decoration-thickness 200ms ease,
+    color 200ms ease;
+}
+.v2 .ink-link:hover {
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+
+/* Wikilinks inside the specimen note. */
+.v2 .wikilink {
+  color: var(--accent-text);
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+  text-decoration-color: color-mix(in oklab, var(--accent) 40%, transparent);
+  transition: text-decoration-color 200ms ease;
+}
+.v2 .wikilink:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* Footnote marker and its margin note light up together. */
+.v2 .note-ref {
+  color: var(--accent-text);
+  font-family: var(--font-v2-sans), ui-sans-serif, sans-serif;
+  font-size: 0.62em;
+  font-weight: 600;
+  padding-inline: 0.1em;
+  text-decoration: none;
+}
+.v2 .margin-note {
+  transition: background-color 250ms ease;
+}
+.v2 .margin-note:target {
+  background: color-mix(in oklab, var(--accent) 9%, transparent);
+}
+
+/* Buttons: sharp corners, one physical press. */
+.v2 .btn-primary {
+  background: var(--accent);
+  color: var(--on-accent);
+  transition:
+    background-color 200ms ease,
+    transform 120ms ease;
+}
+.v2 .btn-primary:hover {
+  background: color-mix(in oklab, var(--accent) 88%, #000);
+}
+.v2 .btn-primary:active {
+  transform: translateY(1px);
+}
+
+/* Syntax colours for the Markdown specimen. */
+.v2 .md-meta { color: var(--ink-soft); }
+.v2 .md-head { color: var(--ink); font-weight: 600; }
+.v2 .md-link { color: var(--accent-text); }
+.v2 .md-tag { color: var(--accent-text); font-style: italic; }
+.v2 .md-quote { color: var(--ink-soft); font-style: italic; }
+.v2 .md-mark { color: color-mix(in oklab, var(--ink) 40%, transparent); }
+
+/* Scroll reveal: a gentle rise, only where supported and only if motion is welcome. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .v2 .reveal {
+      animation: v2-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+@keyframes v2-rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v2 .ink-link,
+  .v2 .wikilink,
+  .v2 .btn-primary,
+  .v2 .margin-note {
+    transition: none;
+  }
+}
+
+.v2 .font-ui {
+  font-family: var(--font-v2-sans), ui-sans-serif, system-ui, sans-serif;
+}

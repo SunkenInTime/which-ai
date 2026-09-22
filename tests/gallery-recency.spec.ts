@@ -68,14 +68,14 @@ test.describe("new-arrival policy", () => {
     }
   });
 
-  test("only Grok 4.7 is new in every group, including other recent additions", () => {
+  test("Sol 6, Opus 5.5, and Grok 4.7 are new in every group", () => {
     for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
       const entries = groupEntries(group);
       const fresh = entries
-        .filter((entry) => getGalleryEntryNewArrival(entries, entry, GROK_47_ADDED))
+        .filter((entry) => getGalleryEntryNewArrival(entries, entry, isoDateToUtcMs("2026-09-22")))
         .map((entry) => entry.model)
         .toSorted();
-      expect(fresh).toEqual(["grok-4.7"]);
+      expect(fresh).toEqual(["grok-4.7", "opus-5.5", "sol-6"]);
     }
   });
 });
