@@ -1,0 +1,67 @@
+/* Version 1 "Studio" tokens. Every selector is scoped under .v1. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 {
+  --k-bg: #f7f7f8;
+  --k-surface: #fdfdfd;
+  --k-surface-2: #efeff1;
+  --k-line: #e4e4e7;
+  --k-line-strong: #d4d4d8;
+  --k-fg: #111113;
+  --k-fg-2: #52525b;
+  --k-fg-3: #66666f;
+  --k-accent: #ff5a1f;
+  --k-accent-ink: #b83a0b;
+  --k-accent-soft: rgb(255 90 31 / 0.12);
+  --k-on-accent: #111113;
+  --k-shadow: 0 1px 0 rgb(24 24 27 / 0.04), 0 12px 32px -12px rgb(24 24 27 / 0.14);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 {
+    --k-bg: #09090b;
+    --k-surface: #111113;
+    --k-surface-2: #18181b;
+    --k-line: #26262b;
+    --k-line-strong: #3a3a41;
+    --k-fg: #f4f4f5;
+    --k-fg-2: #a1a1aa;
+    --k-fg-3: #8d8d96;
+    --k-accent-ink: #ff8a5c;
+    --k-accent-soft: rgb(255 90 31 / 0.16);
+    --k-shadow: 0 1px 0 rgb(255 255 255 / 0.03), 0 16px 40px -16px rgb(0 0 0 / 0.6);
+    color-scheme: dark;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 ::selection {
+  background: rgb(255 90 31 / 0.24);
+}
+
+/* The editor textarea paints only caret and selection; the mirror below paints the text. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 .k-editor-input {
+  color: transparent;
+  caret-color: var(--k-fg);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 .k-editor-input::selection {
+  color: transparent;
+  background: rgb(255 90 31 / 0.24);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 .k-dots {
+  background-image: radial-gradient(rgb(17 17 19 / 0.16) 1px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 .k-hatch {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--k-line) 0 1px,
+    transparent 1px 9px
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .v1 .k-dots {
+    background-image: radial-gradient(rgb(244 244 245 / 0.09) 1px, transparent 1.2px);
+  }
+}

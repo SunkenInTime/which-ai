@@ -1,0 +1,65 @@
+/* Version 4 "Loud". Every selector is scoped under .v4 because CSS persists across client navigation. */
+
+.v4 {
+  --v4-bg: #f4f4f1;
+  --v4-fg: #111114;
+  --v4-muted: #55555d;
+  --v4-surface: #e7e7e2;
+  --v4-raised: #fbfbf9;
+  --v4-line: rgb(17 17 20 / 0.12);
+  --v4-accent: #2946ff;
+  --v4-accent-ink: #2946ff;
+  --v4-on-accent: #f4f4f1;
+  --v4-ink: #0e0e10;
+  --v4-on-ink: #f1f1ee;
+  --v4-dot: rgb(41 70 255 / 0.28);
+  --v4-shadow: 0 40px 80px -40px rgb(41 70 255 / 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  .v4 {
+    --v4-bg: #0e0e10;
+    --v4-fg: #f1f1ee;
+    --v4-muted: #a4a4ad;
+    --v4-surface: #18181c;
+    --v4-raised: #1e1e23;
+    --v4-line: rgb(255 255 255 / 0.12);
+    --v4-accent: #2f4cff;
+    --v4-accent-ink: #8193ff;
+    --v4-on-accent: #f4f4f1;
+    --v4-ink: #1f1f25;
+    --v4-on-ink: #f1f1ee;
+    --v4-dot: rgb(129 147 255 / 0.22);
+    --v4-shadow: 0 40px 80px -40px rgb(0 0 0 / 0.7);
+  }
+}
+
+.v4 .v4-display {
+  font-family: var(--font-v4-display), var(--font-geist-sans), sans-serif;
+  font-optical-sizing: auto;
+}
+
+.v4 .v4-dots {
+  background-image: radial-gradient(var(--v4-dot) 1.3px, transparent 1.6px);
+  background-size: 22px 22px;
+}
+
+.v4 .v4-marquee-track {
+  animation: v4-marquee 42s linear infinite;
+}
+
+.v4 .v4-marquee:hover .v4-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes v4-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .v4 .v4-marquee-track {
+    animation: none;
+  }
+}

@@ -43,6 +43,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   "gpt-5.5-high": { slug: "gpt", label: "GPT" },
   "gpt-6-astra": { slug: "gpt", label: "GPT" },
   sol: { slug: "gpt", label: "GPT" },
+  "sol-6": { slug: "gpt", label: "GPT" },
   luna: { slug: "gpt", label: "GPT" },
   terra: { slug: "gpt", label: "GPT" },
   "kimi-k-2.5": { slug: "moonshot", label: "Moonshot" },
@@ -54,6 +55,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   "opus-4.7": { slug: "anthropic", label: "Anthropic" },
   "opus-4.8": { slug: "anthropic", label: "Anthropic" },
   "opus-5": { slug: "anthropic", label: "Anthropic" },
+  "opus-5.5": { slug: "anthropic", label: "Anthropic" },
   "sonnet-5": { slug: "anthropic", label: "Anthropic" },
   "swe-2": { slug: "cognition", label: "Cognition" },
 };

@@ -1,0 +1,10 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="opus-5.5"]) {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="opus-5.5"]) {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}

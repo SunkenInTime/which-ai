@@ -28,6 +28,8 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "gpt-5.5-low": ["gpt5.5", "gpt 5.5", "low reasoning", "5.5 low"],
   "gpt-5.5-high": ["gpt5.5", "gpt 5.5", "high reasoning", "5.5 high"],
   "gpt-6-astra": ["gpt6", "gpt 6", "astra"],
+  "sol-6": ["gpt 6 sol", "gpt6 sol", "sol6"],
+  "opus-5.5": ["claude opus 5.5", "opus5.5"],
   sol: ["gpt 5.6", "gpt5.6", "codename"],
   luna: ["gpt 5.6", "gpt5.6", "codename"],
   terra: ["gpt 5.6", "gpt5.6", "codename"],

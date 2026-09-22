@@ -1,0 +1,130 @@
+/* Every selector is scoped under .v3 so nothing leaks into other versions. */
+.v3 {
+  --bg: #f6f6f4;
+  --bg-raised: #ffffff;
+  --bg-sunken: #ececea;
+  --fg: #18181b;
+  --fg-muted: #52525b;
+  --fg-faint: #71717a;
+  --line: rgba(24, 24, 27, 0.1);
+  --line-strong: rgba(24, 24, 27, 0.18);
+  --accent: #c6f432;
+  --accent-ink: #18181b;
+  /* Same hue, darkened so text and focus rings stay AA on off-white. */
+  --accent-text: #4a5f00;
+  --focus: #4a5f00;
+  --graph-node: #a1a1aa;
+  --graph-edge: rgba(24, 24, 27, 0.16);
+  --graph-label-bg: #18181b;
+  --graph-label-fg: #fafafa;
+  --graph-hi: #9bc41a;
+  --graph-hi-stroke: #18181b;
+
+  font-family: var(--font-v3-sans), ui-sans-serif, system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .v3 {
+    --bg: #09090b;
+    --bg-raised: #131316;
+    --bg-sunken: #0e0e10;
+    --fg: #f4f4f5;
+    --fg-muted: #a1a1aa;
+    --fg-faint: #8b8b94;
+    --line: rgba(244, 244, 245, 0.08);
+    --line-strong: rgba(244, 244, 245, 0.16);
+    --accent-text: #c6f432;
+    --focus: #c6f432;
+    --graph-node: #63636e;
+    --graph-edge: rgba(244, 244, 245, 0.15);
+    --graph-label-bg: #f4f4f5;
+    --graph-label-fg: #09090b;
+    --graph-hi: #c6f432;
+    --graph-hi-stroke: #c6f432;
+    color-scheme: dark;
+  }
+}
+
+.v3 .mono {
+  font-family: var(--font-v3-mono), ui-monospace, monospace;
+}
+
+.v3 ::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.v3 :focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* The editor frame shows focus instead of the bare textarea. */
+.v3 .v3-bare:focus-visible {
+  outline: none;
+}
+
+/* Keycaps */
+.v3 kbd.v3-key {
+  display: inline-flex;
+  min-width: 2.25rem;
+  height: 2.25rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.6rem;
+  border-radius: 8px;
+  border: 1px solid var(--line-strong);
+  border-bottom-width: 3px;
+  background: var(--bg-raised);
+  color: var(--fg);
+  font-family: var(--font-v3-mono), ui-monospace, monospace;
+  font-size: 0.8125rem;
+  line-height: 1;
+  transition:
+    transform 160ms cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 160ms ease,
+    border-color 160ms ease;
+}
+
+.v3 kbd.v3-key[data-glyph] {
+  font-size: 1.05rem;
+}
+
+.v3 kbd.v3-key[data-down="true"] {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-ink);
+}
+
+/* Blinking caret for the streaming answer */
+@media (prefers-reduced-motion: no-preference) {
+  .v3 .v3-caret {
+    animation: v3-blink 1s steps(2, start) infinite;
+  }
+}
+
+@keyframes v3-blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* Hero entrance. CSS rather than JS so the headline paints with the first HTML. */
+@media (prefers-reduced-motion: no-preference) {
+  .v3 .v3-rise {
+    animation: v3-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+}
+
+@keyframes v3-rise {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}

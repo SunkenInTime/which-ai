@@ -30,6 +30,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "gpt-5.5-high": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "gpt-6-astra": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   sol: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
+  "sol-6": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   luna: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   terra: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "kimi-k-2.5": { light: "/kimi-k2.webp" },
@@ -41,6 +42,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "opus-4.7": { light: "/anthropic-claude.webp" },
   "opus-4.8": { light: "/anthropic-claude.webp" },
   "opus-5": { light: "/anthropic-claude.webp" },
+  "opus-5.5": { light: "/anthropic-claude.webp" },
   "sonnet-5": { light: "/anthropic-claude.webp" },
   "swe-2": { light: "/cognition.svg", dark: "/cognition-dark.svg" },
 };

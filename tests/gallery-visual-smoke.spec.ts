@@ -32,3 +32,21 @@ for (const group of ["with-design-skill", "with-taste-skill", "without-design-sk
     expect(errors).toEqual([]);
   });
 }
+
+for (const model of ["sol-6", "opus-5.5"]) {
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {
+    for (const iteration of ["1", "2", "3", "4", "5"]) {
+      test(`${model} ${group} iteration ${iteration} renders on mobile`, async ({ page }) => {
+        const errors: string[] = [];
+        page.on("pageerror", (error) => errors.push(error.message));
+        await page.setViewportSize({ width: 390, height: 844 });
+        const response = await page.goto(`/preview/${group}/${model}/${iteration}`);
+        expect(response?.ok()).toBe(true);
+        await expect(page.locator("h1").first()).toBeVisible();
+        await expect(page.locator(".concept-switcher, .iteration-switcher, .switcher")).toHaveCount(0);
+        expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+        expect(errors).toEqual([]);
+      });
+    }
+  }
+}

@@ -1,0 +1,18 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) {
+  -webkit-text-size-adjust: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) {
+  margin: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="opus-5.5"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

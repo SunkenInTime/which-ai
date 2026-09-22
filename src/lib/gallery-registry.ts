@@ -1,3 +1,9 @@
+import withSol6 from "@/variants/with-design-skill/sol-6";
+import withTasteSol6 from "@/variants/with-taste-skill/sol-6";
+import withoutSol6 from "@/variants/without-design-skill/sol-6";
+import withOpus55 from "@/variants/with-design-skill/opus-5.5";
+import withTasteOpus55 from "@/variants/with-taste-skill/opus-5.5";
+import withoutOpus55 from "@/variants/without-design-skill/opus-5.5";
 import withoutGrok47 from "@/variants/without-design-skill/grok-4.7";
 import withTasteGrok47 from "@/variants/with-taste-skill/grok-4.7";
 import withGrok47 from "@/variants/with-design-skill/grok-4.7";
@@ -105,6 +111,12 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "with-design-skill:sol-6": withSol6,
+  "with-taste-skill:sol-6": withTasteSol6,
+  "without-design-skill:sol-6": withoutSol6,
+  "with-design-skill:opus-5.5": withOpus55,
+  "with-taste-skill:opus-5.5": withTasteOpus55,
+  "without-design-skill:opus-5.5": withoutOpus55,
   "without-design-skill:union-alpha": withoutUnionAlpha,
   "with-taste-skill:union-alpha": withTasteUnionAlpha,
   "with-design-skill:union-alpha": withUnionAlpha,
