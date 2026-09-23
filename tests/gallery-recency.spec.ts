@@ -141,3 +141,12 @@ test.describe("home page new-arrival treatment", () => {
     await expect(page.locator('[data-testid="gallery-card"][data-new-arrival="true"]')).toHaveCount(0);
   });
 });
+
+test("Luna 6 is new in its two completed groups on its addition date", () => {
+  for (const group of ["with-design-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    const luna = entries.find((entry) => entry.model === "luna-6")!;
+    expect(getGalleryEntryNewArrival(entries, luna, isoDateToUtcMs("2026-09-23"))).not.toBeNull();
+  }
+  expect(groupEntries("with-taste-skill").some((entry) => entry.model === "luna-6")).toBe(false);
+});

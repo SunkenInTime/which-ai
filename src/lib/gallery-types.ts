@@ -26,6 +26,7 @@ export type ModelSlug =
   | "grok-4.5"
   | "grok-4.6"
   | "sol-6"
+  | "luna-6"
   | "opus-5.5"
   | "grok-4.7"
   | "gpt-6-astra"

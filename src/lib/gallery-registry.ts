@@ -1,3 +1,5 @@
+import withLuna6 from "@/variants/with-design-skill/luna-6";
+import withoutLuna6 from "@/variants/without-design-skill/luna-6";
 import withSol6 from "@/variants/with-design-skill/sol-6";
 import withTasteSol6 from "@/variants/with-taste-skill/sol-6";
 import withoutSol6 from "@/variants/without-design-skill/sol-6";
@@ -111,6 +113,8 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "with-design-skill:luna-6": withLuna6,
+  "without-design-skill:luna-6": withoutLuna6,
   "with-design-skill:sol-6": withSol6,
   "with-taste-skill:sol-6": withTasteSol6,
   "without-design-skill:sol-6": withoutSol6,

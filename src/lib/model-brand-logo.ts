@@ -31,6 +31,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "gpt-6-astra": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   sol: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "sol-6": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
+  "luna-6": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   luna: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   terra: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "kimi-k-2.5": { light: "/kimi-k2.webp" },
