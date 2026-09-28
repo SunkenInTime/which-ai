@@ -12,6 +12,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "opus-4.8": { familyOrder: 1, tier: 48 },
   "opus-5": { familyOrder: 1, tier: 50 },
   "opus-5.5": { familyOrder: 1, tier: 55 },
+  "sonnet-5.5": { familyOrder: 1, tier: 54 },
   "sonnet-5": { familyOrder: 1, tier: 50 },
   "gpt-5.4": { familyOrder: 2, tier: 54 },
   "gpt-5.5-low": { familyOrder: 2, tier: 55 },

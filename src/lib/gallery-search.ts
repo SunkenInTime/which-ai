@@ -31,6 +31,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "sol-6": ["gpt 6 sol", "gpt6 sol", "sol6"],
   "luna-6": ["gpt 6 luna", "gpt6 luna", "luna6"],
   "opus-5.5": ["claude opus 5.5", "opus5.5"],
+  "sonnet-5.5": ["claude sonnet 5.5", "sonnet5.5", "sonnet 5.5 xhigh"],
   sol: ["gpt 5.6", "gpt5.6", "codename"],
   luna: ["gpt 5.6", "gpt5.6", "codename"],
   terra: ["gpt 5.6", "gpt5.6", "codename"],

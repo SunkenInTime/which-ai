@@ -1,0 +1,147 @@
+/* Deliberately neutral chrome: it has to sit on green, blue and white pages alike. */
+.root {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  letter-spacing: 0;
+  color: #f2f3f5;
+}
+
+.pill {
+  display: flex;
+  align-items: center;
+  background: #1a1c21;
+  border-radius: 999px;
+  padding: 4px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 10px 30px rgba(0, 0, 0, 0.32);
+}
+
+.step,
+.label {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background-color 120ms;
+}
+
+.step {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px 0 6px;
+  min-width: 132px;
+  justify-content: flex-start;
+}
+
+.num {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f2f3f5;
+  color: #1a1c21;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.step:hover,
+.label:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.step:focus-visible,
+.label:focus-visible,
+.item:focus-visible {
+  outline: 2px solid #8fb4ff;
+  outline-offset: 1px;
+}
+
+.menu {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  min-width: 240px;
+  background: #1a1c21;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 16px 40px rgba(0, 0, 0, 0.36);
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.item[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.itemNum {
+  width: 16px;
+  color: #9da2ae;
+  font-variant-numeric: tabular-nums;
+}
+
+.itemName {
+  flex: 1;
+}
+
+.swatches {
+  display: flex;
+}
+
+.swatches i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px #1a1c21;
+  margin-left: -4px;
+}
+
+.hint {
+  padding: 8px 10px 6px;
+  color: #9da2ae;
+  font-size: 12px;
+}
+
+@media (max-width: 520px) {
+  .root {
+    bottom: 12px;
+  }
+  .hint {
+    display: none;
+  }
+}

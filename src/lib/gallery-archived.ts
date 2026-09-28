@@ -50,6 +50,7 @@ const MODEL_GALLERY_GENERATION = {
   "opus-4.8": { family: "anthropic-opus", tier: 48 },
   "opus-5": { family: "anthropic-opus", tier: 50 },
   "opus-5.5": { family: "anthropic-opus", tier: 55 },
+  "sonnet-5.5": { family: "anthropic-sonnet", tier: 55 },
   "sonnet-5": { family: "anthropic-sonnet", tier: 50 },
   fable: { family: "anthropic-fable", tier: 50 },
   "fable-5.1": { family: "anthropic-fable", tier: 51 },

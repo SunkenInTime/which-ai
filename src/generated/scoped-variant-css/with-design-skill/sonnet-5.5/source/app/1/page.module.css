@@ -1,0 +1,617 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .root {
+  --paper: #fbfbfd;
+  --rail: #f1f2f6;
+  --rule: #dddfe8;
+  --ink: #20263a;
+  --quiet: #5c637c;
+  --link: #4a3fcb;
+  --wash: #eeebfd;
+  --serif: var(--font-literata), Georgia, "Times New Roman", serif;
+  --sans: var(--font-hanken), system-ui, sans-serif;
+
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .root :focus-visible {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+/* ---------- shell ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .app {
+  display: grid;
+  grid-template-columns: 15.5rem minmax(0, 1fr);
+  min-height: 100vh;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rail {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  padding: 1.5rem 1rem;
+  background: var(--rail);
+  border-right: 1px solid var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .brand,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.brandSmall {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0 0.5rem;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mark {
+  color: var(--link);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rail .mark rect:last-child {
+  fill: var(--rail);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .vault ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .vaultFolder {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.5rem 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .file {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 0.5rem 0.4rem 1.25rem;
+  border-radius: 6px;
+  font-size: 0.9375rem;
+  color: var(--quiet);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .file:hover {
+  background: rgba(32, 38, 58, 0.06);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .file[aria-current="true"] {
+  background: #fff;
+  color: var(--link);
+  font-weight: 600;
+  box-shadow: 0 0 0 1px var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .railFoot {
+  margin-top: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .workspace {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 3.5rem;
+  padding: 0 clamp(1.25rem, 4vw, 3rem);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .brandSmall {
+  display: none;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .crumb {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .crumb b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .crumb span {
+  margin: 0 0.25rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .topActions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .textLink {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--ink);
+  text-underline-offset: 3px;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .textLink:hover {
+  text-decoration-color: var(--link);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .buttonSolid,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.buttonSolidLg,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.buttonQuietLg {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.25rem;
+  padding: 0 1rem;
+  border-radius: 8px;
+  background: var(--link);
+  color: #fff;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 120ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .buttonSolid:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.buttonSolidLg:hover {
+  background: #3b31b0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .buttonSolidLg,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.buttonQuietLg {
+  height: 2.9rem;
+  padding: 0 1.4rem;
+  font-size: 1rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .buttonQuietLg {
+  background: transparent;
+  color: var(--ink);
+  box-shadow: inset 0 0 0 1.5px var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .buttonQuietLg:hover {
+  background: var(--rail);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rail .buttonSolid {
+  width: 100%;
+}
+
+/* ---------- note ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .sheet {
+  display: grid;
+  grid-template-columns: minmax(0, 37rem) 15rem;
+  column-gap: clamp(3rem, 6vw, 6rem);
+  justify-content: center;
+  padding: clamp(3rem, 7vw, 5.5rem) clamp(1.25rem, 4vw, 3rem) 4rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note {
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.72;
+  font-optical-sizing: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note p {
+  margin: 0 0 1.15em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note ul {
+  margin: 0 0 1.4em;
+  padding-left: 1.3em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note li {
+  margin-bottom: 0.3em;
+  padding-left: 0.25em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note li::marker {
+  color: var(--link);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .title {
+  margin: 0 0 2rem;
+  font-family: var(--serif);
+  font-size: clamp(2.6rem, 5.6vw, 4.1rem);
+  font-weight: 620;
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .props {
+  margin: 0 0 2.5rem;
+  padding: 0.75rem 0;
+  border-block: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .props div {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.3rem 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .props dt {
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .props dd {
+  margin: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .lead {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  letter-spacing: -0.008em;
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .h2 {
+  margin: 3.75rem 0 1rem;
+  font-family: var(--serif);
+  font-size: 1.85rem;
+  font-weight: 620;
+  line-height: 1.2;
+  letter-spacing: -0.018em;
+  scroll-margin-top: 5rem;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .inline {
+  padding: 0.1em 0.4em;
+  border-radius: 4px;
+  background: var(--rail);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.82em;
+}
+
+/* ---------- wikilinks + peek ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .linkWrap {
+  position: relative;
+  display: inline;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .wikilink {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font: inherit;
+  color: var(--link);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--link) 45%, transparent);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  transition: background-color 120ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .wikilink:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.wikilink[aria-expanded="true"] {
+  background: var(--wash);
+  text-decoration-color: var(--link);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) sup .wikilink {
+  font-family: var(--sans);
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 0 0.2em;
+  margin-left: 0.1em;
+  border-radius: 4px;
+  background: var(--wash);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peek {
+  position: absolute;
+  z-index: 20;
+  left: 0;
+  top: calc(100% + 0.5rem);
+  display: block;
+  width: min(20.5rem, calc(100vw - 2rem));
+  padding: 1rem 1.1rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 0.9375rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.55;
+  text-align: left;
+  text-decoration: none;
+  letter-spacing: 0;
+  box-shadow: 0 14px 34px rgba(32, 38, 58, 0.16);
+  animation: gallery-with-design-skill-sonnet-5-5-source-app-1-page-module-peekIn 140ms ease-out;
+}
+
+/* Invisible bridge so the pointer can travel from link to peek. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peek::before {
+  content: "";
+  position: absolute;
+  inset: -0.6rem 0 auto 0;
+  height: 0.6rem;
+}
+
+@keyframes gallery-with-design-skill-sonnet-5-5-source-app-1-page-module-peekIn {
+  from {
+    opacity: 0;
+    translate: 0 -4px;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peekTitle {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 650;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peekBody {
+  display: block;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peekLine {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peekFoot {
+  display: block;
+  margin-top: 0.6rem;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  color: var(--quiet);
+}
+
+/* ---------- backlinks figure, callout ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .backlinks {
+  margin: 1.75rem 0 1.5rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .backlinks figcaption {
+  margin-bottom: 0.75rem;
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .backlinks ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .backlinks li {
+  margin: 0 0 1rem;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .src {
+  display: block;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: var(--link);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .backlinks p,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.mentions p {
+  margin: 0.1rem 0 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note mark,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.mentions mark {
+  background: #fbeeb5;
+  color: inherit;
+  padding: 0 0.15em;
+  border-radius: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .linkNow {
+  appearance: none;
+  border: 0;
+  padding: 0;
+  background: none;
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .callout {
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.25rem 0.2rem;
+  border-left: 3px solid var(--link);
+  border-radius: 0 10px 10px 0;
+  background: var(--wash);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .q {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  font-weight: 650;
+  color: var(--link);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .q svg {
+  flex: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .code {
+  margin: 1.5rem 0;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  background: var(--rail);
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 0.875rem;
+  line-height: 1.8;
+  overflow-x: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+/* ---------- linked mentions rail ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions {
+  grid-column: 2;
+  grid-row: 1;
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions h2 {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 650;
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 1.1rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--serif);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions a:hover .src {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions p {
+  font-size: 0.9375rem;
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .foot {
+  margin-top: auto;
+  padding: 2rem clamp(1.25rem, 4vw, 3rem) 6rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--quiet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .foot p {
+  margin: 0;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1180px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .sheet {
+    grid-template-columns: minmax(0, 37rem);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mentions {
+    grid-column: 1;
+    grid-row: 2;
+    position: static;
+    margin-top: 3rem;
+  }
+}
+
+@media (max-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .app {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rail {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .brandSmall {
+    display: inline-flex;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .crumb,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+  .textLink {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note {
+    font-size: 1.125rem;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .lead {
+    font-size: 1.3rem;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .props div {
+    grid-template-columns: 5.5rem minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .peek {
+    animation: none;
+  }
+}

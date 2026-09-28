@@ -1,0 +1,186 @@
+@import "tailwindcss";
+
+/*
+  Font tokens. Root layout provides Geist; each variant's layout.tsx loads its
+  own faces into the --f-* variables, so a page only ships the fonts it uses.
+*/
+@theme inline {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-instrument: var(--f-instrument), Georgia, serif;
+  --font-sora: var(--f-sora), var(--font-geist-sans), sans-serif;
+  --font-jetbrains: var(--f-jetbrains), ui-monospace, monospace;
+  --font-bricolage: var(--f-bricolage), var(--font-geist-sans), sans-serif;
+  --font-space-mono: var(--f-space-mono), ui-monospace, monospace;
+  --font-fraunces: var(--f-fraunces), Georgia, serif;
+  --font-dm: var(--f-dm), var(--font-geist-sans), sans-serif;
+}
+
+@theme {
+  /* 1 · Editorial */
+  --color-paper: #f3eee4;
+  --color-paper-2: #fbf8f1;
+  --color-ink: #1b1a17;
+  --color-ink-soft: #6b665a;
+  --color-rule: #d6cdb9;
+  --color-vermilion: #d4402a;
+  --color-marker: #f7dc6f;
+
+  /* 2 · Neural */
+  --color-void: #05060a;
+  --color-void-2: #0b0d15;
+  --color-neon: #5ef0ff;
+  --color-synapse: #8b7bff;
+  --color-pulse: #ff6ec7;
+  --color-mist: #8a90a8;
+
+  /* 4 · Sticky */
+  --color-cream: #fff6dc;
+  --color-sun: #ffd23f;
+  --color-bubblegum: #ff8fb8;
+  --color-skyblue: #6bc5ff;
+  --color-mint: #7ee2a8;
+  --color-tangerine: #ff9b42;
+  --color-lilac: #c3a6ff;
+
+  /* 5 · Garden */
+  --color-moss: #1f3a2b;
+  --color-moss-soft: #4c6656;
+  --color-sage: #dfe8d2;
+  --color-sage-2: #eef2e4;
+  --color-clay: #c8623b;
+  --color-blossom: #f4c3b9;
+  --color-butter: #f4e3a1;
+  --color-leaf: #5f9b5d;
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-rise: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-dash: dash 3s linear infinite;
+  --animate-grow: grow 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+
+  @keyframes grow {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -18;
+    }
+  }
+
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Gallery import: @theme is stripped when scoping, so its keyframes and
+   animate-* utilities are restated as plain CSS. */
+@keyframes grow {
+    from {
+      opacity: 0;
+      transform: scale(0.5);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+@keyframes dash {
+    to {
+      stroke-dashoffset: -18;
+    }
+  }
+@keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+@keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+.animate-rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.animate-dash {
+  animation: dash 3s linear infinite;
+}
+.animate-grow {
+  animation: grow 0.7s cubic-bezier(0.3, 1.5, 0.5, 1) both;
+}
+
+:root {
+  --color-paper: #f3eee4;
+  --color-paper-2: #fbf8f1;
+  --color-ink: #1b1a17;
+  --color-ink-soft: #6b665a;
+  --color-rule: #d6cdb9;
+  --color-vermilion: #d4402a;
+  --color-marker: #f7dc6f;
+  --color-void: #05060a;
+  --color-void-2: #0b0d15;
+  --color-neon: #5ef0ff;
+  --color-synapse: #8b7bff;
+  --color-pulse: #ff6ec7;
+  --color-mist: #8a90a8;
+  --color-cream: #fff6dc;
+  --color-sun: #ffd23f;
+  --color-bubblegum: #ff8fb8;
+  --color-skyblue: #6bc5ff;
+  --color-mint: #7ee2a8;
+  --color-tangerine: #ff9b42;
+  --color-lilac: #c3a6ff;
+  --color-moss: #1f3a2b;
+  --color-moss-soft: #4c6656;
+  --color-sage: #dfe8d2;
+  --color-sage-2: #eef2e4;
+  --color-clay: #c8623b;
+  --color-blossom: #f4c3b9;
+  --color-butter: #f4e3a1;
+  --color-leaf: #5f9b5d;
+}

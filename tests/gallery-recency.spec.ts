@@ -150,3 +150,11 @@ test("Luna 6 is new in its two completed groups on its addition date", () => {
   }
   expect(groupEntries("with-taste-skill").some((entry) => entry.model === "luna-6")).toBe(false);
 });
+
+test("Sonnet 5.5 is new in every group on its addition date", () => {
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    const sonnet = entries.find((entry) => entry.model === "sonnet-5.5")!;
+    expect(getGalleryEntryNewArrival(entries, sonnet, isoDateToUtcMs("2026-09-28"))).not.toBeNull();
+  }
+});
