@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/generated/scoped-variant-css/with-taste-skill/sonnet-5.5/source/app/globals.css";
-import { VersionSwitcher } from "./_components/version-switcher";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +22,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <div className="min-h-dvh">{children}</div>
-      <VersionSwitcher />
     </div>
   );
 }

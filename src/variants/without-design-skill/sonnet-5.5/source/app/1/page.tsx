@@ -1,5 +1,4 @@
 import { Fraunces, Inter } from "next/font/google";
-import { VersionSwitcher } from "../_components/version-switcher";
 
 const serif = Fraunces({ subsets: ["latin"] });
 const sans = Inter({ subsets: ["latin"] });
@@ -76,7 +75,6 @@ export default function Page() {
       <footer className="mx-auto mt-28 max-w-5xl border-t border-[#d9ceb5] px-6 py-10 pb-24 text-sm text-[#8a7a5c]">
         &copy; Engram. Written by hand, remembered by machine.
       </footer>
-      <VersionSwitcher />
     </main>
   );
 }

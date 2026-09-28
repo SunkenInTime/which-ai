@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Switcher from "./components/Switcher";
 import "@/generated/scoped-variant-css/with-design-skill/sonnet-5.5/source/app/globals.css";
 
 export const metadata: Metadata = {
@@ -10,11 +9,6 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div>
-      <div>
-        {children}
-        <Switcher />
-      </div>
-    </div>
+    <div>{children}</div>
   );
 }

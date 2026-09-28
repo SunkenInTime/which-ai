@@ -1,5 +1,4 @@
 import { Plus_Jakarta_Sans } from "next/font/google";
-import { VersionSwitcher } from "../_components/version-switcher";
 
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"] });
 
@@ -52,7 +51,6 @@ export default function Page() {
         </div>
       </section>
       <footer className="px-6 py-16 pb-24 text-center text-sm text-[#8a87a3]">&copy; Engram</footer>
-      <VersionSwitcher />
     </main>
   );
 }

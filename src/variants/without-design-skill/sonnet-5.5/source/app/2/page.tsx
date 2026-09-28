@@ -1,5 +1,4 @@
 import { JetBrains_Mono } from "next/font/google";
-import { VersionSwitcher } from "../_components/version-switcher";
 
 const mono = JetBrains_Mono({ subsets: ["latin"] });
 
@@ -83,7 +82,6 @@ $ `}<span className="animate-pulse">█</span>
           <p><span className="text-[#ffbd2e]">v2.2</span> + vim keybindings, obviously</p>
         </div>
       </section>
-      <VersionSwitcher />
     </main>
   );
 }

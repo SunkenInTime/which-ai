@@ -1,5 +1,4 @@
 import { Sora } from "next/font/google";
-import { VersionSwitcher } from "../_components/version-switcher";
 
 const sora = Sora({ subsets: ["latin"] });
 
@@ -63,7 +62,6 @@ export default function Page() {
           </div>
         ))}
       </section>
-      <VersionSwitcher />
     </main>
   );
 }

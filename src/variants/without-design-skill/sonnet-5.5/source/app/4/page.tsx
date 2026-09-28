@@ -1,5 +1,4 @@
 import { Space_Grotesk } from "next/font/google";
-import { VersionSwitcher } from "../_components/version-switcher";
 
 const grotesk = Space_Grotesk({ subsets: ["latin"], weight: ["500", "700"] });
 
@@ -48,7 +47,6 @@ export default function Page() {
           Forgetting is a bug. <span className="underline decoration-8">We fixed it.</span>
         </p>
       </section>
-      <VersionSwitcher />
     </main>
   );
 }
