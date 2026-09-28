@@ -1,0 +1,68 @@
+/* Version 4 "Night library". Slate neutrals, one terracotta accent, photographic sections.
+   The glass panels are a web approximation (backdrop-filter, layered borders), not an Apple material. Scoped under .v4. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 {
+  --c-bg: #e8ecef;
+  --c-surface: #f3f5f7;
+  --c-surface-2: #d9e0e5;
+  --c-line: #c5cfd6;
+  --c-fg: #10161c;
+  --c-fg-2: #3b4650;
+  --c-fg-3: #4f5b66;
+  --c-accent: #e2683c;
+  --c-accent-ink: #b2451b;
+  --c-on-accent: #1a0b05;
+  --c-photo-text: #f3f5f7;
+  --c-photo-text-2: #cfd6dc;
+  font-family: var(--font-v4), system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 {
+    --c-bg: #0d1217;
+    --c-surface: #131a21;
+    --c-surface-2: #1b242d;
+    --c-line: #26313b;
+    --c-fg: #ecf0f3;
+    --c-fg-2: #b4bec7;
+    --c-fg-3: #98a4af;
+    --c-accent-ink: #f0885f;
+    color-scheme: dark;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 ::selection {
+  background: rgb(226 104 60 / 0.3);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .glass {
+  position: relative;
+  border: 1px solid rgb(255 255 255 / 0.22);
+  background: linear-gradient(135deg, rgb(255 255 255 / 0.16), rgb(255 255 255 / 0.05)), rgb(13 18 23 / 0.5);
+  backdrop-filter: blur(20px) saturate(150%);
+  -webkit-backdrop-filter: blur(20px) saturate(150%);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.28), 0 18px 50px -18px rgb(0 0 0 / 0.5);
+  color: var(--c-photo-text);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .glass {
+    background: #1b242d;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .dots {
+  background-image: radial-gradient(rgb(128 145 160 / 0.32) 1px, transparent 1.3px);
+  background-size: 16px 16px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .no-scrollbar {
+  scrollbar-width: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

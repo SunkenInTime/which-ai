@@ -1,0 +1,51 @@
+/* Version 2 "Keys". Graphite neutrals, one lime accent. Everything is scoped under .v2. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 {
+  --c-bg: #eef0ee;
+  --c-surface: #f7f8f7;
+  --c-surface-2: #e2e6e2;
+  --c-line: #cfd5cf;
+  --c-fg: #121412;
+  --c-fg-2: #40473f;
+  --c-fg-3: #56604f;
+  --c-accent: #b4ee43;
+  --c-accent-ink: #416e0a;
+  --c-on-accent: #10160a;
+  font-family: var(--font-v2-sans), system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 {
+    --c-bg: #0c0e0c;
+    --c-surface: #131612;
+    --c-surface-2: #1b1f19;
+    --c-line: #2a3026;
+    --c-fg: #e9ede7;
+    --c-fg-2: #b0b8aa;
+    --c-fg-3: #98a291;
+    --c-accent-ink: #b4ee43;
+    color-scheme: dark;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 ::selection {
+  background: rgb(180 238 67 / 0.35);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 .mono {
+  font-family: var(--font-v2-mono), ui-monospace, monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 .keycap {
+  font-family: var(--font-v2-mono), ui-monospace, monospace;
+  box-shadow: 0 2px 0 var(--c-line);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 .no-scrollbar {
+  scrollbar-width: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

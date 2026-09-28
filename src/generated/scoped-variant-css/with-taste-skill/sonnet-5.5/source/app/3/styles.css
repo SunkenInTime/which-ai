@@ -1,0 +1,42 @@
+/* Version 3 "Issue". Editorial layout, cool paper neutral, one cobalt accent. Scoped under .v3. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 {
+  --c-bg: #eceef3;
+  --c-surface: #f6f7fa;
+  --c-surface-2: #dde1ea;
+  --c-line: #c9cfdb;
+  --c-fg: #0d0f18;
+  --c-fg-2: #3b4152;
+  --c-fg-3: #545b6e;
+  --c-accent: #2b3dff;
+  --c-on-accent: #f5f6ff;
+  font-family: var(--font-v3), system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 {
+    --c-bg: #090b13;
+    --c-surface: #10131f;
+    --c-surface-2: #181c2b;
+    --c-line: #262b3f;
+    --c-fg: #eceef6;
+    --c-fg-2: #b2b8cc;
+    --c-fg-3: #9aa1b8;
+    --c-accent: #7d8bff;
+    --c-on-accent: #090b13;
+    color-scheme: dark;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 ::selection {
+  background: rgb(43 61 255 / 0.28);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 .no-scrollbar {
+  scrollbar-width: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 .no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

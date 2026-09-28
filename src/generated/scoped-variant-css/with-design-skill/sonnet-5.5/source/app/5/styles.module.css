@@ -1,0 +1,235 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .page {
+  --paper: #f4f7fc;
+  --rule: #c5d6f0;
+  --ink: #1a2a5c;
+  --dim: #4a5a85;
+  --red: #d8456b;
+  min-height: 100vh;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-lit), Georgia, serif;
+  line-height: 1.7;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .page a:focus-visible,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.page button:focus-visible,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.page textarea:focus-visible {
+  outline: 3px solid var(--red);
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 16px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .wordmark {
+  color: var(--ink);
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .barLink {
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 120px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .head {
+  position: relative;
+  max-width: 44rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .lede {
+  max-width: 34rem;
+  margin: 20px 0 0;
+  color: var(--dim);
+  font-size: 1.15rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .scribble {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--red);
+  font-family: var(--f-hand), cursive;
+  font-size: 1.75rem;
+  transform: rotate(-3deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .try {
+  margin-top: 24px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .editor {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .editor {
+    grid-template-columns: 1.6fr 1fr;
+    align-items: start;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .sheet {
+  border-radius: 6px;
+  background:
+    linear-gradient(90deg, transparent 56px, var(--red) 56px, var(--red) 57px, transparent 57px),
+    repeating-linear-gradient(#ffffff 0, #ffffff 31px, var(--rule) 31px, var(--rule) 32px);
+  box-shadow: 0 0 0 1.5px var(--ink), 6px 6px 0 var(--ink);
+  padding: 16px 20px 24px 76px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .sheetTitle {
+  display: block;
+  color: var(--dim);
+  font-family: var(--f-hand), cursive;
+  font-size: 1.6rem;
+  line-height: 32px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .area {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  font-size: 1.05rem;
+  line-height: 32px;
+  resize: vertical;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .margin {
+  padding: 4px 4px 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .marginH {
+  margin: 0 0 8px;
+  color: var(--red);
+  font-family: var(--f-hand), cursive;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .marginH:not(:first-child) {
+  margin-top: 24px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .empty {
+  margin: 0;
+  color: var(--dim);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rel {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rel li {
+  display: grid;
+  gap: 2px;
+  padding: 10px 14px;
+  border-left: 3px solid var(--ink);
+  background: #fff;
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .rel span {
+  color: var(--dim);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .linkBtn {
+  justify-self: start;
+  margin-top: 6px;
+  padding: 4px 12px;
+  border: 1.5px solid var(--red);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--red);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .linkBtn:hover {
+  background: var(--red);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .notes {
+  display: grid;
+  gap: 32px;
+  margin-top: clamp(64px, 9vw, 120px);
+}
+
+@media (min-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .notes {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .notes h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .notes p {
+  max-width: 30rem;
+  margin: 0;
+  color: var(--dim);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .cta {
+  margin-top: clamp(64px, 9vw, 120px);
+  padding-top: 32px;
+  border-top: 2px solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .cta h2 {
+  margin: 0 0 20px;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .ctaBtn {
+  display: inline-block;
+  padding: 14px 26px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}

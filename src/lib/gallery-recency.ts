@@ -33,6 +33,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** First day each model's generations landed in the gallery. */
 const MODEL_ADDED_AT: Partial<Record<ModelSlug, GalleryIsoDate>> = {
+  "sonnet-5.5": "2026-09-28",
   "luna-6": "2026-09-23",
   "sol-6": "2026-09-22",
   "opus-5.5": "2026-09-22",

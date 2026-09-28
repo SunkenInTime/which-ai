@@ -1,0 +1,236 @@
+.page {
+  --ink: #15112e;
+  --ink-2: #221b46;
+  --text: #ece8ff;
+  --dim: #a89fd6;
+  --amber: #ffb86b;
+  min-height: 100vh;
+  background: radial-gradient(1200px 600px at 70% 20%, #2a2058 0%, transparent 70%), var(--ink);
+  color: var(--text);
+  font-family: var(--f-sans), system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.page a:focus-visible {
+  outline: 3px solid var(--amber);
+  outline-offset: 3px;
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(16px, 4vw, 56px);
+}
+
+.mark {
+  font-family: var(--f-serif), serif;
+  font-size: 30px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 3vw, 28px);
+  font-size: 0.95rem;
+}
+
+.nav a {
+  color: var(--dim);
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.nav a.navCta {
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: var(--amber);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.hero {
+  padding: clamp(32px, 6vw, 72px) clamp(16px, 4vw, 56px) 8px;
+  text-align: center;
+}
+
+.h1 {
+  margin: 0 auto;
+  font-family: var(--f-serif), serif;
+  font-size: clamp(2.5rem, 7vw, 5.75rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.h1 i {
+  color: var(--amber);
+}
+
+.lede {
+  max-width: 36rem;
+  margin: 24px auto 0;
+  color: var(--dim);
+  font-size: 1.1rem;
+}
+
+.stage {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px clamp(8px, 3vw, 32px) 0;
+}
+
+.graph {
+  display: grid;
+  gap: 16px;
+}
+
+.svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.edge {
+  stroke: #6a5fb0;
+  stroke-width: 1;
+  opacity: 0.45;
+  transition: opacity 0.2s, stroke 0.2s;
+}
+
+.edgeLit {
+  stroke: var(--amber);
+  stroke-width: 2;
+}
+
+.node {
+  cursor: pointer;
+  outline: none;
+}
+
+.node:focus-visible circle:nth-of-type(2) {
+  stroke: #fff;
+  stroke-width: 3;
+}
+
+.nodeLabel {
+  fill: var(--text);
+  font-family: var(--f-sans), sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.readout {
+  min-height: 9.5rem;
+  max-width: 34rem;
+  margin: 0 auto;
+  padding: 20px 24px;
+  border-radius: 14px;
+  background: var(--ink-2);
+  box-shadow: inset 0 0 0 1px #3a2f74;
+}
+
+.readout p {
+  margin: 0;
+}
+
+.readoutH {
+  margin: 0 0 6px;
+  font-family: var(--f-serif), serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.readoutLinks {
+  margin-top: 10px !important;
+  color: var(--amber);
+  font-size: 0.9rem;
+}
+
+.how {
+  display: grid;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: clamp(56px, 8vw, 112px) clamp(16px, 4vw, 56px);
+}
+
+@media (min-width: 860px) {
+  .how {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.how h2 {
+  margin: 0 0 8px;
+  font-family: var(--f-serif), serif;
+  font-size: 1.9rem;
+  font-weight: 400;
+}
+
+.how p {
+  max-width: 26rem;
+  margin: 0;
+  color: var(--dim);
+}
+
+.plans {
+  display: grid;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 clamp(16px, 4vw, 56px) 120px;
+}
+
+@media (min-width: 860px) {
+  .plans {
+    grid-template-columns: 1fr 1.4fr;
+  }
+}
+
+.plan {
+  padding: 28px;
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px #3a2f74;
+}
+
+.planMain {
+  background: var(--ink-2);
+  box-shadow: inset 0 0 0 1.5px var(--amber);
+}
+
+.plan h2 {
+  margin: 0 0 8px;
+  font-family: var(--f-serif), serif;
+  font-size: 1.75rem;
+  font-weight: 400;
+}
+
+.plan p {
+  margin: 0 0 20px;
+  color: var(--dim);
+}
+
+.ghost,
+.solid {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.ghost {
+  box-shadow: inset 0 0 0 1.5px var(--dim);
+  color: var(--text);
+}
+
+.solid {
+  background: var(--amber);
+  color: var(--ink);
+}

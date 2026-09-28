@@ -44,6 +44,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "opus-4.8": { light: "/anthropic-claude.webp" },
   "opus-5": { light: "/anthropic-claude.webp" },
   "opus-5.5": { light: "/anthropic-claude.webp" },
+  "sonnet-5.5": { light: "/anthropic-claude.webp" },
   "sonnet-5": { light: "/anthropic-claude.webp" },
   "swe-2": { light: "/cognition.svg", dark: "/cognition-dark.svg" },
 };

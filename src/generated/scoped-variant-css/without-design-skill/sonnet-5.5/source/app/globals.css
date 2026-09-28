@@ -1,0 +1,7 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="sonnet-5.5"]) {
+  margin: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="sonnet-5.5"]) {
+  scroll-behavior: smooth;
+}

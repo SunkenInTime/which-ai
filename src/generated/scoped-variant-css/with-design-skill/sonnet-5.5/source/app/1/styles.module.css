@@ -1,0 +1,227 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .page {
+  --blue: #2340f0;
+  --navy: #10163f;
+  --paper: #f6f4ff;
+  --sun: #ffd23f;
+  min-height: 100vh;
+  background: var(--blue);
+  color: var(--paper);
+  font-family: var(--f-main), system-ui, sans-serif;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .page a:focus-visible {
+  outline: 3px solid var(--sun);
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(16px, 4vw, 48px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .mark {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--paper);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 3vw, 32px);
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .nav a {
+  color: var(--paper);
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .nav a.navCta {
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--sun);
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .hero {
+  padding: clamp(32px, 8vw, 96px) clamp(16px, 4vw, 48px) clamp(48px, 8vw, 96px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .h1 {
+  margin: 0;
+  font-size: clamp(3.25rem, 13.5vw, 11.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.055em;
+  max-width: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .lede {
+  max-width: 34rem;
+  margin: 40px 0 0;
+  font-size: clamp(1.125rem, 2vw, 1.4rem);
+  font-weight: 400;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .primary,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.secondary {
+  padding: 14px 24px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .primary {
+  background: var(--sun);
+  color: var(--navy);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .secondary {
+  box-shadow: inset 0 0 0 2px var(--paper);
+  color: var(--paper);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .pileSection {
+  padding: clamp(40px, 6vw, 80px) clamp(16px, 4vw, 48px);
+  background: var(--navy);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .pileH {
+  max-width: 40rem;
+  margin: 0 0 40px;
+  font-size: clamp(1.5rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .pile {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  grid-column: span 12;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .note p {
+  margin: 0;
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .count {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n1 { background: var(--paper); color: var(--navy); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n2 { background: var(--sun); color: var(--navy); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n3 { background: var(--blue); color: var(--paper); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n4 { background: #ff6b5b; color: var(--navy); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n5 { background: #a9b8ff; color: var(--navy); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n6 { background: var(--paper); color: var(--navy); }
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n3 p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 720px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n1 { grid-column: span 5; }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n2 { grid-column: span 4; }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n3 { grid-column: span 3; grid-row: span 2; }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n4 { grid-column: span 4; }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n5 { grid-column: span 5; }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n6 { grid-column: span 12; }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .n3 p { font-size: 2rem; }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .what {
+  display: grid;
+  gap: 40px;
+  padding: clamp(48px, 8vw, 112px) clamp(16px, 4vw, 48px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .what h3 {
+  margin: 0 0 12px;
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .what p {
+  max-width: 28rem;
+  margin: 0;
+}
+
+@media (min-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .what {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .cta {
+  padding: clamp(48px, 8vw, 112px) clamp(16px, 4vw, 48px);
+  background: var(--sun);
+  color: var(--navy);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .cta h2 {
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .cta p {
+  max-width: 30rem;
+  margin: 24px 0 32px;
+  font-size: 1.15rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .ctaBtn {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 999px;
+  background: var(--navy);
+  color: var(--paper);
+  font-weight: 700;
+  text-decoration: none;
+}

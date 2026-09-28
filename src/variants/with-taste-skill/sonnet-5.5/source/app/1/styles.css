@@ -1,0 +1,42 @@
+/* Version 1 "Daylight". Cool neutrals, one emerald accent. Everything is scoped under .v1. */
+.v1 {
+  --c-bg: #f4f6f5;
+  --c-surface: #fbfcfb;
+  --c-surface-2: #e9eeec;
+  --c-line: #d9e0dd;
+  --c-fg: #0f1512;
+  --c-fg-2: #46524d;
+  --c-fg-3: #5a6660;
+  --c-accent: #2fbf8a;
+  --c-accent-ink: #0a7551;
+  --c-on-accent: #05150e;
+  --c-shadow: 0 1px 0 rgb(15 60 40 / 0.04), 0 18px 40px -20px rgb(15 60 40 / 0.22);
+  font-family: var(--font-v1), system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-fg);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  .v1 {
+    --c-bg: #0b100e;
+    --c-surface: #111815;
+    --c-surface-2: #17201c;
+    --c-line: #24302b;
+    --c-fg: #eef3f0;
+    --c-fg-2: #a9b6b0;
+    --c-fg-3: #93a19a;
+    --c-accent-ink: #4fd8a3;
+    --c-shadow: 0 1px 0 rgb(255 255 255 / 0.03), 0 20px 44px -22px rgb(0 0 0 / 0.7);
+    color-scheme: dark;
+  }
+}
+
+.v1 ::selection {
+  background: rgb(47 191 138 / 0.3);
+}
+
+.v1 .grain-grid {
+  background-image: linear-gradient(var(--c-line) 1px, transparent 1px);
+  background-size: 100% 28px;
+}

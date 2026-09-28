@@ -1,0 +1,165 @@
+.page {
+  min-height: 100vh;
+  font-family: var(--f-sans), system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+.page a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+.sky {
+  background: #dfe9e6;
+  color: #23332f;
+}
+
+.bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px clamp(16px, 5vw, 64px);
+}
+
+.mark {
+  color: inherit;
+  font-family: var(--f-serif), serif;
+  font-size: 1.6rem;
+  text-decoration: none;
+}
+
+.barLink {
+  color: inherit;
+  font-weight: 600;
+}
+
+.heroWrap {
+  padding: clamp(40px, 8vw, 96px) clamp(16px, 5vw, 64px) clamp(56px, 9vw, 120px);
+}
+
+.h1 {
+  margin: 0;
+  font-family: var(--f-serif), serif;
+  font-size: clamp(2.75rem, 8vw, 7rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 28px 0 32px;
+  font-size: 1.15rem;
+}
+
+.cta {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 4px;
+  background: #23332f;
+  color: #eaf2ef;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.layer {
+  padding: clamp(32px, 5vw, 64px) clamp(16px, 5vw, 64px);
+  /* uneven top edge, like a cut through soil */
+  clip-path: polygon(0 0, 18% 1.2%, 41% 0, 66% 1.4%, 100% 0, 100% 100%, 0 100%);
+  margin-top: -14px;
+}
+
+.inner {
+  display: grid;
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+@media (min-width: 800px) {
+  .inner {
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+  }
+
+  .year {
+    position: sticky;
+    top: 24px;
+    align-self: start;
+  }
+}
+
+.year {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+}
+
+.yearNum {
+  font-family: var(--f-serif), serif;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.notes {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--f-serif), serif;
+  font-size: clamp(1.4rem, 3vw, 2.1rem);
+  line-height: 1.2;
+}
+
+.notes li + li {
+  margin-top: 16px;
+}
+
+.surfaced {
+  margin: 24px 0 0;
+  padding-left: 14px;
+  border-left: 4px solid currentColor;
+  font-weight: 600;
+}
+
+.l1 { background: #efe3c2; color: #3a2f18; }
+.l2 { background: #dcc38f; color: #372a12; }
+.l3 { background: #b98f58; color: #2b1d0b; }
+.l4 { background: #7c5a3c; color: #fbf1e2; }
+.l5 { background: #4a3527; color: #f6e8d4; }
+
+.core {
+  margin-top: -14px;
+  padding: clamp(56px, 8vw, 112px) clamp(16px, 5vw, 64px) 140px;
+  background: #2a1e17;
+  color: #f6e8d4;
+  clip-path: polygon(0 0, 24% 1%, 52% 0, 80% 1.2%, 100% 0, 100% 100%, 0 100%);
+}
+
+.core .inner {
+  display: block;
+}
+
+.coreH {
+  margin: 0 0 16px;
+  font-family: var(--f-serif), serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.core p {
+  max-width: 32rem;
+  margin: 0 0 28px;
+  font-size: 1.15rem;
+}
+
+.coreBtn {
+  display: inline-block;
+  padding: 14px 24px;
+  border-radius: 4px;
+  background: #ffc857;
+  color: #2a1e17;
+  font-weight: 700;
+  text-decoration: none;
+}

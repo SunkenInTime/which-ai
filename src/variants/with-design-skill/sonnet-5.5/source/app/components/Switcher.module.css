@@ -1,0 +1,46 @@
+.switcher {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #ffffff;
+  color: #1c1c28;
+  box-shadow: 0 0 0 1.5px #1c1c28, 3px 3px 0 #1c1c28;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.label {
+  min-width: 9.5em;
+  padding: 0 6px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.step {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #1c1c28;
+  color: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.step:hover {
+  background: #4b4bff;
+}
+
+.step:focus-visible {
+  outline: 3px solid #4b4bff;
+  outline-offset: 2px;
+}

@@ -1,0 +1,66 @@
+/* Version 5 "Pinboard". Hard borders, square corners, offset shadows, one rose accent. Scoped under .v5. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 {
+  --c-bg: #ececee;
+  --c-surface: #f8f8f9;
+  --c-surface-2: #dcdce0;
+  --c-ink: #141414;
+  --c-fg-2: #3a3a40;
+  --c-accent: #f0508a;
+  --c-on-accent: #141414;
+  font-family: var(--font-v5), system-ui, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-ink);
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 {
+    --c-bg: #121213;
+    --c-surface: #1c1c1e;
+    --c-surface-2: #29292c;
+    --c-ink: #f1f1f3;
+    --c-fg-2: #b8b8c0;
+    color-scheme: dark;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 ::selection {
+  background: var(--c-accent);
+  color: #141414;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .mono {
+  font-family: var(--font-v5-mono), ui-monospace, monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .board-dots {
+  background-image: radial-gradient(color-mix(in srgb, var(--c-ink) 28%, transparent) 1.2px, transparent 1.6px);
+  background-size: 18px 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .marquee-track {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-5-styles-marquee 34s linear infinite;
+  width: max-content;
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-5-styles-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .marquee-track {
+    animation: none;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 details > summary {
+  list-style: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 details > summary::-webkit-details-marker {
+  display: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 details[open] .faq-icon {
+  transform: rotate(45deg);
+}
