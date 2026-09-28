@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+/* Each design owns its own palette, type and page background inside its route layout. */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

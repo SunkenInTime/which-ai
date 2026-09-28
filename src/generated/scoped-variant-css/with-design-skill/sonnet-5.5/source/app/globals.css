@@ -1,0 +1,10 @@
+/* Each design owns its own palette, type and page background inside its route layout. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) {
+    scroll-behavior: auto;
+  }
+}

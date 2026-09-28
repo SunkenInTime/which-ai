@@ -1,0 +1,312 @@
+/*
+  Z-index scale (the only layers used in this project):
+  40 sticky page navigation, 60 fixed overlays, 90 the iteration switcher.
+*/
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) {
+  --z-nav: 40;
+  --z-overlay: 60;
+  --z-switcher: 90;
+
+  --v-display: var(--font-geist-sans);
+  --v-body: var(--font-geist-sans);
+  --v-mono: var(--font-geist-mono);
+
+  /* Soft veil over photography in dark mode so images don't glare. */
+  --dim: light-dark(rgb(0 0 0 / 0), rgb(0 0 0 / 0.28));
+
+  color-scheme: light dark;
+}
+
+/* Explicit theme picks from the switcher override the system preference. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"])[data-theme="light"] {
+  color-scheme: light;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"])[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/*
+  Each iteration owns one palette. Tokens are declared on :root whenever that
+  iteration is mounted (so the overscroll area matches too) and use
+  light-dark(), which follows color-scheme. One line per token, both modes.
+*/
+
+/* 1 Reading Room: cool paper, ink, one cobalt accent */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v1) {
+  --bg: light-dark(#f5f6f8, #0b0c10);
+  --bg-2: light-dark(#eceef2, #13151b);
+  --fg: light-dark(#0c0e13, #eceef4);
+  --fg-2: light-dark(#454a58, #a7acbb);
+  --fg-3: light-dark(#5d6272, #8a8f9e);
+  --line: light-dark(#d8dbe2, #252833);
+  --accent: light-dark(#2340f0, #94a6ff);
+  --on-accent: light-dark(#f8f9ff, #0b0c10);
+}
+
+/* 2 Graph: dark first (brand insists), one desaturated lime accent */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v2 {
+  --v-display: var(--font-sora);
+  --v-body: var(--font-geist-sans);
+  --v-mono: var(--font-jetbrains);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v2) {
+  color-scheme: dark;
+  --bg: light-dark(#f2f5f0, #090b0a);
+  --bg-2: light-dark(#e7ece3, #111512);
+  --fg: light-dark(#0d110e, #e8ede9);
+  --fg-2: light-dark(#454f48, #9ca59f);
+  --fg-3: light-dark(#5c675f, #7d8780);
+  --line: light-dark(#d1d9cd, #1f2622);
+  --accent: light-dark(#3c680c, #a8e05c);
+  --on-accent: light-dark(#f2f5f0, #090b0a);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"])[data-theme="light"]:has(.v2) {
+  color-scheme: light;
+}
+
+/* 3 Poster: neutral stone, near-black ink, one vermilion accent */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 {
+  --v-display: var(--font-archivo);
+  --v-body: var(--font-archivo);
+  --v-mono: var(--font-plex-mono);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v3) {
+  --bg: light-dark(#e8e8e6, #121212);
+  --bg-2: light-dark(#dcdcd9, #1b1b1b);
+  --fg: light-dark(#121212, #eeeeeb);
+  --fg-2: light-dark(#3b3b3b, #bcbcb8);
+  --fg-3: light-dark(#575757, #93938f);
+  --line: light-dark(#121212, #eeeeeb);
+  --accent: light-dark(#ff4a1c, #ff5b2e);
+  --on-accent: #121212;
+}
+
+/* 4 Glass: cold silver and graphite, one deep rose accent */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 {
+  --v-display: var(--font-outfit);
+  --v-body: var(--font-outfit);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v4) {
+  --bg: light-dark(#eceef1, #0d0e11);
+  --bg-2: light-dark(#e0e3e8, #16181d);
+  --fg: light-dark(#14161a, #eef0f3);
+  --fg-2: light-dark(#4a505a, #aab0bb);
+  --fg-3: light-dark(#5a606b, #8b919d);
+  --line: light-dark(#d0d4db, #262a31);
+  --accent: light-dark(#c4224c, #ff7395);
+  --accent-2: light-dark(#8f1738, #ffb0c3);
+  --on-accent: light-dark(#fbf7f8, #16080c);
+}
+
+/* 5 Highlighter: cool grey, ink, one marker-yellow accent */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 {
+  --v-display: var(--font-bricolage);
+  --v-body: var(--font-bricolage);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v5) {
+  --bg: light-dark(#f1f2f5, #121215);
+  --bg-2: light-dark(#e6e8ec, #1b1b20);
+  --surface: light-dark(#fbfbfc, #202026);
+  --fg: light-dark(#16161b, #f1f1f4);
+  --fg-2: light-dark(#4a4a55, #b6b6c2);
+  --fg-3: light-dark(#65656f, #8f8f9c);
+  --line: light-dark(#d5d7de, #2d2d35);
+  --accent: #ffd83d;
+  --on-accent: #16161b;
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-caret {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Hero entrances run in CSS so the first paint never waits on hydration. */
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-rise {
+  from {
+    transform: translateY(110%);
+  }
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-wipe {
+  to {
+    transform: scaleY(0);
+  }
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-settle {
+  from {
+    transform: scale(1.14);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) {
+  background: var(--bg, #0b0b0d);
+  color: var(--fg, #ececf0);
+  font-family: var(--v-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) {
+  scroll-behavior: smooth;
+  interpolate-size: allow-keywords;
+}
+
+/* Headings use the iteration's display face; everything else uses its body face. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+h3,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+.font-display {
+  font-family: var(--v-display, var(--v-body));
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) ::selection {
+  background: var(--accent, #94a6ff);
+  color: var(--on-accent, #0b0c10);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) :focus-visible {
+  outline: 2px solid var(--accent, #94a6ff);
+  outline-offset: 3px;
+}
+/* Yellow and vermilion are too light against these backgrounds to mark focus. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v3) :focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]):has(.v5) :focus-visible {
+  outline-color: var(--fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) {
+    scroll-behavior: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) *,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+  ::before,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+  ::after {
+    animation-duration: 0.001ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-marquee,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+  .animate-caret {
+    animation: none !important;
+  }
+}
+
+/* Iteration 3: poster display type, wide and heavy. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v3 .display {
+  font-family: var(--v-display);
+  font-stretch: 125%;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 0.88;
+}
+
+/* Native details accordion that eases open where the browser supports it. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) details.faq::details-content {
+  block-size: 0;
+  overflow: clip;
+  transition:
+    block-size 0.4s var(--ease-out-expo),
+    content-visibility 0.4s allow-discrete;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) details.faq[open]::details-content {
+  block-size: auto;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) details.faq > summary {
+  list-style: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) details.faq > summary::-webkit-details-marker {
+  display: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) details.faq[open] .faq-plus {
+  transform: rotate(45deg);
+}
+
+/*
+  Iteration 4: frosted glass. This is a web approximation built from
+  backdrop-filter, layered borders and an inner highlight. It is not Apple's
+  Liquid Glass, which has no official web implementation.
+*/
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .glass {
+  background: color-mix(in oklab, var(--bg) 58%, transparent);
+  -webkit-backdrop-filter: blur(22px) saturate(160%);
+  backdrop-filter: blur(22px) saturate(160%);
+  border: 1px solid color-mix(in oklab, var(--fg) 11%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in oklab, #ffffff 42%, transparent),
+    0 14px 34px -14px rgb(22 26 38 / 0.28);
+}
+@media (prefers-reduced-transparency: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v4 .glass {
+    background: var(--bg);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Iteration 5: marker highlight. The bar sweeps in behind the text, transform only. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .hl {
+  position: relative;
+  isolation: isolate;
+  white-space: nowrap;
+  color: var(--on-accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .hl::before {
+  content: "";
+  position: absolute;
+  inset: 0.06em -0.14em 0.02em;
+  z-index: -1;
+  border-radius: 0.2em 0.35em 0.25em 0.4em;
+  background: var(--accent);
+  transform: rotate(-1.2deg) scaleX(0);
+  transform-origin: left center;
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-hl-sweep 0.9s var(--ease-out-expo) 0.7s forwards;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .v5 .hl-static::before {
+  animation: none;
+  transform: rotate(-1.2deg) scaleX(1);
+}
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-globals-hl-sweep {
+  to {
+    transform: rotate(-1.2deg) scaleX(1);
+  }
+}
+
+/* Gallery import: @theme is stripped when scoping, so its keyframes and
+   animate-* utilities are restated as plain CSS. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-marquee {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-marquee 38s linear infinite;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-caret {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-caret 1.05s steps(1) infinite;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-rise {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-rise 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-fade-up {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-fade-up 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-wipe {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-wipe 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .animate-settle {
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-globals-settle 1.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) {
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}

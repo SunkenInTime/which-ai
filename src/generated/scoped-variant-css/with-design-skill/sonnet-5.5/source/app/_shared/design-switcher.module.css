@@ -1,0 +1,147 @@
+/* Deliberately neutral chrome: it has to sit on green, blue and white pages alike. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .root {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font: 500 13px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  letter-spacing: 0;
+  color: #f2f3f5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .pill {
+  display: flex;
+  align-items: center;
+  background: #1a1c21;
+  border-radius: 999px;
+  padding: 4px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 10px 30px rgba(0, 0, 0, 0.32);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .step,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.label {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  border-radius: 999px;
+  transition: background-color 120ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .step {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 30px;
+  padding: 0 12px 0 6px;
+  min-width: 132px;
+  justify-content: flex-start;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .num {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f2f3f5;
+  color: #1a1c21;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .step:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.label:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .step:focus-visible,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.label:focus-visible,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) 
+.item:focus-visible {
+  outline: 2px solid #8fb4ff;
+  outline-offset: 1px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .menu {
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  min-width: 240px;
+  background: #1a1c21;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18),
+    0 16px 40px rgba(0, 0, 0, 0.36);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .item:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .item[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .itemNum {
+  width: 16px;
+  color: #9da2ae;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .itemName {
+  flex: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .swatches {
+  display: flex;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .swatches i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1.5px #1a1c21;
+  margin-left: -4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .hint {
+  padding: 8px 10px 6px;
+  color: #9da2ae;
+  font-size: 12px;
+}
+
+@media (max-width: 520px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .root {
+    bottom: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="sonnet-5.5"]) .hint {
+    display: none;
+  }
+}

@@ -33,7 +33,7 @@ for (const group of ["with-design-skill", "with-taste-skill", "without-design-sk
   });
 }
 
-for (const model of ["sol-6", "opus-5.5"]) {
+for (const model of ["sol-6", "opus-5.5", "sonnet-5.5"]) {
   for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {
     for (const iteration of ["1", "2", "3", "4", "5"]) {
       test(`${model} ${group} iteration ${iteration} renders on mobile`, async ({ page }) => {

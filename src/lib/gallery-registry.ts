@@ -1,3 +1,6 @@
+import withSonnet55 from "@/variants/with-design-skill/sonnet-5.5";
+import withTasteSonnet55 from "@/variants/with-taste-skill/sonnet-5.5";
+import withoutSonnet55 from "@/variants/without-design-skill/sonnet-5.5";
 import withLuna6 from "@/variants/with-design-skill/luna-6";
 import withoutLuna6 from "@/variants/without-design-skill/luna-6";
 import withSol6 from "@/variants/with-design-skill/sol-6";
@@ -113,6 +116,9 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "with-design-skill:sonnet-5.5": withSonnet55,
+  "with-taste-skill:sonnet-5.5": withTasteSonnet55,
+  "without-design-skill:sonnet-5.5": withoutSonnet55,
   "with-design-skill:luna-6": withLuna6,
   "without-design-skill:luna-6": withoutLuna6,
   "with-design-skill:sol-6": withSol6,
