@@ -1,0 +1,102 @@
+.iter-switcher {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+}
+
+.iter-switcher__btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(127, 127, 127, 0.45);
+  background: rgba(20, 20, 20, 0.82);
+  color: #f2f2f2;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.iter-switcher__btn:hover {
+  background: rgba(40, 40, 40, 0.9);
+  border-color: rgba(200, 200, 200, 0.6);
+}
+
+.iter-switcher__btn:focus-visible {
+  outline: 2px solid #f2f2f2;
+  outline-offset: 2px;
+}
+
+.iter-switcher__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7ee787;
+  flex: none;
+}
+
+.iter-switcher__scrim {
+  position: fixed;
+  inset: 0;
+}
+
+.iter-switcher__menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  min-width: 210px;
+  padding: 6px;
+  border-radius: 12px;
+  border: 1px solid rgba(127, 127, 127, 0.4);
+  background: rgba(18, 18, 18, 0.94);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.iter-switcher__item {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  padding: 9px 10px;
+  border-radius: 8px;
+  color: #d8d8d8;
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+
+.iter-switcher__item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.iter-switcher__item:focus-visible {
+  outline: 2px solid #f2f2f2;
+  outline-offset: -2px;
+}
+
+.iter-switcher__item--active {
+  background: rgba(126, 231, 135, 0.14);
+  color: #a5f3b0;
+}
+
+.iter-switcher__num {
+  color: #8a8a8a;
+  font-size: 11px;
+}
+
+.iter-switcher__item--active .iter-switcher__num {
+  color: #7ee787;
+}
+
+.iter-switcher__name {
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+}

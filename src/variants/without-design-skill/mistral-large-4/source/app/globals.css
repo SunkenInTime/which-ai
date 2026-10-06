@@ -25,8 +25,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* Preserve source font utilities inside this gallery variant. */
+/* Preserve source Tailwind font utilities within this variant. */
 .font-sans { font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; }
 .font-mono { font-family: var(--font-geist-mono), ui-monospace, monospace; }
-
 .font-serif { font-family: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif; }
