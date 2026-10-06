@@ -68,3 +68,19 @@ for (const model of ["luna-6"]) {
     }
   }
 }
+
+// Preserve the benchmark's known mobile overflow in design-skill iterations 3 and 4.
+for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {
+  for (const iteration of ["1", "2", "3", "4", "5"]) {
+    test(`Mistral Large 4 ${group}/${iteration} renders inside the gallery`, async ({ page }) => {
+      const errors: string[] = [];
+      page.on("pageerror", error => errors.push(error.message));
+      await page.setViewportSize({ width: 390, height: 844 });
+      const response = await page.goto(`/preview/${group}/mistral-large-4/${iteration}`);
+      expect(response?.ok()).toBe(true);
+      await expect(page.locator("h1").first()).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Mistral Large 4 gallery navigation" })).toHaveCount(0);
+      expect(errors).toEqual([]);
+    });
+  }
+}

@@ -1,0 +1,32 @@
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Preserve source font utilities inside this gallery variant. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) .font-sans { font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) .font-mono { font-family: var(--font-geist-mono), ui-monospace, monospace; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) .font-serif { font-family: var(--font-instrument-serif), Georgia, serif; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) .font-brutal { font-family: var(--font-space-mono), monospace; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) .font-display { font-family: var(--font-archivo-black), sans-serif; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="mistral-large-4"]) .mistral-fonts {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-brutal: var(--font-space-mono), monospace;
+  --font-display: var(--font-archivo-black), sans-serif;
+}

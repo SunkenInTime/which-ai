@@ -7,6 +7,7 @@ import { getModelLab, type LabSlug } from "@/lib/model-labs";
  * still lands on the right cards.
  */
 const LAB_ALIASES: Record<LabSlug, string[]> = {
+  mistral: ["mistral ai"],
   anonymous: ["stealth", "unknown"],
   xiaomi: ["mimo", "mi mo"],
   gpt: ["openai", "open ai", "chatgpt", "codex"],
@@ -21,6 +22,7 @@ const LAB_ALIASES: Record<LabSlug, string[]> = {
 };
 
 const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
+  "mistral-large-4": ["le chonk", "large 4", "mistralai/mistral-large-4-0"],
   fable: ["fable 5", "fable5", "mythos"],
   "fable-5.1": ["fable5.1", "mythos", "mythos 5.1"],
   "opus-5": ["claude opus 5", "opus5"],

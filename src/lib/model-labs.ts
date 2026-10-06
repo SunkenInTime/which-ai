@@ -1,6 +1,7 @@
 import type { ModelSlug } from "@/lib/gallery-types";
 
 export type LabSlug =
+  | "mistral"
   | "anonymous"
   | "xiaomi"
   | "gpt"
@@ -19,6 +20,7 @@ export interface ModelLab {
 }
 
 const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
+  "mistral-large-4": { slug: "mistral", label: "Mistral AI" },
   "union-alpha": { slug: "anonymous", label: "Anonymous" },
   "mimo-x-flash-preview": { slug: "xiaomi", label: "Xiaomi" },
   "mimo-x-pro-preview": { slug: "xiaomi", label: "Xiaomi" },
@@ -63,6 +65,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
 };
 
 export const LAB_OPTIONS: ModelLab[] = [
+  { slug: "mistral", label: "Mistral AI" },
   { slug: "anonymous", label: "Anonymous" },
   { slug: "xiaomi", label: "Xiaomi" },
   { slug: "gpt", label: "GPT" },

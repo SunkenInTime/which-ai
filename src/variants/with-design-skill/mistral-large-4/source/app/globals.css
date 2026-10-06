@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+}
+
+/* Preserve source font utilities inside this gallery variant. */
+.font-sans { font-family: ui-sans-serif, system-ui, sans-serif; }
+.font-mono { font-family: ui-monospace, monospace; }
