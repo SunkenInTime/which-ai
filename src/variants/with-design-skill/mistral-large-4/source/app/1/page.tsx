@@ -1,149 +1,192 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Fraunces, Newsreader } from "next/font/google";
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  weight: ["400", "600", "900"],
-  style: ["normal", "italic"],
-  variable: "--font-fraunces",
-});
-
-const newsreader = Newsreader({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
-});
+import "@/generated/scoped-variant-css/with-design-skill/mistral-large-4/source/app/1/archive.css";
 
 export const metadata: Metadata = {
-  title: "Mnemos — Broadsheet",
+  title: "Mnemosyne — The Archive",
+  description:
+    "Every thought, catalogued. A second brain built like a library: capture it once, find it forever.",
 };
 
-const notes = [
+const LEDGER = [
+  { no: "001", title: "On the habit of morning pages", tag: "Routine", date: "Oct 02" },
+  { no: "002", title: "Ideas for the studio rebrand", tag: "Work", date: "Oct 01" },
+  { no: "003", title: "Quotes worth keeping: Calvino", tag: "Reading", date: "Sep 28" },
+  { no: "004", title: "Trip plan — Kyoto, November", tag: "Travel", date: "Sep 25" },
+  { no: "005", title: "Why we forget most of what we read", tag: "Essay draft", date: "Sep 21" },
+];
+
+const CARDS = [
   {
-    title: "On the habit of morning pages",
-    body: "Three pages, longhand, before coffee. Not for anyone to read — for the mind to stretch.",
-    tag: "Ritual",
+    no: "014",
+    title: "The map is not the territory",
+    body: "A note is a handle, not a container. The value is in the reaching back.",
+    tag: "Philosophy",
   },
   {
-    title: "Ideas are shy",
-    body: "They arrive while walking, while washing up. Capture first, judge later. The second brain keeps what the first would drop.",
-    tag: "Capture",
+    no: "015",
+    title: "Connect, don't collect",
+    body: "One linked thought is worth a hundred filed away. Follow the thread.",
+    tag: "Method",
   },
   {
-    title: "Connections over folders",
-    body: "A note is not a file. It is a node. Link it to the thought it came from and the thought it will become.",
-    tag: "Connect",
+    no: "016",
+    title: "Write for your future self",
+    body: "You will not remember why this mattered. Write it down anyway.",
+    tag: "Advice",
   },
 ];
 
-export default function Broadsheet() {
+export default function ArchivePage() {
   return (
-    <div
-      className={`${fraunces.variable} ${newsreader.variable} min-h-full bg-[#f7f3ea] text-[#1c1917]`}
-      style={{ fontFamily: "var(--font-newsreader), Georgia, serif" }}
-    >
-      <header className="mx-auto max-w-6xl px-6 pt-8">
-        <div className="flex items-baseline justify-between border-b-[3px] border-double border-[#1c1917] pb-3">
-          <span
-            className="text-3xl font-black tracking-tight"
-            style={{ fontFamily: "var(--font-fraunces), serif" }}
-          >
-            Mnemos
-          </span>
-          <span className="text-sm italic">The second brain gazette</span>
-          <span className="font-mono text-xs uppercase tracking-widest">
-            Est. today
-          </span>
-        </div>
-        <nav className="flex justify-center gap-8 border-b border-[#1c1917] py-2 font-mono text-xs uppercase tracking-widest">
-          <Link href="#" className="hover:underline">Capture</Link>
-          <Link href="#" className="hover:underline">Connect</Link>
-          <Link href="#" className="hover:underline">Recall</Link>
-          <Link href="#" className="hover:underline">Pricing</Link>
+    <div className="archive">
+      <header className="archive__masthead">
+        <div className="archive__brand">Mnemosyne</div>
+        <nav className="archive__nav" aria-label="Primary">
+          <a href="#method">Method</a>
+          <a href="#ledger">Ledger</a>
+          <a href="#start">Start</a>
         </nav>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6 py-10">
-        <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-12 border-b border-[#1c1917] pb-6 text-center lg:col-span-8 lg:text-left">
-            <h1
-              className="text-5xl font-black leading-[1.05] tracking-tight md:text-7xl"
-              style={{ fontFamily: "var(--font-fraunces), serif" }}
-            >
-              Your mind, in print.
+      <main>
+        <section className="archive__hero">
+          <div className="archive__hero-copy">
+            <p className="archive__kicker">A second brain, kept like a library</p>
+            <h1 className="archive__title">
+              Every thought,
+              <br />
+              catalogued.
             </h1>
-            <p className="mx-auto mt-6 max-w-xl text-xl leading-relaxed lg:mx-0">
-              <span className="float-left mr-2 text-6xl font-black leading-[0.8]" style={{ fontFamily: "var(--font-fraunces), serif" }}>
-                M
-              </span>
-              nemos is a note-taking app built like a good notebook: every idea
-              captured, every thread followed, nothing filed away and forgotten.
-              Write freely. Link liberally. Remember everything.
+            <p className="archive__lede">
+              Mnemosyne is a note-taking app for people who think for a living.
+              Capture a thought once. Link it to what you already know. Find it
+              again in seconds, years from now.
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
-              <Link
-                href="#"
-                className="bg-[#1c1917] px-6 py-3 font-mono text-xs uppercase tracking-widest text-[#f7f3ea] hover:bg-[#44403c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1c1917]"
-              >
-                Start writing
-              </Link>
-              <Link
-                href="#"
-                className="border border-[#1c1917] px-6 py-3 font-mono text-xs uppercase tracking-widest hover:bg-[#1c1917] hover:text-[#f7f3ea] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1c1917]"
-              >
-                Read the manifesto
-              </Link>
+            <div className="archive__actions">
+              <a className="archive__cta" href="#start">
+                Start your archive
+              </a>
+              <a className="archive__ghost" href="#method">
+                Read the method
+              </a>
             </div>
           </div>
 
-          <aside className="col-span-12 lg:col-span-4 lg:border-l lg:border-[#1c1917] lg:pl-8">
-            <h2 className="font-mono text-xs uppercase tracking-widest">
-              From the newsroom
-            </h2>
-            <ul className="mt-4 space-y-5">
-              {notes.map((n) => (
-                <li key={n.title} className="border-b border-[#d6cfc0] pb-4 last:border-0">
-                  <span className="font-mono text-[10px] uppercase tracking-widest text-[#a8a29e]">
-                    {n.tag}
-                  </span>
-                  <h3
-                    className="mt-1 text-lg font-semibold leading-snug"
-                    style={{ fontFamily: "var(--font-fraunces), serif" }}
-                  >
-                    {n.title}
-                  </h3>
-                  <p className="mt-1 text-sm leading-relaxed text-[#57534e]">
-                    {n.body}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </aside>
-        </div>
-
-        <section className="mt-12 grid grid-cols-1 gap-8 border-t-[3px] border-double border-[#1c1917] pt-8 md:grid-cols-3">
-          {[
-            ["Capture", "Thoughts arrive unannounced. One keystroke saves them before they vanish."],
-            ["Connect", "Every note can link to any other. Your ideas form a web, not a pile."],
-            ["Recall", "Search that understands. Find the note you half-remember by meaning, not keywords."],
-          ].map(([t, b]) => (
-            <article key={t} className="border-t border-[#1c1917] pt-3">
-              <h3
-                className="text-2xl font-black"
-                style={{ fontFamily: "var(--font-fraunces), serif" }}
+          <div className="archive__stack" aria-hidden="true">
+            {CARDS.map((card, i) => (
+              <article
+                key={card.no}
+                className="archive__card"
+                style={{
+                  transform: `rotate(${(i - 1) * 2.4}deg) translate(${(i - 1) * 10}px, ${(i - 1) * 14}px)`,
+                  zIndex: CARDS.length - i,
+                }}
               >
-                {t}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-[#57534e]">{b}</p>
-            </article>
-          ))}
+                <header className="archive__card-head">
+                  <span className="archive__card-no">Card {card.no}</span>
+                  <span className="archive__card-tag">{card.tag}</span>
+                </header>
+                <h2 className="archive__card-title">{card.title}</h2>
+                <p className="archive__card-body">{card.body}</p>
+                <footer className="archive__card-foot">
+                  <span>Linked to 3 notes</span>
+                  <span>Filed Oct 04</span>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="archive__method" id="method">
+          <div className="archive__method-grid">
+            <div className="archive__method-intro">
+              <h2 className="archive__h2">The method</h2>
+              <p>
+                No folders to maintain. No taxonomy to design. Three moves, and
+                the archive tends itself.
+              </p>
+            </div>
+            <ol className="archive__steps">
+              <li className="archive__step">
+                <span className="archive__step-no">I.</span>
+                <div>
+                  <h3>Capture</h3>
+                  <p>
+                    One inbox, zero friction. A thought takes half a second to
+                    file — quick notes, voice memos, clipped articles.
+                  </p>
+                </div>
+              </li>
+              <li className="archive__step">
+                <span className="archive__step-no">II.</span>
+                <div>
+                  <h3>Connect</h3>
+                  <p>
+                    Link a new note to an old one the moment you see the
+                    resemblance. The links are the brain.
+                  </p>
+                </div>
+              </li>
+              <li className="archive__step">
+                <span className="archive__step-no">III.</span>
+                <div>
+                  <h3>Rediscover</h3>
+                  <p>
+                    Search that understands you. Ask in plain language and the
+                    archive surfaces the note you half-remember.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </section>
+
+        <section className="archive__ledger" id="ledger">
+          <div className="archive__ledger-head">
+            <h2 className="archive__h2">From the ledger</h2>
+            <p>Recently filed, recently linked.</p>
+          </div>
+          <ul className="archive__rows">
+            {LEDGER.map((row) => (
+              <li key={row.no} className="archive__row">
+                <span className="archive__row-no">{row.no}</span>
+                <span className="archive__row-title">{row.title}</span>
+                <span className="archive__row-tag">{row.tag}</span>
+                <span className="archive__row-date">{row.date}</span>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="archive__start" id="start">
+          <h2 className="archive__start-title">Begin with a single note.</h2>
+          <p className="archive__start-copy">
+            The archive grows one card at a time. Yours starts empty, and that
+            is the point.
+          </p>
+          <form className="archive__form" action="#start">
+            <label className="archive__label" htmlFor="archive-email">
+              Where we send your first card
+            </label>
+            <div className="archive__form-row">
+              <input
+                id="archive-email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="archive__input"
+              />
+              <button type="submit" className="archive__cta">
+                Create my archive
+              </button>
+            </div>
+          </form>
         </section>
       </main>
 
-      <footer className="mx-auto max-w-6xl border-t border-[#1c1917] px-6 py-6 text-center font-mono text-xs uppercase tracking-widest text-[#78716c]">
-        Mnemos — set in Fraunces &amp; Newsreader — print your thoughts
+      <footer className="archive__footer">
+        <span>Mnemosyne — the memory keeper</span>
+        <span>Iteration 01 · The Archive</span>
       </footer>
     </div>
   );

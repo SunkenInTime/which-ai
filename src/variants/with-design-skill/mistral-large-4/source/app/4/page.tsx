@@ -1,133 +1,141 @@
 import type { Metadata } from "next";
-import Link from "next/link";
-import { Archivo } from "next/font/google";
-
-const archivo = Archivo({
-  subsets: ["latin"],
-  weight: ["400", "500", "700", "900"],
-  variable: "--font-archivo",
-});
+import "@/generated/scoped-variant-css/with-design-skill/mistral-large-4/source/app/4/modernist.css";
 
 export const metadata: Metadata = {
-  title: "Mnemos — Grid",
+  title: "Mnemosyne — The Modernist",
+  description:
+    "A second brain built on a grid. Capture, connect, retrieve — in that order, on the line.",
 };
 
-const features = [
-  { n: "01", t: "Capture", d: "Every thought, one keystroke away. No folders, no filing decisions." },
-  { n: "02", t: "Connect", d: "Notes link to notes. Structure emerges from use, not upfront planning." },
-  { n: "03", t: "Recall", d: "Full-text search across everything you have ever written. Instant." },
+const PRINCIPLES = [
+  {
+    no: "01",
+    title: "One inbox",
+    body: "Everything lands in a single capture field. No folders, no filing decisions, no friction at the moment of thought.",
+  },
+  {
+    no: "02",
+    title: "Links over hierarchy",
+    body: "Structure emerges from connections, not containers. A note is defined by what it points to.",
+  },
+  {
+    no: "03",
+    title: "Retrieval by recall",
+    body: "Search the way you remember: half a phrase, a feeling, a Tuesday. The grid underneath does the rest.",
+  },
 ];
 
-export default function Grid() {
+const SPECS = [
+  ["Latency, capture to saved", "< 90 ms"],
+  ["Notes linked per brain, median", "1,400"],
+  ["Offline", "Full"],
+  ["Export", "Plain text, always"],
+  ["Price", "Free while in beta"],
+];
+
+export default function ModernistPage() {
   return (
-    <div
-      className={`${archivo.variable} min-h-full bg-white text-black`}
-      style={{ fontFamily: "var(--font-archivo), Helvetica, Arial, sans-serif" }}
-    >
-      <header className="border-b-2 border-black">
-        <div className="mx-auto grid max-w-6xl grid-cols-12 items-center px-6 py-5">
-          <div className="col-span-4 flex items-baseline gap-3">
-            <span className="text-2xl font-black tracking-tighter">MNEMOS®</span>
-          </div>
-          <nav className="col-span-5 flex gap-6 text-sm font-medium uppercase tracking-wide">
-            <Link href="#" className="hover:text-[#e30613]">Capture</Link>
-            <Link href="#" className="hover:text-[#e30613]">Connect</Link>
-            <Link href="#" className="hover:text-[#e30613]">Recall</Link>
-          </nav>
-          <div className="col-span-3 text-right">
-            <Link
-              href="#"
-              className="bg-[#e30613] px-4 py-2 text-sm font-bold uppercase tracking-wide text-white hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#e30613]"
-            >
-              Start free
-            </Link>
-          </div>
-        </div>
+    <div className="mod">
+      <div className="mod__thread" aria-hidden="true" />
+
+      <header className="mod__masthead">
+        <div className="mod__brand">Mnemosyne</div>
+        <div className="mod__issue">Second brain · Grid edition · No. 04</div>
+        <nav className="mod__nav" aria-label="Primary">
+          <a href="#system">System</a>
+          <a href="#specs">Specs</a>
+          <a href="#order">Order</a>
+        </nav>
       </header>
 
-      <main className="mx-auto max-w-6xl px-6">
-        <section className="grid grid-cols-12 border-b-2 border-black py-16">
-          <div className="col-span-12 lg:col-span-8">
-            <h1 className="text-6xl font-black leading-[0.95] tracking-tighter md:text-8xl">
-              THINK.
+      <main>
+        <section className="mod__hero">
+          <div className="mod__hero-left">
+            <h1 className="mod__title">
+              THINKING,
               <br />
-              LINK.
-              <br />
-              <span className="text-[#e30613]">REMEMBER.</span>
+              ON A GRID.
             </h1>
           </div>
-          <div className="col-span-12 mt-8 lg:col-span-4 lg:mt-0 lg:border-l-2 lg:border-black lg:pl-8">
-            <p className="text-lg leading-snug">
-              Mnemos is a second brain with one rule: nothing gets filed away.
-              Capture, connect, recall — in that order, every time.
+          <div className="mod__hero-right">
+            <p className="mod__lede">
+              Mnemosyne is a second brain with the discipline of a grid and the
+              reach of a network. Capture a thought in one field. Link it to
+              what you already know. Retrieve it by remembering, not by filing.
             </p>
-            <p className="mt-6 text-sm font-medium uppercase tracking-wide text-[#e30613]">
-              Free while in beta
-            </p>
+            <div className="mod__actions">
+              <a className="mod__cta" href="#order">
+                Start a brain
+              </a>
+              <a className="mod__ghost" href="#system">
+                Read the system
+              </a>
+            </div>
           </div>
         </section>
 
-        <section className="grid grid-cols-12 gap-0 border-b-2 border-black">
-          {features.map((f) => (
-            <article
-              key={f.n}
-              className="col-span-12 border-b-2 border-black p-8 md:col-span-4 md:border-b-0 md:border-r-2 md:last:border-r-0"
-            >
-              <span className="font-mono text-sm font-bold text-[#e30613]">
-                {f.n}
-              </span>
-              <h2 className="mt-4 text-3xl font-black tracking-tight">{f.t}</h2>
-              <p className="mt-3 leading-relaxed text-zinc-700">{f.d}</p>
-            </article>
-          ))}
-        </section>
-
-        <section className="grid grid-cols-12 items-center border-b-2 border-black py-16">
-          <div className="col-span-12 md:col-span-5">
-            <p className="text-[12rem] font-black leading-none tracking-tighter text-[#e30613]">
-              0
-            </p>
-            <p className="-mt-4 text-sm font-bold uppercase tracking-widest">
-              Folders required
-            </p>
+        <section className="mod__system" id="system">
+          <div className="mod__section-head">
+            <span className="mod__section-no">A</span>
+            <h2 className="mod__h2">The system</h2>
+            <p className="mod__section-note">Three operations. No more.</p>
           </div>
-          <div className="col-span-12 mt-8 md:col-span-7 md:pl-8">
-            <p className="text-2xl font-medium leading-tight md:text-3xl">
-              “The best way to organize a second brain is not to organize it at
-              all. Let the links do the work.”
-            </p>
-            <p className="mt-4 text-sm uppercase tracking-wide text-zinc-500">
-              — The Mnemos principle, №1
-            </p>
+          <div className="mod__principles">
+            {PRINCIPLES.map((p) => (
+              <article key={p.no} className="mod__principle">
+                <span className="mod__principle-no">{p.no}</span>
+                <h3 className="mod__principle-title">{p.title}</h3>
+                <p className="mod__principle-body">{p.body}</p>
+              </article>
+            ))}
           </div>
         </section>
 
-        <section className="grid grid-cols-12 py-16">
-          <div className="col-span-12 md:col-span-8">
-            <h2 className="text-4xl font-black tracking-tight md:text-5xl">
-              Ready when you are.
-            </h2>
-            <p className="mt-4 max-w-md text-zinc-700">
-              Join the beta. Import your existing notes in one step. Keep
-              everything you have already written.
-            </p>
+        <section className="mod__specs" id="specs">
+          <div className="mod__section-head">
+            <span className="mod__section-no">B</span>
+            <h2 className="mod__h2">Specifications</h2>
+            <p className="mod__section-note">Measured, not promised.</p>
           </div>
-          <div className="col-span-12 mt-8 md:col-span-4 md:text-right">
-            <Link
-              href="#"
-              className="inline-block bg-black px-8 py-4 text-sm font-bold uppercase tracking-wide text-white hover:bg-[#e30613] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Get Mnemos
-            </Link>
+          <dl className="mod__spec-list">
+            {SPECS.map(([term, value]) => (
+              <div key={term} className="mod__spec-row">
+                <dt className="mod__spec-term">{term}</dt>
+                <dd className="mod__spec-value">{value}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+
+        <section className="mod__order" id="order">
+          <div className="mod__section-head mod__section-head--dark">
+            <span className="mod__section-no">C</span>
+            <h2 className="mod__h2">Begin</h2>
+            <p className="mod__section-note">The grid is waiting.</p>
           </div>
+          <form className="mod__form" action="#order">
+            <label className="mod__label" htmlFor="mod-email">
+              Email for the beta key
+            </label>
+            <div className="mod__form-row">
+              <input
+                id="mod-email"
+                type="email"
+                required
+                placeholder="you@example.com"
+                className="mod__input"
+              />
+              <button type="submit" className="mod__cta">
+                Reserve a grid
+              </button>
+            </div>
+          </form>
         </section>
       </main>
 
-      <footer className="border-t-2 border-black">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 text-xs font-medium uppercase tracking-widest">
-          <span>Mnemos — Second brain systems</span>
-          <span className="text-[#e30613]">Grid 12 / Col 6 / Gutter 24</span>
-        </div>
+      <footer className="mod__footer">
+        <span>Mnemosyne — set in Archivo</span>
+        <span>Iteration 04 · The Modernist</span>
       </footer>
     </div>
   );

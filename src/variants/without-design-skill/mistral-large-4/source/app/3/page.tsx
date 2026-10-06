@@ -1,123 +1,216 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Jotter — A Notebook That Feels Like Paper",
-  description: "Warm, personal note-taking for lifelong thinkers.",
-};
-
-export default function VersionThree() {
+export default function Page() {
   return (
-    <div
-      className="min-h-screen bg-[#F5EFE3] text-[#3B3226]"
-      style={{ fontFamily: "Georgia, 'Times New Roman', serif" }}
-    >
-
-      <header className="mx-auto flex max-w-4xl items-center justify-between px-8 py-8">
-        <span className="text-2xl italic tracking-tight">Jotter</span>
-        <nav className="hidden gap-8 text-sm md:flex">
-          <a href="#feel" className="hover:underline">The feel</a>
-          <a href="#habit" className="hover:underline">The habit</a>
-          <a href="#start" className="hover:underline">Begin</a>
+    <main className="flex min-h-screen flex-col bg-gradient-to-b from-violet-100 via-rose-50 to-amber-50 text-zinc-900">
+      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-6">
+        <span className="flex items-center gap-2 text-lg font-extrabold tracking-tight">
+          <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-violet-500 to-fuchsia-500 text-sm text-white shadow-md">
+            🧠
+          </span>
+          Mindscape
+        </span>
+        <nav className="hidden items-center gap-8 text-sm font-medium text-zinc-600 md:flex">
+          <a href="#features" className="hover:text-zinc-900">Features</a>
+          <a href="#magic" className="hover:text-zinc-900">The magic</a>
+          <a href="#love" className="hover:text-zinc-900">Loved by</a>
         </nav>
-        <a
-          href="#start"
-          className="rounded-full border border-[#3B3226] px-5 py-2 text-sm italic transition-colors hover:bg-[#3B3226] hover:text-[#F5EFE3]"
+        <Link
+          href="./3"
+          className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-fuchsia-500/30 transition-transform hover:scale-105"
         >
-          Open a notebook
-        </a>
+          Try it free
+        </Link>
       </header>
 
-      <main className="mx-auto max-w-4xl px-8">
-        <section className="py-20 text-center md:py-32">
-          <p className="mb-6 text-sm uppercase tracking-[0.25em] text-[#8A7B5E]">
-            Notes, the slow way
-          </p>
-          <h1 className="text-5xl leading-[1.1] tracking-tight md:text-6xl">
-            A notebook that
-            <br />
-            <span className="italic text-[#8A7B5E]">feels like paper</span>
-          </h1>
-          <p className="mx-auto mt-8 max-w-xl text-lg leading-relaxed text-[#6B5D45]">
-            Jotter is a quiet place for your thoughts — lined pages, ink-dark
-            text, and nothing between you and the next sentence. Your second
-            brain, bound in something beautiful.
-          </p>
-          <div className="mt-10">
-            <a
-              href="#start"
-              className="inline-block rounded-full bg-[#3B3226] px-8 py-3 text-sm text-[#F5EFE3] shadow-md transition-colors hover:bg-[#57493A]"
+      <section className="mx-auto flex w-full max-w-6xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
+        <span className="rounded-full bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-violet-600 shadow-sm backdrop-blur">
+          Meet your second brain
+        </span>
+        <h1 className="mt-8 max-w-4xl text-5xl font-extrabold leading-[1.05] tracking-tight md:text-7xl">
+          Never lose a{" "}
+          <span className="relative whitespace-nowrap">
+            <span className="relative z-10 bg-gradient-to-r from-violet-600 via-fuchsia-500 to-amber-500 bg-clip-text text-transparent">
+              great idea
+            </span>
+            <svg
+              aria-hidden
+              viewBox="0 0 220 14"
+              className="absolute -bottom-2 left-0 h-3 w-full text-amber-400"
+              fill="none"
             >
-              Start your first page
-            </a>
-          </div>
-
-          <div className="mx-auto mt-16 max-w-2xl rounded-sm border border-[#D8CBB0] bg-[#FBF7EE] p-8 text-left shadow-lg">
-            <div
-              className="space-y-4 text-[#4A3F2E] leading-[2rem]"
-              style={{
-                backgroundImage:
-                  "repeating-linear-gradient(to bottom, transparent, transparent 1.95rem, #E4D9C0 1.95rem, #E4D9C0 2rem)",
-              }}
-            >
-              <p className="text-lg italic">October 6th —</p>
-              <p className="text-lg">
-                The garden is finally quiet after the rain. I keep thinking
-                about what Maya said: “a note is a letter to your future
-                self.”
-              </p>
-              <p className="text-lg">
-                Tomorrow: call the printer. Finish the essay on memory.
-                Water the fig tree.
-              </p>
-            </div>
-            <div className="mt-6 flex items-center justify-between border-t border-[#D8CBB0] pt-4 text-xs uppercase tracking-widest text-[#8A7B5E]">
-              <span>Page 42</span>
-              <span>Linked: 3 journal entries</span>
-            </div>
-          </div>
-        </section>
-
-        <section id="feel" className="grid gap-10 border-t border-[#D8CBB0] py-20 md:grid-cols-2">
-          <div>
-            <h2 className="text-3xl italic">Designed to be read slowly</h2>
-            <p className="mt-4 leading-relaxed text-[#6B5D45]">
-              Warm paper tones, generous margins, and typography that respects
-              the reader. Jotter doesn&apos;t shout. It waits, patient, like a good
-              notebook always has.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-3xl italic">Collections, not folders</h2>
-            <p className="mt-4 leading-relaxed text-[#6B5D45]">
-              Gather notes into leather-bound collections — a project, a
-              semester, a novel. Each one opens like a book you actually want
-              to finish.
-            </p>
-          </div>
-        </section>
-
-        <section id="habit" className="border-t border-[#D8CBB0] py-20 text-center">
-          <h2 className="text-4xl italic">A ritual, not a chore</h2>
-          <p className="mx-auto mt-6 max-w-lg leading-relaxed text-[#6B5D45]">
-            Morning pages, evening reviews, ideas captured on napkins and
-            typed up over coffee. Jotter keeps the habit — you keep the
-            thinking.
-          </p>
-          <a
-            href="#start"
-            className="mt-10 inline-block rounded-full border border-[#3B3226] px-8 py-3 text-sm italic transition-colors hover:bg-[#3B3226] hover:text-[#F5EFE3]"
+              <path
+                d="M3 10 C 60 2, 160 2, 217 8"
+                stroke="currentColor"
+                strokeWidth="5"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>{" "}
+          again
+        </h1>
+        <p className="mt-6 max-w-2xl text-lg leading-relaxed text-zinc-600">
+          Mindscape is the friendly home for your thoughts. Capture a note in
+          seconds, and let your second brain connect, organize, and remind you
+          — automatically.
+        </p>
+        <div className="mt-10 flex flex-wrap justify-center gap-4">
+          <Link
+            href="./3"
+            className="rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-500 px-8 py-3.5 text-sm font-bold text-white shadow-xl shadow-fuchsia-500/30 transition-transform hover:scale-105"
           >
-            Begin journaling
+            Start capturing — it&apos;s free
+          </Link>
+          <a
+            href="#magic"
+            className="rounded-full border-2 border-violet-200 bg-white/70 px-8 py-3.5 text-sm font-bold text-violet-700 backdrop-blur transition-colors hover:border-violet-400"
+          >
+            See the magic ✨
           </a>
-        </section>
-      </main>
+        </div>
+        <div className="mt-8 flex items-center gap-3 text-sm text-zinc-500">
+          <div className="flex -space-x-2">
+            {["bg-violet-400", "bg-fuchsia-400", "bg-amber-400", "bg-rose-400"].map(
+              (c) => (
+                <span
+                  key={c}
+                  className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-white text-xs font-bold text-white ${c}`}
+                >
+                  {c[3].toUpperCase()}
+                </span>
+              )
+            )}
+          </div>
+          <span>Joined by 40,000+ curious minds</span>
+        </div>
+      </section>
 
-      <footer className="border-t border-[#D8CBB0] py-10">
-        <div className="mx-auto flex max-w-4xl items-center justify-between px-8 text-sm text-[#8A7B5E]">
-          <span className="text-lg italic text-[#3B3226]">Jotter</span>
-          <span>© 2026 Jotter — Write it down, remember it always.</span>
+      <section id="features" className="mx-auto w-full max-w-6xl px-6 pb-24">
+        <div className="grid gap-6 md:grid-cols-3">
+          {[
+            {
+              emoji: "⚡",
+              color: "from-violet-400 to-violet-600",
+              title: "Capture in a heartbeat",
+              body: "Ideas move fast. Mindscape moves faster — one tap and your thought is safe.",
+            },
+            {
+              emoji: "🕸️",
+              color: "from-fuchsia-400 to-fuchsia-600",
+              title: "Ideas that find each other",
+              body: "Notes link themselves into a web of insight. You just write; your brain does the rest.",
+            },
+            {
+              emoji: "🔮",
+              color: "from-amber-400 to-amber-600",
+              title: "Remember anything",
+              body: "Describe it in your own words. Semantic search finds the note, even years later.",
+            },
+          ].map((f) => (
+            <div
+              key={f.title}
+              className="rounded-3xl bg-white/80 p-7 shadow-lg shadow-violet-500/10 backdrop-blur transition-transform hover:-translate-y-1"
+            >
+              <span
+                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${f.color} text-2xl shadow-md`}
+              >
+                {f.emoji}
+              </span>
+              <h3 className="mt-4 text-lg font-bold">{f.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-600">{f.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="magic" className="mx-auto w-full max-w-6xl px-6 pb-24">
+        <div className="rounded-[2rem] bg-gradient-to-br from-violet-500 via-fuchsia-500 to-amber-400 p-1 shadow-2xl shadow-fuchsia-500/20">
+          <div className="rounded-[1.8rem] bg-white/95 p-10 md:p-16">
+            <div className="grid items-center gap-12 md:grid-cols-2">
+              <div>
+                <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
+                  The magic is in the remembering
+                </h2>
+                <p className="mt-4 leading-relaxed text-zinc-600">
+                  Every note you save becomes part of a living memory. Ask
+                  Mindscape &quot;what did I decide about the launch?&quot; and
+                  watch the right note surface — context, date, and all.
+                </p>
+                <Link
+                  href="./3"
+                  className="mt-8 inline-block rounded-full bg-zinc-900 px-7 py-3 text-sm font-bold text-white transition-transform hover:scale-105"
+                >
+                  Build your second brain
+                </Link>
+              </div>
+              <div
+                aria-hidden
+                className="rounded-2xl bg-gradient-to-br from-violet-100 to-fuchsia-100 p-6"
+              >
+                <div className="space-y-3">
+                  {[
+                    { t: "Ideas for the keynote", d: "outline · 2 days ago", c: "bg-violet-200" },
+                    { t: "Coffee with Sam — follow up", d: "reminder · today", c: "bg-fuchsia-200" },
+                    { t: "Book notes: Thinking, Fast and Slow", d: "12 highlights", c: "bg-amber-200" },
+                  ].map((n) => (
+                    <div
+                      key={n.t}
+                      className="flex items-center gap-3 rounded-xl bg-white p-4 shadow-sm"
+                    >
+                      <span className={`h-9 w-9 rounded-lg ${n.c}`} />
+                      <div>
+                        <p className="text-sm font-semibold">{n.t}</p>
+                        <p className="text-xs text-zinc-400">{n.d}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="love" className="mx-auto w-full max-w-6xl px-6 pb-24 text-center">
+        <h2 className="text-3xl font-extrabold tracking-tight">
+          Loved by curious minds
+        </h2>
+        <div className="mt-10 grid gap-6 md:grid-cols-3">
+          {[
+            {
+              q: "I stopped losing ideas the day I switched. It feels like my brain, but searchable.",
+              a: "Priya, product designer",
+            },
+            {
+              q: "My notes finally talk to each other. The auto-linking is uncanny.",
+              a: "Marco, PhD student",
+            },
+            {
+              q: "It's the first notes app I've kept for more than a month.",
+              a: "June, writer",
+            },
+          ].map((t) => (
+            <figure
+              key={t.a}
+              className="rounded-3xl bg-white/80 p-7 text-left shadow-lg shadow-violet-500/10 backdrop-blur"
+            >
+              <blockquote className="text-sm leading-relaxed text-zinc-700">
+                &ldquo;{t.q}&rdquo;
+              </blockquote>
+              <figcaption className="mt-4 text-xs font-semibold uppercase tracking-widest text-violet-500">
+                {t.a}
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <footer className="border-t border-violet-200/60">
+        <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-8 text-sm text-zinc-500">
+          <span>© 2026 Mindscape — think happy 🧠</span>
+          <span>Version 3 · Bloom</span>
         </div>
       </footer>
-    </div>
+    </main>
   );
 }

@@ -1,136 +1,102 @@
-import type { Metadata } from "next";
+import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Mnemos — Your Second Brain",
-  description: "A calm home for every thought.",
-};
-
-export default function VersionOne() {
+export default function Page() {
   return (
-    <div className="min-h-screen bg-[#FAF9F6] text-zinc-900">
-
-      <header className="mx-auto flex max-w-5xl items-center justify-between px-8 py-8">
-        <span className="font-serif text-2xl tracking-tight">Mnemos</span>
-        <nav className="hidden gap-8 text-sm text-zinc-500 md:flex">
-          <a href="#ideas" className="hover:text-zinc-900">Ideas</a>
-          <a href="#memory" className="hover:text-zinc-900">Memory</a>
-          <a href="#writing" className="hover:text-zinc-900">Writing</a>
+    <main className="flex min-h-screen flex-col bg-white text-zinc-900">
+      <header className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-6">
+        <span className="text-lg font-semibold tracking-tight">Mindscape</span>
+        <nav className="flex items-center gap-6 text-sm text-zinc-500">
+          <a href="#features" className="hover:text-zinc-900">Features</a>
+          <a href="#how" className="hover:text-zinc-900">How it works</a>
+          <Link
+            href="./1"
+            className="rounded-full bg-zinc-900 px-4 py-2 text-white hover:bg-zinc-700"
+          >
+            Get started
+          </Link>
         </nav>
-        <a
-          href="#start"
-          className="rounded-full border border-zinc-900 px-5 py-2 text-sm font-medium transition-colors hover:bg-zinc-900 hover:text-white"
-        >
-          Start free
-        </a>
       </header>
 
-      <main className="mx-auto max-w-5xl px-8">
-        <section className="py-24 md:py-36">
-          <p className="mb-6 text-sm font-medium uppercase tracking-[0.2em] text-zinc-400">
-            A second brain, finally quiet
-          </p>
-          <h1 className="font-serif text-5xl leading-[1.05] tracking-tight md:text-7xl">
-            Every thought,
-            <br />
-            <em className="italic text-zinc-500">kept.</em>
-          </h1>
-          <p className="mt-8 max-w-xl text-lg leading-relaxed text-zinc-500">
-            Mnemos is a note-taking app built like a mind: ideas link to ideas,
-            nothing is ever lost, and everything is exactly where you left it.
-          </p>
-          <div className="mt-10 flex gap-4">
-            <a
-              href="#start"
-              className="rounded-full bg-zinc-900 px-7 py-3 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
-            >
-              Start capturing
-            </a>
-            <a
-              href="#ideas"
-              className="rounded-full border border-zinc-300 px-7 py-3 text-sm font-medium transition-colors hover:border-zinc-900"
-            >
-              See how it works
-            </a>
-          </div>
-        </section>
+      <section className="mx-auto flex w-full max-w-5xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
+        <p className="mb-4 text-sm font-medium uppercase tracking-widest text-zinc-400">
+          Your second brain
+        </p>
+        <h1 className="max-w-3xl text-5xl font-semibold leading-tight tracking-tight md:text-6xl">
+          Thinking, organized.
+        </h1>
+        <p className="mt-6 max-w-xl text-lg leading-relaxed text-zinc-500">
+          Mindscape captures every note, connects every idea, and helps you
+          rediscover what you already know. No folders to maintain. No
+          thoughts lost.
+        </p>
+        <div className="mt-10 flex gap-4">
+          <Link
+            href="./1"
+            className="rounded-full bg-zinc-900 px-6 py-3 text-sm font-medium text-white hover:bg-zinc-700"
+          >
+            Start free
+          </Link>
+          <a
+            href="#how"
+            className="rounded-full border border-zinc-200 px-6 py-3 text-sm font-medium text-zinc-700 hover:border-zinc-400"
+          >
+            See how it works
+          </a>
+        </div>
+      </section>
 
-        <section id="ideas" className="grid gap-12 border-t border-zinc-200 py-20 md:grid-cols-3">
+      <section
+        id="features"
+        className="mx-auto w-full max-w-5xl px-6 pb-24"
+      >
+        <div className="grid gap-8 md:grid-cols-3">
           {[
             {
-              title: "Capture at the speed of thought",
-              body: "A single keystroke opens a fresh note. No folders to decide on, no friction — just you and the idea.",
+              title: "Capture instantly",
+              body: "Jot ideas the moment they arrive — text, links, images, and voice memos land in one inbox.",
             },
             {
-              title: "Ideas find each other",
-              body: "Backlinks form automatically. Mnemos surfaces related notes so your thinking connects itself.",
+              title: "Connect automatically",
+              body: "Mindscape links related notes for you, so your thinking builds a web instead of a pile.",
             },
             {
-              title: "Recall anything, instantly",
-              body: "Search across every note, image, and scribble. If you wrote it, you'll find it in seconds.",
+              title: "Recall effortlessly",
+              body: "Search by meaning, not keywords. Ask a question and find the note you half-remember.",
             },
           ].map((f) => (
-            <div key={f.title}>
-              <div className="mb-4 h-px w-10 bg-zinc-900" />
-              <h3 className="font-serif text-2xl">{f.title}</h3>
-              <p className="mt-3 leading-relaxed text-zinc-500">{f.body}</p>
+            <div key={f.title} className="rounded-2xl border border-zinc-100 p-6">
+              <h3 className="text-base font-semibold">{f.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-zinc-500">{f.body}</p>
             </div>
           ))}
-        </section>
-
-        <section id="memory" className="border-t border-zinc-200 py-20">
-          <div className="grid items-center gap-12 md:grid-cols-2">
-            <div>
-              <h2 className="font-serif text-4xl leading-tight">
-                Memory that outlasts the moment
-              </h2>
-              <p className="mt-6 leading-relaxed text-zinc-500">
-                Daily notes, project docs, half-formed ideas at 2am — Mnemos
-                keeps all of it in one flowing timeline, tagged and searchable
-                forever.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
-              <div className="mb-4 flex gap-2">
-                <span className="h-3 w-3 rounded-full bg-zinc-300" />
-                <span className="h-3 w-3 rounded-full bg-zinc-300" />
-                <span className="h-3 w-3 rounded-full bg-zinc-300" />
-              </div>
-              <p className="font-serif text-xl">The meeting notes</p>
-              <p className="mt-3 text-sm leading-relaxed text-zinc-500">
-                Q3 roadmap — ship the sync engine first. Talk to Priya about
-                the onboarding flow. Remember to look at the churn dashboard
-                before Friday. [[See: Q2 retro]]
-              </p>
-              <div className="mt-4 inline-block rounded-full bg-zinc-100 px-3 py-1 text-xs text-zinc-500">
-                linked to 12 other notes
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="start" className="border-t border-zinc-200 py-24 text-center">
-          <h2 className="font-serif text-4xl md:text-5xl">
-            Begin your second brain today
-          </h2>
-          <p className="mx-auto mt-6 max-w-md text-zinc-500">
-            Free for personal use. No credit card, no clutter — just a quieter
-            place to think.
-          </p>
-          <a
-            href="#top"
-            className="mt-10 inline-block rounded-full bg-zinc-900 px-8 py-4 text-sm font-medium text-white transition-colors hover:bg-zinc-700"
-          >
-            Get Mnemos free
-          </a>
-        </section>
-      </main>
-
-      <footer className="border-t border-zinc-200 py-10">
-        <div className="mx-auto flex max-w-5xl items-center justify-between px-8 text-sm text-zinc-400">
-          <span className="font-serif text-lg text-zinc-900">Mnemos</span>
-          <span>© 2026 Mnemos — Think once, remember forever.</span>
         </div>
+      </section>
+
+      <section id="how" className="border-t border-zinc-100 bg-zinc-50">
+        <div className="mx-auto w-full max-w-5xl px-6 py-24">
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Three steps to a clearer mind
+          </h2>
+          <ol className="mt-10 grid gap-8 md:grid-cols-3">
+            {[
+              ["01", "Capture", "Dump everything into your inbox. No structure required."],
+              ["02", "Connect", "Mindscape suggests links between your notes as you write."],
+              ["03", "Recall", "Search, browse your graph, or ask — your second brain answers."],
+            ].map(([n, t, d]) => (
+              <li key={n}>
+                <span className="text-sm font-medium text-zinc-400">{n}</span>
+                <h3 className="mt-2 text-lg font-semibold">{t}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-zinc-500">{d}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <footer className="mx-auto flex w-full max-w-5xl items-center justify-between px-6 py-8 text-sm text-zinc-400">
+        <span>Mindscape — think once, remember forever.</span>
+        <span>Version 1 · Minimal</span>
       </footer>
-    </div>
+    </main>
   );
 }
