@@ -7,6 +7,7 @@ export type GalleryGroupSlug =
   | "without-design-skill"
   | "miscellaneous";
 export type ModelSlug =
+  | "mistral-large-4"
   | "union-alpha"
   | "mimo-x-flash-preview"
   | "mimo-x-pro-preview"

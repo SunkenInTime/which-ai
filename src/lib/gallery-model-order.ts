@@ -2,6 +2,7 @@ import { sortGalleryEntriesNewFirst } from "@/lib/gallery-recency";
 import type { GalleryEntry, ModelSlug } from "@/lib/gallery-types";
 
 const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }> = {
+  "mistral-large-4": { familyOrder: 10, tier: 4 },
   "union-alpha": { familyOrder: 9, tier: 1 },
   "mimo-x-flash-preview": { familyOrder: 8, tier: 0 },
   "mimo-x-pro-preview": { familyOrder: 8, tier: 1 },

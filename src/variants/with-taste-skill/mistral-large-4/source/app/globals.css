@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-brutal: var(--font-space-mono), monospace;
+  --font-display: var(--font-archivo-black), sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Preserve source font utilities inside this gallery variant. */
+.font-sans { font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif; }
+.font-mono { font-family: var(--font-geist-mono), ui-monospace, monospace; }
+.font-serif { font-family: var(--font-instrument-serif), Georgia, serif; }
+.font-brutal { font-family: var(--font-space-mono), monospace; }
+.font-display { font-family: var(--font-archivo-black), sans-serif; }
+
+.mistral-fonts {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
+  --font-brutal: var(--font-space-mono), monospace;
+  --font-display: var(--font-archivo-black), sans-serif;
+}

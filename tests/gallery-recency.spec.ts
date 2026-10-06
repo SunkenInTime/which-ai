@@ -13,7 +13,7 @@ import {
 import type { GalleryEntry } from "@/lib/gallery-types";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const GROK_47_ADDED = isoDateToUtcMs("2026-09-21");
+const MISTRAL_ADDED = isoDateToUtcMs("2026-10-06");
 
 function groupEntries(group: GalleryEntry["group"]) {
   return galleryManifest.filter((entry) => entry.group === group);
@@ -28,28 +28,28 @@ test.describe("gallery recency data", () => {
   });
 
   test("formats added dates in UTC", () => {
-    expect(formatGalleryAddedDate("2026-09-21")).toBe("Sep 21");
+    expect(formatGalleryAddedDate("2026-10-06")).toBe("Oct 6");
     expect(formatGalleryAddedDate("2026-03-01")).toBe("Mar 1");
   });
 });
 
 test.describe("new-arrival policy", () => {
-  test("Grok 4.7 is new on the day it landed and expires after the window", () => {
+  test("Mistral Large 4 is new on the day it landed and expires after the window", () => {
     const entries = groupEntries("with-design-skill");
-    const grok = entries.find((entry) => entry.model === "grok-4.7")!;
+    const mistral = entries.find((entry) => entry.model === "mistral-large-4")!;
 
-    expect(getGalleryEntryNewArrival(entries, grok, GROK_47_ADDED)).toBe("2026-09-21");
-    const lastDay = GROK_47_ADDED + (NEW_ARRIVAL_WINDOW_DAYS - 1) * DAY_MS;
-    expect(getGalleryEntryNewArrival(entries, grok, lastDay)).toBe("2026-09-21");
-    const expired = GROK_47_ADDED + NEW_ARRIVAL_WINDOW_DAYS * DAY_MS;
-    expect(getGalleryEntryNewArrival(entries, grok, expired)).toBeNull();
+    expect(getGalleryEntryNewArrival(entries, mistral, MISTRAL_ADDED)).toBe("2026-10-06");
+    const lastDay = MISTRAL_ADDED + (NEW_ARRIVAL_WINDOW_DAYS - 1) * DAY_MS;
+    expect(getGalleryEntryNewArrival(entries, mistral, lastDay)).toBe("2026-10-06");
+    const expired = MISTRAL_ADDED + NEW_ARRIVAL_WINDOW_DAYS * DAY_MS;
+    expect(getGalleryEntryNewArrival(entries, mistral, expired)).toBeNull();
   });
 
   test("a future added date is not new", () => {
     const entries = groupEntries("with-design-skill");
-    const grok = entries.find((entry) => entry.model === "grok-4.7")!;
-    expect(getGalleryEntryNewArrival(entries, grok, GROK_47_ADDED - 1)).toBeNull();
-    expect(getGalleryEntryNewArrival(entries, grok, GROK_47_ADDED - 3 * DAY_MS)).toBeNull();
+    const mistral = entries.find((entry) => entry.model === "mistral-large-4")!;
+    expect(getGalleryEntryNewArrival(entries, mistral, MISTRAL_ADDED - 1)).toBeNull();
+    expect(getGalleryEntryNewArrival(entries, mistral, MISTRAL_ADDED - 3 * DAY_MS)).toBeNull();
   });
 
   test("archived entries are never new, even inside the window", () => {
@@ -68,14 +68,14 @@ test.describe("new-arrival policy", () => {
     }
   });
 
-  test("Sol 6, Opus 5.5, and Grok 4.7 are new in every group", () => {
+  test("only Mistral Large 4 is new in every group", () => {
     for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
       const entries = groupEntries(group);
       const fresh = entries
-        .filter((entry) => getGalleryEntryNewArrival(entries, entry, isoDateToUtcMs("2026-09-22")))
+        .filter((entry) => getGalleryEntryNewArrival(entries, entry, isoDateToUtcMs("2026-10-06")))
         .map((entry) => entry.model)
         .toSorted();
-      expect(fresh).toEqual(["grok-4.7", "opus-5.5", "sol-6"]);
+      expect(fresh).toEqual(["mistral-large-4"]);
     }
   });
 });
@@ -83,10 +83,10 @@ test.describe("new-arrival policy", () => {
 test.describe("home sort", () => {
   test("hoists new arrivals ahead of the family order, newest first", () => {
     const entries = groupEntries("with-design-skill");
-    const sorted = sortGalleryEntriesForHome(entries, { now: GROK_47_ADDED });
+    const sorted = sortGalleryEntriesForHome(entries, { now: MISTRAL_ADDED });
     const models = sorted.map((entry) => entry.model);
 
-    expect(models[0]).toBe("grok-4.7");
+    expect(models[0]).toBe("mistral-large-4");
     const rest = sorted.slice(1);
     expect(rest.map((entry) => entry.model)).toEqual(
       sortGalleryEntriesByFamily(rest).map((entry) => entry.model),
@@ -102,7 +102,7 @@ test.describe("home sort", () => {
 
   test("keeps the incoming order once every arrival has expired", () => {
     const entries = sortGalleryEntriesByFamily(groupEntries("without-design-skill"));
-    const farFuture = GROK_47_ADDED + 365 * DAY_MS;
+    const farFuture = MISTRAL_ADDED + 365 * DAY_MS;
     expect(sortGalleryEntriesNewFirst(entries, farFuture)).toEqual(entries);
   });
 });
@@ -142,19 +142,26 @@ test.describe("home page new-arrival treatment", () => {
   });
 });
 
-test("Luna 6 is new in its two completed groups on its addition date", () => {
+test("Luna 6 no longer has a new badge", () => {
   for (const group of ["with-design-skill", "without-design-skill"] as const) {
     const entries = groupEntries(group);
     const luna = entries.find((entry) => entry.model === "luna-6")!;
-    expect(getGalleryEntryNewArrival(entries, luna, isoDateToUtcMs("2026-09-23"))).not.toBeNull();
+    expect(getGalleryEntryNewArrival(entries, luna, isoDateToUtcMs("2026-09-23"))).toBeNull();
   }
   expect(groupEntries("with-taste-skill").some((entry) => entry.model === "luna-6")).toBe(false);
 });
 
-test("Sonnet 5.5 is new in every group on its addition date", () => {
+test("Sonnet 5.5 no longer has a new badge", () => {
   for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
     const entries = groupEntries(group);
     const sonnet = entries.find((entry) => entry.model === "sonnet-5.5")!;
-    expect(getGalleryEntryNewArrival(entries, sonnet, isoDateToUtcMs("2026-09-28"))).not.toBeNull();
+    expect(getGalleryEntryNewArrival(entries, sonnet, isoDateToUtcMs("2026-09-28"))).toBeNull();
+  }
+});
+
+test("all previous models stay unbadged even on their addition dates", () => {
+  for (const entry of galleryManifest.filter(entry => entry.model !== "mistral-large-4")) {
+    const date = getGalleryEntryAddedAt(entry)!;
+    expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
   }
 });

@@ -33,6 +33,21 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "without-design-skill", model: "mistral-large-4", iteration: "1" },
+  { group: "without-design-skill", model: "mistral-large-4", iteration: "2" },
+  { group: "without-design-skill", model: "mistral-large-4", iteration: "3" },
+  { group: "without-design-skill", model: "mistral-large-4", iteration: "4" },
+  { group: "without-design-skill", model: "mistral-large-4", iteration: "5" },
+  { group: "with-taste-skill", model: "mistral-large-4", iteration: "1" },
+  { group: "with-taste-skill", model: "mistral-large-4", iteration: "2" },
+  { group: "with-taste-skill", model: "mistral-large-4", iteration: "3" },
+  { group: "with-taste-skill", model: "mistral-large-4", iteration: "4" },
+  { group: "with-taste-skill", model: "mistral-large-4", iteration: "5" },
+  { group: "with-design-skill", model: "mistral-large-4", iteration: "1" },
+  { group: "with-design-skill", model: "mistral-large-4", iteration: "2" },
+  { group: "with-design-skill", model: "mistral-large-4", iteration: "3" },
+  { group: "with-design-skill", model: "mistral-large-4", iteration: "4" },
+  { group: "with-design-skill", model: "mistral-large-4", iteration: "5" },
   { group: "with-design-skill", model: "sonnet-5.5", iteration: "1" },
   { group: "with-design-skill", model: "sonnet-5.5", iteration: "2" },
   { group: "with-design-skill", model: "sonnet-5.5", iteration: "3" },

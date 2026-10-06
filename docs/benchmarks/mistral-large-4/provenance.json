@@ -1,0 +1,23 @@
+{
+  "model": "openrouter/mistralai/mistral-large-4-0",
+  "runner": "OpenCode 1.18.32",
+  "date": "2026-10-06",
+  "reasoning": "Provider default; endpoint exposes no reasoning-effort setting",
+  "sessions": "One fresh session per condition, five designs per session",
+  "sampling": "Provider defaults",
+  "skills": {
+    "frontend-design": "anthropics/skills@683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "design-taste-frontend": "Leonxlnx/taste-skill@ce26fc25c0e5e8cab638f883de62d9a86ee5e45b"
+  },
+  "integration_changes": [
+    "Scoped CSS and source font utilities",
+    "Replaced html/body with div wrappers",
+    "Bypassed source iteration switchers; gallery owns navigation",
+    "Made numeric self-links relative to preserve gallery and preview routes"
+  ],
+  "known_source_issues": [
+    "Design-skill iterations 3 and 4 overflow at 390px",
+    "Taste iteration 4 has two zero-height mobile image panels"
+  ],
+  "excluded_attempts": "Initial runs launched in the wrong directory were discarded; all measured runs restarted from identical clean starters."
+}

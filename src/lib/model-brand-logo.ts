@@ -6,6 +6,7 @@ export interface ModelBrandLogoPaths {
 }
 
 const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
+  "mistral-large-4": { light: "/mistral.svg" },
   "union-alpha": { light: "/anonymous-light.svg", dark: "/anonymous-dark.svg" },
   "mimo-x-flash-preview": { light: "/xiaomi.svg" },
   "mimo-x-pro-preview": { light: "/xiaomi.svg" },
