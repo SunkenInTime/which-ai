@@ -32,7 +32,7 @@ export function resolveBin(bin) {
 // Drop anything that would tell a nested harness it runs inside another agent or point it at real config.
 const leakyEnv = /^(CLAUDECODE|CLAUDE_|ANTHROPIC_|CODEX_|OPENAI_|GROK_|XAI_|MCP_)/;
 
-export function isolatedEnv(home) {
+export function isolatedEnv(home, harnessId) {
   const env = {};
   for (const [key, value] of Object.entries(process.env)) {
     if (!leakyEnv.test(key)) env[key] = value;
@@ -43,7 +43,10 @@ export function isolatedEnv(home) {
   env.XDG_DATA_HOME = path.join(home, ".local", "share");
   env.CODEX_HOME = path.join(home, ".codex");
   env.GROK_HOME = path.join(home, ".grok");
-  if (fs.existsSync(claudeTokenFile)) env.CLAUDE_CODE_OAUTH_TOKEN = fs.readFileSync(claudeTokenFile, "utf8").trim();
+  // Only Claude Code gets the token; the other harnesses run with approvals off and could read it.
+  if (harnessId === "claude-code" && fs.existsSync(claudeTokenFile)) {
+    env.CLAUDE_CODE_OAUTH_TOKEN = fs.readFileSync(claudeTokenFile, "utf8").trim();
+  }
   return env;
 }
 

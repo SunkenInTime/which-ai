@@ -11,9 +11,12 @@ const selectClass =
 export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   const router = useRouter();
   const params = useSearchParams();
-  const pick = (key: string | null, fallback: number) => clips.find((c) => c.key === key) ?? clips[fallback];
-  const left = pick(params.get("left"), 0);
-  const right = pick(params.get("right"), 1);
+  const left = clips.find((c) => c.key === params.get("left")) ?? clips[0];
+  // Fall back to the first clip that isn't already on the left, so both sides never match.
+  const right =
+    clips.find((c) => c.key === params.get("right") && c.key !== left?.key) ??
+    clips.find((c) => c.key !== left?.key) ??
+    clips[1];
   const leftVideo = useRef<HTMLVideoElement>(null);
   const rightVideo = useRef<HTMLVideoElement>(null);
   const [playing, setPlaying] = useState(false);

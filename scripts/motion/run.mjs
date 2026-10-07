@@ -73,7 +73,7 @@ async function runOne(model, iteration) {
   const stderr = fs.openSync(path.join(runDir, "stderr.log"), "w");
   const child = spawn(bin, harnessCommand(harness, model, prompt, workdir), {
     cwd: workdir,
-    env: isolatedEnv(home),
+    env: isolatedEnv(home, harness.id),
     stdio: ["ignore", transcript, stderr],
   });
   let timedOut = false;
@@ -95,8 +95,13 @@ async function runOne(model, iteration) {
   if (sourceVideo) {
     const videoDir = path.join(root, "public/motion", groupId, model.id);
     fs.mkdirSync(videoDir, { recursive: true });
-    video = publishVideo(sourceVideo, path.join(videoDir, `${iteration}.mp4`), path.join(videoDir, `${iteration}.jpg`));
-    video.sourceFile = path.relative(workdir, sourceVideo);
+    try {
+      video = publishVideo(sourceVideo, path.join(videoDir, `${iteration}.mp4`), path.join(videoDir, `${iteration}.jpg`));
+      video.sourceFile = path.relative(workdir, sourceVideo);
+    } catch (err) {
+      // A broken render still gets recorded, and the remaining runs keep going.
+      console.error(`publish failed for ${key}: ${err.message}`);
+    }
   }
 
   const run = {
@@ -120,12 +125,32 @@ function readRuns() {
   return JSON.parse(fs.readFileSync(runsFile, "utf8"));
 }
 
-// Re-read before writing so parallel runner processes don't drop each other's entries.
+// Parallel runner processes share motion-runs.json: hold a lock across read-modify-write,
+// and replace the file by rename so a reader never sees half-written JSON.
 function writeRun(key, run) {
-  const runs = readRuns();
-  runs[key] = run;
-  const sorted = Object.fromEntries(Object.entries(runs).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
-  fs.writeFileSync(runsFile, JSON.stringify(sorted, null, 2) + "\n");
+  const lock = `${runsFile}.lock`;
+  const deadline = Date.now() + 60_000;
+  let fd;
+  for (;;) {
+    try {
+      fd = fs.openSync(lock, "wx");
+      break;
+    } catch (err) {
+      if (err.code !== "EEXIST" || Date.now() > deadline) throw err;
+      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
+    }
+  }
+  try {
+    const runs = readRuns();
+    runs[key] = run;
+    const sorted = Object.fromEntries(Object.entries(runs).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
+    const tmp = `${runsFile}.${process.pid}.tmp`;
+    fs.writeFileSync(tmp, JSON.stringify(sorted, null, 2) + "\n");
+    fs.renameSync(tmp, runsFile);
+  } finally {
+    fs.closeSync(fd);
+    fs.rmSync(lock, { force: true });
+  }
 }
 
 // Prefer output.mp4 at the project root; otherwise the newest video anywhere outside node_modules.
@@ -153,6 +178,7 @@ function publishVideo(src, dest, poster) {
   );
   const stream = probe.streams.find((s) => s.codec_type === "video");
   const durationSec = Number(probe.format.duration);
+  if (!Number.isFinite(durationSec) || durationSec <= 0) throw new Error(`ffprobe found no duration in ${src}`);
   const [num, den] = String(stream?.r_frame_rate ?? "0/1").split("/").map(Number);
   const webReady = stream?.codec_name === "h264" && stream?.pix_fmt === "yuv420p" && /\.mp4$/i.test(src);
   const codecArgs = webReady

@@ -38,7 +38,10 @@ export default async function MotionRunPage({
   const clip = getMotionClip(group, model, n);
   const siblings = getMotionClipsForModel(group, model);
   const run = clip.run;
-  const rivals = motionModels.filter((m) => m.id !== model.id);
+  // Compare only receives finished clips, so only link rivals that have one at this try.
+  const rivals = motionModels.filter(
+    (m) => m.id !== model.id && getMotionClip(group, m, n).run?.status === "ok",
+  );
 
   return (
     <>
@@ -110,7 +113,7 @@ export default async function MotionRunPage({
           </dl>
         ) : null}
 
-        {run?.status === "ok" ? (
+        {run?.status === "ok" && rivals.length ? (
           <div className="mt-8 flex flex-wrap items-center gap-2 text-sm">
             <span className="text-[var(--gallery-text-tertiary)]">Compare with</span>
             {rivals.map((m) => (
