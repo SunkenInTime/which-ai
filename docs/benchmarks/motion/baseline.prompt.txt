@@ -1,0 +1,5 @@
+make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. boil the ocean. literally - go all out.
+that first part is about how much effort to put in, not what the video is about. pick your own subject and visual concept, and don't put the brief's wording on screen: no "boil the ocean", "go all out", "showreel", "motion designer", or anything that just restates these instructions.
+do not use any skills for browser video creation/rendering frameworks.
+no fake screen chrome: no viewfinder frames, corner brackets, HUD labels, timecodes, frame counters, progress bars, or camera/recording overlays. the motion itself should fill the frame.
+save the final video as output.mp4 in the current directory.

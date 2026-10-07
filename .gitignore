@@ -14,3 +14,7 @@ playwright-report/
 .claude/skills/*
 !.claude/skills/add-generation-to-gallery/
 .windsurf/
+
+# Motion videos live in R2; scripts/motion/upload.mjs copies them there.
+public/motion/
+.env*.local
