@@ -1,0 +1,3613 @@
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) * {
+  box-sizing: border-box;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) [data-source-html] {
+  scroll-behavior: smooth;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) [data-source-body] {
+  margin: 0;
+  font-family: var(--font-geist-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+input,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+textarea {
+  font: inherit;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+a,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+input,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+a {
+  touch-action: manipulation;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button {
+  cursor: pointer;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) a {
+  color: inherit;
+  text-decoration: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button {
+  color: inherit;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button:disabled {
+  cursor: default;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button:focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+a:focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+input:focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) button {
+  border: 0;
+  background: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) img {
+  object-fit: cover;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) ::selection {
+  background: var(--tint);
+  color: var(--text);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .landing {
+  --surface: #f7f9f5;
+  --elevated: #fdfefa;
+  --text: #283c30;
+  --muted: #636e64;
+  --accent: #355e48;
+  --accent-text: #f8faf6;
+  --tint: #eaf0e5;
+  --border: #dce3d7;
+  --note-yellow: #f3edcc;
+  --note-ink: #454735;
+  --note-blue: #294b43;
+  --shadow: 0 14px 35px rgb(55 77 46 / 0.09);
+  --radius: 16px;
+  background: var(--surface);
+  color: var(--text);
+  overflow: clip;
+  min-height: 100dvh;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2 {
+  --surface: #fafbfd;
+  --elevated: #fefefe;
+  --text: #252a34;
+  --muted: #626a77;
+  --accent: #3554ce;
+  --accent-text: #fafbff;
+  --tint: #e9edfa;
+  --border: #dce0e9;
+  --shadow: 0 14px 35px rgb(42 54 86 / 0.08);
+  --radius: 4px;
+  font-family: var(--font-grotesk), sans-serif;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 {
+  --surface: #f6f6f0;
+  --elevated: #fcfcf7;
+  --text: #344031;
+  --muted: #686f61;
+  --accent: #536747;
+  --accent-text: #fafbf5;
+  --tint: #e9ecdf;
+  --border: #dcded0;
+  --shadow: 0 14px 35px rgb(54 65 44 / 0.08);
+  --radius: 3px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4 {
+  --surface: #13191a;
+  --elevated: #1a2222;
+  --text: #e9efe9;
+  --muted: #a5b0a9;
+  --accent: #acd8b8;
+  --accent-text: #1b3529;
+  --tint: #202d27;
+  --border: #303c37;
+  --note-yellow: #3a3a28;
+  --note-ink: #e0dfc4;
+  --note-blue: #294637;
+  --shadow: 0 14px 35px rgb(8 20 14 / 0.15);
+  --radius: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v5 {
+  --surface: #fcf9f5;
+  --elevated: #fffdfa;
+  --text: #2d302c;
+  --muted: #6e7067;
+  --accent: #bd4b31;
+  --accent-text: #fffaf7;
+  --tint: #f3e6dc;
+  --border: #e5ddd1;
+  --note-yellow: #f6e9bc;
+  --note-ink: #48412f;
+  --note-blue: #804d3c;
+  --shadow: 0 14px 35px rgb(77 52 37 / 0.1);
+  --radius: 14px;
+  font-family: var(--font-grotesk), sans-serif;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .landing[data-theme="dark"] {
+  --surface: #17201a;
+  --elevated: #202b23;
+  --text: #e5ecdf;
+  --muted: #adb9a7;
+  --accent: #aed0a2;
+  --accent-text: #243d2d;
+  --tint: #293a2d;
+  --border: #3a493a;
+  --note-yellow: #45452b;
+  --note-ink: #e6e3c0;
+  --note-blue: #2d493a;
+  --shadow: 0 14px 35px rgb(5 20 10 / 0.17);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2[data-theme="dark"] {
+  --surface: #171c27;
+  --elevated: #202738;
+  --text: #e8ecf5;
+  --muted: #aeb7c9;
+  --accent: #a4b3f1;
+  --accent-text: #1f315a;
+  --tint: #293555;
+  --border: #394359;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3[data-theme="dark"] {
+  --surface: #1d241b;
+  --elevated: #262f22;
+  --text: #e8ebdd;
+  --muted: #b3b9a6;
+  --accent: #b0c59b;
+  --accent-text: #25351d;
+  --tint: #303d28;
+  --border: #414b36;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4[data-theme="dark"] {
+  --surface: #13191a;
+  --elevated: #1a2222;
+  --text: #e9efe9;
+  --muted: #a5b0a9;
+  --accent: #acd8b8;
+  --accent-text: #1b3529;
+  --tint: #202d27;
+  --border: #303c37;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4[data-theme="light"] {
+  --surface: #f3f7f4;
+  --elevated: #fafdf9;
+  --text: #24362c;
+  --muted: #59695e;
+  --accent: #3d6b50;
+  --accent-text: #fafdf9;
+  --tint: #e2ebe3;
+  --border: #d1ddd2;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v5[data-theme="dark"] {
+  --surface: #251e1a;
+  --elevated: #302820;
+  --text: #f0e8de;
+  --muted: #c0b3a5;
+  --accent: #eea187;
+  --accent-text: #43251c;
+  --tint: #453329;
+  --border: #564336;
+  --note-yellow: #4d442b;
+  --note-ink: #ede0b5;
+  --note-blue: #7e4b38;
+}
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .landing[data-theme="system"] {
+    --surface: #17201a;
+    --elevated: #202b23;
+    --text: #e5ecdf;
+    --muted: #adb9a7;
+    --accent: #aed0a2;
+    --accent-text: #243d2d;
+    --tint: #293a2d;
+    --border: #3a493a;
+    --note-yellow: #45452b;
+    --note-ink: #e6e3c0;
+    --note-blue: #2d493a;
+    --shadow: 0 14px 35px rgb(5 20 10 / 0.17);
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2[data-theme="system"] {
+    --surface: #171c27;
+    --elevated: #202738;
+    --text: #e8ecf5;
+    --muted: #aeb7c9;
+    --accent: #a4b3f1;
+    --accent-text: #1f315a;
+    --tint: #293555;
+    --border: #394359;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3[data-theme="system"] {
+    --surface: #1d241b;
+    --elevated: #262f22;
+    --text: #e8ebdd;
+    --muted: #b3b9a6;
+    --accent: #b0c59b;
+    --accent-text: #25351d;
+    --tint: #303d28;
+    --border: #414b36;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v5[data-theme="system"] {
+    --surface: #251e1a;
+    --elevated: #302820;
+    --text: #f0e8de;
+    --muted: #c0b3a5;
+    --accent: #eea187;
+    --accent-text: #43251c;
+    --tint: #453329;
+    --border: #564336;
+    --note-yellow: #4d442b;
+    --note-ink: #ede0b5;
+    --note-blue: #7e4b38;
+  }
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-wrap {
+  width: calc(100% - 112px);
+  max-width: 1248px;
+  margin-inline: auto;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header {
+  height: 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  position: relative;
+  z-index: 10;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 25px;
+  font-weight: 650;
+  letter-spacing: -1.3px;
+  white-space: nowrap;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .brand-period {
+  display: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 33px;
+  font-size: 13px;
+  font-weight: 500;
+  margin-left: 42px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header nav a {
+  padding: 8px 0;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header nav a:hover {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 23px;
+  white-space: nowrap;
+  min-height: 49px;
+  padding: 0 25px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 550;
+  transition:
+    transform 0.2s,
+    background-color 0.2s,
+    box-shadow 0.2s;
+  border: 1px solid transparent;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .button:active {
+  transform: scale(0.98);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .button.primary {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .button.secondary {
+  border-color: var(--border);
+  background: var(--elevated);
+  color: var(--text);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .header-cta .button {
+  min-height: 38px;
+  font-size: 12px;
+  padding-inline: 20px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .text-button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.inline-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 0;
+  white-space: nowrap;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .inline-link {
+  justify-content: flex-start;
+  color: var(--accent);
+  gap: 20px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .text-button:hover,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.inline-link:hover {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .text-button svg,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.inline-link svg {
+  transition: transform 0.2s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .text-button:hover svg,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.inline-link:hover svg {
+  transform: translateX(3px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+h3,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+p {
+  margin: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1.12fr;
+  gap: 30px;
+  padding-top: 43px;
+  padding-bottom: 58px;
+  min-height: 636px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy {
+  position: relative;
+  padding-bottom: 14px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  font-weight: 550;
+  letter-spacing: 1.9px;
+  color: var(--accent);
+  margin-bottom: 24px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h1 {
+  font-size: clamp(54px, 5.15vw, 75px);
+  font-weight: 480;
+  line-height: 1.06;
+  letter-spacing: -4.2px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy > p {
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 340px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-top: 32px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-one {
+  gap: 15px;
+  grid-template-columns: 0.9fr 1.1fr;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-one .hero-copy {
+  padding-bottom: 24px;
+}
+/* The note cards are an actual local notebook preview: every card opens its note,
+   and the checklist has real state. Buttons are pills; paper cards use 12px corners. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .spatial-notebook {
+  position: relative;
+  width: 100%;
+  height: 518px;
+  isolation: isolate;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-orbit {
+  position: absolute;
+  inset: 18px -30px 28px 14px;
+  background: var(--tint);
+  border-radius: 50%;
+  opacity: 0.65;
+  transform: rotate(-12deg);
+  z-index: -1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note {
+  position: absolute;
+  left: 8px;
+  top: 36px;
+  width: 241px;
+  background: var(--elevated);
+  padding: 9px 9px 0;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transform: rotate(-8deg);
+  text-align: left;
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note:hover {
+  transform: rotate(-5deg) translateY(-5px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note-image {
+  position: relative;
+  height: 183px;
+  border-radius: 7px;
+  overflow: hidden;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  padding: 13px 5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  width: 212px;
+  min-height: 205px;
+  padding: 21px 24px 24px;
+  text-align: left;
+  border-radius: 9px;
+  background: var(--note-yellow);
+  color: var(--note-ink);
+  box-shadow: var(--shadow);
+  transform: rotate(9deg);
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note:hover {
+  transform: rotate(6deg) translateY(-4px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-eyebrow {
+  display: block;
+  font-size: 9px;
+  margin-top: 14px;
+  font-weight: 500;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note p {
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-top: 9px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-small {
+  display: block;
+  font-size: 9px;
+  margin-top: 13px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note {
+  position: absolute;
+  left: 28%;
+  top: 172px;
+  width: 291px;
+  padding: 22px 23px 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--elevated);
+  box-shadow: 0 16px 40px rgb(58 68 48 / 0.13);
+  transform: rotate(-3deg);
+  z-index: 2;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--accent);
+  margin-bottom: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 6px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .icon-button:hover {
+  background: var(--tint);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note .checklist-title {
+  font-size: 17px;
+  font-weight: 550;
+  letter-spacing: -0.6px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note > p {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-items {
+  margin: 20px 0 22px;
+  display: grid;
+  gap: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-items button {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  text-align: left;
+  font-size: 10px;
+  padding: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-items svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .is-checked {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-folder {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  color: var(--muted);
+  padding-top: 11px;
+  border-top: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note {
+  position: absolute;
+  bottom: 39px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 17px 15px;
+  width: 293px;
+  color: #f3f7ec;
+  background: var(--note-blue);
+  box-shadow: var(--shadow);
+  border-radius: 10px;
+  transform: rotate(-6deg);
+  z-index: 3;
+  text-align: left;
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note:hover {
+  transform: rotate(-3deg) translateY(-4px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-icon {
+  height: 36px;
+  width: 36px;
+  border-radius: 50%;
+  background: rgb(230 240 220 / 0.13);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note > span:nth-child(2) {
+  font-size: 11px;
+  flex: 1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note small {
+  display: block;
+  font-size: 8px;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  width: 206px;
+  padding: 13px 12px 11px;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 11px;
+  box-shadow: var(--shadow);
+  transform: rotate(6deg);
+  z-index: 1;
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note:hover {
+  transform: rotate(3deg) translateY(-4px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note > div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  margin-bottom: 11px;
+  text-align: left;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note > div > span {
+  flex: 1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note img {
+  width: 100%;
+  height: 106px;
+  border-radius: 5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-cursor {
+  position: absolute;
+  bottom: -23px;
+  left: 45%;
+  font-size: 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--accent);
+  opacity: 0.8;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip {
+  padding-top: 21px;
+  padding-bottom: 37px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip > p {
+  font-size: 11px;
+  color: var(--muted);
+  max-width: 170px;
+  line-height: 1.6;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 58px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip span {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.4px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-heading {
+  margin-bottom: 42px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h2 {
+  font-size: 46px;
+  font-weight: 450;
+  letter-spacing: -2.1px;
+  line-height: 1.13;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-heading > p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+  max-width: 400px;
+  margin-top: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .features-one {
+  padding-top: 97px;
+  padding-bottom: 96px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .features-one-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+  align-items: stretch;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .find-feature,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.capture-feature {
+  border-radius: 19px;
+  overflow: hidden;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .find-feature {
+  background: var(--tint);
+  padding: 34px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-copy > svg {
+  margin-bottom: 19px;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-copy h3 {
+  font-size: 27px;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -1px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-copy > p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 13px;
+  max-width: 300px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-feature {
+  background: var(--elevated);
+  border: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-feature > img {
+  width: 100%;
+  height: 225px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-feature .feature-copy {
+  padding: 30px 35px 22px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-preview {
+  width: 100%;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-preview > label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .preview-search-input {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 62px;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0 20px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .preview-search-input > svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .preview-search-input input {
+  background: none;
+  border: none;
+  width: 100%;
+  color: var(--text);
+  font-size: 14px;
+  min-width: 0;
+  padding: 12px 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) input::placeholder,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+textarea::placeholder {
+  color: var(--muted);
+  opacity: 1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .preview-search-input > span {
+  flex-shrink: 0;
+  display: flex;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-categories {
+  display: flex;
+  gap: 9px;
+  margin: 16px 0 22px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-categories button {
+  border-radius: 99px;
+  padding: 7px 14px;
+  font-size: 11px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-categories .selected {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-results {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result {
+  text-align: left;
+  border: 1px solid var(--border);
+  padding: 0 0 16px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--elevated);
+  transition: transform 0.25s;
+  min-width: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result:hover {
+  transform: translateY(-4px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.idea-thumbnail {
+  width: 100%;
+  height: 137px;
+  object-fit: cover;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .idea-thumbnail {
+  display: grid;
+  place-items: center;
+  background: var(--tint);
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > span {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  padding: 14px 15px 7px;
+  font-weight: 500;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > span svg {
+  flex-shrink: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  padding-inline: 15px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact.search-preview {
+  margin-top: 37px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact.search-preview > label {
+  font-size: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .preview-search-input {
+  min-height: 49px;
+  border-radius: 8px;
+  padding-inline: 13px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact input {
+  font-size: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .preview-search-input svg {
+  width: 17px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-categories {
+  gap: 3px;
+  margin: 10px 0 16px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-categories button {
+  font-size: 9px;
+  padding: 5px 9px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-results {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result {
+  border-radius: 8px;
+  padding-bottom: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result > img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.compact .idea-thumbnail {
+  height: 84px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result > span {
+  font-size: 9px;
+  padding: 10px 10px 6px;
+  line-height: 1.3;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result > span svg {
+  width: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result > small {
+  font-size: 8px;
+  padding-inline: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip {
+  border-block: 1px solid var(--border);
+  padding-block: 63px;
+  display: grid;
+  grid-template-columns: 70px 1.5fr 1fr;
+  gap: 35px;
+  align-items: center;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-mark {
+  height: 70px;
+  width: 70px;
+  background: var(--tint);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip h2 {
+  font-size: 30px;
+  line-height: 1.25;
+  letter-spacing: -1.2px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip > p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+  max-width: 310px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-section {
+  display: grid;
+  grid-template-columns: 0.9fr 1.5fr;
+  column-gap: 70px;
+  padding-block: 103px 85px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-heading > p {
+  max-width: 260px;
+  font-size: 13px;
+  line-height: 1.85;
+  margin-top: 21px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .billing-toggle {
+  display: inline-flex;
+  background: var(--tint);
+  padding: 4px;
+  border-radius: 99px;
+  margin-top: 28px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .billing-toggle button {
+  padding: 8px 18px;
+  font-size: 11px;
+  border-radius: 99px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .billing-toggle .selected {
+  background: var(--elevated);
+  color: var(--text);
+  box-shadow: 0 1px 5px rgb(75 95 68 / 0.08);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plans {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 17px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan {
+  padding: 30px 25px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan.featured {
+  background: var(--tint);
+  border-color: var(--tint);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 25px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .price {
+  display: block;
+  font-size: 44px;
+  letter-spacing: -2px;
+  font-weight: 450;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .price small {
+  font-size: 11px;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan > p {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.7;
+  margin-top: 9px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan ul {
+  list-style: none;
+  padding: 0;
+  margin: 26px 0;
+  display: grid;
+  gap: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan li {
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan li svg {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan .button {
+  min-height: 41px;
+  width: 100%;
+  padding-inline: 17px;
+  justify-content: space-between;
+  font-size: 11px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-disclaimer {
+  grid-column: 2;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-footer {
+  padding-block: 39px 103px;
+  border-top: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 51px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-top h2 {
+  font-size: 40px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  font-size: 10px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line .brand {
+  font-size: 19px;
+  color: var(--text);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line > span {
+  margin-left: auto;
+}
+/* Direction 02: a typographic, Swiss-inspired product poster. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2 .site-header {
+  border-bottom: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2 .brand-period {
+  display: inline;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2 .button {
+  border-radius: 4px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two {
+  grid-template-columns: 1.2fr 1fr;
+  gap: 0;
+  padding-block: 46px 42px;
+  min-height: 605px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two .hero-copy {
+  z-index: 1;
+  padding-top: 20px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two h1 {
+  font-size: clamp(52px, 5.35vw, 80px);
+  font-weight: 500;
+  line-height: 1.07;
+  letter-spacing: -5.4px;
+  white-space: nowrap;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two h1 > span {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two .hero-copy > p {
+  max-width: 370px;
+  font-size: 15px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two .eyebrow {
+  font-family: var(--font-geist-mono);
+  font-size: 9px;
+  letter-spacing: 1.1px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-hero {
+  position: relative;
+  height: 470px;
+  margin-left: -40px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-hero > img {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-corner {
+  position: absolute;
+  bottom: 35px;
+  right: 12px;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2[data-theme="dark"] .sculpture-hero > img {
+  filter: invert(1) hue-rotate(180deg);
+  mix-blend-mode: screen;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two {
+  padding: 34px 0 55px;
+  border-block: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .preview-search-input {
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  background: none;
+  padding-inline: 0;
+  min-height: 73px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .preview-search-input input {
+  font-size: 24px;
+  letter-spacing: -1px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .preview-search-input > svg {
+  width: 25px;
+  height: 25px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .search-preview > label {
+  font-size: 10px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .search-categories {
+  margin: 22px 0 24px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .search-result > img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.search-section-two .idea-thumbnail {
+  height: 156px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-section {
+  display: grid;
+  grid-template-columns: 1fr 0.8fr;
+  gap: 120px;
+  padding-block: 111px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-title h2 {
+  font-size: 61px;
+  line-height: 1.05;
+  letter-spacing: -3.5px;
+  margin-bottom: 37px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-title h2 > span {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-title img {
+  width: 100%;
+  height: 230px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list {
+  display: grid;
+  gap: 32px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list article {
+  position: relative;
+  padding-left: 51px;
+  padding-top: 3px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list article > svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list h3 {
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.8px;
+  margin-bottom: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2 .philosophy-strip h2 span {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2 .philosophy-mark {
+  border-radius: 4px;
+}
+/* Direction 03: publication typography and an unhurried natural image language.
+   EB Garamond is intentional here: this direction borrows from a personal journal. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+.v3 h2 {
+  font-family: var(--font-editorial), Georgia, serif;
+  font-weight: 400;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 .button {
+  border-radius: 3px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 .site-header nav {
+  font-size: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three {
+  grid-template-columns: 1.1fr 1fr;
+  gap: 84px;
+  padding-block: 35px 28px;
+  min-height: 625px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-copy {
+  padding-bottom: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 11px;
+  color: var(--accent);
+  margin-bottom: 32px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three h1 {
+  font-size: 84px;
+  line-height: 0.99;
+  letter-spacing: -2.7px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-copy > p {
+  max-width: 332px;
+  line-height: 1.85;
+  font-size: 14px;
+  margin-top: 29px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-actions {
+  gap: 26px;
+  margin-top: 31px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .text-button {
+  font-size: 11px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .forest-hero {
+  height: 528px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 220px 220px 3px 3px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .forest-hero > img {
+  object-position: 57% center;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro {
+  padding: 75px 0 86px;
+  text-align: center;
+  max-width: 780px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro > svg {
+  color: var(--accent);
+  margin: 0 auto 24px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro h2 {
+  font-size: 53px;
+  letter-spacing: -1.3px;
+  line-height: 1.02;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro > p {
+  max-width: 385px;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.9;
+  margin: 25px auto 17px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-signoff {
+  font-family: var(--font-editorial), serif;
+  font-style: italic;
+  font-size: 20px;
+  display: block;
+  padding-bottom: 4px;
+  line-height: 1.2;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  gap: 99px;
+  align-items: center;
+  padding-block: 47px 98px;
+  border-top: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-photo img {
+  width: 100%;
+  height: 428px;
+  border-radius: 3px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-photo > p {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 14px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features-copy h2 {
+  font-size: 41px;
+  line-height: 1.1;
+  letter-spacing: -0.8px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-accordion {
+  margin-top: 30px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-accordion > div {
+  border-bottom: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-accordion button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  padding: 20px 0;
+  text-align: left;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-accordion h3 {
+  font-size: 13px;
+  font-weight: 500;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-accordion .active button {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-accordion p {
+  font-size: 12px;
+  line-height: 1.9;
+  color: var(--muted);
+  padding-bottom: 22px;
+  max-width: 330px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features-copy > .text-button {
+  margin-top: 23px;
+  font-size: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection {
+  display: grid;
+  grid-template-columns: 1.65fr 1fr;
+  gap: 57px;
+  background: var(--tint);
+  border-radius: 3px;
+  padding: 25px;
+  align-items: center;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .collection-image {
+  position: relative;
+  height: 335px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection > div:last-child {
+  padding: 20px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection > div > svg {
+  margin-bottom: 24px;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection h2 {
+  font-size: 41px;
+  letter-spacing: -0.8px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-top: 17px;
+  max-width: 260px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection .inline-link {
+  font-size: 11px;
+  margin-top: 14px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 .pricing-heading h2 {
+  font-size: 52px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 .footer-top h2 {
+  font-size: 45px;
+}
+/* Direction 04: a connected, explorable knowledge graph rather than a fake screenshot. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4 .brand {
+  font-size: 23px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4 .site-header {
+  border-bottom: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4 .site-header .button {
+  background: var(--tint);
+  border-color: var(--border);
+  color: var(--text);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four {
+  grid-template-columns: 0.95fr 1.05fr;
+  min-height: 626px;
+  padding-top: 31px;
+  padding-bottom: 43px;
+  gap: 31px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four h1 {
+  font-size: 76px;
+  line-height: 1.04;
+  letter-spacing: -4px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four h1 > span {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four .hero-copy > p {
+  max-width: 319px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four .eyebrow {
+  letter-spacing: 1.2px;
+  font-size: 9px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-demo {
+  position: relative;
+  width: 100%;
+  padding-top: 17px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-graph {
+  position: relative;
+  height: 370px;
+  width: 510px;
+  margin-inline: auto;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-ring {
+  border: 1px solid var(--border);
+  opacity: 0.4;
+  border-radius: 50%;
+  position: absolute;
+  left: 47%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .ring-one {
+  width: 255px;
+  height: 255px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .ring-two {
+  width: 375px;
+  height: 375px;
+  opacity: 0.23;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-edge {
+  position: absolute;
+  left: 47%;
+  top: 46%;
+  transform-origin: left center;
+  height: 1px;
+  background: var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-edge.selected {
+  background: var(--accent);
+  opacity: 0.7;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-center {
+  position: absolute;
+  left: 47%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: 137px;
+  height: 104px;
+  background: var(--tint);
+  border: 1px solid var(--accent);
+  border-radius: 13px;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+  gap: 11px;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-center span {
+  font-size: 10px;
+  font-weight: 500;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-node {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: max-content;
+  padding: 14px 15px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  font-size: 10px;
+  color: var(--muted);
+  transition:
+    border-color 0.2s,
+    color 0.2s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-node.selected {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-node:hover {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-node svg {
+  flex-shrink: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight {
+  display: flex;
+  align-items: center;
+  width: calc(100% - 66px);
+  padding: 19px 20px;
+  gap: 15px;
+  margin: 3px auto 0;
+  border: 1px solid var(--border);
+  background: var(--elevated);
+  border-radius: 11px;
+  text-align: left;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .insight-icon {
+  background: var(--tint);
+  padding: 12px;
+  border-radius: 9px;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight > span:nth-child(2) {
+  flex: 1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight small {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-bottom: 5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight strong {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight > span > span {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 6px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight > svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .connected-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-block: 27px;
+  border-block: 1px solid var(--border);
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .connected-strip span {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 11px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .connected-strip svg {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-section {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 86px;
+  padding-block: 83px 67px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-visual {
+  position: relative;
+  height: 370px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-visual img {
+  object-fit: cover;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-copy h2 {
+  font-size: 48px;
+  letter-spacing: -2.4px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-copy > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.85;
+  max-width: 325px;
+  margin-top: 21px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-copy .eyebrow {
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  margin-bottom: 19px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-benefits {
+  display: grid;
+  gap: 17px;
+  margin-top: 29px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-benefits span {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-benefits svg {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-search-section {
+  border-top: 1px solid var(--border);
+  padding-top: 76px;
+  padding-bottom: 30px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4 .pricing-section {
+  padding-top: 88px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4[data-theme="light"] .network-visual img {
+  filter: brightness(0.86);
+}
+/* Direction 05: a personal scrapbook, with purposeful paper overlaps and a
+   rust accent. Rounded controls and 12px paper cards share a consistent scale. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v5 .brand-period {
+  display: inline;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five {
+  grid-template-columns: 1fr 1.06fr;
+  padding-top: 30px;
+  min-height: 624px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five h1 {
+  font-size: 69px;
+  font-weight: 500;
+  letter-spacing: -4px;
+  line-height: 1.08;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .headline-period {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five .eyebrow {
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 1.2px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five .hero-copy > p {
+  max-width: 345px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .notebook-orbit {
+  border-radius: 34% 47% 41% 38%;
+  transform: rotate(7deg);
+  background: var(--tint);
+  inset: 23px 2px 25px -10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .photo-note {
+  transform: rotate(-12deg);
+  left: -7px;
+  top: 38px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .thought-note {
+  right: -3px;
+  top: 21px;
+  transform: rotate(12deg);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .checklist-note {
+  top: 174px;
+  left: 23%;
+  transform: rotate(2deg);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .voice-note {
+  transform: rotate(-8deg);
+  bottom: 37px;
+  left: -4px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .reading-note {
+  transform: rotate(9deg);
+  bottom: 7px;
+  right: -11px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .playful-notebook .notebook-cursor {
+  color: var(--accent);
+  bottom: -22px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-section {
+  display: flex;
+  align-items: center;
+  gap: 65px;
+  padding: 30px 39px;
+  border-block: 1px solid var(--border);
+  background: var(--tint);
+  border-radius: 13px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-note {
+  width: 100%;
+  max-width: 760px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-note label {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 9px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-note > div {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-note input {
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 18px;
+  padding: 9px 0 13px;
+  width: 100%;
+  min-width: 0;
+  letter-spacing: -0.5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-note button {
+  color: var(--accent);
+  padding: 8px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-aside {
+  display: block;
+  font-size: 11px;
+  line-height: 1.65;
+  color: var(--muted);
+  min-width: 132px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-aside svg {
+  margin-bottom: 8px;
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .form-error {
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 11px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-features {
+  padding-top: 94px;
+  padding-bottom: 79px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-heading {
+  margin-bottom: 35px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-heading h2 {
+  font-size: 49px;
+  letter-spacing: -2.6px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  max-width: 330px;
+  margin-top: 17px;
+  line-height: 1.85;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-bento {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 24px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  align-items: center;
+  gap: 25px;
+  background: var(--tint);
+  padding: 38px 30px 35px;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 367px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main h3 {
+  font-size: 25px;
+  letter-spacing: -1px;
+  line-height: 1.2;
+  margin-top: 20px;
+  font-weight: 500;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.85;
+  margin-top: 15px;
+  max-width: 200px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos {
+  position: relative;
+  height: 276px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img {
+  position: absolute;
+  width: 220px;
+  height: 171px;
+  border: 8px solid var(--elevated);
+  box-shadow: var(--shadow);
+  border-radius: 7px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img:first-child {
+  top: 0;
+  left: -3px;
+  transform: rotate(8deg);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img:last-child {
+  bottom: 0;
+  right: -24px;
+  transform: rotate(-9deg);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side {
+  background: var(--elevated);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 29px 37px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .big-star {
+  color: var(--accent);
+  margin-bottom: 19px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side h3 {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: -1.2px;
+  line-height: 1.14;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side p {
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--muted);
+  margin-top: 17px;
+  max-width: 225px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side .inline-link {
+  font-size: 11px;
+  margin-top: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-philosophy {
+  text-align: center;
+  border-block: 1px solid var(--border);
+  padding-block: 73px 76px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-doodle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 27px;
+  color: var(--accent);
+  transform: rotate(-12deg);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-philosophy h2 {
+  font-size: 44px;
+  letter-spacing: -2px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-philosophy p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--muted);
+  max-width: 420px;
+  margin: 21px auto 0;
+}
+/* Global presentation controls are deliberately small and separate from the brand. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .recollect-appearance {
+  position: fixed;
+  z-index: 20;
+  bottom: 21px;
+  right: 25px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: var(--elevated);
+  color: var(--text);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 999px;
+  padding: 6px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .switcher-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  padding-left: 9px;
+  padding-right: 10px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .recollect-appearance > a {
+  width: 29px;
+  height: 29px;
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .recollect-appearance > a:hover {
+  background: var(--tint);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .recollect-appearance > a.active {
+  color: var(--accent-text);
+  background: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .theme-toggle {
+  display: grid;
+  place-items: center;
+  height: 29px;
+  width: 34px;
+  border-left: 1px solid var(--border);
+  margin-left: 4px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .skip-link {
+  position: absolute;
+  left: 16px;
+  top: -70px;
+  padding: 12px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--accent-text);
+  z-index: 30;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .skip-link:focus {
+  top: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .empty-result {
+  color: var(--muted);
+  font-size: 12px;
+  padding: 25px 10px;
+  line-height: 1.8;
+  grid-column: 1 / -1;
+}
+/* Functional notebook dialog; native top layer handles focus trap and Escape. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-dialog {
+  width: min(1010px, calc(100vw - 40px));
+  height: min(660px, calc(100dvh - 60px));
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: 0 30px 100px rgb(10 25 15 / 0.3);
+  overflow: hidden;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-dialog::backdrop {
+  background: rgb(15 25 20 / 0.55);
+  backdrop-filter: blur(5px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 26px;
+  border-bottom: 1px solid var(--border);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-top .brand {
+  font-size: 22px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .demo-tag {
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+  margin-left: 25px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-inner {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  min-height: 0;
+  flex: 1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-sidebar {
+  padding: 22px 18px;
+  border-right: 1px solid var(--border);
+  background: var(--tint);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .new-note {
+  width: 100%;
+  min-height: 40px;
+  font-size: 12px;
+  justify-content: flex-start;
+  gap: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-search {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 17px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-search input {
+  width: 100%;
+  min-width: 0;
+  font-size: 11px;
+  color: var(--text);
+  background: none;
+  border: none;
+  padding: 5px 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list {
+  flex: 1;
+  overflow: auto;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list button {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12px;
+  text-align: left;
+  border-radius: 8px;
+  padding: 14px 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list button svg {
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list .selected {
+  background: var(--elevated);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 5px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .export-notes {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 17px;
+  font-size: 11px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-editor {
+  padding: 24px 44px 23px;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editor-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 21px;
+  color: var(--muted);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editor-meta > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-title-input {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  color: var(--text);
+  font-size: 31px;
+  font-weight: 500;
+  letter-spacing: -1.4px;
+  padding: 6px 0;
+  margin-bottom: 20px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-editor textarea {
+  flex: 1;
+  resize: none;
+  font-size: 14px;
+  line-height: 1.95;
+  border: none;
+  background: none;
+  color: var(--text);
+  width: 100%;
+  padding: 0;
+  min-height: 180px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .save-status {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 9px;
+  color: var(--muted);
+  padding-top: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .save-status.error {
+  color: var(--accent);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editor-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editor-empty h2 {
+  font-size: 27px;
+  letter-spacing: -1px;
+  margin-top: 18px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editor-empty p {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 13px;
+  margin-bottom: 27px;
+}
+/* Entry motion communicates headline > supporting thought > notebook hierarchy. */
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy .eyebrow,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .editorial-eyebrow {
+    animation: gallery-with-taste-skill-sol-6-1-source-app-globals-enter 0.55s both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy h1 {
+    animation: gallery-with-taste-skill-sol-6-1-source-app-globals-enter 0.7s 0.08s both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy > p {
+    animation: gallery-with-taste-skill-sol-6-1-source-app-globals-enter 0.7s 0.16s both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions {
+    animation: gallery-with-taste-skill-sol-6-1-source-app-globals-enter 0.7s 0.23s both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .spatial-notebook,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .sculpture-hero,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .forest-hero,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .knowledge-demo {
+    animation: gallery-with-taste-skill-sol-6-1-source-app-globals-visual-enter 0.9s 0.16s both;
+  }
+}
+@keyframes gallery-with-taste-skill-sol-6-1-source-app-globals-enter {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes gallery-with-taste-skill-sol-6-1-source-app-globals-visual-enter {
+  from {
+    opacity: 0;
+    transform: translateY(17px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) [data-source-html] {
+    scroll-behavior: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) *,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-dialog::backdrop {
+    backdrop-filter: none;
+    background: rgb(15 25 20 / 0.8);
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v2[data-theme="system"] .sculpture-hero > img {
+    filter: invert(1) hue-rotate(180deg);
+    mix-blend-mode: screen;
+  }
+}
+/* Tablet: preserve the visual ideas while tightening nonessential spacing. */
+@media (max-width: 1199px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-wrap {
+    width: calc(100% - 80px);
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero {
+    gap: 16px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h1 {
+    font-size: 64px;
+    letter-spacing: -3.5px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-one {
+    grid-template-columns: 0.92fr 1.08fr;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .spatial-notebook {
+    height: 480px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note {
+    width: 208px;
+    left: 0;
+    top: 35px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note-image {
+    height: 160px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note {
+    width: 185px;
+    right: -2px;
+    min-height: 195px;
+    padding: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note p {
+    font-size: 23px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note {
+    width: 267px;
+    left: 25%;
+    top: 167px;
+    padding-inline: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note .checklist-title {
+    font-size: 16px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note {
+    width: 261px;
+    left: 0;
+    bottom: 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note {
+    width: 175px;
+    bottom: 12px;
+    right: -5px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note img {
+    height: 93px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-cursor {
+    bottom: -18px;
+    left: 40%;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip > div {
+    gap: 26px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip span {
+    font-size: 13px;
+    gap: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-section {
+    column-gap: 45px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two h1 {
+    font-size: 64px;
+    letter-spacing: -4px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-hero {
+    margin-left: -15px;
+    height: 435px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-section {
+    gap: 65px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three {
+    gap: 52px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three h1 {
+    font-size: 74px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-actions {
+    gap: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .text-button {
+    font-size: 10px;
+    gap: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .forest-hero {
+    height: 485px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features {
+    gap: 55px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection {
+    gap: 26px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four h1 {
+    font-size: 68px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-graph {
+    transform: scale(0.87);
+    margin-left: calc(50% - 255px);
+    margin-bottom: -24px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight {
+    width: calc(100% - 18px);
+    padding: 16px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-section {
+    gap: 48px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five h1 {
+    font-size: 61px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main {
+    gap: 10px;
+    padding-inline: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main h3 {
+    font-size: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img {
+    width: 190px;
+    height: 154px;
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-wrap {
+    width: calc(100% - 56px);
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header nav {
+    gap: 22px;
+    margin-left: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-one h1 {
+    font-size: 55px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy > p {
+    font-size: 13px;
+    max-width: 280px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions {
+    gap: 18px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions .button {
+    padding-inline: 18px;
+    gap: 15px;
+    font-size: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions .text-button {
+    font-size: 11px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note {
+    width: 181px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note-image {
+    height: 143px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note {
+    width: 159px;
+    padding: 16px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note p {
+    font-size: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-eyebrow,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .note-small {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note {
+    width: 247px;
+    left: 15%;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note {
+    width: 242px;
+    font-size: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note {
+    width: 154px;
+    bottom: 21px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note > div {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip {
+    gap: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip > div {
+    gap: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip span {
+    font-size: 11px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .features-one-grid {
+    gap: 18px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .find-feature {
+    padding: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-feature .feature-copy {
+    padding-inline: 24px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip {
+    grid-template-columns: 55px 1.5fr 1fr;
+    gap: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-mark {
+    width: 55px;
+    height: 55px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip h2 {
+    font-size: 23px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-section {
+    grid-template-columns: 1fr;
+    gap: 33px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-heading h2 br {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-heading > p {
+    max-width: 400px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-disclaimer {
+    grid-column: 1;
+    margin-top: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two h1 {
+    font-size: 53px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three {
+    gap: 28px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three h1 {
+    font-size: 62px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-actions {
+    flex-wrap: wrap;
+    gap: 7px 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features {
+    gap: 36px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features-copy h2 {
+    font-size: 33px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection h2 {
+    font-size: 34px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four h1 {
+    font-size: 57px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-graph {
+    transform: scale(0.7);
+    margin-bottom: -67px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight {
+    gap: 10px;
+    padding: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight > span > span {
+    font-size: 8px;
+    line-height: 1.5;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .insight-icon {
+    padding: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five h1 {
+    font-size: 52px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-section {
+    padding-inline: 27px;
+    gap: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-bento {
+    grid-template-columns: 1.4fr 1fr;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos {
+    width: 100%;
+    height: 215px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img {
+    width: 175px;
+    height: 140px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side {
+    padding-inline: 27px;
+  }
+}
+/* Mobile: every split layout explicitly becomes a single column. */
+@media (max-width: 767px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-wrap {
+    width: calc(100% - 40px);
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header {
+    height: 72px;
+    gap: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-header nav {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .brand {
+    font-size: 23px;
+    gap: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .brand > svg {
+    width: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .header-cta .button {
+    min-height: 36px;
+    font-size: 10px;
+    padding-inline: 15px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-one,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-two,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-three,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-four,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-five {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-top: 39px;
+    padding-bottom: 45px;
+    min-height: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-one .hero-copy,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-three .hero-copy {
+    padding-bottom: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    margin-bottom: 23px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-one h1 {
+    font-size: clamp(49px, 12.5vw, 70px);
+    letter-spacing: -3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-copy > p {
+    font-size: 13px;
+    line-height: 1.85;
+    max-width: 310px;
+    margin-top: 21px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions {
+    margin-top: 25px;
+    gap: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions .button {
+    min-height: 46px;
+    padding-inline: 21px;
+    font-size: 12px;
+    gap: 21px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions .text-button {
+    font-size: 11px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .spatial-notebook {
+    margin-top: 5px;
+    height: 422px;
+    max-width: 500px;
+    margin-inline: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-orbit {
+    inset: 10px -6px 28px 1px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .playful-notebook .photo-note {
+    width: 180px;
+    left: 0;
+    top: 41px;
+    padding: 7px 7px 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note-image {
+    height: 140px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note-caption {
+    font-size: 8px;
+    padding: 11px 3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .playful-notebook .thought-note {
+    width: 165px;
+    top: 13px;
+    right: 0;
+    padding: 17px;
+    min-height: 179px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note p {
+    font-size: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-eyebrow,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .note-small {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note > svg {
+    width: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .playful-notebook .checklist-note {
+    width: 239px;
+    top: 150px;
+    left: 20%;
+    padding: 17px 18px 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-top {
+    margin-bottom: 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note .checklist-title {
+    font-size: 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note > p {
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-items {
+    gap: 10px;
+    margin: 16px 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-items button {
+    font-size: 9px;
+    gap: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-items svg {
+    width: 16px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-folder {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .playful-notebook .voice-note {
+    width: 244px;
+    bottom: 23px;
+    left: 0;
+    padding: 12px;
+    gap: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note > span:nth-child(2) {
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note small {
+    font-size: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-icon {
+    width: 31px;
+    height: 31px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .playful-notebook .reading-note {
+    width: 154px;
+    bottom: 11px;
+    right: 0;
+    padding: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note > div {
+    font-size: 7px;
+    gap: 4px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note > div svg {
+    width: 15px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note img {
+    height: 84px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-cursor,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .playful-notebook .notebook-cursor {
+    bottom: -14px;
+    font-size: 8px;
+    left: 33%;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 23px;
+    padding-top: 22px;
+    padding-bottom: 30px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip > p {
+    max-width: none;
+    font-size: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip > div {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px 45px;
+    width: 100%;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .human-strip span {
+    font-size: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h2 {
+    font-size: 37px;
+    letter-spacing: -1.8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-heading {
+    margin-bottom: 29px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-heading > p {
+    font-size: 12px;
+    max-width: 300px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .features-one {
+    padding-block: 63px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .features-one-grid {
+    grid-template-columns: 1fr;
+    gap: 19px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .find-feature {
+    padding: 28px 23px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .feature-copy h3 {
+    font-size: 25px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-feature > img {
+    height: 220px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-feature .feature-copy {
+    padding: 28px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-results {
+    gap: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result > span {
+    font-size: 8px;
+    padding-inline: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .compact .search-result > small {
+    padding-inline: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip {
+    grid-template-columns: 1fr;
+    gap: 23px;
+    padding-block: 44px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-mark {
+    width: 55px;
+    height: 55px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-mark svg {
+    width: 30px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip h2 {
+    font-size: 27px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .philosophy-strip > p {
+    max-width: 350px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-block: 63px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-heading > p {
+    margin-top: 17px;
+    font-size: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plans {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan {
+    padding: 21px 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan h3 {
+    font-size: 12px;
+    margin-bottom: 21px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .price {
+    font-size: 35px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .price small {
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan > p {
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan li {
+    font-size: 8px;
+    gap: 5px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan li svg {
+    width: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan .button {
+    font-size: 9px;
+    padding-inline: 10px;
+    gap: 8px;
+    min-height: 35px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-plan .button svg {
+    width: 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .pricing-disclaimer {
+    grid-column: 1;
+    font-size: 8px;
+    margin-top: -17px;
+    line-height: 1.7;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .site-footer {
+    padding-block: 34px 90px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 22px;
+    margin-bottom: 35px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-top h2 {
+    font-size: 32px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-top .button {
+    min-height: 44px;
+    font-size: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line .brand {
+    font-size: 18px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line > p {
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .footer-line > span {
+    margin-left: 0;
+    width: 100%;
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two {
+    padding-top: 30px;
+    gap: 4px;
+    padding-bottom: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two .hero-copy {
+    padding-top: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two h1 {
+    font-size: clamp(42px, 10.8vw, 64px);
+    letter-spacing: -3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two .eyebrow {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two .hero-copy > p {
+    font-size: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-hero {
+    height: 315px;
+    margin-left: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-corner {
+    bottom: 12px;
+    right: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-corner > svg {
+    width: 28px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two {
+    padding-top: 26px;
+    padding-bottom: 36px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-section-two .preview-search-input input {
+    font-size: 14px;
+    letter-spacing: -0.5px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .preview-search-input {
+    padding-inline: 13px;
+    gap: 10px;
+    min-height: 55px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .preview-search-input input {
+    font-size: 11px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-preview > label {
+    font-size: 11px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-categories {
+    gap: 5px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-categories button {
+    font-size: 9px;
+    padding: 6px 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-results {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .idea-thumbnail,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .search-section-two .search-result > img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .search-section-two .idea-thumbnail {
+    height: 111px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > span {
+    font-size: 10px;
+    padding-inline: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .search-result > small {
+    font-size: 9px;
+    padding-inline: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-section {
+    grid-template-columns: 1fr;
+    gap: 39px;
+    padding-block: 63px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-title h2 {
+    font-size: 46px;
+    letter-spacing: -2.8px;
+    margin-bottom: 27px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-title img {
+    height: 240px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list {
+    gap: 32px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list h3 {
+    font-size: 19px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .less-noise-list p {
+    font-size: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three {
+    gap: 36px;
+    padding-top: 29px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-eyebrow {
+    margin-bottom: 25px;
+    font-size: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three h1 {
+    font-size: clamp(62px, 15.3vw, 83px);
+    letter-spacing: -2px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-copy > p {
+    font-size: 13px;
+    margin-top: 23px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-actions {
+    margin-top: 23px;
+    gap: 23px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .forest-hero {
+    height: 405px;
+    border-radius: 180px 180px 3px 3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro {
+    padding-block: 31px 58px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro h2 {
+    font-size: 43px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-intro > p {
+    font-size: 12px;
+    max-width: 320px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-signoff {
+    font-size: 19px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features {
+    grid-template-columns: 1fr;
+    gap: 34px;
+    padding-block: 37px 61px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-photo img {
+    height: 330px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-features-copy h2 {
+    font-size: 37px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection {
+    grid-template-columns: 1fr;
+    gap: 13px;
+    padding: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .collection-image {
+    height: 240px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection > div:last-child {
+    padding: 17px 8px 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection h2 {
+    font-size: 39px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editorial-collection > div > svg {
+    margin-bottom: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 .pricing-heading h2 {
+    font-size: 47px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v3 .footer-top h2 {
+    font-size: 37px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four {
+    gap: 16px;
+    padding-top: 36px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four h1 {
+    font-size: 61px;
+    letter-spacing: -3.5px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-four .eyebrow {
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-demo {
+    overflow: hidden;
+    padding-top: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-graph {
+    transform: scale(0.7);
+    margin-bottom: -81px;
+    margin-top: -35px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight {
+    width: 100%;
+    padding: 15px;
+    margin-top: 6px;
+    gap: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-insight > span > span {
+    font-size: 8px;
+    line-height: 1.6;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .connected-strip {
+    flex-wrap: wrap;
+    gap: 19px 20px;
+    padding-block: 25px;
+    justify-content: flex-start;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .connected-strip span {
+    font-size: 9px;
+    gap: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .connected-strip svg {
+    width: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-section {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-block: 50px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-visual {
+    height: 285px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-copy h2 {
+    font-size: 42px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .network-copy > p {
+    font-size: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .graph-search-section {
+    padding-top: 48px;
+    padding-bottom: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .v4 .pricing-section {
+    padding-top: 58px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five h1 {
+    font-size: clamp(48px, 12.8vw, 68px);
+    letter-spacing: -3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five .eyebrow {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-section {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+    padding: 24px 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-note input {
+    font-size: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-aside {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-aside br {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .capture-aside svg {
+    margin: 0;
+    width: 15px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-features {
+    padding-block: 61px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-heading h2 {
+    font-size: 40px;
+    letter-spacing: -2px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-heading p {
+    font-size: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-bento {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main {
+    grid-template-columns: 0.9fr 1.1fr;
+    gap: 20px;
+    min-height: 330px;
+    padding: 28px 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main h3 {
+    font-size: 21px;
+    letter-spacing: -0.8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-main p {
+    font-size: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos {
+    height: 235px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img {
+    width: 145px;
+    height: 133px;
+    border-width: 6px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-photos img:last-child {
+    right: -12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side {
+    padding: 28px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side .big-star {
+    float: right;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-side .big-star > svg {
+    width: 63px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-philosophy {
+    padding-block: 47px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-philosophy h2 {
+    font-size: 31px;
+    letter-spacing: -1.3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-philosophy p {
+    font-size: 12px;
+    max-width: 310px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .recollect-appearance {
+    bottom: 15px;
+    right: 15px;
+    padding: 5px;
+    gap: 3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .switcher-label {
+    font-size: 9px;
+    gap: 5px;
+    padding-inline: 6px 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .recollect-appearance > a {
+    width: 27px;
+    height: 27px;
+    font-size: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .theme-toggle {
+    height: 27px;
+    width: 31px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .notebook-dialog {
+    width: calc(100vw - 20px);
+    height: calc(100dvh - 30px);
+    border-radius: 12px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-top {
+    padding: 15px 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-top .brand {
+    font-size: 19px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .demo-tag {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-sidebar {
+    padding: 13px;
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    gap: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .new-note {
+    min-height: 35px;
+    font-size: 10px;
+    padding-inline: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-search {
+    margin: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 5px;
+    overflow-x: auto;
+    grid-column: 1 / -1;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list button {
+    width: auto;
+    max-width: 170px;
+    flex-shrink: 0;
+    padding: 9px;
+    font-size: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list button > svg {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-list small {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .export-notes {
+    padding-top: 3px;
+    grid-column: 1 / -1;
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-editor {
+    padding: 19px 21px;
+    min-height: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .editor-meta {
+    margin-bottom: 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .note-title-input {
+    font-size: 25px;
+    letter-spacing: -1px;
+    margin-bottom: 15px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .workspace-editor textarea {
+    font-size: 12px;
+    min-height: 100px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .save-status {
+    font-size: 8px;
+  }
+}
+@media (max-width: 359px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .section-wrap {
+    width: calc(100% - 32px);
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) 
+  .hero-one h1 {
+    font-size: 43px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions {
+    gap: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-actions .button {
+    padding-inline: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .thought-note {
+    width: 148px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .photo-note {
+    width: 155px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note {
+    width: 223px;
+    left: 16%;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .voice-note {
+    width: 220px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .reading-note {
+    width: 140px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-two h1 {
+    font-size: 38px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .hero-actions {
+    gap: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-three .text-button {
+    font-size: 9px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .knowledge-graph {
+    transform: scale(0.61);
+    margin-bottom: -100px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .hero-five h1 {
+    font-size: 44px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .switcher-label > span {
+    display: none;
+  }
+}
+/* The fifth hero is a deliberately different paper-first composition, not a
+   recolor of the spatial UI in direction one. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-notebook {
+  position: relative;
+  width: 100%;
+  height: 510px;
+  isolation: isolate;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-notebook::before {
+  content: "";
+  position: absolute;
+  inset: 17px -10px 20px 5px;
+  background: var(--tint);
+  border-radius: 38% 44% 36% 48%;
+  transform: rotate(6deg);
+  opacity: 0.6;
+  z-index: -1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid {
+  position: absolute;
+  width: 254px;
+  padding: 10px 10px 0;
+  background: var(--elevated);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  text-align: left;
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > div {
+  height: 210px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 17px 6px;
+  font-size: 11px;
+  letter-spacing: -0.3px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-coast {
+  top: 40px;
+  left: 7px;
+  transform: rotate(-11deg);
+  z-index: 1;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-coast:hover {
+  transform: rotate(-7deg) translateY(-5px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-desk {
+  top: 226px;
+  right: 0;
+  transform: rotate(9deg);
+  z-index: 3;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-desk > div {
+  height: 191px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-desk:hover {
+  transform: rotate(5deg) translateY(-5px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot {
+  position: absolute;
+  top: 9px;
+  right: 11px;
+  width: 251px;
+  padding: 22px 28px 28px;
+  min-height: 232px;
+  color: var(--note-ink);
+  background: var(--note-yellow);
+  border-radius: 5px;
+  box-shadow: var(--shadow);
+  transform: rotate(6deg);
+  text-align: left;
+  z-index: 2;
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot:hover {
+  transform: rotate(3deg) translateY(-5px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > span {
+  display: block;
+  margin-top: 15px;
+  font-size: 9px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > p {
+  font-family: var(--font-editorial), serif;
+  font-size: 35px;
+  line-height: 1.12;
+  letter-spacing: -0.6px;
+  font-style: italic;
+  padding-bottom: 4px;
+  margin-top: 8px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > small {
+  font-size: 9px;
+  display: block;
+  margin-top: 14px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading {
+  position: absolute;
+  left: 22px;
+  bottom: 13px;
+  width: 256px;
+  padding: 23px 23px 24px;
+  background: var(--accent);
+  color: var(--accent-text);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  transform: rotate(-5deg);
+  text-align: left;
+  z-index: 2;
+  transition: transform 0.3s;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading:hover {
+  transform: rotate(-2deg) translateY(-4px);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > span {
+  display: block;
+  font-size: 9px;
+  margin-top: 12px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > p {
+  font-size: 21px;
+  letter-spacing: -0.8px;
+  line-height: 1.2;
+  margin-top: 10px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > small {
+  display: block;
+  font-size: 9px;
+  margin-top: 10px;
+  opacity: 0.9;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > svg:last-child {
+  position: absolute;
+  right: 21px;
+  top: 28px;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-flower {
+  position: absolute;
+  top: 225px;
+  left: 45%;
+  transform: rotate(14deg);
+  color: var(--accent);
+  z-index: 4;
+}
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-notebook {
+    animation: gallery-with-taste-skill-sol-6-1-source-app-globals-visual-enter 0.9s 0.16s both;
+  }
+}
+@media (max-width: 1199px) and (min-width: 768px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-notebook {
+    height: 475px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid {
+    width: 217px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > div {
+    height: 184px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot {
+    width: 205px;
+    padding: 19px 23px;
+    right: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > p {
+    font-size: 30px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > small {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading {
+    width: 218px;
+    left: 12px;
+    padding: 22px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > p {
+    font-size: 18px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-flower {
+    width: 85px;
+    top: 229px;
+    left: 38%;
+  }
+}
+@media (max-width: 1023px) and (min-width: 768px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid {
+    width: 185px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > div {
+    height: 159px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > span {
+    font-size: 8px;
+    padding-block: 13px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot {
+    width: 173px;
+    padding: 18px;
+    min-height: 210px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > p {
+    font-size: 28px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > small {
+    font-size: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading {
+    width: 181px;
+    padding: 20px 16px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > span {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > p {
+    font-size: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > small {
+    font-size: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-flower {
+    width: 67px;
+    top: 210px;
+    left: 31%;
+  }
+}
+@media (max-width: 767px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-notebook {
+    height: 417px;
+    max-width: 440px;
+    margin-inline: auto;
+    margin-top: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-notebook::before {
+    inset: 16px 0 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid {
+    width: 181px;
+    padding: 7px 7px 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > div {
+    height: 163px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-polaroid > span {
+    font-size: 8px;
+    padding-block: 13px;
+    padding-inline: 3px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-coast {
+    top: 43px;
+    left: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-desk {
+    top: 209px;
+    right: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .polaroid-desk > div {
+    height: 156px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot {
+    top: 3px;
+    right: 0;
+    width: 168px;
+    min-height: 192px;
+    padding: 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > span {
+    font-size: 8px;
+    margin-top: 10px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > p {
+    font-size: 27px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-jot > small {
+    font-size: 7px;
+    margin-top: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading {
+    bottom: 16px;
+    width: 177px;
+    left: 4px;
+    padding: 20px 17px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > span {
+    font-size: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > p {
+    font-size: 17px;
+    margin-top: 8px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > small {
+    font-size: 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > svg:first-child {
+    width: 21px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-reading > svg:last-child {
+    top: 22px;
+    right: 17px;
+    width: 14px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .scrapbook-flower {
+    top: 177px;
+    left: 38%;
+    width: 71px;
+  }
+}
+/* Give the generated sculpture a local backdrop for correct blend behavior
+   inside its animated stacking context, in both themes. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .sculpture-hero {
+  background: var(--surface);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .checklist-note .checklist-title {
+  line-height: 1.4;
+}
+
+/* Source theme utilities retained for the gallery. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .font-sans { font-family: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) [data-source-html] { --font-sans: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) .font-mono { font-family: var(--font-geist-mono); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sol-6-1"]) [data-source-html] { --font-mono: var(--font-geist-mono); }

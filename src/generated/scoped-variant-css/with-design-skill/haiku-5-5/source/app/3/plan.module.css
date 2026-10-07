@@ -1,0 +1,327 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .page {
+  --vellum: #d9e0e4;
+  --room: #eef2f4;
+  --hall: #c5d0d8;
+  --ink: #1f2a33;
+  --muted: #4b5a66;
+  --ochre: #e2ae2e;
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--vellum);
+  color: var(--ink);
+  font-family: var(--font-barlow), system-ui, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .page a:focus-visible,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) 
+.page [role="button"]:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px clamp(20px, 4vw, 56px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .wordmark {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quietLink {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px) 96px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 48px) 0 clamp(64px, 9vw, 120px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .h1 {
+  margin: 0 0 24px;
+  font-size: clamp(3.25rem, 6.4vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .lead {
+  margin: 0 0 36px;
+  max-width: 28rem;
+  color: var(--muted);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .primary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 24px;
+  background: var(--ink);
+  color: var(--room);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .primary:hover {
+  background: #2e3c47;
+}
+
+/* The plan is the hero's only illustration, so it sits on its own surface */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .plan {
+  width: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .room {
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .room:focus {
+  outline: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomShape {
+  fill: var(--room);
+  stroke: var(--ink);
+  stroke-width: 3px;
+  transition: fill 160ms ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .hallShape {
+  fill: var(--hall);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .room:not([aria-pressed="true"]):hover .roomShape {
+  fill: #ffffff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomActive {
+  fill: var(--ochre);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .room:focus-visible .roomShape {
+  stroke-width: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomName {
+  fill: var(--ink);
+  font-size: 19px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--room);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomCount {
+  fill: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  paint-order: stroke;
+  stroke: var(--room);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .door rect {
+  fill: var(--hall);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .door path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .outerWall {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 9px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .corridor {
+  stroke: var(--ink);
+  stroke-width: 2px;
+  stroke-dasharray: 6 6;
+  pointer-events: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .panel {
+  margin-top: 24px;
+  padding: 28px 32px;
+  background: var(--room);
+  border-top: 4px solid var(--ochre);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .panelTitle {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .panelSummary {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .noteList {
+  margin: 0 0 16px;
+  padding: 0 0 0 1.25em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .noteList li {
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .panelLinks {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .block {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-top: 2px solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .block p {
+  margin: 0;
+  max-width: 36rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quote {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-top: 2px solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quote blockquote {
+  grid-column: 2;
+  margin: 0;
+  max-width: 40rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quote p {
+  margin: 0 0 16px;
+  font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quote footer {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .closing {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+  padding: clamp(40px, 6vw, 72px) clamp(24px, 4vw, 48px);
+  background: var(--ink);
+  color: var(--room);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .closing .h2 {
+  color: var(--room);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .closing p {
+  margin: 0;
+  color: #c5d0d8;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .closing .primary {
+  background: var(--ochre);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .closing .primary:hover {
+  background: #d19e22;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px clamp(20px, 4vw, 56px);
+  border-top: 2px solid var(--ink);
+  font-size: 0.9375rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .footer a {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomShape {
+    transition: none;
+  }
+}
+
+/* SVG text scales with the viewBox, so narrow screens need larger units to stay legible */
+@media (max-width: 600px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomName {
+    font-size: 34px;
+    stroke-width: 10px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .roomCount {
+    font-size: 26px;
+    stroke-width: 9px;
+  }
+}
+
+@media (max-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .hero,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) 
+  .block {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quote {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) .quote blockquote {
+    grid-column: 1;
+  }
+}

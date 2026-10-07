@@ -1,0 +1,4 @@
+/* Each design route owns its palette and type. Global styles stay neutral. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="haiku-5-5"]) [data-source-body] {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
