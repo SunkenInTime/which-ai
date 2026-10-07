@@ -1,0 +1,158 @@
+{
+  "build": "npm run build passed with local Google Fonts transport shim; shim not committed",
+  "tests": "362 Playwright route, recency and visual smoke tests passed",
+  "targeted_lint": "0 errors, 6 unused switcher warnings across the combined import",
+  "repository_lint": "209 existing errors; 200 total warnings",
+  "preview_checks": [
+    {
+      "group": "with-design-skill",
+      "i": 1,
+      "status": 200,
+      "h": [
+        "Good ideas  deserve a place to grow."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 2,
+      "status": 200,
+      "h": [
+        "Less searching. More thinking."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 3,
+      "status": 200,
+      "h": [
+        "A growing place for a curious mind."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 4,
+      "status": 200,
+      "h": [
+        "A home for your beautifully scattered mind."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 5,
+      "status": 200,
+      "h": [
+        "Your mind is full of possibilities.  Give them somewhere to live."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 1,
+      "status": 200,
+      "h": [
+        "Less in your head.More on your mind."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 2,
+      "status": 200,
+      "h": [
+        "Think freely.Connecteverything."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 3,
+      "status": 200,
+      "h": [
+        "A home for yourbeautifully busy mind."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 4,
+      "status": 200,
+      "h": [
+        "A clear mindstarts here."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 5,
+      "status": 200,
+      "h": [
+        "Let yourmind grow."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 1,
+      "status": 200,
+      "h": [
+        "A home forevery thought."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 2,
+      "status": 200,
+      "h": [
+        "Think freely.Keep everything."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 3,
+      "status": 200,
+      "h": [
+        "A clearer mindstarts here."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 4,
+      "status": 200,
+      "h": [
+        "Your mind,connected."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 5,
+      "status": 200,
+      "h": [
+        "Keep whatmakes you, you."
+      ],
+      "width": 390,
+      "errors": []
+    }
+  ]
+}

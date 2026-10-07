@@ -1,0 +1,19 @@
+{
+  "app/layout.tsx": "536d23b83652046a3e5a2baa5bbd1772302cd0f50f04afa02016e3dfb056933a",
+  "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd",
+  "app/globals.css": "e82ed66a5dfdec722293acafbd4e468adf572cb858e3bc7d7b47407053dd2e79",
+  "app/1/lexicon.module.css": "669bf39e60e1b00f9607bb5a1fb93aa57d89bc27d1295a507920705afcd02d5e",
+  "app/1/page.tsx": "daf65a5009bd3911cdc61e15a2a88cc4c676f4424157834c4aeb1de1739bf2c5",
+  "app/_components/design-switcher.tsx": "f7a2fe973781ec5944e25a041fb8c786922b1cceed47fd41a9aedc1ca93431da",
+  "app/_components/design-switcher.module.css": "0b6c2b00a758d571447328e5e57d4b26870edb5546782736dc14197fde9180fa",
+  "app/4/pantry.module.css": "91c86cb529a26a3ce85b4685a837aa847d9f16e0d893d81a6dd4d4232854a63c",
+  "app/4/shelf.tsx": "35bb9e803bfee3a469fccf0939cdb941d4a80f181c62ea532bfcedbc111b00bb",
+  "app/4/page.tsx": "97d10a80181f902c312bc12dbf5b11b9c1123b4f0420b8f330f0fbf119e2efd5",
+  "app/3/floor-plan.tsx": "c4e4a10f234edad754bc9042045a3d61920e7515661616b86e83ab348bed94e1",
+  "app/3/plan.module.css": "39d39a2f46914ab3c24caaa0f19ba123f5cbc25f2bafe69576f3ad40419f1db6",
+  "app/3/page.tsx": "51e038280a9a8c7c42e7ef66f9f10865f3f5cb2f336e919457678879020830d4",
+  "app/2/riso.module.css": "6c18d8c3c6491f3bd094c93ff5f0fc788f7af4888586058c15b47b0e73f4d651",
+  "app/2/page.tsx": "810c59a99a3cc111ddce6bc27ded1a8e80445c68709baa43f6f77a265b8518a3",
+  "app/5/trail.module.css": "e5f8079207deec846e261263ac7ba4925a56a0b67f1bc126d70e0454717649d9",
+  "app/5/page.tsx": "82f73154e750e955f1aa72bcfbbd8ff34c503458db3d964a0584688fa0124ee0"
+}

@@ -1,3 +1,9 @@
+import withoutHaiku55 from "@/variants/without-design-skill/haiku-5-5";
+import withTasteHaiku55 from "@/variants/with-taste-skill/haiku-5-5";
+import withHaiku55 from "@/variants/with-design-skill/haiku-5-5";
+import withoutSol61 from "@/variants/without-design-skill/sol-6-1";
+import withTasteSol61 from "@/variants/with-taste-skill/sol-6-1";
+import withSol61 from "@/variants/with-design-skill/sol-6-1";
 import withoutMistral4 from "@/variants/without-design-skill/mistral-large-4";
 import withTasteMistral4 from "@/variants/with-taste-skill/mistral-large-4";
 import withMistral4 from "@/variants/with-design-skill/mistral-large-4";
@@ -119,6 +125,12 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "with-design-skill:sol-6-1": withSol61,
+  "with-taste-skill:sol-6-1": withTasteSol61,
+  "without-design-skill:sol-6-1": withoutSol61,
+  "with-design-skill:haiku-5-5": withHaiku55,
+  "with-taste-skill:haiku-5-5": withTasteHaiku55,
+  "without-design-skill:haiku-5-5": withoutHaiku55,
   "with-design-skill:mistral-large-4": withMistral4,
   "with-taste-skill:mistral-large-4": withTasteMistral4,
   "without-design-skill:mistral-large-4": withoutMistral4,

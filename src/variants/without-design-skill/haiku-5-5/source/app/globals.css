@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+[data-source-html] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif: var(--font-instrument-serif);
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-float: float 9s ease-in-out infinite;
+  --animate-node: node-pulse 3.6s ease-in-out infinite;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+[data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Source theme utilities retained for the gallery. */
+.font-sans { font-family: var(--font-geist-sans); }
+[data-source-html] { --font-sans: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+[data-source-html] { --font-mono: var(--font-geist-mono); }
+.font-serif { font-family: var(--font-instrument-serif); }
+[data-source-html] { --font-serif: var(--font-instrument-serif); }
+.animate-marquee { animation: marquee 30s linear infinite; }
+.animate-float { animation: float 9s ease-in-out infinite; }
+.animate-node { animation: node-pulse 3.6s ease-in-out infinite; }
+
+@media (min-width: 48rem) { .md\:animate-float { animation: float 9s ease-in-out infinite; } }

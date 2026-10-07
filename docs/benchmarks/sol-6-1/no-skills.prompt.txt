@@ -1,0 +1,1 @@
+I want you to design the landing page for a note-taking application as essentially a second brain. You should design five iterations and each of them should be accessible within the /1, /2, /3, /4, and /5 pages. And then you should add a little button that lets me switch between them easily. Use port 3262 if needed.

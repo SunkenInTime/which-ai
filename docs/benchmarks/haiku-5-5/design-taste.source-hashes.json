@@ -1,0 +1,19 @@
+{
+  "app/fonts.ts": "1e14358e44441c566b441e030e2a614a1ca45a764b78b03224739fd70c590236",
+  "app/layout.tsx": "37d58d698159ba7cda3b61369c3bbf8fd1f5f0163329dc15defc77fceee1ede2",
+  "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd",
+  "app/globals.css": "cf935b281fd433b2772b7f1c061d8feffc61467d9bcaeb2755ed8ec1144dd86d",
+  "components/note-search.tsx": "c23a1dea74a0b8830973792e9c392b03861bf97e4a92c52c58cc01702997abfa",
+  "components/variant-switcher.tsx": "b739739a158e777936c02b3f38d5ad73fcf6b9d2304705740c36acab88941a20",
+  "components/parallax-frame.tsx": "ae009b90c355952fb2c61648f9097fcc5eae8aade3eee768f8e161406bd88f39",
+  "components/sticky-stack.tsx": "85f61446671955153c8e5c2eb28281ea0330bbc8caf1b4ed7848f149f8e1d9e1",
+  "components/icons.ts": "66e6e220a7997fedac922037f0f6f96eac19f5a4aa207de03c8d6296781bd0fd",
+  "components/kinetic-line.tsx": "1ade76db914a40e111cb29afeb092fae0ff2df5ec4a9576b0b6046e133bd3404",
+  "components/reveal.tsx": "fb54a7e535ae6c3f451062d3ca102162b2ba3bc93e532384c633f16fba1682e2",
+  "app/(variants)/layout.tsx": "2550c304d51ba2ca916c9288baf1a5e95c46ea132148d1f9bd54da70b13cc0ea",
+  "app/(variants)/1/page.tsx": "f8682f33cb2b75bcfb0b948da317d9785f561ab480cf738d56e0342f29f634df",
+  "app/(variants)/4/page.tsx": "4ae38aa633856472f4c12d8d11df22a34a10eb2096699dac3a6e8bf3472c2cfc",
+  "app/(variants)/3/page.tsx": "d6e4f78a79da406ede6c592dae63e7b6133c1007365f8fe575cab0818a9b3703",
+  "app/(variants)/2/page.tsx": "1d6ceec4bac7346b6f0bece6fe04cbbbdabda9fb07a2519a704558d252455351",
+  "app/(variants)/5/page.tsx": "acbd3b483ef11e2075bca508dec53201c633f8edde86c35278b4362f33b17b24"
+}

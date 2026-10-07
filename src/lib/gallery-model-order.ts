@@ -2,6 +2,8 @@ import { sortGalleryEntriesNewFirst } from "@/lib/gallery-recency";
 import type { GalleryEntry, ModelSlug } from "@/lib/gallery-types";
 
 const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }> = {
+  "haiku-5-5": { familyOrder: 1, tier: 53 },
+  "sol-6-1": { familyOrder: 2, tier: 61 },
   "mistral-large-4": { familyOrder: 10, tier: 4 },
   "union-alpha": { familyOrder: 9, tier: 1 },
   "mimo-x-flash-preview": { familyOrder: 8, tier: 0 },

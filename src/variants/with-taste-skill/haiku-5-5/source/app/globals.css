@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@keyframes cairn-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.cairn-marquee {
+  animation: cairn-marquee 36s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cairn-marquee {
+    animation: none;
+  }
+}
+
+/* Source theme utilities retained for the gallery. */
+.font-sans { font-family: var(--font-geist-sans); }
+[data-source-html] { --font-sans: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+[data-source-html] { --font-mono: var(--font-geist-mono); }

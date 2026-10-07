@@ -1,0 +1,277 @@
+.page {
+  --paper: #f0f1ee;
+  --ink: #16181b;
+  --muted: #5c636b;
+  --panel: #e3e6e2;
+  --accent: #8b2635;
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-newsreader), Georgia, serif;
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+
+.page a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 28px clamp(20px, 5vw, 64px);
+}
+
+.wordmark {
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.quietLink {
+  color: var(--ink);
+  font-size: 1rem;
+  text-underline-offset: 4px;
+}
+
+.main {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 5vw, 64px) 120px;
+}
+
+/* Hero entry: headword across the top, meta and senses below in two columns */
+.entry {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 36rem);
+  column-gap: 64px;
+  padding-top: clamp(32px, 7vw, 88px);
+}
+
+.headword {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 500;
+  line-height: 0.85;
+  letter-spacing: -0.035em;
+}
+
+.meta {
+  grid-column: 1;
+  padding-top: 32px;
+}
+
+.pronunciation {
+  margin: 0;
+  font-size: 1.375rem;
+  color: var(--muted);
+}
+
+.partOfSpeech {
+  margin: 0;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.body {
+  grid-column: 2;
+  padding-top: 32px;
+}
+
+/* Preflight removes list markers, so the numbered senses restore decimal explicitly */
+.senses {
+  margin: 0;
+  padding-left: 1.6em;
+  list-style: decimal outside;
+}
+
+.senses li {
+  padding-left: 0.3em;
+  margin-bottom: 0.9em;
+}
+
+.senses li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.etymology {
+  margin: 0 0 40px;
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 48px;
+  padding: 0 22px;
+  background: var(--accent);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.primary:hover {
+  background: #6e1e2b;
+}
+
+.secondary {
+  color: var(--ink);
+  font-size: 1rem;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* Two-column sections share the hero's grid so the page reads as one entry */
+.related,
+.sample,
+.close {
+  display: grid;
+  grid-template-columns: minmax(0, 15rem) minmax(0, 36rem);
+  column-gap: 64px;
+  margin-top: 120px;
+}
+
+.sectionTitle {
+  grid-column: 1;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.entries {
+  grid-column: 2;
+  margin: 0;
+}
+
+.entryItem {
+  margin-bottom: 36px;
+}
+
+.entryItem dt {
+  margin: 0 0 4px;
+  font-size: 1.375rem;
+  line-height: 1.35;
+}
+
+.term {
+  font-weight: 600;
+}
+
+.entryItem dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.sample {
+  margin-top: 120px;
+}
+
+.note {
+  grid-column: 2;
+  padding: 40px 40px 36px;
+  background: var(--panel);
+}
+
+.noteTitle {
+  margin: 0 0 16px;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.note p {
+  margin: 0 0 16px;
+}
+
+.noteMeta {
+  margin-bottom: 0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.close {
+  margin-top: 120px;
+  padding-top: 48px;
+  border-top: 1px solid #c9ccd0;
+}
+
+.closeBody {
+  grid-column: 2;
+}
+
+.closeBody p {
+  margin: 0 0 28px;
+  max-width: 34rem;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 32px clamp(20px, 5vw, 64px);
+  border-top: 1px solid #c9ccd0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.footerLinks {
+  display: flex;
+  gap: 24px;
+}
+
+.footerLinks a {
+  color: var(--ink);
+}
+
+@media (max-width: 760px) {
+  .entry,
+  .related,
+  .sample,
+  .close {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 24px;
+  }
+
+  .meta,
+  .body,
+  .sectionTitle,
+  .entries,
+  .note,
+  .closeBody {
+    grid-column: 1;
+  }
+
+  .meta {
+    padding-top: 16px;
+  }
+
+  .body {
+    padding-top: 0;
+  }
+
+  .sample,
+  .related,
+  .close {
+    margin-top: 80px;
+  }
+}

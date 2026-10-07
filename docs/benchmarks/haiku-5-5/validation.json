@@ -1,0 +1,158 @@
+{
+  "build": "npm run build passed with local Google Fonts transport shim; shim not committed",
+  "tests": "362 Playwright route, recency and visual smoke tests passed",
+  "targeted_lint": "0 errors, 6 unused switcher warnings across the combined import",
+  "repository_lint": "209 existing errors; 200 total warnings",
+  "preview_checks": [
+    {
+      "group": "with-design-skill",
+      "i": 1,
+      "status": 200,
+      "h": [
+        "Loam"
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 2,
+      "status": 200,
+      "h": [
+        "Stop relearning the same things.Stop relearning the same things."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 3,
+      "status": 200,
+      "h": [
+        "Give every idea a room."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 4,
+      "status": 200,
+      "h": [
+        "Put it up. Find it in February."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-design-skill",
+      "i": 5,
+      "status": 200,
+      "h": [
+        "Leave a trail back to every idea."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 1,
+      "status": 200,
+      "h": [
+        "Remember everything you've ever thought."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 2,
+      "status": 200,
+      "h": [
+        "Your mind, mapped."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 3,
+      "status": 200,
+      "h": [
+        "Everything you know, one search away."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 4,
+      "status": 200,
+      "h": [
+        "Stop filing notes. Start connecting them."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "without-design-skill",
+      "i": 5,
+      "status": 200,
+      "h": [
+        "Your brain, but tidy."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 1,
+      "status": 200,
+      "h": [
+        "A second brain for everything you learn."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 2,
+      "status": 200,
+      "h": [
+        "A commonplace book that keeps itself."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 3,
+      "status": 200,
+      "h": [
+        "Find the note you wrote three months ago."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 4,
+      "status": 200,
+      "h": [
+        "Capture it once. Use it for years."
+      ],
+      "width": 390,
+      "errors": []
+    },
+    {
+      "group": "with-taste-skill",
+      "i": 5,
+      "status": 200,
+      "h": [
+        "Rememberwhatyouread."
+      ],
+      "width": 390,
+      "errors": []
+    }
+  ]
+}

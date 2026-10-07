@@ -1,0 +1,13 @@
+{
+  "app/layout.tsx": "a229dce31ca01b1cc174df70b85e5875774e08562b5435cfdfa987029d0edda5",
+  "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd",
+  "app/globals.css": "f9229937d732169284d8eb802d7a639df88debbc836dc32596c9f44c2a89c9e3",
+  "components/variant-switcher.tsx": "3fd279adb6d7682b2bc2b754ddf5e11c82c6a9209f2b2be719762195e2c887f8",
+  "app/(variants)/layout.tsx": "c6c6cece7fce1c54317c7e27c899cb94f48c8bf190f72782238ed5cef6aa8e56",
+  "app/(variants)/1/page.tsx": "3eb12e4a00ea27b23e98da7e28da7da580bc0de32d5f6f34de6537de78aa5070",
+  "app/(variants)/4/workbench.tsx": "aca9091c7638ba89de2cea165c2ce4688cf51a42ad8d9293170230fe3c19b909",
+  "app/(variants)/4/page.tsx": "7767d9dcad075cd4bebe54f4252e35edfabfea37166d08f8ce20c85f3aead8c4",
+  "app/(variants)/3/page.tsx": "5ad31511f2c4d47070c09425945896a6fda72e982bfa3c3c48bd454a24423130",
+  "app/(variants)/2/page.tsx": "4c57683994387d34b975be0e2abf1d6a760e4c85b32b097de2aec04b94bf9f29",
+  "app/(variants)/5/page.tsx": "07550a79bd0ce62ce63bed1026e77ad5d1c8e54a53ccf3909eb85e763cb27198"
+}

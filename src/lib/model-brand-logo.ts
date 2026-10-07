@@ -6,6 +6,8 @@ export interface ModelBrandLogoPaths {
 }
 
 const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
+  "haiku-5-5": { light: "/anthropic-claude.webp" },
+  "sol-6-1": { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   "mistral-large-4": { light: "/mistral.svg" },
   "union-alpha": { light: "/anonymous-light.svg", dark: "/anonymous-dark.svg" },
   "mimo-x-flash-preview": { light: "/xiaomi.svg" },

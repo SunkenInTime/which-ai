@@ -27,12 +27,14 @@ export type GalleryIsoDate = `${number}-${number}-${number}`;
 export const NEW_ARRIVAL_WINDOW_DAYS = 14;
 
 /** Explicitly selected arrivals; a recent date alone does not earn a New badge. */
-const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["mistral-large-4"]);
+const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["sol-6-1", "haiku-5-5"]);
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** First day each model's generations landed in the gallery. */
 const MODEL_ADDED_AT: Partial<Record<ModelSlug, GalleryIsoDate>> = {
+  "haiku-5-5": "2026-10-07",
+  "sol-6-1": "2026-10-07",
   "mistral-large-4": "2026-10-06",
   "sonnet-5.5": "2026-09-28",
   "luna-6": "2026-09-23",

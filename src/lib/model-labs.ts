@@ -20,6 +20,8 @@ export interface ModelLab {
 }
 
 const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
+  "haiku-5-5": { slug: "anthropic", label: "Anthropic" },
+  "sol-6-1": { slug: "gpt", label: "GPT" },
   "mistral-large-4": { slug: "mistral", label: "Mistral AI" },
   "union-alpha": { slug: "anonymous", label: "Anonymous" },
   "mimo-x-flash-preview": { slug: "xiaomi", label: "Xiaomi" },

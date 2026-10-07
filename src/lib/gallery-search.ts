@@ -22,6 +22,8 @@ const LAB_ALIASES: Record<LabSlug, string[]> = {
 };
 
 const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
+  "haiku-5-5": ["claude haiku", "claude-haiku-5-5", "haiku 5.5", "extra high", "xhigh"],
+  "sol-6-1": ["gpt 6.1 sol", "gpt-6.1-sol", "sol6.1", "extra high", "xhigh"],
   "mistral-large-4": ["le chonk", "large 4", "mistralai/mistral-large-4-0"],
   fable: ["fable 5", "fable5", "mythos"],
   "fable-5.1": ["fable5.1", "mythos", "mythos 5.1"],

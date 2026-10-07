@@ -1,0 +1,65 @@
+{
+  "model": "gpt-6.1-sol",
+  "date": "2026-10-07",
+  "runner": "Codex desktop, bundled CLI 0.160.0",
+  "reasoning_effort": "xhigh",
+  "sessions": [
+    {
+      "condition": "anthropic-frontend-design",
+      "thread_id": "01a117ae-fb3d-7af2-8b4e-5ae6d6f95cdc",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "skill_names": [
+        "frontend-design"
+      ],
+      "personal_instructions": false,
+      "memory_material": false,
+      "completed": true,
+      "browser_calls": 13
+    },
+    {
+      "condition": "no-skills",
+      "thread_id": "01a117b0-1988-73b0-a1f1-b77d8ba7ed88",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "skill_names": [],
+      "personal_instructions": false,
+      "memory_material": false,
+      "completed": true,
+      "browser_calls": 32
+    },
+    {
+      "condition": "design-taste",
+      "thread_id": "01a117b0-cb17-75e0-81ef-a0141e7f1d73",
+      "model": "gpt-6.1-sol",
+      "reasoning_effort": "xhigh",
+      "skill_names": [
+        "design-taste-frontend"
+      ],
+      "personal_instructions": false,
+      "memory_material": false,
+      "completed": true,
+      "browser_calls": 18
+    }
+  ],
+  "starter": "Next.js 16.3.8 / React 19.2.8, same lockfile and starter as the Mistral browser rerun",
+  "starter_lockfile_sha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "skills": {
+    "frontend-design": "anthropics/skills@683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "design-taste-frontend": "Leonxlnx/taste-skill@ce26fc25c0e5e8cab638f883de62d9a86ee5e45b"
+  },
+  "browser": "Playwright MCP 0.0.83, isolated Chromium, screenshots enabled, initial viewport 1440x960",
+  "prompt_policy": "Original prompt with only assigned skill clause and free port substituted; no extra browser-use instruction or follow-up coaching",
+  "preflight": "Separate unscored sessions confirmed assigned skill catalogs and successfully read a canvas-only screenshot",
+  "isolation": "Separate profiles, personal instruction loading and memories disabled, unrelated skills excluded. Context isolation only; full filesystem and process access remained.",
+  "integration_changes": [
+    "Root html/body converted to nested divs with corresponding scoped selectors to preserve font and custom-property inheritance",
+    "Global CSS scoped by gallery generator; native CSS modules retain native isolation",
+    "Tailwind source font and animation theme utilities materialized locally",
+    "Public assets and import aliases namespaced",
+    "Source iteration switchers bypassed; Sol taste theme control retained under a nonconflicting class",
+    "Haiku taste numeric self-links point to gallery routes"
+  ],
+  "generation_policy": "No orchestrator edits to generated source during runs. Original completed sources retained outside the gallery; hash records describe files before import adapters.",
+  "timing": "Concurrent sessions, not a controlled latency benchmark. Matching effort labels do not imply equivalent compute across providers."
+}
