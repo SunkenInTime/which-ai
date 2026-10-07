@@ -1,0 +1,380 @@
+.page {
+  --paper: #f6f6f2;
+  --ink: #141414;
+  --pink: #ff48b0;
+  --blue: #0078bf;
+  --muted: #4a4a4a;
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-stretch: 100%;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.page a:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 24px clamp(20px, 4vw, 56px);
+  border-bottom: 2px solid var(--ink);
+}
+
+.logo {
+  font-weight: 900;
+  font-stretch: 62%;
+  font-size: 1.5rem;
+}
+
+.issue {
+  font-weight: 500;
+}
+
+/* Cover: the headline is two plates. Pink sits offset underneath, blue prints on top. */
+.cover {
+  padding: clamp(40px, 8vw, 96px) clamp(20px, 4vw, 56px) 80px;
+}
+
+.headline {
+  position: relative;
+  margin: 0;
+  font-size: clamp(4.25rem, 15.5vw, 13.5rem);
+  font-weight: 900;
+  font-stretch: 62%;
+  line-height: 0.86;
+  letter-spacing: -0.015em;
+}
+
+.plateBlue,
+.platePink {
+  display: block;
+  mix-blend-mode: multiply;
+}
+
+.plateBlue {
+  color: var(--blue);
+}
+
+.platePink {
+  position: absolute;
+  inset: 0;
+  color: var(--pink);
+  transform: translate(0.045em, 0.035em);
+  animation: printPink 1100ms cubic-bezier(0.2, 0.7, 0.1, 1) 150ms both;
+}
+
+@keyframes printPink {
+  from {
+    transform: translate(-0.6em, 0.5em);
+    opacity: 0;
+  }
+  to {
+    transform: translate(0.045em, 0.035em);
+    opacity: 1;
+  }
+}
+
+.coverBody {
+  display: grid;
+  grid-template-columns: minmax(0, 36rem) auto;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.lead {
+  margin: 0;
+  font-size: 1.375rem;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
+.button,
+.buttonInk {
+  display: inline-flex;
+  align-items: center;
+  min-height: 56px;
+  padding: 0 28px;
+  font-weight: 800;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.button {
+  background: var(--pink);
+  color: var(--ink);
+}
+
+.buttonInk {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.button:hover {
+  background: #ff2fa3;
+}
+
+.buttonInk:hover {
+  background: #2b2b2b;
+}
+
+.contents {
+  margin: 72px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--ink);
+}
+
+.contents li {
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--ink);
+  font-size: 1.25rem;
+}
+
+.pageNumber {
+  font-weight: 700;
+  font-stretch: 62%;
+  font-size: 1.25rem;
+  color: var(--blue);
+}
+
+/* Spreads: text on one side, plate artwork on the other */
+.spread {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  gap: clamp(32px, 6vw, 96px);
+  align-items: center;
+  padding: clamp(64px, 9vw, 120px) clamp(20px, 4vw, 56px);
+  border-top: 2px solid var(--ink);
+}
+
+.spreadText {
+  max-width: 34rem;
+}
+
+.h2 {
+  margin: 0 0 24px;
+  font-size: clamp(3.5rem, 8vw, 7.5rem);
+  font-weight: 900;
+  font-stretch: 62%;
+  line-height: 0.9;
+  color: var(--blue);
+}
+
+.spreadText p {
+  margin: 0;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+/* Capture: a field card in the paper stock, with pink used for the one action */
+.capture {
+  padding: 8px;
+  border: 2px solid var(--ink);
+}
+
+.captureField {
+  padding: 36px 32px 28px;
+  background: var(--paper);
+}
+
+.captureText {
+  margin: 0 0 40px;
+  font-size: clamp(1.75rem, 3.6vw, 2.5rem);
+  font-weight: 800;
+  font-stretch: 75%;
+  line-height: 1.1;
+}
+
+.captureFoot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.captureKeep {
+  padding: 8px 16px;
+  background: var(--pink);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+/* Connect: two overprinted circles. Overlap prints as navy by mix-blend-mode. */
+.venn {
+  position: relative;
+  aspect-ratio: 1 / 0.92;
+  width: 100%;
+  max-width: 560px;
+  justify-self: center;
+}
+
+.circle {
+  position: absolute;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  mix-blend-mode: multiply;
+}
+
+.circlePink {
+  left: 6%;
+  top: 4%;
+  background: var(--pink);
+}
+
+.circleBlue {
+  right: 6%;
+  top: 22%;
+  background: var(--blue);
+}
+
+.vennLabel {
+  position: absolute;
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: clamp(1.125rem, 2.4vw, 1.5rem);
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.labelReading {
+  left: 14%;
+  top: 32%;
+}
+
+.labelWriting {
+  right: 14%;
+  bottom: 14%;
+  text-align: right;
+}
+
+.labelOverlap {
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: var(--paper);
+  max-width: 9ch;
+}
+
+/* Resurface: dated list in the zine's ruled rhythm */
+.resurface {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 2px solid var(--ink);
+}
+
+.resurface li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding: 24px 0;
+  border-bottom: 2px solid var(--ink);
+  font-size: clamp(1.375rem, 2.6vw, 1.875rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  line-height: 1.2;
+}
+
+.date {
+  font-size: 1rem;
+  font-weight: 500;
+  font-stretch: 100%;
+  color: var(--blue);
+}
+
+.letter {
+  padding: clamp(64px, 9vw, 120px) clamp(20px, 4vw, 56px);
+  border-top: 2px solid var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.quote {
+  margin: 0 auto;
+  max-width: 40rem;
+}
+
+.quote p {
+  margin: 0 0 24px;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  font-stretch: 75%;
+  line-height: 1.2;
+}
+
+.quote footer {
+  font-size: 1rem;
+  color: #c9c9c4;
+}
+
+.closing {
+  padding: clamp(64px, 9vw, 120px) clamp(20px, 4vw, 56px);
+  display: grid;
+  gap: 24px;
+  justify-items: start;
+  background: var(--pink);
+}
+
+.closing .h2 {
+  color: var(--ink);
+  margin: 0;
+}
+
+.closing p {
+  margin: 0;
+  max-width: 34rem;
+  font-size: 1.25rem;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 24px clamp(20px, 4vw, 56px);
+  border-top: 2px solid var(--ink);
+  font-size: 0.9375rem;
+}
+
+.footer a {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+@media (max-width: 860px) {
+  .coverBody,
+  .spread {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .contents li {
+    grid-template-columns: 5rem minmax(0, 1fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .platePink {
+    animation: none;
+  }
+}

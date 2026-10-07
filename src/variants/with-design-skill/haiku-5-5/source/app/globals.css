@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* Each design route owns its palette and type. Global styles stay neutral. */
+[data-source-body] {
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}

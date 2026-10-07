@@ -1,0 +1,21 @@
+@keyframes gallery-with-taste-skill-haiku-5-5-source-app-globals-cairn-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="haiku-5-5"]) .cairn-marquee {
+  animation: gallery-with-taste-skill-haiku-5-5-source-app-globals-cairn-marquee 36s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="haiku-5-5"]) .cairn-marquee {
+    animation: none;
+  }
+}
+
+/* Source theme utilities retained for the gallery. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="haiku-5-5"]) .font-sans { font-family: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="haiku-5-5"]) [data-source-html] { --font-sans: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="haiku-5-5"]) .font-mono { font-family: var(--font-geist-mono); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="haiku-5-5"]) [data-source-html] { --font-mono: var(--font-geist-mono); }

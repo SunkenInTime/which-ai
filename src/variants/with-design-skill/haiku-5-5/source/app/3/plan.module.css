@@ -1,0 +1,327 @@
+.page {
+  --vellum: #d9e0e4;
+  --room: #eef2f4;
+  --hall: #c5d0d8;
+  --ink: #1f2a33;
+  --muted: #4b5a66;
+  --ochre: #e2ae2e;
+
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--vellum);
+  color: var(--ink);
+  font-family: var(--font-barlow), system-ui, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.55;
+}
+
+.page a:focus-visible,
+.page [role="button"]:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px clamp(20px, 4vw, 56px);
+}
+
+.wordmark {
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+}
+
+.quietLink {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.main {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 56px) 96px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding: clamp(24px, 4vw, 48px) 0 clamp(64px, 9vw, 120px);
+}
+
+.h1 {
+  margin: 0 0 24px;
+  font-size: clamp(3.25rem, 6.4vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  margin: 0 0 36px;
+  max-width: 28rem;
+  color: var(--muted);
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 24px;
+  background: var(--ink);
+  color: var(--room);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.primary:hover {
+  background: #2e3c47;
+}
+
+/* The plan is the hero's only illustration, so it sits on its own surface */
+.plan {
+  width: 100%;
+}
+
+.svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.room {
+  cursor: pointer;
+}
+
+.room:focus {
+  outline: none;
+}
+
+.roomShape {
+  fill: var(--room);
+  stroke: var(--ink);
+  stroke-width: 3px;
+  transition: fill 160ms ease;
+}
+
+.hallShape {
+  fill: var(--hall);
+}
+
+.room:not([aria-pressed="true"]):hover .roomShape {
+  fill: #ffffff;
+}
+
+.roomActive {
+  fill: var(--ochre);
+}
+
+.room:focus-visible .roomShape {
+  stroke-width: 6px;
+}
+
+.roomName {
+  fill: var(--ink);
+  font-size: 19px;
+  font-weight: 600;
+  paint-order: stroke;
+  stroke: var(--room);
+  stroke-width: 6px;
+  stroke-linejoin: round;
+}
+
+.roomCount {
+  fill: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  paint-order: stroke;
+  stroke: var(--room);
+  stroke-width: 5px;
+  stroke-linejoin: round;
+}
+
+.door rect {
+  fill: var(--hall);
+}
+
+.door path {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.5px;
+}
+
+.outerWall {
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 9px;
+}
+
+.corridor {
+  stroke: var(--ink);
+  stroke-width: 2px;
+  stroke-dasharray: 6 6;
+  pointer-events: none;
+}
+
+.panel {
+  margin-top: 24px;
+  padding: 28px 32px;
+  background: var(--room);
+  border-top: 4px solid var(--ochre);
+}
+
+.panelTitle {
+  margin: 0 0 6px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.panelSummary {
+  margin: 0 0 16px;
+  color: var(--muted);
+}
+
+.noteList {
+  margin: 0 0 16px;
+  padding: 0 0 0 1.25em;
+}
+
+.noteList li {
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.panelLinks {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+
+.block {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-top: 2px solid var(--ink);
+}
+
+.h2 {
+  margin: 0;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.block p {
+  margin: 0;
+  max-width: 36rem;
+}
+
+.quote {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(24px, 4vw, 64px);
+  padding: clamp(40px, 6vw, 72px) 0;
+  border-top: 2px solid var(--ink);
+}
+
+.quote blockquote {
+  grid-column: 2;
+  margin: 0;
+  max-width: 40rem;
+}
+
+.quote p {
+  margin: 0 0 16px;
+  font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.quote footer {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.closing {
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+  padding: clamp(40px, 6vw, 72px) clamp(24px, 4vw, 48px);
+  background: var(--ink);
+  color: var(--room);
+}
+
+.closing .h2 {
+  color: var(--room);
+}
+
+.closing p {
+  margin: 0;
+  color: #c5d0d8;
+}
+
+.closing .primary {
+  background: var(--ochre);
+  color: var(--ink);
+}
+
+.closing .primary:hover {
+  background: #d19e22;
+}
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px clamp(20px, 4vw, 56px);
+  border-top: 2px solid var(--ink);
+  font-size: 0.9375rem;
+}
+
+.footer a {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .roomShape {
+    transition: none;
+  }
+}
+
+/* SVG text scales with the viewBox, so narrow screens need larger units to stay legible */
+@media (max-width: 600px) {
+  .roomName {
+    font-size: 34px;
+    stroke-width: 10px;
+  }
+
+  .roomCount {
+    font-size: 26px;
+    stroke-width: 9px;
+  }
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .block {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quote {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quote blockquote {
+    grid-column: 1;
+  }
+}

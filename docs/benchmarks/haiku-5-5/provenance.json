@@ -1,0 +1,86 @@
+{
+  "model": "claude-haiku-5-5",
+  "date": "2026-10-07",
+  "runner": "Claude Code 2.1.293",
+  "reasoning_effort": "xhigh",
+  "sessions": [
+    {
+      "condition": "anthropic-frontend-design",
+      "session_id": "d94394c6-dc59-465e-ade8-57c285957d58",
+      "model": "claude-haiku-5-5",
+      "skills": [
+        "frontend-design"
+      ],
+      "reasoning_effort": "xhigh",
+      "completed": true,
+      "browser_calls": {
+        "mcp__browser__browser_navigate": 17,
+        "mcp__browser__browser_resize": 2,
+        "mcp__browser__browser_take_screenshot": 12,
+        "mcp__browser__browser_evaluate": 8
+      }
+    },
+    {
+      "condition": "no-skills",
+      "session_id": "4504aa20-c8d5-4571-934a-0c83278aa222",
+      "model": "claude-haiku-5-5",
+      "skills": [],
+      "reasoning_effort": "xhigh",
+      "completed": true,
+      "browser_calls": {
+        "mcp__browser__browser_resize": 2,
+        "mcp__browser__browser_navigate": 14,
+        "mcp__browser__browser_take_screenshot": 13,
+        "mcp__browser__browser_console_messages": 1,
+        "mcp__browser__browser_snapshot": 3,
+        "mcp__browser__browser_click": 2,
+        "mcp__browser__browser_press_key": 1,
+        "mcp__browser__browser_tabs": 1,
+        "mcp__browser__browser_find": 2
+      }
+    },
+    {
+      "condition": "design-taste",
+      "session_id": "d6b0462a-0648-44ec-996c-1386ead20d81",
+      "model": "claude-haiku-5-5",
+      "skills": [
+        "design-taste-frontend"
+      ],
+      "reasoning_effort": "xhigh",
+      "completed": true,
+      "browser_calls": {
+        "mcp__browser__browser_resize": 2,
+        "mcp__browser__browser_navigate": 12,
+        "mcp__browser__browser_take_screenshot": 9,
+        "mcp__browser__browser_evaluate": 12,
+        "mcp__browser__browser_console_messages": 1
+      }
+    }
+  ],
+  "starter": "Next.js 16.3.8 / React 19.2.8, same lockfile and starter as the Mistral browser rerun",
+  "starter_lockfile_sha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "skills": {
+    "frontend-design": "anthropics/skills@683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "design-taste-frontend": "Leonxlnx/taste-skill@ce26fc25c0e5e8cab638f883de62d9a86ee5e45b"
+  },
+  "browser": "Playwright MCP 0.0.83, isolated Chromium, screenshots enabled, initial viewport 1440x960",
+  "prompt_policy": "Original prompt with only assigned skill clause and free port substituted; no extra browser-use instruction or follow-up coaching",
+  "preflight": "Separate unscored sessions confirmed assigned skill catalogs and successfully read a canvas-only screenshot",
+  "isolation": "Separate profiles, personal instruction loading and memories disabled, unrelated skills excluded. Context isolation only; full filesystem and process access remained.",
+  "integration_changes": [
+    "Root html/body converted to nested divs with corresponding scoped selectors to preserve font and custom-property inheritance",
+    "Global CSS scoped by gallery generator; native CSS modules retain native isolation",
+    "Tailwind source font and animation theme utilities materialized locally",
+    "Public assets and import aliases namespaced",
+    "Source iteration switchers bypassed; Sol taste theme control retained under a nonconflicting class",
+    "Haiku taste numeric self-links point to gallery routes"
+  ],
+  "generation_policy": "No orchestrator edits to generated source during runs. Original completed sources retained outside the gallery; hash records describe files before import adapters.",
+  "timing": "Concurrent sessions, not a controlled latency benchmark. Matching effort labels do not imply equivalent compute across providers.",
+  "run_caveats": [
+    "The design-taste session ran a broad next-server process termination that interrupted the Anthropic session dev server; the Anthropic session restarted it without orchestrator coaching. Outputs were preserved.",
+    "Next.js generated local AGENTS.md/CLAUDE.md during dev startup; starting contexts were checked before generation. Models could inspect project files through normal tools.",
+    "Anthropic session reported lint/typecheck success but did not run a standalone production build. The gallery production build validates the imported version.",
+    "Design-taste retains model-chosen seeded Picsum photographs and placeholder product claims."
+  ]
+}

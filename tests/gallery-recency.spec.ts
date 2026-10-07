@@ -13,7 +13,7 @@ import {
 import type { GalleryEntry } from "@/lib/gallery-types";
 
 const DAY_MS = 24 * 60 * 60 * 1000;
-const MISTRAL_ADDED = isoDateToUtcMs("2026-10-06");
+const SOL61_ADDED = isoDateToUtcMs("2026-10-07");
 
 function groupEntries(group: GalleryEntry["group"]) {
   return galleryManifest.filter((entry) => entry.group === group);
@@ -28,28 +28,28 @@ test.describe("gallery recency data", () => {
   });
 
   test("formats added dates in UTC", () => {
-    expect(formatGalleryAddedDate("2026-10-06")).toBe("Oct 6");
+    expect(formatGalleryAddedDate("2026-10-07")).toBe("Oct 7");
     expect(formatGalleryAddedDate("2026-03-01")).toBe("Mar 1");
   });
 });
 
 test.describe("new-arrival policy", () => {
-  test("Mistral Large 4 is new on the day it landed and expires after the window", () => {
+  test("Sol 6.1 is new on the day it landed and expires after the window", () => {
     const entries = groupEntries("with-design-skill");
-    const mistral = entries.find((entry) => entry.model === "mistral-large-4")!;
+    const sol61 = entries.find((entry) => entry.model === "sol-6-1")!;
 
-    expect(getGalleryEntryNewArrival(entries, mistral, MISTRAL_ADDED)).toBe("2026-10-06");
-    const lastDay = MISTRAL_ADDED + (NEW_ARRIVAL_WINDOW_DAYS - 1) * DAY_MS;
-    expect(getGalleryEntryNewArrival(entries, mistral, lastDay)).toBe("2026-10-06");
-    const expired = MISTRAL_ADDED + NEW_ARRIVAL_WINDOW_DAYS * DAY_MS;
-    expect(getGalleryEntryNewArrival(entries, mistral, expired)).toBeNull();
+    expect(getGalleryEntryNewArrival(entries, sol61, SOL61_ADDED)).toBe("2026-10-07");
+    const lastDay = SOL61_ADDED + (NEW_ARRIVAL_WINDOW_DAYS - 1) * DAY_MS;
+    expect(getGalleryEntryNewArrival(entries, sol61, lastDay)).toBe("2026-10-07");
+    const expired = SOL61_ADDED + NEW_ARRIVAL_WINDOW_DAYS * DAY_MS;
+    expect(getGalleryEntryNewArrival(entries, sol61, expired)).toBeNull();
   });
 
   test("a future added date is not new", () => {
     const entries = groupEntries("with-design-skill");
-    const mistral = entries.find((entry) => entry.model === "mistral-large-4")!;
-    expect(getGalleryEntryNewArrival(entries, mistral, MISTRAL_ADDED - 1)).toBeNull();
-    expect(getGalleryEntryNewArrival(entries, mistral, MISTRAL_ADDED - 3 * DAY_MS)).toBeNull();
+    const sol61 = entries.find((entry) => entry.model === "sol-6-1")!;
+    expect(getGalleryEntryNewArrival(entries, sol61, SOL61_ADDED - 1)).toBeNull();
+    expect(getGalleryEntryNewArrival(entries, sol61, SOL61_ADDED - 3 * DAY_MS)).toBeNull();
   });
 
   test("archived entries are never new, even inside the window", () => {
@@ -68,14 +68,14 @@ test.describe("new-arrival policy", () => {
     }
   });
 
-  test("only Mistral Large 4 is new in every group", () => {
+  test("only Sol 6.1 and Haiku 5.5 are new in every group", () => {
     for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
       const entries = groupEntries(group);
       const fresh = entries
-        .filter((entry) => getGalleryEntryNewArrival(entries, entry, isoDateToUtcMs("2026-10-06")))
+        .filter((entry) => getGalleryEntryNewArrival(entries, entry, isoDateToUtcMs("2026-10-07")))
         .map((entry) => entry.model)
         .toSorted();
-      expect(fresh).toEqual(["mistral-large-4"]);
+      expect(fresh).toEqual(["haiku-5-5", "sol-6-1"]);
     }
   });
 });
@@ -83,11 +83,11 @@ test.describe("new-arrival policy", () => {
 test.describe("home sort", () => {
   test("hoists new arrivals ahead of the family order, newest first", () => {
     const entries = groupEntries("with-design-skill");
-    const sorted = sortGalleryEntriesForHome(entries, { now: MISTRAL_ADDED });
+    const sorted = sortGalleryEntriesForHome(entries, { now: SOL61_ADDED });
     const models = sorted.map((entry) => entry.model);
 
-    expect(models[0]).toBe("mistral-large-4");
-    const rest = sorted.slice(1);
+    expect(models.slice(0, 2).toSorted()).toEqual(["haiku-5-5", "sol-6-1"]);
+    const rest = sorted.slice(2);
     expect(rest.map((entry) => entry.model)).toEqual(
       sortGalleryEntriesByFamily(rest).map((entry) => entry.model),
     );
@@ -102,7 +102,7 @@ test.describe("home sort", () => {
 
   test("keeps the incoming order once every arrival has expired", () => {
     const entries = sortGalleryEntriesByFamily(groupEntries("without-design-skill"));
-    const farFuture = MISTRAL_ADDED + 365 * DAY_MS;
+    const farFuture = SOL61_ADDED + 365 * DAY_MS;
     expect(sortGalleryEntriesNewFirst(entries, farFuture)).toEqual(entries);
   });
 });
@@ -160,7 +160,7 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => entry.model !== "mistral-large-4")) {
+  for (const entry of galleryManifest.filter(entry => !["sol-6-1", "haiku-5-5"].includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
   }
