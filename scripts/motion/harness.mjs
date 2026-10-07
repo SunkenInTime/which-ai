@@ -8,10 +8,22 @@ export const root = path.resolve(import.meta.dirname, "..", "..");
 export const config = JSON.parse(fs.readFileSync(path.join(root, "src/lib/motion-config.json"), "utf8"));
 export const runsFile = path.join(root, "src/lib/motion-runs.json");
 
-// Everything a run touches lives outside the repo so no AGENTS.md / CLAUDE.md is discovered from a parent dir.
+// Credentials and templates live in the real home; runs do not. Claude Code and Grok CLI walk up from the
+// working directory and load any .claude/ they find, so a workdir under the user's home picks up their skills.
 export const benchHome = path.join(os.homedir(), ".motionbench");
 export const templatesDir = path.join(benchHome, "homes");
-export const workRoot = path.join(benchHome, "work");
+export const workRoot = process.env.MOTION_WORK_ROOT ?? "/Users/Shared/motionbench/work";
+
+const agentConfig = [".claude", ".agents", ".codex", ".grok", ".cursor", "CLAUDE.md", "AGENTS.md", "AGENTS.local.md"];
+
+/** Throws if any folder above the run root holds agent config that a harness would load. */
+export function assertCleanAncestors(dir) {
+  for (let d = path.resolve(dir); ; d = path.dirname(d)) {
+    const hit = agentConfig.find((name) => fs.existsSync(path.join(d, name)));
+    if (hit) throw new Error(`${path.join(d, hit)} would leak into runs. Set MOTION_WORK_ROOT to a folder with no agent config above it.`);
+    if (d === path.dirname(d)) return;
+  }
+}
 
 // Files copied from the real home into each run's fresh home. Only credentials, never config or skills.
 // They are synced back after a run when the harness refreshed its tokens, so the real login keeps working.
@@ -29,13 +41,13 @@ export function resolveBin(bin) {
   return execFileSync("/bin/sh", ["-c", `command -v ${bin}`], { encoding: "utf8" }).trim();
 }
 
-// Drop anything that would tell a nested harness it runs inside another agent or point it at real config.
-const leakyEnv = /^(CLAUDECODE|CLAUDE_|ANTHROPIC_|CODEX_|OPENAI_|GROK_|XAI_|MCP_)/;
+// Agents run with approvals off, so they only get an allowlisted environment: no tokens, no agent context.
+const passEnv = ["PATH", "LANG", "LC_ALL", "LC_CTYPE", "TERM", "COLORTERM", "SHELL", "USER", "LOGNAME", "TMPDIR", "TZ"];
 
 export function isolatedEnv(home, harnessId) {
   const env = {};
-  for (const [key, value] of Object.entries(process.env)) {
-    if (!leakyEnv.test(key)) env[key] = value;
+  for (const key of passEnv) {
+    if (process.env[key] !== undefined) env[key] = process.env[key];
   }
   env.HOME = home;
   env.XDG_CONFIG_HOME = path.join(home, ".config");

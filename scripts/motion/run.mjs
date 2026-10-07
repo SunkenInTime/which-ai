@@ -11,6 +11,7 @@ import path from "node:path";
 import crypto from "node:crypto";
 import { spawn, execFileSync } from "node:child_process";
 import {
+  assertCleanAncestors,
   authFiles,
   config,
   harnessCommand,
@@ -41,6 +42,8 @@ const promptFile = path.join(root, "docs/benchmarks/motion", `${groupId}.prompt.
 const prompt = fs.readFileSync(promptFile, "utf8").trim();
 if (prompt.includes("PLACEHOLDER")) fail(`${path.relative(root, promptFile)} still holds the placeholder.`);
 const promptSha256 = crypto.createHash("sha256").update(prompt).digest("hex");
+fs.mkdirSync(workRoot, { recursive: true });
+assertCleanAncestors(workRoot);
 
 for (const model of models) {
   for (const iteration of iterations) {
@@ -52,8 +55,8 @@ async function runOne(model, iteration) {
   const harness = config.harnesses.find((h) => h.id === model.harness);
   if (!harness) fail(`Model ${model.id} points at unknown harness ${model.harness}`);
   const key = `${groupId}/${model.id}/${iteration}`;
-  if (readRuns()[key] && !force) {
-    console.log(`skip ${key} (already ran, pass --force to redo)`);
+  if (readRuns()[key]?.status === "ok" && !force) {
+    console.log(`skip ${key} (already has a video, pass --force to redo)`);
     return;
   }
 
@@ -75,15 +78,25 @@ async function runOne(model, iteration) {
     cwd: workdir,
     env: isolatedEnv(home, harness.id),
     stdio: ["ignore", transcript, stderr],
+    // Own process group, so a timeout also stops the renders and browsers the agent started.
+    detached: true,
   });
+  const killGroup = (signal) => {
+    try {
+      process.kill(-child.pid, signal);
+    } catch {
+      // Already gone.
+    }
+  };
   let timedOut = false;
   const timer = setTimeout(() => {
     timedOut = true;
-    child.kill("SIGTERM");
-    setTimeout(() => child.kill("SIGKILL"), 10_000).unref();
+    killGroup("SIGTERM");
+    setTimeout(() => killGroup("SIGKILL"), 10_000).unref();
   }, config.timeoutMinutes * 60_000);
   const exitCode = await new Promise((resolve) => child.on("close", resolve));
   clearTimeout(timer);
+  killGroup("SIGKILL"); // Nothing the agent left running may keep writing into the workdir.
   fs.closeSync(transcript);
   fs.closeSync(stderr);
   const finishedAt = new Date();

@@ -35,6 +35,11 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
     [leftVideo.current, rightVideo.current].forEach((video) => video && fn(video));
 
   const choose = (side: "left" | "right", key: string) => {
+    // Only the changed side remounts, so stop and rewind the other one too.
+    both((v) => {
+      v.pause();
+      v.currentTime = 0;
+    });
     setPlaying(false);
     setTime(0);
     setDuration(0);
@@ -74,12 +79,15 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
                 poster={clip.posterSrc}
                 muted
                 playsInline
-                onLoadedMetadata={(e) => {
-                  const length = e.currentTarget.duration;
-                  setDuration((d) => Math.max(d, length));
+                onLoadedMetadata={() => {
+                  // Recompute from both players: the side that didn't change won't fire this again.
+                  const lengths = [leftVideo.current, rightVideo.current].map((v) => v?.duration || 0);
+                  setDuration(Math.max(...lengths));
                 }}
                 onTimeUpdate={side === "left" ? (e) => setTime(e.currentTarget.currentTime) : undefined}
-                onEnded={() => setPlaying(false)}
+                onEnded={() => {
+                  if ([leftVideo.current, rightVideo.current].every((v) => !v || v.ended)) setPlaying(false);
+                }}
                 className="aspect-video w-full object-contain"
               />
             </div>
