@@ -13,7 +13,7 @@ The prompt (`baseline.prompt.txt`) spells it out for the agent:
 
 Size, frame rate, length, and GPU mode come from `render` in `src/lib/motion-config.json` (1920×1080, 60fps, 15s). Framekit freezes `Date`, `performance.now`, `requestAnimationFrame`, and CSS animations at `t` and reseeds `Math.random` every frame, then captures each frame in headless Chromium and pipes it into x264 (CRF 18, capped at 30 Mbps, BT.709, a keyframe every second). Frames are independent, so the timeline is split across several browsers and rendered in parallel.
 
-Agents get `node motion.mjs check | frame | sheet | preview | render` in their project folder. `check` must pass before a run is published.
+Agents get `node motion.mjs check | frame | sheet | preview | render` in their project folder. `check` must pass before a run is published. `check` renders t=7.5s twice and again after a fresh page load, and compares the frames as 16px-area averages: GPU rounding, which can leave a few levels of difference in scattered pixels on Windows, passes; anything over 6 levels (of 255) in any area fails.
 
 ## Setup (Windows, macOS, or Linux)
 
