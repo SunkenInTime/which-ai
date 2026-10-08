@@ -12,7 +12,7 @@ export const runsFile = path.join(root, "src/lib/motion-runs.json");
 // working directory and load any .claude/ they find, so a workdir under the user's home picks up their skills.
 export const benchHome = path.join(os.homedir(), ".motionbench");
 export const templatesDir = path.join(benchHome, "homes");
-export const workRoot = process.env.MOTION_WORK_ROOT ?? "/Users/Shared/motionbench/work";
+export const workRoot = path.resolve(process.env.MOTION_WORK_ROOT ?? "/Users/Shared/motionbench/work");
 
 const agentConfig = [".claude", ".agents", ".codex", ".grok", ".cursor", "CLAUDE.md", "AGENTS.md", "AGENTS.local.md"];
 

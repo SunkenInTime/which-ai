@@ -4,8 +4,8 @@
 //
 // Each run gets a fresh workdir and a fresh HOME that holds only the harness's credentials,
 // so the harness starts from its stock configuration: no skills, plugins, MCP servers, or user instructions.
-// Raw transcripts and the agent's source files stay in ~/.motionbench/work; the repo gets the video,
-// a poster, and one entry in src/lib/motion-runs.json.
+// Raw transcripts and the agent's source files stay under the work root (MOTION_WORK_ROOT); the repo gets
+// the video, a poster, and one entry in src/lib/motion-runs.json.
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
@@ -45,6 +45,25 @@ const promptSha256 = crypto.createHash("sha256").update(prompt).digest("hex");
 fs.mkdirSync(workRoot, { recursive: true });
 assertCleanAncestors(workRoot);
 
+const claimsDir = `${runsFile}.claims`;
+const authLock = path.join(templatesDir, ".auth.lock");
+
+// The agent runs in its own process group, so the runner must take it down when the runner itself stops.
+let active = null; // { killGroup, release }
+let stopping = false;
+for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
+  process.on(signal, () => {
+    stopping = true;
+    if (active) {
+      active.killGroup("SIGTERM");
+      setTimeout(() => active?.killGroup("SIGKILL"), 2_000).unref();
+      active.release();
+    }
+    console.error(`runner stopped by ${signal}`);
+    setTimeout(() => process.exit(130), 2_500);
+  });
+}
+
 for (const model of models) {
   for (const iteration of iterations) {
     await runOne(model, iteration);
@@ -55,16 +74,33 @@ async function runOne(model, iteration) {
   const harness = config.harnesses.find((h) => h.id === model.harness);
   if (!harness) fail(`Model ${model.id} points at unknown harness ${model.harness}`);
   const key = `${groupId}/${model.id}/${iteration}`;
-  if (readRuns()[key]?.status === "ok" && !force) {
-    console.log(`skip ${key} (already has a video, pass --force to redo)`);
+
+  // Claim the key before checking it, so two runners never produce the same video at once.
+  const release = claim(key);
+  if (!release) {
+    console.log(`skip ${key} (another runner is on it)`);
     return;
   }
+  try {
+    if (readRuns()[key]?.status === "ok" && !force) {
+      console.log(`skip ${key} (already has a video, pass --force to redo)`);
+      return;
+    }
+    await execute(model, harness, iteration, key, release);
+  } finally {
+    release();
+  }
+}
 
+async function execute(model, harness, iteration, key, release) {
   const runDir = path.join(workRoot, groupId, model.id, `${iteration}-${Date.now()}`);
   const workdir = path.join(runDir, "project");
   const home = path.join(runDir, "home");
   fs.mkdirSync(workdir, { recursive: true });
+  // Earlier agents run with approvals off and could have written config into the shared model folders.
+  assertCleanAncestors(workdir);
   fs.cpSync(path.join(templatesDir, harness.id), home, { recursive: true });
+  const authAtStart = snapshotAuth(harness.id, home);
 
   const bin = resolveBin(harness.bin);
   const version = harnessVersion(bin);
@@ -88,6 +124,7 @@ async function runOne(model, iteration) {
       // Already gone.
     }
   };
+  active = { killGroup, release };
   let timedOut = false;
   const timer = setTimeout(() => {
     timedOut = true;
@@ -97,11 +134,14 @@ async function runOne(model, iteration) {
   const exitCode = await new Promise((resolve) => child.on("close", resolve));
   clearTimeout(timer);
   killGroup("SIGKILL"); // Nothing the agent left running may keep writing into the workdir.
+  active = null;
   fs.closeSync(transcript);
   fs.closeSync(stderr);
   const finishedAt = new Date();
+  // A run cut short by stopping the runner isn't a result; leave no record so it runs again next time.
+  if (stopping) return;
 
-  syncAuthBack(harness.id, home);
+  syncAuthBack(harness.id, home, authAtStart);
 
   const sourceVideo = findVideo(workdir);
   let video = null;
@@ -130,7 +170,14 @@ async function runOne(model, iteration) {
     video,
     usage: readUsage(harness.id, transcriptPath),
   };
-  writeRun(key, run);
+  try {
+    writeRun(key, run);
+  } catch (err) {
+    // Keep the result recoverable rather than losing a long run to a metadata write.
+    fs.writeFileSync(path.join(runDir, "run.json"), JSON.stringify({ key, run }, null, 2) + "\n");
+    console.error(`could not record ${key} (${err.message}); saved to ${path.join(runDir, "run.json")}`);
+    return;
+  }
   console.log(`done ${key}: ${run.status} in ${run.wallSeconds}s (logs in ${runDir})`);
 }
 
@@ -138,32 +185,65 @@ function readRuns() {
   return JSON.parse(fs.readFileSync(runsFile, "utf8"));
 }
 
-// Parallel runner processes share motion-runs.json: hold a lock across read-modify-write,
-// and replace the file by rename so a reader never sees half-written JSON.
-function writeRun(key, run) {
-  const lock = `${runsFile}.lock`;
+function pidAlive(pid) {
+  try {
+    process.kill(pid, 0);
+    return true;
+  } catch (err) {
+    return err.code === "EPERM";
+  }
+}
+
+// Creates `file` exclusively with our pid. A file left by a dead process is stale and gets replaced.
+function tryAcquire(file) {
+  try {
+    fs.writeFileSync(file, String(process.pid), { flag: "wx" });
+    return true;
+  } catch (err) {
+    if (err.code !== "EEXIST") throw err;
+    const owner = Number(fs.readFileSync(file, "utf8"));
+    if (owner && pidAlive(owner)) return false;
+    fs.rmSync(file, { force: true });
+    return tryAcquire(file);
+  }
+}
+
+function withLock(file, fn) {
   const deadline = Date.now() + 60_000;
-  let fd;
-  for (;;) {
-    try {
-      fd = fs.openSync(lock, "wx");
-      break;
-    } catch (err) {
-      if (err.code !== "EEXIST" || Date.now() > deadline) throw err;
-      Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
-    }
+  while (!tryAcquire(file)) {
+    if (Date.now() > deadline) throw new Error(`timed out waiting for ${file}`);
+    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
   }
   try {
+    return fn();
+  } finally {
+    fs.rmSync(file, { force: true });
+  }
+}
+
+/** Reserves a run key for this process. Returns a release function, or null if a live runner holds it. */
+function claim(key) {
+  fs.mkdirSync(claimsDir, { recursive: true });
+  const file = path.join(claimsDir, key.replaceAll("/", "__"));
+  if (!tryAcquire(file)) return null;
+  let released = false;
+  return () => {
+    if (released) return;
+    released = true;
+    fs.rmSync(file, { force: true });
+  };
+}
+
+// Replace motion-runs.json by rename under a lock, so parallel runners neither lose entries nor read half a file.
+function writeRun(key, run) {
+  withLock(`${runsFile}.lock`, () => {
     const runs = readRuns();
     runs[key] = run;
     const sorted = Object.fromEntries(Object.entries(runs).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
     const tmp = `${runsFile}.${process.pid}.tmp`;
     fs.writeFileSync(tmp, JSON.stringify(sorted, null, 2) + "\n");
     fs.renameSync(tmp, runsFile);
-  } finally {
-    fs.closeSync(fd);
-    fs.rmSync(lock, { force: true });
-  }
+  });
 }
 
 // Prefer output.mp4 at the project root; otherwise the newest video anywhere outside node_modules.
@@ -185,6 +265,7 @@ function findVideo(dir) {
 }
 
 // Normalize to H.264 MP4 with faststart so every browser can play it, and grab a poster frame.
+// Both are written to temp files first, so a failed --force redo leaves the previous video intact.
 function publishVideo(src, dest, poster) {
   const probe = JSON.parse(
     execFileSync("ffprobe", ["-v", "error", "-print_format", "json", "-show_streams", "-show_format", src], { encoding: "utf8" }),
@@ -197,8 +278,17 @@ function publishVideo(src, dest, poster) {
   const codecArgs = webReady
     ? ["-c", "copy"]
     : ["-c:v", "libx264", "-crf", "18", "-preset", "slow", "-pix_fmt", "yuv420p", "-c:a", "aac"];
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-i", src, ...codecArgs, "-movflags", "+faststart", dest]);
-  execFileSync("ffmpeg", ["-y", "-v", "error", "-ss", String(Math.min(1, durationSec / 4)), "-i", dest, "-frames:v", "1", "-q:v", "3", poster]);
+  const tmpVideo = `${dest}.${process.pid}.tmp.mp4`;
+  const tmpPoster = `${poster}.${process.pid}.tmp.jpg`;
+  try {
+    execFileSync("ffmpeg", ["-y", "-v", "error", "-i", src, ...codecArgs, "-movflags", "+faststart", tmpVideo]);
+    execFileSync("ffmpeg", ["-y", "-v", "error", "-ss", String(Math.min(1, durationSec / 4)), "-i", tmpVideo, "-frames:v", "1", "-q:v", "3", tmpPoster]);
+    fs.renameSync(tmpVideo, dest);
+    fs.renameSync(tmpPoster, poster);
+  } finally {
+    fs.rmSync(tmpVideo, { force: true });
+    fs.rmSync(tmpPoster, { force: true });
+  }
   return {
     durationSec: Math.round(durationSec * 100) / 100,
     width: stream?.width ?? null,
@@ -238,20 +328,31 @@ function readUsage(harnessId, transcriptPath) {
   return null;
 }
 
-function syncAuthBack(harnessId, home) {
-  for (const rel of authFiles[harnessId] ?? []) {
-    const runCopy = path.join(home, rel);
-    const real = path.join(process.env.HOME ?? "", rel);
-    const template = path.join(templatesDir, harnessId, rel);
-    if (![runCopy, real, template].every((p) => fs.existsSync(p))) continue;
-    const changed = fs.readFileSync(runCopy, "utf8") !== fs.readFileSync(template, "utf8");
-    const realUntouched = fs.readFileSync(real, "utf8") === fs.readFileSync(template, "utf8");
-    if (changed && realUntouched) {
-      // The harness rotated its tokens during the run. Carry them back so the real login stays valid.
-      fs.copyFileSync(runCopy, real);
-      fs.copyFileSync(runCopy, template);
+/** The credentials each run started from, so the sync-back can tell its own refresh from another run's. */
+function snapshotAuth(harnessId, home) {
+  return Object.fromEntries(
+    (authFiles[harnessId] ?? [])
+      .map((rel) => [rel, path.join(home, rel)])
+      .filter(([, file]) => fs.existsSync(file))
+      .map(([rel, file]) => [rel, fs.readFileSync(file, "utf8")]),
+  );
+}
+
+// If this run's harness rotated its tokens, carry them back so the real login stays valid. Only write when the
+// real file still holds what this run started from; otherwise another run or the user already moved it on.
+function syncAuthBack(harnessId, home, atStart) {
+  withLock(authLock, () => {
+    for (const [rel, start] of Object.entries(atStart)) {
+      const runCopy = path.join(home, rel);
+      const real = path.join(process.env.HOME ?? "", rel);
+      const template = path.join(templatesDir, harnessId, rel);
+      if (![runCopy, real].every((p) => fs.existsSync(p))) continue;
+      const current = fs.readFileSync(runCopy, "utf8");
+      if (current === start || fs.readFileSync(real, "utf8") !== start) continue;
+      fs.writeFileSync(real, current, { mode: 0o600 });
+      fs.writeFileSync(template, current, { mode: 0o600 });
     }
-  }
+  });
 }
 
 function fail(message) {

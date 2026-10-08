@@ -18,3 +18,5 @@ playwright-report/
 # Motion videos live in R2; scripts/motion/upload.mjs copies them there.
 public/motion/
 .env*.local
+# Runner locks, claims, and temp files.
+src/lib/motion-runs.json.*

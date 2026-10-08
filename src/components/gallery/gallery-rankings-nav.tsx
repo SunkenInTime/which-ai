@@ -10,7 +10,8 @@ import { buildCompareHref, DEFAULT_COMPARE_STATE } from "@/lib/compare";
 const navLinkBase =
   "relative inline-flex h-9 shrink-0 items-center justify-center overflow-hidden rounded-md transition-colors duration-150";
 
-const navLinkTextPad = "px-3";
+// Below sm the labelled links collapse to icons so the fixed nav fits a phone; labels stay for screen readers.
+const navLinkTextPad = "min-w-9 sm:px-3";
 
 function navLinkClass(active: boolean) {
   return clsx(
@@ -45,7 +46,10 @@ export function GalleryRankingsNav() {
         )}
       >
         {homeShowsGalleryLabel ? (
-          <span className="text-sm font-medium tracking-tight">Gallery</span>
+          <>
+            <Home className="size-4 shrink-0 sm:hidden" aria-hidden />
+            <span className="sr-only text-sm font-medium tracking-tight sm:not-sr-only">Gallery</span>
+          </>
         ) : (
           <span className="inline-flex size-9 items-center justify-center text-current">
             <Home className="size-4 shrink-0" aria-hidden />
@@ -72,9 +76,12 @@ export function GalleryRankingsNav() {
             <ArrowLeftRight className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Compare
-          </span>
+          <>
+            <ArrowLeftRight className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Compare
+            </span>
+          </>
         )}
       </Link>
 
@@ -97,9 +104,12 @@ export function GalleryRankingsNav() {
             <Gamepad2 className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Guess which
-          </span>
+          <>
+            <Gamepad2 className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Guess which
+            </span>
+          </>
         )}
       </Link>
 
@@ -122,9 +132,12 @@ export function GalleryRankingsNav() {
             <Clapperboard className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Motion
-          </span>
+          <>
+            <Clapperboard className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Motion
+            </span>
+          </>
         )}
       </Link>
 
@@ -147,9 +160,12 @@ export function GalleryRankingsNav() {
             <BarChart3 className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Rankings
-          </span>
+          <>
+            <BarChart3 className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Rankings
+            </span>
+          </>
         )}
       </Link>
 
