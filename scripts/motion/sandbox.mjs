@@ -6,7 +6,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { pathToFileURL } from "node:url";
 import { assertCleanAncestors, config, root, workRoot } from "./harness.mjs";
 
 export const sandboxRoot = process.env.MOTIONBENCH_SANDBOX ?? path.join(path.dirname(workRoot), "sandbox");
@@ -24,16 +23,17 @@ export function createSandbox() {
   for (const file of ["cli.mjs", "kit.mjs"]) fs.copyFileSync(path.join(framekitSource, file), path.join(framekit, file));
   fs.writeFileSync(path.join(framekit, "spec.json"), JSON.stringify(config.render, null, 2) + "\n");
   fs.cpSync(playwrightCore, path.join(framekit, "node_modules", "playwright-core"), { recursive: true });
-  // The only thing in the project at the start: a pointer to the sandbox's framekit.
-  fs.writeFileSync(path.join(workdir, "motion.mjs"), `import ${JSON.stringify(pathToFileURL(path.join(framekit, "cli.mjs")).href)};\n`);
+  // The only thing in the project at the start: a pointer to the sandbox's framekit. It's relative, so the project
+  // keeps working after it and framekit move into the run folder.
+  fs.writeFileSync(path.join(workdir, "motion.mjs"), `import "../framekit/cli.mjs";\n`);
   return { sandbox, workdir, home: path.join(sandbox, "home") };
 }
 
-// Moves the session's project and home into the run folder and deletes the rest of the sandbox.
+// Moves the session's project, home, and framekit into the run folder and deletes the empty sandbox.
 // Windows can hold a file open for a moment after its process dies, so moves are retried before copying;
 // a move across drives copies straight away.
 export async function collectSandbox(sandbox, runDir) {
-  for (const name of ["project", "home"]) {
+  for (const name of ["project", "home", "framekit"]) {
     const from = path.join(sandbox, name);
     if (fs.existsSync(from)) await move(from, path.join(runDir, name));
   }

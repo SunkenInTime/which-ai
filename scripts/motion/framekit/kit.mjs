@@ -529,31 +529,44 @@ export async function renderSheet(dir, { cols = 4, rows = 4, out = path.join(dir
 
 // How far apart two renders of the same frame are. GPUs don't always round the same way twice: a heavy shader can
 // come out a few levels off in scattered pixels between page loads (seen on Windows, where the driver recompiles
-// shaders in the background). That's invisible, and no agent can fix it, so frames are compared as 16px-area
-// averages. Real nondeterminism is far bigger: a circle drifting 3px between renders moves a 16px area by about
-// 46 levels, while GPU rounding stayed at 1. Anything over 6 levels (of 255) fails.
+// shaders in the background). That's invisible, and no agent can fix it. So each pixel's difference is taken
+// first, then averaged over 16px areas, and the frame fails when any area's average passes 6 of 255 levels.
+// Scattered rounding averages out to under 1; a circle drifting 3px between renders, or a fine pattern shifting
+// by a stripe, moves its areas by tens to hundreds of levels.
 const AREA = 16;
 const AREA_TOLERANCE = 6;
 
 function frameDifference(a, b) {
   if (a.equals(b)) return { changed: false };
-  const average = (png) =>
-    execFileSync(
-      ffmpegBin,
-      ["-v", "error", "-i", "pipe:0", "-vf", `scale=${Math.ceil(spec.width / AREA)}:${Math.ceil(spec.height / AREA)}:flags=area`, "-f", "rawvideo", "-pix_fmt", "rgb24", "pipe:1"],
-      { input: png, maxBuffer: 16 * 1024 * 1024, windowsHide: true },
-    );
-  const [x, y] = [average(a), average(b)];
+  const decode = (png) =>
+    execFileSync(ffmpegBin, ["-v", "error", "-i", "pipe:0", "-f", "rawvideo", "-pix_fmt", "rgb24", "pipe:1"], {
+      input: png,
+      maxBuffer: spec.width * spec.height * 3 + 1024,
+      windowsHide: true,
+    });
+  const [x, y] = [decode(a), decode(b)];
+  const cols = Math.ceil(spec.width / AREA);
+  const sums = new Float64Array(cols * Math.ceil(spec.height / AREA));
+  const counts = new Uint16Array(sums.length);
+  for (let row = 0; row < spec.height; row++) {
+    for (let col = 0; col < spec.width; col++) {
+      const i = (row * spec.width + col) * 3;
+      const d = Math.max(Math.abs(x[i] - y[i]), Math.abs(x[i + 1] - y[i + 1]), Math.abs(x[i + 2] - y[i + 2]));
+      const area = Math.floor(row / AREA) * cols + Math.floor(col / AREA);
+      sums[area] += d;
+      counts[area]++;
+    }
+  }
   let worst = 0;
   let areas = 0;
-  for (let i = 0; i < x.length; i += 3) {
-    const d = Math.max(Math.abs(x[i] - y[i]), Math.abs(x[i + 1] - y[i + 1]), Math.abs(x[i + 2] - y[i + 2]));
-    if (d > AREA_TOLERANCE) areas++;
-    worst = Math.max(worst, d);
+  for (let k = 0; k < sums.length; k++) {
+    const mean = sums[k] / counts[k];
+    if (mean > AREA_TOLERANCE) areas++;
+    worst = Math.max(worst, mean);
   }
   return {
     changed: worst > AREA_TOLERANCE,
-    summary: `${areas} of ${x.length / 3} ${AREA}px areas changed, by up to ${worst} of 255 levels`,
+    summary: `${areas} of ${sums.length} ${AREA}px areas changed, by up to ${Math.round(worst)} of 255 levels on average`,
   };
 }
 

@@ -32,6 +32,11 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
     [leftVideo.current, rightVideo.current].forEach((video) => video && fn(video));
 
   const choose = (side: "left" | "right", key: string) => {
+    // The other side's player survives the swap, so stop and rewind it too; both start together again from 0.
+    both((video) => {
+      video.pause();
+      video.currentTime = 0;
+    });
     setPlaying(false);
     setTime(0);
     setDuration(0);
