@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
-import { authFiles, claudeTokenFile, config, templatesDir } from "./harness.mjs";
+import { authFiles, claudeAuth, claudeTokenFile, config, templatesDir } from "./harness.mjs";
 
 for (const harness of config.harnesses) {
   const home = path.join(templatesDir, harness.id);
@@ -24,6 +24,6 @@ for (const harness of config.harnesses) {
   console.log(`${harness.label}: ${home}`);
 }
 
-if (!fs.existsSync(claudeTokenFile)) {
+if (!claudeAuth()) {
   console.warn(`Claude Code: run \`claude setup-token\` and save the token to ${claudeTokenFile}`);
 }

@@ -2,14 +2,15 @@
 //
 //   node scripts/motion/upload.mjs [--dry-run]
 //
-// Needs rclone and an R2 API token scoped to the bucket. Credentials come from the environment or from
-// ~/.motionbench/r2.env (KEY=value lines), never from the repo:
+// With an R2 API token, it uses rclone. Credentials come from the environment or from ~/.motionbench/r2.env
+// (KEY=value lines), never from the repo:
 //   R2_ACCOUNT_ID, R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY, R2_BUCKET
+// Without one, it uploads each file through wrangler's own Cloudflare login (`wrangler login`).
 // Object keys mirror public/motion, so the site's base URL is the bucket's public URL.
 import fs from "node:fs";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { benchHome, root } from "./harness.mjs";
+import { benchHome, resolveBin, resolveLaunch, root } from "./harness.mjs";
 
 const envFile = path.join(benchHome, "r2.env");
 const fileEnv = fs.existsSync(envFile)
@@ -24,14 +25,45 @@ const fileEnv = fs.existsSync(envFile)
   : {};
 const env = { ...fileEnv, ...process.env };
 
-const required = ["R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_BUCKET"];
-const missing = required.filter((key) => !env[key]);
-if (missing.length) {
-  console.error(`Missing ${missing.join(", ")}. Set them in the environment or ${envFile}.`);
-  process.exit(1);
+const source = path.join(root, "public/motion");
+const dryRun = process.argv.includes("--dry-run");
+// URLs carry a ?v= version per run, so objects can be cached hard.
+const cacheControl = "public, max-age=31536000, immutable";
+
+const required = ["R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY"];
+if (required.some((key) => !env[key])) uploadWithWrangler(env.R2_BUCKET ?? "whichai-motion");
+
+function uploadWithWrangler(bucket) {
+  // Launched without a shell so the Cache-Control value's spaces survive on Windows.
+  const { command, prefix } = resolveLaunch(resolveBin("wrangler"));
+  const files = fs
+    .readdirSync(source, { recursive: true })
+    .map(String)
+    .filter((rel) => /\.(mp4|jpg)$/.test(rel));
+  for (const rel of files) {
+    const key = rel.split(path.sep).join("/");
+    console.log(`${dryRun ? "would upload" : "upload"} ${key}`);
+    if (dryRun) continue;
+    const result = spawnSync(
+      command,
+      [
+        ...prefix, "r2", "object", "put", `${bucket}/${key}`, "--file", path.join(source, rel), "--remote",
+        "--content-type", key.endsWith(".mp4") ? "video/mp4" : "image/jpeg", "--cache-control", cacheControl,
+      ],
+      { stdio: ["ignore", "ignore", "inherit"], windowsHide: true },
+    );
+    if (result.status !== 0) {
+      console.error(`Upload of ${key} failed. Is wrangler installed and logged in (\`wrangler login\`)?`);
+      process.exit(1);
+    }
+  }
+  process.exit(0);
 }
 
-const source = path.join(root, "public/motion");
+if (!env.R2_BUCKET) {
+  console.error(`Missing R2_BUCKET. Set it in the environment or ${envFile}.`);
+  process.exit(1);
+}
 // Configure the remote through rclone's env vars so no rclone.conf is written anywhere.
 const result = spawnSync(
   "rclone",
@@ -41,11 +73,10 @@ const result = spawnSync(
     `r2:${env.R2_BUCKET}`,
     "--include", "*.mp4",
     "--include", "*.jpg",
-    // URLs carry a ?v= version per run, so objects can be cached hard.
-    "--header-upload", "Cache-Control: public, max-age=31536000, immutable",
+    "--header-upload", `Cache-Control: ${cacheControl}`,
     "--s3-no-check-bucket",
     "--progress",
-    ...(process.argv.includes("--dry-run") ? ["--dry-run"] : []),
+    ...(dryRun ? ["--dry-run"] : []),
   ],
   {
     stdio: "inherit",

@@ -11,6 +11,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import {
+  assertClaudeAuth,
   authFiles,
   config,
   harnessCommand,
@@ -68,6 +69,13 @@ async function runOne(model, iteration) {
     console.log(`redo ${key} (its result came from ${existing.source === "manual" ? "a manual thread" : "an older prompt"})`);
   }
 
+  if (harness.id === "claude-code") {
+    try {
+      assertClaudeAuth(config.timeoutMinutes + 5);
+    } catch (err) {
+      fail(`stop ${key}: ${err.message}`);
+    }
+  }
   const bin = resolveBin(harness.bin);
   const version = harnessVersion(bin);
   const { runDir, workdir, prompt } = prepareRun({ groupId, model, iteration, source: "runner", harnessVersion: version });

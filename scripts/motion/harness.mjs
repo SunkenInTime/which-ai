@@ -44,6 +44,37 @@ export const authFiles = {
 // It reads a long-lived token from `claude setup-token` instead, saved to this file (never to the repo).
 export const claudeTokenFile = path.join(benchHome, "claude-oauth-token");
 
+// On Windows and Linux, Claude Code keeps its login in ~/.claude/.credentials.json instead of the keychain.
+// Without a setup-token file, runs borrow that login's current access token. Only the token goes into the run,
+// never the refresh token, so a run can't rotate the real login out from under the user's own sessions.
+const claudeCredentialsFile = path.join(os.homedir(), ".claude", ".credentials.json");
+
+export function claudeAuth() {
+  if (fs.existsSync(claudeTokenFile)) return { token: fs.readFileSync(claudeTokenFile, "utf8").trim(), expiresAt: null, source: claudeTokenFile };
+  try {
+    const oauth = JSON.parse(fs.readFileSync(claudeCredentialsFile, "utf8")).claudeAiOauth;
+    if (oauth?.accessToken) return { token: oauth.accessToken, expiresAt: oauth.expiresAt ?? null, source: claudeCredentialsFile };
+  } catch {
+    // No file login either.
+  }
+  return null;
+}
+
+// Fails before spending anything when Claude Code has no login, or the borrowed token would expire mid-run.
+export function assertClaudeAuth(minutesNeeded) {
+  const auth = claudeAuth();
+  if (!auth) throw new Error(`Claude Code has no login for runs. Run \`claude setup-token\` and save the token to ${claudeTokenFile}.`);
+  if (auth.expiresAt === null) return auth;
+  const minutesLeft = Math.floor((auth.expiresAt - Date.now()) / 60_000);
+  if (minutesLeft < minutesNeeded) {
+    throw new Error(
+      `The access token in ${auth.source} expires in ${minutesLeft} minutes, and a run may take ${minutesNeeded}. ` +
+        `Use Claude Code normally until it refreshes, or save a \`claude setup-token\` token to ${claudeTokenFile}.`,
+    );
+  }
+  return auth;
+}
+
 export const isWindows = process.platform === "win32";
 
 export function resolveBin(bin) {
@@ -97,20 +128,22 @@ export function isolatedEnv(home, harnessId) {
   }
   env.PLAYWRIGHT_BROWSERS_PATH = playwrightBrowsersPath();
   // Only Claude Code gets the Claude login; other harnesses never see it.
-  if (harnessId === "claude-code" && fs.existsSync(claudeTokenFile)) {
-    env.CLAUDE_CODE_OAUTH_TOKEN = fs.readFileSync(claudeTokenFile, "utf8").trim();
+  if (harnessId === "claude-code") {
+    const auth = claudeAuth();
+    if (auth) env.CLAUDE_CODE_OAUTH_TOKEN = auth.token;
   }
   return env;
 }
 
 // Every model runs at the same reasoning effort, set once in the config. Claude Code and Codex read the
 // prompt from stdin, which keeps the multi-line prompt out of the command line (cmd.exe can't carry newlines).
+// Claude Code ships built-in skills (one is a design skill); --disable-slash-commands turns them all off.
 export function harnessCommand(harness, model, prompt, workdir) {
   const effort = model.effort ?? config.effort;
   switch (harness.id) {
     case "claude-code":
       return {
-        args: ["-p", "--model", model.modelArg, "--effort", effort, "--strict-mcp-config", "--dangerously-skip-permissions", "--output-format", "stream-json", "--verbose"],
+        args: ["-p", "--model", model.modelArg, "--effort", effort, "--strict-mcp-config", "--disable-slash-commands", "--dangerously-skip-permissions", "--output-format", "stream-json", "--verbose"],
         stdin: prompt,
       };
     case "codex":

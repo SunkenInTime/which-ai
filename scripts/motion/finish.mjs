@@ -1,5 +1,6 @@
 // Turns a finished run folder into a published video: checks the page against the contract, renders it with
-// framekit, writes the MP4 and poster to public/motion, and records the run in src/lib/motion-runs.json.
+// framekit, writes web encodes and a poster to public/motion, and records the run in src/lib/motion-runs.json.
+// The full-quality master stays in the run folder as final.mp4.
 // The headless runner calls this after every session. For a run made by hand in an agent thread, call it directly:
 //
 //   node scripts/motion/finish.mjs <run-dir> [--wall-seconds <n>] [--cost <usd>]
@@ -44,6 +45,8 @@ export async function finishRun(runDir, session = {}) {
     // Render into the run folder and publish only on success, so a failed rerun leaves the old video alone.
     const out = path.join(runDir, "final.mp4");
     const poster = path.join(runDir, "final.jpg");
+    const web = path.join(runDir, "web.mp4");
+    const preview = path.join(runDir, "preview.mp4");
     try {
       console.log(`render ${key}`);
       rendered = await renderVideo(workdir, {
@@ -56,7 +59,16 @@ export async function finishRun(runDir, session = {}) {
       if (rendered.pageErrors.length) failure = `The page threw errors during the render: ${rendered.pageErrors.join(" ")}`;
       else {
         execFileSync(ffmpegBin, ["-y", "-v", "error", "-ss", "1", "-i", out, "-frames:v", "1", "-q:v", "3", poster], { windowsHide: true });
-        publish(out, poster, path.join(root, "public/motion", meta.group, meta.model), meta.iteration);
+        encodeForWeb(out, web, preview);
+        rendered.web = { sizeBytes: fs.statSync(web).size, previewSizeBytes: fs.statSync(preview).size };
+        publish(
+          [
+            [web, `${meta.iteration}.mp4`],
+            [preview, `${meta.iteration}.preview.mp4`],
+            [poster, `${meta.iteration}.jpg`],
+          ],
+          path.join(root, "public/motion", meta.group, meta.model),
+        );
       }
     } catch (err) {
       failure = `The render failed: ${err.message}`;
@@ -84,7 +96,9 @@ export async function finishRun(runDir, session = {}) {
           height: rendered.height,
           fps: rendered.fps,
           audio: rendered.audio,
-          sizeBytes: rendered.sizeBytes,
+          sizeBytes: rendered.web.sizeBytes,
+          previewSizeBytes: rendered.web.previewSizeBytes,
+          masterSizeBytes: rendered.sizeBytes,
         }
       : null,
     render: rendered && !failure
@@ -109,14 +123,28 @@ export async function finishRun(runDir, session = {}) {
   return { key, run };
 }
 
-// Copies both files next to their destinations first, then renames them into place, so a failure partway
-// never leaves a new video paired with an old poster or replaces a published video with a failed attempt.
-function publish(video, poster, dir, iteration) {
+// The master is encoded for archiving (CRF 18, up to 30 Mbps), which is too heavy to stream to every visitor.
+// The site gets a full-size, full-frame-rate encode tuned for streaming, plus a small silent clip that cards
+// play on hover. Both keep the BT.709 tags so browsers show the colors the page drew.
+const colorTags = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv"];
+
+function encodeForWeb(master, web, preview) {
+  const run = (args) => execFileSync(ffmpegBin, ["-y", "-v", "error", "-i", master, ...args], { stdio: ["ignore", "ignore", "pipe"], windowsHide: true });
+  run([
+    "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-profile:v", "high",
+    "-pix_fmt", "yuv420p", "-g", "120", ...colorTags, "-c:a", "copy", "-movflags", "+faststart", web,
+  ]);
+  run([
+    "-vf", "fps=30,scale=640:-2:flags=lanczos", "-an", "-c:v", "libx264", "-preset", "slow", "-crf", "26",
+    "-profile:v", "high", "-pix_fmt", "yuv420p", "-g", "60", ...colorTags, "-movflags", "+faststart", preview,
+  ]);
+}
+
+// Copies every file next to its destination first, then renames them into place, so a failure partway never
+// leaves a new video paired with an old poster or replaces a published video with a failed attempt.
+function publish(files, dir) {
   fs.mkdirSync(dir, { recursive: true });
-  const pairs = [
-    [video, path.join(dir, `${iteration}.mp4`)],
-    [poster, path.join(dir, `${iteration}.jpg`)],
-  ];
+  const pairs = files.map(([src, name]) => [src, path.join(dir, name)]);
   try {
     for (const [src, dest] of pairs) fs.copyFileSync(src, `${dest}.incoming`);
   } catch (err) {
