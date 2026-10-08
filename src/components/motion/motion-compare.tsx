@@ -10,13 +10,14 @@ const selectClass =
 /** How far apart (seconds) the players may drift before the one ahead is pulled back. */
 const MAX_DRIFT = 0.12;
 
+/** Resolves true once the video can play, false if it errors or isn't ready within 10 seconds. */
 function whenReady(video: HTMLVideoElement) {
-  if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) return Promise.resolve();
-  return new Promise<void>((resolve) => {
-    const done = () => resolve();
-    video.addEventListener("canplay", done, { once: true });
-    video.addEventListener("error", done, { once: true });
-    setTimeout(done, 5_000);
+  if (video.error) return Promise.resolve(false);
+  if (video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA) return Promise.resolve(true);
+  return new Promise<boolean>((resolve) => {
+    video.addEventListener("canplay", () => resolve(true), { once: true });
+    video.addEventListener("error", () => resolve(false), { once: true });
+    setTimeout(() => resolve(false), 10_000);
   });
 }
 
@@ -110,11 +111,11 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
     const request = ++playRequest.current;
     seekAll(clock.current >= duration - 0.05 ? 0 : clock.current);
     const startable = videos().filter((v) => !v.ended);
-    // Neither side gets a head start: wait until both can play from here.
-    await Promise.all(startable.map(whenReady));
-    if (request !== playRequest.current) return;
-    await Promise.all(startable.map((v) => v.play().catch(() => {})));
-    if (request !== playRequest.current) {
+    // Neither side gets a head start: wait until both can play from here. If either can't, stay paused.
+    const ready = await Promise.all(startable.map(whenReady));
+    if (request !== playRequest.current || ready.includes(false)) return;
+    const started = await Promise.all(startable.map((v) => v.play().then(() => true, () => false)));
+    if (request !== playRequest.current || started.includes(false)) {
       for (const v of startable) v.pause();
       return;
     }

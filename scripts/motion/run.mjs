@@ -45,11 +45,10 @@ const promptSha256 = crypto.createHash("sha256").update(prompt).digest("hex");
 fs.mkdirSync(workRoot, { recursive: true });
 assertCleanAncestors(workRoot);
 
-const claimsDir = `${runsFile}.claims`;
-const authLock = path.join(templatesDir, ".auth.lock");
+acquireRunnerLock();
 
 // The agent runs in its own process group, so the runner must take it down when the runner itself stops.
-let active = null; // { killGroup, release }
+let active = null; // { killGroup }
 let stopping = false;
 for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
   process.on(signal, () => {
@@ -59,7 +58,6 @@ for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
     if (current) {
       current.killGroup("SIGTERM");
       setTimeout(() => current.killGroup("SIGKILL"), 2_000).unref();
-      current.release();
     }
     console.error(`runner stopped by ${signal}`);
     setTimeout(() => process.exit(130), 2_500);
@@ -78,26 +76,15 @@ async function runOne(model, iteration) {
   const harness = config.harnesses.find((h) => h.id === model.harness);
   if (!harness) fail(`Model ${model.id} points at unknown harness ${model.harness}`);
   const key = `${groupId}/${model.id}/${iteration}`;
-
-  // Claim the key before checking it, so two runners never produce the same video at once.
-  const release = claim(key);
-  if (!release) {
-    console.log(`skip ${key} (another runner is on it)`);
+  if (readRuns()[key]?.status === "ok" && !force) {
+    console.log(`skip ${key} (already has a video, pass --force to redo)`);
     return;
   }
-  try {
-    if (readRuns()[key]?.status === "ok" && !force) {
-      console.log(`skip ${key} (already has a video, pass --force to redo)`);
-      return;
-    }
-    if (stopping) return;
-    await execute(model, harness, iteration, key, release);
-  } finally {
-    release();
-  }
+  if (stopping) return;
+  await execute(model, harness, iteration, key);
 }
 
-async function execute(model, harness, iteration, key, release) {
+async function execute(model, harness, iteration, key) {
   const runDir = path.join(workRoot, groupId, model.id, `${iteration}-${Date.now()}`);
   const workdir = path.join(runDir, "project");
   const home = path.join(runDir, "home");
@@ -130,7 +117,7 @@ async function execute(model, harness, iteration, key, release) {
       // Already gone.
     }
   };
-  active = { killGroup, release };
+  active = { killGroup };
   let timedOut = false;
   const timer = setTimeout(() => {
     timedOut = true;
@@ -191,65 +178,35 @@ function readRuns() {
   return JSON.parse(fs.readFileSync(runsFile, "utf8"));
 }
 
-function pidAlive(pid) {
+// One runner at a time: runs are heavy enough that parallel agents make a laptop unusable, and a single
+// writer keeps motion-runs.json, the published videos, and credential sync free of races. A lock left by a
+// killed runner is never taken over automatically; the message says how to clear it.
+function acquireRunnerLock() {
+  const lock = path.join(workRoot, ".runner.lock");
   try {
-    process.kill(pid, 0);
-    return true;
-  } catch (err) {
-    return err.code === "EPERM";
-  }
-}
-
-// Creates `file` exclusively with our pid. A file left by a dead process is stale and gets replaced.
-function tryAcquire(file) {
-  try {
-    fs.writeFileSync(file, String(process.pid), { flag: "wx" });
-    return true;
+    fs.writeFileSync(lock, String(process.pid), { flag: "wx" });
   } catch (err) {
     if (err.code !== "EEXIST") throw err;
-    const owner = Number(fs.readFileSync(file, "utf8"));
-    if (owner && pidAlive(owner)) return false;
-    fs.rmSync(file, { force: true });
-    return tryAcquire(file);
+    const owner = fs.readFileSync(lock, "utf8").trim() || "unknown";
+    fail(`Another runner holds ${lock} (pid ${owner}). If no runner is running, delete that file.`);
   }
-}
-
-function withLock(file, fn) {
-  const deadline = Date.now() + 60_000;
-  while (!tryAcquire(file)) {
-    if (Date.now() > deadline) throw new Error(`timed out waiting for ${file}`);
-    Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 100);
-  }
-  try {
-    return fn();
-  } finally {
-    fs.rmSync(file, { force: true });
-  }
-}
-
-/** Reserves a run key for this process. Returns a release function, or null if a live runner holds it. */
-function claim(key) {
-  fs.mkdirSync(claimsDir, { recursive: true });
-  const file = path.join(claimsDir, key.replaceAll("/", "__"));
-  if (!tryAcquire(file)) return null;
-  let released = false;
-  return () => {
-    if (released) return;
-    released = true;
-    fs.rmSync(file, { force: true });
-  };
-}
-
-// Replace motion-runs.json by rename under a lock, so parallel runners neither lose entries nor read half a file.
-function writeRun(key, run) {
-  withLock(`${runsFile}.lock`, () => {
-    const runs = readRuns();
-    runs[key] = run;
-    const sorted = Object.fromEntries(Object.entries(runs).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
-    const tmp = `${runsFile}.${process.pid}.tmp`;
-    fs.writeFileSync(tmp, JSON.stringify(sorted, null, 2) + "\n");
-    fs.renameSync(tmp, runsFile);
+  process.on("exit", () => {
+    try {
+      if (fs.readFileSync(lock, "utf8").trim() === String(process.pid)) fs.rmSync(lock);
+    } catch {
+      // Already gone.
+    }
   });
+}
+
+// Replace motion-runs.json by rename, so the dev server or an editor never reads half a file.
+function writeRun(key, run) {
+  const runs = readRuns();
+  runs[key] = run;
+  const sorted = Object.fromEntries(Object.entries(runs).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
+  const tmp = `${runsFile}.${process.pid}.tmp`;
+  fs.writeFileSync(tmp, JSON.stringify(sorted, null, 2) + "\n");
+  fs.renameSync(tmp, runsFile);
 }
 
 // Prefer output.mp4 at the project root; otherwise the newest video anywhere outside node_modules.
@@ -345,20 +302,18 @@ function snapshotAuth(harnessId, home) {
 }
 
 // If this run's harness rotated its tokens, carry them back so the real login stays valid. Only write when the
-// real file still holds what this run started from; otherwise another run or the user already moved it on.
+// real file still holds what this run started from; otherwise the user's own session already moved it on.
 function syncAuthBack(harnessId, home, atStart) {
-  withLock(authLock, () => {
-    for (const [rel, start] of Object.entries(atStart)) {
-      const runCopy = path.join(home, rel);
-      const real = path.join(process.env.HOME ?? "", rel);
-      const template = path.join(templatesDir, harnessId, rel);
-      if (![runCopy, real].every((p) => fs.existsSync(p))) continue;
-      const current = fs.readFileSync(runCopy, "utf8");
-      if (current === start || fs.readFileSync(real, "utf8") !== start) continue;
-      fs.writeFileSync(real, current, { mode: 0o600 });
-      fs.writeFileSync(template, current, { mode: 0o600 });
-    }
-  });
+  for (const [rel, start] of Object.entries(atStart)) {
+    const runCopy = path.join(home, rel);
+    const real = path.join(process.env.HOME ?? "", rel);
+    const template = path.join(templatesDir, harnessId, rel);
+    if (![runCopy, real].every((p) => fs.existsSync(p))) continue;
+    const current = fs.readFileSync(runCopy, "utf8");
+    if (current === start || fs.readFileSync(real, "utf8") !== start) continue;
+    fs.writeFileSync(real, current, { mode: 0o600 });
+    fs.writeFileSync(template, current, { mode: 0o600 });
+  }
 }
 
 function fail(message) {
