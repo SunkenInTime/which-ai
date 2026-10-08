@@ -126,15 +126,16 @@ export async function finishRun(runDir, session = {}) {
   return { key, run };
 }
 
-// The master is encoded for archiving (CRF 18, up to 30 Mbps), which is too heavy to stream to every visitor.
-// The site gets a full-size, full-frame-rate encode tuned for streaming, plus a small silent clip that cards
-// play on hover. Both keep the BT.709 tags so browsers show the colors the page drew.
+// The master is encoded for archiving (CRF 18, up to 30 Mbps). The site gets a full-size, full-frame-rate
+// H.264 encode that every browser plays, plus a small silent clip that cards play on hover. The cap is high on
+// purpose: these pieces are often dense particles, and at 10 Mbps they smeared into mush (VMAF ~40 against the
+// master in those scenes); 25 Mbps keeps them intact. Both keep the BT.709 tags so browsers show the page's colors.
 const colorTags = ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", "-color_range", "tv"];
 
 function encodeForWeb(master, web, preview) {
   const run = (args) => execFileSync(ffmpegBin, ["-y", "-v", "error", "-i", master, ...args], { stdio: ["ignore", "ignore", "pipe"], windowsHide: true });
   run([
-    "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-profile:v", "high",
+    "-c:v", "libx264", "-preset", "slow", "-crf", "20", "-maxrate", "25M", "-bufsize", "50M", "-profile:v", "high",
     "-pix_fmt", "yuv420p", "-g", "120", ...colorTags, "-c:a", "copy", "-movflags", "+faststart", web,
   ]);
   run([

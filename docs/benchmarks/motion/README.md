@@ -56,6 +56,6 @@ Every run folder under the work root (`C:\motionbench\work` on Windows, `/Users/
 
 ## Publishing
 
-The render is a CRF 18 master, kept in the run folder as `final.mp4`. What gets published to `public/motion/<group>/<model>/` is `<n>.mp4`, a full-size 60fps encode for streaming (CRF 20, capped at 10 Mbps); `<n>.preview.mp4`, a 640px 30fps silent clip that cards play on hover; and `<n>.jpg`, the poster.
+The render is a CRF 18 master, kept in the run folder as `final.mp4`. What gets published to `public/motion/<group>/<model>/` is `<n>.mp4`, a full-size 60fps H.264 encode for the site (CRF 20, capped at 25 Mbps, since dense particles smear at lower caps); `<n>.preview.mp4`, a 640px 30fps silent clip that cards play on hover; and `<n>.jpg`, the poster.
 
 `npm run motion:upload` copies `public/motion` to the `whichai-motion` R2 bucket (see `scripts/motion/upload.mjs`). It uses rclone when an R2 API token is set up, and otherwise wrangler's own login. Then commit `src/lib/motion-runs.json`. Production builds read videos from `https://media.whichai.dev`, the bucket's domain; `npm run dev` reads `public/motion`. `NEXT_PUBLIC_MOTION_VIDEO_BASE_URL` overrides both.
