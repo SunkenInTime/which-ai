@@ -1,6 +1,6 @@
-// Turns a finished run folder into a published video: checks the page against the contract, renders it with
-// framekit, writes web encodes and a poster to public/motion, and records the run in src/lib/motion-runs.json.
-// The full-quality master stays in the run folder as final.mp4.
+// Turns a finished session into published videos: checks each page against the contract, renders it with
+// framekit, writes web encodes and a poster to public/motion, and records each video in src/lib/motion-runs.json.
+// The full-quality masters stay in the run folder as <n>/final.mp4.
 // The headless runner calls this after every session. For a run made by hand in an agent thread, call it directly:
 //
 //   node scripts/motion/finish.mjs <run-dir> [--wall-seconds <n>] [--cost <usd>]
@@ -25,17 +25,31 @@ export async function finishRun(runDir, session = {}) {
   const meta = readRunMeta(runDir);
   // The session is over, so its sandbox joins the run record.
   if (meta.sandbox && fs.existsSync(meta.sandbox)) await collectSandbox(meta.sandbox, runDir);
-  const workdir = path.join(runDir, "project");
-  const key = `${meta.group}/${meta.model}/${meta.iteration}`;
   const { exitCode = null, signal = null, timedOut = false } = session;
 
-  let failure = null;
+  // A session that didn't end on its own may have stopped partway through a page, so none of its videos count.
+  let sessionFailure = null;
+  if (timedOut) sessionFailure = "The session hit the time limit.";
+  else if (signal) sessionFailure = `The harness was killed by ${signal}.`;
+  else if (exitCode !== 0) sessionFailure = `The harness exited with code ${exitCode}.`;
+
+  const results = [];
+  for (let n = 1; n <= meta.iterations; n++) results.push(await finishVideo(runDir, meta, n, session, sessionFailure));
+  writeRunMeta(runDir, { ...meta, results: Object.fromEntries(results.map(({ key, run }) => [key, run])) });
+  return results;
+}
+
+// One video of the session: the page in project/<n>, rendered to <n>/ in the run folder.
+async function finishVideo(runDir, meta, n, session, sessionFailure) {
+  const workdir = path.join(runDir, "project", String(n));
+  const outDir = path.join(runDir, String(n));
+  const key = `${meta.group}/${meta.model}/${n}`;
+  const { exitCode = null, signal = null, timedOut = false } = session;
+
+  let failure = sessionFailure;
   let check = null;
   let rendered = null;
-  if (timedOut) failure = "The session hit the time limit.";
-  else if (signal) failure = `The harness was killed by ${signal}.`;
-  else if (exitCode !== 0) failure = `The harness exited with code ${exitCode}.`;
-  else {
+  if (!failure) {
     try {
       check = await checkProject(workdir);
       if (!check.ok) failure = `The page failed the contract check: ${check.errors.join(" ")}`;
@@ -46,10 +60,11 @@ export async function finishRun(runDir, session = {}) {
 
   if (!failure) {
     // Render into the run folder and publish only on success, so a failed rerun leaves the old video alone.
-    const out = path.join(runDir, "final.mp4");
-    const poster = path.join(runDir, "final.jpg");
-    const web = path.join(runDir, "web.mp4");
-    const preview = path.join(runDir, "preview.mp4");
+    fs.mkdirSync(outDir, { recursive: true });
+    const out = path.join(outDir, "final.mp4");
+    const poster = path.join(outDir, "final.jpg");
+    const web = path.join(outDir, "web.mp4");
+    const preview = path.join(outDir, "preview.mp4");
     try {
       console.log(`render ${key}`);
       rendered = await renderVideo(workdir, {
@@ -66,9 +81,9 @@ export async function finishRun(runDir, session = {}) {
         rendered.web = { sizeBytes: fs.statSync(web).size, previewSizeBytes: fs.statSync(preview).size };
         publish(
           [
-            [web, `${meta.iteration}.mp4`],
-            [preview, `${meta.iteration}.preview.mp4`],
-            [poster, `${meta.iteration}.jpg`],
+            [web, `${n}.mp4`],
+            [preview, `${n}.preview.mp4`],
+            [poster, `${n}.jpg`],
           ],
           path.join(root, "public/motion", meta.group, meta.model),
         );
@@ -86,6 +101,7 @@ export async function finishRun(runDir, session = {}) {
     effort: meta.effort,
     promptSha256: meta.promptSha256,
     startedAt: meta.startedAt,
+    // The session made every video, so its time and cost cover all of them.
     wallSeconds: session.wallSeconds ?? null,
     exitCode,
     ...(signal ? { signal } : {}),
@@ -119,7 +135,6 @@ export async function finishRun(runDir, session = {}) {
   };
 
   // The run folder always keeps the full record. The registry keeps a published video over a failed retry.
-  writeRunMeta(runDir, { ...meta, result: run });
   const published = readRuns()[key];
   if (run.status === "ok" || published?.status !== "ok") writeRun(key, run);
   else console.log(`keep ${key}: the earlier published video stays; this attempt is recorded in ${runDir}`);
@@ -183,7 +198,9 @@ if (import.meta.filename === path.resolve(process.argv[1] ?? "")) {
   }
   const wallSeconds = flag("wall-seconds") ? Number(flag("wall-seconds")) : null;
   const cost = flag("cost") ? Number(flag("cost")) : null;
-  const { key, run } = await finishRun(runDir, { exitCode: 0, wallSeconds, usage: cost === null ? null : { costUsd: cost } });
-  console.log(`${run.status === "ok" ? "done" : "FAIL"} ${key}: ${run.status}${run.failure ? ` (${run.failure})` : ""}`);
-  if (run.status !== "ok") process.exitCode = 1;
+  const results = await finishRun(runDir, { exitCode: 0, wallSeconds, usage: cost === null ? null : { costUsd: cost } });
+  for (const { key, run } of results) {
+    console.log(`${run.status === "ok" ? "done" : "FAIL"} ${key}: ${run.status}${run.failure ? ` (${run.failure})` : ""}`);
+    if (run.status !== "ok") process.exitCode = 1;
+  }
 }

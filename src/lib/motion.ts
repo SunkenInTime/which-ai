@@ -12,7 +12,10 @@ export interface MotionRun {
   harnessVersion: string | null;
   modelArg: string;
   startedAt: string;
-  /** Agent session time only; the render is timed separately. Null when a manual run didn't record it. */
+  /**
+   * Agent session time only; the render is timed separately. One session makes all of a model's videos, so this
+   * and `usage` cover all of them. Null when a manual run didn't record it.
+   */
   wallSeconds: number | null;
   timedOut: boolean;
   status: MotionRunStatus;

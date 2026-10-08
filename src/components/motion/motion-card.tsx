@@ -72,8 +72,8 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
             ) : null}
           </h3>
           {cost != null ? (
-            <p title="API cost of the session that made this video" className="shrink-0 text-sm tabular-nums text-[var(--gallery-text-tertiary)]">
-              <span className="sr-only">Generation cost: </span>${cost.toFixed(2)}
+            <p title="API cost of the session that made all of this model's videos" className="shrink-0 text-sm tabular-nums text-[var(--gallery-text-tertiary)]">
+              <span className="sr-only">Session cost: </span>${cost.toFixed(2)}
             </p>
           ) : null}
         </div>
