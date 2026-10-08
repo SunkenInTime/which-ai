@@ -9,7 +9,6 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import http from "node:http";
-import crypto from "node:crypto";
 import { spawn, execFileSync } from "node:child_process";
 import { chromium } from "playwright-core";
 
@@ -528,6 +527,36 @@ export async function renderSheet(dir, { cols = 4, rows = 4, out = path.join(dir
   return { out, times, issues };
 }
 
+// How far apart two renders of the same frame are. GPUs don't always round the same way twice: a heavy shader can
+// come out a few levels off in scattered pixels between page loads (seen on Windows, where the driver recompiles
+// shaders in the background). That's invisible, and no agent can fix it, so frames are compared as 16px-area
+// averages. Real nondeterminism is far bigger: a circle drifting 3px between renders moves a 16px area by about
+// 46 levels, while GPU rounding stayed at 1. Anything over 6 levels (of 255) fails.
+const AREA = 16;
+const AREA_TOLERANCE = 6;
+
+function frameDifference(a, b) {
+  if (a.equals(b)) return { changed: false };
+  const average = (png) =>
+    execFileSync(
+      ffmpegBin,
+      ["-v", "error", "-i", "pipe:0", "-vf", `scale=${Math.ceil(spec.width / AREA)}:${Math.ceil(spec.height / AREA)}:flags=area`, "-f", "rawvideo", "-pix_fmt", "rgb24", "pipe:1"],
+      { input: png, maxBuffer: 16 * 1024 * 1024, windowsHide: true },
+    );
+  const [x, y] = [average(a), average(b)];
+  let worst = 0;
+  let areas = 0;
+  for (let i = 0; i < x.length; i += 3) {
+    const d = Math.max(Math.abs(x[i] - y[i]), Math.abs(x[i + 1] - y[i + 1]), Math.abs(x[i + 2] - y[i + 2]));
+    if (d > AREA_TOLERANCE) areas++;
+    worst = Math.max(worst, d);
+  }
+  return {
+    changed: worst > AREA_TOLERANCE,
+    summary: `${areas} of ${x.length / 3} ${AREA}px areas changed, by up to ${worst} of 255 levels`,
+  };
+}
+
 // Verifies the project meets the contract and estimates how long the final render will take.
 // Never throws for problems with the page itself; those come back as errors.
 export async function checkProject(dir, { gl = spec.gl } = {}) {
@@ -538,7 +567,6 @@ export async function checkProject(dir, { gl = spec.gl } = {}) {
     errors.push("No index.html in the project folder.");
     return result;
   }
-  const hash = (buf) => crypto.createHash("sha256").update(buf).digest("hex");
   const last = round3(spec.durationSec - 1 / spec.fps);
   const mid = round3(spec.durationSec / 2);
   try {
@@ -555,26 +583,28 @@ export async function checkProject(dir, { gl = spec.gl } = {}) {
       result.renderer = await webglRenderer(session.page);
 
       const t0 = Date.now();
-      const first = hash(await captureFrame(session, 0));
-      const middle = hash(await captureFrame(session, mid));
-      const end = hash(await captureFrame(session, last));
-      const middleAgain = hash(await captureFrame(session, mid));
+      const first = await captureFrame(session, 0);
+      const middle = await captureFrame(session, mid);
+      const end = await captureFrame(session, last);
+      const middleAgain = await captureFrame(session, mid);
       result.msPerFrame = Math.round((Date.now() - t0) / 4);
       const frames = Math.round(spec.durationSec * spec.fps);
       result.estimatedRenderSeconds = Math.round((result.msPerFrame * frames) / 1000 / defaultWorkers());
 
       // Parallel render workers each load the page fresh, so a frame must also match across fresh loads.
       const fresh = await openProject(browser, origin);
-      const middleFresh = hash(await captureFrame(fresh, mid));
+      const middleFresh = await captureFrame(fresh, mid);
       session.issues.errors.push(...fresh.issues.errors);
       session.issues.blocked.push(...fresh.issues.blocked);
 
       const rule = "renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness";
-      if (middle !== middleAgain) errors.push(`Frame at t=${mid}s came out different on a second render. ${rule}.`);
-      else if (middle !== middleFresh) {
-        errors.push(`Frame at t=${mid}s came out different after reloading the page. ${rule}, including during setup and in workers.`);
+      const again = frameDifference(middle, middleAgain);
+      const reloaded = frameDifference(middle, middleFresh);
+      if (again.changed) errors.push(`Frame at t=${mid}s came out different on a second render (${again.summary}). ${rule}.`);
+      else if (reloaded.changed) {
+        errors.push(`Frame at t=${mid}s came out different after reloading the page (${reloaded.summary}). ${rule}, including during setup and in workers.`);
       }
-      if (first === middle && middle === end) warnings.push("The first, middle, and last frames are identical. Nothing seems to move.");
+      if (first.equals(middle) && middle.equals(end)) warnings.push("The first, middle, and last frames are identical. Nothing seems to move.");
       if (session.issues.errors.length) errors.push(...unique(session.issues.errors).map((e) => `Page error: ${e}`));
       if (session.issues.blocked.length) {
         errors.push(`Blocked network requests (rendering is offline, keep assets in the project): ${unique(session.issues.blocked).join(", ")}`);
