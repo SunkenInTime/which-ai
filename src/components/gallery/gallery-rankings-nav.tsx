@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ArrowLeftRight, BarChart3, Gamepad2, Home } from "lucide-react";
+import { ArrowLeftRight, BarChart3, Clapperboard, Gamepad2, Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GalleryThemeToggle } from "@/components/gallery/gallery-theme-toggle";
@@ -10,7 +10,8 @@ import { buildCompareHref, DEFAULT_COMPARE_STATE } from "@/lib/compare";
 const navLinkBase =
   "relative inline-flex h-9 shrink-0 items-center justify-center overflow-hidden rounded-md transition-colors duration-150";
 
-const navLinkTextPad = "px-3";
+// Below sm the labelled links collapse to icons so the fixed nav fits a phone; labels stay for screen readers.
+const navLinkTextPad = "min-w-9 sm:px-3";
 
 function navLinkClass(active: boolean) {
   return clsx(
@@ -26,8 +27,9 @@ export function GalleryRankingsNav() {
   const onRankings = pathname === "/rankings";
   const onCompare = pathname === "/compare";
   const onLabGuess = pathname === "/lab-guess";
+  const onMotion = pathname === "/motion" || pathname.startsWith("/motion/");
   const onGalleryHome = pathname === "/";
-  const homeShowsGalleryLabel = onRankings || onCompare || onLabGuess;
+  const homeShowsGalleryLabel = onRankings || onCompare || onLabGuess || onMotion;
 
   return (
     <nav
@@ -44,7 +46,10 @@ export function GalleryRankingsNav() {
         )}
       >
         {homeShowsGalleryLabel ? (
-          <span className="text-sm font-medium tracking-tight">Gallery</span>
+          <>
+            <Home className="size-4 shrink-0 sm:hidden" aria-hidden />
+            <span className="sr-only text-sm font-medium tracking-tight sm:not-sr-only">Gallery</span>
+          </>
         ) : (
           <span className="inline-flex size-9 items-center justify-center text-current">
             <Home className="size-4 shrink-0" aria-hidden />
@@ -71,9 +76,12 @@ export function GalleryRankingsNav() {
             <ArrowLeftRight className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Compare
-          </span>
+          <>
+            <ArrowLeftRight className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Compare
+            </span>
+          </>
         )}
       </Link>
 
@@ -96,9 +104,40 @@ export function GalleryRankingsNav() {
             <Gamepad2 className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Guess which
+          <>
+            <Gamepad2 className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Guess which
+            </span>
+          </>
+        )}
+      </Link>
+
+      <div
+        className="h-6 w-px shrink-0 bg-[var(--gallery-divider)]/90"
+        aria-hidden="true"
+      />
+
+      <Link
+        href="/motion"
+        aria-label={onMotion ? "Motion" : undefined}
+        aria-current={onMotion ? "page" : undefined}
+        className={clsx(
+          navLinkClass(onMotion),
+          onMotion ? "min-w-9" : navLinkTextPad,
+        )}
+      >
+        {onMotion ? (
+          <span className="inline-flex size-9 items-center justify-center text-current">
+            <Clapperboard className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
+        ) : (
+          <>
+            <Clapperboard className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Motion
+            </span>
+          </>
         )}
       </Link>
 
@@ -121,9 +160,12 @@ export function GalleryRankingsNav() {
             <BarChart3 className="size-4 shrink-0 opacity-90" aria-hidden />
           </span>
         ) : (
-          <span className="whitespace-nowrap text-sm font-medium tracking-tight">
-            Rankings
-          </span>
+          <>
+            <BarChart3 className="size-4 shrink-0 opacity-90 sm:hidden" aria-hidden />
+            <span className="sr-only whitespace-nowrap text-sm font-medium tracking-tight sm:not-sr-only">
+              Rankings
+            </span>
+          </>
         )}
       </Link>
 

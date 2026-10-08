@@ -12,7 +12,10 @@
     "capture-previews": "node scripts/capture-previews.mjs",
     "scope:variant-css": "node scripts/scope-variant-css.mjs",
     "test:routes": "playwright test tests/gallery-routes.spec.ts",
-    "test:visual": "playwright test tests/gallery-visual-smoke.spec.ts"
+    "test:visual": "playwright test tests/gallery-visual-smoke.spec.ts",
+    "motion:homes": "node scripts/motion/setup-homes.mjs",
+    "motion:run": "node scripts/motion/run.mjs",
+    "motion:upload": "node scripts/motion/upload.mjs"
   },
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
