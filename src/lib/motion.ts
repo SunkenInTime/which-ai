@@ -35,17 +35,38 @@ export interface MotionClip {
   iteration: number;
   run: MotionRun | null;
   videoSrc: string;
+  /** Small silent clip for hover playback on cards. */
+  previewSrc: string;
   posterSrc: string;
 }
 
-/** Videos can move to a CDN or blob store by setting this; posters and videos share the base. */
-const VIDEO_BASE_URL = (process.env.NEXT_PUBLIC_MOTION_VIDEO_BASE_URL ?? "/motion").replace(/\/$/, "");
+/**
+ * Videos and posters are served from the whichai-motion R2 bucket; `npm run motion:upload` fills it from
+ * public/motion. Local dev reads public/motion directly. Set this to point either somewhere else.
+ */
+const VIDEO_BASE_URL = (
+  process.env.NEXT_PUBLIC_MOTION_VIDEO_BASE_URL ??
+  (process.env.NODE_ENV === "development" ? "/motion" : "https://media.whichai.dev")
+).replace(/\/$/, "");
 
 const runs = motionRuns as Record<string, MotionRun>;
 
 export const MOTION_ITERATIONS = Array.from({ length: motionConfig.iterations }, (_, i) => i + 1);
 export const motionGroups = motionConfig.groups;
-export const motionModels = motionConfig.models;
+/** Only models with at least one recorded run get a card and pages; the config can list models not run yet. */
+export const motionModels = motionConfig.models.filter((model) =>
+  Object.keys(runs).some((key) => key.split("/")[1] === model.id),
+);
+
+const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
+  Anthropic: { light: "/anthropic-claude.webp" },
+  OpenAI: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
+  xAI: { light: "/xai-light.svg", dark: "/xai-dark.svg" },
+};
+
+export function getMotionModelLogo(model: MotionModel) {
+  return LAB_LOGOS[model.lab] ?? null;
+}
 
 export function getMotionHarness(model: MotionModel): MotionHarness {
   const harness = motionConfig.harnesses.find((h) => h.id === model.harness);
@@ -66,6 +87,7 @@ export function getMotionClip(group: MotionGroup, model: MotionModel, iteration:
     iteration,
     run,
     videoSrc: `${VIDEO_BASE_URL}/${key}.mp4${version}`,
+    previewSrc: `${VIDEO_BASE_URL}/${key}.preview.mp4${version}`,
     posterSrc: `${VIDEO_BASE_URL}/${key}.jpg${version}`,
   };
 }

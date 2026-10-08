@@ -8,3 +8,9 @@ export function readMotionPrompt(groupId: string): string | null {
   const prompt = fs.readFileSync(file, "utf8").trim();
   return prompt.includes("PLACEHOLDER") ? null : prompt;
 }
+
+/** The creative brief: the prompt up to where it starts describing how the page becomes a video. */
+export function summarizeMotionPrompt(prompt: string): string {
+  const cut = prompt.search(/^how the video gets made/im);
+  return cut > 0 ? prompt.slice(0, cut).trim() : prompt;
+}

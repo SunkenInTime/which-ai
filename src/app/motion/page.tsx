@@ -3,11 +3,11 @@ import { GalleryRankingsNav } from "@/components/gallery/gallery-rankings-nav";
 import { GenerationPrompt } from "@/components/gallery/generation-prompt";
 import { MotionCard } from "@/components/motion/motion-card";
 import { getMotionClipsForModel, motionGroups, motionModels } from "@/lib/motion";
-import { readMotionPrompt } from "@/lib/motion-prompt";
+import { readMotionPrompt, summarizeMotionPrompt } from "@/lib/motion-prompt";
 
 export const metadata: Metadata = {
   title: "Motion · Which AI Made This?",
-  description: "The same motion-video prompt, run through Claude Code, Codex, and Grok CLI.",
+  description: "The same 15-second motion-video prompt, given to each model in its lab's own coding agent.",
 };
 
 export default function MotionPage() {
@@ -20,8 +20,9 @@ export default function MotionPage() {
             Which AI Made This Video?
           </h1>
           <p className="mt-5 text-[15px] leading-relaxed text-[var(--gallery-text-secondary)]">
-            The same motion-video prompt, run through each lab&apos;s own coding agent: Claude Code, Codex, and
-            Grok CLI. Every video comes from a fresh session. Hover a card to play it.
+            Each model gets the same prompt in its lab&apos;s own coding agent and builds a 15-second piece as a web
+            page. Every page is then rendered to video the same way, so the motion is the model&apos;s and not its
+            tooling&apos;s. Every video comes from a fresh session with no skills. Hover a card to play it.
           </p>
         </header>
 
@@ -38,7 +39,7 @@ export default function MotionPage() {
                 </h2>
                 <p className="max-w-xl text-sm text-[var(--gallery-text-tertiary)]">{group.description}</p>
               </div>
-              {prompt ? <GenerationPrompt prompt={prompt} /> : null}
+              {prompt ? <GenerationPrompt prompt={prompt} summary={summarizeMotionPrompt(prompt)} /> : null}
               <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                 {motionModels.map((model) => (
                   <MotionCard key={model.id} clips={getMotionClipsForModel(group, model)} />

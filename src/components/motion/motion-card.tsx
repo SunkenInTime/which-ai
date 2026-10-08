@@ -4,10 +4,12 @@ import clsx from "clsx";
 import { ArrowLeftRight } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
+import { ThemeAwareLogo } from "@/components/gallery/theme-aware-logo";
 import {
   buildMotionCompareHref,
   buildMotionHref,
   describeMissingRun,
+  getMotionModelLogo,
   type MotionClip,
 } from "@/lib/motion";
 
@@ -18,6 +20,8 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
   const clip = clips.find((c) => c.key === activeKey) ?? firstFinished;
   const ready = clip.run?.status === "ok";
   const compareTarget = clips.find((c) => c.key !== clip.key && c.run?.status === "ok");
+  const logo = getMotionModelLogo(clip.model);
+  const cost = clip.run?.usage?.costUsd;
 
   return (
     <article className="group gallery-card-shell gallery-elevated-surface relative flex flex-col overflow-hidden rounded-lg border bg-[var(--gallery-surface)]">
@@ -34,9 +38,9 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
       >
         {ready ? (
           <video
-            key={clip.videoSrc}
+            key={clip.previewSrc}
             ref={video}
-            src={clip.videoSrc}
+            src={clip.previewSrc}
             poster={clip.posterSrc}
             muted
             loop
@@ -52,13 +56,26 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
       </Link>
 
       <div className="flex flex-1 flex-col gap-2 p-5">
-        <div className="space-y-1">
-          <p className="text-xs text-[var(--gallery-text-tertiary)]">
-            {clip.model.lab} · {clip.harness.label}
-          </p>
-          <h3 className="text-lg font-medium tracking-tight text-[var(--gallery-text-primary)]">
-            {clip.model.label}
+        <div className="flex items-baseline justify-between gap-3">
+          <h3 className="flex min-w-0 flex-wrap items-center gap-2 text-lg font-medium tracking-tight text-[var(--gallery-text-primary)]">
+            <span>{clip.model.label}</span>
+            {logo ? (
+              <ThemeAwareLogo
+                lightSrc={logo.light}
+                darkSrc={logo.dark}
+                alt=""
+                width={28}
+                height={28}
+                className="h-[1em] w-auto shrink-0 object-contain"
+                aria-hidden
+              />
+            ) : null}
           </h3>
+          {cost != null ? (
+            <p title="API cost of the session that made this video" className="shrink-0 text-sm tabular-nums text-[var(--gallery-text-tertiary)]">
+              <span className="sr-only">Generation cost: </span>${cost.toFixed(2)}
+            </p>
+          ) : null}
         </div>
         <div className="mt-auto flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5">
           <div className="flex min-w-0 flex-wrap gap-1.5" role="tablist" aria-label={`${clip.model.label} videos`}>
