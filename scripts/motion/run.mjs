@@ -9,6 +9,7 @@
 // Raw transcripts and the agent's source files stay in the work root (see harness.mjs); the repo gets the video,
 // a poster, and one entry in src/lib/motion-runs.json.
 import fs from "node:fs";
+import os from "node:os";
 import path from "node:path";
 import {
   assertClaudeAuth,
@@ -79,6 +80,7 @@ async function runOne(model, iteration) {
   const bin = resolveBin(harness.bin);
   const version = harnessVersion(bin);
   const { runDir, workdir, home, prompt } = prepareRun({ groupId, model, iteration, source: "runner", harnessVersion: version });
+  refreshTemplateAuth(harness.id);
   fs.cpSync(path.join(templatesDir, harness.id), home, { recursive: true });
   console.log(`run  ${key} with ${harness.label} ${version} in ${workdir}`);
 
@@ -152,10 +154,22 @@ function readUsage(harnessId, transcriptPath) {
   return null;
 }
 
+// The real login may have moved on since setup-homes or the last run (a fresh login, a refresh by the CLI itself),
+// so each run starts from its current credentials. That also keeps syncAuthBack's "real login untouched" test true.
+function refreshTemplateAuth(harnessId) {
+  for (const rel of authFiles[harnessId] ?? []) {
+    const real = path.join(os.homedir(), rel);
+    const template = path.join(templatesDir, harnessId, rel);
+    if (!fs.existsSync(real)) continue;
+    fs.mkdirSync(path.dirname(template), { recursive: true });
+    fs.copyFileSync(real, template);
+  }
+}
+
 function syncAuthBack(harnessId, home) {
   for (const rel of authFiles[harnessId] ?? []) {
     const runCopy = path.join(home, rel);
-    const real = path.join(process.env.HOME ?? process.env.USERPROFILE ?? "", rel);
+    const real = path.join(os.homedir(), rel);
     const template = path.join(templatesDir, harnessId, rel);
     if (![runCopy, real, template].every((p) => fs.existsSync(p))) continue;
     const changed = fs.readFileSync(runCopy, "utf8") !== fs.readFileSync(template, "utf8");

@@ -13,9 +13,12 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   const params = useSearchParams();
   const pick = (key: string | null, fallback: number) => clips.find((c) => c.key === key) ?? clips[fallback];
   const left = pick(params.get("left"), 0);
-  const right = pick(params.get("right"), 1);
+  // A missing or unknown right key falls back to any other clip, so the page never compares a video with itself.
+  const right = clips.find((c) => c.key === params.get("right")) ?? clips.find((c) => c.key !== left?.key) ?? clips[1];
   const leftVideo = useRef<HTMLVideoElement>(null);
   const rightVideo = useRef<HTMLVideoElement>(null);
+  // What the visitor asked for. The players themselves may be paused for a moment while one of them buffers.
+  const wantPlaying = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -31,13 +34,41 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   const both = (fn: (video: HTMLVideoElement) => void) =>
     [leftVideo.current, rightVideo.current].forEach((video) => video && fn(video));
 
+  const setWantPlaying = (value: boolean) => {
+    wantPlaying.current = value;
+    setPlaying(value);
+  };
+
+  // Plays both only when both have data, from the same moment. If one stalls, the other waits for it,
+  // and when both can go again the one ahead steps back to the one behind.
+  const sync = () => {
+    const [l, r] = [leftVideo.current, rightVideo.current];
+    if (!wantPlaying.current || !l || !r) return;
+    const ready = (video: HTMLVideoElement) => video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA;
+    if (!ready(l) || !ready(r)) {
+      // Hold the ready one. The other stays in play so it keeps loading; its `canplay` brings us back here.
+      both((video) => (ready(video) ? video.pause() : void video.play().catch(() => {})));
+      return;
+    }
+    if (Math.abs(l.currentTime - r.currentTime) > 0.1) {
+      const t = Math.min(l.currentTime, r.currentTime);
+      // The seek fires `seeked`, which comes back here to play.
+      both((video) => {
+        video.pause();
+        video.currentTime = t;
+      });
+      return;
+    }
+    both((video) => void video.play().catch(() => {}));
+  };
+
   const choose = (side: "left" | "right", key: string) => {
     // The other side's player survives the swap, so stop and rewind it too; both start together again from 0.
     both((video) => {
       video.pause();
       video.currentTime = 0;
     });
-    setPlaying(false);
+    setWantPlaying(false);
     setTime(0);
     setDuration(0);
     router.replace(
@@ -76,12 +107,16 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
                 poster={clip.posterSrc}
                 muted
                 playsInline
+                preload="auto"
                 onLoadedMetadata={(e) => {
                   const length = e.currentTarget.duration;
                   setDuration((d) => Math.max(d, length));
                 }}
                 onTimeUpdate={side === "left" ? (e) => setTime(e.currentTarget.currentTime) : undefined}
-                onEnded={() => setPlaying(false)}
+                onWaiting={sync}
+                onCanPlay={sync}
+                onSeeked={sync}
+                onEnded={() => setWantPlaying(false)}
                 className="aspect-video w-full object-contain"
               />
             </div>
@@ -96,9 +131,13 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
         <button
           type="button"
           onClick={() => {
-            if (playing) both((v) => v.pause());
-            else both((v) => void v.play().catch(() => {}));
-            setPlaying(!playing);
+            if (playing) {
+              setWantPlaying(false);
+              both((v) => v.pause());
+            } else {
+              setWantPlaying(true);
+              sync();
+            }
           }}
           className="w-28 rounded-md bg-[var(--gallery-text-primary)] px-4 py-2 text-sm font-medium text-[var(--gallery-surface)]"
         >

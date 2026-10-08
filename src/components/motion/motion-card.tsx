@@ -78,13 +78,13 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
           ) : null}
         </div>
         <div className="mt-auto flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5">
-          <div className="flex min-w-0 flex-wrap gap-1.5" role="tablist" aria-label={`${clip.model.label} videos`}>
+          <div className="flex min-w-0 flex-wrap gap-1.5" role="group" aria-label={`${clip.model.label} videos`}>
             {clips.map((c) => (
               <button
                 key={c.key}
                 type="button"
-                role="tab"
-                aria-selected={c.key === clip.key}
+                aria-pressed={c.key === clip.key}
+                aria-label={`Video ${c.iteration}`}
                 onClick={() => setActiveKey(c.key)}
                 className={clsx(
                   "inline-flex size-8 items-center justify-center rounded-md border text-xs font-medium tabular-nums leading-none transition-colors",

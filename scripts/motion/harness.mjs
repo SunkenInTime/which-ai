@@ -82,7 +82,7 @@ export function resolveBin(bin) {
     const found = execFileSync("where.exe", [bin], { encoding: "utf8" }).split(/\r?\n/).filter(Boolean);
     return found.find((p) => /\.(exe|cmd)$/i.test(p)) ?? found[0];
   }
-  return execFileSync("/bin/sh", ["-c", `command -v ${bin}`], { encoding: "utf8" }).trim();
+  return execFileSync("/bin/sh", ["-c", 'command -v "$1"', "sh", bin], { encoding: "utf8" }).trim();
 }
 
 // Playwright looks for its browsers under HOME (LOCALAPPDATA on Windows), which the fresh home hides,

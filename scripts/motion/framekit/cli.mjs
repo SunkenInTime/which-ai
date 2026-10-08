@@ -19,6 +19,10 @@ const flag = (name) => {
 const dir = path.resolve(flag("project") ?? process.cwd());
 const gl = flag("gl") ?? spec.gl;
 const workers = flag("workers") ? Number(flag("workers")) : undefined;
+if (workers !== undefined && !(Number.isInteger(workers) && workers > 0)) {
+  console.error("error: --workers must be a positive whole number");
+  process.exit(1);
+}
 const json = args.includes("--json");
 
 const usage = `Usage: node motion.mjs <check|frame|sheet|preview|render> [options]
@@ -110,6 +114,8 @@ try {
 }
 
 function report(result, note) {
+  // A capture with page errors is not a good capture, so scripts and agents shouldn't read it as success.
+  if (result.errors?.length) process.exitCode = 1;
   if (json) {
     console.log(JSON.stringify(result, null, 2));
     return;
