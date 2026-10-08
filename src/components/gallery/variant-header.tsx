@@ -37,7 +37,6 @@ function getPopoverClass(side: GallerySwitcherSide) {
 
 function getGroupLabel(group: GalleryGroupSlug): string {
   if (group === "with-design-skill") return "With Design Skill";
-  if (group === "with-ui-sh-skill") return "With UI SH Skill";
   if (group === "without-design-skill") return "Without skill";
   return galleryManifest.find((entry) => entry.group === group)?.groupLabel ?? group;
 }

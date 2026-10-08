@@ -39,9 +39,8 @@ const COMPARE_PARAM_KEYS = [
 
 export const compareGroupOrder = [
   "with-design-skill",
-  "with-taste-skill",
-  "with-ui-sh-skill",
   "without-design-skill",
+  "with-taste-skill",
   "miscellaneous",
 ] as const satisfies readonly GalleryGroupSlug[];
 

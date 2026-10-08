@@ -1,5 +1,5 @@
 import { isGalleryModelArchivedWithinGroup } from "@/lib/gallery-archived";
-import type { GalleryEntry, GalleryGroupSlug, ModelSlug } from "@/lib/gallery-types";
+import type { GalleryEntry, GalleryEntryKey, ModelSlug } from "@/lib/gallery-types";
 
 /** ISO calendar date such as `2026-09-21`, read as UTC midnight. */
 export type GalleryIsoDate = `${number}-${number}-${number}`;
@@ -79,14 +79,8 @@ const MODEL_ADDED_AT: Partial<Record<ModelSlug, GalleryIsoDate>> = {
   "opus-4.6": "2026-03-21",
 };
 
-type GalleryEntryKey = `${GalleryGroupSlug}/${ModelSlug}`;
-
 /** Conditions added after the model first arrived, e.g. a taste-skill run landing weeks later. */
 const ENTRY_ADDED_AT: Partial<Record<GalleryEntryKey, GalleryIsoDate>> = {
-  "with-ui-sh-skill/composer-2.0": "2026-04-30",
-  "with-ui-sh-skill/gpt-5.5-low": "2026-04-30",
-  "with-ui-sh-skill/gpt-5.5-high": "2026-04-30",
-  "with-ui-sh-skill/opus-4.7": "2026-04-30",
   "miscellaneous/gpt-5.4": "2026-04-02",
 };
 

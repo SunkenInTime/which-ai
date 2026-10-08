@@ -1,4 +1,0 @@
-@layer theme, utilities;
-@import "tailwindcss/theme.css" layer(theme);
-@import "tailwindcss/utilities.css" layer(utilities) source(none);
-@source "../../../../../variants/with-ui-sh-skill/gpt-5.5-high";

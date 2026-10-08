@@ -18,9 +18,8 @@ export default function HomePage() {
   const now = getGalleryReferenceTime();
   const groups = [
     "with-design-skill",
-    "with-taste-skill",
-    "with-ui-sh-skill",
     "without-design-skill",
+    "with-taste-skill",
     "miscellaneous",
   ] as const;
   const generationPrompt =

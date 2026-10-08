@@ -5,9 +5,8 @@ import { getModelLab, LAB_OPTIONS } from "@/lib/model-labs";
 
 const HOME_GALLERY_GROUPS = [
   "with-design-skill",
-  "with-taste-skill",
-  "with-ui-sh-skill",
   "without-design-skill",
+  "with-taste-skill",
   "miscellaneous",
 ] as const;
 
@@ -206,7 +205,6 @@ const sampleRouteSmokeCases = [
   { group: "with-design-skill", model: "fable-5.1", iteration: "1" },
   { group: "with-taste-skill", model: "fable-5.1", iteration: "3" },
   { group: "without-design-skill", model: "fable-5.1", iteration: "5" },
-  { group: "with-ui-sh-skill", model: "composer-2.0", iteration: "2" },
   { group: "miscellaneous", model: "gpt-5.4", iteration: "5" },
   { group: "with-design-skill", model: "sol", iteration: "1" },
   { group: "with-taste-skill", model: "sol", iteration: "3" },
@@ -355,7 +353,7 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await search.fill("5.5");
 
   const lowCards = page.getByTestId("gallery-card").filter({ hasText: "GPT 5.5 low" });
-  await expect(lowCards).toHaveCount(3);
+  await expect(lowCards).toHaveCount(2);
   await expect(lowCards.first()).toContainText("Archived");
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
@@ -386,8 +384,10 @@ test("home search understands hidden aliases", async ({ page }) => {
 
   await search.fill("uncodexify");
   await expect(cards).not.toHaveCount(0);
-  const groupLabels = await cards.locator("p > span:first-child").allInnerTexts();
-  expect(new Set(groupLabels)).toEqual(new Set(["With Uncodexify skill"]));
+  const sectionHeadings = await page
+    .locator('main section:has([data-testid="gallery-card"]) h2')
+    .allInnerTexts();
+  expect(sectionHeadings).toEqual(["With Uncodexify skill"]);
 });
 
 test("home search opens from a ?q= link and the slash key focuses it", async ({ page }) => {
