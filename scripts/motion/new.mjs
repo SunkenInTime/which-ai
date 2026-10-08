@@ -1,4 +1,5 @@
-// Sets up a run folder: an empty project with the `node motion.mjs` tools, plus run.json describing the run.
+// Sets up a run: a sandbox with an empty project and the `node motion.mjs` tools (see sandbox.mjs), plus a run
+// folder holding run.json and the prompt.
 // The headless runner uses this for every session. To run a model by hand in an agent thread instead:
 //
 //   node scripts/motion/new.mjs <model-id> <iteration> [--group baseline]
@@ -8,11 +9,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
-import { pathToFileURL } from "node:url";
-import { assertCleanAncestors, config, root, workRoot } from "./harness.mjs";
+import { config, root, workRoot } from "./harness.mjs";
 import { writeRunMeta } from "./finish.mjs";
-
-const cli = path.join(root, "scripts/motion/framekit/cli.mjs");
+import { createSandbox } from "./sandbox.mjs";
 
 export function loadPrompt(groupId) {
   const promptFile = path.join(root, "docs/benchmarks/motion", `${groupId}.prompt.txt`);
@@ -23,12 +22,10 @@ export function loadPrompt(groupId) {
 
 export function prepareRun({ groupId, model, iteration, source, harnessVersion = null }) {
   const { prompt, promptSha256 } = loadPrompt(groupId);
+  // The record (run.json, prompt, transcript) lives in runDir; the agent only ever sees its sandbox.
   const runDir = path.join(workRoot, groupId, model.id, `${iteration}-${Date.now()}`);
-  const workdir = path.join(runDir, "project");
-  assertCleanAncestors(workdir);
-  fs.mkdirSync(workdir, { recursive: true });
-  // The only thing in the project at the start: a pointer to the shared framekit CLI.
-  fs.writeFileSync(path.join(workdir, "motion.mjs"), `import ${JSON.stringify(pathToFileURL(cli).href)};\n`);
+  fs.mkdirSync(runDir, { recursive: true });
+  const { sandbox, workdir, home } = createSandbox();
   fs.writeFileSync(path.join(runDir, "PROMPT.txt"), prompt + "\n");
   writeRunMeta(runDir, {
     source,
@@ -39,9 +36,10 @@ export function prepareRun({ groupId, model, iteration, source, harnessVersion =
     effort: model.effort ?? config.effort,
     harnessVersion,
     promptSha256,
+    sandbox,
     startedAt: new Date().toISOString(),
   });
-  return { runDir, workdir, prompt, promptSha256 };
+  return { runDir, workdir, home, prompt, promptSha256 };
 }
 
 if (import.meta.filename === path.resolve(process.argv[1] ?? "")) {

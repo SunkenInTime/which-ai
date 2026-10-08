@@ -78,8 +78,7 @@ async function runOne(model, iteration) {
   }
   const bin = resolveBin(harness.bin);
   const version = harnessVersion(bin);
-  const { runDir, workdir, prompt } = prepareRun({ groupId, model, iteration, source: "runner", harnessVersion: version });
-  const home = path.join(runDir, "home");
+  const { runDir, workdir, home, prompt } = prepareRun({ groupId, model, iteration, source: "runner", harnessVersion: version });
   fs.cpSync(path.join(templatesDir, harness.id), home, { recursive: true });
   console.log(`run  ${key} with ${harness.label} ${version} in ${workdir}`);
 

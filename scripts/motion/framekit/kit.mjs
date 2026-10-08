@@ -11,10 +11,14 @@ import path from "node:path";
 import http from "node:http";
 import crypto from "node:crypto";
 import { spawn, execFileSync } from "node:child_process";
-import { chromium } from "@playwright/test";
+import { chromium } from "playwright-core";
 
-const root = path.resolve(import.meta.dirname, "..", "..", "..");
-export const spec = JSON.parse(fs.readFileSync(path.join(root, "src/lib/motion-config.json"), "utf8")).render;
+// Each agent session gets its own copy of framekit with the render spec beside it (see sandbox.mjs), so nothing
+// it runs points back into the repo. The copy in the repo reads the spec from the config.
+const sandboxSpec = path.join(import.meta.dirname, "spec.json");
+export const spec = fs.existsSync(sandboxSpec)
+  ? JSON.parse(fs.readFileSync(sandboxSpec, "utf8"))
+  : JSON.parse(fs.readFileSync(path.resolve(import.meta.dirname, "../../../src/lib/motion-config.json"), "utf8")).render;
 export const ffmpegBin = process.env.MOTION_FFMPEG || "ffmpeg";
 export const audioNames = ["audio.wav", "audio.mp3", "audio.m4a", "audio.ogg", "audio.flac"];
 

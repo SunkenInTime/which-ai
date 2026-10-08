@@ -10,6 +10,7 @@ import path from "node:path";
 import { execFileSync } from "node:child_process";
 import { root, runsFile } from "./harness.mjs";
 import { checkProject, ffmpegBin, renderVideo } from "./framekit/kit.mjs";
+import { collectSandbox } from "./sandbox.mjs";
 
 // Every run folder holds run.json (what was asked and how the session went) next to project/.
 export function readRunMeta(runDir) {
@@ -22,6 +23,8 @@ export function writeRunMeta(runDir, meta) {
 
 export async function finishRun(runDir, session = {}) {
   const meta = readRunMeta(runDir);
+  // The session is over, so its sandbox joins the run record.
+  if (meta.sandbox && fs.existsSync(meta.sandbox)) await collectSandbox(meta.sandbox, runDir);
   const workdir = path.join(runDir, "project");
   const key = `${meta.group}/${meta.model}/${meta.iteration}`;
   const { exitCode = null, signal = null, timedOut = false } = session;
