@@ -1,5 +1,17 @@
 make a dynamic 15-second motion graphics video that shows what an incredible motion designer you are, like it's your showreel for a résumé. boil the ocean. literally - go all out.
 that first part is about how much effort to put in, not what the video is about. pick your own subject and visual concept, and don't put the brief's wording on screen: no "boil the ocean", "go all out", "showreel", "motion designer", or anything that just restates these instructions.
-do not use any skills for browser video creation/rendering frameworks.
 no fake screen chrome: no viewfinder frames, corner brackets, HUD labels, timecodes, frame counters, progress bars, or camera/recording overlays. the motion itself should fill the frame.
-save the final video as output.mp4 in the current directory.
+
+how the video gets made: you build it as a web page in this folder, and after you finish, a renderer turns the page into the video. the video is 1920x1080, 60fps, exactly 15 seconds.
+- index.html is the entry point. it is served over http from this folder with the network switched off, so everything it loads has to be in this folder. install or download any libraries, fonts, or assets you want into this folder and load them by relative path. bare module imports need an import map.
+- set window.__ready = true once everything has loaded.
+- define window.renderAt(t), which draws the complete frame for t seconds, from 0 up to just under 15. it may be async. frames are rendered out of order and in parallel, so the same t must always give the same pixels: no real clock, nothing carried over from the previous frame, no unseeded randomness. during rendering, Date, performance.now, requestAnimationFrame, and CSS animations follow t, and Math.random is reseeded on every frame.
+- for sound, put audio.wav or audio.mp3 in this folder. it is mixed in and cut or padded to 15 seconds.
+- don't use video frameworks or their skills (remotion, hyperframes, motion canvas, revideo, fframes, or similar). any other library is fine.
+
+tools, run from this folder:
+- node motion.mjs check: checks the page follows these rules and estimates the render time. it has to pass.
+- node motion.mjs frame 0 7.5 14.9: saves full-size frames at those times to frames/ so you can look at them.
+- node motion.mjs sheet: saves sheet.png, 16 frames spread across the whole timeline.
+- node motion.mjs preview: saves preview.mp4 at half size and 30fps.
+you are done when check passes and you are happy with how it looks. you don't need to render the final video.

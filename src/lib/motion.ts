@@ -7,18 +7,23 @@ export type MotionGroup = (typeof motionConfig.groups)[number];
 export type MotionRunStatus = "ok" | "no-video" | "failed";
 
 export interface MotionRun {
-  harnessVersion: string;
+  /** "runner" for headless sessions with isolated homes, "manual" for runs made by hand in an agent thread. */
+  source?: "runner" | "manual";
+  harnessVersion: string | null;
   modelArg: string;
   startedAt: string;
-  wallSeconds: number;
+  /** Agent session time only; the render is timed separately. Null when a manual run didn't record it. */
+  wallSeconds: number | null;
   timedOut: boolean;
   status: MotionRunStatus;
+  failure?: string;
   video: {
     durationSec: number;
     width: number | null;
     height: number | null;
     fps: number | null;
   } | null;
+  render?: { renderSeconds: number; workers: number; gl: string; renderer: string | null } | null;
   usage: { costUsd?: number | null; turns?: number | null } | null;
 }
 

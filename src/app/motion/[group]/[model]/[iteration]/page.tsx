@@ -54,7 +54,7 @@ export default async function MotionRunPage({
           <div>
             <p className="text-xs text-[var(--gallery-text-tertiary)]">
               {model.lab} · {clip.harness.label}
-              {run ? ` ${run.harnessVersion}` : ""} · {group.label}
+              {run?.harnessVersion ? ` ${run.harnessVersion}` : ""} · {group.label}
             </p>
             <h1 className="mt-1 text-3xl font-medium tracking-tight text-[var(--gallery-text-primary)]">
               {model.label}
@@ -100,7 +100,7 @@ export default async function MotionRunPage({
 
         {run ? (
           <dl className="mt-6 grid grid-cols-2 gap-x-6 gap-y-4 text-sm sm:grid-cols-4">
-            <MotionStat label="Agent time" value={formatMotionSeconds(run.wallSeconds) + (run.timedOut ? " (timed out)" : "")} />
+            <MotionStat label="Agent time" value={run.wallSeconds === null ? "—" : formatMotionSeconds(run.wallSeconds) + (run.timedOut ? " (timed out)" : "")} />
             <MotionStat label="Video length" value={run.video ? formatMotionSeconds(run.video.durationSec) : "—"} />
             <MotionStat
               label="Resolution"
