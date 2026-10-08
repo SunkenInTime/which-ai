@@ -2,6 +2,7 @@
   "iterations": 3,
   "timeoutMinutes": 90,
   "effort": "xhigh",
+  "render": { "width": 1920, "height": 1080, "fps": 60, "durationSec": 15, "gl": "gpu" },
   "groups": [
     {
       "id": "baseline",
@@ -18,6 +19,7 @@
     { "id": "opus-5.5", "label": "Opus 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-opus-5-5" },
     { "id": "sonnet-5.5", "label": "Sonnet 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-sonnet-5-5" },
     { "id": "fable-5.1", "label": "Fable 5.1", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-fable-5-1" },
+    { "id": "haiku-5.5", "label": "Haiku 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-haiku-5-5" },
     { "id": "gpt-6-astra", "label": "GPT-6 Astra", "lab": "OpenAI", "harness": "codex", "modelArg": "gpt-6-astra" },
     { "id": "gpt-6.1-sol", "label": "GPT-6.1 Sol", "lab": "OpenAI", "harness": "codex", "modelArg": "gpt-6.1-sol" },
     { "id": "grok-4.7", "label": "Grok 4.7", "lab": "xAI", "harness": "grok-cli", "modelArg": "grok-4.7" }
