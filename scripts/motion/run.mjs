@@ -54,18 +54,22 @@ let stopping = false;
 for (const signal of ["SIGINT", "SIGTERM", "SIGHUP"]) {
   process.on(signal, () => {
     stopping = true;
-    if (active) {
-      active.killGroup("SIGTERM");
-      setTimeout(() => active?.killGroup("SIGKILL"), 2_000).unref();
-      active.release();
+    // Bind to the run that was live when the signal came, not whatever `active` points at later.
+    const current = active;
+    if (current) {
+      current.killGroup("SIGTERM");
+      setTimeout(() => current.killGroup("SIGKILL"), 2_000).unref();
+      current.release();
     }
     console.error(`runner stopped by ${signal}`);
     setTimeout(() => process.exit(130), 2_500);
   });
 }
 
-for (const model of models) {
+// Once the runner is told to stop, start nothing new.
+batch: for (const model of models) {
   for (const iteration of iterations) {
+    if (stopping) break batch;
     await runOne(model, iteration);
   }
 }
@@ -86,6 +90,7 @@ async function runOne(model, iteration) {
       console.log(`skip ${key} (already has a video, pass --force to redo)`);
       return;
     }
+    if (stopping) return;
     await execute(model, harness, iteration, key, release);
   } finally {
     release();
@@ -104,6 +109,7 @@ async function execute(model, harness, iteration, key, release) {
 
   const bin = resolveBin(harness.bin);
   const version = harnessVersion(bin);
+  if (stopping) return;
   const startedAt = new Date();
   console.log(`run  ${key} with ${harness.label} ${version} in ${workdir}`);
 

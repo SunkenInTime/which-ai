@@ -33,6 +33,8 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   const leftVideo = useRef<HTMLVideoElement>(null);
   const rightVideo = useRef<HTMLVideoElement>(null);
   const clock = useRef(0);
+  // Bumped by pause, clip changes, and unmount, so a "Play both" still waiting on loads can't start later.
+  const playRequest = useRef(0);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -54,6 +56,13 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
       for (const v of videos()) v.currentTime = Number.isFinite(v.duration) ? Math.min(t, v.duration) : t;
     },
     [videos],
+  );
+
+  useEffect(
+    () => () => {
+      playRequest.current += 1;
+    },
+    [],
   );
 
   // While playing, one loop owns the clock: it holds both players while either is buffering,
@@ -92,16 +101,23 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   }
 
   const pause = () => {
+    playRequest.current += 1;
     for (const v of videos()) v.pause();
     setPlaying(false);
   };
 
   const play = async () => {
+    const request = ++playRequest.current;
     seekAll(clock.current >= duration - 0.05 ? 0 : clock.current);
     const startable = videos().filter((v) => !v.ended);
     // Neither side gets a head start: wait until both can play from here.
     await Promise.all(startable.map(whenReady));
+    if (request !== playRequest.current) return;
     await Promise.all(startable.map((v) => v.play().catch(() => {})));
+    if (request !== playRequest.current) {
+      for (const v of startable) v.pause();
+      return;
+    }
     setPlaying(true);
   };
 
