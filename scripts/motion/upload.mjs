@@ -39,11 +39,13 @@ const result = spawnSync(
     "copy",
     source,
     `r2:${env.R2_BUCKET}`,
-    // The runner writes `<n>.mp4.<pid>.tmp.mp4` while publishing; those never belong in the bucket.
-    "--exclude", "*.tmp.mp4",
-    "--exclude", "*.tmp.jpg",
-    "--include", "*.mp4",
-    "--include", "*.jpg",
+    // Ordered filter rules: rclone evaluates every --include before any --exclude, so the runner's
+    // `<n>.mp4.<pid>.tmp.mp4` files written during publication have to be rejected with --filter first.
+    "--filter", "- *.tmp.mp4",
+    "--filter", "- *.tmp.jpg",
+    "--filter", "+ *.mp4",
+    "--filter", "+ *.jpg",
+    "--filter", "- **",
     // URLs carry a ?v= version per run, so objects can be cached hard.
     "--header-upload", "Cache-Control: public, max-age=31536000, immutable",
     "--s3-no-check-bucket",
