@@ -39,6 +39,9 @@ const result = spawnSync(
     "copy",
     source,
     `r2:${env.R2_BUCKET}`,
+    // The runner writes `<n>.mp4.<pid>.tmp.mp4` while publishing; those never belong in the bucket.
+    "--exclude", "*.tmp.mp4",
+    "--exclude", "*.tmp.jpg",
     "--include", "*.mp4",
     "--include", "*.jpg",
     // URLs carry a ?v= version per run, so objects can be cached hard.

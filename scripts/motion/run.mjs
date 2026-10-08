@@ -163,6 +163,14 @@ async function execute(model, harness, iteration, key) {
     video,
     usage: readUsage(harness.id, transcriptPath),
   };
+  // A forced redo that produced no usable video must not hide the video that is already published.
+  const previous = readRuns()[key];
+  if (run.status !== "ok" && previous?.status === "ok") {
+    const attemptFile = path.join(runDir, "run.json");
+    fs.writeFileSync(attemptFile, JSON.stringify({ key, run }, null, 2) + "\n");
+    console.log(`done ${key}: ${run.status} in ${run.wallSeconds}s; kept the previous video (attempt saved to ${attemptFile})`);
+    return;
+  }
   try {
     writeRun(key, run);
   } catch (err) {
@@ -179,10 +187,11 @@ function readRuns() {
 }
 
 // One runner at a time: runs are heavy enough that parallel agents make a laptop unusable, and a single
-// writer keeps motion-runs.json, the published videos, and credential sync free of races. A lock left by a
-// killed runner is never taken over automatically; the message says how to clear it.
+// writer keeps motion-runs.json, the published videos, and credential sync free of races. The lock sits next
+// to motion-runs.json in the repo, so runners with different MOTION_WORK_ROOT values still share it. A lock
+// left by a killed runner is never taken over automatically; the message says how to clear it.
 function acquireRunnerLock() {
-  const lock = path.join(workRoot, ".runner.lock");
+  const lock = `${runsFile}.lock`;
   try {
     fs.writeFileSync(lock, String(process.pid), { flag: "wx" });
   } catch (err) {
@@ -311,8 +320,12 @@ function syncAuthBack(harnessId, home, atStart) {
     if (![runCopy, real].every((p) => fs.existsSync(p))) continue;
     const current = fs.readFileSync(runCopy, "utf8");
     if (current === start || fs.readFileSync(real, "utf8") !== start) continue;
-    fs.writeFileSync(real, current, { mode: 0o600 });
-    fs.writeFileSync(template, current, { mode: 0o600 });
+    // Write next to the target and rename, so a crash mid-write never leaves a truncated credential file.
+    for (const dest of [real, template]) {
+      const tmp = `${dest}.${process.pid}.tmp`;
+      fs.writeFileSync(tmp, current, { mode: 0o600 });
+      fs.renameSync(tmp, dest);
+    }
   }
 }
 
