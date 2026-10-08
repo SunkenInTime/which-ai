@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 export type GalleryGroupSlug =
   | "with-design-skill"
   | "with-taste-skill"
-  | "with-ui-sh-skill"
   | "without-design-skill"
   | "miscellaneous";
 export type ModelSlug =
@@ -51,6 +50,8 @@ export type ModelSlug =
   | "luna"
   | "terra"
   | "swe-2";
+/** `"{group}/{model}"`, for per-entry data such as added dates and run costs. */
+export type GalleryEntryKey = `${GalleryGroupSlug}/${ModelSlug}`;
 export type IterationId = "1" | "2" | "3" | "4" | "5";
 export type SourceAppType = "next" | "vite";
 

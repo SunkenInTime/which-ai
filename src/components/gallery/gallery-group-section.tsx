@@ -80,8 +80,6 @@ export function GalleryGroupSection({
           Taste Skill
         </Link>
       </>
-    ) : group === "with-ui-sh-skill" ? (
-      "With UI SH Skill"
     ) : group === "miscellaneous" ? (
       <>
         With{" "}

@@ -128,7 +128,7 @@ test.describe("home page new-arrival treatment", () => {
     const newCount = await newCards.count();
     for (let i = 0; i < newCount; i += 1) {
       const card = newCards.nth(i);
-      await expect(card.getByTestId("gallery-card-new-arrival")).toContainText(/Added \w{3} \d{1,2}/);
+      await expect(card.getByTestId("gallery-card-new-arrival")).toContainText(/added \w{3} \d{1,2}/i);
       await expect(card.getByText("Archived", { exact: true })).toHaveCount(0);
     }
   });

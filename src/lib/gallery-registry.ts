@@ -80,10 +80,6 @@ import withTasteMuseSpark13 from "@/variants/with-taste-skill/muse-spark-1.3";
 import withTasteGemini37Flash from "@/variants/with-taste-skill/gemini-3.7-flash";
 import withTasteGemini38Flash from "@/variants/with-taste-skill/gemini-3.8-flash";
 import withTasteSwe2 from "@/variants/with-taste-skill/swe-2";
-import withUiShComposer20 from "@/variants/with-ui-sh-skill/composer-2.0";
-import withUiShGpt55Low from "@/variants/with-ui-sh-skill/gpt-5.5-low";
-import withUiShGpt55High from "@/variants/with-ui-sh-skill/gpt-5.5-high";
-import withUiShOpus47 from "@/variants/with-ui-sh-skill/opus-4.7";
 import miscGpt54 from "@/variants/miscellaneous/gpt-5.4";
 import withoutComposer15 from "@/variants/without-design-skill/composer-1.5";
 import withoutComposer20 from "@/variants/without-design-skill/composer-2.0";
@@ -208,10 +204,6 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-taste-skill:gemini-3.7-flash": withTasteGemini37Flash,
   "with-taste-skill:gemini-3.8-flash": withTasteGemini38Flash,
   "with-taste-skill:swe-2": withTasteSwe2,
-  "with-ui-sh-skill:composer-2.0": withUiShComposer20,
-  "with-ui-sh-skill:gpt-5.5-low": withUiShGpt55Low,
-  "with-ui-sh-skill:gpt-5.5-high": withUiShGpt55High,
-  "with-ui-sh-skill:opus-4.7": withUiShOpus47,
   "miscellaneous:gpt-5.4": miscGpt54,
   "without-design-skill:composer-1.5": withoutComposer15,
   "without-design-skill:composer-2.0": withoutComposer20,
