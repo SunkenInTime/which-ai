@@ -1,4 +1,4 @@
-make three different 15-second launch videos for Hollis, a note-taking app that works as a second brain. make each one as good as you possibly can.
+make three different 15-second launch videos for a note-taking app that works as a second brain. make each one as good as you possibly can.
 
 how the videos get made: each video is a web page in its own folder, 1, 2, and 3, and after you finish, a renderer turns each page into a video. every video is 1920x1080, 60fps, exactly 15 seconds.
 - index.html in each folder is that video's entry point. each folder is served over http on its own with the network switched off, so everything a page loads has to be in its own folder. install or download any libraries, fonts, or assets you want into that folder and load them by relative path. bare module imports need an import map.
