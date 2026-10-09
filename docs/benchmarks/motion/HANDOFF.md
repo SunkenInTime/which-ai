@@ -4,9 +4,21 @@ Status as of 2026-10-08. Read `README.md` in this folder first; it explains the 
 
 ## Where things stand
 
-- Opus 5.5 and Haiku 5.5 have three isolated runs each under the current prompt and harness, on Windows (Ryzen 7 5800X, RTX 4070, GPU WebGL through ANGLE/D3D11). Results are in `src/lib/motion-runs.json`; videos and posters are in the `whichai-motion` R2 bucket, served from `https://media.whichai.dev`.
+- Opus 5.5 and Haiku 5.5 have each had one isolated session under the current prompt, making three videos each, on Windows (Ryzen 7 5800X, RTX 4070, GPU WebGL through ANGLE/D3D11). Results are in `src/lib/motion-runs.json`; videos and posters are in the `whichai-motion` R2 bucket, served from `https://media.whichai.dev`.
 - Every Windows code path has now run for real: the `.cmd` shim launcher, process-tree tracking and cleanup, the work root (set with `MOTIONBENCH_WORK=E:\w\motionbench\work` on this machine), and GPU rendering (about 60 s per 1080p60 video with 4 workers).
 - Claude Code logged in by borrowing the access token of the machine's normal Claude Code login (see README, setup step 5). No `claude setup-token` file exists yet.
+
+## The prompt
+
+The first prompt asked for "a motion designer's showreel" and let the model pick the subject. Each try ran in its own session. Every Opus try made the same point-line-plane-volume piece, and Haiku's tries were near-identical abstract reels. The word "showreel" set the subject, and a session that doesn't know about the other tries gives the model's single favorite answer every time.
+
+The prompt is now a concrete brief, three launch videos for Hollis, a note-taking app, in one session, like the UI gallery's five iterations in one prompt. What I tried on the way, all with Haiku:
+
+- A launch video for an unnamed second-brain app, two separate sessions: both invented "Cairn" with a stacked-stone logo and told the same story.
+- The same brief naming the app Hollis, two separate sessions: same story, same palette, same logo idea.
+- Three videos in one session (the current prompt): three different concepts under one brand.
+
+Opus's session took 54 minutes and $13.10; Haiku's took 18 minutes and $4.97.
 
 ## What the first runs changed
 
@@ -22,5 +34,6 @@ Status as of 2026-10-08. Read `README.md` in this folder first; it explains the 
 
 ## Next steps
 
-- Add more models with `npm run motion:run -- <model> all`, one runner at a time, so no session can see another's sandbox while both are live.
+- Add more models with `npm run motion:run -- <model>`, one runner at a time.
+- Launch long sessions so they outlive the terminal that started them. On this machine a T3 restart killed an Opus session 34 minutes in (archived as `1791500485567-killed-by-t3-restart`); starting the runner through `Invoke-CimMethod Win32_Process Create` avoided that.
 - `npm run motion:upload`, then commit `src/lib/motion-runs.json`.
