@@ -23,6 +23,9 @@ export function writeRunMeta(runDir, meta) {
 
 export async function finishRun(runDir, session = {}) {
   const meta = readRunMeta(runDir);
+  if (!Number.isInteger(meta.iterations)) {
+    throw new Error(`${runDir} is from before one session made all of a model's videos (it has one page, not one per folder). Rerun the model instead.`);
+  }
   // The session is over, so its sandbox joins the run record.
   if (meta.sandbox && fs.existsSync(meta.sandbox)) await collectSandbox(meta.sandbox, runDir);
   const { exitCode = null, signal = null, timedOut = false } = session;
@@ -36,6 +39,23 @@ export async function finishRun(runDir, session = {}) {
   const results = [];
   for (let n = 1; n <= meta.iterations; n++) results.push(await finishVideo(runDir, meta, n, session, sessionFailure));
   writeRunMeta(runDir, { ...meta, results: Object.fromEntries(results.map(({ key, run }) => [key, run])) });
+
+  // A model's published videos always come from one session, so a session replaces all of them or none. It
+  // replaces them when it has at least as many good videos as the published set; videos from an older prompt
+  // don't count, since the site shows the current prompt.
+  const published = readRuns();
+  const good = (runs) => runs.filter((run) => run?.status === "ok" && run.promptSha256 === meta.promptSha256).length;
+  if (good(results.map((r) => r.run)) < good(results.map((r) => published[r.key]))) {
+    console.log(`keep ${meta.group}/${meta.model}: the published session has more good videos; this one is recorded in ${runDir}`);
+    return results;
+  }
+  const dir = path.join(root, "public/motion", meta.group, meta.model);
+  for (const { n, run, files } of results) {
+    if (run.status === "ok") publish(files, dir);
+    // Drop an earlier session's files for a slot this session didn't fill, so public/motion matches the registry.
+    else for (const name of [`${n}.mp4`, `${n}.preview.mp4`, `${n}.jpg`]) fs.rmSync(path.join(dir, name), { force: true });
+  }
+  writeRuns(Object.fromEntries(results.map(({ key, run }) => [key, run])));
   return results;
 }
 
@@ -49,6 +69,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
   let failure = sessionFailure;
   let check = null;
   let rendered = null;
+  let files = null;
   if (!failure) {
     try {
       check = await checkProject(workdir);
@@ -59,7 +80,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
   }
 
   if (!failure) {
-    // Render into the run folder and publish only on success, so a failed rerun leaves the old video alone.
+    // Render into the run folder; finishRun decides whether the session's videos get published.
     fs.mkdirSync(outDir, { recursive: true });
     const out = path.join(outDir, "final.mp4");
     const poster = path.join(outDir, "final.jpg");
@@ -79,14 +100,11 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
         execFileSync(ffmpegBin, ["-y", "-v", "error", "-ss", "1", "-i", out, "-frames:v", "1", "-q:v", "3", poster], { windowsHide: true });
         encodeForWeb(out, web, preview);
         rendered.web = { sizeBytes: fs.statSync(web).size, previewSizeBytes: fs.statSync(preview).size };
-        publish(
-          [
-            [web, `${n}.mp4`],
-            [preview, `${n}.preview.mp4`],
-            [poster, `${n}.jpg`],
-          ],
-          path.join(root, "public/motion", meta.group, meta.model),
-        );
+        files = [
+          [web, `${n}.mp4`],
+          [preview, `${n}.preview.mp4`],
+          [poster, `${n}.jpg`],
+        ];
       }
     } catch (err) {
       failure = `The render failed: ${err.message}`;
@@ -134,11 +152,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
     usage: session.usage ?? null,
   };
 
-  // The run folder always keeps the full record. The registry keeps a published video over a failed retry.
-  const published = readRuns()[key];
-  if (run.status === "ok" || published?.status !== "ok") writeRun(key, run);
-  else console.log(`keep ${key}: the earlier published video stays; this attempt is recorded in ${runDir}`);
-  return { key, run };
+  return { key, n, run, files };
 }
 
 // The master is encoded for archiving (CRF 18, up to 30 Mbps). The site gets a full-size, full-frame-rate
@@ -178,9 +192,8 @@ export function readRuns() {
 }
 
 // Re-read before writing so runner processes working on different models don't drop each other's entries.
-function writeRun(key, run) {
-  const runs = readRuns();
-  runs[key] = run;
+function writeRuns(entries) {
+  const runs = { ...readRuns(), ...entries };
   const sorted = Object.fromEntries(Object.entries(runs).sort(([a], [b]) => a.localeCompare(b, "en", { numeric: true })));
   fs.writeFileSync(runsFile, JSON.stringify(sorted, null, 2) + "\n");
 }

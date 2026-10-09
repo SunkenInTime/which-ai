@@ -57,12 +57,13 @@ async function runSession(model) {
   const key = `${groupId}/${model.id}`;
   const runs = readRuns();
   const existing = Array.from({ length: config.iterations }, (_, i) => runs[`${key}/${i + 1}`]);
-  // Only isolated runs under the current prompt count as done; manual or older results get redone.
-  if (!force && existing.every((run) => run?.promptSha256 === promptSha256 && run.source === "runner")) {
+  // A model is done when an isolated session under the current prompt made all its videos. Anything less gets a
+  // new session, which replaces the published videos only if it does at least as well (see finish.mjs).
+  if (!force && existing.every((run) => run?.promptSha256 === promptSha256 && run.source === "runner" && run.status === "ok")) {
     console.log(`skip ${key} (already ran, pass --force to redo)`);
     return;
   }
-  if (existing.some(Boolean)) console.log(`redo ${key} (its videos came from an older prompt, a manual thread, or --force)`);
+  if (existing.some(Boolean)) console.log(`redo ${key} (its videos came from an older prompt, a manual thread, or a session that didn't make all of them, or --force)`);
 
   if (harness.id === "claude-code") {
     try {
