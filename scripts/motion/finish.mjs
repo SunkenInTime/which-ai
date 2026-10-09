@@ -50,10 +50,12 @@ export async function finishRun(runDir, session = {}) {
     return results;
   }
   const dir = path.join(root, "public/motion", meta.group, meta.model);
-  for (const { n, run, files } of results) {
-    if (run.status === "ok") publish(files, dir);
-    // Drop an earlier session's files for a slot this session didn't fill, so public/motion matches the registry.
-    else for (const name of [`${n}.mp4`, `${n}.preview.mp4`, `${n}.jpg`]) fs.rmSync(path.join(dir, name), { force: true });
+  // One publish for the whole set: every file is copied in before any replaces the old one, so a failed copy
+  // (a full disk) leaves the earlier session's videos untouched.
+  publish(results.flatMap(({ run, files }) => (run.status === "ok" ? files : [])), dir);
+  // Drop an earlier session's files for a slot this session didn't fill, so public/motion matches the registry.
+  for (const { n, run } of results) {
+    if (run.status !== "ok") for (const name of [`${n}.mp4`, `${n}.preview.mp4`, `${n}.jpg`]) fs.rmSync(path.join(dir, name), { force: true });
   }
   writeRuns(Object.fromEntries(results.map(({ key, run }) => [key, run])));
   return results;
