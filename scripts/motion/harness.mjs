@@ -138,6 +138,18 @@ export function isolatedEnv(home, harnessId) {
 // Every model runs at the same reasoning effort, set once in the config. Claude Code and Codex read the
 // prompt from stdin, which keeps the multi-line prompt out of the command line (cmd.exe can't carry newlines).
 // Claude Code ships built-in skills (one is a design skill); --disable-slash-commands turns them all off.
+// Codex ships bundled skills too, and on Windows it finds the user's ~/.agents/skills through the OS profile
+// folder, whatever HOME and USERPROFILE say. codexIsolation turns both off, along with skill search, ChatGPT
+// apps, and plugins. Its stock tools (shell, patches, web search, image generation, subagents) stay on.
+const codexIsolation = [
+  "skills.bundled.enabled=false",
+  "skills.include_instructions=false",
+  "features.skill_search=false",
+  "features.apps=false",
+  "features.plugins=false",
+  "features.remote_plugin=false",
+].flatMap((setting) => ["-c", setting]);
+
 export function harnessCommand(harness, model, prompt, workdir) {
   const effort = model.effort ?? config.effort;
   switch (harness.id) {
@@ -148,7 +160,7 @@ export function harnessCommand(harness, model, prompt, workdir) {
       };
     case "codex":
       return {
-        args: ["exec", "--model", model.modelArg, "-c", `model_reasoning_effort=${effort}`, "--dangerously-bypass-approvals-and-sandbox", "--skip-git-repo-check", "--json", "-C", workdir, "-"],
+        args: ["exec", "--model", model.modelArg, "-c", `model_reasoning_effort=${effort}`, ...codexIsolation, "--dangerously-bypass-approvals-and-sandbox", "--skip-git-repo-check", "--json", "-C", workdir, "-"],
         stdin: prompt,
       };
     case "grok-cli":
