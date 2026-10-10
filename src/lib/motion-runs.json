@@ -1,4 +1,121 @@
 {
+  "baseline/fable-5.1/1": {
+    "source": "runner",
+    "harnessVersion": "2.1.289",
+    "modelArg": "claude-fable-5-1",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-10T03:09:00.231Z",
+    "wallSeconds": 2495,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 12845603,
+      "previewSizeBytes": 566602,
+      "masterSizeBytes": 27314334
+    },
+    "render": {
+      "renderSeconds": 54.9,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "costUsd": 18.287162000000006,
+      "turns": 80
+    }
+  },
+  "baseline/fable-5.1/2": {
+    "source": "runner",
+    "harnessVersion": "2.1.289",
+    "modelArg": "claude-fable-5-1",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-10T03:09:00.231Z",
+    "wallSeconds": 2495,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 5205735,
+      "previewSizeBytes": 375443,
+      "masterSizeBytes": 7835570
+    },
+    "render": {
+      "renderSeconds": 30.6,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "costUsd": 18.287162000000006,
+      "turns": 80
+    }
+  },
+  "baseline/fable-5.1/3": {
+    "source": "runner",
+    "harnessVersion": "2.1.289",
+    "modelArg": "claude-fable-5-1",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-10T03:09:00.231Z",
+    "wallSeconds": 2495,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 2437500,
+      "previewSizeBytes": 263497,
+      "masterSizeBytes": 2891825
+    },
+    "render": {
+      "renderSeconds": 15.2,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "costUsd": 18.287162000000006,
+      "turns": 80
+    }
+  },
   "baseline/haiku-5.5/1": {
     "source": "runner",
     "harnessVersion": "2.1.289",
