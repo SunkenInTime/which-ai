@@ -4,9 +4,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-fable-5-1",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-10T03:09:00.231Z",
-    "wallSeconds": 2495,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T04:57:58.077Z",
+    "wallSeconds": 2299,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -16,12 +16,12 @@
       "height": 1080,
       "fps": 60,
       "audio": true,
-      "sizeBytes": 12845603,
-      "previewSizeBytes": 566602,
-      "masterSizeBytes": 27314334
+      "sizeBytes": 17720278,
+      "previewSizeBytes": 635759,
+      "masterSizeBytes": 25095903
     },
     "render": {
-      "renderSeconds": 54.9,
+      "renderSeconds": 60.4,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -34,8 +34,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 18.287162000000006,
-      "turns": 80
+      "costUsd": 17.874313499999996,
+      "turns": 92
     }
   },
   "baseline/fable-5.1/2": {
@@ -43,9 +43,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-fable-5-1",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-10T03:09:00.231Z",
-    "wallSeconds": 2495,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T04:57:58.077Z",
+    "wallSeconds": 2299,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -55,12 +55,12 @@
       "height": 1080,
       "fps": 60,
       "audio": true,
-      "sizeBytes": 5205735,
-      "previewSizeBytes": 375443,
-      "masterSizeBytes": 7835570
+      "sizeBytes": 2196224,
+      "previewSizeBytes": 244186,
+      "masterSizeBytes": 2638930
     },
     "render": {
-      "renderSeconds": 30.6,
+      "renderSeconds": 21.8,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -73,8 +73,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 18.287162000000006,
-      "turns": 80
+      "costUsd": 17.874313499999996,
+      "turns": 92
     }
   },
   "baseline/fable-5.1/3": {
@@ -82,9 +82,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-fable-5-1",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-10T03:09:00.231Z",
-    "wallSeconds": 2495,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T04:57:58.077Z",
+    "wallSeconds": 2299,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -94,12 +94,12 @@
       "height": 1080,
       "fps": 60,
       "audio": true,
-      "sizeBytes": 2437500,
-      "previewSizeBytes": 263497,
-      "masterSizeBytes": 2891825
+      "sizeBytes": 16235957,
+      "previewSizeBytes": 649731,
+      "masterSizeBytes": 24756043
     },
     "render": {
-      "renderSeconds": 15.2,
+      "renderSeconds": 63,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -112,8 +112,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 18.287162000000006,
-      "turns": 80
+      "costUsd": 17.874313499999996,
+      "turns": 92
     }
   },
   "baseline/haiku-5.5/1": {
@@ -121,9 +121,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-haiku-5-5",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-09T21:34:11.590Z",
-    "wallSeconds": 1318,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T04:38:29.790Z",
+    "wallSeconds": 1056,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -133,12 +133,12 @@
       "height": 1080,
       "fps": 60,
       "audio": false,
-      "sizeBytes": 8193015,
-      "previewSizeBytes": 273848,
-      "masterSizeBytes": 21519737
+      "sizeBytes": 11690119,
+      "previewSizeBytes": 526187,
+      "masterSizeBytes": 19587348
     },
     "render": {
-      "renderSeconds": 81.5,
+      "renderSeconds": 38.5,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -151,8 +151,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 5.1346699,
-      "turns": 77
+      "costUsd": 4.6406364,
+      "turns": 83
     }
   },
   "baseline/haiku-5.5/2": {
@@ -160,9 +160,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-haiku-5-5",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-09T21:34:11.590Z",
-    "wallSeconds": 1318,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T04:38:29.790Z",
+    "wallSeconds": 1056,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -172,12 +172,12 @@
       "height": 1080,
       "fps": 60,
       "audio": false,
-      "sizeBytes": 6385378,
-      "previewSizeBytes": 146159,
-      "masterSizeBytes": 18561967
+      "sizeBytes": 3323707,
+      "previewSizeBytes": 318233,
+      "masterSizeBytes": 4859383
     },
     "render": {
-      "renderSeconds": 55.8,
+      "renderSeconds": 27.5,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -190,8 +190,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 5.1346699,
-      "turns": 77
+      "costUsd": 4.6406364,
+      "turns": 83
     }
   },
   "baseline/haiku-5.5/3": {
@@ -199,9 +199,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-haiku-5-5",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-09T21:34:11.590Z",
-    "wallSeconds": 1318,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T04:38:29.790Z",
+    "wallSeconds": 1056,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -211,12 +211,12 @@
       "height": 1080,
       "fps": 60,
       "audio": false,
-      "sizeBytes": 7496916,
-      "previewSizeBytes": 229581,
-      "masterSizeBytes": 23047831
+      "sizeBytes": 855061,
+      "previewSizeBytes": 140682,
+      "masterSizeBytes": 1209992
     },
     "render": {
-      "renderSeconds": 57.1,
+      "renderSeconds": 14.2,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -229,8 +229,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 5.1346699,
-      "turns": 77
+      "costUsd": 4.6406364,
+      "turns": 83
     }
   },
   "baseline/opus-5.5/1": {
@@ -238,9 +238,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-opus-5-5",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-09T21:34:11.590Z",
-    "wallSeconds": 5364,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T05:12:05.399Z",
+    "wallSeconds": 3459,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -250,12 +250,12 @@
       "height": 1080,
       "fps": 60,
       "audio": true,
-      "sizeBytes": 11610750,
-      "previewSizeBytes": 575781,
-      "masterSizeBytes": 14051162
+      "sizeBytes": 11626495,
+      "previewSizeBytes": 682704,
+      "masterSizeBytes": 16793980
     },
     "render": {
-      "renderSeconds": 45.4,
+      "renderSeconds": 51.4,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -268,8 +268,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 34.3799206,
-      "turns": 5
+      "costUsd": 17.780095999999993,
+      "turns": 155
     }
   },
   "baseline/opus-5.5/2": {
@@ -277,9 +277,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-opus-5-5",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-09T21:34:11.590Z",
-    "wallSeconds": 5364,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T05:12:05.399Z",
+    "wallSeconds": 3459,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -289,12 +289,12 @@
       "height": 1080,
       "fps": 60,
       "audio": true,
-      "sizeBytes": 4866682,
-      "previewSizeBytes": 366102,
-      "masterSizeBytes": 5998092
+      "sizeBytes": 6416351,
+      "previewSizeBytes": 369255,
+      "masterSizeBytes": 8054728
     },
     "render": {
-      "renderSeconds": 25.1,
+      "renderSeconds": 26.9,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -307,8 +307,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 34.3799206,
-      "turns": 5
+      "costUsd": 17.780095999999993,
+      "turns": 155
     }
   },
   "baseline/opus-5.5/3": {
@@ -316,9 +316,9 @@
     "harnessVersion": "2.1.289",
     "modelArg": "claude-opus-5-5",
     "effort": "xhigh",
-    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
-    "startedAt": "2026-10-09T21:34:11.590Z",
-    "wallSeconds": 5364,
+    "promptSha256": "d8d7458be2fde378a40f00ec0eceb9e8095dd3ce44d1a1fb9fdbbcf9610a9d41",
+    "startedAt": "2026-10-10T05:12:05.399Z",
+    "wallSeconds": 3459,
     "exitCode": 0,
     "timedOut": false,
     "status": "ok",
@@ -328,12 +328,12 @@
       "height": 1080,
       "fps": 60,
       "audio": true,
-      "sizeBytes": 10043793,
-      "previewSizeBytes": 701876,
-      "masterSizeBytes": 15495408
+      "sizeBytes": 26109758,
+      "previewSizeBytes": 398982,
+      "masterSizeBytes": 40761467
     },
     "render": {
-      "renderSeconds": 34.7,
+      "renderSeconds": 42.9,
       "workers": 4,
       "gl": "gpu",
       "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
@@ -346,8 +346,8 @@
       "memoryGb": 32
     },
     "usage": {
-      "costUsd": 34.3799206,
-      "turns": 5
+      "costUsd": 17.780095999999993,
+      "turns": 155
     }
   }
 }

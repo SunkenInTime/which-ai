@@ -17,9 +17,10 @@ The prompt is now a concrete brief, three launch videos for a note-taking app th
 - A launch video for an unnamed second-brain app, two separate sessions: both invented "Cairn" with a stacked-stone logo and told the same story.
 - The same brief naming the app Hollis, two separate sessions: same story, same palette, same logo idea.
 - Three Hollis videos in one session: three different concepts under one brand.
-- Three videos for the unnamed app in one session (the current prompt): three different concepts again. Opus and Haiku both named the app "Engram" and Fable named it "Mnemo", which is fine; a model's default name is part of what the benchmark shows.
+- Three videos for the unnamed app in one session: three different concepts again. Opus and Haiku both named the app "Engram" and Fable named it "Mnemo", which is fine; a model's default name is part of what the benchmark shows. Opus took 89 minutes and $34.38, Fable 42 minutes and $18.29, and Haiku 22 minutes and $5.13.
+- The same, plus one line, "leverage motion design." (the current prompt), so models put effort into the motion itself, product walkthroughs included. This time Opus named the app "Engram" again, Fable "Synapse", and Haiku "Cairn".
 
-Under the current prompt, Opus's session took 89 minutes and $34.38, Fable's 42 minutes and $18.29, and Haiku's 22 minutes and $5.13. The Opus and Haiku sessions ran at the same time, against the advice below, and Haiku's video 2 lost its browser 750 frames into the render. Rendering it again by hand worked, so I re-ran `finishRun` on that session folder with the session's recorded exit code, time, and cost, and all three of its videos rendered. Fable ran later on its own, and all three of its videos rendered on the first try.
+Under the current prompt, Opus's session took 58 minutes and $17.78, Fable's 38 minutes and $17.87, and Haiku's 18 minutes and $4.64. Opus and Fable ran at the same time, against the advice below; all nine videos rendered on the first try. In the session before this one, Opus and Haiku also ran together and Haiku's video 2 lost its browser 750 frames into the render. Rendering it again by hand worked, so I re-ran `finishRun` on that session folder with the session's recorded exit code, time, and cost.
 
 ## What the first runs changed
 
