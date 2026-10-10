@@ -20,9 +20,9 @@ export default function MotionPage() {
             Which AI Made This Video?
           </h1>
           <p className="mt-5 text-[15px] leading-relaxed text-[var(--gallery-text-secondary)]">
-            Each model gets the same prompt in its lab&apos;s own coding agent and builds a 15-second piece as a web
-            page. Every page is then rendered to video the same way, so the motion is the model&apos;s and not its
-            tooling&apos;s. Every video comes from a fresh session with no skills. Hover a card to play it.
+            Each model gets the same prompt in its lab&apos;s own coding agent and builds three 15-second videos in
+            one session, each as a web page. Every page is then rendered to video the same way, so the motion is the
+            model&apos;s and not its tooling&apos;s. Sessions start fresh, with no skills. Hover a card to play it.
           </p>
         </header>
 
