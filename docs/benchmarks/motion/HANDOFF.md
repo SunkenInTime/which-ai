@@ -4,7 +4,7 @@ Status as of 2026-10-10. Read `README.md` in this folder first; it explains the 
 
 ## Where things stand
 
-- Opus 5.5, Fable 5.1, and Haiku 5.5 have each had one isolated session under the current prompt, making three videos each, on Windows (Ryzen 7 5800X, RTX 4070, GPU WebGL through ANGLE/D3D11). Results are in `src/lib/motion-runs.json`; videos and posters are in the `whichai-motion` R2 bucket, served from `https://media.whichai.dev`.
+- Opus 5.5, Fable 5.1, Haiku 5.5, GPT-6 Astra, and GPT-6.1 Sol have each had one isolated session under the current prompt, making three videos each, on Windows (Ryzen 7 5800X, RTX 4070, GPU WebGL through ANGLE/D3D11). Results are in `src/lib/motion-runs.json`; videos and posters are in the `whichai-motion` R2 bucket, served from `https://media.whichai.dev`.
 - Every Windows code path has now run for real: the `.cmd` shim launcher, process-tree tracking and cleanup, the work root (set with `MOTIONBENCH_WORK=E:\w\motionbench\work` on this machine), and GPU rendering (about 60 s per 1080p60 video with 4 workers).
 - Claude Code logged in by borrowing the access token of the machine's normal Claude Code login (see README, setup step 5). No `claude setup-token` file exists yet.
 
@@ -22,6 +22,14 @@ The prompt is now a concrete brief, three launch videos for a note-taking app th
 
 Under the current prompt, Opus's session took 89 minutes and $34.38, Fable's 42 minutes and $18.29, and Haiku's 22 minutes and $5.13. The Opus and Haiku sessions ran at the same time, against the advice below, and Haiku's video 2 lost its browser 750 frames into the render. Rendering it again by hand worked, so I re-ran `finishRun` on that session folder with the session's recorded exit code, time, and cost, and all three of its videos rendered. Fable ran later on its own, and all three of its videos rendered on the first try.
 
+## Codex
+
+Astra and Sol ran through Codex 0.160.0 at `xhigh`. Astra's session took 15 minutes, Sol's 19. Codex reports tokens, not dollars, so their cards show no cost.
+
+A probe session with only the runner's fresh home listed 17 skills: Codex's four bundled ones and the 13 in the real `~/.agents/skills`. On Windows, Codex finds the user's profile folder through the OS, whatever `HOME` and `USERPROFILE` say. Runs now pass `-c` settings that turn off bundled skills, the skill list, skill search, ChatGPT apps, and plugins (`codexIsolation` in `harness.mjs`). A probe through the runner's own launch path then listed no skills, plugins, apps, or instruction files. Codex's stock tools stay on, including web search, subagents, and image generation; neither session used them.
+
+Astra's video 3 failed to render twice with "Target page, context or browser has been closed": once right after its session, while Sol's session was still running, and once on a re-run of `finishRun` with nothing else running. Rendering the page alone worked three times, and rendering all three videos in one process, with and without the contract check, worked four times. A third `finishRun` passed. Haiku's video 2 failed the same way once before. The cause is still unknown; the runner doesn't retry a render whose browser dies.
+
 ## What the first runs changed
 
 - **Sandboxes.** The first Opus test session followed `motion.mjs` into the repo, read `motion-config.json`, and listed `node_modules`. Sessions now work in a randomly named sandbox with a private framekit copy, so nothing they run points at the repo or at earlier tries.
@@ -31,7 +39,7 @@ Under the current prompt, Opus's session took 89 minutes and $34.38, Fable's 42 
 
 ## Not yet tested
 
-- Codex and Grok CLI runs. Their homes, auth sync, and event parsing are untouched since the first branch.
+- Grok CLI runs. Its home, auth sync, and event parsing are untouched since the first branch.
 - macOS since the sandbox change. The sandbox copies `playwright-core` from the repo's `node_modules`; it should behave the same there.
 
 ## Next steps
