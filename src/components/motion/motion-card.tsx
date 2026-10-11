@@ -17,6 +17,9 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
   const firstFinished = clips.find((clip) => clip.run?.status === "ok") ?? clips[0];
   const [activeKey, setActiveKey] = useState(firstFinished.key);
   const video = useRef<HTMLVideoElement>(null);
+  // The poster sits over the video until it actually plays, and comes back when the pointer leaves. A paused video
+  // shows its current frame instead of its poster, and many videos open on black.
+  const [playing, setPlaying] = useState(false);
   const clip = clips.find((c) => c.key === activeKey) ?? firstFinished;
   const ready = clip.run?.status === "ok";
   const compareTarget = clips.find((c) => c.key !== clip.key && c.run?.status === "ok");
@@ -30,6 +33,7 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
         className="relative block aspect-video bg-black"
         onMouseEnter={() => video.current?.play().catch(() => {})}
         onMouseLeave={() => {
+          setPlaying(false);
           if (!video.current) return;
           video.current.pause();
           video.current.currentTime = 0;
@@ -37,17 +41,29 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
         aria-label={`${clip.model.label}, video ${clip.iteration}`}
       >
         {ready ? (
-          <video
-            key={clip.previewSrc}
-            ref={video}
-            src={clip.previewSrc}
-            poster={clip.posterSrc}
-            muted
-            loop
-            playsInline
-            preload="none"
-            className="size-full object-contain"
-          />
+          <>
+            <video
+              key={clip.previewSrc}
+              ref={video}
+              src={clip.previewSrc}
+              muted
+              loop
+              playsInline
+              preload="none"
+              onPlaying={() => setPlaying(true)}
+              className="size-full object-contain"
+            />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              key={clip.posterSrc}
+              src={clip.posterSrc}
+              alt=""
+              className={clsx(
+                "pointer-events-none absolute inset-0 size-full object-contain transition-opacity duration-150",
+                playing && "opacity-0",
+              )}
+            />
+          </>
         ) : (
           <span className="absolute inset-0 grid place-items-center text-xs text-white/50">
             {describeMissingRun(clip.run)}

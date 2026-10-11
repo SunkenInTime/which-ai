@@ -18,7 +18,8 @@
       "audio": true,
       "sizeBytes": 12845603,
       "previewSizeBytes": 566602,
-      "masterSizeBytes": 27314334
+      "masterSizeBytes": 27314334,
+      "posterSec": 14.5
     },
     "render": {
       "renderSeconds": 54.9,
@@ -57,7 +58,8 @@
       "audio": true,
       "sizeBytes": 5205735,
       "previewSizeBytes": 375443,
-      "masterSizeBytes": 7835570
+      "masterSizeBytes": 7835570,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 30.6,
@@ -96,7 +98,8 @@
       "audio": true,
       "sizeBytes": 2437500,
       "previewSizeBytes": 263497,
-      "masterSizeBytes": 2891825
+      "masterSizeBytes": 2891825,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 15.2,
@@ -135,7 +138,8 @@
       "audio": true,
       "sizeBytes": 6192474,
       "previewSizeBytes": 256559,
-      "masterSizeBytes": 10651798
+      "masterSizeBytes": 10651798,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 56.1,
@@ -179,7 +183,8 @@
       "audio": true,
       "sizeBytes": 9243735,
       "previewSizeBytes": 317136,
-      "masterSizeBytes": 15954272
+      "masterSizeBytes": 15954272,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 45.9,
@@ -223,7 +228,8 @@
       "audio": true,
       "sizeBytes": 6587072,
       "previewSizeBytes": 286996,
-      "masterSizeBytes": 11392449
+      "masterSizeBytes": 11392449,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 58,
@@ -267,7 +273,8 @@
       "audio": true,
       "sizeBytes": 2873978,
       "previewSizeBytes": 265471,
-      "masterSizeBytes": 4637745
+      "masterSizeBytes": 4637745,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 24.4,
@@ -311,7 +318,8 @@
       "audio": true,
       "sizeBytes": 3389326,
       "previewSizeBytes": 263684,
-      "masterSizeBytes": 5541030
+      "masterSizeBytes": 5541030,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 33.1,
@@ -355,7 +363,8 @@
       "audio": true,
       "sizeBytes": 3102436,
       "previewSizeBytes": 308062,
-      "masterSizeBytes": 4669077
+      "masterSizeBytes": 4669077,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 22.9,
@@ -399,7 +408,8 @@
       "audio": false,
       "sizeBytes": 8193015,
       "previewSizeBytes": 273848,
-      "masterSizeBytes": 21519737
+      "masterSizeBytes": 21519737,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 81.5,
@@ -438,7 +448,8 @@
       "audio": false,
       "sizeBytes": 6385378,
       "previewSizeBytes": 146159,
-      "masterSizeBytes": 18561967
+      "masterSizeBytes": 18561967,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 55.8,
@@ -477,7 +488,8 @@
       "audio": false,
       "sizeBytes": 7496916,
       "previewSizeBytes": 229581,
-      "masterSizeBytes": 23047831
+      "masterSizeBytes": 23047831,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 57.1,
@@ -516,7 +528,8 @@
       "audio": true,
       "sizeBytes": 11610750,
       "previewSizeBytes": 575781,
-      "masterSizeBytes": 14051162
+      "masterSizeBytes": 14051162,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 45.4,
@@ -555,7 +568,8 @@
       "audio": true,
       "sizeBytes": 4866682,
       "previewSizeBytes": 366102,
-      "masterSizeBytes": 5998092
+      "masterSizeBytes": 5998092,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 25.1,
@@ -594,7 +608,8 @@
       "audio": true,
       "sizeBytes": 10043793,
       "previewSizeBytes": 701876,
-      "masterSizeBytes": 15495408
+      "masterSizeBytes": 15495408,
+      "posterSec": 1
     },
     "render": {
       "renderSeconds": 34.7,
