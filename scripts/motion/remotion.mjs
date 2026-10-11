@@ -62,7 +62,10 @@ export async function renderRemotion(workdir, out, { log }) {
   const wrong = [];
   if (video.width !== width || video.height !== height) wrong.push(`${video.width}x${video.height}, not ${width}x${height}`);
   if (Math.abs(video.fps - fps) > 0.01) wrong.push(`${video.fps} fps, not ${fps}`);
-  if (Math.abs(video.durationSec - durationSec) > 1 / fps) wrong.push(`${video.durationSec.toFixed(3)} s, not ${durationSec}`);
+  // Count frames, not the container's length: AAC pads the audio track, so a correct 900-frame render with sound
+  // can report 15.019 s for the file as a whole.
+  const frames = Math.round(durationSec * fps);
+  if (video.frames !== frames) wrong.push(`${video.frames} frames, not ${frames}`);
   if (wrong.length) throw new Error(`The rendered video is ${wrong.join(", ")}.`);
   return { ...video, sizeBytes: fs.statSync(out).size, renderSeconds: Math.round((Date.now() - started) / 100) / 10 };
 }
@@ -74,11 +77,15 @@ function probeVideo(file) {
   );
   const v = streams.find((s) => s.codec_type === "video");
   const [num, den] = (v?.r_frame_rate ?? "0/1").split("/").map(Number);
+  const fps = den ? Math.round((num / den) * 1000) / 1000 : null;
+  const videoSeconds = Number(v?.duration ?? format.duration);
   return {
     width: v?.width ?? null,
     height: v?.height ?? null,
-    fps: den ? Math.round((num / den) * 1000) / 1000 : null,
-    durationSec: Number(format.duration),
+    fps,
+    // MP4 records the frame count; fall back to the stream's length if a muxer leaves it out.
+    frames: v?.nb_frames ? Number(v.nb_frames) : Math.round(videoSeconds * (fps ?? 0)),
+    durationSec: videoSeconds,
     audio: streams.some((s) => s.codec_type === "audio"),
   };
 }
