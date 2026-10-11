@@ -14,11 +14,17 @@ export const sandboxRoot = process.env.MOTIONBENCH_SANDBOX ?? path.join(path.dir
 const framekitSource = path.join(root, "scripts/motion/framekit");
 const playwrightCore = path.dirname(fs.realpathSync(path.join(root, "node_modules/playwright-core/package.json")));
 
-export function createSandbox() {
+// A group whose prompt asks for Remotion gets the empty folders only: the model brings Remotion, and the runner
+// renders with it (see remotion.mjs).
+export function createSandbox({ framekit: withFramekit = true } = {}) {
   const sandbox = path.join(sandboxRoot, crypto.randomUUID());
   const workdir = path.join(sandbox, "project");
   assertCleanAncestors(workdir);
   fs.mkdirSync(workdir, { recursive: true });
+  if (!withFramekit) {
+    for (let n = 1; n <= config.iterations; n++) fs.mkdirSync(path.join(workdir, String(n)));
+    return { sandbox, workdir, home: path.join(sandbox, "home") };
+  }
   const framekit = path.join(sandbox, "framekit");
   fs.mkdirSync(framekit);
   for (const file of ["cli.mjs", "kit.mjs"]) fs.copyFileSync(path.join(framekitSource, file), path.join(framekit, file));

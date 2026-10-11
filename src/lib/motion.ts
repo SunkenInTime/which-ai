@@ -26,7 +26,8 @@ export interface MotionRun {
     height: number | null;
     fps: number | null;
   } | null;
-  render?: { renderSeconds: number; workers: number; gl: string; renderer: string | null } | null;
+  /** Framekit renders record workers and gl; Remotion renders (renderer "remotion") record neither. */
+  render?: { renderSeconds: number; workers?: number; gl?: string; renderer: string | null } | null;
   usage: { costUsd?: number | null; turns?: number | null } | null;
 }
 
@@ -71,6 +72,11 @@ export function getMotionModelLogo(model: MotionModel) {
   return LAB_LOGOS[model.lab] ?? null;
 }
 
+/** Models with a recorded run in the group. A group can hold a subset, like the Remotion runs. */
+export function getMotionModelsForGroup(group: MotionGroup): MotionModel[] {
+  return motionModels.filter((model) => Object.keys(runs).some((key) => key.startsWith(`${group.id}/${model.id}/`)));
+}
+
 export function getMotionHarness(model: MotionModel): MotionHarness {
   const harness = motionConfig.harnesses.find((h) => h.id === model.harness);
   if (!harness) throw new Error(`Unknown motion harness ${model.harness}`);
@@ -101,7 +107,7 @@ export function getMotionClipsForModel(group: MotionGroup, model: MotionModel): 
 
 export function getFinishedMotionClips(): MotionClip[] {
   return motionGroups.flatMap((group) =>
-    motionModels.flatMap((model) =>
+    getMotionModelsForGroup(group).flatMap((model) =>
       getMotionClipsForModel(group, model).filter((clip) => clip.run?.status === "ok"),
     ),
   );

@@ -8,6 +8,7 @@ import {
   getMotionClip,
   getMotionClipsForModel,
   getMotionModelLogo,
+  getMotionModelsForGroup,
   MOTION_ITERATIONS,
   motionGroups,
   motionModels,
@@ -17,7 +18,7 @@ export const dynamicParams = false;
 
 export function generateStaticParams() {
   return motionGroups.flatMap((group) =>
-    motionModels.flatMap((model) =>
+    getMotionModelsForGroup(group).flatMap((model) =>
       MOTION_ITERATIONS.map((n) => ({ group: group.id, model: model.id, iteration: String(n) })),
     ),
   );
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 export default async function MotionRunPage({ params }: { params: Params }) {
   const { group: groupId, model: modelId, iteration } = await params;
   const group = motionGroups.find((g) => g.id === groupId);
-  const model = motionModels.find((m) => m.id === modelId);
+  const model = group ? getMotionModelsForGroup(group).find((m) => m.id === modelId) : undefined;
   const n = Number(iteration);
   if (!group || !model || !MOTION_ITERATIONS.includes(n)) notFound();
 
@@ -42,7 +43,8 @@ export default async function MotionRunPage({ params }: { params: Params }) {
   const ready = clip.run?.status === "ok";
   const finished = (c: { run: { status: string } | null }) => c.run?.status === "ok";
 
-  const models = motionModels.map((m) => {
+  const groupModels = getMotionModelsForGroup(group);
+  const models = groupModels.map((m) => {
     const target = getMotionClip(group, m, n);
     return {
       id: m.id,
@@ -54,7 +56,7 @@ export default async function MotionRunPage({ params }: { params: Params }) {
   });
   const compares = ready
     ? [
-        ...motionModels
+        ...groupModels
           .filter((m) => m.id !== model.id)
           .map((m) => {
             const target = getMotionClip(group, m, n);
@@ -73,6 +75,18 @@ export default async function MotionRunPage({ params }: { params: Params }) {
             logo: getMotionModelLogo(model),
             href: finished(c) ? buildMotionCompareHref(clip.key, c.key) : null,
           })),
+        // The same model's video from the other groups, e.g. with and without Remotion.
+        ...motionGroups
+          .filter((g) => g.id !== group.id && getMotionModelsForGroup(g).some((m) => m.id === model.id))
+          .map((g) => {
+            const target = getMotionClip(g, model, n);
+            return {
+              id: target.key,
+              label: `${model.label} · ${g.label} · video ${n}`,
+              logo: getMotionModelLogo(model),
+              href: finished(target) ? buildMotionCompareHref(clip.key, target.key) : null,
+            };
+          }),
       ]
     : [];
 

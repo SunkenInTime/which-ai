@@ -15,6 +15,16 @@ Size, frame rate, length, and GPU mode come from `render` in `src/lib/motion-con
 
 Agents get `node motion.mjs check | frame | sheet | preview | render` in each video's folder. `check` must pass before a run is published. `check` renders t=7.5s twice and again after a fresh page load, and averages each pixel's difference over 16px areas: GPU rounding, which can leave a few levels of difference in scattered pixels on Windows, passes; an area that differs by more than 6 levels (of 255) on average fails.
 
+## The Remotion group
+
+The baseline prompt bans video frameworks, Remotion included, because some models may be trained on Remotion and the benchmark asks what a model makes from scratch. The `remotion` group asks the opposite, to show what the OpenAI models make with it: the same brief plus "using Remotion" (`remotion.prompt.txt`). Each folder holds a Remotion project with a composition called `Video`. The sandbox has empty folders and no framekit, and after the session the runner renders each project with the project's own Remotion CLI, `remotion render Video` (`scripts/motion/remotion.mjs`). The render must come out 1920×1080, 60 fps, and 15 seconds, or the video fails. Unlike a framekit render, it runs with the network on, since Remotion downloads its own browser and projects may fetch fonts. The same web encodes and poster follow.
+
+```
+npm run motion:run -- gpt-6-astra --group remotion
+```
+
+The group is a section of its own on the site, holding only the models that have runs in it. Each Remotion video's compare menu links to the same model's video without Remotion.
+
 ## Setup (Windows, macOS, or Linux)
 
 1. Node 22 or newer, then `npm install` in the repo.

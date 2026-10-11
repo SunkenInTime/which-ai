@@ -1,0 +1,7 @@
+make three different 15-second launch videos for a note-taking app that works as a second brain, using Remotion. make each one as good as you possibly can.
+
+how the videos get made: each video is its own Remotion project in its own folder, 1, 2, and 3. after you finish, a renderer runs `npx remotion render Video out.mp4` inside each folder. every video is 1920x1080, 60fps, exactly 15 seconds (900 frames).
+- each folder needs its own package.json, with remotion and @remotion/cli installed in that folder, and a composition with the id Video.
+- install or download any libraries, fonts, or assets you want into that folder.
+- for sound, add audio to the composition. it is kept as rendered.
+you are done when `npx remotion render Video out.mp4` works in all three folders and you are happy with how they look.

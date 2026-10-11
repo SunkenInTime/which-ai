@@ -613,5 +613,245 @@
       "costUsd": 34.3799206,
       "turns": 5
     }
+  },
+  "remotion/gpt-6-astra/1": {
+    "source": "runner",
+    "harnessVersion": "0.160.0",
+    "modelArg": "gpt-6-astra",
+    "effort": "xhigh",
+    "promptSha256": "b5f87546d845d3e9c6260bbd4aff005eb1ad00a7df315708fe5b223ce4ea4f56",
+    "startedAt": "2026-10-11T14:56:07.867Z",
+    "wallSeconds": 1312,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 3645139,
+      "previewSizeBytes": 281373,
+      "masterSizeBytes": 4422444
+    },
+    "render": {
+      "renderSeconds": 40.5,
+      "renderer": "remotion"
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 2066164,
+        "cached_input_tokens": 1924608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 38901,
+        "reasoning_output_tokens": 9739
+      }
+    }
+  },
+  "remotion/gpt-6-astra/2": {
+    "source": "runner",
+    "harnessVersion": "0.160.0",
+    "modelArg": "gpt-6-astra",
+    "effort": "xhigh",
+    "promptSha256": "b5f87546d845d3e9c6260bbd4aff005eb1ad00a7df315708fe5b223ce4ea4f56",
+    "startedAt": "2026-10-11T14:56:07.867Z",
+    "wallSeconds": 1312,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 4430235,
+      "previewSizeBytes": 291819,
+      "masterSizeBytes": 6107096
+    },
+    "render": {
+      "renderSeconds": 89.1,
+      "renderer": "remotion"
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 2066164,
+        "cached_input_tokens": 1924608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 38901,
+        "reasoning_output_tokens": 9739
+      }
+    }
+  },
+  "remotion/gpt-6-astra/3": {
+    "source": "runner",
+    "harnessVersion": "0.160.0",
+    "modelArg": "gpt-6-astra",
+    "effort": "xhigh",
+    "promptSha256": "b5f87546d845d3e9c6260bbd4aff005eb1ad00a7df315708fe5b223ce4ea4f56",
+    "startedAt": "2026-10-11T14:56:07.867Z",
+    "wallSeconds": 1312,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 4039091,
+      "previewSizeBytes": 369528,
+      "masterSizeBytes": 4714226
+    },
+    "render": {
+      "renderSeconds": 41.9,
+      "renderer": "remotion"
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 2066164,
+        "cached_input_tokens": 1924608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 38901,
+        "reasoning_output_tokens": 9739
+      }
+    }
+  },
+  "remotion/gpt-6.1-sol/1": {
+    "source": "runner",
+    "harnessVersion": "0.160.0",
+    "modelArg": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "promptSha256": "b5f87546d845d3e9c6260bbd4aff005eb1ad00a7df315708fe5b223ce4ea4f56",
+    "startedAt": "2026-10-11T14:56:04.800Z",
+    "wallSeconds": 1661,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 3607367,
+      "previewSizeBytes": 261851,
+      "masterSizeBytes": 6094478
+    },
+    "render": {
+      "renderSeconds": 39.7,
+      "renderer": "remotion"
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 3119165,
+        "cached_input_tokens": 2978560,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 49416,
+        "reasoning_output_tokens": 14943
+      }
+    }
+  },
+  "remotion/gpt-6.1-sol/2": {
+    "source": "runner",
+    "harnessVersion": "0.160.0",
+    "modelArg": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "promptSha256": "b5f87546d845d3e9c6260bbd4aff005eb1ad00a7df315708fe5b223ce4ea4f56",
+    "startedAt": "2026-10-11T14:56:04.800Z",
+    "wallSeconds": 1661,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 4070605,
+      "previewSizeBytes": 276301,
+      "masterSizeBytes": 5425210
+    },
+    "render": {
+      "renderSeconds": 37.1,
+      "renderer": "remotion"
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 3119165,
+        "cached_input_tokens": 2978560,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 49416,
+        "reasoning_output_tokens": 14943
+      }
+    }
+  },
+  "remotion/gpt-6.1-sol/3": {
+    "source": "runner",
+    "harnessVersion": "0.160.0",
+    "modelArg": "gpt-6.1-sol",
+    "effort": "xhigh",
+    "promptSha256": "b5f87546d845d3e9c6260bbd4aff005eb1ad00a7df315708fe5b223ce4ea4f56",
+    "startedAt": "2026-10-11T14:56:04.800Z",
+    "wallSeconds": 1661,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 4115626,
+      "previewSizeBytes": 237011,
+      "masterSizeBytes": 7234848
+    },
+    "render": {
+      "renderSeconds": 38.6,
+      "renderer": "remotion"
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 3119165,
+        "cached_input_tokens": 2978560,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 49416,
+        "reasoning_output_tokens": 14943
+      }
+    }
   }
 }

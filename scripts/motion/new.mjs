@@ -26,7 +26,8 @@ export function prepareRun({ groupId, model, source, harnessVersion = null }) {
   // The record (run.json, prompt, transcript) lives in runDir; the agent only ever sees its sandbox.
   const runDir = path.join(workRoot, groupId, model.id, String(Date.now()));
   fs.mkdirSync(runDir, { recursive: true });
-  const { sandbox, workdir, home } = createSandbox();
+  const group = config.groups.find((g) => g.id === groupId);
+  const { sandbox, workdir, home } = createSandbox({ framekit: group?.renderer !== "remotion" });
   fs.writeFileSync(path.join(runDir, "PROMPT.txt"), prompt + "\n");
   writeRunMeta(runDir, {
     source,

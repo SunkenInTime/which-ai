@@ -30,6 +30,10 @@ A probe session with only the runner's fresh home listed 17 skills: Codex's four
 
 Astra's video 3 failed to render twice with "Target page, context or browser has been closed": once right after its session, while Sol's session was still running, and once on a re-run of `finishRun` with nothing else running. Rendering the page alone worked three times, and rendering all three videos in one process, with and without the contract check, worked four times. A third `finishRun` passed. Haiku's video 2 failed the same way once before. The cause is still unknown; the runner doesn't retry a render whose browser dies.
 
+## Remotion
+
+The baseline prompt bans Remotion; the `remotion` group (see README) asks for it, to see what the OpenAI models make with a framework they may be trained on. Astra's session took 22 minutes and Sol's 28; all six videos rendered on the first try, 37 to 89 seconds each. Neither used a starter template, skills, image generation, web search, or subagents: both wrote each project by hand after `npm install`. Astra named the app "Mote" and Sol "Recall". In stills, both look much like their baseline videos: the same cards, product UI, and kinetic type.
+
 ## What the first runs changed
 
 - **Sandboxes.** The first Opus test session followed `motion.mjs` into the repo, read `motion-config.json`, and listed `node_modules`. Sessions now work in a randomly named sandbox with a private framekit copy, so nothing they run points at the repo or at earlier tries.

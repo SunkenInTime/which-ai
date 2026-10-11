@@ -8,6 +8,12 @@
       "id": "baseline",
       "label": "Without Skills",
       "description": "Each lab's own coding agent with its stock setup. No skills, plugins, MCP servers, or custom instructions."
+    },
+    {
+      "id": "remotion",
+      "label": "With Remotion",
+      "description": "The same brief, built as Remotion projects and rendered with Remotion. Same stock setup: no skills, plugins, MCP servers, or custom instructions.",
+      "renderer": "remotion"
     }
   ],
   "harnesses": [

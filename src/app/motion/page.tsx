@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { GalleryRankingsNav } from "@/components/gallery/gallery-rankings-nav";
 import { GenerationPrompt } from "@/components/gallery/generation-prompt";
 import { MotionCard } from "@/components/motion/motion-card";
-import { getMotionClipsForModel, motionGroups, motionModels } from "@/lib/motion";
+import { getMotionClipsForModel, getMotionModelsForGroup, motionGroups } from "@/lib/motion";
 import { readMotionPrompt, summarizeMotionPrompt } from "@/lib/motion-prompt";
 
 export const metadata: Metadata = {
@@ -41,7 +41,7 @@ export default function MotionPage() {
               </div>
               {prompt ? <GenerationPrompt prompt={prompt} summary={summarizeMotionPrompt(prompt)} /> : null}
               <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                {motionModels.map((model) => (
+                {getMotionModelsForGroup(group).map((model) => (
                   <MotionCard key={model.id} clips={getMotionClipsForModel(group, model)} />
                 ))}
               </div>

@@ -8,8 +8,9 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { execFileSync } from "node:child_process";
-import { root, runsFile } from "./harness.mjs";
+import { config, root, runsFile } from "./harness.mjs";
 import { checkProject, ffmpegBin, renderVideo } from "./framekit/kit.mjs";
+import { hasRemotionProject, renderRemotion } from "./remotion.mjs";
 import { collectSandbox } from "./sandbox.mjs";
 
 // Every run folder holds run.json (what was asked and how the session went) next to project/.
@@ -61,8 +62,10 @@ export async function finishRun(runDir, session = {}) {
   return results;
 }
 
-// One video of the session: the page in project/<n>, rendered to <n>/ in the run folder.
+// One video of the session: the page in project/<n>, rendered to <n>/ in the run folder. Groups whose prompt asks
+// for Remotion get their project rendered by Remotion instead of framekit (see remotion.mjs).
 async function finishVideo(runDir, meta, n, session, sessionFailure) {
+  if (config.groups.find((g) => g.id === meta.group)?.renderer === "remotion") return finishRemotionVideo(runDir, meta, n, session, sessionFailure);
   const workdir = path.join(runDir, "project", String(n));
   const outDir = path.join(runDir, String(n));
   const key = `${meta.group}/${meta.model}/${n}`;
@@ -154,6 +157,71 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
     usage: session.usage ?? null,
   };
 
+  return { key, n, run, files };
+}
+
+async function finishRemotionVideo(runDir, meta, n, session, sessionFailure) {
+  const workdir = path.join(runDir, "project", String(n));
+  const outDir = path.join(runDir, String(n));
+  const key = `${meta.group}/${meta.model}/${n}`;
+  const { exitCode = null, signal = null, timedOut = false } = session;
+
+  let failure = sessionFailure;
+  let rendered = null;
+  let files = null;
+  const empty = !failure && !hasRemotionProject(workdir);
+  if (empty) failure = "No Remotion project (package.json) in the folder.";
+  if (!failure) {
+    fs.mkdirSync(outDir, { recursive: true });
+    const out = path.join(outDir, "final.mp4");
+    const poster = path.join(outDir, "final.jpg");
+    const web = path.join(outDir, "web.mp4");
+    const preview = path.join(outDir, "preview.mp4");
+    try {
+      console.log(`render ${key} with Remotion`);
+      rendered = await renderRemotion(workdir, out, { log: path.join(outDir, "render.log") });
+      execFileSync(ffmpegBin, ["-y", "-v", "error", "-ss", "1", "-i", out, "-frames:v", "1", "-q:v", "3", poster], { windowsHide: true });
+      encodeForWeb(out, web, preview);
+      rendered.web = { sizeBytes: fs.statSync(web).size, previewSizeBytes: fs.statSync(preview).size };
+      files = [
+        [web, `${n}.mp4`],
+        [preview, `${n}.preview.mp4`],
+        [poster, `${n}.jpg`],
+      ];
+    } catch (err) {
+      failure = `The render failed: ${err.message}`;
+    }
+  }
+
+  const run = {
+    source: meta.source,
+    harnessVersion: meta.harnessVersion ?? null,
+    modelArg: meta.modelArg,
+    effort: meta.effort,
+    promptSha256: meta.promptSha256,
+    startedAt: meta.startedAt,
+    wallSeconds: session.wallSeconds ?? null,
+    exitCode,
+    ...(signal ? { signal } : {}),
+    timedOut,
+    status: !failure ? "ok" : empty ? "no-video" : "failed",
+    ...(failure ? { failure } : {}),
+    video: rendered && !failure
+      ? {
+          durationSec: rendered.durationSec,
+          width: rendered.width,
+          height: rendered.height,
+          fps: rendered.fps,
+          audio: rendered.audio,
+          sizeBytes: rendered.web.sizeBytes,
+          previewSizeBytes: rendered.web.previewSizeBytes,
+          masterSizeBytes: rendered.sizeBytes,
+        }
+      : null,
+    render: rendered && !failure ? { renderSeconds: rendered.renderSeconds, renderer: "remotion" } : null,
+    machine: { platform: process.platform, cpu: os.cpus()[0]?.model ?? "unknown", memoryGb: Math.round(os.totalmem() / 2 ** 30) },
+    usage: session.usage ?? null,
+  };
   return { key, n, run, files };
 }
 
