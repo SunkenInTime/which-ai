@@ -25,6 +25,8 @@ export interface MotionRun {
     width: number | null;
     height: number | null;
     fps: number | null;
+    /** False when the video has no sound track. */
+    audio?: boolean;
   } | null;
   render?: { renderSeconds: number; workers: number; gl: string; renderer: string | null } | null;
   usage: { costUsd?: number | null; turns?: number | null } | null;

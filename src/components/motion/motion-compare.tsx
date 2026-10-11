@@ -1,7 +1,9 @@
 "use client";
 
+import { Pause, Play } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useRef, useState } from "react";
+import { formatClock, Scrubber, useVideoClock } from "@/components/motion/motion-controls";
 import { buildMotionCompareHref, type MotionClip } from "@/lib/motion";
 
 const selectClass =
@@ -19,9 +21,12 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   const rightVideo = useRef<HTMLVideoElement>(null);
   // What the visitor asked for. The players themselves may be paused for a moment while one of them buffers.
   const wantPlaying = useRef(false);
+  // While the timeline is dragged, seeks don't restart playback; letting go does.
+  const scrubbing = useRef(false);
   const [playing, setPlaying] = useState(false);
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  useVideoClock(leftVideo, playing, setTime);
 
   if (clips.length < 2) {
     return (
@@ -43,7 +48,7 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   // and when both can go again the one ahead steps back to the one behind.
   const sync = () => {
     const [l, r] = [leftVideo.current, rightVideo.current];
-    if (!wantPlaying.current || !l || !r) return;
+    if (!wantPlaying.current || scrubbing.current || !l || !r) return;
     const ready = (video: HTMLVideoElement) => video.readyState >= HTMLMediaElement.HAVE_FUTURE_DATA;
     if (!ready(l) || !ready(r)) {
       // Hold the ready one. The other stays in play so it keeps loading; its `canplay` brings us back here.
@@ -60,6 +65,16 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
       return;
     }
     both((video) => void video.play().catch(() => {}));
+  };
+
+  const togglePlaying = () => {
+    if (playing) {
+      setWantPlaying(false);
+      both((v) => v.pause());
+    } else {
+      setWantPlaying(true);
+      sync();
+    }
   };
 
   const choose = (side: "left" | "right", key: string) => {
@@ -117,7 +132,8 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
                 onCanPlay={sync}
                 onSeeked={sync}
                 onEnded={() => setWantPlaying(false)}
-                className="aspect-video w-full object-contain"
+                onClick={togglePlaying}
+                className="aspect-video w-full cursor-pointer object-contain"
               />
             </div>
             <figcaption className="mt-2 text-xs text-[var(--gallery-text-tertiary)]">
@@ -127,41 +143,42 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
         ))}
       </div>
 
-      <div className="mt-6 flex items-center gap-4">
+      <div
+        role="group"
+        aria-label="Controls for both videos"
+        className="gallery-elevated-surface mt-6 flex items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-surface)] p-1 pr-3 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)]"
+      >
         <button
           type="button"
-          onClick={() => {
-            if (playing) {
-              setWantPlaying(false);
-              both((v) => v.pause());
-            } else {
-              setWantPlaying(true);
-              sync();
-            }
-          }}
-          className="w-28 rounded-md bg-[var(--gallery-text-primary)] px-4 py-2 text-sm font-medium text-[var(--gallery-surface)]"
+          onClick={togglePlaying}
+          className="inline-flex h-7 w-[6.5rem] shrink-0 cursor-pointer items-center gap-2 rounded-md px-2.5 text-xs font-medium text-[var(--gallery-text-secondary)] transition-colors outline-none hover:bg-[var(--gallery-hover-bg)] hover:text-[var(--gallery-text-primary)] focus-visible:ring-1 focus-visible:ring-[var(--gallery-accent)]"
         >
+          {playing ? (
+            <Pause className="size-3.5" fill="currentColor" strokeWidth={0} aria-hidden />
+          ) : (
+            <Play className="size-3.5" fill="currentColor" strokeWidth={0} aria-hidden />
+          )}
           {playing ? "Pause" : "Play both"}
         </button>
-        <input
-          type="range"
-          min={0}
-          max={duration || 0}
-          step={0.01}
-          value={time}
-          onChange={(e) => {
-            const t = Number(e.target.value);
+        <span className="w-[5.75rem] shrink-0 text-center text-[11px] font-medium tabular-nums text-[var(--gallery-text-secondary)]">
+          {formatClock(time)} / {formatClock(duration)}
+        </span>
+        <Scrubber
+          time={time}
+          duration={duration}
+          label="Seek both videos"
+          onSeek={(t) => {
             setTime(t);
             both((v) => {
               v.currentTime = Math.min(t, v.duration || t);
             });
           }}
-          className="flex-1 accent-[var(--gallery-accent)]"
-          aria-label="Scrub both videos"
+          onScrubChange={(active) => {
+            scrubbing.current = active;
+            if (!active) sync();
+            else both((v) => v.pause());
+          }}
         />
-        <span className="w-24 text-right text-xs tabular-nums text-[var(--gallery-text-tertiary)]">
-          {time.toFixed(1)}s / {duration.toFixed(1)}s
-        </span>
       </div>
     </>
   );
