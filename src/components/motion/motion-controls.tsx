@@ -98,9 +98,9 @@ export function Scrubber({
         onSeek(Math.min(duration, Math.max(0, next)));
       }}
     >
-      <div className="relative h-1 w-full overflow-hidden rounded-full bg-[var(--gallery-border)] transition-[height] duration-150 group-hover/scrub:h-1.5 group-data-[dragging]/scrub:h-1.5">
+      <div className="relative h-1 w-full overflow-hidden rounded-full bg-[color-mix(in_oklab,var(--gallery-text-tertiary)_55%,var(--gallery-text-quaternary))] transition-[height] duration-150 group-hover/scrub:h-1.5 group-data-[dragging]/scrub:h-1.5">
         <div
-          className="absolute inset-y-0 left-0 bg-[var(--gallery-text-quaternary)]/45"
+          className="absolute inset-y-0 left-0 bg-[color-mix(in_oklab,var(--gallery-text-secondary)_50%,var(--gallery-text-tertiary))]"
           style={{ width: percent(Math.max(buffered, time)) }}
         />
         <div className="absolute inset-y-0 left-0 bg-[var(--gallery-accent)]" style={{ width: percent(time) }} />

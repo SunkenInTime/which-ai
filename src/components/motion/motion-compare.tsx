@@ -2,7 +2,7 @@
 
 import { Pause, Play } from "lucide-react";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { formatClock, Scrubber, useVideoClock } from "@/components/motion/motion-controls";
 import { buildMotionCompareHref, type MotionClip } from "@/lib/motion";
 
@@ -27,6 +27,15 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   const [time, setTime] = useState(0);
   const [duration, setDuration] = useState(0);
   useVideoClock(leftVideo, playing, setTime);
+
+  // With preload="auto" a video can load its metadata before hydration attaches onLoadedMetadata.
+  useEffect(() => {
+    for (const video of [leftVideo.current, rightVideo.current]) {
+      if (video && video.readyState >= HTMLMediaElement.HAVE_METADATA) {
+        setDuration((d) => Math.max(d, video.duration));
+      }
+    }
+  }, []);
 
   if (clips.length < 2) {
     return (

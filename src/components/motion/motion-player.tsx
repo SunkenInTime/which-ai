@@ -35,7 +35,7 @@ export function MotionPlayer({
   const [fullscreen, setFullscreen] = useState(false);
   const [idle, setIdle] = useState(false);
   const idleTimer = useRef<number | null>(null);
-  const overBar = useRef(false);
+  const bar = useRef<HTMLDivElement>(null);
   // Whether playback should pick up again when a drag on the timeline ends.
   const resumeAfterScrub = useRef<boolean | null>(null);
 
@@ -45,7 +45,8 @@ export function MotionPlayer({
     setIdle(false);
     if (idleTimer.current) window.clearTimeout(idleTimer.current);
     idleTimer.current = window.setTimeout(() => {
-      if (!overBar.current && resumeAfterScrub.current === null) setIdle(true);
+      // Asking the bar whether it's hovered now is sturdier than tracking enter and leave events.
+      if (!bar.current?.matches(":hover") && resumeAfterScrub.current === null) setIdle(true);
     }, hideAfterMs);
   }, []);
 
@@ -73,6 +74,18 @@ export function MotionPlayer({
     if (!v) return;
     v.currentTime = seconds;
     setTime(seconds);
+  }, []);
+
+  // The video can load, and autoplay can start it, before this component hydrates and its handlers attach.
+  // Read where it already is so the bar doesn't show Play and 0:00 for a playing video.
+  useEffect(() => {
+    const v = video.current;
+    if (!v) return;
+    setPlaying(!v.paused);
+    setTime(v.currentTime);
+    setMuted(v.muted);
+    setBuffered(bufferedAhead(v));
+    if (v.readyState >= HTMLMediaElement.HAVE_METADATA) setDuration(v.duration);
   }, []);
 
   useEffect(() => {
@@ -164,16 +177,15 @@ export function MotionPlayer({
 
       <div
         className={clsx(
-          "absolute inset-x-0 bottom-0 flex justify-center px-5 pb-5 transition-opacity duration-300 focus-within:opacity-100 sm:px-6 sm:pb-6",
+          "absolute inset-x-0 bottom-0 flex justify-center px-5 pb-5 transition-opacity duration-300 has-[:focus-visible]:pointer-events-auto has-[:focus-visible]:opacity-100 sm:px-6 sm:pb-6",
           hidden ? "pointer-events-none opacity-0" : "opacity-100",
         )}
       >
         <div
+          ref={bar}
           role="group"
           aria-label="Video controls"
           className="gallery-elevated-surface flex w-full max-w-[46rem] items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] p-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px]"
-          onPointerEnter={() => (overBar.current = true)}
-          onPointerLeave={() => (overBar.current = false)}
         >
           <button
             type="button"
