@@ -126,6 +126,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
     exitCode,
     ...(signal ? { signal } : {}),
     timedOut,
+    ...(session.endedAfterReply ? { endedAfterReply: true } : {}),
     status,
     ...(failure ? { failure } : {}),
     video: rendered && !failure

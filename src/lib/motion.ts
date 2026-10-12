@@ -69,6 +69,7 @@ const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
   Anthropic: { light: "/anthropic-claude.webp" },
   OpenAI: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   xAI: { light: "/xai-light.svg", dark: "/xai-dark.svg" },
+  Meta: { light: "/meta.svg" },
 };
 
 export function getMotionModelLogo(model: MotionModel) {

@@ -20,7 +20,10 @@ import {
   harnessCommand,
   harnessVersion,
   isolatedEnv,
+  killProcessesIn,
   killTree,
+  prepareMuseHome,
+  readMuseUsage,
   resolveBin,
   spawnHarness,
   templatesDir,
@@ -77,6 +80,8 @@ async function runSession(model) {
   const { runDir, workdir, home, prompt } = prepareRun({ groupId, model, source: "runner", harnessVersion: version });
   refreshTemplateAuth(harness.id);
   fs.cpSync(path.join(templatesDir, harness.id), home, { recursive: true });
+  const env = isolatedEnv(home, harness.id);
+  if (harness.id === "muse-code") console.log(`muse ${key}: turned off ${prepareMuseHome(bin, home, workdir, env)} skills and plugins`);
   console.log(`run  ${key} with ${harness.label} ${version} in ${workdir}`);
 
   const transcriptPath = path.join(runDir, "transcript.jsonl");
@@ -86,7 +91,7 @@ async function runSession(model) {
   const startedAt = Date.now();
   const child = spawnHarness(bin, command.args, {
     cwd: workdir,
-    env: isolatedEnv(home, harness.id),
+    env,
     stdio: [command.stdin === null ? "ignore" : "pipe", transcript, stderr],
   });
   current = child;
@@ -98,7 +103,8 @@ async function runSession(model) {
     killTree(child, "SIGTERM");
     setTimeout(() => killTree(child), 10_000).unref();
   }, config.timeoutMinutes * 60_000);
-  const { code: exitCode, signal } = await new Promise((resolve) => {
+  const reply = harness.id === "muse-code" ? watchForFinalReply(transcriptPath, child) : null;
+  let { code: exitCode, signal } = await new Promise((resolve) => {
     child.on("error", (err) => {
       fs.writeSync(stderr, `\nrunner: could not start ${bin}: ${err.message}\n`);
       resolve({ code: -1, signal: null });
@@ -106,10 +112,16 @@ async function runSession(model) {
     child.on("close", (code, sig) => resolve({ code, signal: sig }));
   });
   clearTimeout(timer);
-  const wallSeconds = Math.round((Date.now() - startedAt) / 1000);
+  reply?.stop();
+  // Ended by the runner after the agent's final reply, not by a crash or the time limit, so it counts as a clean exit.
+  const endedAfterReply = Boolean(reply?.endedAt) && !timedOut;
+  if (endedAfterReply) ({ exitCode, signal } = { exitCode: 0, signal: null });
+  const wallSeconds = Math.round(((endedAfterReply ? reply.endedAt : Date.now()) - startedAt) / 1000);
   // Anything the agent left running (dev servers, browsers) goes too, so it can't load the render.
   killTree(child);
   await descendants.killAll();
+  const strays = killProcessesIn(path.dirname(workdir));
+  if (strays.length) console.log(`stopped ${strays.length} background process(es) the session left in its sandbox`);
   current = null;
   fs.closeSync(transcript);
   fs.closeSync(stderr);
@@ -117,11 +129,39 @@ async function runSession(model) {
   syncAuthBack(harness.id, home);
 
   console.log(`session ${key} ended after ${wallSeconds}s (logs in ${runDir})`);
-  const results = await finishRun(runDir, { exitCode, signal, timedOut, wallSeconds, usage: readUsage(harness.id, transcriptPath) });
+  const usage = harness.id === "muse-code" ? readMuseUsage(home) : readUsage(harness.id, transcriptPath);
+  const results = await finishRun(runDir, { exitCode, signal, timedOut, wallSeconds, endedAfterReply, usage });
   for (const { key: videoKey, run } of results) {
     const renderNote = run.render ? `, rendered in ${run.render.renderSeconds}s` : "";
     console.log(`done ${videoKey}: ${run.status}${renderNote}${run.failure ? ` (${run.failure})` : ""}`);
   }
+}
+
+// `muse exec` doesn't exit when the agent is done while anything it started in the background (a dev server) still
+// runs; it waits, and reminder turns can wake the agent again. Once the transcript's last event is the run's final
+// reply and nothing has been written for two minutes, the session counts as finished and the runner stops it.
+// wallSeconds then ends at that reply.
+const replyQuietMs = 120_000;
+
+function watchForFinalReply(transcriptPath, child) {
+  const state = { endedAt: null, stop: () => clearInterval(timer) };
+  const timer = setInterval(() => {
+    const { mtimeMs, size } = fs.statSync(transcriptPath);
+    if (!size || Date.now() - mtimeMs < replyQuietMs) return;
+    const lines = fs.readFileSync(transcriptPath, "utf8").trimEnd().split("\n");
+    let last;
+    try {
+      last = JSON.parse(lines.at(-1));
+    } catch {
+      return;
+    }
+    if (last.payload_type !== "run.terminal.completed") return;
+    state.endedAt = mtimeMs;
+    clearInterval(timer);
+    killTree(child, "SIGTERM");
+    setTimeout(() => killTree(child), 10_000).unref();
+  }, 5_000);
+  return state;
 }
 
 // Best-effort cost and turn totals from each harness's JSON event stream.
