@@ -1,0 +1,11 @@
+{
+  "app/1/page.tsx": "f311964a9d7addc55023aef306dd52dd8fb8d0f683fb0791cc251b8a64fbb34b",
+  "app/2/page.tsx": "160e73137e88b7b00b8648065aa2f50f3d61ba558d97cc4980b8f19a06b22084",
+  "app/3/page.tsx": "64102d9b1f74de341f89334ac9cc7f8e0ca312b334801d2251f6d89edc6b3b6a",
+  "app/4/page.tsx": "d639b2a8eba606aafbe11bdd59ab5c8cf00b5e5907f4cdcb3ce37db815a04d44",
+  "app/5/page.tsx": "f49794f6e63c41e9a7f152b57975232807403cc2a6bdb36e343cfc7d8208cc5d",
+  "app/globals.css": "264665fca88d07b0cb4d4eee1c5aa3c4e5845e9be1a72bf68c5133c9a18e89a6",
+  "app/layout.tsx": "2bbf4a4210127e7cbb0fa991104e8d3a949ebc45182a8cf30a1f2ddaf7a54525",
+  "app/page.tsx": "e094e155e8c277719d6a5f7eebfafcfec0bbb282d5154e9b757085c9c5f474a4",
+  "components/Switcher.tsx": "c19061f7a5ee38c039d595dbf2fbc9694e5117e6f472d71e671b0e60b9b561a4"
+}

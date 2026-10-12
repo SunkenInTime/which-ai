@@ -1,0 +1,9 @@
+{
+  "build": "npm run build passed with the local curl Google Fonts transport shim from the Haiku 5.5 import; shim not committed. Without it, next/font fetches for older variants timed out on this network.",
+  "tests": "376 Playwright route, recency and visual smoke tests passed",
+  "typecheck": "tsc --noEmit: 0 errors",
+  "targeted_lint": "eslint on the new variants, src/lib and the edited tests: 0 problems",
+  "previews": "15 WebP thumbnails captured from next start at 1440x960",
+  "visual_check": "All 15 gallery previews compared side by side with the run's own dev servers. Layout and color match; the source switchers are gone by design. Frontend-design headings differ because the gallery loads the Google Fonts the source dev server dropped (see provenance run_caveats).",
+  "page_errors": 0
+}

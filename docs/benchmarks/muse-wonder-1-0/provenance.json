@@ -1,0 +1,112 @@
+{
+  "model": "muse-wonder-1.0",
+  "date": "2026-10-12",
+  "runner": "Muse Code 1.4.6 (1.4.6-R6000.1), headless `muse exec --json --yolo --no-foreign-personal-context --user-input-auto-resolve`",
+  "reasoning_effort": "xhigh",
+  "sessions": [
+    {
+      "condition": "anthropic-frontend-design",
+      "session_id": "01a1312e-fe04-7f02-8ae6-c49cb8d59bf6",
+      "model": "muse-wonder-1.0",
+      "skills": [
+        "frontend-design"
+      ],
+      "reasoning_effort": "xhigh",
+      "completed": true,
+      "assigned_skill_read": true,
+      "tool_calls": {
+        "bash": 10,
+        "bash_input": 1,
+        "edit_file": 1,
+        "read_file": 2,
+        "read_skill": 2,
+        "write_file": 8,
+        "write_todos": 5
+      },
+      "browser_calls": 0,
+      "tokens": {
+        "input": 1603494,
+        "cached_input": 1429620,
+        "output": 19976,
+        "reasoning": 2951
+      }
+    },
+    {
+      "condition": "no-skills",
+      "session_id": "01a1312e-fa58-7102-8552-8306aa049bd0",
+      "model": "muse-wonder-1.0",
+      "skills": [],
+      "reasoning_effort": "xhigh",
+      "completed": true,
+      "tool_calls": {
+        "bash": 11,
+        "edit_file": 1,
+        "read_file": 5,
+        "read_skill": 1,
+        "write_file": 9,
+        "write_todos": 5
+      },
+      "browser_calls": 0,
+      "tokens": {
+        "input": 1650343,
+        "cached_input": 1484020,
+        "output": 29887,
+        "reasoning": 3086
+      }
+    },
+    {
+      "condition": "design-taste",
+      "session_id": "01a1312f-01ec-7c92-b6e2-20b8bf01938d",
+      "model": "muse-wonder-1.0",
+      "skills": [
+        "design-taste-frontend"
+      ],
+      "reasoning_effort": "xhigh",
+      "completed": true,
+      "assigned_skill_read": true,
+      "tool_calls": {
+        "bash": 12,
+        "bash_input": 1,
+        "read_file": 3,
+        "read_skill": 2,
+        "search": 1,
+        "write_file": 10,
+        "write_todos": 6
+      },
+      "browser_calls": 0,
+      "tokens": {
+        "input": 2699515,
+        "cached_input": 2432848,
+        "output": 26368,
+        "reasoning": 3558
+      }
+    }
+  ],
+  "starter": "Next.js 16.3.8 / React 19.2.8 from create-next-app@16.3.8, identical to the Haiku 5.5 starter file for file",
+  "starter_lockfile_sha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "skills": {
+    "frontend-design": "anthropics/skills@683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "design-taste-frontend": "Leonxlnx/taste-skill@ce26fc25c0e5e8cab638f883de62d9a86ee5e45b"
+  },
+  "skill_placement": "Project skills in .agents/skills/, byte-identical to the pinned upstream SKILL.md files",
+  "browser": "Playwright MCP 0.0.83, isolated headless Chromium 155 (playwright chromium 1247), initial viewport 1440x960, image responses allowed",
+  "prompt_policy": "Original prompt with only assigned skill clause and free port substituted; no extra browser-use instruction or follow-up coaching",
+  "preflight": "Separate unscored sessions at medium effort listed skills and tools and described a canvas-only screenshot correctly. no-skills saw only Muse's bundled skills; each skill folder saw its assigned skill plus the bundled skills; playwright was the only MCP server.",
+  "isolation": "Muse ran with a separate HOME and XDG_CONFIG_HOME holding only the login and benchmark settings. Only ~/Library/Keychains was linked in, because Muse keeps its token in the macOS keychain. foreign_personal_rules and foreign_personal_skills off; personal skills from ~/.agents, ~/.claude and ~/.codex absent; built-in threejs plugin and bundled taste skill off. Other bundled Muse skills stayed on, matching the Muse Spark 1.3 run. Not run through T3 Code, which would have added its own MCP tools. Context isolation only; full filesystem and process access remained.",
+  "integration_changes": [
+    "Root html/body converted to divs with data-source-html/data-source-body, and :root/html/body selectors moved onto them to keep font and custom-property inheritance",
+    "Global CSS scoped by the gallery generator; Tailwind @theme font utilities materialized locally",
+    "@/ imports rewritten to the variant source path; default public SVGs namespaced",
+    "Source switchers bypassed: removed from the no-skills and design-taste root layouts, and the frontend-design Switcher component replaced with a no-op because every page renders it",
+    "Numeric self-links (/1 to /5) point to gallery routes"
+  ],
+  "generation_policy": "No orchestrator edits to generated source during runs. Original completed sources retained outside the gallery; hash records describe files before import adapters.",
+  "timing": "Concurrent sessions, not a controlled latency benchmark. All five pages per condition were written within about 3 minutes of start, and each session posted its completion message within about 8 minutes. The sessions then idled, holding their dev servers, and Muse woke them with reminder turns that changed no files. They were stopped with SIGINT at 2026-10-12T18:10:30Z after source hashes were recorded; the hashes matched after the stop.",
+  "cost": "Not shown on cards. Muse Code reports token usage but no price for muse-wonder-1.0.",
+  "run_caveats": [
+    "No session used the browser. Each checked its routes with curl through the shell, although the preflight showed the Playwright tools worked.",
+    "In the run's own Next dev server, the frontend-design pages' Google Fonts @import (Fraunces, Inter, Space Grotesk, IBM Plex Mono, Archivo, Space Mono, Cormorant Garamond, Sora) never took effect, so those pages rendered in Times and system fonts. The model didn't open a browser and didn't notice. The gallery copy loads the fonts the source asks for, so it shows the intended typography, which the model never saw.",
+    "Next.js generated AGENTS.md/CLAUDE.md in the starter. Muse loads AGENTS.md and ignores CLAUDE.md when both exist; the starter CLAUDE.md only references AGENTS.md.",
+    "Design-taste uses model-chosen seeded Picsum photographs. Two failed to load in the first local screenshot pass and loaded in the gallery."
+  ]
+}
