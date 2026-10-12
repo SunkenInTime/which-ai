@@ -95,6 +95,7 @@
   "isolation": "Muse ran with a separate HOME and XDG_CONFIG_HOME holding only the login and benchmark settings. Only ~/Library/Keychains was linked in, because Muse keeps its token in the macOS keychain. foreign_personal_rules and foreign_personal_skills off; personal skills from ~/.agents, ~/.claude and ~/.codex absent; built-in threejs plugin and bundled taste skill off. Other bundled Muse skills stayed on, matching the Muse Spark 1.3 run. Not run through T3 Code, which would have added its own MCP tools. Context isolation only; full filesystem and process access remained.",
   "integration_changes": [
     "Root html/body converted to divs with data-source-html/data-source-body, and :root/html/body selectors moved onto them to keep font and custom-property inheritance",
+    "Root layout props typed as { children: React.ReactNode } instead of Next's generated LayoutProps<\"/\">, which doesn't exist outside the source app",
     "Global CSS scoped by the gallery generator; Tailwind @theme font utilities materialized locally",
     "@/ imports rewritten to the variant source path; default public SVGs namespaced",
     "Source switchers bypassed: removed from the no-skills and design-taste root layouts, and the frontend-design Switcher component replaced with a no-op because every page renders it",
