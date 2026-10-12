@@ -545,6 +545,7 @@
       "memoryGb": 32
     },
     "usage": {
+      "costUsd": 0.99,
       "tokens": {
         "input_tokens": 730826,
         "cached_input_tokens": 640552,
@@ -590,6 +591,7 @@
       "memoryGb": 32
     },
     "usage": {
+      "costUsd": 0.99,
       "tokens": {
         "input_tokens": 730826,
         "cached_input_tokens": 640552,
@@ -635,6 +637,7 @@
       "memoryGb": 32
     },
     "usage": {
+      "costUsd": 0.99,
       "tokens": {
         "input_tokens": 730826,
         "cached_input_tokens": 640552,
