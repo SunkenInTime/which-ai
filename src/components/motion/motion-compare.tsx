@@ -87,11 +87,9 @@ export function MotionCompare({ clips }: { clips: MotionClip[] }) {
   };
 
   const choose = (side: "left" | "right", key: string) => {
-    // The other side's player survives the swap, so stop and rewind it too; both start together again from 0.
-    both((video) => {
-      video.pause();
-      video.currentTime = 0;
-    });
+    // The other side's player survives the swap, so reset it too; both start together again from 0. `load()` rather
+    // than a rewind, because a rewound video shows its first frame, often black, where the poster should be.
+    both((video) => video.load());
     setWantPlaying(false);
     setTime(0);
     setDuration(0);
