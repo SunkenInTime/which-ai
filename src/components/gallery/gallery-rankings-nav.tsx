@@ -27,19 +27,22 @@ function NavItem({
   label,
   icon: Icon,
   active,
+  current = active,
   showLabel,
 }: {
   href: string;
   label: string;
   icon: LucideIcon;
   active: boolean;
+  /** Whether `href` is this exact page. Defaults to `active`; differs when a link stays lit for its sub-pages. */
+  current?: boolean;
   showLabel: boolean;
 }) {
   return (
     <Link
       href={href}
       aria-label={label}
-      aria-current={active ? "page" : undefined}
+      aria-current={current ? "page" : undefined}
       className={clsx(navLinkClass(active), "min-w-9", showLabel && "sm:px-3")}
     >
       <span className={clsx("inline-flex size-9 items-center justify-center text-current", showLabel && "sm:hidden")}>
@@ -69,7 +72,14 @@ export function GalleryRankingsNav() {
       aria-label="Site navigation"
       className="fixed top-5 right-5 z-[110] flex items-center gap-0.5 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-secondary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6 sm:right-6 gallery-elevated-surface"
     >
-      <NavItem href="/" label="Gallery" icon={Home} active={onGallery} showLabel={!onGallery} />
+      <NavItem
+        href="/"
+        label="Gallery"
+        icon={Home}
+        active={onGallery}
+        current={pathname === "/"}
+        showLabel={!onGallery}
+      />
       <NavDivider />
       <NavItem
         href={buildCompareHref(DEFAULT_COMPARE_STATE)}
