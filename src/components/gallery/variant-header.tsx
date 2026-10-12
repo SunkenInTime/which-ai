@@ -21,14 +21,14 @@ import {
 
 type PickerMode = "compare" | "model" | "skill" | null;
 
-const switcherButtonClass =
+export const switcherButtonClass =
   "inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-[var(--gallery-text-secondary)] transition-colors outline-none hover:bg-[var(--gallery-hover-bg)] hover:text-[var(--gallery-text-primary)] focus-visible:ring-1 focus-visible:ring-[var(--gallery-accent)]";
 
 const popoverBaseClass =
   "absolute top-0 z-[120] flex max-h-[min(26rem,calc(100vh-3rem))] w-[min(19rem,calc(100vw-5.5rem))] flex-col gap-1.5 overflow-auto rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-body-bg)] p-2 text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-md)] backdrop-blur-[12px]";
 
 // Popovers open away from the screen edge the switcher is docked to.
-function getPopoverClass(side: GallerySwitcherSide) {
+export function getPopoverClass(side: GallerySwitcherSide) {
   return clsx(
     popoverBaseClass,
     side === "left" ? "left-[calc(100%+0.5rem)]" : "right-[calc(100%+0.5rem)]",

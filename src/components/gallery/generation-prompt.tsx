@@ -7,7 +7,9 @@ import { useState } from "react";
 
 const FAST_SPRING = { type: "spring" as const, stiffness: 680, damping: 32 };
 
-export function GenerationPrompt({ prompt }: { prompt: string }) {
+/** `summary`, when given, is shown first and the full prompt sits behind a toggle; copy always copies the full prompt. */
+export function GenerationPrompt({ prompt, summary }: { prompt: string; summary?: string }) {
+  const [expanded, setExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
   const [copyFlash, setCopyFlash] = useState(false);
 
@@ -29,10 +31,25 @@ export function GenerationPrompt({ prompt }: { prompt: string }) {
   return (
     <div className="group mt-8 flex items-end gap-3">
       <figure className="min-w-0 flex-1 border-l border-[var(--gallery-divider-strong)] pl-5">
-        <blockquote className="text-[15px] leading-relaxed text-[var(--gallery-text-secondary)]">
+        <blockquote
+          className={clsx(
+            "text-[15px] leading-relaxed text-[var(--gallery-text-secondary)]",
+            summary && "whitespace-pre-line",
+          )}
+        >
           <span className="text-[var(--gallery-text-quaternary)]">Prompt · </span>
-          {prompt}
+          {summary && !expanded ? summary : prompt}
         </blockquote>
+        {summary ? (
+          <button
+            type="button"
+            aria-expanded={expanded}
+            onClick={() => setExpanded((open) => !open)}
+            className="mt-2 cursor-pointer text-sm text-[var(--gallery-text-tertiary)] underline decoration-[var(--gallery-divider-strong)] underline-offset-4 transition-colors hover:text-[var(--gallery-text-primary)]"
+          >
+            {expanded ? "Show less" : "Show full prompt"}
+          </button>
+        ) : null}
       </figure>
 
       <div
