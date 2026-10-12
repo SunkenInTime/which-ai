@@ -1,4 +1,5 @@
-// The folder an agent session works in. It holds only what the session needs: an empty project, a fresh home,
+// The folder an agent session works in. It holds only what the session needs: a project with an empty folder per
+// video (1, 2, 3), a fresh home,
 // and a private copy of framekit with the render spec. Nothing in it points back at the repo, so an agent that
 // reads its tools (they often do) can't wander into the site's design docs, skills, or other models' videos.
 // Its name is random and it lives apart from the run records, so a session can't find earlier tries either.
@@ -23,9 +24,12 @@ export function createSandbox() {
   for (const file of ["cli.mjs", "kit.mjs"]) fs.copyFileSync(path.join(framekitSource, file), path.join(framekit, file));
   fs.writeFileSync(path.join(framekit, "spec.json"), JSON.stringify(config.render, null, 2) + "\n");
   fs.cpSync(playwrightCore, path.join(framekit, "node_modules", "playwright-core"), { recursive: true });
-  // The only thing in the project at the start: a pointer to the sandbox's framekit. It's relative, so the project
-  // keeps working after it and framekit move into the run folder.
-  fs.writeFileSync(path.join(workdir, "motion.mjs"), `import "../framekit/cli.mjs";\n`);
+  // The only thing in each video's folder at the start: a pointer to the sandbox's framekit. It's relative, so the
+  // project keeps working after it and framekit move into the run folder.
+  for (let n = 1; n <= config.iterations; n++) {
+    fs.mkdirSync(path.join(workdir, String(n)));
+    fs.writeFileSync(path.join(workdir, String(n), "motion.mjs"), `import "../../framekit/cli.mjs";\n`);
+  }
   return { sandbox, workdir, home: path.join(sandbox, "home") };
 }
 

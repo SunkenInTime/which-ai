@@ -1,6 +1,6 @@
 {
   "iterations": 3,
-  "timeoutMinutes": 90,
+  "timeoutMinutes": 240,
   "effort": "xhigh",
   "render": { "width": 1920, "height": 1080, "fps": 60, "durationSec": 15, "gl": "gpu" },
   "groups": [

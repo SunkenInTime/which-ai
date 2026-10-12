@@ -1,8 +1,9 @@
-// Sets up a run: a sandbox with an empty project and the `node motion.mjs` tools (see sandbox.mjs), plus a run
-// folder holding run.json and the prompt.
+// Sets up a session: a sandbox with one empty folder per video and the `node motion.mjs` tools (see sandbox.mjs),
+// plus a run folder holding run.json and the prompt. One session makes all of a model's videos, the way the UI
+// gallery asks for every iteration in one prompt, so the model knows it is making several.
 // The headless runner uses this for every session. To run a model by hand in an agent thread instead:
 //
-//   node scripts/motion/new.mjs <model-id> <iteration> [--group baseline]
+//   node scripts/motion/new.mjs <model-id> [--group baseline]
 //
 // then open an agent thread in the printed project folder, paste the prompt from PROMPT.txt (next to the
 // project, not inside it), and when the agent is done run `node scripts/motion/finish.mjs <run-dir>`.
@@ -20,10 +21,10 @@ export function loadPrompt(groupId) {
   return { prompt, promptSha256: crypto.createHash("sha256").update(prompt).digest("hex") };
 }
 
-export function prepareRun({ groupId, model, iteration, source, harnessVersion = null }) {
+export function prepareRun({ groupId, model, source, harnessVersion = null }) {
   const { prompt, promptSha256 } = loadPrompt(groupId);
   // The record (run.json, prompt, transcript) lives in runDir; the agent only ever sees its sandbox.
-  const runDir = path.join(workRoot, groupId, model.id, `${iteration}-${Date.now()}`);
+  const runDir = path.join(workRoot, groupId, model.id, String(Date.now()));
   fs.mkdirSync(runDir, { recursive: true });
   const { sandbox, workdir, home } = createSandbox();
   fs.writeFileSync(path.join(runDir, "PROMPT.txt"), prompt + "\n");
@@ -31,7 +32,7 @@ export function prepareRun({ groupId, model, iteration, source, harnessVersion =
     source,
     group: groupId,
     model: model.id,
-    iteration,
+    iterations: config.iterations,
     modelArg: model.modelArg,
     effort: model.effort ?? config.effort,
     harnessVersion,
@@ -46,14 +47,13 @@ if (import.meta.filename === path.resolve(process.argv[1] ?? "")) {
   const args = process.argv.slice(2);
   const groupFlag = args.indexOf("--group");
   const groupId = groupFlag === -1 ? "baseline" : args[groupFlag + 1];
-  const [modelId, iterArg] = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--group");
+  const [modelId] = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--group");
   const model = config.models.find((m) => m.id === modelId);
-  const iteration = Number(iterArg);
-  if (!model || !Number.isInteger(iteration) || iteration < 1 || iteration > config.iterations || !config.groups.some((g) => g.id === groupId)) {
-    console.error(`Usage: node scripts/motion/new.mjs <${config.models.map((m) => m.id).join("|")}> <1-${config.iterations}> [--group baseline]`);
+  if (!model || !config.groups.some((g) => g.id === groupId)) {
+    console.error(`Usage: node scripts/motion/new.mjs <${config.models.map((m) => m.id).join("|")}> [--group baseline]`);
     process.exit(1);
   }
-  const { runDir, workdir } = prepareRun({ groupId, model, iteration, source: "manual" });
+  const { runDir, workdir } = prepareRun({ groupId, model, source: "manual" });
   console.log(`run folder:  ${runDir}`);
   console.log(`open the agent in: ${workdir}`);
   console.log(`paste the prompt from: ${path.join(runDir, "PROMPT.txt")}`);

@@ -1,13 +1,15 @@
-// Runs the shared motion prompt through one or more (model, iteration) pairs, then renders each result.
+// Runs the shared motion prompt through one or more models, one session each, then renders the results.
 //
-//   node scripts/motion/run.mjs <model-id|all> [iteration|all] [--group baseline] [--force]
+//   node scripts/motion/run.mjs <model-id|all> [--group baseline] [--force]
 //
-// Each run gets a fresh project folder and a fresh HOME that holds only the harness's credentials,
+// One session makes all of a model's videos (one folder each), the way the UI gallery asks for every iteration
+// in one prompt: the model knows it is making several, so whether they differ is up to it.
+// Each session gets a fresh sandbox and a fresh HOME that holds only the harness's credentials,
 // so the harness starts from its stock configuration: no skills, plugins, MCP servers, or user instructions.
-// The agent builds a page that follows the framekit contract (see the prompt); once its session ends,
-// finish.mjs renders that page the same way for every model. Agent time and render time are recorded apart.
-// Raw transcripts and the agent's source files stay in the work root (see harness.mjs); the repo gets the video,
-// a poster, and one entry in src/lib/motion-runs.json.
+// The agent builds pages that follow the framekit contract (see the prompt); once its session ends,
+// finish.mjs renders each page the same way for every model. Agent time and render time are recorded apart.
+// Raw transcripts and the agent's source files stay in the work root (see harness.mjs); the repo gets each video,
+// a poster, and one entry per video in src/lib/motion-runs.json.
 import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
@@ -32,14 +34,11 @@ const groupFlag = args.indexOf("--group");
 const groupId = groupFlag === -1 ? "baseline" : args[groupFlag + 1];
 const force = args.includes("--force");
 const positional = args.filter((a, i) => !a.startsWith("--") && args[i - 1] !== "--group");
-const [modelArg = "", iterArg = "all"] = positional;
+const [modelArg = ""] = positional;
 
 if (!config.groups.some((g) => g.id === groupId)) fail(`Unknown group ${groupId}`);
 const models = modelArg === "all" ? config.models : config.models.filter((m) => m.id === modelArg);
-if (!models.length) fail(`Usage: node scripts/motion/run.mjs <${config.models.map((m) => m.id).join("|")}|all> [iteration|all]`);
-const iterations =
-  iterArg === "all" ? Array.from({ length: config.iterations }, (_, i) => i + 1) : [Number(iterArg)];
-if (iterations.some((n) => !Number.isInteger(n) || n < 1 || n > config.iterations)) fail(`Bad iteration ${iterArg}`);
+if (!models.length) fail(`Usage: node scripts/motion/run.mjs <${config.models.map((m) => m.id).join("|")}|all>`);
 
 const { promptSha256 } = loadPrompt(groupId);
 
@@ -50,25 +49,21 @@ process.on("SIGINT", () => {
   process.exit(130);
 });
 
-for (const model of models) {
-  for (const iteration of iterations) {
-    await runOne(model, iteration);
-  }
-}
+for (const model of models) await runSession(model);
 
-async function runOne(model, iteration) {
+async function runSession(model) {
   const harness = config.harnesses.find((h) => h.id === model.harness);
   if (!harness) fail(`Model ${model.id} points at unknown harness ${model.harness}`);
-  const key = `${groupId}/${model.id}/${iteration}`;
-  const existing = readRuns()[key];
-  if (existing && !force) {
-    // Only an isolated run under the current prompt counts as done; manual or older results get redone.
-    if (existing.promptSha256 === promptSha256 && existing.source === "runner") {
-      console.log(`skip ${key} (already ran, pass --force to redo)`);
-      return;
-    }
-    console.log(`redo ${key} (its result came from ${existing.source === "manual" ? "a manual thread" : "an older prompt"})`);
+  const key = `${groupId}/${model.id}`;
+  const runs = readRuns();
+  const existing = Array.from({ length: config.iterations }, (_, i) => runs[`${key}/${i + 1}`]);
+  // A model is done when an isolated session under the current prompt made all its videos. Anything less gets a
+  // new session, which replaces the published videos only if it does at least as well (see finish.mjs).
+  if (!force && existing.every((run) => run?.promptSha256 === promptSha256 && run.source === "runner" && run.status === "ok")) {
+    console.log(`skip ${key} (already ran, pass --force to redo)`);
+    return;
   }
+  if (existing.some(Boolean)) console.log(`redo ${key} (its videos came from an older prompt, a manual thread, or a session that didn't make all of them, or --force)`);
 
   if (harness.id === "claude-code") {
     try {
@@ -79,7 +74,7 @@ async function runOne(model, iteration) {
   }
   const bin = resolveBin(harness.bin);
   const version = harnessVersion(bin);
-  const { runDir, workdir, home, prompt } = prepareRun({ groupId, model, iteration, source: "runner", harnessVersion: version });
+  const { runDir, workdir, home, prompt } = prepareRun({ groupId, model, source: "runner", harnessVersion: version });
   refreshTemplateAuth(harness.id);
   fs.cpSync(path.join(templatesDir, harness.id), home, { recursive: true });
   console.log(`run  ${key} with ${harness.label} ${version} in ${workdir}`);
@@ -121,9 +116,12 @@ async function runOne(model, iteration) {
 
   syncAuthBack(harness.id, home);
 
-  const { run } = await finishRun(runDir, { exitCode, signal, timedOut, wallSeconds, usage: readUsage(harness.id, transcriptPath) });
-  const renderNote = run.render ? `, rendered in ${run.render.renderSeconds}s` : "";
-  console.log(`done ${key}: ${run.status} after ${wallSeconds}s${renderNote}${run.failure ? ` (${run.failure})` : ""} (logs in ${runDir})`);
+  console.log(`session ${key} ended after ${wallSeconds}s (logs in ${runDir})`);
+  const results = await finishRun(runDir, { exitCode, signal, timedOut, wallSeconds, usage: readUsage(harness.id, transcriptPath) });
+  for (const { key: videoKey, run } of results) {
+    const renderNote = run.render ? `, rendered in ${run.render.renderSeconds}s` : "";
+    console.log(`done ${videoKey}: ${run.status}${renderNote}${run.failure ? ` (${run.failure})` : ""}`);
+  }
 }
 
 // Best-effort cost and turn totals from each harness's JSON event stream.
