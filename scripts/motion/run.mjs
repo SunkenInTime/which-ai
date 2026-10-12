@@ -144,7 +144,9 @@ async function runSession(model) {
 function watchForFinalReply(transcriptPath, child) {
   // Declared here, not at module level: sessions start from the top-level loop before later module code runs.
   const replyQuietMs = 120_000;
-  const state = { endedAt: null, stop: () => clearInterval(timer) };
+  let escalation = null;
+  // stop() runs once the harness has closed, so a pending SIGKILL can't reach a reused process group.
+  const state = { endedAt: null, stop: () => (clearInterval(timer), clearTimeout(escalation)) };
   const timer = setInterval(() => {
     const { mtimeMs, size } = fs.statSync(transcriptPath);
     if (!size || Date.now() - mtimeMs < replyQuietMs) return;
@@ -159,7 +161,8 @@ function watchForFinalReply(transcriptPath, child) {
     state.endedAt = mtimeMs;
     clearInterval(timer);
     killTree(child, "SIGTERM");
-    setTimeout(() => killTree(child), 10_000).unref();
+    escalation = setTimeout(() => killTree(child), 10_000);
+    escalation.unref();
   }, 5_000);
   return state;
 }

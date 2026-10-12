@@ -551,7 +551,7 @@
         "output_tokens": 16118,
         "reasoning_tokens": 1897
       },
-      "modelCalls": 42
+      "modelCalls": 20
     }
   },
   "baseline/muse-wonder-1.0/2": {
@@ -596,7 +596,7 @@
         "output_tokens": 16118,
         "reasoning_tokens": 1897
       },
-      "modelCalls": 42
+      "modelCalls": 20
     }
   },
   "baseline/muse-wonder-1.0/3": {
@@ -641,7 +641,7 @@
         "output_tokens": 16118,
         "reasoning_tokens": 1897
       },
-      "modelCalls": 42
+      "modelCalls": 20
     }
   },
   "baseline/opus-5.5/1": {

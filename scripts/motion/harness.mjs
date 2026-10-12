@@ -83,7 +83,9 @@ export function resolveBin(bin) {
   // `muse` is a launcher script that installs and updates the real binary under $HOME, which a fresh home would
   // send it to redo. Launch the binary it currently points at instead, so every run uses the installed version.
   if (bin === "muse" && !isWindows) {
-    const dir = path.dirname(execFileSync("/bin/sh", ["-c", 'command -v "$1"', "sh", bin], { encoding: "utf8" }).trim());
+    // PATH may hold a symlink to the launcher; its version marker sits beside the real file.
+    const launcher = execFileSync("/bin/sh", ["-c", 'command -v "$1"', "sh", bin], { encoding: "utf8" }).trim();
+    const dir = path.dirname(fs.realpathSync(launcher));
     const version = fs.readFileSync(path.join(dir, ".muse-version"), "utf8").trim();
     return path.join(dir, `muse-bin-${version}`);
   }
@@ -230,15 +232,17 @@ export function readMuseUsage(home) {
       if (!line.includes("goal_usage_attribution")) continue;
       try {
         const record = JSON.parse(line).payload?.event?.record;
-        if (record?.quantity?.unit === "tokens") seen.set(record.usage_id, record.quantity);
+        if (record?.quantity?.unit === "tokens") seen.set(record.usage_id, record);
       } catch {
         // A partial last line from a killed process.
       }
     }
   }
   if (!seen.size) return null;
-  const sum = (key) => [...seen.values()].reduce((n, q) => n + (q[key] ?? 0), 0);
-  return { tokens: { input_tokens: sum("input_tokens"), cached_input_tokens: sum("cached_tokens"), output_tokens: sum("output_tokens"), reasoning_tokens: sum("reasoning_tokens") }, modelCalls: seen.size };
+  const sum = (key) => [...seen.values()].reduce((n, r) => n + (r.quantity[key] ?? 0), 0);
+  // Tool calls write zero-token records too; only provider records are model calls.
+  const modelCalls = [...seen.values()].filter((r) => r.usage_family === "provider").length;
+  return { tokens: { input_tokens: sum("input_tokens"), cached_input_tokens: sum("cached_tokens"), output_tokens: sum("output_tokens"), reasoning_tokens: sum("reasoning_tokens") }, modelCalls };
 }
 
 // npm installs CLIs on Windows as .cmd shims, which Node can only run through cmd.exe, and cmd.exe mangles
@@ -362,7 +366,12 @@ export function trackDescendants(rootPid) {
 // group, so killTree misses it. On macOS and Linux, kill whatever still has its working folder inside the sandbox.
 export function killProcessesIn(dir) {
   if (isWindows) return [];
-  const { stdout } = spawnSync("lsof", ["-a", "-d", "cwd", "-F", "pn"], { encoding: "utf8" });
+  const { stdout, status, error } = spawnSync("lsof", ["-a", "-d", "cwd", "-F", "pn"], { encoding: "utf8" });
+  if (error || (status !== 0 && !stdout)) {
+    // Don't fail a finished session over cleanup, but don't pretend it happened either.
+    console.warn(`Couldn't list processes with lsof (${error?.message ?? `exit ${status}`}), so anything the session left running in its sandbox is still running.`);
+    return [];
+  }
   // lsof reports real paths (/private/tmp, not /tmp).
   const real = fs.realpathSync(dir);
   const killed = [];
