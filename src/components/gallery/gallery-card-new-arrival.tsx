@@ -6,15 +6,14 @@ export function GalleryCardNewArrivalTag({ addedAt }: { addedAt: GalleryIsoDate 
     <div className="pointer-events-none absolute left-3 top-3 z-10 sm:left-4 sm:top-4">
       <span
         data-testid="gallery-card-new-arrival"
-        className="gallery-new-arrival-tag inline-flex h-6 items-center gap-1.5 rounded-full bg-[var(--gallery-accent)] pl-2.5 pr-3 text-[10px] font-semibold uppercase leading-none tracking-[0.18em] text-[var(--gallery-accent-foreground)] sm:text-[11px]"
+        className="inline-flex h-6 items-center gap-1.5 rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-tooltip-bg)] px-2 text-xs font-medium leading-none tracking-tight text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-md"
       >
-        <span className="size-1.5 rounded-full bg-current opacity-80" aria-hidden />
+        <span className="gallery-new-dot" aria-hidden />
         <span aria-hidden>New</span>
-        <span className="opacity-60" aria-hidden>
-          ·
-        </span>
         <span className="sr-only">New arrival, added </span>
-        <time dateTime={addedAt}>{formatGalleryAddedDate(addedAt)}</time>
+        <time dateTime={addedAt} className="text-[var(--gallery-text-tertiary)]">
+          {formatGalleryAddedDate(addedAt)}
+        </time>
       </span>
     </div>
   );

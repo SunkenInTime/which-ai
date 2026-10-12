@@ -97,6 +97,13 @@ export function isoDateToUtcMs(date: GalleryIsoDate): number {
   return Date.parse(`${date}T00:00:00Z`);
 }
 
+/** True when `date` falls inside the new-arrival window ending at `now`. */
+export function isGalleryDateRecent(date: GalleryIsoDate, now: number): boolean {
+  const elapsed = now - isoDateToUtcMs(date);
+  // A future date is a data error or clock skew, not an arrival.
+  return elapsed >= 0 && elapsed < NEW_ARRIVAL_WINDOW_DAYS * DAY_MS;
+}
+
 export function getGalleryEntryAddedAt(
   entry: Pick<GalleryEntry, "group" | "model">,
 ): GalleryIsoDate | null {
@@ -116,9 +123,7 @@ export function getGalleryEntryNewArrival(
   if (!NEW_ARRIVAL_MODELS.has(entry.model)) return null;
   const addedAt = getGalleryEntryAddedAt(entry);
   if (!addedAt) return null;
-  const elapsed = now - isoDateToUtcMs(addedAt);
-  // A future date is a data error or clock skew, not an arrival; badge nothing.
-  if (elapsed < 0 || elapsed >= NEW_ARRIVAL_WINDOW_DAYS * DAY_MS) return null;
+  if (!isGalleryDateRecent(addedAt, now)) return null;
   if (isGalleryModelArchivedWithinGroup(entries, entry)) return null;
   return addedAt;
 }

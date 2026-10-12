@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { GalleryGroupSection } from "@/components/gallery/gallery-group-section";
+import { GalleryModeSwitcher } from "@/components/gallery/gallery-mode-switcher";
 import { GallerySearch } from "@/components/gallery/gallery-search";
 import { filterGalleryEntriesByQuery, normalizeGalleryQuery } from "@/lib/gallery-search";
 import type { GalleryEntry, GalleryGroupSlug } from "@/lib/gallery-types";
@@ -55,13 +56,16 @@ export function GalleryHomeGroups({
 
   return (
     <>
-      <div className="mt-8">
-        <GallerySearch
-          query={query}
-          onQueryChange={setQuery}
-          resultCount={resultCount}
-          totalCount={totalCount}
-        />
+      <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+        <div className="min-w-64 flex-1">
+          <GallerySearch
+            query={query}
+            onQueryChange={setQuery}
+            resultCount={resultCount}
+            totalCount={totalCount}
+          />
+        </div>
+        <GalleryModeSwitcher active="frontend" now={referenceTime} />
       </div>
 
       {searching && filtered.length === 0 ? (

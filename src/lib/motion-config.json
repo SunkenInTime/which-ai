@@ -6,8 +6,7 @@
   "groups": [
     {
       "id": "baseline",
-      "label": "Without Skills",
-      "description": "Each lab's own coding agent with its stock setup. No skills, plugins, MCP servers, or custom instructions."
+      "label": "Without Skills"
     }
   ],
   "harnesses": [
