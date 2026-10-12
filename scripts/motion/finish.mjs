@@ -99,7 +99,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
       // The check samples a few frames; errors on any other frame still disqualify the render.
       if (rendered.pageErrors.length) failure = `The page threw errors during the render: ${rendered.pageErrors.join(" ")}`;
       else {
-        execFileSync(ffmpegBin, ["-y", "-v", "error", "-ss", "1", "-i", out, "-frames:v", "1", "-q:v", "3", poster], { windowsHide: true });
+        rendered.posterSec = writePoster(out, poster, rendered.durationSec);
         encodeForWeb(out, web, preview);
         rendered.web = { sizeBytes: fs.statSync(web).size, previewSizeBytes: fs.statSync(preview).size };
         files = [
@@ -126,6 +126,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
     exitCode,
     ...(signal ? { signal } : {}),
     timedOut,
+    ...(session.endedAfterReply ? { endedAfterReply: true } : {}),
     status,
     ...(failure ? { failure } : {}),
     video: rendered && !failure
@@ -138,6 +139,7 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
           sizeBytes: rendered.web.sizeBytes,
           previewSizeBytes: rendered.web.previewSizeBytes,
           masterSizeBytes: rendered.sizeBytes,
+          posterSec: rendered.posterSec,
         }
       : null,
     render: rendered && !failure
@@ -155,6 +157,31 @@ async function finishVideo(runDir, meta, n, session, sessionFailure) {
   };
 
   return { key, n, run, files };
+}
+
+// The poster is the frame at 1 s, where most videos already show their opening. A video that opens on black or on a
+// lone dot gets its last half second instead, where launch videos settle on the product's name. If both are empty,
+// the busier of the two.
+export function writePoster(video, poster, durationSec) {
+  const candidates = [1, durationSec - 0.5].map((sec) => ({ sec, detail: frameDetail(video, sec) }));
+  const pick = candidates.find((c) => c.detail >= emptyFrameDetail) ?? candidates.reduce((a, b) => (b.detail > a.detail ? b : a));
+  execFileSync(ffmpegBin, ["-y", "-v", "error", "-ss", String(pick.sec), "-i", video, "-frames:v", "1", "-q:v", "3", poster], {
+    windowsHide: true,
+  });
+  return pick.sec;
+}
+
+// How much a frame draws: the mean brightness of its edge map at 480 px wide. Black frames and a lone dot measure
+// about 0.1; every 1 s frame the first 15 published videos use as posters measures 2 or more.
+const emptyFrameDetail = 1;
+
+function frameDetail(video, sec) {
+  const filter = "scale=480:-2,format=gray,edgedetect=low=0.1:high=0.3,signalstats,metadata=print:key=lavfi.signalstats.YAVG:file=-";
+  const out = execFileSync(ffmpegBin, ["-v", "error", "-ss", String(sec), "-i", video, "-frames:v", "1", "-vf", filter, "-f", "null", "-"], {
+    encoding: "utf8",
+    windowsHide: true,
+  });
+  return Number(out.match(/YAVG=([\d.]+)/)?.[1] ?? 0);
 }
 
 // The master is encoded for archiving (CRF 18, up to 30 Mbps). The site gets a full-size, full-frame-rate
