@@ -509,6 +509,141 @@
       "turns": 77
     }
   },
+  "baseline/muse-wonder-1.0/1": {
+    "source": "runner",
+    "harnessVersion": "1.4.6",
+    "modelArg": "muse-wonder-1.0",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-12T18:28:24.293Z",
+    "wallSeconds": 134,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 2118614,
+      "previewSizeBytes": 241522,
+      "masterSizeBytes": 2875497,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 31.7,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 730826,
+        "cached_input_tokens": 640552,
+        "output_tokens": 16118,
+        "reasoning_tokens": 1897
+      },
+      "modelCalls": 42
+    }
+  },
+  "baseline/muse-wonder-1.0/2": {
+    "source": "runner",
+    "harnessVersion": "1.4.6",
+    "modelArg": "muse-wonder-1.0",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-12T18:28:24.293Z",
+    "wallSeconds": 134,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 1782194,
+      "previewSizeBytes": 216713,
+      "masterSizeBytes": 2209793,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 21.3,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 730826,
+        "cached_input_tokens": 640552,
+        "output_tokens": 16118,
+        "reasoning_tokens": 1897
+      },
+      "modelCalls": 42
+    }
+  },
+  "baseline/muse-wonder-1.0/3": {
+    "source": "runner",
+    "harnessVersion": "1.4.6",
+    "modelArg": "muse-wonder-1.0",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-12T18:28:24.293Z",
+    "wallSeconds": 134,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 1798682,
+      "previewSizeBytes": 166933,
+      "masterSizeBytes": 2408483,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 29.2,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 730826,
+        "cached_input_tokens": 640552,
+        "output_tokens": 16118,
+        "reasoning_tokens": 1897
+      },
+      "modelCalls": 42
+    }
+  },
   "baseline/opus-5.5/1": {
     "source": "runner",
     "harnessVersion": "2.1.289",
