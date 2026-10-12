@@ -38,6 +38,8 @@ export const authFiles = {
   "claude-code": [], // Logs in with the token below instead.
   codex: [".codex/auth.json"],
   "grok-cli": [".grok/auth.json"],
+  // Muse keeps its token in the macOS keychain; auth.json only says which provider and login to look up.
+  "muse-code": [".config/muse/auth.json"],
 };
 
 // Claude Code keeps its login in the keychain keyed to the config dir, so a fresh HOME is logged out.
@@ -78,6 +80,15 @@ export function assertClaudeAuth(minutesNeeded) {
 export const isWindows = process.platform === "win32";
 
 export function resolveBin(bin) {
+  // `muse` is a launcher script that installs and updates the real binary under $HOME, which a fresh home would
+  // send it to redo. Launch the binary it currently points at instead, so every run uses the installed version.
+  if (bin === "muse" && !isWindows) {
+    // PATH may hold a symlink to the launcher; its version marker sits beside the real file.
+    const launcher = execFileSync("/bin/sh", ["-c", 'command -v "$1"', "sh", bin], { encoding: "utf8" }).trim();
+    const dir = path.dirname(fs.realpathSync(launcher));
+    const version = fs.readFileSync(path.join(dir, ".muse-version"), "utf8").trim();
+    return path.join(dir, `muse-bin-${version}`);
+  }
   if (isWindows) {
     const found = execFileSync("where.exe", [bin], { encoding: "utf8" }).split(/\r?\n/).filter(Boolean);
     return found.find((p) => /\.(exe|cmd)$/i.test(p)) ?? found[0];
@@ -138,6 +149,18 @@ export function isolatedEnv(home, harnessId) {
 // Every model runs at the same reasoning effort, set once in the config. Claude Code and Codex read the
 // prompt from stdin, which keeps the multi-line prompt out of the command line (cmd.exe can't carry newlines).
 // Claude Code ships built-in skills (one is a design skill); --disable-slash-commands turns them all off.
+// Codex ships bundled skills too, and on Windows it finds the user's ~/.agents/skills through the OS profile
+// folder, whatever HOME and USERPROFILE say. codexIsolation turns both off, along with skill search, ChatGPT
+// apps, and plugins. Its stock tools (shell, patches, web search, image generation, subagents) stay on.
+const codexIsolation = [
+  "skills.bundled.enabled=false",
+  "skills.include_instructions=false",
+  "features.skill_search=false",
+  "features.apps=false",
+  "features.plugins=false",
+  "features.remote_plugin=false",
+].flatMap((setting) => ["-c", setting]);
+
 export function harnessCommand(harness, model, prompt, workdir) {
   const effort = model.effort ?? config.effort;
   switch (harness.id) {
@@ -148,8 +171,15 @@ export function harnessCommand(harness, model, prompt, workdir) {
       };
     case "codex":
       return {
-        args: ["exec", "--model", model.modelArg, "-c", `model_reasoning_effort=${effort}`, "--dangerously-bypass-approvals-and-sandbox", "--skip-git-repo-check", "--json", "-C", workdir, "-"],
+        args: ["exec", "--model", model.modelArg, "-c", `model_reasoning_effort=${effort}`, ...codexIsolation, "--dangerously-bypass-approvals-and-sandbox", "--skip-git-repo-check", "--json", "-C", workdir, "-"],
         stdin: prompt,
+      };
+    case "muse-code":
+      // The prompt goes on the command line, which is fine on macOS and Linux (Muse isn't run on Windows here).
+      // --yolo turns off approvals and the sandbox, the same access the other harnesses get.
+      return {
+        args: ["exec", "--json", "--model", model.modelArg, "--reasoning-effort", effort, "--yolo", "--no-foreign-personal-context", "--user-input-auto-resolve", "--workspace", workdir, prompt],
+        stdin: null,
       };
     case "grok-cli":
       return {
@@ -159,6 +189,60 @@ export function harnessCommand(harness, model, prompt, workdir) {
     default:
       throw new Error(`Unknown harness ${harness.id}`);
   }
+}
+
+// Muse reads skills from ~/.agents, ~/.claude and ~/.codex, ships its own bundled skills (one, taste, is a design
+// skill), and has a built-in plugin. A fresh home hides the first three, but the bundled skills and the plugin come
+// with the binary. This writes a settings file that turns off personal rules and every skill and plugin the
+// session would see, then lists them again and refuses to run if any is still active. Muse finds its token in the
+// login keychain through HOME, so on macOS the fresh home links the real keychain folder, and nothing else.
+export function prepareMuseHome(bin, home, workdir, env) {
+  const configDir = path.join(home, ".config", "muse");
+  fs.mkdirSync(configDir, { recursive: true });
+  if (process.platform === "darwin") {
+    fs.mkdirSync(path.join(home, "Library"), { recursive: true });
+    fs.symlinkSync(path.join(os.homedir(), "Library", "Keychains"), path.join(home, "Library", "Keychains"));
+  }
+  const settingsPath = path.join(configDir, "settings.json");
+  const settings = { schema_version: 1, provider: "meta", context: { foreign_personal_rules: false, foreign_personal_skills: false }, skills: { activation: {} } };
+  const list = () =>
+    JSON.parse(
+      execFileSync(bin, ["skills", "list", "--json", "--workspace", workdir, "--trust-workspace"], { cwd: workdir, env, encoding: "utf8", windowsHide: true }),
+    ).skills;
+  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2) + "\n");
+  for (const skill of list()) {
+    const scope = skill.scope === "project" ? null : skill.scope;
+    if (!scope) throw new Error(`Muse found a project skill at ${skill.path}, which an empty project shouldn't have.`);
+    (settings.skills.activation[scope] ??= {})[skill.path] = "off";
+  }
+  fs.writeFileSync(settingsPath, JSON.stringify(settings, null, 2) + "\n");
+  const active = list().filter((skill) => skill.activation !== "off");
+  if (active.length) throw new Error(`Muse still has active skills: ${active.map((skill) => skill.id).join(", ")}`);
+  return Object.values(settings.skills.activation).reduce((n, scope) => n + Object.keys(scope).length, 0);
+}
+
+// Muse's --json stream has no usage, so token totals come from the session store in the run's home. Every model
+// call writes one usage record; subagent sessions sit in the same tree, and records are deduplicated by id.
+export function readMuseUsage(home) {
+  const sessions = path.join(home, ".local", "share", "muse", "sessions");
+  if (!fs.existsSync(sessions)) return null;
+  const seen = new Map();
+  for (const file of fs.readdirSync(sessions, { recursive: true }).filter((f) => f.endsWith("session.jsonl"))) {
+    for (const line of fs.readFileSync(path.join(sessions, file), "utf8").split("\n")) {
+      if (!line.includes("goal_usage_attribution")) continue;
+      try {
+        const record = JSON.parse(line).payload?.event?.record;
+        if (record?.quantity?.unit === "tokens") seen.set(record.usage_id, record);
+      } catch {
+        // A partial last line from a killed process.
+      }
+    }
+  }
+  if (!seen.size) return null;
+  const sum = (key) => [...seen.values()].reduce((n, r) => n + (r.quantity[key] ?? 0), 0);
+  // Tool calls write zero-token records too; only provider records are model calls.
+  const modelCalls = [...seen.values()].filter((r) => r.usage_family === "provider").length;
+  return { tokens: { input_tokens: sum("input_tokens"), cached_input_tokens: sum("cached_tokens"), output_tokens: sum("output_tokens"), reasoning_tokens: sum("reasoning_tokens") }, modelCalls };
 }
 
 // npm installs CLIs on Windows as .cmd shims, which Node can only run through cmd.exe, and cmd.exe mangles
@@ -276,6 +360,34 @@ export function trackDescendants(rootPid) {
       }
     },
   };
+}
+
+// A process that double-forks into the background (Muse starts dev servers that way) leaves the harness's process
+// group, so killTree misses it. On macOS and Linux, kill whatever still has its working folder inside the sandbox.
+export function killProcessesIn(dir) {
+  if (isWindows) return [];
+  const { stdout, status, error } = spawnSync("lsof", ["-a", "-d", "cwd", "-F", "pn"], { encoding: "utf8" });
+  if (error || (status !== 0 && !stdout)) {
+    // Don't fail a finished session over cleanup, but don't pretend it happened either.
+    console.warn(`Couldn't list processes with lsof (${error?.message ?? `exit ${status}`}), so anything the session left running in its sandbox is still running.`);
+    return [];
+  }
+  // lsof reports real paths (/private/tmp, not /tmp).
+  const real = fs.realpathSync(dir);
+  const killed = [];
+  let pid = null;
+  for (const line of (stdout ?? "").split("\n")) {
+    if (line.startsWith("p")) pid = Number(line.slice(1));
+    else if (line.startsWith("n") && pid && pid !== process.pid && (line.slice(1) + path.sep).startsWith(real + path.sep)) {
+      try {
+        process.kill(pid, "SIGKILL");
+        killed.push(pid);
+      } catch {
+        // Already gone.
+      }
+    }
+  }
+  return killed;
 }
 
 export function harnessVersion(bin) {
