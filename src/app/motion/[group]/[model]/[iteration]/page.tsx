@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { MotionPlayer } from "@/components/motion/motion-player";
 import { MotionSwitcher } from "@/components/motion/motion-switcher";
 import {
   buildMotionCompareHref,
@@ -92,17 +93,12 @@ export default async function MotionRunPage({ params }: { params: Params }) {
         compares={compares}
       />
       {ready ? (
-        <video
+        <MotionPlayer
           key={clip.videoSrc}
           src={clip.videoSrc}
           poster={clip.posterSrc}
-          aria-label={`${model.label}, video ${n}`}
-          controls
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="size-full object-contain"
+          label={`${model.label}, video ${n}`}
+          hasAudio={clip.run?.video?.audio !== false}
         />
       ) : (
         <div className="grid size-full place-items-center text-sm text-white/50">{describeMissingRun(clip.run)}</div>
