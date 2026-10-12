@@ -1,7 +1,7 @@
 "use client";
 
 import clsx from "clsx";
-import { ArrowLeftRight, BarChart3, Clapperboard, Gamepad2, Home, type LucideIcon } from "lucide-react";
+import { ArrowLeftRight, BarChart3, Gamepad2, Home, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { GalleryThemeToggle } from "@/components/gallery/gallery-theme-toggle";
@@ -27,19 +27,22 @@ function NavItem({
   label,
   icon: Icon,
   active,
+  current = active,
   showLabel,
 }: {
   href: string;
   label: string;
   icon: LucideIcon;
   active: boolean;
+  /** Whether `href` is this exact page. Defaults to `active`; differs when a link stays lit for its sub-pages. */
+  current?: boolean;
   showLabel: boolean;
 }) {
   return (
     <Link
       href={href}
       aria-label={label}
-      aria-current={active ? "page" : undefined}
+      aria-current={current ? "page" : undefined}
       className={clsx(navLinkClass(active), "min-w-9", showLabel && "sm:px-3")}
     >
       <span className={clsx("inline-flex size-9 items-center justify-center text-current", showLabel && "sm:hidden")}>
@@ -61,16 +64,22 @@ export function GalleryRankingsNav() {
   const onRankings = pathname === "/rankings";
   const onCompare = pathname === "/compare";
   const onLabGuess = pathname === "/lab-guess";
-  const onMotion = pathname === "/motion" || pathname.startsWith("/motion/");
-  const onGalleryHome = pathname === "/";
-  const homeShowsGalleryLabel = onRankings || onCompare || onLabGuess || onMotion;
+  // The video gallery is a mode of the gallery, switched from the page itself, so it lights up Gallery here.
+  const onGallery = pathname === "/" || pathname === "/motion" || pathname.startsWith("/motion/");
 
   return (
     <nav
       aria-label="Site navigation"
       className="fixed top-5 right-5 z-[110] flex items-center gap-0.5 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-secondary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6 sm:right-6 gallery-elevated-surface"
     >
-      <NavItem href="/" label="Gallery" icon={Home} active={onGalleryHome} showLabel={homeShowsGalleryLabel} />
+      <NavItem
+        href="/"
+        label="Gallery"
+        icon={Home}
+        active={onGallery}
+        current={pathname === "/"}
+        showLabel={!onGallery}
+      />
       <NavDivider />
       <NavItem
         href={buildCompareHref(DEFAULT_COMPARE_STATE)}
@@ -81,8 +90,6 @@ export function GalleryRankingsNav() {
       />
       <NavDivider />
       <NavItem href="/lab-guess" label="Guess which" icon={Gamepad2} active={onLabGuess} showLabel={!onLabGuess} />
-      <NavDivider />
-      <NavItem href="/motion" label="Motion" icon={Clapperboard} active={onMotion} showLabel={!onMotion} />
       <NavDivider />
       <NavItem href="/rankings" label="Rankings" icon={BarChart3} active={onRankings} showLabel={!onRankings} />
       <NavDivider />

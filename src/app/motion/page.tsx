@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GalleryModeSwitcher } from "@/components/gallery/gallery-mode-switcher";
 import { GalleryRankingsNav } from "@/components/gallery/gallery-rankings-nav";
 import { GenerationPrompt } from "@/components/gallery/generation-prompt";
 import { MotionCard } from "@/components/motion/motion-card";
@@ -11,6 +12,9 @@ export const metadata: Metadata = {
 };
 
 export default function MotionPage() {
+  // Every group gets the same brief, so the prompt sits in the header like the homepage's.
+  const prompt = readMotionPrompt(motionGroups[0].id);
+
   return (
     <>
       <GalleryRankingsNav />
@@ -19,35 +23,29 @@ export default function MotionPage() {
           <h1 className="text-3xl font-medium tracking-tight text-[var(--gallery-text-primary)] sm:text-4xl">
             Which AI Made This Video?
           </h1>
-          <p className="mt-5 text-[15px] leading-relaxed text-[var(--gallery-text-secondary)]">
-            Each model gets the same prompt in its lab&apos;s own coding agent and builds three 15-second videos in
-            one session, each as a web page. Every page is then rendered to video the same way, so the motion is the
-            model&apos;s and not its tooling&apos;s. Sessions start fresh, with no skills. Hover a card to play it.
-          </p>
+          {prompt ? <GenerationPrompt prompt={prompt} summary={summarizeMotionPrompt(prompt)} /> : null}
         </header>
 
-        {motionGroups.map((group) => {
-          const prompt = readMotionPrompt(group.id);
-          return (
-            <section key={group.id} aria-labelledby={`motion-${group.id}`} className="mt-14">
-              <div className="flex flex-wrap items-end justify-between gap-x-6 gap-y-2">
+        <div className="mt-12 space-y-12">
+          {motionGroups.map((group, index) => (
+            <section key={group.id} aria-labelledby={`motion-${group.id}`} className="space-y-8">
+              <div className="flex flex-wrap items-center justify-between gap-4">
                 <h2
                   id={`motion-${group.id}`}
                   className="text-xl font-medium tracking-tight text-[var(--gallery-text-primary)]"
                 >
                   {group.label}
                 </h2>
-                <p className="max-w-xl text-sm text-[var(--gallery-text-tertiary)]">{group.description}</p>
+                {index === 0 ? <GalleryModeSwitcher active="motion" /> : null}
               </div>
-              {prompt ? <GenerationPrompt prompt={prompt} summary={summarizeMotionPrompt(prompt)} /> : null}
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-4 xl:gap-6">
                 {motionModels.map((model) => (
                   <MotionCard key={model.id} clips={getMotionClipsForModel(group, model)} />
                 ))}
               </div>
             </section>
-          );
-        })}
+          ))}
+        </div>
       </main>
     </>
   );
