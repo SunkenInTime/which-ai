@@ -6,6 +6,7 @@ export type GalleryGroupSlug =
   | "without-design-skill"
   | "miscellaneous";
 export type ModelSlug =
+  | "muse-wonder-1.0"
   | "haiku-5-5"
   | "sol-6-1"
   | "mistral-large-4"

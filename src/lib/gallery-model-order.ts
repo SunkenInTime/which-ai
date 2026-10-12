@@ -35,6 +35,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "grok-4.7": { familyOrder: 4, tier: 47 },
   "muse-spark-1.2": { familyOrder: 4.5, tier: 12 },
   "muse-spark-1.3": { familyOrder: 4.5, tier: 13 },
+  "muse-wonder-1.0": { familyOrder: 4.5, tier: 20 },
   "composer-1.5": { familyOrder: 5, tier: 15 },
   "composer-2.0": { familyOrder: 5, tier: 20 },
   "composer-2.5": { familyOrder: 5, tier: 25 },

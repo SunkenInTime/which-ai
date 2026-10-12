@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Archivo:wght@500;700;800;900&family=Space+Mono:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Sora:wght@400;600;700;800&display=swap');
+@import "tailwindcss";
+
+[data-source-html] { --background: #ffffff; --foreground: #171717; }
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+[data-source-body] { background: var(--background); color: var(--foreground); }
+[data-source-html] { scroll-behavior: smooth; }
+::selection { background: #171717; color: #fff; }
+:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+/* Source theme utilities retained for the gallery. */
+.font-sans { font-family: var(--font-geist-sans); }
+[data-source-html] { --font-sans: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+[data-source-html] { --font-mono: var(--font-geist-mono); }

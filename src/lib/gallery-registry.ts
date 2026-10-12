@@ -1,3 +1,6 @@
+import withoutMuseWonder10 from "@/variants/without-design-skill/muse-wonder-1.0";
+import withTasteMuseWonder10 from "@/variants/with-taste-skill/muse-wonder-1.0";
+import withMuseWonder10 from "@/variants/with-design-skill/muse-wonder-1.0";
 import withoutHaiku55 from "@/variants/without-design-skill/haiku-5-5";
 import withTasteHaiku55 from "@/variants/with-taste-skill/haiku-5-5";
 import withHaiku55 from "@/variants/with-design-skill/haiku-5-5";
@@ -124,6 +127,9 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-design-skill:sol-6-1": withSol61,
   "with-taste-skill:sol-6-1": withTasteSol61,
   "without-design-skill:sol-6-1": withoutSol61,
+  "with-design-skill:muse-wonder-1.0": withMuseWonder10,
+  "with-taste-skill:muse-wonder-1.0": withTasteMuseWonder10,
+  "without-design-skill:muse-wonder-1.0": withoutMuseWonder10,
   "with-design-skill:haiku-5-5": withHaiku55,
   "with-taste-skill:haiku-5-5": withTasteHaiku55,
   "without-design-skill:haiku-5-5": withoutHaiku55,
