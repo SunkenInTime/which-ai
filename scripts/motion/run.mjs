@@ -141,9 +141,9 @@ async function runSession(model) {
 // runs; it waits, and reminder turns can wake the agent again. Once the transcript's last event is the run's final
 // reply and nothing has been written for two minutes, the session counts as finished and the runner stops it.
 // wallSeconds then ends at that reply.
-const replyQuietMs = 120_000;
-
 function watchForFinalReply(transcriptPath, child) {
+  // Declared here, not at module level: sessions start from the top-level loop before later module code runs.
+  const replyQuietMs = 120_000;
   const state = { endedAt: null, stop: () => clearInterval(timer) };
   const timer = setInterval(() => {
     const { mtimeMs, size } = fs.statSync(transcriptPath);
