@@ -25,6 +25,10 @@ export interface MotionRun {
     width: number | null;
     height: number | null;
     fps: number | null;
+    /** Where the poster was taken from, in seconds. Missing means 1 s, from before posters were picked. */
+    posterSec?: number;
+    /** False when the video has no sound track. */
+    audio?: boolean;
   } | null;
   render?: { renderSeconds: number; workers: number; gl: string; renderer: string | null } | null;
   usage: { costUsd?: number | null; turns?: number | null } | null;
@@ -65,6 +69,7 @@ const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
   Anthropic: { light: "/anthropic-claude.webp" },
   OpenAI: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   xAI: { light: "/xai-light.svg", dark: "/xai-dark.svg" },
+  Meta: { light: "/meta.svg" },
 };
 
 export function getMotionModelLogo(model: MotionModel) {
@@ -91,7 +96,8 @@ export function getMotionClip(group: MotionGroup, model: MotionModel, iteration:
     run,
     videoSrc: `${VIDEO_BASE_URL}/${key}.mp4${version}`,
     previewSrc: `${VIDEO_BASE_URL}/${key}.preview.mp4${version}`,
-    posterSrc: `${VIDEO_BASE_URL}/${key}.jpg${version}`,
+    // Re-picking a poster overwrites it without a new run, so where it came from is part of its version.
+    posterSrc: `${VIDEO_BASE_URL}/${key}.jpg${version}${run?.video?.posterSec != null ? `-${run.video.posterSec}` : ""}`,
   };
 }
 
