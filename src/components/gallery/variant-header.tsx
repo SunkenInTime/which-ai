@@ -21,6 +21,8 @@ import {
 
 type PickerMode = "compare" | "model" | "skill" | null;
 
+type HrefFor = (group: GalleryGroupSlug, model: ModelSlug, iteration: IterationId) => string;
+
 export const switcherButtonClass =
   "inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-[var(--gallery-text-secondary)] transition-colors outline-none hover:bg-[var(--gallery-hover-bg)] hover:text-[var(--gallery-text-primary)] focus-visible:ring-1 focus-visible:ring-[var(--gallery-accent)]";
 
@@ -47,7 +49,7 @@ function getPaletteTone(group: GalleryGroupSlug, available = true) {
   return "text-[var(--gallery-accent)]";
 }
 
-function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId) {
+function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId, hrefFor: HrefFor) {
   const byModel = new Map<ModelSlug, GalleryEntry[]>();
   for (const entry of galleryManifest) {
     byModel.set(entry.model, [...(byModel.get(entry.model) ?? []), entry]);
@@ -68,7 +70,7 @@ function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId) {
         availableInCurrentGroup: Boolean(currentGroupEntry),
         targetEntry: currentGroupEntry,
         href: currentGroupEntry
-          ? buildVariantHref(currentGroupEntry.group, currentGroupEntry.model, iteration)
+          ? hrefFor(currentGroupEntry.group, currentGroupEntry.model, iteration)
           : null,
       };
     })
@@ -80,7 +82,7 @@ function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId) {
     });
 }
 
-function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId) {
+function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId, hrefFor: HrefFor) {
   const groups = Array.from(
     new Map(galleryManifest.map((entry) => [entry.group, entry.groupLabel])).entries(),
     ([group, label]) => ({ group, label: getGroupLabel(group) || label }),
@@ -95,7 +97,7 @@ function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId) {
         group,
         label,
         availableForModel: Boolean(targetEntry),
-        href: targetEntry ? buildVariantHref(targetEntry.group, targetEntry.model, iteration) : null,
+        href: targetEntry ? hrefFor(targetEntry.group, targetEntry.model, iteration) : null,
       };
     })
     .toSorted((a, b) => {
@@ -107,18 +109,33 @@ function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId) {
 export function VariantSwitcher({
   entry,
   iteration,
+  hrefFor = buildVariantHref,
+  compareHrefFor,
+  pane,
 }: {
   entry: GalleryEntry;
   iteration: IterationId;
+  /** Where model, skill and iteration choices lead. Defaults to the design's own page. */
+  hrefFor?: HrefFor;
+  /** Where a VS choice leads. Defaults to a compare with this design on the left. */
+  compareHrefFor?: (target: GalleryEntry) => string;
+  /**
+   * Set when the switcher lives in one pane of the compare page. It sits inside that pane, docks per pane rather
+   * than by the stored preference, swaps the URL in place, and leaves the keyboard shortcuts to the single view,
+   * since two switchers would both answer them.
+   */
+  pane?: { defaultSide: GallerySwitcherSide; label: string };
 }) {
   const router = useRouter();
   const [openPicker, setOpenPicker] = useState<PickerMode>(null);
   // Docked side is a stored preference; the server snapshot keeps hydration in sync.
-  const side = useSyncExternalStore(
+  const storedSide = useSyncExternalStore(
     subscribeGallerySwitcherSide,
     getStoredGallerySwitcherSide,
     getServerGallerySwitcherSide,
   );
+  const [paneSide, setPaneSide] = useState<GallerySwitcherSide>(pane?.defaultSide ?? "right");
+  const side = pane ? paneSide : storedSide;
   const popoverClass = getPopoverClass(side);
   const [compareSearch, setCompareSearch] = useState("");
   const [modelSearch, setModelSearch] = useState("");
@@ -128,29 +145,31 @@ export function VariantSwitcher({
   const groupLabel = getGroupLabel(entry.group);
   const isWithoutSkill = entry.group === "without-design-skill";
   const paletteTone = getPaletteTone(entry.group);
-  const modelOptions = useMemo(() => getModelOptions(entry, iteration), [entry, iteration]);
+  const modelOptions = useMemo(() => getModelOptions(entry, iteration, hrefFor), [entry, iteration, hrefFor]);
   const compareOptions = useMemo(
     () =>
       modelOptions.map((option) => ({
         ...option,
         href: option.targetEntry
-          ? buildCompareHref({
-              left: {
-                group: entry.group,
-                model: entry.model,
-                iteration,
-              },
-              right: {
-                group: option.targetEntry.group,
-                model: option.targetEntry.model,
-                iteration,
-              },
-            })
+          ? compareHrefFor
+            ? compareHrefFor(option.targetEntry)
+            : buildCompareHref({
+                left: {
+                  group: entry.group,
+                  model: entry.model,
+                  iteration,
+                },
+                right: {
+                  group: option.targetEntry.group,
+                  model: option.targetEntry.model,
+                  iteration,
+                },
+              })
           : null,
       })),
-    [entry.group, entry.model, iteration, modelOptions],
+    [compareHrefFor, entry.group, entry.model, iteration, modelOptions],
   );
-  const skillOptions = useMemo(() => getSkillOptions(entry, iteration), [entry, iteration]);
+  const skillOptions = useMemo(() => getSkillOptions(entry, iteration, hrefFor), [entry, iteration, hrefFor]);
   const filteredCompareOptions = useMemo(() => {
     const query = compareSearch.trim().toLowerCase();
     if (!query) return compareOptions;
@@ -171,7 +190,20 @@ export function VariantSwitcher({
   const firstAvailableModelMatch = filteredModelOptions.find((option) => option.href);
 
   function toggleSide() {
-    setStoredGallerySwitcherSide(side === "left" ? "right" : "left");
+    const next = side === "left" ? "right" : "left";
+    if (pane) {
+      setPaneSide(next);
+    } else {
+      setStoredGallerySwitcherSide(next);
+    }
+  }
+
+  function go(href: string) {
+    if (pane) {
+      router.replace(href, { scroll: false });
+    } else {
+      router.push(href);
+    }
   }
 
   useEffect(() => {
@@ -195,6 +227,8 @@ export function VariantSwitcher({
   }, [openPicker]);
 
   useEffect(() => {
+    if (pane) return;
+
     function handleCommandPaletteShortcut(event: KeyboardEvent) {
       if (event.key.toLowerCase() !== "k" || (!event.metaKey && !event.ctrlKey)) {
         return;
@@ -208,7 +242,7 @@ export function VariantSwitcher({
     return () => {
       document.removeEventListener("keydown", handleCommandPaletteShortcut);
     };
-  }, []);
+  }, [pane]);
 
   useEffect(() => {
     if (openPicker !== "compare") {
@@ -239,6 +273,8 @@ export function VariantSwitcher({
   }, [openPicker]);
 
   useEffect(() => {
+    if (pane) return;
+
     const onKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (
@@ -283,15 +319,16 @@ export function VariantSwitcher({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [entry.group, entry.model, entry.iterations, iteration, router]);
+  }, [entry.group, entry.model, entry.iterations, iteration, pane, router]);
 
   return (
     <nav
       ref={pickerRef}
-      aria-label={`${entry.modelLabel} gallery navigation`}
+      aria-label={pane?.label ?? `${entry.modelLabel} gallery navigation`}
       data-side={side}
       className={clsx(
-        "gallery-variant-switcher gallery-elevated-surface fixed top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
+        "gallery-variant-switcher gallery-elevated-surface top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
+        pane ? "absolute" : "fixed",
         side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6",
       )}
     >
@@ -330,7 +367,7 @@ export function VariantSwitcher({
               onKeyDown={(event) => {
                 if (event.key === "Enter" && firstAvailableCompareMatch?.href) {
                   event.preventDefault();
-                  router.push(firstAvailableCompareMatch.href);
+                  go(firstAvailableCompareMatch.href);
                 }
               }}
               placeholder="Compare to model"
@@ -382,7 +419,7 @@ export function VariantSwitcher({
             );
 
             return option.href ? (
-              <Link key={option.model} href={option.href} className={className} role="menuitem">
+              <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} className={className} role="menuitem">
                 {content}
               </Link>
             ) : (
@@ -454,7 +491,7 @@ export function VariantSwitcher({
                 onKeyDown={(event) => {
                   if (event.key === "Enter" && firstAvailableModelMatch?.href) {
                     event.preventDefault();
-                    router.push(firstAvailableModelMatch.href);
+                    go(firstAvailableModelMatch.href);
                   }
                 }}
                 placeholder="Search models"
@@ -509,7 +546,7 @@ export function VariantSwitcher({
               );
 
               return option.href ? (
-                <Link key={option.model} href={option.href} className={className} role="menuitem">
+                <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} className={className} role="menuitem">
                   {content}
                 </Link>
               ) : (
@@ -564,7 +601,7 @@ export function VariantSwitcher({
               );
 
               return option.href ? (
-                <Link key={option.group} href={option.href} className={className} role="menuitem">
+                <Link key={option.group} href={option.href} replace={Boolean(pane)} scroll={!pane} className={className} role="menuitem">
                   {content}
                 </Link>
               ) : (
@@ -590,7 +627,9 @@ export function VariantSwitcher({
           return (
             <Link
               key={item.id}
-              href={buildVariantHref(entry.group, entry.model, item.id)}
+              href={hrefFor(entry.group, entry.model, item.id)}
+              replace={Boolean(pane)}
+              scroll={!pane}
               aria-current={active ? "page" : undefined}
               aria-label={`Open iteration ${item.id}`}
               className={`gallery-variant-switcher__iteration inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-[11px] font-medium tabular-nums leading-none transition-colors ${

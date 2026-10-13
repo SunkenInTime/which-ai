@@ -1,352 +1,317 @@
 "use client";
 
 import clsx from "clsx";
-import { useRouter } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeftRight, Link2 } from "lucide-react";
-import { useEffect, useRef, useState, useTransition } from "react";
-import { CompareGroupSelect, CompareModelSelect } from "@/components/compare/compare-selects";
-import { GalleryRankingsNav } from "@/components/gallery/gallery-rankings-nav";
 import {
-  buildCompareHref,
-  compareGroupOrder,
-  getDefaultSelectionForGroup,
-  getModelsForGroup,
-  type CompareSelection,
-  type CompareState,
-} from "@/lib/compare";
+  useState,
+  useSyncExternalStore,
+  type KeyboardEvent as ReactKeyboardEvent,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
+import { VariantSwitcher } from "@/components/gallery/variant-header";
+import { buildCompareHref, type CompareState } from "@/lib/compare";
 import { getGalleryEntry } from "@/lib/gallery-manifest";
 import { buildPreviewHref } from "@/lib/gallery-paths";
-import type { GalleryGroupSlug, IterationId, ModelSlug } from "@/lib/gallery-types";
+import type { GalleryEntry, GalleryGroupSlug, IterationId, ModelSlug } from "@/lib/gallery-types";
 
-const ITERATION_OPTIONS = ["1", "2", "3", "4", "5"] as const satisfies readonly IterationId[];
+type Side = "left" | "right";
 
-function getGroupLabel(group: GalleryGroupSlug): string {
-  return getModelsForGroup(group)[0]?.groupLabel ?? group;
+const SIDE_LABEL: Record<Side, string> = { left: "Left", right: "Right" };
+const OTHER_SIDE: Record<Side, Side> = { left: "right", right: "left" };
+
+// The left pane's share of the screen. Dragging snaps to the thirds, and arrow keys with Shift jump between them.
+const SNAP_RATIOS = [1 / 3, 1 / 2, 2 / 3];
+const MIN_RATIO = 0.15;
+const MAX_RATIO = 0.85;
+const SNAP_DISTANCE = 0.015;
+const KEYBOARD_STEP = 0.02;
+
+const clampRatio = (ratio: number) => Math.min(MAX_RATIO, Math.max(MIN_RATIO, ratio));
+
+function snapRatio(ratio: number): number {
+  return SNAP_RATIOS.find((snap) => Math.abs(snap - ratio) < SNAP_DISTANCE) ?? clampRatio(ratio);
 }
 
-function resolveSelection(
-  group: GalleryGroupSlug,
-  model: ModelSlug,
-  iteration: IterationId,
-): CompareSelection {
-  const entry = getGalleryEntry(group, model);
-  if (!entry) {
-    return getDefaultSelectionForGroup(group) ?? { group, model, iteration: "1" };
-  }
+// The split is a preference rather than part of what's compared, so it lives in localStorage and not the URL.
+// useSyncExternalStore lets the server render an even split and the client pick up the saved one on hydration.
+const RATIO_STORAGE_KEY = "compare-split-ratio";
+const ratioListeners = new Set<() => void>();
+// Keeps the ratio for this visit when storage is unavailable.
+let memoryRatio: string | null = null;
 
-  return {
-    group: entry.group,
-    model: entry.model,
-    iteration: entry.iterations.some((item) => item.id === iteration) ? iteration : "1",
+function subscribeRatio(listener: () => void) {
+  ratioListeners.add(listener);
+  window.addEventListener("storage", listener);
+  return () => {
+    ratioListeners.delete(listener);
+    window.removeEventListener("storage", listener);
   };
 }
 
-function ComparePanel({
-  side,
-  selection,
-  onSelectionChange,
-}: {
-  side: "left" | "right";
-  selection: CompareSelection;
-  onSelectionChange: (selection: CompareSelection) => void;
-}) {
-  const sideLabel = side === "left" ? "Left" : "Right";
+function readRatio(): string | null {
+  try {
+    return window.localStorage.getItem(RATIO_STORAGE_KEY) ?? memoryRatio;
+  } catch {
+    return memoryRatio;
+  }
+}
 
+function writeRatio(ratio: number) {
+  memoryRatio = String(ratio);
+  try {
+    window.localStorage.setItem(RATIO_STORAGE_KEY, memoryRatio);
+  } catch {
+    // Private windows can refuse storage; memoryRatio covers this visit.
+  }
+  ratioListeners.forEach((listener) => listener());
+}
+
+function useSplitRatio(): number {
+  const raw = useSyncExternalStore(subscribeRatio, readRatio, () => null);
+  const ratio = raw === null ? Number.NaN : Number(raw);
+  return Number.isFinite(ratio) ? clampRatio(ratio) : 1 / 2;
+}
+
+// Phones stack the panes, so the divider drags vertically there.
+const STACKED_QUERY = "(max-width: 767px)";
+
+function useStackedPanes(): boolean {
+  return useSyncExternalStore(
+    (listener) => {
+      const query = window.matchMedia(STACKED_QUERY);
+      query.addEventListener("change", listener);
+      return () => query.removeEventListener("change", listener);
+    },
+    () => window.matchMedia(STACKED_QUERY).matches,
+    () => false,
+  );
+}
+
+function selectionFor(entry: GalleryEntry, iteration: IterationId) {
+  return {
+    group: entry.group,
+    model: entry.model,
+    iteration: entry.iterations.some((item) => item.id === iteration) ? iteration : ("1" as const),
+  };
+}
+
+function ComparePane({
+  side,
+  state,
+  share,
+  animate,
+}: {
+  side: Side;
+  state: CompareState;
+  share: number;
+  animate: boolean;
+}) {
+  const selection = state[side];
   const entry = getGalleryEntry(selection.group, selection.model);
   if (!entry) {
     return null;
   }
 
-  const iframeTitle = `${sideLabel} preview: ${entry.groupLabel}, ${entry.modelLabel}, iteration ${selection.iteration}`;
-
-  const panelFrame =
-    side === "left"
-      ? "lg:pr-2"
-      : "border-t border-[var(--gallery-border)] pt-12 lg:border-t-0 lg:border-l lg:border-[var(--gallery-border)] lg:pl-2 lg:pt-0";
+  // The switcher is the single view's, pointed at this side of the compare instead of the design's own page.
+  const hrefFor = (group: GalleryGroupSlug, model: ModelSlug, iteration: IterationId) => {
+    const target = getGalleryEntry(group, model);
+    return buildCompareHref({ ...state, [side]: target ? selectionFor(target, iteration) : selection });
+  };
+  // VS keeps this design where it is and puts the chosen model on the other side.
+  const compareHrefFor = (target: GalleryEntry) =>
+    buildCompareHref({ ...state, [OTHER_SIDE[side]]: selectionFor(target, selection.iteration) });
 
   return (
     <section
-      aria-label={`${sideLabel} compare panel`}
+      aria-label={`${SIDE_LABEL[side]} compare panel`}
       data-testid={`compare-panel-${side}`}
-      className={`flex min-h-0 flex-col lg:h-full ${panelFrame}`}
+      style={{ flexGrow: share, flexShrink: 1, flexBasis: 0 }}
+      className={clsx(
+        "relative min-h-0 min-w-0",
+        animate && "transition-[flex-grow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+      )}
     >
-      <div className="relative min-h-0 flex-1 bg-[var(--gallery-surface)]">
-        <div
-          role="group"
-          aria-label={`${sideLabel} iterations`}
-          className="gallery-variant-switcher absolute top-4 right-1 z-10 flex flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-5 sm:right-1"
-        >
-          {ITERATION_OPTIONS.map((iteration) => {
-            const active = iteration === selection.iteration;
-            return (
-              <button
-                key={iteration}
-                type="button"
-                onClick={() =>
-                  onSelectionChange(resolveSelection(selection.group, selection.model, iteration))
-                }
-                className={`gallery-variant-switcher__iteration inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-[11px] font-medium tabular-nums leading-none transition-colors ${
-                  active
-                    ? "bg-[var(--gallery-accent)] text-[var(--gallery-accent-foreground)]"
-                    : "text-[var(--gallery-text-secondary)] hover:bg-[var(--gallery-hover-bg)] hover:text-[var(--gallery-text-primary)]"
-                }`}
-                aria-pressed={active}
-              >
-                {iteration}
-              </button>
-            );
-          })}
-        </div>
-        <iframe
-          title={iframeTitle}
-          src={buildPreviewHref(selection.group, selection.model, selection.iteration)}
-          className="block h-[min(72dvh,760px)] w-full bg-white lg:h-[calc(100dvh-10.25rem)]"
-        />
-      </div>
+      <iframe
+        title={`${SIDE_LABEL[side]} preview: ${entry.groupLabel}, ${entry.modelLabel}, iteration ${selection.iteration}`}
+        src={buildPreviewHref(selection.group, selection.model, selection.iteration)}
+        className="absolute inset-0 block size-full bg-[var(--gallery-body-bg)]"
+      />
+      <VariantSwitcher
+        entry={entry}
+        iteration={selection.iteration}
+        hrefFor={hrefFor}
+        compareHrefFor={compareHrefFor}
+        pane={{ defaultSide: side, label: `${SIDE_LABEL[side]} design: ${entry.modelLabel}` }}
+      />
     </section>
   );
 }
 
-function CompareSideControls({
-  side,
-  selection,
-  onSelectionChange,
+function SplitDivider({
+  ratio,
+  stacked,
+  dragging,
+  onDragStart,
+  onDrag,
+  onDragEnd,
+  onRatioChange,
 }: {
-  side: "left" | "right";
-  selection: CompareSelection;
-  onSelectionChange: (selection: CompareSelection) => void;
+  ratio: number;
+  stacked: boolean;
+  dragging: boolean;
+  onDragStart: () => void;
+  onDrag: (ratio: number) => void;
+  onDragEnd: () => void;
+  onRatioChange: (ratio: number) => void;
 }) {
-  const [openMenu, setOpenMenu] = useState<"group" | "model" | null>(null);
-  const controlsRef = useRef<HTMLDivElement>(null);
-  const models = getModelsForGroup(selection.group);
-  const sideLabel = side === "left" ? "Left" : "Right";
+  const ratioAt = (e: ReactPointerEvent<HTMLDivElement>) => {
+    const screen = e.currentTarget.parentElement;
+    if (!screen) {
+      return ratio;
+    }
+    const rect = screen.getBoundingClientRect();
+    const offset = stacked ? e.clientY - rect.top : e.clientX - rect.left;
+    return snapRatio(offset / (stacked ? rect.height : rect.width));
+  };
 
-  useEffect(() => {
-    if (!openMenu) {
-      return;
+  const onKeyDown = (e: ReactKeyboardEvent<HTMLDivElement>) => {
+    const back = stacked ? "ArrowUp" : "ArrowLeft";
+    const forward = stacked ? "ArrowDown" : "ArrowRight";
+    let next: number | null = null;
+
+    if (e.key === back || e.key === forward) {
+      const direction = e.key === forward ? 1 : -1;
+      if (e.shiftKey) {
+        const ordered = direction > 0 ? SNAP_RATIOS : [...SNAP_RATIOS].reverse();
+        next =
+          ordered.find((snap) => (snap - ratio) * direction > 0.005) ?? (direction > 0 ? MAX_RATIO : MIN_RATIO);
+      } else {
+        next = clampRatio(ratio + direction * KEYBOARD_STEP);
+      }
+    } else if (e.key === "Home") {
+      next = MIN_RATIO;
+    } else if (e.key === "End") {
+      next = MAX_RATIO;
+    } else if (e.key === "Enter") {
+      next = 1 / 2;
     }
 
-    const onMouseDown = (e: MouseEvent) => {
-      if (controlsRef.current?.contains(e.target as Node)) {
-        return;
-      }
-      setOpenMenu(null);
-    };
+    if (next !== null) {
+      e.preventDefault();
+      onRatioChange(next);
+    }
+  };
 
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") {
-        setOpenMenu(null);
-      }
-    };
-
-    document.addEventListener("mousedown", onMouseDown);
-    document.addEventListener("keydown", onKey);
-    return () => {
-      document.removeEventListener("mousedown", onMouseDown);
-      document.removeEventListener("keydown", onKey);
-    };
-  }, [openMenu]);
+  const leftPercent = Math.round(ratio * 100);
+  const snapped = SNAP_RATIOS.some((snap) => Math.abs(snap - ratio) < 0.005);
 
   return (
-    <div ref={controlsRef} className="min-w-0">
-      <div className="mb-1.5 text-xs font-medium text-[var(--gallery-text-tertiary)]">
-        {sideLabel}
-      </div>
-      <div className="grid min-w-0 gap-2 sm:grid-cols-2">
-        <CompareGroupSelect
-          value={selection.group}
-          onChange={(nextGroup) => {
-            const nextModels = getModelsForGroup(nextGroup);
-            const nextModel =
-              nextModels.find((item) => item.model === selection.model)?.model ??
-              getDefaultSelectionForGroup(nextGroup)?.model;
-
-            if (!nextModel) {
-              return;
-            }
-
-            onSelectionChange(resolveSelection(nextGroup, nextModel, selection.iteration));
-          }}
-          groups={compareGroupOrder}
-          getLabel={getGroupLabel}
-          open={openMenu === "group"}
-          setOpen={(next) => setOpenMenu(next ? "group" : null)}
-          showLabel={false}
-        />
-
-        <CompareModelSelect
-          models={models}
-          value={selection.model}
-          onChange={(nextModel) => {
-            onSelectionChange(resolveSelection(selection.group, nextModel, selection.iteration));
-          }}
-          open={openMenu === "model"}
-          setOpen={(next) => setOpenMenu(next ? "model" : null)}
-          showLabel={false}
-        />
-      </div>
+    <div
+      role="separator"
+      tabIndex={0}
+      aria-label="Resize panes"
+      aria-orientation={stacked ? "horizontal" : "vertical"}
+      aria-valuemin={MIN_RATIO * 100}
+      aria-valuemax={MAX_RATIO * 100}
+      aria-valuenow={leftPercent}
+      aria-valuetext={`Left ${leftPercent}%, right ${100 - leftPercent}%`}
+      title="Drag to resize. Double-click for an even split."
+      data-dragging={dragging || undefined}
+      onPointerDown={(e) => {
+        if (e.button !== 0) {
+          return;
+        }
+        e.preventDefault();
+        e.currentTarget.setPointerCapture(e.pointerId);
+        e.currentTarget.focus();
+        onDragStart();
+      }}
+      onPointerMove={(e) => {
+        if (dragging && e.currentTarget.hasPointerCapture(e.pointerId)) {
+          onDrag(ratioAt(e));
+        }
+      }}
+      onPointerUp={onDragEnd}
+      onLostPointerCapture={onDragEnd}
+      onDoubleClick={() => onRatioChange(1 / 2)}
+      onKeyDown={onKeyDown}
+      // The line is a pixel; the hit area reaches a few pixels over each preview so it's easy to grab.
+      className="group relative z-[90] h-px w-full shrink-0 touch-none bg-[var(--gallery-divider-strong)] outline-none select-none before:absolute before:inset-x-0 before:-inset-y-1.5 before:cursor-row-resize before:content-[''] md:h-auto md:w-px md:before:inset-x-auto md:before:inset-y-0 md:before:-left-1.5 md:before:w-[13px] md:before:cursor-col-resize"
+    >
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 bg-[var(--gallery-accent)] opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-focus-visible:opacity-100 group-data-[dragging]:opacity-100"
+      />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute top-1/2 left-1/2 h-1.5 w-10 -translate-x-1/2 -translate-y-1/2 rounded-full border border-[var(--gallery-border)] bg-[var(--gallery-surface)] shadow-[var(--gallery-shadow-sm)] transition-colors duration-150 group-hover:border-[var(--gallery-accent)] group-focus-visible:border-[var(--gallery-accent)] group-data-[dragging]:border-[var(--gallery-accent)] md:h-10 md:w-1.5"
+      />
+      <AnimatePresence>
+        {dragging ? (
+          <motion.span
+            aria-hidden="true"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.96 }}
+            transition={{ duration: 0.12 }}
+            className={clsx(
+              "pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-md border px-2 py-1 text-[11px] font-medium whitespace-nowrap tabular-nums shadow-[var(--gallery-shadow-md)]",
+              snapped
+                ? "border-[var(--gallery-accent)] bg-[var(--gallery-accent)] text-[var(--gallery-accent-foreground)]"
+                : "border-[var(--gallery-border)] bg-[var(--gallery-tooltip-bg)] text-[var(--gallery-text-primary)]",
+            )}
+          >
+            {leftPercent} / {100 - leftPercent}
+          </motion.span>
+        ) : null}
+      </AnimatePresence>
     </div>
   );
 }
 
 export function ComparePage({ initialState }: { initialState: CompareState }) {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
-  const [copied, setCopied] = useState(false);
-  const [copyFlash, setCopyFlash] = useState(false);
-  const currentHref = buildCompareHref(initialState);
+  const storedRatio = useSplitRatio();
+  const stacked = useStackedPanes();
+  const [dragRatio, setDragRatio] = useState<number | null>(null);
+  // Keyboard and double-click changes glide; a drag follows the pointer and a restored split just appears.
+  const [animate, setAnimate] = useState(false);
 
-  const updateState = (nextState: CompareState) => {
-    const nextHref = buildCompareHref(nextState);
-    if (nextHref === currentHref) {
-      return;
-    }
+  const dragging = dragRatio !== null;
+  const ratio = dragRatio ?? storedRatio;
 
-    startTransition(() => {
-      router.replace(nextHref, { scroll: false });
-    });
-  };
-
-  const swapSelections = () => {
-    updateState({
-      left: initialState.right,
-      right: initialState.left,
-    });
-  };
-
-  const copyLink = async () => {
-    setCopyFlash(true);
-    window.setTimeout(() => setCopyFlash(false), 380);
-    try {
-      await navigator.clipboard.writeText(window.location.href);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2200);
-    } catch {
-      setCopied(false);
-    }
+  const setRatio = (next: number) => {
+    setAnimate(true);
+    writeRatio(clampRatio(next));
   };
 
   return (
-    <div className="min-h-screen text-[var(--gallery-text-primary)]">
-      <h1 className="fixed top-5 left-5 z-[110] hidden h-11 items-center text-2xl font-medium tracking-tight text-[var(--gallery-text-primary)] sm:top-6 sm:left-6 sm:text-3xl lg:flex">
-        Compare
-      </h1>
-      <GalleryRankingsNav />
-
-      <main className="flex min-h-screen flex-col px-3 pb-4 pt-[5.25rem] sm:px-5 lg:px-6">
-        <header className="relative z-50 mb-3 w-full">
-          <div className="grid min-w-0 gap-3 border-b border-[var(--gallery-border)] pb-3 lg:grid-cols-2 lg:items-end lg:gap-0">
-            <div className="min-w-0 lg:hidden">
-              <h1 className="text-2xl font-medium tracking-tight text-[var(--gallery-text-primary)] sm:text-3xl">
-                Compare
-              </h1>
-            </div>
-
-            <div className="min-w-0 lg:pr-2">
-              <CompareSideControls
-                side="left"
-                selection={initialState.left}
-                onSelectionChange={(selection) =>
-                  updateState({
-                    ...initialState,
-                    left: selection,
-                  })
-                }
-              />
-            </div>
-
-            <div className="flex min-w-0 items-end gap-4 lg:pl-2">
-              <div className="min-w-0 flex-1">
-                <CompareSideControls
-                  side="right"
-                  selection={initialState.right}
-                  onSelectionChange={(selection) =>
-                    updateState({
-                      ...initialState,
-                      right: selection,
-                    })
-                  }
-                />
-              </div>
-
-              <div className="flex shrink-0 items-center gap-2">
-                <motion.button
-                  type="button"
-                  onClick={swapSelections}
-                  disabled={isPending}
-                  aria-label="Swap sides"
-                  title="Swap sides"
-                  whileTap={{ scale: 0.9 }}
-                  transition={{ type: "spring", stiffness: 520, damping: 28 }}
-                  className="inline-flex size-9 cursor-pointer items-center justify-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-surface)] text-[var(--gallery-text-secondary)] shadow-[var(--gallery-shadow-sm)] transition-colors hover:border-[var(--gallery-divider-strong)] hover:bg-[var(--gallery-surface-subtle)] hover:text-[var(--gallery-text-primary)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  <ArrowLeftRight className="size-4 opacity-80" aria-hidden="true" />
-                </motion.button>
-                <div className="relative z-[200]">
-                  <AnimatePresence>
-                    {copied ? (
-                      <motion.div
-                        role="status"
-                        aria-live="polite"
-                        initial={{ opacity: 0, y: 8, scale: 0.96 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 4, scale: 0.98 }}
-                        transition={{ type: "spring", stiffness: 420, damping: 28 }}
-                        className="pointer-events-none absolute bottom-full left-1/2 z-[200] mb-2 -translate-x-1/2 whitespace-nowrap rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-tooltip-bg)] px-4 py-2.5 text-sm font-medium text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-lg)] backdrop-blur-md"
-                      >
-                        Link copied
-                      </motion.div>
-                    ) : null}
-                  </AnimatePresence>
-                  <motion.button
-                    type="button"
-                    onClick={copyLink}
-                    aria-label={copied ? "Copied" : "Copy link"}
-                    title={copied ? "Copied" : "Copy link"}
-                    whileTap={{ scale: 0.9 }}
-                    transition={{ type: "spring", stiffness: 520, damping: 28 }}
-                    className={clsx(
-                      "inline-flex size-9 cursor-pointer items-center justify-center rounded-md border shadow-[var(--gallery-shadow-sm)] transition-colors duration-200",
-                      copyFlash
-                        ? "border-[var(--gallery-accent)] bg-[color-mix(in_srgb,var(--gallery-accent)_22%,var(--gallery-accent-hover-mix))] text-[var(--gallery-accent)]"
-                        : "border-[var(--gallery-border)] bg-[var(--gallery-surface)] text-[var(--gallery-text-secondary)] hover:border-[var(--gallery-divider-strong)] hover:bg-[var(--gallery-surface-subtle)] hover:text-[var(--gallery-text-primary)]",
-                    )}
-                  >
-                    <Link2
-                      className={clsx("size-4", copyFlash ? "opacity-100" : "opacity-80")}
-                      aria-hidden="true"
-                    />
-                  </motion.button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </header>
-
-        <div className="grid min-h-0 flex-1 gap-12 lg:grid-cols-2 lg:gap-0">
-          <ComparePanel
-            side="left"
-            selection={initialState.left}
-            onSelectionChange={(selection) =>
-              updateState({
-                ...initialState,
-                left: selection,
-              })
-            }
-          />
-          <ComparePanel
-            side="right"
-            selection={initialState.right}
-            onSelectionChange={(selection) =>
-              updateState({
-                ...initialState,
-                right: selection,
-              })
-            }
-          />
-        </div>
-      </main>
-    </div>
+    <main
+      className={clsx(
+        "flex h-dvh w-full flex-col overflow-hidden bg-[var(--gallery-body-bg)] md:flex-row",
+        // Previews swallow pointer events, so a drag that crosses one would otherwise stall.
+        dragging && "cursor-row-resize md:cursor-col-resize [&_iframe]:pointer-events-none",
+      )}
+    >
+      <h1 className="sr-only">Compare</h1>
+      <ComparePane side="left" state={initialState} share={ratio} animate={animate && !dragging} />
+      <SplitDivider
+        ratio={ratio}
+        stacked={stacked}
+        dragging={dragging}
+        onDragStart={() => {
+          setAnimate(false);
+          setDragRatio(storedRatio);
+        }}
+        onDrag={setDragRatio}
+        onDragEnd={() => {
+          if (dragRatio !== null) {
+            writeRatio(dragRatio);
+            setDragRatio(null);
+          }
+        }}
+        onRatioChange={setRatio}
+      />
+      <ComparePane side="right" state={initialState} share={1 - ratio} animate={animate && !dragging} />
+    </main>
   );
 }
