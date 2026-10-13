@@ -1,8 +1,7 @@
 import Link from "next/link";
-import { Coffee, Github } from "lucide-react";
 import { GalleryRankingsNav } from "@/components/gallery/gallery-rankings-nav";
 import { GalleryHomeGroups } from "@/components/gallery/gallery-home-groups";
-import { GenerationPrompt } from "@/components/gallery/generation-prompt";
+import { GalleryPageHeader } from "@/components/gallery/gallery-page-header";
 import {
   ANTHROPIC_FRONTEND_DESIGN_SKILL_URL,
 } from "@/lib/gallery-anthropic-skill";
@@ -29,59 +28,24 @@ export default function HomePage() {
     <>
       <GalleryRankingsNav />
       <main className="mx-auto max-w-[98rem] px-4 py-16 sm:px-6 sm:py-20 lg:px-4">
-        <header className="max-w-2xl">
-          <h1 className="text-3xl font-medium tracking-tight text-[var(--gallery-text-primary)] sm:text-4xl">
-            Which AI Made This?
-          </h1>
-          <p className="mt-5 text-[15px] leading-relaxed text-[var(--gallery-text-secondary)]">
-            A comparison of how different AI models approach UI design, with and without{" "}
-            <Link
-              href={ANTHROPIC_FRONTEND_DESIGN_SKILL_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium text-[var(--gallery-text-primary)] underline decoration-[var(--gallery-divider-strong)] underline-offset-2 transition-colors hover:text-[var(--gallery-accent)] hover:decoration-[var(--gallery-accent)]"
-            >
-              Anthropic&apos;s frontend design skill
-            </Link>{" "}
-            enabled.
-          </p>
-          <GenerationPrompt prompt={generationPrompt} />
-          <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[var(--gallery-text-tertiary)]">
-            <Link
-              href="https://github.com/sunkenintime"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 transition-colors hover:text-[var(--gallery-text-primary)]"
-            >
-              <Github className="h-4 w-4 shrink-0 opacity-70" aria-hidden="true" />
-              <span>Dara A.</span>
-            </Link>
-            <Link
-              href="https://x.com/daradoescode"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 transition-colors hover:text-[var(--gallery-text-primary)]"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className="h-4 w-4 shrink-0 fill-current opacity-70"
+        <GalleryPageHeader
+          title="Which AI Made This?"
+          description={
+            <>
+              A comparison of how different AI models approach UI design, with and without{" "}
+              <Link
+                href={ANTHROPIC_FRONTEND_DESIGN_SKILL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium text-[var(--gallery-text-primary)] underline decoration-[var(--gallery-divider-strong)] underline-offset-2 transition-colors hover:text-[var(--gallery-accent)] hover:decoration-[var(--gallery-accent)]"
               >
-                <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932 6.064-6.932Zm-1.29 19.493h2.039L6.486 3.238H4.298z" />
-              </svg>
-              <span>@daradoescode</span>
-            </Link>
-            <Link
-              href="https://www.buymeacoffee.com/daradoescode"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 transition-colors hover:text-[var(--gallery-text-primary)]"
-            >
-              <Coffee className="h-4 w-4 shrink-0 opacity-70" aria-hidden="true" />
-              <span>Fund more generations</span>
-            </Link>
-          </div>
-        </header>
+                Anthropic&apos;s frontend design skill
+              </Link>{" "}
+              enabled.
+            </>
+          }
+          prompt={generationPrompt}
+        />
 
         <GalleryHomeGroups
           groups={groups.map((group) => ({

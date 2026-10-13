@@ -1,5 +1,6 @@
 import motionConfig from "@/lib/motion-config.json";
 import motionRuns from "@/lib/motion-runs.json";
+import type { ModelLab } from "@/lib/model-labs";
 
 export type MotionModel = (typeof motionConfig.models)[number];
 export type MotionHarness = (typeof motionConfig.harnesses)[number];
@@ -74,6 +75,20 @@ const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
 
 export function getMotionModelLogo(model: MotionModel) {
   return LAB_LOGOS[model.lab] ?? null;
+}
+
+/** The motion config names labs as people write them; search wants the gallery's lab slugs and aliases. */
+const MOTION_LABS: Record<string, ModelLab> = {
+  Anthropic: { slug: "anthropic", label: "Anthropic" },
+  OpenAI: { slug: "gpt", label: "OpenAI" },
+  xAI: { slug: "x-ai", label: "xAI" },
+  Meta: { slug: "meta", label: "Meta" },
+};
+
+export function getMotionModelLab(model: MotionModel): ModelLab {
+  const lab = MOTION_LABS[model.lab];
+  if (!lab) throw new Error(`Unknown motion lab ${model.lab}`);
+  return lab;
 }
 
 export function getMotionHarness(model: MotionModel): MotionHarness {

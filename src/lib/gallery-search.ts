@@ -1,5 +1,5 @@
 import type { GalleryEntry, GalleryGroupSlug, ModelSlug } from "@/lib/gallery-types";
-import { getModelLab, type LabSlug } from "@/lib/model-labs";
+import { getModelLab, type LabSlug, type ModelLab } from "@/lib/model-labs";
 
 /**
  * Undocumented search vocabulary. None of this appears in the UI; it exists so
@@ -69,21 +69,26 @@ function normalize(value: string): string {
     .trim();
 }
 
+function modelTerms(label: string, id: string, lab: ModelLab): string[] {
+  return [label, id, ...(MODEL_ALIASES[id as ModelSlug] ?? []), lab.label, lab.slug, ...LAB_ALIASES[lab.slug]];
+}
+
 function haystackFor(entry: GalleryEntry): string {
-  const lab = getModelLab(entry.model);
   return normalize(
     [
-      entry.modelLabel,
-      entry.model,
-      ...(MODEL_ALIASES[entry.model] ?? []),
-      lab.label,
-      lab.slug,
-      ...LAB_ALIASES[lab.slug],
+      ...modelTerms(entry.modelLabel, entry.model, getModelLab(entry.model)),
       entry.groupLabel,
       entry.group,
       ...GROUP_ALIASES[entry.group],
     ].join(" "),
   );
+}
+
+function haystackMatches(haystack: string, query: string): boolean {
+  const terms = normalize(query).split(" ").filter(Boolean);
+  if (terms.length === 0) return true;
+  const compact = haystack.replace(/ /g, "");
+  return terms.every((term) => haystack.includes(term) || compact.includes(term));
 }
 
 export function normalizeGalleryQuery(query: string): string {
@@ -97,11 +102,15 @@ export function normalizeGalleryQuery(query: string): string {
  * Astra rows, and "claude" hits every Anthropic model.
  */
 export function galleryEntryMatchesQuery(entry: GalleryEntry, query: string): boolean {
-  const terms = normalize(query).split(" ").filter(Boolean);
-  if (terms.length === 0) return true;
-  const haystack = haystackFor(entry);
-  const compact = haystack.replace(/ /g, "");
-  return terms.every((term) => haystack.includes(term) || compact.includes(term));
+  return haystackMatches(haystackFor(entry), query);
+}
+
+/** The same search for a model outside the manifest (the motion gallery): label, id, lab, and the aliases above. */
+export function galleryModelMatchesQuery(
+  model: { id: string; label: string; lab: ModelLab },
+  query: string,
+): boolean {
+  return haystackMatches(normalize(modelTerms(model.label, model.id, model.lab).join(" ")), query);
 }
 
 export function filterGalleryEntriesByQuery(

@@ -2,7 +2,33 @@
 
 import clsx from "clsx";
 import { Search, X } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+
+const QUERY_PARAM = "q";
+
+/** The gallery search query, kept in `?q=` so a search survives reloads and shared links. */
+export function useGallerySearchQuery() {
+  const [query, setQuery] = useState("");
+
+  // Hydrate from ?q= after mount so server and client markup agree.
+  useEffect(() => {
+    const initial = new URLSearchParams(window.location.search).get(QUERY_PARAM);
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time sync from the URL, an external system
+    if (initial) setQuery(initial);
+  }, []);
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const current = url.searchParams.get(QUERY_PARAM) ?? "";
+    const next = query.trim();
+    if (current === next) return;
+    if (next) url.searchParams.set(QUERY_PARAM, next);
+    else url.searchParams.delete(QUERY_PARAM);
+    window.history.replaceState(window.history.state, "", url);
+  }, [query]);
+
+  return [query, setQuery] as const;
+}
 
 export function GallerySearch({
   query,
@@ -109,6 +135,27 @@ export function GallerySearch({
             : `${resultCount} of ${totalCount} generations`
           : " "}
       </p>
+    </div>
+  );
+}
+
+export function GallerySearchEmpty({ query, onClear }: { query: string; onClear: () => void }) {
+  return (
+    <div className="mt-10 rounded-lg border border-dashed border-[var(--gallery-divider-strong)] px-6 py-12 text-center">
+      <p className="text-base font-medium tracking-tight text-[var(--gallery-text-primary)]">
+        No models match &ldquo;{query.trim()}&rdquo;
+      </p>
+      <p className="mt-2 text-sm text-[var(--gallery-text-tertiary)]">
+        Try a model name like &ldquo;Opus&rdquo;, a version like &ldquo;5.5&rdquo;, or a lab like
+        &ldquo;OpenAI&rdquo;.
+      </p>
+      <button
+        type="button"
+        onClick={onClear}
+        className="mt-5 inline-flex items-center rounded-md border border-[var(--gallery-divider-strong)] bg-[var(--gallery-surface)] px-3 py-1.5 text-sm font-medium tracking-tight text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] transition-colors hover:border-[var(--gallery-text-quaternary)] hover:bg-[var(--gallery-surface-subtle)]"
+      >
+        Clear search
+      </button>
     </div>
   );
 }

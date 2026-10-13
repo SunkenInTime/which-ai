@@ -2,9 +2,9 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import { Check, Clapperboard, PanelLeft, PanelRight } from "lucide-react";
+import { Check, Clapperboard, PanelLeft, PanelRight, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { ThemeAwareLogo } from "@/components/gallery/theme-aware-logo";
 import { getPopoverClass, switcherButtonClass } from "@/components/gallery/variant-header";
 import {
@@ -147,7 +147,14 @@ export function MotionSwitcher({
           VS
         </button>
         {openPicker === "compare" ? (
-          <OptionList label="Compare with" options={compares} activeId={null} className={popoverClass} />
+          <OptionList
+            label="Compare with"
+            options={compares}
+            activeId={null}
+            className={popoverClass}
+            searchPlaceholder="Compare to model"
+            searchLabel="Search compare models"
+          />
         ) : null}
       </span>
       <div className="h-px w-full shrink-0 bg-[var(--gallery-border)]" aria-hidden="true" />
@@ -174,7 +181,15 @@ export function MotionSwitcher({
           )}
         </button>
         {openPicker === "model" ? (
-          <OptionList label="Switch model" options={models} activeId={modelId} className={popoverClass} />
+          <OptionList
+            label="Switch model"
+            options={models}
+            activeId={modelId}
+            className={popoverClass}
+            searchPlaceholder="Search models"
+            searchLabel="Search models"
+            shortcut="⌘ + K"
+          />
         ) : null}
       </span>
       <div className="h-px w-full shrink-0 bg-[var(--gallery-border)]" aria-hidden="true" />
@@ -224,17 +239,67 @@ function OptionList({
   options,
   activeId,
   className,
+  searchPlaceholder,
+  searchLabel,
+  shortcut,
 }: {
   label: string;
   options: MotionSwitcherOption[];
   activeId: string | null;
   className: string;
+  searchPlaceholder: string;
+  searchLabel: string;
+  /** Shown in the search field, for the picker a keyboard shortcut opens. */
+  shortcut?: string;
 }) {
+  const router = useRouter();
+  const [search, setSearch] = useState("");
+  const searchRef = useRef<HTMLInputElement | null>(null);
+  // Same matching as the frontend switcher's pickers.
+  const filtered = useMemo(() => {
+    const query = search.trim().toLowerCase();
+    if (!query) return options;
+    return options.filter((option) => `${option.label} ${option.id}`.toLowerCase().includes(query));
+  }, [options, search]);
+  const enterTarget = filtered.find((option) => option.href);
+
+  // The list mounts when its picker opens, so focusing on mount focuses on open.
+  useEffect(() => {
+    searchRef.current?.focus();
+  }, []);
+
   return (
     <div className={className} role="menu" aria-label={label}>
-      <p className="px-3 pt-1 pb-0.5 text-[11px] font-medium text-[var(--gallery-text-quaternary)]">{label}</p>
-      {options.map((option) => {
+      <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
+        <Search className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]" aria-hidden />
+        <input
+          ref={searchRef}
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && enterTarget?.href) {
+              event.preventDefault();
+              router.push(enterTarget.href);
+            }
+          }}
+          placeholder={searchPlaceholder}
+          aria-label={searchLabel}
+          className="h-full min-w-0 flex-1 bg-transparent px-2.5 text-sm font-medium text-[var(--gallery-text-primary)] outline-none placeholder:text-[var(--gallery-text-quaternary)]"
+        />
+        {shortcut ? (
+          <span className="mr-2 shrink-0 rounded-[4px] border border-[var(--gallery-border)] bg-[var(--gallery-surface-muted)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--gallery-text-quaternary)]">
+            {shortcut}
+          </span>
+        ) : null}
+      </label>
+      {filtered.length === 0 ? (
+        <div className="rounded-md bg-[var(--gallery-surface-muted)] px-3 py-2.5 text-sm font-medium text-[var(--gallery-text-quaternary)]">
+          No models found
+        </div>
+      ) : null}
+      {filtered.map((option) => {
         const active = option.id === activeId;
+        const isEnterTarget = option.id === enterTarget?.id;
         const content = (
           <>
             <span className="flex min-w-0 flex-1 items-center gap-3">
@@ -255,12 +320,18 @@ function OptionList({
                 ) : null}
               </span>
             </span>
-            {active ? <Check className="size-3.5 shrink-0" aria-hidden /> : null}
+            {active ? (
+              <Check className="size-3.5 shrink-0" aria-hidden />
+            ) : isEnterTarget ? (
+              <span className="shrink-0 rounded-[4px] border border-[var(--gallery-accent)]/25 bg-[var(--gallery-accent)]/10 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--gallery-accent)]">
+                Enter
+              </span>
+            ) : null}
           </>
         );
         const itemClass = clsx(
           "flex w-full items-center gap-2.5 rounded-md px-3 py-2.5 text-left text-sm transition-colors duration-150",
-          active
+          active || isEnterTarget
             ? "bg-[var(--gallery-accent)]/12 text-[var(--gallery-text-primary)]"
             : option.href
               ? "bg-[var(--gallery-surface)] text-[var(--gallery-text-primary)] hover:bg-[var(--gallery-accent)]/10"
