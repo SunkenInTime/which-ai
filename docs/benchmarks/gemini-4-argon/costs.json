@@ -1,0 +1,204 @@
+{
+  "exportedAt": "2026-10-13T17:19:45.509580+00:00",
+  "source": "Cursor dashboard usage CSV, scoped to these eight Argon events",
+  "ratesUsdPerMillion": {
+    "input": 2,
+    "cacheRead": 0.1,
+    "output": 10
+  },
+  "records": [
+    {
+      "condition": "no-skills",
+      "billingEvents": [
+        {
+          "Date": "2026-10-13T16:59:28.059Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "319375",
+          "Cache Read": "2053451",
+          "Output Tokens": "72222",
+          "Total Tokens": "2445048",
+          "Cost": "Included"
+        }
+      ],
+      "tokens": {
+        "Input (w/ Cache Write)": 0,
+        "Input (w/o Cache Write)": 319375,
+        "Cache Read": 2053451,
+        "Output Tokens": 72222,
+        "Total Tokens": 2445048
+      },
+      "apiEquivalentUsd": 1.5663151,
+      "billingClassification": "Included",
+      "billedExtraUsd": 0,
+      "attribution": "Initial events match user-turn timestamps within one second. Motion continuation at 17:14:34 attributed to the only still-running Argon session; 17:17:13 matches Cursor task-completion notifications. Preflights excluded from scored total."
+    },
+    {
+      "condition": "anthropic-frontend-design",
+      "billingEvents": [
+        {
+          "Date": "2026-10-13T17:00:09.025Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "521880",
+          "Cache Read": "1022633",
+          "Output Tokens": "61047",
+          "Total Tokens": "1605560",
+          "Cost": "Included"
+        }
+      ],
+      "tokens": {
+        "Input (w/ Cache Write)": 0,
+        "Input (w/o Cache Write)": 521880,
+        "Cache Read": 1022633,
+        "Output Tokens": 61047,
+        "Total Tokens": 1605560
+      },
+      "apiEquivalentUsd": 1.7564933,
+      "billingClassification": "Included",
+      "billedExtraUsd": 0,
+      "attribution": "Initial events match user-turn timestamps within one second. Motion continuation at 17:14:34 attributed to the only still-running Argon session; 17:17:13 matches Cursor task-completion notifications. Preflights excluded from scored total."
+    },
+    {
+      "condition": "design-taste",
+      "billingEvents": [
+        {
+          "Date": "2026-10-13T17:00:46.024Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "991824",
+          "Cache Read": "2115129",
+          "Output Tokens": "99244",
+          "Total Tokens": "3206197",
+          "Cost": "Included"
+        }
+      ],
+      "tokens": {
+        "Input (w/ Cache Write)": 0,
+        "Input (w/o Cache Write)": 991824,
+        "Cache Read": 2115129,
+        "Output Tokens": 99244,
+        "Total Tokens": 3206197
+      },
+      "apiEquivalentUsd": 3.1876009,
+      "billingClassification": "Included",
+      "billedExtraUsd": 0,
+      "attribution": "Initial events match user-turn timestamps within one second. Motion continuation at 17:14:34 attributed to the only still-running Argon session; 17:17:13 matches Cursor task-completion notifications. Preflights excluded from scored total."
+    },
+    {
+      "condition": "motion",
+      "billingEvents": [
+        {
+          "Date": "2026-10-13T17:17:13.289Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "127259",
+          "Cache Read": "6080",
+          "Output Tokens": "118",
+          "Total Tokens": "133457",
+          "Cost": "Included"
+        },
+        {
+          "Date": "2026-10-13T17:14:34.985Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "623884",
+          "Cache Read": "645963",
+          "Output Tokens": "12155",
+          "Total Tokens": "1282002",
+          "Cost": "Included"
+        },
+        {
+          "Date": "2026-10-13T17:01:41.387Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "751624",
+          "Cache Read": "1146876",
+          "Output Tokens": "113361",
+          "Total Tokens": "2011861",
+          "Cost": "Included"
+        }
+      ],
+      "tokens": {
+        "Input (w/ Cache Write)": 0,
+        "Input (w/o Cache Write)": 1502767,
+        "Cache Read": 1798919,
+        "Output Tokens": 125634,
+        "Total Tokens": 3427320
+      },
+      "apiEquivalentUsd": 4.4417659,
+      "billingClassification": "Included",
+      "billedExtraUsd": 0,
+      "attribution": "Initial events match user-turn timestamps within one second. Motion continuation at 17:14:34 attributed to the only still-running Argon session; 17:17:13 matches Cursor task-completion notifications. Preflights excluded from scored total."
+    },
+    {
+      "condition": "unscored-preflights",
+      "billingEvents": [
+        {
+          "Date": "2026-10-13T16:58:52.777Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "12697",
+          "Cache Read": "0",
+          "Output Tokens": "1734",
+          "Total Tokens": "14431",
+          "Cost": "Included"
+        },
+        {
+          "Date": "2026-10-13T16:56:27.703Z",
+          "Cloud Agent ID": "",
+          "Automation ID": "",
+          "Kind": "Included",
+          "Model": "gemini-4-argon-high",
+          "Max Mode": "No",
+          "Input (w/ Cache Write)": "0",
+          "Input (w/o Cache Write)": "62217",
+          "Cache Read": "84959",
+          "Output Tokens": "7505",
+          "Total Tokens": "154681",
+          "Cost": "Included"
+        }
+      ],
+      "tokens": {
+        "Input (w/ Cache Write)": 0,
+        "Input (w/o Cache Write)": 74914,
+        "Cache Read": 84959,
+        "Output Tokens": 9239,
+        "Total Tokens": 169112
+      },
+      "apiEquivalentUsd": 0.2507139,
+      "billingClassification": "Included",
+      "billedExtraUsd": 0,
+      "attribution": "Initial events match user-turn timestamps within one second. Motion continuation at 17:14:34 attributed to the only still-running Argon session; 17:17:13 matches Cursor task-completion notifications. Preflights excluded from scored total."
+    }
+  ],
+  "scoredTotalApiEquivalentUsd": 10.9521752
+}

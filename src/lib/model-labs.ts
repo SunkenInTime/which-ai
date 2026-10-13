@@ -34,6 +34,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   gemini: { slug: "google", label: "Google" },
   "gemini-3.5-flash": { slug: "google", label: "Google" },
   "gemini-3.7-flash": { slug: "google", label: "Google" },
+  "gemini-4-argon": { slug: "google", label: "Google" },
   "gemini-3.8-flash": { slug: "google", label: "Google" },
   "glm-5-turbo": { slug: "z-ai", label: "Z.ai" },
   "glm-5.1": { slug: "z-ai", label: "Z.ai" },

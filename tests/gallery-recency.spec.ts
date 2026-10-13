@@ -160,8 +160,18 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => entry.model !== "muse-wonder-1.0")) {
+  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon"] as string[]).includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
+  }
+});
+
+test("Argon joins Muse as a new arrival on October 13 and leads every group", () => {
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    const now = isoDateToUtcMs("2026-10-13");
+    const arrivals = entries.filter(entry => getGalleryEntryNewArrival(entries, entry, now)).map(entry => entry.model).sort();
+    expect(arrivals).toEqual(["gemini-4-argon", "muse-wonder-1.0"]);
+    expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("gemini-4-argon");
   }
 });

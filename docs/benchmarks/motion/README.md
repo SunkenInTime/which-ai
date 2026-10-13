@@ -49,7 +49,7 @@ It prints a project folder and a `PROMPT.txt`. Open the agent in that folder, pa
 npm run motion:finish -- <run folder> [--wall-seconds 1234] [--cost 4.20]
 ```
 
-A manual thread loads your own setup (global CLAUDE.md, skills, MCP servers), so its result isn't comparable with isolated runs. It's recorded with `"source": "manual"`.
+By default, a manual thread loads your own setup (global CLAUDE.md, skills, MCP servers), so its result is not comparable with isolated runs. It's recorded with `"source": "manual"`.
 
 Every run folder under the work root (`C:\motionbench\work` on Windows, `/Users/Shared/motionbench/work` on macOS, `/var/tmp/motionbench/work` on Linux, or `MOTIONBENCH_WORK`) keeps the agent's source, transcript, and full record in `run.json`, even when a rerun replaces the published video.
 
@@ -58,3 +58,10 @@ Every run folder under the work root (`C:\motionbench\work` on Windows, `/Users/
 Each render is a CRF 18 master, kept in the run folder as `<n>/final.mp4`. What gets published to `public/motion/<group>/<model>/` is `<n>.mp4`, a full-size 60fps H.264 encode for the site (CRF 20, capped at 25 Mbps, since dense particles smear at lower caps); `<n>.preview.mp4`, a 640px 30fps silent clip that cards play on hover; and `<n>.jpg`, the poster.
 
 `npm run motion:upload` copies `public/motion` to the `whichai-motion` R2 bucket (see `scripts/motion/upload.mjs`). It uses rclone when an R2 API token is set up, and otherwise wrangler's own login. Then commit `src/lib/motion-runs.json`. Production builds read videos from `https://media.whichai.dev`, the bucket's domain; `npm run dev` reads `public/motion`. `NEXT_PUBLIC_MOTION_VIDEO_BASE_URL` overrides both.
+
+
+## Cursor desktop runs
+
+Gemini 4 Argon uses Cursor desktop and is marked `manualOnly` in the harness configuration. `motion:run -- all` skips it; targeting it directly explains the manual workflow instead of invoking an unrelated CLI. Use `motion:new -- gemini-4-argon`, open the printed project in Cursor, select the configured model and reasoning level, and preserve the session's source, usage export and context audit before `motion:finish`.
+
+The October 13 run's [methodology and evidence](../gemini-4-argon/README.md) document personal-rule isolation, remaining built-in/plugin tools, native screenshot access, the cost estimate and its uniform SwiftShader rendering exception. Do not describe it as equivalent to the isolated CLI runs.

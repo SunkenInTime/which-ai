@@ -57,6 +57,12 @@ for (const model of models) await runSession(model);
 async function runSession(model) {
   const harness = config.harnesses.find((h) => h.id === model.harness);
   if (!harness) fail(`Model ${model.id} points at unknown harness ${model.harness}`);
+  if (harness.manualOnly) {
+    const instruction = `${model.id} uses ${harness.label} desktop. Use npm run motion:new -- ${model.id}, then motion:finish after the session completes.`;
+    if (modelArg !== "all") fail(instruction);
+    console.log(`skip ${instruction}`);
+    return;
+  }
   const key = `${groupId}/${model.id}`;
   const runs = readRuns();
   const existing = Array.from({ length: config.iterations }, (_, i) => runs[`${key}/${i + 1}`]);

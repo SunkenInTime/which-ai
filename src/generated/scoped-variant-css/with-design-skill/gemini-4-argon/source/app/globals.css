@@ -1,0 +1,20 @@
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"])  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"])  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keep source Tailwind font utilities when the gallery strips global @theme rules. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-sans { font-family: var(--font-geist-sans), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-mono { font-family: var(--font-geist-mono), monospace; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-newsreader { font-family: var(--font-newsreader), Georgia, serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-jakarta { font-family: var(--font-jakarta), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-plex { font-family: var(--font-plex-sans), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-fraunces { font-family: var(--font-fraunces), Georgia, serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-space { font-family: var(--font-space-grotesk), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-literata { font-family: var(--font-literata), Georgia, serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-bricolage { font-family: var(--font-bricolage), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-argon"]) .font-instrument { font-family: var(--font-instrument-serif), Georgia, serif; }

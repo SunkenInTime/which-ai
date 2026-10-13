@@ -1,0 +1,708 @@
+{
+  "model": "gemini-4-argon",
+  "runner": "Cursor desktop 3.24.12 on macOS",
+  "reasoningEffort": "high",
+  "source": "manual",
+  "date": "2026-10-13",
+  "generationPolicy": "One scored prompt per condition; no orchestrator edits or follow-up coaching during generation. Concurrent sessions, not a controlled latency benchmark. Original source hashes recorded before gallery adaptation.",
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "composerId": "3914ce61-51f6-4eae-9036-24e49ea0f47a",
+      "model": {
+        "modelName": "gemini-4-argon",
+        "maxMode": true,
+        "selectedModels": [
+          {
+            "modelId": "gemini-4-argon",
+            "parameters": [
+              {
+                "id": "reasoning_effort",
+                "value": "high"
+              }
+            ]
+          }
+        ]
+      },
+      "startedAt": "2026-10-13T16:59:27.479Z",
+      "completed": true,
+      "userTurns": 1,
+      "cursorSystemNotifications": 0,
+      "promptSha256": "02be17edc5f0992eef9bc7420e9a3612dc79819fdc36c86776f71850985c6afd",
+      "toolCalls": {
+        "glob_file_search": 6,
+        "read_file_v2": 10,
+        "ripgrep_raw_search": 1,
+        "edit_file_v2": 10,
+        "run_terminal_command_v2": 1,
+        "get_mcp_tools": 1,
+        "mcp-cursor-ide-browser-browser_navigate": 5,
+        "mcp-cursor-ide-browser-browser_lock": 2,
+        "mcp-cursor-ide-browser-browser_take_screenshot": 5,
+        "mcp-cursor-ide-browser-browser_click": 2
+      },
+      "instructionFilesRead": [],
+      "imagesRead": [],
+      "lastReplyAt": "2026-10-13T17:09:14.233Z",
+      "completedAt": "2026-10-13T17:09:14.233Z",
+      "wallSeconds": 586.754,
+      "browserActions": [
+        {
+          "at": "2026-10-13T17:07:10.750Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3281/1\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:18.415Z",
+          "name": "mcp-cursor-ide-browser-browser_lock",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_lock",
+                "parameters": "{\"action\":\"lock\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:27.579Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:43.687Z",
+          "name": "mcp-cursor-ide-browser-browser_click",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_click",
+                "parameters": "{\"element\":\"Switch to next iteration button\",\"ref\":\"e29\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:47.493Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3281/2\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:51.478Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:08.949Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3281/3\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:12.847Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:27.468Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3281/4\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:31.468Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:47.188Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3281/5\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:51.789Z",
+          "name": "mcp-cursor-ide-browser-browser_click",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_click",
+                "parameters": "{\"element\":\"Ambient Companion (5/5) iteration switcher drawer button\",\"ref\":\"e16\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:55.776Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:09:10.708Z",
+          "name": "mcp-cursor-ide-browser-browser_lock",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_lock",
+                "parameters": "{\"action\":\"unlock\",\"viewId\":\"8d608a\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "condition": "anthropic-frontend-design",
+      "composerId": "243584df-25f1-4348-8431-0e277c0c1835",
+      "model": {
+        "modelName": "gemini-4-argon",
+        "maxMode": true,
+        "selectedModels": [
+          {
+            "modelId": "gemini-4-argon",
+            "parameters": [
+              {
+                "id": "reasoning_effort",
+                "value": "high"
+              }
+            ]
+          }
+        ]
+      },
+      "startedAt": "2026-10-13T17:00:08.682Z",
+      "completed": true,
+      "userTurns": 1,
+      "cursorSystemNotifications": 0,
+      "promptSha256": "479c0b7ca182b372f22ff000a07afcd0f54cfbd68a60fe0465fc6d7d2dec1066",
+      "toolCalls": {
+        "read_file_v2": 8,
+        "glob_file_search": 3,
+        "edit_file_v2": 10,
+        "run_terminal_command_v2": 2,
+        "get_mcp_tools": 2,
+        "mcp-cursor-ide-browser-browser_tabs": 1,
+        "mcp-cursor-ide-browser-browser_navigate": 5,
+        "mcp-cursor-ide-browser-browser_lock": 2,
+        "mcp-cursor-ide-browser-browser_take_screenshot": 5,
+        "mcp-cursor-ide-browser-browser_click": 1
+      },
+      "instructionFilesRead": [
+        "<workspace>/.agents/skills/frontend-design/SKILL.md"
+      ],
+      "imagesRead": [],
+      "lastReplyAt": "2026-10-13T17:08:53.948Z",
+      "completedAt": "2026-10-13T17:08:53.948Z",
+      "wallSeconds": 525.266,
+      "browserActions": [
+        {
+          "at": "2026-10-13T17:07:06.142Z",
+          "name": "mcp-cursor-ide-browser-browser_tabs",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_tabs",
+                "parameters": "{\"action\":\"list\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:10.963Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3282/1\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:17.161Z",
+          "name": "mcp-cursor-ide-browser-browser_lock",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_lock",
+                "parameters": "{\"action\":\"lock\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:17.524Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"filename\":\"iteration-1.png\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:31.795Z",
+          "name": "mcp-cursor-ide-browser-browser_click",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_click",
+                "parameters": "{\"ref\":\"e26\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:36.248Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3282/2\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:36.657Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"filename\":\"iteration-2.png\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:54.467Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3282/3\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:07:55.023Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"filename\":\"iteration-3.png\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:10.795Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3282/4\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:11.223Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"filename\":\"iteration-4.png\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:26.180Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"url\":\"http://localhost:3282/5\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:26.614Z",
+          "name": "mcp-cursor-ide-browser-browser_take_screenshot",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_take_screenshot",
+                "parameters": "{\"filename\":\"iteration-5.png\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:08:40.873Z",
+          "name": "mcp-cursor-ide-browser-browser_lock",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_lock",
+                "parameters": "{\"action\":\"unlock\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "condition": "design-taste",
+      "composerId": "f0da61c6-5479-4faa-9d96-4be863fb66e4",
+      "model": {
+        "modelName": "gemini-4-argon",
+        "maxMode": true,
+        "selectedModels": [
+          {
+            "modelId": "gemini-4-argon",
+            "parameters": [
+              {
+                "id": "reasoning_effort",
+                "value": "high"
+              }
+            ]
+          }
+        ]
+      },
+      "startedAt": "2026-10-13T17:00:45.823Z",
+      "completed": true,
+      "userTurns": 1,
+      "cursorSystemNotifications": 0,
+      "promptSha256": "1d74355239537066f943a3756ab4ffffacd59676e4c5b3caab983cf715a9be7d",
+      "toolCalls": {
+        "read_file_v2": 9,
+        "glob_file_search": 4,
+        "get_mcp_tools": 9,
+        "todo_write": 9,
+        "run_terminal_command_v2": 4,
+        "edit_file_v2": 23,
+        "ripgrep_raw_search": 3,
+        "mcp-cursor-ide-browser-browser_tabs": 1,
+        "mcp-cursor-ide-browser-browser_navigate": 5,
+        "mcp-cursor-ide-browser-browser_lock": 2
+      },
+      "instructionFilesRead": [
+        "<workspace>/.agents/skills/design-taste-frontend/SKILL.md"
+      ],
+      "imagesRead": [],
+      "lastReplyAt": "2026-10-13T17:13:32.358Z",
+      "completedAt": "2026-10-13T17:13:32.358Z",
+      "wallSeconds": 766.535,
+      "browserActions": [
+        {
+          "at": "2026-10-13T17:11:43.734Z",
+          "name": "mcp-cursor-ide-browser-browser_tabs",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_tabs",
+                "parameters": "{\"action\":\"list\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:11:50.597Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"take_screenshot_afterwards\":true,\"url\":\"http://localhost:3283/1\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:12:08.794Z",
+          "name": "mcp-cursor-ide-browser-browser_lock",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_lock",
+                "parameters": "{\"action\":\"lock\",\"viewId\":\"1b4a0d\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:12:14.949Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"take_screenshot_afterwards\":true,\"url\":\"http://localhost:3283/2\",\"viewId\":\"1b4a0d\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:12:33.880Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"take_screenshot_afterwards\":true,\"url\":\"http://localhost:3283/3\",\"viewId\":\"1b4a0d\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:12:50.201Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"take_screenshot_afterwards\":true,\"url\":\"http://localhost:3283/4\",\"viewId\":\"1b4a0d\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:13:06.894Z",
+          "name": "mcp-cursor-ide-browser-browser_navigate",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_navigate",
+                "parameters": "{\"take_screenshot_afterwards\":true,\"url\":\"http://localhost:3283/5\",\"viewId\":\"1b4a0d\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        },
+        {
+          "at": "2026-10-13T17:13:26.533Z",
+          "name": "mcp-cursor-ide-browser-browser_lock",
+          "arguments": {
+            "tools": [
+              {
+                "name": "browser_lock",
+                "parameters": "{\"action\":\"unlock\",\"viewId\":\"1b4a0d\"}",
+                "serverName": "cursor-ide-browser"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "condition": "motion",
+      "composerId": "66755067-7052-4ab9-bd37-25500941ae25",
+      "model": {
+        "modelName": "gemini-4-argon",
+        "maxMode": true,
+        "selectedModels": [
+          {
+            "modelId": "gemini-4-argon",
+            "parameters": [
+              {
+                "id": "reasoning_effort",
+                "value": "high"
+              }
+            ]
+          }
+        ]
+      },
+      "startedAt": "2026-10-13T17:01:41.433Z",
+      "completed": true,
+      "userTurns": 1,
+      "cursorSystemNotifications": 2,
+      "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+      "toolCalls": {
+        "glob_file_search": 1,
+        "read_file_v2": 31,
+        "run_terminal_command_v2": 13,
+        "edit_file_v2": 11
+      },
+      "instructionFilesRead": [],
+      "imagesRead": [
+        "<workspace>/1/sheet.png",
+        "<workspace>/1/frames/frame-1.2.png",
+        "<workspace>/1/frames/frame-4.8.png",
+        "<workspace>/1/frames/frame-8.png",
+        "<workspace>/1/frames/frame-11.4.png",
+        "<workspace>/1/frames/frame-14.2.png",
+        "<workspace>/2/sheet.png",
+        "<workspace>/2/frames/frame-1.7.png",
+        "<workspace>/2/frames/frame-4.8.png",
+        "<workspace>/2/frames/frame-8.png",
+        "<workspace>/2/frames/frame-11.4.png",
+        "<workspace>/2/frames/frame-14.2.png",
+        "<workspace>/3/sheet.png",
+        "<workspace>/3/frames/frame-1.6.png",
+        "<workspace>/3/frames/frame-4.8.png",
+        "<workspace>/3/frames/frame-8.png",
+        "<workspace>/3/frames/frame-11.4.png",
+        "<workspace>/3/frames/frame-14.2.png",
+        "<workspace>/1/sheet.png",
+        "<workspace>/2/sheet.png",
+        "<workspace>/3/sheet.png",
+        "<workspace>/3/sheet.png"
+      ],
+      "lastReplyAt": "2026-10-13T17:17:19.245Z",
+      "completedAt": "2026-10-13T17:17:19.245Z",
+      "wallSeconds": 937.812,
+      "browserActions": []
+    }
+  ],
+  "starter": "Next.js 16.3.8 / React 19.2.8, same starter as Muse Wonder 1.0",
+  "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "assignedSkillSha256": {
+    "next-agents.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+    "frontend-design.skill.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+    "design-taste.skill.md": "aa194351b246b8b4799099d4ed7b033d29eab6e6e3d58d8d2172978be7b3ec89"
+  },
+  "isolation": "See README.md. Personal global skills and Cursor rules absent before fresh scored chats; stock Next.js instructions, Cursor built-ins, and installed-plugin skills/tools remain. Context isolation only; no filesystem jail.",
+  "integrationChanges": [
+    "Scoped CSS and materialized local font utilities stripped from Tailwind @theme by the gallery generator.",
+    "Root html/body and their CSS selectors adapted to data-source-html/data-source-body divs, preserving font/custom-property inheritance.",
+    "Root LayoutProps type replaced by explicit ReactNode children.",
+    "Namespaced source imports and public assets; numeric self-links point to gallery routes.",
+    "Root iteration switcher omitted because gallery provides navigation.",
+    "Narrow lint suppression for intentional slash-prefixed UI text in four baseline pages; rendered text unchanged.",
+    "Whitespace-only selector formatting and final-newline normalization in gallery copies; regenerated scoped CSS, never hand-edited it."
+  ],
+  "costBasis": {
+    "kind": "API-equivalent token estimate; separate from subscription charges",
+    "ratesUsdPerMillion": {
+      "uncachedInput": 2,
+      "cacheRead": 0.1,
+      "output": 10
+    },
+    "checkedAt": "2026-10-13",
+    "sources": [
+      "https://cursor.com/docs/models-and-pricing",
+      "https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/"
+    ]
+  },
+  "personalContextRestoredAt": "2026-10-13T17:18:02.925250+00:00",
+  "renderOverride": {
+    "gl": "swiftshader",
+    "reason": "Windows GPU captures intermittently lose visual layers; unchanged source passes software checks on the same machine.",
+    "scope": "All three videos, isolated rendering process only; default corpus renderer unchanged."
+  },
+  "timestampBasis": "Initial human message through last final reply; includes automatic terminal completion continuation; concurrent sessions.",
+  "billingModeNote": "Persisted maxMode true differs from exported Max Mode No; describe only High reasoning."
+}

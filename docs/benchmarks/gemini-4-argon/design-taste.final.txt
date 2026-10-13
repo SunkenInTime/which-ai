@@ -1,0 +1,53 @@
+I have designed and implemented five distinct second-brain note-taking landing page iterations at `/1`, `/2`, `/3`, `/4`, and `/5` (plus an overview gallery at `/`), running on `http://localhost:3283` with a persistent floating switcher in the bottom-right corner.
+
+---
+
+### Design Reads & Dial Configurations (`design-taste-frontend`)
+
+#### 1. Iteration `/1` - **Vellum** (`app/1/page.tsx`, `app/1/VellumInteractive.tsx`)
+* **Design Read:** *"Reading this as: editorial monograph landing page for historians, researchers, and long-form writers, with a quiet archival manuscript language, leaning toward Tailwind v4 + Cormorant Garamond & Plus Jakarta Sans + Alabaster & Cobalt palette."*
+* **Dials:** `DESIGN_VARIANCE: 6`, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 3`
+* **Key Decisions:**
+  * **Serif Justification (Section 4.1):** Uses `Cormorant Garamond` from the approved pool because the product is framed as an archival folio and critical-edition manuscript studio, paired with `Plus Jakarta Sans` and `JetBrains Mono`. Italic headline words include `leading-[1.12] pb-1` descender clearance.
+  * **Palette & Shape Lock:** Cool Alabaster (`slate-50` / `dark:slate-950`) with a single Cobalt accent (`blue-700` / `dark:blue-600`) and `rounded-lg` across all elements.
+  * **CTA Intent Lock:** `"Start archive"` used consistently across navigation, hero, and footer.
+  * **Interactive Workbench:** Live primary-source citation search, shelfmark category tabs, skeletal citation verification state, empty filter state with reset, and a margin citation composer with label-above-input validation.
+
+#### 2. Iteration `/2` - **Cortex** (`app/2/page.tsx`, `app/2/CortexInteractive.tsx`)
+* **Design Read:** *"Reading this as: technical SaaS landing page for engineers and systems thinkers, with a dark-tech local-first precision language, leaning toward Tailwind v4 + Space Grotesk & JetBrains Mono + Zinc & Emerald palette."*
+* **Dials:** `DESIGN_VARIANCE: 7`, `MOTION_INTENSITY: 6`, `VISUAL_DENSITY: 5`
+* **Key Decisions:**
+  * **Typography & Palette Lock:** `Space Grotesk` display headlines + `JetBrains Mono` slugs/telemetry on a Zinc base (`zinc-50` / `dark:zinc-950`) with a single Emerald accent (`emerald-600` / `dark:emerald-500`) and `rounded-xl` corner lock.
+  * **CTA Intent Lock:** `"Download local app"` used consistently across all primary conversion points.
+  * **Interactive Workbench:** Local FTS5 + vector graph query sandbox (`CortexRecallEngine`) with ADR/Postmortem/RFC filtering, simulated index rebuild (skeletal loading), empty state recovery, and live node commit form.
+
+#### 3. Iteration `/3` - **Atelier** (`app/3/page.tsx`, `app/3/AtelierStickyStack.tsx`, `app/3/AtelierSpatialBoard.tsx`)
+* **Design Read:** *"Reading this as: spatial studio landing page for creative directors, architects, and visual thinkers, with a tactile kinetic choreography language, leaning toward Tailwind v4 + Outfit + GSAP ScrollTrigger sticky-stack + Silver-Smoke & Vermilion palette."*
+* **Dials:** `DESIGN_VARIANCE: 9`, `MOTION_INTENSITY: 8`, `VISUAL_DENSITY: 3`
+* **Key Decisions:**
+  * **Choreography & Motion Isolation:** Implements the canonical Section 5.A GSAP `ScrollTrigger` Sticky-Stack (`start: "top top"`, `pin: true`, `pinSpacing: false`, scale/opacity scrub) in `AtelierStickyStack.tsx` with `prefers-reduced-motion` checks and `gsap.context()` cleanup, kept in a separate component tree from Motion's `useMotionValue` / `useTransform` magnetic button in `AtelierSpatialBoard.tsx`.
+  * **Palette & Shape Lock:** Cold Luxury Silver-Smoke (`zinc-100` / `dark:zinc-950`) with a single Burnt Orange / Vermilion pop (`orange-600` / `dark:orange-500`) and `rounded-2xl` corner lock.
+  * **CTA Intent Lock:** `"Open studio"` used consistently across navigation, hero, and footer.
+
+#### 4. Iteration `/4` - **Zettel** (`app/4/page.tsx`, `app/4/ZettelInteractive.tsx`)
+* **Design Read:** *"Reading this as: high-density index landing page for power note-takers and Zettelkasten practitioners, with a Swiss brutalist architectural language, leaning toward native CSS 1px hairlines + Geist & JetBrains Mono + Stone & Brick-Red palette."*
+* **Dials:** `DESIGN_VARIANCE: 8`, `MOTION_INTENSITY: 4`, `VISUAL_DENSITY: 8`
+* **Key Decisions:**
+  * **High-Density Rules (`VISUAL_DENSITY > 7`):** Eliminates floating card containers in favor of exposed 1px architectural hairlines (`border-stone-300 dark:border-stone-800`), mandatory `font-jetbrains` for all numerical telemetry and Folgezettel IDs (`14a1`, `14a1a`), and an all-sharp `rounded-none` radius lock.
+  * **CTA Intent Lock:** `"Claim slip-box"` used consistently across navigation, hero, and footer.
+  * **Interactive Workbench:** Live Folgezettel register (`ZettelSlipBoxIndex`) with sequence tracing, branch filtering, and atomic proposition filing.
+
+#### 5. Iteration `/5` - **Canopy** (`app/5/page.tsx`, `app/5/CanopyInteractive.tsx`)
+* **Design Read:** *"Reading this as: calm consumer landing page for reflective thinkers and daily journalers, with an organic frosted-glass and botanical language, leaning toward Tailwind v4 + Plus Jakarta Sans + honest web glassmorphism approximation + Forest & Amber palette."*
+* **Dials:** `DESIGN_VARIANCE: 7`, `MOTION_INTENSITY: 6`, `VISUAL_DENSITY: 3`
+* **Key Decisions:**
+  * **Forest Palette & Honest Glassmorphism:** Deep Forest Mist (`#f2f6f3` / `dark:#09110d`) paired with a single Warm Amber accent (`amber-600` / `dark:amber-500`) and `.liquid-glass-web-approx` (Appendix C frosted-glass web approximation with `prefers-reduced-transparency` fallback).
+  * **Documented Shape System:** `rounded-full` for buttons and pills, `rounded-2xl` for cards and panels, and `rounded-xl` for form inputs.
+  * **CTA Intent Lock:** `"Begin journaling"` used consistently across navigation, hero, and footer.
+
+---
+
+### Iteration Switcher (`app/components/IterationSwitcher.tsx`)
+Mounted globally in `app/layout.tsx`, the floating control in the bottom-right corner lets you:
+* Step backward/forward or jump directly to `/1`, `/2`, `/3`, `/4`, and `/5`.
+* Toggle an overview popover displaying each iteration's brand name, archetype, palette, and `VARIANCE / MOTION / DENSITY` dial values, plus a link back to the `/` overview gallery.

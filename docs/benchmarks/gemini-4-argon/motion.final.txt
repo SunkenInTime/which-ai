@@ -1,0 +1,42 @@
+I have created three 15-second (1920×1080, 60fps) launch videos in folders `1`, `2`, and `3`, each with a distinct visual direction, local font package (`./fonts/*.woff2`), custom 15.0s stereo soundtrack (`audio.wav`), and deterministic `window.renderAt(t)` implementation verified with `node motion.mjs check`.
+
+---
+
+### 1. **SYNAPSE — *"Your Second Brain, Alive"*** (`1/index.html`)
+![Video 1 Contact Sheet](/Users/Shared/motionbench/sandbox/e017f2b1-0961-4854-a38b-9d22e9200712/project/1/sheet.png)
+
+- **Aesthetic & Typography**: Deep-space bioluminescent neural cinema (`#05060B` obsidian void, `#00F0FF` synaptic cyan, `#A78BFA` ultraviolet, and `#FFB224` serendipity gold), pairing `Syne`, `Instrument Serif Italic`, `Space Grotesk`, `Inter`, and `JetBrains Mono`.
+- **5-Act Timeline Choreography**:
+  - **0.0s – 2.8s (Act I · The Fleeting Spark)**: 12 decaying, unindexed thought tabs orbit *"Brilliant ideas die in scattered tabs"* before a glowing `⌘K` command beam pulls them into a central neural nexus.
+  - **2.8s – 6.3s (Act II · Zero-Latency Capture)**: The 3D glassmorphic studio window opens and live-types markdown prose with `[[wiki-links]]`, sprouting animated Bezier synaptic beams to four live semantic resonance cards on the right.
+  - **6.3s – 10.1s (Act III · Living Neural Topology)**: Smooth 3D orbital flight through a 95-node, 5-cluster force-directed knowledge constellation as a golden shockwave highlights a newly discovered *Serendipity Bridge*.
+  - **10.1s – 12.7s (Act IV · Instant Vault Synthesis)**: *"Ask your vault"* synthesizes three historical notes from across months into a cited, zero-hallucination architectural insight.
+  - **12.7s – 15.0s (Act V · Hero Brand Lockup)**: A rotating 3D octahedral neural crystal emblem crowns the `SYNAPSE` hero reveal.
+
+---
+
+### 2. **FOLIO — *"Where Scattered Reading Becomes Lasting Wisdom"*** (`2/index.html`)
+![Video 2 Contact Sheet](/Users/Shared/motionbench/sandbox/e017f2b1-0961-4854-a38b-9d22e9200712/project/2/sheet.png)
+
+- **Aesthetic & Typography**: Warm sunlit archival paper & tactile Zettelkasten slip-box (`#F5F0E6` cotton paper, `#161412` carbon ink, `#D94E28` vermilion highlighter, `#1E5E4A` library sage, and `#B8862D` antique brass), pairing `Fraunces`, `Newsreader`, `Plus Jakarta Sans`, and `IBM Plex Mono`.
+- **5-Act Timeline Choreography**:
+  - **0.0s – 2.8s (Monograph I · The Ephemeral Flood)**: Literary clippings fade around *"You read 100,000 words a week. By Friday, 92% vanishes like dry ink"* until a vermilion highlighter stroke locks retention at 100%.
+  - **2.8s – 6.4s (Monograph II · Tactile Distillation)**: Live multi-color highlighting across a longform essay extracts three atomic Zettelkasten slip-cards in the margin, tethered by hand-inked calligraphic curves.
+  - **6.4s – 10.2s (Monograph III · The Zettelkasten Loom)**: The camera pans over a sunlit architectural drafting table where 8 cataloged index cards weave together across years and surface a 14-month-old archival note.
+  - **10.2s – 12.7s (Monograph IV · Manuscript Synthesis)**: Four woven slip-box cards snap into a structured outline and feed verified footnote citations (`042-A`, `011-F`, `042-B`) into a finished essay draft.
+  - **12.7s – 15.0s (Monograph V · Archival Edition)**: An embossed vermilion-and-brass ex-libris seal crowns the `FOLIO` monograph lockup.
+
+---
+
+### 3. **KORTEX // OS — *"Total Recall at the Speed of Light"*** (`3/index.html`)
+![Video 3 Contact Sheet](/Users/Shared/motionbench/sandbox/e017f2b1-0961-4854-a38b-9d22e9200712/project/3/sheet.png)
+
+- **Aesthetic & Typography**: Swiss neo-brutalist industrial precision (`#090A0D` carbon chassis, `#FF4D00` international signal orange, `#C8FF00` phosphor lime, and `#5C85FF` cobalt), pairing `Space Grotesk`, `JetBrains Mono`, and `Instrument Serif Italic`.
+- **5-Act Timeline Choreography**:
+  - **0.0s – 2.7s (SYS.01 · High-Frequency Ingest)**: High-velocity data streams race across telemetry lanes until `[ ⌥ + SPACE ] KORTEX GLOBAL INTERCEPT` locks every stream in `0.2ms`.
+  - **2.7s – 6.3s (SYS.02 · Multi-Modal Atomic Decompiler)**: A 4-quadrant split-screen simultaneously processes a voice memo with a live FFT waveform, a Rust AST snippet, and an arXiv PDF vector radar into a canonical knowledge atom.
+  - **6.3s – 10.1s (SYS.03 · Isometric 3-Tier Memory Matrix)**: An isometric 3D visualization stacks `L1 Raw Capture`, `L2 Semantic Vector Graph`, and `L3 Executive Synthesis` with rising data pulses and an exponential vault compounding histogram (`2024 → 2026`).
+  - **10.1s – 12.7s (SYS.04 · Zero-Click Context Copilot)**: While drafting an engineering RFC, Kortex automatically injects three relevant historical benchmarks from months ago with zero manual searching.
+  - **12.7s – 15.0s (SYS.05 · Kortex OS Ready)**: A rotating isometric wireframe hypercube and radar reticle frame the `KORTEX` command-line CTA (`brew install kortex // kortex.sh`).
+
+All verification checks (`node motion.mjs check`) and contact sheet renders (`sheet.png`) across folders `1`, `2`, and `3` have completed and passed with zero errors or warnings. Everything is in place and ready for final rendering.

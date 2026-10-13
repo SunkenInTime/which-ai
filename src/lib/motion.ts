@@ -32,7 +32,7 @@ export interface MotionRun {
     audio?: boolean;
   } | null;
   render?: { renderSeconds: number; workers: number; gl: string; renderer: string | null } | null;
-  usage: { costUsd?: number | null; turns?: number | null } | null;
+  usage: { costUsd?: number | null; costBasis?: string; turns?: number | null } | null;
 }
 
 export interface MotionClip {
@@ -71,6 +71,7 @@ const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
   OpenAI: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   xAI: { light: "/xai-light.svg", dark: "/xai-dark.svg" },
   Meta: { light: "/meta.svg" },
+  Google: { light: "/google-gemini.webp" },
 };
 
 export function getMotionModelLogo(model: MotionModel) {
@@ -83,6 +84,7 @@ const MOTION_LABS: Record<string, ModelLab> = {
   OpenAI: { slug: "gpt", label: "OpenAI" },
   xAI: { slug: "x-ai", label: "xAI" },
   Meta: { slug: "meta", label: "Meta" },
+  Google: { slug: "google", label: "Google" },
 };
 
 export function getMotionModelLab(model: MotionModel): ModelLab {

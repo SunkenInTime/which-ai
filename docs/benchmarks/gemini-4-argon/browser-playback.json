@@ -1,0 +1,35 @@
+{
+  "results": [
+    {
+      "iteration": 1,
+      "duration": 15,
+      "width": 1920,
+      "height": 1080,
+      "time": 0.518886,
+      "paused": false,
+      "src": "https://media.whichai.dev/baseline/gemini-4-argon/1.mp4?v=1791910901433",
+      "error": null
+    },
+    {
+      "iteration": 2,
+      "duration": 15,
+      "width": 1920,
+      "height": 1080,
+      "time": 0.505966,
+      "paused": false,
+      "src": "https://media.whichai.dev/baseline/gemini-4-argon/2.mp4?v=1791910901433",
+      "error": null
+    },
+    {
+      "iteration": 3,
+      "duration": 15,
+      "width": 1920,
+      "height": 1080,
+      "time": 0.507153,
+      "paused": false,
+      "src": "https://media.whichai.dev/baseline/gemini-4-argon/3.mp4?v=1791910901433",
+      "error": null
+    }
+  ],
+  "pageErrors": []
+}

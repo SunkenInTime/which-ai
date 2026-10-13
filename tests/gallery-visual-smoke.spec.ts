@@ -132,3 +132,19 @@ test("Sol taste appearance control stays compact and toggles theme", async ({ pa
   await control.getByRole("button").click();
   await expect(landing).not.toHaveAttribute("data-theme", before!);
 });
+
+for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {
+  for (const iteration of ["1", "2", "3", "4", "5"]) {
+    test(`Gemini 4 Argon ${group}/${iteration} renders inside the gallery`, async ({ page }) => {
+      const errors: string[] = [];
+      page.on("pageerror", error => errors.push(error.message));
+      await page.setViewportSize({ width: 390, height: 844 });
+      const response = await page.goto(`/preview/${group}/gemini-4-argon/${iteration}`);
+      expect(response?.ok()).toBe(true);
+      await expect(page.locator("h1").first()).toBeVisible();
+      await expect(page.getByRole("navigation", { name: "Gemini 4 Argon gallery navigation" })).toHaveCount(0);
+      await expect(page.getByRole("navigation", { name: "Design Iteration Switcher" })).toHaveCount(0);
+      expect(errors).toEqual([]);
+    });
+  }
+}

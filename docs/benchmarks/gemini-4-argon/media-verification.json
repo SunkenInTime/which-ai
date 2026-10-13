@@ -1,0 +1,29 @@
+[
+  {
+    "iteration": 1,
+    "width": 1920,
+    "height": 1080,
+    "fps": "60/1",
+    "frames": "900",
+    "duration": "15.000000",
+    "audioCodec": "aac"
+  },
+  {
+    "iteration": 2,
+    "width": 1920,
+    "height": 1080,
+    "fps": "60/1",
+    "frames": "900",
+    "duration": "15.000000",
+    "audioCodec": "aac"
+  },
+  {
+    "iteration": 3,
+    "width": 1920,
+    "height": 1080,
+    "fps": "60/1",
+    "frames": "900",
+    "duration": "15.000000",
+    "audioCodec": "aac"
+  }
+]

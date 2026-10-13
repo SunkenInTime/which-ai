@@ -88,11 +88,14 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
             ) : null}
           </h3>
           {cost != null ? (
-            <p title="API cost of the session that made all of this model's videos" className="shrink-0 text-sm tabular-nums text-[var(--gallery-text-tertiary)]">
+            <p title={clip.run?.usage?.costBasis ?? "API cost of the session that made all of this model's videos"} className="shrink-0 text-sm tabular-nums text-[var(--gallery-text-tertiary)]">
               <span className="sr-only">Session cost: </span>${cost.toFixed(2)}
             </p>
           ) : null}
         </div>
+        <p className="text-xs text-[var(--gallery-text-tertiary)]">
+          {clip.harness.label}{clip.run?.source === "manual" ? " · manual session" : ""}
+        </p>
         <div className="mt-auto flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5">
           <div className="flex min-w-0 flex-wrap gap-1.5" role="group" aria-label={`${clip.model.label} videos`}>
             {clips.map((c) => (

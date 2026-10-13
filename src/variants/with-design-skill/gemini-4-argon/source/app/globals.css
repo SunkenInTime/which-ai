@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans), sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+  --font-newsreader: var(--font-newsreader), Georgia, serif;
+  --font-jakarta: var(--font-jakarta), sans-serif;
+  --font-plex: var(--font-plex-sans), sans-serif;
+  --font-fraunces: var(--font-fraunces), Georgia, serif;
+  --font-space: var(--font-space-grotesk), sans-serif;
+  --font-literata: var(--font-literata), Georgia, serif;
+  --font-bricolage: var(--font-bricolage), sans-serif;
+  --font-instrument: var(--font-instrument-serif), Georgia, serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Keep source Tailwind font utilities when the gallery strips global @theme rules. */
+.font-sans { font-family: var(--font-geist-sans), sans-serif; }
+.font-mono { font-family: var(--font-geist-mono), monospace; }
+.font-newsreader { font-family: var(--font-newsreader), Georgia, serif; }
+.font-jakarta { font-family: var(--font-jakarta), sans-serif; }
+.font-plex { font-family: var(--font-plex-sans), sans-serif; }
+.font-fraunces { font-family: var(--font-fraunces), Georgia, serif; }
+.font-space { font-family: var(--font-space-grotesk), sans-serif; }
+.font-literata { font-family: var(--font-literata), Georgia, serif; }
+.font-bricolage { font-family: var(--font-bricolage), sans-serif; }
+.font-instrument { font-family: var(--font-instrument-serif), Georgia, serif; }

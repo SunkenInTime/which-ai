@@ -32,6 +32,7 @@ const MODEL_GALLERY_GENERATION = {
   gemini: { family: "gemini", tier: 1 },
   "gemini-3.5-flash": { family: "gemini", tier: 2 },
   "gemini-3.7-flash": { family: "gemini", tier: 3 },
+  "gemini-4-argon": { family: "gemini-argon", tier: 1 },
   "gemini-3.8-flash": { family: "gemini", tier: 4 },
   "gpt-5.4": { family: "gpt", tier: 1 },
   "gpt-5.5-low": { family: "gpt", tier: 2 },
