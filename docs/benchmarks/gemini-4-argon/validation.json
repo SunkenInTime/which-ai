@@ -1,0 +1,24 @@
+{
+  "build": "npm run build passed",
+  "tests": {
+    "command": "PLAYWRIGHT_PORT=3290 npx playwright test --workers=4",
+    "passed": 427,
+    "failed": 0
+  },
+  "lint": {
+    "changedSourceAndIntegration": "passed",
+    "repositoryBaseline": {
+      "errors": 209,
+      "warnings": 200
+    },
+    "repositoryAfterImport": {
+      "errors": 209,
+      "warnings": 200
+    }
+  },
+  "previews": 15,
+  "windowsSourceHashFiles": 126,
+  "windowsSourceHashMismatches": 0,
+  "hostedAssets": 11,
+  "browserPlaybackVideos": 3
+}

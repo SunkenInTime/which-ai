@@ -1,3 +1,6 @@
+import withTasteArgon from "@/variants/with-taste-skill/gemini-4-argon";
+import withArgon from "@/variants/with-design-skill/gemini-4-argon";
+import withoutArgon from "@/variants/without-design-skill/gemini-4-argon";
 import withoutMuseWonder10 from "@/variants/without-design-skill/muse-wonder-1.0";
 import withTasteMuseWonder10 from "@/variants/with-taste-skill/muse-wonder-1.0";
 import withMuseWonder10 from "@/variants/with-design-skill/muse-wonder-1.0";
@@ -124,6 +127,9 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "with-taste-skill:gemini-4-argon": withTasteArgon,
+  "with-design-skill:gemini-4-argon": withArgon,
+  "without-design-skill:gemini-4-argon": withoutArgon,
   "with-design-skill:sol-6-1": withSol61,
   "with-taste-skill:sol-6-1": withTasteSol61,
   "without-design-skill:sol-6-1": withoutSol61,

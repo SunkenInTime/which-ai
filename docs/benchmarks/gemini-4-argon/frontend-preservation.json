@@ -1,0 +1,407 @@
+[
+  {
+    "group": "without-design-skill",
+    "n": 1,
+    "source": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\", sans-serif",
+      "size": "64px",
+      "rgb": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "width": 768
+    },
+    "gallery": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\", sans-serif",
+      "size": "64px",
+      "rgb": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "width": 768
+    },
+    "match": true
+  },
+  {
+    "group": "without-design-skill",
+    "n": 2,
+    "source": {
+      "font": "Newsreader, \"Newsreader Fallback\", Georgia, serif",
+      "size": "66px",
+      "rgb": [
+        25,
+        22,
+        19,
+        255
+      ],
+      "width": 808
+    },
+    "gallery": {
+      "font": "Newsreader, \"Newsreader Fallback\", Georgia, serif",
+      "size": "66px",
+      "rgb": [
+        25,
+        22,
+        19,
+        255
+      ],
+      "width": 808
+    },
+    "match": true
+  },
+  {
+    "group": "without-design-skill",
+    "n": 3,
+    "source": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\", sans-serif",
+      "size": "64px",
+      "rgb": [
+        10,
+        10,
+        10,
+        255
+      ],
+      "width": 755
+    },
+    "gallery": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\", sans-serif",
+      "size": "64px",
+      "rgb": [
+        10,
+        10,
+        10,
+        255
+      ],
+      "width": 755
+    },
+    "match": true
+  },
+  {
+    "group": "without-design-skill",
+    "n": 4,
+    "source": {
+      "font": "\"Bricolage Grotesque\", \"Bricolage Grotesque Fallback\", sans-serif",
+      "size": "62px",
+      "rgb": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "width": 752
+    },
+    "gallery": {
+      "font": "\"Bricolage Grotesque\", \"Bricolage Grotesque Fallback\", sans-serif",
+      "size": "62px",
+      "rgb": [
+        255,
+        255,
+        255,
+        255
+      ],
+      "width": 752
+    },
+    "match": true
+  },
+  {
+    "group": "without-design-skill",
+    "n": 5,
+    "source": {
+      "font": "Fraunces, \"Fraunces Fallback\", Georgia, serif",
+      "size": "62px",
+      "rgb": [
+        20,
+        34,
+        27,
+        255
+      ],
+      "width": 768
+    },
+    "gallery": {
+      "font": "Fraunces, \"Fraunces Fallback\", Georgia, serif",
+      "size": "62px",
+      "rgb": [
+        20,
+        34,
+        27,
+        255
+      ],
+      "width": 768
+    },
+    "match": true
+  },
+  {
+    "group": "with-design-skill",
+    "n": 1,
+    "source": {
+      "font": "Newsreader, \"Newsreader Fallback\", Georgia, serif",
+      "size": "54.4px",
+      "rgb": [
+        24,
+        34,
+        29,
+        255
+      ],
+      "width": 768
+    },
+    "gallery": {
+      "font": "Newsreader, \"Newsreader Fallback\", Georgia, serif",
+      "size": "54.4px",
+      "rgb": [
+        24,
+        34,
+        29,
+        255
+      ],
+      "width": 768
+    },
+    "match": true
+  },
+  {
+    "group": "with-design-skill",
+    "n": 2,
+    "source": {
+      "font": "\"IBM Plex Sans\", \"IBM Plex Sans Fallback\", sans-serif",
+      "size": "48px",
+      "rgb": [
+        20,
+        25,
+        35,
+        255
+      ],
+      "width": 672
+    },
+    "gallery": {
+      "font": "\"IBM Plex Sans\", \"IBM Plex Sans Fallback\", sans-serif",
+      "size": "48px",
+      "rgb": [
+        20,
+        25,
+        35,
+        255
+      ],
+      "width": 672
+    },
+    "match": true
+  },
+  {
+    "group": "with-design-skill",
+    "n": 3,
+    "source": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\", sans-serif",
+      "size": "48px",
+      "rgb": [
+        236,
+        241,
+        248,
+        255
+      ],
+      "width": 672
+    },
+    "gallery": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\", sans-serif",
+      "size": "48px",
+      "rgb": [
+        236,
+        241,
+        248,
+        255
+      ],
+      "width": 672
+    },
+    "match": true
+  },
+  {
+    "group": "with-design-skill",
+    "n": 4,
+    "source": {
+      "font": "\"Bricolage Grotesque\", \"Bricolage Grotesque Fallback\", sans-serif",
+      "size": "60px",
+      "rgb": [
+        29,
+        53,
+        166,
+        255
+      ],
+      "width": 810.65625
+    },
+    "gallery": {
+      "font": "\"Bricolage Grotesque\", \"Bricolage Grotesque Fallback\", sans-serif",
+      "size": "60px",
+      "rgb": [
+        29,
+        53,
+        166,
+        255
+      ],
+      "width": 810.65625
+    },
+    "match": true
+  },
+  {
+    "group": "with-design-skill",
+    "n": 5,
+    "source": {
+      "font": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+      "size": "60px",
+      "rgb": [
+        26,
+        29,
+        32,
+        255
+      ],
+      "width": 672
+    },
+    "gallery": {
+      "font": "\"Instrument Serif\", \"Instrument Serif Fallback\", Georgia, serif",
+      "size": "60px",
+      "rgb": [
+        26,
+        29,
+        32,
+        255
+      ],
+      "width": 672
+    },
+    "match": true
+  },
+  {
+    "group": "with-taste-skill",
+    "n": 1,
+    "source": {
+      "font": "\"Cormorant Garamond\", \"Cormorant Garamond Fallback\"",
+      "size": "60px",
+      "rgb": [
+        15,
+        23,
+        43,
+        255
+      ],
+      "width": 584
+    },
+    "gallery": {
+      "font": "\"Cormorant Garamond\", \"Cormorant Garamond Fallback\"",
+      "size": "60px",
+      "rgb": [
+        15,
+        23,
+        43,
+        255
+      ],
+      "width": 584
+    },
+    "match": true
+  },
+  {
+    "group": "with-taste-skill",
+    "n": 2,
+    "source": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\"",
+      "size": "60px",
+      "rgb": [
+        24,
+        24,
+        27,
+        255
+      ],
+      "width": 689.328125
+    },
+    "gallery": {
+      "font": "\"Space Grotesk\", \"Space Grotesk Fallback\"",
+      "size": "60px",
+      "rgb": [
+        24,
+        24,
+        27,
+        255
+      ],
+      "width": 689.328125
+    },
+    "match": true
+  },
+  {
+    "group": "with-taste-skill",
+    "n": 3,
+    "source": {
+      "font": "Outfit, \"Outfit Fallback\"",
+      "size": "60px",
+      "rgb": [
+        24,
+        24,
+        27,
+        255
+      ],
+      "width": 584
+    },
+    "gallery": {
+      "font": "Outfit, \"Outfit Fallback\"",
+      "size": "60px",
+      "rgb": [
+        24,
+        24,
+        27,
+        255
+      ],
+      "width": 584
+    },
+    "match": true
+  },
+  {
+    "group": "with-taste-skill",
+    "n": 4,
+    "source": {
+      "font": "Geist, \"Geist Fallback\"",
+      "size": "60px",
+      "rgb": [
+        28,
+        25,
+        23,
+        255
+      ],
+      "width": 692.65625
+    },
+    "gallery": {
+      "font": "Geist, \"Geist Fallback\"",
+      "size": "60px",
+      "rgb": [
+        28,
+        25,
+        23,
+        255
+      ],
+      "width": 692.65625
+    },
+    "match": true
+  },
+  {
+    "group": "with-taste-skill",
+    "n": 5,
+    "source": {
+      "font": "\"Plus Jakarta Sans\", \"Plus Jakarta Sans Fallback\"",
+      "size": "60px",
+      "rgb": [
+        17,
+        28,
+        22,
+        255
+      ],
+      "width": 584
+    },
+    "gallery": {
+      "font": "\"Plus Jakarta Sans\", \"Plus Jakarta Sans Fallback\"",
+      "size": "60px",
+      "rgb": [
+        17,
+        28,
+        22,
+        255
+      ],
+      "width": 584
+    },
+    "match": true
+  }
+]

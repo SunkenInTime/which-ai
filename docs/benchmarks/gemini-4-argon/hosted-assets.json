@@ -1,0 +1,57 @@
+[
+  {
+    "url": "https://media.whichai.dev/benchmarks/gemini-4-argon/2026-10-13/frontend-source.tar.gz",
+    "status": 200,
+    "bytes": 374760
+  },
+  {
+    "url": "https://media.whichai.dev/benchmarks/gemini-4-argon/2026-10-13/motion-source.tar.gz",
+    "status": 200,
+    "bytes": 12207610
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/1.mp4",
+    "status": 200,
+    "bytes": 8442555
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/1.preview.mp4",
+    "status": 200,
+    "bytes": 542598
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/1.jpg",
+    "status": 200,
+    "bytes": 132087
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/2.mp4",
+    "status": 200,
+    "bytes": 5932253
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/2.preview.mp4",
+    "status": 200,
+    "bytes": 388360
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/2.jpg",
+    "status": 200,
+    "bytes": 139576
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/3.mp4",
+    "status": 200,
+    "bytes": 4878445
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/3.preview.mp4",
+    "status": 200,
+    "bytes": 451571
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/gemini-4-argon/3.jpg",
+    "status": 200,
+    "bytes": 128457
+  }
+]

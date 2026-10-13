@@ -1,0 +1,57 @@
+I have designed and built five distinct landing page iterations for **Marrow**, a local-first note-taking application and second brain, running live at `http://localhost:3282` across `/1`, `/2`, `/3`, `/4`, and `/5`.
+
+### Easy Iteration Switcher
+A persistent floating switcher (`components/IterationSwitcher.tsx`) sits in the bottom-right corner across all pages:
+- Click **`1`**, **`2`**, **`3`**, **`4`**, or **`5`** to jump directly to any iteration.
+- Click **`Next`** to cycle forward through the iterations.
+- Click the active iteration's title pill to expand a menu describing all five directions, or press keys **`1`–`5`** on your keyboard (when not typing in an input) to switch instantaneously.
+
+---
+
+### Iteration 1 (`/1`): Field Herbarium & Margin Transclusion
+![Iteration 1 — Field Herbarium](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-1.png)
+
+- **Material Vernacular:** Naturalists’ field journals, pressed botanical specimen mounts, and penciled marginalia (`app/1/page.tsx`).
+- **Palette:** Lichen Paper (`#EAECE6`), Pressed Celadon (`#DFE3DA`), Unbleached Rag (`#F5F7F2`), Iron Gall Ink (`#18221D`), Pressed Moss (`#3B5243`), and Cobalt Draughtsman’s Pencil (`#254689`).
+- **Typography:** `Newsreader` across display headlines, prose, and marginalia, paired with `Plus Jakarta Sans` for compact interface controls.
+- **Interactive Hero:** A live manuscript desk where clicking any inline `[[blue-pencil reference]]` immediately pulls the cited field slip, its architectural diagram, and your penciled annotations into the right-hand margin without leaving the draft.
+
+---
+
+### Iteration 2 (`/2`): Luhmann’s Archival Slipbox
+![Iteration 2 — Luhmann's Slipbox](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-2.png)
+
+- **Material Vernacular:** Niklas Luhmann’s wooden *Zettelkasten* drawers, die-cut index tabs, branching alphanumeric addresses (`14` / `14a` / `14a1`), and horizontal cascading panes (`app/2/page.tsx`).
+- **Palette:** Archive Birch (`#DCE0E6`), Cardstock Ivory (`#F7F8FA`), Carbon Ribbon (`#141923`), Signal Ochre (`#C88A1E`), and Slate Divider (`#526075`).
+- **Typography:** `IBM Plex Sans` for rationalist structural hierarchy and index tabs, paired with `Fraunces` for quoted literature excerpts.
+- **Interactive Hero:** A three-pane horizontal slip stack where you can switch index drawers (*Systems resilience*, *Fungal economics*, *Room acoustics*), pivot downstream branches in place, and file new child slips directly into an address sequence.
+
+---
+
+### Iteration 3 (`/3`): Nocturnal Prussian Observatory
+![Iteration 3 — Nocturnal Observatory](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-3.png)
+
+- **Material Vernacular:** Nineteenth-century Prussian-blue cyanotype blueprints, celestial star charts, and spatial semantic gravity (`app/3/page.tsx`).
+- **Palette:** Prussian Night (`#0F1A2C`), Chamber Blue (`#172640`), Chalk Starlight (`#ECF1F8`), Muted Periwinkle (`#8FA6C9`), and Warm Citrine (`#E8B954`).
+- **Typography:** `Space Grotesk` for coordinate instrumentation and headers, paired with `Literata` for comfortable long-form reading inside the dark observatory.
+- **Interactive Hero:** An interactive SVG constellation of eight research notes where clicking any node illuminates its first-degree filaments, filters by domain cluster, and synthesizes a conceptual bridge between any two selected notes in the right-hand inspector.
+
+---
+
+### Iteration 4 (`/4`): Riso Studio Pinboard & Manuscript Loom
+![Iteration 4 — Riso Studio Wall](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-4.png)
+
+- **Material Vernacular:** An architect’s unbleached linen studio wall pinned with Risograph-printed index cards, audio waveforms, and section sketches (`app/4/page.tsx`).
+- **Palette:** Raw Linen (`#E6E2DC`), Riso Ultramarine (`#1D35A6`), Plum Overprint (`#8A2452`), Paper Clipping (`#FAF8F5`), and Graphite Wash (`#363C48`).
+- **Typography:** `Bricolage Grotesque` used as a single expressive family across headlines, studio clippings, and compiled drafts.
+- **Interactive Hero:** A dual-mode workbench where you can inspect multi-modal research clippings (including a playable voice memo waveform and roof-section sketch), toggle checkboxes to curate which cards belong in your argument, and flip the entire board into a linear, cited manuscript with one click.
+
+---
+
+### Iteration 5 (`/5`): Quiet Monastic Scriptorium
+![Iteration 5 — Quiet Scriptorium](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-5.png)
+
+- **Material Vernacular:** Fine Japanese stationery and calm chronological logbooks where everything begins on *Today’s Page* (`app/5/page.tsx`).
+- **Palette:** Alabaster Mist (`#F3F5F7`), Sumi Ink (`#1A1D20`), Stone Grey (`#5C646D`), Porcelain Rule (`#DCE1E7`), and Persimmon Seal (`#C84B31`).
+- **Typography:** `Instrument Serif` for calm editorial headings and dossier titles, paired with `Geist` for clean daily journaling.
+- **Interactive Hero:** A live daily chronicle for *Tuesday, October 13* where you can type any thought containing `[[double-bracketed concepts]]` (or load sample observations) and watch the app parse and file your entry into the self-updating Evergreen Topic Dossiers below in real time.

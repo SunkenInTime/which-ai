@@ -1,0 +1,63 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) [data-source-html] {
+  --background: #07090e;
+  --foreground: #f8fafc;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-instrument {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-newsreader {
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-space {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-bricolage {
+  font-family: var(--font-bricolage), sans-serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-fraunces {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-jetbrains {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-ibm-mono {
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-lora {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+@keyframes gallery-without-design-skill-gemini-4-argon-source-app-globals-pulseGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .animate-pulse-glow {
+  animation: gallery-without-design-skill-gemini-4-argon-source-app-globals-pulseGlow 4s ease-in-out infinite;
+}
+
+/* Keep source Tailwind font utilities when the gallery strips global @theme rules. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-sans { font-family: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-mono { font-family: var(--font-geist-mono); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-serif-instrument { font-family: var(--font-instrument-serif); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-serif-newsreader { font-family: var(--font-newsreader); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-display-space { font-family: var(--font-space-grotesk); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-display-bricolage { font-family: var(--font-bricolage); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-serif-fraunces { font-family: var(--font-fraunces); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-mono-jetbrains { font-family: var(--font-jetbrains-mono); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-mono-ibm { font-family: var(--font-ibm-plex-mono); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-argon"]) .font-serif-lora { font-family: var(--font-lora); }

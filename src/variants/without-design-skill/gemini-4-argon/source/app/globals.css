@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+[data-source-html] {
+  --background: #07090e;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-serif-instrument: var(--font-instrument-serif);
+  --font-serif-newsreader: var(--font-newsreader);
+  --font-display-space: var(--font-space-grotesk);
+  --font-display-bricolage: var(--font-bricolage);
+  --font-serif-fraunces: var(--font-fraunces);
+  --font-mono-jetbrains: var(--font-jetbrains-mono);
+  --font-mono-ibm: var(--font-ibm-plex-mono);
+  --font-serif-lora: var(--font-lora);
+}
+
+.font-instrument {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}
+
+.font-newsreader {
+  font-family: var(--font-newsreader), Georgia, serif;
+}
+
+.font-space {
+  font-family: var(--font-space-grotesk), sans-serif;
+}
+
+.font-bricolage {
+  font-family: var(--font-bricolage), sans-serif;
+}
+
+.font-fraunces {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.font-jetbrains {
+  font-family: var(--font-jetbrains-mono), monospace;
+}
+
+.font-ibm-mono {
+  font-family: var(--font-ibm-plex-mono), monospace;
+}
+
+.font-lora {
+  font-family: var(--font-lora), Georgia, serif;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.06);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Keep source Tailwind font utilities when the gallery strips global @theme rules. */
+.font-sans { font-family: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+.font-serif-instrument { font-family: var(--font-instrument-serif); }
+.font-serif-newsreader { font-family: var(--font-newsreader); }
+.font-display-space { font-family: var(--font-space-grotesk); }
+.font-display-bricolage { font-family: var(--font-bricolage); }
+.font-serif-fraunces { font-family: var(--font-fraunces); }
+.font-mono-jetbrains { font-family: var(--font-jetbrains-mono); }
+.font-mono-ibm { font-family: var(--font-ibm-plex-mono); }
+.font-serif-lora { font-family: var(--font-lora); }

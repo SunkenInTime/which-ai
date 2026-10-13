@@ -1,0 +1,14 @@
+[
+  {
+    "kind": "frontend",
+    "url": "https://media.whichai.dev/benchmarks/gemini-4-argon/2026-10-13/frontend-source.tar.gz",
+    "sha256": "551ab9f2ae43bb71c85526e3a464069b6e36a0a15d35e22e6eb9be4359cbcd2d",
+    "sizeBytes": 374760
+  },
+  {
+    "kind": "motion",
+    "url": "https://media.whichai.dev/benchmarks/gemini-4-argon/2026-10-13/motion-source.tar.gz",
+    "sha256": "1d816f6fc7fea01ace148579d9328daa1cc5a50e27459a182e30762a57fed259",
+    "sizeBytes": 12207610
+  }
+]

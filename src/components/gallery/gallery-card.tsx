@@ -75,7 +75,9 @@ export function GalleryCard({
           {cost !== null ? (
             <p
               data-testid="gallery-card-cost"
-              title="API cost of the run that produced all five iterations"
+              title={entry.model === "gemini-4-argon"
+                ? "API-equivalent estimate for all five iterations; included in the Cursor subscription, not an additional charge"
+                : "API cost of the run that produced all five iterations"}
               className="shrink-0 text-sm tabular-nums text-[var(--gallery-text-tertiary)]"
             >
               <span className="sr-only">Generation cost: </span>

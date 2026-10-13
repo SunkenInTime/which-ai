@@ -1,0 +1,253 @@
+{
+  "hardwareAttempts": [
+    {
+      "attempt": 2,
+      "gl": "gpu",
+      "results": {
+        "baseline/gemini-4-argon/1": {
+          "source": "manual",
+          "harnessVersion": "Cursor desktop 3.24.12",
+          "modelArg": "gemini-4-argon",
+          "effort": "high",
+          "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+          "startedAt": "2026-10-13T17:01:41.433Z",
+          "wallSeconds": 937.812,
+          "exitCode": 0,
+          "timedOut": false,
+          "status": "ok",
+          "video": {
+            "durationSec": 15,
+            "width": 1920,
+            "height": 1080,
+            "fps": 60,
+            "audio": true,
+            "sizeBytes": 7975757,
+            "previewSizeBytes": 536259,
+            "masterSizeBytes": 10837266,
+            "posterSec": 1
+          },
+          "render": {
+            "renderSeconds": 54.6,
+            "workers": 4,
+            "gl": "gpu",
+            "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+            "warnings": [],
+            "pageErrors": []
+          },
+          "machine": {
+            "platform": "win32",
+            "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+            "memoryGb": 32
+          },
+          "usage": {
+            "turns": 1,
+            "costUsd": 4.4417659,
+            "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+            "inputTokens": 1502767,
+            "cacheReadTokens": 1798919,
+            "outputTokens": 125634
+          }
+        },
+        "baseline/gemini-4-argon/2": {
+          "source": "manual",
+          "harnessVersion": "Cursor desktop 3.24.12",
+          "modelArg": "gemini-4-argon",
+          "effort": "high",
+          "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+          "startedAt": "2026-10-13T17:01:41.433Z",
+          "wallSeconds": 937.812,
+          "exitCode": 0,
+          "timedOut": false,
+          "status": "failed",
+          "failure": "The page failed the contract check: Frame at t=7.5s came out different after reloading the page (8160 of 8160 16px areas changed, by up to 237 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness, including during setup and in workers.",
+          "video": null,
+          "render": null,
+          "machine": {
+            "platform": "win32",
+            "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+            "memoryGb": 32
+          },
+          "usage": {
+            "turns": 1,
+            "costUsd": 4.4417659,
+            "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+            "inputTokens": 1502767,
+            "cacheReadTokens": 1798919,
+            "outputTokens": 125634
+          }
+        },
+        "baseline/gemini-4-argon/3": {
+          "source": "manual",
+          "harnessVersion": "Cursor desktop 3.24.12",
+          "modelArg": "gemini-4-argon",
+          "effort": "high",
+          "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+          "startedAt": "2026-10-13T17:01:41.433Z",
+          "wallSeconds": 937.812,
+          "exitCode": 0,
+          "timedOut": false,
+          "status": "failed",
+          "failure": "The page failed the contract check: Frame at t=7.5s came out different on a second render (8160 of 8160 16px areas changed, by up to 254 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness.",
+          "video": null,
+          "render": null,
+          "machine": {
+            "platform": "win32",
+            "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+            "memoryGb": 32
+          },
+          "usage": {
+            "turns": 1,
+            "costUsd": 4.4417659,
+            "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+            "inputTokens": 1502767,
+            "cacheReadTokens": 1798919,
+            "outputTokens": 125634
+          }
+        }
+      }
+    }
+  ],
+  "softwareDiagnostic": "1 {\n  \"ok\": true,\n  \"errors\": [],\n  \"warnings\": [],\n  \"readyMs\": 167,\n  \"renderer\": \"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\",\n  \"msPerFrame\": 301,\n  \"estimatedRenderSeconds\": 68,\n  \"audio\": \"audio.wav\"\n}\n2 {\n  \"ok\": true,\n  \"errors\": [],\n  \"warnings\": [],\n  \"readyMs\": 224,\n  \"renderer\": \"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\",\n  \"msPerFrame\": 238,\n  \"estimatedRenderSeconds\": 54,\n  \"audio\": \"audio.wav\"\n}\n3 {\n  \"ok\": true,\n  \"errors\": [],\n  \"warnings\": [],\n  \"readyMs\": 229,\n  \"renderer\": \"ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)\",\n  \"msPerFrame\": 82,\n  \"estimatedRenderSeconds\": 18,\n  \"audio\": \"audio.wav\"\n}\n",
+  "hardwareLogs": {
+    "attempt1": "[\r\n  {\r\n    \"key\": \"baseline/gemini-4-argon/1\",\r\n    \"status\": \"failed\",\r\n    \"failure\": \"The page failed the contract check: Frame at t=7.5s came out different after reloading the page (6581 of 8160 16px areas changed, by up to 226 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness, including during setup and in workers.\",\r\n    \"render\": null,\r\n    \"video\": null\r\n  },\r\n  {\r\n    \"key\": \"baseline/gemini-4-argon/2\",\r\n    \"status\": \"failed\",\r\n    \"failure\": \"The page failed the contract check: Frame at t=7.5s came out different after reloading the page (4162 of 8160 16px areas changed, by up to 223 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness, including during setup and in workers.\",\r\n    \"render\": null,\r\n    \"video\": null\r\n  },\r\n  {\r\n    \"key\": \"baseline/gemini-4-argon/3\",\r\n    \"status\": \"failed\",\r\n    \"failure\": \"The page failed the contract check: Frame at t=7.5s came out different after reloading the page (2075 of 8160 16px areas changed, by up to 215 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness, including during setup and in workers.\",\r\n    \"render\": null,\r\n    \"video\": null\r\n  }\r\n]\r\n",
+    "attempt2": "render baseline/gemini-4-argon/1\r\nrender baseline/gemini-4-argon/1: 150/900 frames\r\nrender baseline/gemini-4-argon/1: 300/900 frames\r\nrender baseline/gemini-4-argon/1: 450/900 frames\r\nrender baseline/gemini-4-argon/1: 600/900 frames\r\nrender baseline/gemini-4-argon/1: 750/900 frames\r\nrender baseline/gemini-4-argon/1: 900/900 frames\r\n[\r\n  {\r\n    \"key\": \"baseline/gemini-4-argon/1\",\r\n    \"status\": \"ok\",\r\n    \"render\": {\r\n      \"renderSeconds\": 54.6,\r\n      \"workers\": 4,\r\n      \"gl\": \"gpu\",\r\n      \"renderer\": \"ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)\",\r\n      \"warnings\": [],\r\n      \"pageErrors\": []\r\n    },\r\n    \"video\": {\r\n      \"durationSec\": 15,\r\n      \"width\": 1920,\r\n      \"height\": 1080,\r\n      \"fps\": 60,\r\n      \"audio\": true,\r\n      \"sizeBytes\": 7975757,\r\n      \"previewSizeBytes\": 536259,\r\n      \"masterSizeBytes\": 10837266,\r\n      \"posterSec\": 1\r\n    }\r\n  },\r\n  {\r\n    \"key\": \"baseline/gemini-4-argon/2\",\r\n    \"status\": \"failed\",\r\n    \"failure\": \"The page failed the contract check: Frame at t=7.5s came out different after reloading the page (8160 of 8160 16px areas changed, by up to 237 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness, including during setup and in workers.\",\r\n    \"render\": null,\r\n    \"video\": null\r\n  },\r\n  {\r\n    \"key\": \"baseline/gemini-4-argon/3\",\r\n    \"status\": \"failed\",\r\n    \"failure\": \"The page failed the contract check: Frame at t=7.5s came out different on a second render (8160 of 8160 16px areas changed, by up to 254 of 255 levels on average). renderAt(t) must draw the same pixels for the same t: no real clock, no state carried between frames, no unseeded randomness.\",\r\n    \"render\": null,\r\n    \"video\": null\r\n  }\r\n]\r\n"
+  },
+  "finalSoftwareResults": {
+    "baseline/gemini-4-argon/1": {
+      "source": "manual",
+      "harnessVersion": "Cursor desktop 3.24.12",
+      "modelArg": "gemini-4-argon",
+      "effort": "high",
+      "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+      "startedAt": "2026-10-13T17:01:41.433Z",
+      "wallSeconds": 937.812,
+      "exitCode": 0,
+      "timedOut": false,
+      "status": "ok",
+      "video": {
+        "durationSec": 15,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "audio": true,
+        "sizeBytes": 8442555,
+        "previewSizeBytes": 542598,
+        "masterSizeBytes": 10950025,
+        "posterSec": 1
+      },
+      "render": {
+        "renderSeconds": 96.2,
+        "workers": 4,
+        "gl": "swiftshader",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "warnings": [],
+        "pageErrors": []
+      },
+      "machine": {
+        "platform": "win32",
+        "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+        "memoryGb": 32
+      },
+      "usage": {
+        "turns": 1,
+        "costUsd": 4.4417659,
+        "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+        "inputTokens": 1502767,
+        "cacheReadTokens": 1798919,
+        "outputTokens": 125634
+      }
+    },
+    "baseline/gemini-4-argon/2": {
+      "source": "manual",
+      "harnessVersion": "Cursor desktop 3.24.12",
+      "modelArg": "gemini-4-argon",
+      "effort": "high",
+      "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+      "startedAt": "2026-10-13T17:01:41.433Z",
+      "wallSeconds": 937.812,
+      "exitCode": 0,
+      "timedOut": false,
+      "status": "ok",
+      "video": {
+        "durationSec": 15,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "audio": true,
+        "sizeBytes": 5932253,
+        "previewSizeBytes": 388360,
+        "masterSizeBytes": 7737102,
+        "posterSec": 1
+      },
+      "render": {
+        "renderSeconds": 88.1,
+        "workers": 4,
+        "gl": "swiftshader",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "warnings": [],
+        "pageErrors": []
+      },
+      "machine": {
+        "platform": "win32",
+        "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+        "memoryGb": 32
+      },
+      "usage": {
+        "turns": 1,
+        "costUsd": 4.4417659,
+        "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+        "inputTokens": 1502767,
+        "cacheReadTokens": 1798919,
+        "outputTokens": 125634
+      }
+    },
+    "baseline/gemini-4-argon/3": {
+      "source": "manual",
+      "harnessVersion": "Cursor desktop 3.24.12",
+      "modelArg": "gemini-4-argon",
+      "effort": "high",
+      "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+      "startedAt": "2026-10-13T17:01:41.433Z",
+      "wallSeconds": 937.812,
+      "exitCode": 0,
+      "timedOut": false,
+      "status": "ok",
+      "video": {
+        "durationSec": 15,
+        "width": 1920,
+        "height": 1080,
+        "fps": 60,
+        "audio": true,
+        "sizeBytes": 4878445,
+        "previewSizeBytes": 451571,
+        "masterSizeBytes": 6564550,
+        "posterSec": 1
+      },
+      "render": {
+        "renderSeconds": 41.9,
+        "workers": 4,
+        "gl": "swiftshader",
+        "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+        "warnings": [],
+        "pageErrors": []
+      },
+      "machine": {
+        "platform": "win32",
+        "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+        "memoryGb": 32
+      },
+      "usage": {
+        "turns": 1,
+        "costUsd": 4.4417659,
+        "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+        "inputTokens": 1502767,
+        "cacheReadTokens": 1798919,
+        "outputTokens": 125634
+      }
+    }
+  },
+  "windowsSourceHashVerification": {
+    "files": 126,
+    "mismatches": []
+  }
+}

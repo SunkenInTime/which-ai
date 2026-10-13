@@ -119,6 +119,138 @@
       "turns": 80
     }
   },
+  "baseline/gemini-4-argon/1": {
+    "source": "manual",
+    "harnessVersion": "Cursor desktop 3.24.12",
+    "modelArg": "gemini-4-argon",
+    "effort": "high",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-13T17:01:41.433Z",
+    "wallSeconds": 937.812,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 8442555,
+      "previewSizeBytes": 542598,
+      "masterSizeBytes": 10950025,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 96.2,
+      "workers": 4,
+      "gl": "swiftshader",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "turns": 1,
+      "costUsd": 4.4417659,
+      "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+      "inputTokens": 1502767,
+      "cacheReadTokens": 1798919,
+      "outputTokens": 125634
+    }
+  },
+  "baseline/gemini-4-argon/2": {
+    "source": "manual",
+    "harnessVersion": "Cursor desktop 3.24.12",
+    "modelArg": "gemini-4-argon",
+    "effort": "high",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-13T17:01:41.433Z",
+    "wallSeconds": 937.812,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 5932253,
+      "previewSizeBytes": 388360,
+      "masterSizeBytes": 7737102,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 88.1,
+      "workers": 4,
+      "gl": "swiftshader",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "turns": 1,
+      "costUsd": 4.4417659,
+      "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+      "inputTokens": 1502767,
+      "cacheReadTokens": 1798919,
+      "outputTokens": 125634
+    }
+  },
+  "baseline/gemini-4-argon/3": {
+    "source": "manual",
+    "harnessVersion": "Cursor desktop 3.24.12",
+    "modelArg": "gemini-4-argon",
+    "effort": "high",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-10-13T17:01:41.433Z",
+    "wallSeconds": 937.812,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 4878445,
+      "previewSizeBytes": 451571,
+      "masterSizeBytes": 6564550,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 41.9,
+      "workers": 4,
+      "gl": "swiftshader",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "turns": 1,
+      "costUsd": 4.4417659,
+      "costBasis": "API-equivalent estimate from Cursor usage export; Included subscription usage",
+      "inputTokens": 1502767,
+      "cacheReadTokens": 1798919,
+      "outputTokens": 125634
+    }
+  },
   "baseline/gpt-6-astra/1": {
     "source": "runner",
     "harnessVersion": "0.160.0",

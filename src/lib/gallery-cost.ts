@@ -1,12 +1,15 @@
 import type { GalleryEntry, GalleryEntryKey } from "@/lib/gallery-types";
 
 /**
- * API spend in US dollars for the run that produced an entry's five iterations.
+ * API spend or token-based API-equivalent estimate in US dollars for the run that produced an entry's five iterations.
  * Prices come from saved token usage, matched Cursor events, or the provider's billed total
  * split by token usage (Muse Wonder). Runs with no usage record
  * or a $0 free-route report are left out; those cards show no cost.
  */
 const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
+  "without-design-skill/gemini-4-argon": 1.57,
+  "with-design-skill/gemini-4-argon": 1.76,
+  "with-taste-skill/gemini-4-argon": 3.19,
   "without-design-skill/muse-wonder-1.0": 1.9,
   "with-taste-skill/muse-wonder-1.0": 2.54,
   "with-design-skill/muse-wonder-1.0": 1.68,

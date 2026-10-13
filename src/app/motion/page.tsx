@@ -7,7 +7,7 @@ import { readMotionPrompt, summarizeMotionPrompt } from "@/lib/motion-prompt";
 
 export const metadata: Metadata = {
   title: "Motion · Which AI Made This?",
-  description: "The same 15-second motion-video prompt, given to each model in its lab's own coding agent.",
+  description: "The same 15-second motion-video prompt, given to each model in its recorded coding environment.",
 };
 
 export default function MotionPage() {
@@ -20,7 +20,7 @@ export default function MotionPage() {
       <main className="mx-auto max-w-[98rem] px-4 py-16 sm:px-6 sm:py-20 lg:px-4">
         <GalleryPageHeader
           title="Which AI Made This Video?"
-          description="A comparison of how different AI models approach motion design, each working in its lab's own coding agent."
+          description="A comparison of how different AI models approach motion design, with each model's coding environment shown alongside its results."
           prompt={prompt}
           promptSummary={prompt ? summarizeMotionPrompt(prompt) : undefined}
         />
