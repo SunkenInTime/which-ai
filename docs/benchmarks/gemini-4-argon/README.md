@@ -65,4 +65,4 @@ The complete Playwright suite passed **427 tests** against the final production 
 
 All final motion renders have zero reported page errors and warnings. The delivered web videos were fully decoded by ffmpeg and checked for 900 frames, 1920×1080, 60 fps, 15 seconds and an AAC audio stream. See [media-verification.json](media-verification.json).
 
-Hosted playback was verified in Chromium for all three videos: each reached 1920×1080, 15-second metadata, advanced past 0.5 seconds, and sought to 7.5 seconds without video or page errors. [browser-playback.json](browser-playback.json) records the actual CDN URLs. All 11 hosted media/source assets returned HTTP 200 with matching byte counts; see [hosted-assets.json](hosted-assets.json).
+Hosted playback was verified in Chromium for all three videos: each reached 1920×1080, 15-second metadata, advanced past 0.5 seconds, and sought to 7.5 seconds without video or page errors. [media-verification.json](media-verification.json) records the actual CDN URLs. All 11 hosted media/source assets returned HTTP 200 with matching byte counts; see [hosted-assets.json](hosted-assets.json).
