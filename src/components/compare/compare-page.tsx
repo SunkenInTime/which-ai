@@ -112,6 +112,7 @@ function ComparePane({
     return null;
   }
 
+  const previewHref = buildPreviewHref(selection.group, selection.model, selection.iteration);
   // The switcher is the single view's, pointed at this side of the compare instead of the design's own page.
   const hrefFor = (group: GalleryGroupSlug, model: ModelSlug, iteration: IterationId) => {
     const target = getGalleryEntry(group, model);
@@ -131,9 +132,12 @@ function ComparePane({
         animate && "transition-[flex-grow] duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
       )}
     >
+      {/* Keyed by its source so each choice gets a fresh frame. Changing a frame's src adds a history entry, and
+          Back would then step that frame back to the old design while the URL and switcher still show the new one. */}
       <iframe
+        key={previewHref}
         title={`${SIDE_LABEL[side]} preview: ${entry.groupLabel}, ${entry.modelLabel}, iteration ${selection.iteration}`}
-        src={buildPreviewHref(selection.group, selection.model, selection.iteration)}
+        src={previewHref}
         className="absolute inset-0 block size-full bg-[var(--gallery-body-bg)]"
       />
       <VariantSwitcher

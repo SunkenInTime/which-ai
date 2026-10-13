@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { Check, Home, Palette, PanelLeft, PanelRight, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { ModelBrandLogo } from "@/components/gallery/model-brand-logo";
 import { buildCompareHref, buildCompareHrefForSelection } from "@/lib/compare";
 import { galleryManifest } from "@/lib/gallery-manifest";
@@ -136,7 +136,13 @@ export function VariantSwitcher({
   );
   const [paneSide, setPaneSide] = useState<GallerySwitcherSide>(pane?.defaultSide ?? "right");
   const side = pane ? paneSide : storedSide;
-  const popoverClass = getPopoverClass(side);
+  // A phone stacks the compare panes, which leaves each too short for the column, so a pane's switcher runs across.
+  const popoverClass = clsx(
+    getPopoverClass(side),
+    pane && "max-md:top-[calc(100%+0.5rem)] max-md:right-auto max-md:left-0",
+  );
+  const dividerClass = clsx("h-px w-full shrink-0 bg-[var(--gallery-border)]", pane && "max-md:h-5 max-md:w-px");
+  const popoverRef = useRef<HTMLDivElement | null>(null);
   const [compareSearch, setCompareSearch] = useState("");
   const [modelSearch, setModelSearch] = useState("");
   const pickerRef = useRef<HTMLElement | null>(null);
@@ -218,13 +224,57 @@ export function VariantSwitcher({
       if (event.key === "Escape") setOpenPicker(null);
     }
 
+    // A click inside a compare preview never reaches this document, but it does take focus from the window.
+    function handleBlur() {
+      setOpenPicker(null);
+    }
+
     document.addEventListener("mousedown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
+    window.addEventListener("blur", handleBlur);
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
+      window.removeEventListener("blur", handleBlur);
     };
   }, [openPicker]);
+
+  // Keeps an open popover on screen. A compare pane can be narrow, docked toward the middle, or low on a phone,
+  // so the popover tries the other side of the switcher, then slides in, and stops above the bottom edge.
+  useLayoutEffect(() => {
+    const popover = popoverRef.current;
+    if (!openPicker || !popover) return;
+
+    const margin = 12;
+    const overflow = () => {
+      const rect = popover.getBoundingClientRect();
+      return Math.max(margin - rect.left, 0) + Math.max(rect.right - (window.innerWidth - margin), 0);
+    };
+
+    popover.style.left = "";
+    popover.style.right = "";
+    popover.style.transform = "";
+    popover.style.maxHeight = "";
+
+    // Flipping sides only makes sense for the column; a switcher running across opens its popovers downward.
+    const nav = popover.closest("nav");
+    const across = nav ? getComputedStyle(nav).flexDirection === "row" : false;
+    if (!across && overflow() > 0) {
+      const before = overflow();
+      const [from, to] = side === "left" ? (["left", "right"] as const) : (["right", "left"] as const);
+      popover.style[from] = "auto";
+      popover.style[to] = "calc(100% + 0.5rem)";
+      if (overflow() >= before) {
+        popover.style[from] = "";
+        popover.style[to] = "";
+      }
+    }
+
+    const rect = popover.getBoundingClientRect();
+    const shift = Math.max(margin - rect.left, 0) - Math.max(rect.right - (window.innerWidth - margin), 0);
+    if (shift) popover.style.transform = `translateX(${shift}px)`;
+    popover.style.maxHeight = `${Math.max(160, Math.min(416, window.innerHeight - rect.top - margin))}px`;
+  }, [openPicker, side]);
 
   useEffect(() => {
     if (pane) return;
@@ -328,7 +378,7 @@ export function VariantSwitcher({
       data-side={side}
       className={clsx(
         "gallery-variant-switcher gallery-elevated-surface top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
-        pane ? "absolute" : "fixed",
+        pane ? "absolute max-md:flex-row" : "fixed",
         side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6",
       )}
     >
@@ -339,10 +389,7 @@ export function VariantSwitcher({
       >
         <Home className="size-4 shrink-0 opacity-80" aria-hidden="true" />
       </Link>
-      <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
+      <div className={dividerClass} aria-hidden="true" />
       <span className="relative inline-flex">
       <button
         type="button"
@@ -354,7 +401,7 @@ export function VariantSwitcher({
         VS
       </button>
       {openPicker === "compare" ? (
-        <div className={popoverClass} role="menu" aria-label="Choose compare model">
+        <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Choose compare model">
           <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
             <Search
               className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]"
@@ -419,7 +466,7 @@ export function VariantSwitcher({
             );
 
             return option.href ? (
-              <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} className={className} role="menuitem">
+              <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} onClick={() => setOpenPicker(null)} className={className} role="menuitem">
                 {content}
               </Link>
             ) : (
@@ -435,11 +482,13 @@ export function VariantSwitcher({
         </div>
       ) : null}
       </span>
-      <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
-      <span className="relative inline-flex flex-col items-center gap-0.5 py-0.5">
+      <div className={dividerClass} aria-hidden="true" />
+      <span
+        className={clsx(
+          "relative inline-flex flex-col items-center gap-0.5 py-0.5",
+          pane && "max-md:flex-row max-md:px-0.5 max-md:py-0",
+        )}
+      >
         <button
           type="button"
           className={clsx(switcherButtonClass, "group/logo")}
@@ -478,7 +527,7 @@ export function VariantSwitcher({
           ) : null}
         </button>
         {openPicker === "model" ? (
-          <div className={popoverClass} role="menu" aria-label="Switch model">
+          <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Switch model">
             <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
               <Search
                 className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]"
@@ -498,9 +547,11 @@ export function VariantSwitcher({
                 aria-label="Search models"
                 className="h-full min-w-0 flex-1 bg-transparent px-2.5 text-sm font-medium text-[var(--gallery-text-primary)] outline-none placeholder:text-[var(--gallery-text-quaternary)]"
               />
-              <span className="mr-2 shrink-0 rounded-[4px] border border-[var(--gallery-border)] bg-[var(--gallery-surface-muted)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--gallery-text-quaternary)]">
-                ⌘ + K
-              </span>
+              {pane ? null : (
+                <span className="mr-2 shrink-0 rounded-[4px] border border-[var(--gallery-border)] bg-[var(--gallery-surface-muted)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--gallery-text-quaternary)]">
+                  ⌘ + K
+                </span>
+              )}
             </label>
             {filteredModelOptions.length > 0 ? filteredModelOptions.map((option) => {
               const active = option.model === entry.model;
@@ -546,7 +597,7 @@ export function VariantSwitcher({
               );
 
               return option.href ? (
-                <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} className={className} role="menuitem">
+                <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} onClick={() => setOpenPicker(null)} className={className} role="menuitem">
                   {content}
                 </Link>
               ) : (
@@ -562,7 +613,7 @@ export function VariantSwitcher({
           </div>
         ) : null}
         {openPicker === "skill" ? (
-          <div className={popoverClass} role="menu" aria-label="Switch skill set">
+          <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Switch skill set">
             {skillOptions.map((option) => {
               const active = option.group === entry.group;
               const available = option.availableForModel;
@@ -601,7 +652,7 @@ export function VariantSwitcher({
               );
 
               return option.href ? (
-                <Link key={option.group} href={option.href} replace={Boolean(pane)} scroll={!pane} className={className} role="menuitem">
+                <Link key={option.group} href={option.href} replace={Boolean(pane)} scroll={!pane} onClick={() => setOpenPicker(null)} className={className} role="menuitem">
                   {content}
                 </Link>
               ) : (
@@ -613,12 +664,9 @@ export function VariantSwitcher({
           </div>
         ) : null}
       </span>
+      <div className={dividerClass} aria-hidden="true" />
       <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
-      <div
-        className="flex flex-col items-center gap-1"
+        className={clsx("flex flex-col items-center gap-1", pane && "max-md:flex-row")}
         role="group"
         aria-label="Iterations"
       >
@@ -643,10 +691,7 @@ export function VariantSwitcher({
           );
         })}
       </div>
-      <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
+      <div className={dividerClass} aria-hidden="true" />
       <button
         type="button"
         onClick={toggleSide}
