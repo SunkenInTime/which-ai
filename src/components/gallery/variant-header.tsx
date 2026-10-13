@@ -4,7 +4,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { Check, Home, Palette, PanelLeft, PanelRight, Search } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
+import { useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { ModelBrandLogo } from "@/components/gallery/model-brand-logo";
 import { buildCompareHref, buildCompareHrefForSelection } from "@/lib/compare";
 import { galleryManifest } from "@/lib/gallery-manifest";
@@ -20,6 +20,8 @@ import {
 } from "@/lib/gallery-switcher-side";
 
 type PickerMode = "compare" | "model" | "skill" | null;
+
+type HrefFor = (group: GalleryGroupSlug, model: ModelSlug, iteration: IterationId) => string;
 
 export const switcherButtonClass =
   "inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-[var(--gallery-text-secondary)] transition-colors outline-none hover:bg-[var(--gallery-hover-bg)] hover:text-[var(--gallery-text-primary)] focus-visible:ring-1 focus-visible:ring-[var(--gallery-accent)]";
@@ -47,7 +49,7 @@ function getPaletteTone(group: GalleryGroupSlug, available = true) {
   return "text-[var(--gallery-accent)]";
 }
 
-function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId) {
+function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId, hrefFor: HrefFor) {
   const byModel = new Map<ModelSlug, GalleryEntry[]>();
   for (const entry of galleryManifest) {
     byModel.set(entry.model, [...(byModel.get(entry.model) ?? []), entry]);
@@ -68,7 +70,7 @@ function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId) {
         availableInCurrentGroup: Boolean(currentGroupEntry),
         targetEntry: currentGroupEntry,
         href: currentGroupEntry
-          ? buildVariantHref(currentGroupEntry.group, currentGroupEntry.model, iteration)
+          ? hrefFor(currentGroupEntry.group, currentGroupEntry.model, iteration)
           : null,
       };
     })
@@ -80,7 +82,7 @@ function getModelOptions(currentEntry: GalleryEntry, iteration: IterationId) {
     });
 }
 
-function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId) {
+function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId, hrefFor: HrefFor) {
   const groups = Array.from(
     new Map(galleryManifest.map((entry) => [entry.group, entry.groupLabel])).entries(),
     ([group, label]) => ({ group, label: getGroupLabel(group) || label }),
@@ -95,7 +97,7 @@ function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId) {
         group,
         label,
         availableForModel: Boolean(targetEntry),
-        href: targetEntry ? buildVariantHref(targetEntry.group, targetEntry.model, iteration) : null,
+        href: targetEntry ? hrefFor(targetEntry.group, targetEntry.model, iteration) : null,
       };
     })
     .toSorted((a, b) => {
@@ -107,19 +109,40 @@ function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId) {
 export function VariantSwitcher({
   entry,
   iteration,
+  hrefFor = buildVariantHref,
+  compareHrefFor,
+  pane,
 }: {
   entry: GalleryEntry;
   iteration: IterationId;
+  /** Where model, skill and iteration choices lead. Defaults to the design's own page. */
+  hrefFor?: HrefFor;
+  /** Where a VS choice leads. Defaults to a compare with this design on the left. */
+  compareHrefFor?: (target: GalleryEntry) => string;
+  /**
+   * Set when the switcher lives in one pane of the compare page. It sits inside that pane, docks per pane rather
+   * than by the stored preference, swaps the URL in place, and leaves the keyboard shortcuts to the single view,
+   * since two switchers would both answer them.
+   */
+  pane?: { defaultSide: GallerySwitcherSide; label: string };
 }) {
   const router = useRouter();
   const [openPicker, setOpenPicker] = useState<PickerMode>(null);
   // Docked side is a stored preference; the server snapshot keeps hydration in sync.
-  const side = useSyncExternalStore(
+  const storedSide = useSyncExternalStore(
     subscribeGallerySwitcherSide,
     getStoredGallerySwitcherSide,
     getServerGallerySwitcherSide,
   );
-  const popoverClass = getPopoverClass(side);
+  const [paneSide, setPaneSide] = useState<GallerySwitcherSide>(pane?.defaultSide ?? "right");
+  const side = pane ? paneSide : storedSide;
+  // A phone stacks the compare panes, which leaves each too short for the column, so a pane's switcher runs across.
+  const popoverClass = clsx(
+    getPopoverClass(side),
+    pane && "max-md:top-[calc(100%+0.5rem)] max-md:right-auto max-md:left-0",
+  );
+  const dividerClass = clsx("h-px w-full shrink-0 bg-[var(--gallery-border)]", pane && "max-md:h-5 max-md:w-px");
+  const popoverRef = useRef<HTMLDivElement | null>(null);
   const [compareSearch, setCompareSearch] = useState("");
   const [modelSearch, setModelSearch] = useState("");
   const pickerRef = useRef<HTMLElement | null>(null);
@@ -128,29 +151,31 @@ export function VariantSwitcher({
   const groupLabel = getGroupLabel(entry.group);
   const isWithoutSkill = entry.group === "without-design-skill";
   const paletteTone = getPaletteTone(entry.group);
-  const modelOptions = useMemo(() => getModelOptions(entry, iteration), [entry, iteration]);
+  const modelOptions = useMemo(() => getModelOptions(entry, iteration, hrefFor), [entry, iteration, hrefFor]);
   const compareOptions = useMemo(
     () =>
       modelOptions.map((option) => ({
         ...option,
         href: option.targetEntry
-          ? buildCompareHref({
-              left: {
-                group: entry.group,
-                model: entry.model,
-                iteration,
-              },
-              right: {
-                group: option.targetEntry.group,
-                model: option.targetEntry.model,
-                iteration,
-              },
-            })
+          ? compareHrefFor
+            ? compareHrefFor(option.targetEntry)
+            : buildCompareHref({
+                left: {
+                  group: entry.group,
+                  model: entry.model,
+                  iteration,
+                },
+                right: {
+                  group: option.targetEntry.group,
+                  model: option.targetEntry.model,
+                  iteration,
+                },
+              })
           : null,
       })),
-    [entry.group, entry.model, iteration, modelOptions],
+    [compareHrefFor, entry.group, entry.model, iteration, modelOptions],
   );
-  const skillOptions = useMemo(() => getSkillOptions(entry, iteration), [entry, iteration]);
+  const skillOptions = useMemo(() => getSkillOptions(entry, iteration, hrefFor), [entry, iteration, hrefFor]);
   const filteredCompareOptions = useMemo(() => {
     const query = compareSearch.trim().toLowerCase();
     if (!query) return compareOptions;
@@ -171,7 +196,20 @@ export function VariantSwitcher({
   const firstAvailableModelMatch = filteredModelOptions.find((option) => option.href);
 
   function toggleSide() {
-    setStoredGallerySwitcherSide(side === "left" ? "right" : "left");
+    const next = side === "left" ? "right" : "left";
+    if (pane) {
+      setPaneSide(next);
+    } else {
+      setStoredGallerySwitcherSide(next);
+    }
+  }
+
+  function go(href: string) {
+    if (pane) {
+      router.replace(href, { scroll: false });
+    } else {
+      router.push(href);
+    }
   }
 
   useEffect(() => {
@@ -186,15 +224,61 @@ export function VariantSwitcher({
       if (event.key === "Escape") setOpenPicker(null);
     }
 
+    // A click inside a compare preview never reaches this document, but it does take focus from the window.
+    function handleBlur() {
+      setOpenPicker(null);
+    }
+
     document.addEventListener("mousedown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
+    window.addEventListener("blur", handleBlur);
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
+      window.removeEventListener("blur", handleBlur);
     };
   }, [openPicker]);
 
+  // Keeps an open popover on screen. A compare pane can be narrow, docked toward the middle, or low on a phone,
+  // so the popover tries the other side of the switcher, then slides in, and stops above the bottom edge.
+  useLayoutEffect(() => {
+    const popover = popoverRef.current;
+    if (!openPicker || !popover) return;
+
+    const margin = 12;
+    const overflow = () => {
+      const rect = popover.getBoundingClientRect();
+      return Math.max(margin - rect.left, 0) + Math.max(rect.right - (window.innerWidth - margin), 0);
+    };
+
+    popover.style.left = "";
+    popover.style.right = "";
+    popover.style.transform = "";
+    popover.style.maxHeight = "";
+
+    // Flipping sides only makes sense for the column; a switcher running across opens its popovers downward.
+    const nav = popover.closest("nav");
+    const across = nav ? getComputedStyle(nav).flexDirection === "row" : false;
+    if (!across && overflow() > 0) {
+      const before = overflow();
+      const [from, to] = side === "left" ? (["left", "right"] as const) : (["right", "left"] as const);
+      popover.style[from] = "auto";
+      popover.style[to] = "calc(100% + 0.5rem)";
+      if (overflow() >= before) {
+        popover.style[from] = "";
+        popover.style[to] = "";
+      }
+    }
+
+    const rect = popover.getBoundingClientRect();
+    const shift = Math.max(margin - rect.left, 0) - Math.max(rect.right - (window.innerWidth - margin), 0);
+    if (shift) popover.style.transform = `translateX(${shift}px)`;
+    popover.style.maxHeight = `${Math.max(160, Math.min(416, window.innerHeight - rect.top - margin))}px`;
+  }, [openPicker, side]);
+
   useEffect(() => {
+    if (pane) return;
+
     function handleCommandPaletteShortcut(event: KeyboardEvent) {
       if (event.key.toLowerCase() !== "k" || (!event.metaKey && !event.ctrlKey)) {
         return;
@@ -208,7 +292,7 @@ export function VariantSwitcher({
     return () => {
       document.removeEventListener("keydown", handleCommandPaletteShortcut);
     };
-  }, []);
+  }, [pane]);
 
   useEffect(() => {
     if (openPicker !== "compare") {
@@ -239,6 +323,8 @@ export function VariantSwitcher({
   }, [openPicker]);
 
   useEffect(() => {
+    if (pane) return;
+
     const onKeyDown = (e: KeyboardEvent) => {
       const target = e.target as HTMLElement | null;
       if (
@@ -283,15 +369,16 @@ export function VariantSwitcher({
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [entry.group, entry.model, entry.iterations, iteration, router]);
+  }, [entry.group, entry.model, entry.iterations, iteration, pane, router]);
 
   return (
     <nav
       ref={pickerRef}
-      aria-label={`${entry.modelLabel} gallery navigation`}
+      aria-label={pane?.label ?? `${entry.modelLabel} gallery navigation`}
       data-side={side}
       className={clsx(
-        "gallery-variant-switcher gallery-elevated-surface fixed top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
+        "gallery-variant-switcher gallery-elevated-surface top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
+        pane ? "absolute max-md:flex-row" : "fixed",
         side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6",
       )}
     >
@@ -302,10 +389,7 @@ export function VariantSwitcher({
       >
         <Home className="size-4 shrink-0 opacity-80" aria-hidden="true" />
       </Link>
-      <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
+      <div className={dividerClass} aria-hidden="true" />
       <span className="relative inline-flex">
       <button
         type="button"
@@ -317,7 +401,7 @@ export function VariantSwitcher({
         VS
       </button>
       {openPicker === "compare" ? (
-        <div className={popoverClass} role="menu" aria-label="Choose compare model">
+        <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Choose compare model">
           <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
             <Search
               className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]"
@@ -330,7 +414,7 @@ export function VariantSwitcher({
               onKeyDown={(event) => {
                 if (event.key === "Enter" && firstAvailableCompareMatch?.href) {
                   event.preventDefault();
-                  router.push(firstAvailableCompareMatch.href);
+                  go(firstAvailableCompareMatch.href);
                 }
               }}
               placeholder="Compare to model"
@@ -382,7 +466,7 @@ export function VariantSwitcher({
             );
 
             return option.href ? (
-              <Link key={option.model} href={option.href} className={className} role="menuitem">
+              <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} onClick={() => setOpenPicker(null)} className={className} role="menuitem">
                 {content}
               </Link>
             ) : (
@@ -398,11 +482,13 @@ export function VariantSwitcher({
         </div>
       ) : null}
       </span>
-      <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
-      <span className="relative inline-flex flex-col items-center gap-0.5 py-0.5">
+      <div className={dividerClass} aria-hidden="true" />
+      <span
+        className={clsx(
+          "relative inline-flex flex-col items-center gap-0.5 py-0.5",
+          pane && "max-md:flex-row max-md:px-0.5 max-md:py-0",
+        )}
+      >
         <button
           type="button"
           className={clsx(switcherButtonClass, "group/logo")}
@@ -441,7 +527,7 @@ export function VariantSwitcher({
           ) : null}
         </button>
         {openPicker === "model" ? (
-          <div className={popoverClass} role="menu" aria-label="Switch model">
+          <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Switch model">
             <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
               <Search
                 className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]"
@@ -454,16 +540,18 @@ export function VariantSwitcher({
                 onKeyDown={(event) => {
                   if (event.key === "Enter" && firstAvailableModelMatch?.href) {
                     event.preventDefault();
-                    router.push(firstAvailableModelMatch.href);
+                    go(firstAvailableModelMatch.href);
                   }
                 }}
                 placeholder="Search models"
                 aria-label="Search models"
                 className="h-full min-w-0 flex-1 bg-transparent px-2.5 text-sm font-medium text-[var(--gallery-text-primary)] outline-none placeholder:text-[var(--gallery-text-quaternary)]"
               />
-              <span className="mr-2 shrink-0 rounded-[4px] border border-[var(--gallery-border)] bg-[var(--gallery-surface-muted)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--gallery-text-quaternary)]">
-                ⌘ + K
-              </span>
+              {pane ? null : (
+                <span className="mr-2 shrink-0 rounded-[4px] border border-[var(--gallery-border)] bg-[var(--gallery-surface-muted)] px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.08em] text-[var(--gallery-text-quaternary)]">
+                  ⌘ + K
+                </span>
+              )}
             </label>
             {filteredModelOptions.length > 0 ? filteredModelOptions.map((option) => {
               const active = option.model === entry.model;
@@ -509,7 +597,7 @@ export function VariantSwitcher({
               );
 
               return option.href ? (
-                <Link key={option.model} href={option.href} className={className} role="menuitem">
+                <Link key={option.model} href={option.href} replace={Boolean(pane)} scroll={!pane} onClick={() => setOpenPicker(null)} className={className} role="menuitem">
                   {content}
                 </Link>
               ) : (
@@ -525,7 +613,7 @@ export function VariantSwitcher({
           </div>
         ) : null}
         {openPicker === "skill" ? (
-          <div className={popoverClass} role="menu" aria-label="Switch skill set">
+          <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Switch skill set">
             {skillOptions.map((option) => {
               const active = option.group === entry.group;
               const available = option.availableForModel;
@@ -564,7 +652,7 @@ export function VariantSwitcher({
               );
 
               return option.href ? (
-                <Link key={option.group} href={option.href} className={className} role="menuitem">
+                <Link key={option.group} href={option.href} replace={Boolean(pane)} scroll={!pane} onClick={() => setOpenPicker(null)} className={className} role="menuitem">
                   {content}
                 </Link>
               ) : (
@@ -576,12 +664,9 @@ export function VariantSwitcher({
           </div>
         ) : null}
       </span>
+      <div className={dividerClass} aria-hidden="true" />
       <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
-      <div
-        className="flex flex-col items-center gap-1"
+        className={clsx("flex flex-col items-center gap-1", pane && "max-md:flex-row")}
         role="group"
         aria-label="Iterations"
       >
@@ -590,7 +675,9 @@ export function VariantSwitcher({
           return (
             <Link
               key={item.id}
-              href={buildVariantHref(entry.group, entry.model, item.id)}
+              href={hrefFor(entry.group, entry.model, item.id)}
+              replace={Boolean(pane)}
+              scroll={!pane}
               aria-current={active ? "page" : undefined}
               aria-label={`Open iteration ${item.id}`}
               className={`gallery-variant-switcher__iteration inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-md text-[11px] font-medium tabular-nums leading-none transition-colors ${
@@ -604,10 +691,7 @@ export function VariantSwitcher({
           );
         })}
       </div>
-      <div
-        className="h-px w-full shrink-0 bg-[var(--gallery-border)]"
-        aria-hidden="true"
-      />
+      <div className={dividerClass} aria-hidden="true" />
       <button
         type="button"
         onClick={toggleSide}

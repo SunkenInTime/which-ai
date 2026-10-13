@@ -72,3 +72,31 @@ test("compare CTAs on home, model, and iteration pages point to valid compare UR
   await page.goto("/with-design-skill/composer-2.0/4");
   await expect(page.getByRole("button", { name: "Compare Composer 2.0 iteration 4" })).toBeVisible();
 });
+
+test("each pane's switcher changes only its own side of the compare", async ({ page }) => {
+  await page.goto(DEFAULT_COMPARE_PATH);
+  const left = page.getByTestId("compare-panel-left");
+  await left.getByRole("link", { name: "Open iteration 3", exact: true }).click();
+  await expect(page).toHaveURL(
+    "/compare?leftGroup=with-design-skill&leftModel=gpt-5.4&leftIteration=3&rightGroup=without-design-skill&rightModel=gpt-5.4&rightIteration=1",
+  );
+  await expect(
+    page.getByTitle("Right preview: Without Design Skill, GPT-5.4, iteration 1"),
+  ).toBeVisible();
+});
+
+test("the divider resizes the panes from the keyboard", async ({ page }) => {
+  await page.goto(DEFAULT_COMPARE_PATH);
+  const divider = page.getByRole("separator", { name: "Resize panes" });
+  await expect(divider).toHaveAttribute("aria-valuenow", "50");
+  await divider.focus();
+  await page.keyboard.press("Shift+ArrowLeft");
+  await expect(divider).toHaveAttribute("aria-valuenow", "33");
+  // The left pane should now take a third of the screen.
+  await expect
+    .poll(async () => {
+      const box = await page.getByTestId("compare-panel-left").boundingBox();
+      return Math.round(((box?.width ?? 0) / (page.viewportSize()?.width ?? 1)) * 3);
+    })
+    .toBe(1);
+});
