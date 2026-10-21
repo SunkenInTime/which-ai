@@ -20,7 +20,7 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "with-taste-skill/haiku-5-5": 1.27,
   "with-design-skill/haiku-5-5": 0.8,
   "without-design-skill/sol-6-1": 1.16,
-  "with-taste-skill/sol-6-1": 1.21,
+  "with-taste-skill/sol-6-1": 2.48,
   "with-design-skill/sol-6-1": 0.84,
   "without-design-skill/mistral-large-4": 0.12,
   "with-taste-skill/mistral-large-4": 0.49,

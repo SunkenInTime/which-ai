@@ -1,0 +1,89 @@
+{
+  "batch": "taste-skill-v2",
+  "purpose": "Rerun the With Taste Skill condition with design-taste-frontend v2. Each run replaces that model's earlier With Taste Skill gallery entry in place and is marked skillVersion v2.",
+  "skill": {
+    "name": "design-taste-frontend",
+    "version": "2.1.4",
+    "source": "Leonxlnx/taste-skill@6010f91a",
+    "skillMdSha256": "d955dae4ba8ab2d994f4bb06b4bf412a1d9875433a8597939c391f4bae91dd7a"
+  },
+  "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, the same starter and lockfile as the earlier runs",
+  "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "promptPolicy": "The v1 With Taste Skill prompt, with only the dev-server port changed. One prompt per model; no follow-up coaching.",
+  "generationPolicy": "Generated outside the gallery checkout. No orchestrator edits to generated app source. Source hashes describe the original files before gallery adaptation.",
+  "sessions": [
+    {
+      "model": "sol-6-1",
+      "modelId": "gpt-6.1-sol",
+      "condition": "design-taste",
+      "replaces": "with-taste-skill/sol-6-1 v1 (2026-10-07, Codex desktop, bundled CLI 0.160.0, taste skill @ce26fc25)",
+      "runner": "Codex CLI 0.163.0, headless codex exec --json --strict-config, on macOS",
+      "command": "codex exec --json --strict-config -m gpt-6.1-sol -c model_reasoning_effort=\"xhigh\" --dangerously-bypass-approvals-and-sandbox -C <run>/work -o <run>/design-taste.last-message.txt - < design-taste.prompt.txt",
+      "reasoningEffort": "xhigh",
+      "sandbox": "danger-full-access, approval_policy never",
+      "isolation": "Isolated HOME and CODEX_HOME holding only a copied auth.json and a benchmark config.toml. Codex bundled system skills, ChatGPT apps/connectors, plugins, remote plugins, tool suggestions and memories disabled. Codex built-in image generation and web tools left at their defaults. The only skill in the session's catalog was design-taste-frontend (repo-level .agents/skills). Context isolation only; no filesystem jail.",
+      "browserConfigured": "Playwright MCP 0.0.83 as MCP server \"browser\": isolated headless Chromium, 1440x960, image responses allowed",
+      "browserObservedInScoredSession": "Not visible. The model filtered its tool list for /browser|design|skill/ at its first step and got an empty list; the session log contains no browser MCP calls.",
+      "visualFeedbackUsed": "The skill's own headless-Chrome inspector (scripts/inspect.mjs over CDP) at 1440/768/390 widths, plus Codex view_image: 70 images returned to the model (4 candidate photos, 66 inspector screenshots).",
+      "threadId": "01a15f44-8232-76a2-8839-3ce3e00fbcf9",
+      "startedAt": "2026-10-21T16:21:27.617Z",
+      "finishedAt": "2026-10-21T17:48:01.954Z",
+      "wallSeconds": 5194.337,
+      "wallTimeNote": "Includes network outages on the Mac: stream reconnects at 16:37Z and a wait for network around 17:22-17:25Z, then a fallback from WebSockets to HTTPS transport.",
+      "promptSha256": "12d9c77df45ec28ff83ee08c0aabd30f2aa0d02024696aa6b4e221f953ea05de",
+      "completed": true,
+      "userTurns": 1,
+      "toolUse": {
+        "codeModeExecCalls": 56,
+        "commandExecutionsCompleted": 86,
+        "imagesViewed": 70,
+        "apply_patch": 1,
+        "browserMcp": 0,
+        "imageGeneration": 0,
+        "webSearch": 0,
+        "subAgents": 0
+      },
+      "networkFetchesByModel": "Google Fonts and Fontshare font files, two public-domain images via the skill's assets.mjs (Met Museum, Wikimedia Commons), two Unsplash photos via Lorem Picsum, all saved locally into the project.",
+      "usage": {
+        "source": "turn.completed event in the Codex JSON stream; equals the sum of the 57 per-request token_count records in the rollout",
+        "inputTokens": 9050765,
+        "cachedInputTokens": 8749824,
+        "uncachedInputTokens": 300941,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 74532,
+        "reasoningOutputTokens": 18448,
+        "reasoningNote": "Reasoning tokens are part of outputTokens."
+      },
+      "apiEquivalentUsd": 2.4758428,
+      "skillFileChange": {
+        "file": ".agents/skills/design-taste-frontend/scripts/lib/cdp.mjs",
+        "change": "Adds --use-mock-keychain to the inspector's Chrome launch flags on macOS",
+        "sha256Before": "320fb75c6454a97b88458e5c33559a1188042aa0041bd5eff53455900236c88a",
+        "sha256After": "dd8e71a9e25d84c9026cbd6bf09be5dd31bc1532f39b7dd5cad36c89ab68d15b",
+        "observed": "The file was unmodified in the model's git status at 17:32:03Z and modified in its git diff at 17:47:24Z; its mtime is 17:42:33Z. No tool call in the session log writes this file. The model ran git diff on it at 17:47:35Z and did not mention it in its final message or design notes.",
+        "attribution": "Unresolved. The run operator reported it as a model edit; the session log does not show the model making it. The change is to the skill's inspector, not the generated app, and is not part of the gallery source."
+      },
+      "preflight": "Run operator reports an unscored preflight that confirmed design-taste-frontend was the only visible skill and that the browser could be read from pixels. The preflight records were not in the transfer received for this import."
+    }
+  ],
+  "integrationChanges": {
+    "sol-6-1": [
+      "Root html/body converted to data-source-html/data-source-body divs; global CSS scoped by the gallery generator (html/body selectors map to the gallery scope).",
+      "Local font files and images namespaced under /variants/with-taste-skill/sol-6-1/; fonts.css url() paths and the image path template updated to match.",
+      "The source header's design switcher is no longer rendered because the gallery provides iteration navigation (its .design-switcher class would also pick up the gallery's own global .design-switcher styles); the Switcher component itself is left in the file unused.",
+      "The wordmark's numeric self-link points to the gallery route /with-taste-skill/sol-6-1/{n}.",
+      "Gallery wrapper renders the source's shared Landing component with the gallery iteration number, the same component the source's /[version] route renders."
+    ]
+  },
+  "costBasis": {
+    "kind": "API-equivalent token estimate at OpenAI Standard rates; Codex ran on a ChatGPT sign-in, so this is not a cash invoice",
+    "ratesUsdPerMillion": {
+      "gpt-6.1-sol": {
+        "shortContext": { "input": 2.0, "cachedInput": 0.1, "output": 10.0, "appliesTo": "requests with <=272K input tokens" },
+        "longContext": { "input": 4.0, "cachedInput": 0.2, "output": 15.0, "appliesTo": "requests with >272K input tokens" }
+      }
+    },
+    "checkedAt": "2026-10-21",
+    "sources": ["https://developers.openai.com/api/docs/pricing"]
+  }
+}

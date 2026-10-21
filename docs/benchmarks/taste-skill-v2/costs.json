@@ -1,0 +1,25 @@
+{
+  "checkedAt": "2026-10-21",
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "method": "Per request, from the rollout's token_count records: uncached input = input - cached input; output includes reasoning. A request whose input exceeds 272K tokens is priced at the long-context rates; all others at the short-context rates. No cache writes were reported.",
+  "records": [
+    {
+      "model": "sol-6-1",
+      "modelId": "gpt-6.1-sol",
+      "condition": "design-taste",
+      "ratesUsdPerMillion": {
+        "shortContext": { "input": 2.0, "cachedInput": 0.1, "output": 10.0 },
+        "longContext": { "input": 4.0, "cachedInput": 0.2, "output": 15.0 }
+      },
+      "tiers": {
+        "shortContext": { "requests": 52, "uncachedInput": 256599, "cachedInput": 7303680, "output": 70460, "usd": 1.948166 },
+        "longContext": { "requests": 5, "uncachedInput": 44342, "cachedInput": 1446144, "output": 4072, "usd": 0.5276768 }
+      },
+      "totals": { "requests": 57, "inputTokens": 9050765, "cachedInputTokens": 8749824, "outputTokens": 74532, "reasoningOutputTokens": 18448 },
+      "apiEquivalentUsd": 2.4758428,
+      "cardUsd": 2.48,
+      "allShortContextUsd": 2.2221844,
+      "note": "The largest single request carried 308,123 input tokens. The pricing page does not say whether the long-context rate applies per request or to a whole session; per request is used here. Failed or retried transport attempts during the network outages are not in the usage records."
+    }
+  ]
+}

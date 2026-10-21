@@ -51,6 +51,22 @@ for (const model of ["sol-6", "opus-5.5", "sonnet-5.5"]) {
   }
 }
 
+// Sol 6.1 taste-skill v2 rerun: one shared page component, the source design switcher stays out.
+for (const iteration of ["1", "2", "3", "4", "5"]) {
+  test(`sol-6-1 with-taste-skill v2 iteration ${iteration} renders on mobile`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.setViewportSize({ width: 390, height: 844 });
+    const response = await page.goto(`/preview/with-taste-skill/sol-6-1/${iteration}`);
+    expect(response?.ok()).toBe(true);
+    await expect(page.locator("main h1").first()).toBeVisible();
+    await expect(page.locator(".design-switcher")).toHaveCount(0);
+    await expect(page.locator(".landing img").first()).toHaveJSProperty("complete", true);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    expect(errors).toEqual([]);
+  });
+}
+
 for (const model of ["luna-6"]) {
   for (const group of ["with-design-skill", "without-design-skill"]) {
     for (const iteration of ["1", "2", "3", "4", "5"]) {
@@ -116,21 +132,12 @@ for (const group of ["with-design-skill", "with-taste-skill", "without-design-sk
   }
 }
 
-// Integration regressions: CSS modules must stay styled and the preserved theme
-// control must not inherit the gallery's unrelated .design-switcher positioning.
+// Integration regression: CSS modules must stay styled.
+// (The v1 Sol 6.1 taste appearance-control test left with that source; the v2 rerun is covered above.)
 test("Haiku CSS-module design retains its typography", async ({ page }) => {
   await page.goto("/preview/with-design-skill/haiku-5-5/1");
   await expect(page.locator("h1")).toHaveCSS("font-family", /Newsreader/);
   expect(await page.locator("h1").evaluate(el => parseFloat(getComputedStyle(el).fontSize))).toBeGreaterThan(48);
-});
-test("Sol taste appearance control stays compact and toggles theme", async ({ page }) => {
-  await page.goto("/preview/with-taste-skill/sol-6-1/1");
-  const control = page.getByRole("navigation", { name: "Appearance" });
-  expect((await control.boundingBox())!.height).toBeLessThan(80);
-  const landing = page.locator(".landing");
-  const before = await landing.getAttribute("data-theme");
-  await control.getByRole("button").click();
-  await expect(landing).not.toHaveAttribute("data-theme", before!);
 });
 
 for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {

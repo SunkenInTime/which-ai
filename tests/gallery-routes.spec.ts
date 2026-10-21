@@ -624,6 +624,33 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
   });
 }
 
+// Taste-skill v2 reruns replace the model's v1 "With Taste Skill" entry in place.
+const TASTE_SKILL_V2_MODELS = ["sol-6-1"] as const;
+
+test("taste-skill v2 reruns are marked on their card and in the skill picker", async ({ page }) => {
+  const v2Entries = galleryManifest.filter((entry) => entry.skillVersion === "v2");
+  expect(v2Entries.map((entry) => `${entry.group}/${entry.model}`).sort()).toEqual(
+    TASTE_SKILL_V2_MODELS.map((model) => `with-taste-skill/${model}`).sort(),
+  );
+
+  await page.goto("/");
+  await expect(page.getByTestId("gallery-card-skill-version")).toHaveCount(TASTE_SKILL_V2_MODELS.length);
+  for (const model of TASTE_SKILL_V2_MODELS) {
+    const card = page
+      .getByTestId("gallery-card")
+      .filter({ has: page.locator(`a[href="/with-taste-skill/${model}/1"]`) });
+    await expect(card.getByTestId("gallery-card-skill-version")).toHaveText("v2");
+  }
+
+  for (const model of TASTE_SKILL_V2_MODELS) {
+    await page.goto(`/with-design-skill/${model}/1`);
+    await page.getByRole("button", { name: /Switch skill set/ }).click();
+    const menu = page.getByRole("menu", { name: "Switch skill set" });
+    await expect(menu.getByText("With Taste Skill v2", { exact: true })).toBeVisible();
+    await expect(menu.getByText("With Design Skill", { exact: true })).toBeVisible();
+  }
+});
+
 test("Sol 6 and Opus 5.5 appear in all groups with the correct labs", async ({ page }) => {
   await page.goto("/");
   for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"]) {

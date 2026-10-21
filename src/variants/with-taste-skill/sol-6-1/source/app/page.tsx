@@ -1,4 +1,2 @@
-import { redirect } from "next/navigation";
-export default function Home() {
-  redirect("/1");
-}
+import Landing from "./components/landing";
+export default function Home() { return <Landing version={1} />; }
