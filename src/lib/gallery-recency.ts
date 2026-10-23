@@ -27,7 +27,7 @@ export type GalleryIsoDate = `${number}-${number}-${number}`;
 export const NEW_ARRIVAL_WINDOW_DAYS = 14;
 
 /** Explicitly selected arrivals; a recent date alone does not earn a New badge. */
-const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["gemini-4-argon", "muse-wonder-1.0"]);
+const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["kimi-k3-1-pro", "gemini-4-argon", "muse-wonder-1.0"]);
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -56,6 +56,7 @@ const MODEL_ADDED_AT: Partial<Record<ModelSlug, GalleryIsoDate>> = {
   "grok-4.6": "2026-08-12",
   "muse-spark-1.2": "2026-08-05",
   "opus-5": "2026-07-24",
+  "kimi-k3-1-pro": "2026-10-23",
   "kimi-k3": "2026-07-16",
   sol: "2026-07-09",
   luna: "2026-07-09",

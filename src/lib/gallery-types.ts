@@ -40,6 +40,7 @@ export type ModelSlug =
   | "gpt-5.5-high"
   | "kimi-k-2.5"
   | "kimi-k-2.6"
+  | "kimi-k3-1-pro"
   | "kimi-k3"
   | "muse-spark-1.2"
   | "muse-spark-1.3"

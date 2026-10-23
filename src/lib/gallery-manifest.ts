@@ -23,6 +23,40 @@ function iterations(
 
 export const galleryManifest: GalleryEntry[] = [
   {
+    group: "without-design-skill",
+    groupLabel: "Without Design Skill",
+    model: "kimi-k3-1-pro",
+    modelLabel: "Kimi K3.1 Pro",
+    sourceDir: "kimi-k3-1-pro/no-skills",
+    sourceAppType: "next",
+    defaultIteration: "1",
+    summary: "Five Kimi K3.1 Pro second-brain pages at high reasoning in OpenCode via OpenRouter.",
+    iterations: iterations(["1", "2", "3", "4", "5"], "without-design-skill", "kimi-k3-1-pro"),
+  },
+  {
+    group: "with-design-skill",
+    groupLabel: "With Design Skill",
+    model: "kimi-k3-1-pro",
+    modelLabel: "Kimi K3.1 Pro",
+    sourceDir: "kimi-k3-1-pro/anthropic-frontend-design",
+    sourceAppType: "next",
+    defaultIteration: "1",
+    summary: "Five Kimi K3.1 Pro second-brain pages at high reasoning in OpenCode via OpenRouter.",
+    iterations: iterations(["1", "2", "3", "4", "5"], "with-design-skill", "kimi-k3-1-pro"),
+  },
+  {
+    group: "with-taste-skill",
+    groupLabel: "With Taste Skill",
+    model: "kimi-k3-1-pro",
+    modelLabel: "Kimi K3.1 Pro",
+    sourceDir: "kimi-k3-1-pro/design-taste",
+    sourceAppType: "next",
+    defaultIteration: "1",
+    summary: "Five Kimi K3.1 Pro second-brain pages at high reasoning in OpenCode via OpenRouter. Taste skill v2; resumed twice after provider/network interruptions.",
+    iterations: iterations(["1", "2", "3", "4", "5"], "with-taste-skill", "kimi-k3-1-pro"),
+  },
+
+  {
     group: "with-taste-skill",
     groupLabel: "With Taste Skill",
     model: "gemini-4-argon",

@@ -54,6 +54,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   terra: { slug: "gpt", label: "GPT" },
   "kimi-k-2.5": { slug: "moonshot", label: "Moonshot" },
   "kimi-k-2.6": { slug: "moonshot", label: "Moonshot" },
+  "kimi-k3-1-pro": { slug: "moonshot", label: "Moonshot" },
   "kimi-k3": { slug: "moonshot", label: "Moonshot" },
   "muse-spark-1.2": { slug: "meta", label: "Meta" },
   "muse-spark-1.3": { slug: "meta", label: "Meta" },

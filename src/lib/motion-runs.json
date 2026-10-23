@@ -641,6 +641,126 @@
       "turns": 77
     }
   },
+  "baseline/kimi-k3-1-pro/1": {
+    "source": "runner",
+    "harnessVersion": "1.18.32",
+    "modelArg": "openrouter/moonshotai/kimi-k3.1-pro",
+    "effort": "high",
+    "promptSha256": "121fffa9f201842f81f7378c59a6c515356a429fb774eca68043903d44675bd6",
+    "startedAt": "2026-10-23T22:31:18.835064+00:00",
+    "wallSeconds": 1149,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 3072720,
+      "previewSizeBytes": 199277,
+      "masterSizeBytes": 4267612,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 18.5,
+      "workers": 3,
+      "gl": "gpu",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "darwin",
+      "cpu": "Apple M5 Pro",
+      "memoryGb": 24
+    },
+    "usage": {
+      "costUsd": 2.265482,
+      "costBasis": "OpenCode assistant-message costs including all subagents"
+    }
+  },
+  "baseline/kimi-k3-1-pro/2": {
+    "source": "runner",
+    "harnessVersion": "1.18.32",
+    "modelArg": "openrouter/moonshotai/kimi-k3.1-pro",
+    "effort": "high",
+    "promptSha256": "121fffa9f201842f81f7378c59a6c515356a429fb774eca68043903d44675bd6",
+    "startedAt": "2026-10-23T22:31:18.835064+00:00",
+    "wallSeconds": 1149,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 3607063,
+      "previewSizeBytes": 320964,
+      "masterSizeBytes": 5380102,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 16.8,
+      "workers": 3,
+      "gl": "gpu",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "darwin",
+      "cpu": "Apple M5 Pro",
+      "memoryGb": 24
+    },
+    "usage": {
+      "costUsd": 2.265482,
+      "costBasis": "OpenCode assistant-message costs including all subagents"
+    }
+  },
+  "baseline/kimi-k3-1-pro/3": {
+    "source": "runner",
+    "harnessVersion": "1.18.32",
+    "modelArg": "openrouter/moonshotai/kimi-k3.1-pro",
+    "effort": "high",
+    "promptSha256": "121fffa9f201842f81f7378c59a6c515356a429fb774eca68043903d44675bd6",
+    "startedAt": "2026-10-23T22:31:18.835064+00:00",
+    "wallSeconds": 1149,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 1925650,
+      "previewSizeBytes": 185448,
+      "masterSizeBytes": 2475825,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 9.8,
+      "workers": 3,
+      "gl": "gpu",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "darwin",
+      "cpu": "Apple M5 Pro",
+      "memoryGb": 24
+    },
+    "usage": {
+      "costUsd": 2.265482,
+      "costBasis": "OpenCode assistant-message costs including all subagents"
+    }
+  },
   "baseline/muse-wonder-1.0/1": {
     "source": "runner",
     "harnessVersion": "1.4.6",

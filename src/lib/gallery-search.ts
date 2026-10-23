@@ -44,6 +44,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "gemini-3.8-flash": ["gemini flash"],
   "grok-4.6": ["grok4.6"],
   "grok-4.7": ["grok4.7"],
+  "kimi-k3-1-pro": ["kimi k3.1 pro", "kimi k3.1", "high", "openrouter"],
   "kimi-k3": ["kimi k3", "k3"],
   "glm-5.3-flash": ["ox alpha", "ox-alpha", "ox"],
   "muse-spark-1.3": ["muse", "spark"],

@@ -7,6 +7,9 @@ import type { GalleryEntry, GalleryEntryKey } from "@/lib/gallery-types";
  * or a $0 free-route report are left out; those cards show no cost.
  */
 const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
+  "without-design-skill/kimi-k3-1-pro": 0.719516,
+  "with-design-skill/kimi-k3-1-pro": 0.793331,
+  "with-taste-skill/kimi-k3-1-pro": 8.057301,
   "without-design-skill/gemini-4-argon": 1.57,
   "with-design-skill/gemini-4-argon": 1.76,
   "with-taste-skill/gemini-4-argon": 3.19,

@@ -1,0 +1,26 @@
+[
+  {
+    "kind": "anthropic-frontend-design",
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/anthropic-frontend-design.source.tar.gz",
+    "sha256": "bd94f9066d40f6d2a43aba29c859a806a8dca504af44b25cfae8da7d1c198b66",
+    "sizeBytes": 90764
+  },
+  {
+    "kind": "design-taste",
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/design-taste.source.tar.gz",
+    "sha256": "218b1f55439a9216624c67cf444d7507aa88cd9abd7a560434078a1ce29471e4",
+    "sizeBytes": 86195
+  },
+  {
+    "kind": "motion",
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/motion.source.tar.gz",
+    "sha256": "3065f50d89861340b4b270ae68e4c41f68d114cc7b27fa5a794fe762cee6d127",
+    "sizeBytes": 30529698
+  },
+  {
+    "kind": "no-skills",
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/no-skills.source.tar.gz",
+    "sha256": "ae16636a575a65ebd25a19fbbb51aeb66febca24ab1cf22d705ea3a64ca3ef38",
+    "sizeBytes": 92468
+  }
+]

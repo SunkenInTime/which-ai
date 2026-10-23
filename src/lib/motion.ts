@@ -67,6 +67,7 @@ export const motionModels = motionConfig.models.filter((model) =>
 );
 
 const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
+  Moonshot: { light: "/kimi-k2.webp" },
   Anthropic: { light: "/anthropic-claude.webp" },
   OpenAI: { light: "/openai-gpt.svg", dark: "/openai-gpt-dark.svg" },
   xAI: { light: "/xai-light.svg", dark: "/xai-dark.svg" },
@@ -80,6 +81,7 @@ export function getMotionModelLogo(model: MotionModel) {
 
 /** The motion config names labs as people write them; search wants the gallery's lab slugs and aliases. */
 const MOTION_LABS: Record<string, ModelLab> = {
+  Moonshot: { slug: "moonshot", label: "Moonshot" },
   Anthropic: { slug: "anthropic", label: "Anthropic" },
   OpenAI: { slug: "gpt", label: "OpenAI" },
   xAI: { slug: "x-ai", label: "xAI" },
