@@ -130,6 +130,55 @@
       "finalInspectorResults": "All five pages: 0 FAIL, 0 WARN in .taste-skill/inspect-{1..5}/report.json (/4 and /5 from resume2).",
       "usage": "None recorded; see costs.json.",
       "apiEquivalentUsd": null
+    },
+    {
+      "model": "sonnet-5.5",
+      "modelId": "claude-sonnet-5-5",
+      "condition": "design-taste",
+      "replaces": "with-taste-skill/sonnet-5.5 v1 (2026-09-28, gallery PR #46: Claude Code at xhigh, one thread, no subagents; card cost $5.97). No docs/benchmarks folder or archive was kept for v1; its gallery copy stays in git history.",
+      "runner": "Claude Code 2.1.304 headless (claude -p, --output-format stream-json --verbose) on a boat.dev cloud VM (Ubuntu 24.04, 4 vCPU, 8 GB), as a dedicated Linux user",
+      "command": "claude -p --model claude-sonnet-5-5 --effort xhigh --strict-mcp-config --mcp-config <run>/mcp.json --dangerously-skip-permissions --output-format stream-json --verbose <prompt>",
+      "launcher": "E:\\w\\taste-v2\\boat\\bin\\sequence.sh -> run.sh (setup in setup.sh); the exact argv and environment are in <run>/design-taste.invocation.json. The VM's sequence.log records the start and finish.",
+      "reasoningEffort": "xhigh",
+      "sandbox": "--dangerously-skip-permissions (the init event reports permissionMode bypassPermissions)",
+      "isolation": "Run under env -i with an isolated HOME holding only the claude.ai login and empty files that block account skill and plugin sync. Environment: CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1, CLAUDE_CODE_SYNC_SKILLS=0, CLAUDE_CODE_SYNC_PLUGINS=0, CLAUDE_CODE_DISABLE_POLICY_SKILLS=1, DISABLE_AUTOUPDATER=1, CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1 (helper agents run in the foreground, so headless mode does not stop them when the main turn ends). The init event lists the skills design-taste-frontend, design, doctor and plugin-authoring, three built-in plugins (agents-md, telemetry, plugin-authoring), and reports claude.ai plugin sync disabled. The model invoked only design-taste-frontend. Context isolation only; no filesystem jail.",
+      "skillPlacement": "Project skill at work/.claude/skills/design-taste-frontend (SKILL.md sha256 d955dae4...), committed in the baseline",
+      "browserConfigured": "Playwright MCP 0.0.83 as the only MCP server, \"browser\" (--strict-mcp-config): isolated headless Chromium, 1440x960, image responses allowed",
+      "browserObservedInScoredSession": "Connected; the init event lists 25 browser tools. Main thread: 20 browser calls (4 navigate, 4 screenshots, 5 evaluate, 3 resize, 2 click, 1 key press, 1 console read), in the last minutes of the run. Helper agents: 38 calls (11 navigate, 8 screenshots, 11 evaluate, 3 resize, 2 console reads, 1 key press, 1 type, 1 click).",
+      "visualFeedbackUsed": "The skill's own inspector (scripts/inspect.mjs) ran 53 times (2 by the main thread, 51 by the helpers). The session opened 255 images with Read (25 main thread, 230 helpers: inspector screenshots and candidate pictures) and took 12 browser screenshots.",
+      "subAgents": "Five forks (subagent_type fork, foreground), one per page, spawned in one main-thread turn at 16:09:09-16:09:34Z after the main thread wrote .taste-skill/BRIEF.md and dealt one direction sheet per page with the skill's draw.mjs. They returned at 16:40:45Z (/4), 16:47:00Z (/1), 16:51:15Z (/5), 16:55:43Z (/2) and 17:00:49Z (/3). All five completed; none failed or was stopped.",
+      "toolUse": {
+        "mainThread": { "Skill": 1, "Agent": 5, "Bash": 27, "Read": 26, "Write": 2, "ToolSearch": 1, "browserMcp": 20 },
+        "helpers": { "Bash": 400, "Read": 235, "Write": 18, "ToolSearch": 4, "browserMcp": 38 },
+        "webFetch": 0,
+        "webSearch": 0
+      },
+      "permissionDenial": "One helper command (the /1 fork's `rm -f shots/*; node shot.mjs ...`) was refused by Claude Code's compound-command check despite --dangerously-skip-permissions. The run continued.",
+      "rateLimitEvents": "38 rate_limit_event records, all allowed_warning on the seven-day window (utilization 0.80 to 0.84). Nothing was blocked.",
+      "sessionId": "ab296810-07bf-4e2f-a153-091927ec93fb",
+      "startedAt": "2026-10-23T16:03:31.098Z",
+      "finishedAt": "2026-10-23T17:04:07.115Z",
+      "wallSeconds": 3636.017,
+      "exitCode": 0,
+      "numTurns": 84,
+      "promptSha256": "8cc0d488649ae07cc6ac81ec66357d978d5ab8694f85475a79cc87529fbd660b",
+      "baselineCommit": "881e519f0e7f214e4168c589a2b8875a66850c2a",
+      "completed": true,
+      "userTurns": 1,
+      "finalMessage": "sonnet-5-5.design-taste.final.txt (the result field of the last stream-json line)",
+      "networkFetchesByModel": "Pictures and clips found and downloaded through the skill's assets.mjs (49 runs), mostly from Wikimedia Commons plus the Art Institute of Chicago and Flickr, saved under public/p1-p5 with credits files and credited in each footer. Google fonts through next/font. Switzer woff2 files saved into app/5/fonts. No WebFetch or WebSearch calls.",
+      "usage": {
+        "source": "modelUsage in the stream-json result line (main thread and helpers together)",
+        "inputTokens": 1254,
+        "cacheCreationInputTokens": 2032912,
+        "cacheReadInputTokens": 189309151,
+        "outputTokens": 1007179,
+        "thinkingTokens": 607649,
+        "thinkingNote": "Thinking tokens are part of outputTokens."
+      },
+      "apiEquivalentUsd": 34.3772121,
+      "preflight": "The run operator reports an unscored setup check with Claude Haiku 5.5 in the same harness: the visible skills were design-taste-frontend and plugin-authoring (a built-in that could not be turned off), the browser tool read a test canvas from pixels, and no personal instructions loaded. Its files were not copied off the VM, so this is not confirmed here.",
+      "earlierAttempts": "Unscored. On 2026-10-21 the Claude runs were first started on the Windows PC (Sonnet 5.5 18:20:12Z-18:37:18Z) and abandoned: headless mode stopped the background helper agents when the main turn ended, and one run hit the usage limit. The remains are in E:\\w\\taste-v2\\archive\\2026-10-21-claude-pc-helpers-killed."
     }
   ],
   "integrationChanges": {
@@ -148,17 +197,27 @@
       "globals.css adds browser-default restores (`margin: revert` on paragraphs, headings and other block elements; margin, padding and list-style on lists; margin, padding, border, radius, background and color on form controls) because the gallery's Tailwind preflight resets them and the source has no Tailwind. The source's own rules and inline styles still override these.",
       "Twelve referenced pictures and the teleprinter clip (webm and poster) namespaced under /variants/with-taste-skill/gemini-4-argon/assets/; the 35 /assets/ paths in the five pages updated. Unreferenced card-catalog-at-the-indiana-state-library.jpg and credits.json not copied.",
       "`@/components/...` imports in the five pages point at the copied components under the variant's source folder."
+    ],
+    "sonnet-5.5": [
+      "Copied app/ (layout.tsx, page.tsx, globals.css, favicon.ico, 1-5 with their layouts, components, CSS modules and app/5/fonts, _components, _shared). The project's .taste-skill notes, .playwright-mcp logs and next.config.ts change (devIndicators off) are not copied; they are covered by the source hashes.",
+      "Root html/body converted to data-source-html/data-source-body divs; global CSS scoped by the gallery generator. The root layout no longer renders the corner design Switcher (the gallery provides iteration navigation); the component file is kept unused.",
+      "The gallery wrapper renders each source route's own layout (fonts, page root class, and on /3 and /4 the inline script that arms entrance motion) around that route's page, inside the root layout.",
+      "Pictures and clips namespaced under /variants/with-taste-skill/sonnet-5.5/p1-p5/; the 42 /pN/ paths in the pages and components updated. The six credits.json files and the starter's unused SVGs not copied.",
+      "Fonts: next/font in Next.js 16 names families plainly (\"Anton\", \"Work Sans\", \"Schibsted Grotesk\", \"Libre Franklin\", \"Source Serif 4\", \"Newsreader\", \"Switzer\"), and other gallery entries declare the same names with other files, weights and fallback metrics (on the gallery's /1 page: 214 other Newsreader faces, 15 Work Sans, 5 Anton). app/fonts.css declares the 48 @font-face rules the source's dev server served on 2026-10-24, with the 34 font files copied to /variants/with-taste-skill/sonnet-5.5/fonts/, under family names prefixed \"Sonnet v2 \", plus classes that set the same --font-* variables (and Switzer's font-family class). The five layouts use those class names instead of calling next/font/google and next/font/local.",
+      "Five focus-ring selectors in four CSS modules ([data-ui] button:focus-visible, and [data-ui] input:focus-visible on /5) have no local class, which the gallery's webpack CSS-modules check rejects (the source's Turbopack build accepted them as global). Each is anchored to its page root, :where(:global(#p1)) on /1 and :where(:global([data-p5-root])) on /5, with :where(:not(.galleryPure)) on [data-ui] to make it pure; specificity is unchanged and the rules no longer reach other entries' data-ui elements. Measured focus rings on the 41 focusable data-ui controls of /1, /2 and /5 are identical in source and gallery.",
+      "LayoutProps<\"/\">, LayoutProps<\"/1\"> and LayoutProps<\"/5\"> replaced with { children: React.ReactNode } (the gallery has no /1 or /5 route types)."
     ]
   },
   "costBasis": {
-    "kind": "API-equivalent token estimate at OpenAI Standard rates; Codex ran on a ChatGPT sign-in, so this is not a cash invoice",
+    "kind": "API-equivalent token estimates at each provider's published list rates; the runs used ChatGPT and Claude subscriptions, so these are not cash invoices",
     "ratesUsdPerMillion": {
       "gpt-6.1-sol": {
         "shortContext": { "input": 2.0, "cachedInput": 0.1, "output": 10.0, "appliesTo": "requests with <=272K input tokens" },
         "longContext": { "input": 4.0, "cachedInput": 0.2, "output": 15.0, "appliesTo": "requests with >272K input tokens" }
-      }
+      },
+      "claude-sonnet-5-5": { "input": 2.0, "cacheWrite5m": 2.5, "cacheWrite1h": 4.0, "cacheRead": 0.1, "output": 10.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" }
     },
     "checkedAt": "2026-10-21",
-    "sources": ["https://developers.openai.com/api/docs/pricing"]
+    "sources": ["https://developers.openai.com/api/docs/pricing", "https://platform.claude.com/docs/en/about-claude/pricing"]
   }
 }

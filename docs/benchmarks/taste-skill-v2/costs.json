@@ -30,6 +30,29 @@
       "status": "unknown, pending Cursor's usage export",
       "observed": "cursor-agent 2026.10.19-6bbf2c4 printed no usage summary. The stream-json logs of the three scored sessions (design-taste, design-taste-resume1, design-taste-resume2) and of the discarded first attempt contain no token, usage, cost or credit fields. No estimate is made without a usage record; the gallery card shows no cost.",
       "toCompute": "Match Cursor's exported per-event usage for chat 8207a939-19a3-4cd3-a3af-cf5e97c08e45 to the session windows in provenance.json, then price it the way docs/benchmarks/gemini-4-argon/costs.json priced the v1 run. The discarded first attempt (chat ffd985e7-dd11-49b0-8037-f29c5fd985e5) is unscored and should be reported separately."
+    },
+    {
+      "model": "sonnet-5.5",
+      "modelId": "claude-sonnet-5-5",
+      "condition": "design-taste",
+      "checkedAt": "2026-10-24",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "method": "Session totals from the modelUsage field of the stream-json result line (Claude Code's own count, main thread and helper agents together). Cache writes split by duration from the per-message usage in the log: every main-thread write was a 1-hour write, every helper-agent write a 5-minute write. Anthropic lists no long-context surcharge for Sonnet 5.5, so one rate per token category applies.",
+      "ratesUsdPerMillion": { "input": 2.0, "cacheWrite5m": 2.5, "cacheWrite1h": 4.0, "cacheRead": 0.1, "output": 10.0 },
+      "totals": {
+        "inputTokens": 1254,
+        "cacheWrite1hTokens": 193146,
+        "cacheWrite5mTokens": 1839766,
+        "cacheReadTokens": 189309151,
+        "outputTokens": 1007179,
+        "thinkingTokens": 607649
+      },
+      "usd": { "input": 0.002508, "cacheWrite1h": 0.772584, "cacheWrite5m": 4.599415, "cacheRead": 18.9309151, "output": 10.07179 },
+      "apiEquivalentUsd": 34.3772121,
+      "cardUsd": 34.38,
+      "claudeCodeTotalCostUsd": 34.377212099999966,
+      "claudeCodeCostBasis": "list",
+      "note": "modelUsage has 16,624 more cache-write tokens than the per-message log; they are priced at the 5-minute rate with the other helper writes, and with that split the sum reproduces Claude Code's total_cost_usd exactly. Thinking tokens are counted inside outputTokens. Requests by thread, from the per-message usage in the log: 54 main thread, 563 across the five helper agents. Their logged cache reads (6,385,214 main, 180,602,315 helpers) sum to 1.2% less than modelUsage; the totals use modelUsage. The run used a Claude subscription, so this is an estimate at list price, not a cash charge. The v1 card showed $5.97 for a single-thread run."
     }
   ]
 }

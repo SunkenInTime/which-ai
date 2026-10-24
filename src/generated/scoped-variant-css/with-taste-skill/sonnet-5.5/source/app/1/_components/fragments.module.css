@@ -1,0 +1,100 @@
+/* Four small pieces of the product, shown on the stacked sheets. Static. */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui].frag {
+  background: var(--frag-bg);
+  color: var(--frag-ink);
+  padding: 18px 20px 14px;
+  font-size: var(--step-small);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .fh {
+  font-weight: 600;
+  font-size: var(--step-body);
+  line-height: 1.25;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .fh span {
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .fm {
+  margin-top: 4px;
+  color: var(--frag-muted);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .fm.gap {
+  margin-top: 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rows {
+  margin-top: 10px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rows li {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  column-gap: 14px;
+  align-items: baseline;
+  padding: 7px 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rt {
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rs,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .rw {
+  color: var(--frag-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .ra {
+  display: inline-block;
+  min-width: 6ch;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* the connect list puts the address first */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rows li:has(.ra) {
+  grid-template-columns: auto 1fr;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .ask {
+  font-weight: 600;
+  font-size: var(--step-body);
+  padding: 10px 12px;
+  background: var(--frag-chip);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .ans {
+  margin-top: 12px;
+  line-height: 1.45;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .src {
+  margin-top: 10px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .src li {
+  padding: 3px 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .code {
+  margin: 10px 0 0;
+  padding: 10px 12px;
+  background: var(--frag-chip);
+  overflow: hidden;
+  font-family: inherit;
+  font-size: var(--step-small);
+  line-height: 1.5;
+  white-space: pre;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .code code {
+  font-family: inherit;
+  font-size: inherit;
+}

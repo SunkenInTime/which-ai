@@ -1,0 +1,111 @@
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .root {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #111;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+  outline: 2px solid #fff;
+  outline-offset: -2px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35), 0 8px 24px rgb(0 0 0 / 0.28);
+  transition: transform 160ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .button:hover {
+  transform: translateY(-2px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .button:active {
+  transform: translateY(0) scale(0.96);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .button:focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+.item:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: -3px;
+  box-shadow: 0 0 0 3px #111;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .menu {
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  min-width: 212px;
+  background: #111;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35), 0 16px 40px rgb(0 0 0 / 0.32);
+  transform-origin: bottom right;
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-_components-Switcher-module-pop 160ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .item {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 12px;
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.78;
+  transition: opacity 120ms, background-color 120ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .item:hover {
+  opacity: 1;
+  background: #262626;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .item[aria-current="page"] {
+  opacity: 1;
+  background: #fff;
+  color: #111;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .num {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  width: 1ch;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .hint {
+  padding: 8px 12px 6px;
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-_components-Switcher-module-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .menu {
+    animation: none;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .button {
+    transition: none;
+  }
+}

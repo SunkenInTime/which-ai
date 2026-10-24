@@ -1,0 +1,114 @@
+/* The product's create dialog, at true size. It floats above the page. */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui].dialog {
+  width: 100%;
+  max-width: 480px;
+  margin-left: auto;
+  padding: 32px;
+  background: #e3e2da;
+  color: #161c1a;
+  box-shadow: 0 24px 64px rgb(15 21 19 / 0.28);
+  font-size: var(--step-body);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .title {
+  font-size: var(--step-lead);
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .label {
+  display: block;
+  margin-top: 12px;
+  font-size: var(--step-small);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .field {
+  display: block;
+  width: 100%;
+  height: 56px;
+  margin-top: 16px;
+  padding: 0 16px;
+  border: 0;
+  border-radius: 0;
+  background: #d2d3c8;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .field:focus-visible {
+  outline: 3px solid #2f3d38;
+  outline-offset: 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .seg {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 12px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .seg button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 0;
+  background: #d2d3c8;
+  color: #161c1a;
+  font: inherit;
+  font-size: var(--step-small);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .seg button[aria-checked="true"] {
+  background: #2f3d38;
+  color: #e3e2da;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .go {
+  display: grid;
+  place-items: center;
+  height: 56px;
+  margin-top: 20px;
+  background: #161c1a;
+  color: #e3e2da;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 140ms var(--ease-out), background-color 180ms ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .go:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .go:hover {
+    background: #2f3d38;
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .seg button:hover:not([aria-checked="true"]) {
+    background: #c4c6ba;
+  }
+}
+
+/* Gallery copy: anchored to this page's root and made pure for webpack's CSS modules (the source's Turbopack build accepted the bare global selector). :not(.galleryPure) matches every element. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) :where(:global(#p1)) [data-ui]:where(:not(.galleryPure)) button:focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .go:focus-visible {
+  outline: 3px solid #2f3d38;
+  outline-offset: 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .fine {
+  margin-top: 14px;
+  font-size: var(--step-small);
+  color: #3a4540;
+}
+
+@media (max-width: 899px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui].dialog {
+    padding: 22px;
+    margin-left: 0;
+    max-width: none;
+  }
+}

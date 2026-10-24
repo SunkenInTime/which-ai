@@ -86,6 +86,25 @@ for (const iteration of ["1", "2", "3", "4", "5"]) {
   });
 }
 
+// Sonnet 5.5 taste-skill v2 rerun: the source's corner design switcher stays out, local pictures load.
+for (const iteration of ["1", "2", "3", "4", "5"]) {
+  test(`sonnet-5.5 with-taste-skill v2 iteration ${iteration} renders on mobile`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.setViewportSize({ width: 390, height: 844 });
+    const response = await page.goto(`/preview/with-taste-skill/sonnet-5.5/${iteration}`);
+    expect(response?.ok()).toBe(true);
+    await expect(page.locator("[data-source-body] h1").first()).toBeVisible();
+    await expect(page.locator("[data-design-switcher]")).toHaveCount(0);
+    const firstImage = page.locator('[data-source-body] img[src^="/variants/with-taste-skill/sonnet-5.5/"]:visible').first();
+    await firstImage.scrollIntoViewIfNeeded();
+    await expect(firstImage).toHaveJSProperty("complete", true);
+    expect(await firstImage.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    expect(errors).toEqual([]);
+  });
+}
+
 for (const model of ["luna-6"]) {
   for (const group of ["with-design-skill", "without-design-skill"]) {
     for (const iteration of ["1", "2", "3", "4", "5"]) {

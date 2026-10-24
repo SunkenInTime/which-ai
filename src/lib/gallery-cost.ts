@@ -25,7 +25,7 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "with-taste-skill/mistral-large-4": 0.49,
   "with-design-skill/mistral-large-4": 1.72,
   "with-design-skill/sonnet-5.5": 6.8,
-  "with-taste-skill/sonnet-5.5": 5.97,
+  "with-taste-skill/sonnet-5.5": 34.38,
   "without-design-skill/sonnet-5.5": 4.0,
   "with-design-skill/luna-6": 0.09,
   "without-design-skill/luna-6": 0.06,

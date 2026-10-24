@@ -1,0 +1,32 @@
+All five designs are live at `http://localhost:3303/1` through `/5`. The dev server is running now, and `/` redirects to `/1`.
+
+A small square button in the bottom-right corner opens a menu of the five designs. Keys `1`–`5` jump straight to a design, and `[` and `]` step back and forward. Adding `?sw=0` to a URL hides the button.
+
+I opened the screenshots of all five at 1440, 768 and 390 wide after the final changes. I clicked the switcher and used the number keys. The production build compiles with all routes static, and TypeScript and ESLint are clean. I did not try each page's live widget myself; I rely on the build agents' reports for those.
+
+The product is "Engram", a placeholder name. Each design has its own idea, type, palette and layout. The prices, FAQ answers and 14 example notes come from one shared file, `app/_shared/facts.ts`, so the facts agree across designs.
+
+| | Direction (seed) | Idea | Live thing |
+|---|---|---|---|
+| **/1** | The page is the object (83398666) | Luhmann's slip box: the page is a drawer of numbered index cards | Write a card, type `[[`, and get a card number plus "see also" links |
+| **/2** | One motif (580131803) | Cajal's neuron drawings: one round-cell shape runs through the whole page | Write a thought and a drawn neuron reaches toward related notes |
+| **/3** | The printed annual (698807755) | Ebbinghaus's 1885 forgetting curve as the cover figure of a research report | Drag a day along the real 1885 data, with a dashed line showing Engram's returns, labelled as a schematic |
+| **/4** | The sentence is the layout (993016444) | A star atlas: notes are stars, links are constellation lines | The headline is a search box, and tapping two stars draws your own line |
+| **/5** | The product performs (1130545921) | The app itself is the page | A working editor: `[[` linking, a backlinks panel, "ask your notes" with sources |
+
+The inspector shows 0 FAIL at all three widths on every design. /3 has two warnings the agent defended. One is that no honest 1885 footage exists. The other is a 39px inner padding in one wide fragment. The agents scored their own work about 7.8–8.1 out of 10.
+
+Deviations from the dealt direction sheets:
+- **/1:** The dealt curtain-footer move failed the inspector's covered-text check, so I replaced it with stacked guide-card sheets. The hero card is 5:6.7 instead of 5:7.
+- **/2:** Every picture and the film is printed in cobalt on sand, so one ink does everything.
+- **/3:** I skipped the dealt "Architecture" photo set because it isn't an honest picture of this subject.
+- **/5:** Switzer isn't on Google Fonts, so it's loaded from local files.
+
+Pictures are from Wikimedia Commons, the Art Institute of Chicago and National Archives images, all openly licensed and credited in each page's footer. /4 and /5 also use short videos, and /1 uses a 9.5-second film excerpt. Exact titles, creators and licences are in each footer.
+
+Before launch, replace or confirm these:
+- **Placeholders:** The name Engram, the prices and `hello@engram.example`. The `#start` and `#download` links go nowhere real.
+- **Unchecked facts:** Some history facts were written from memory and not source-checked: Cajal and Semon dates on /2, and "more than seventy books" for Luhmann on /1.
+- **Sample copy:** The student price and the "ask your notes" privacy claims.
+
+I also added `devIndicators: false` to `next.config.ts` to hide Next's dev badge, which covered the bottom-left of every design. `.taste-skill/` and `.playwright-mcp/` are in `.gitignore`. Nothing is committed.

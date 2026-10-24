@@ -1,35 +1,19 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import "@/generated/scoped-variant-css/with-taste-skill/sonnet-5.5/source/app/fonts.css";
 import "@/generated/scoped-variant-css/with-taste-skill/sonnet-5.5/source/app/globals.css";
-import { Providers } from "./_components/providers";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: {
-    default: "Pith, a second brain for everything you write",
-    template: "%s | Pith",
-  },
+  title: "Engram — a second brain for your notes",
   description:
-    "Pith is a notes app that links your ideas as you write, keeps them in plain files, and answers from them when you ask.",
+    "Engram captures what you think, links it to what you already know, and brings it back when it matters.",
 };
 
+// Gallery copy: <html>/<body> become divs, and the source's corner design switcher is not rendered
+// because the gallery has its own iteration navigation.
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-      <div className="min-h-dvh">
-        <Providers>
-          {children}
-        </Providers>
-      </div>
+    <div data-source-html lang="en">
+      <div data-source-body>{children}</div>
     </div>
   );
 }
