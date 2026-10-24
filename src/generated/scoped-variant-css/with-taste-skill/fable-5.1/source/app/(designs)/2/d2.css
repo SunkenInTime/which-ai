@@ -1,0 +1,198 @@
+/* Iteration 2 — The page is the object: a commonplace book. Gambarino / General Sans, three stones. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 {
+  --bg: #eeecea;
+  --surface: #e4e1dd;
+  --paper: #f6f5f3;
+  --ink: #333231;
+  --muted: #6b6763;
+  --accent: #5c6b54;
+  --accent-ink: #ffffff;
+  --field-1: #cdc3b6;
+  --field-1-ink: #333231;
+  --font-display: "Fable v2 Gambarino", Georgia, "Times New Roman", serif;
+  --font-text: "Fable v2 General Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: var(--font-text);
+  --radius: 0px;
+  --step-display: clamp(56px, 5.6vw, 88px);
+  --step-head: clamp(40px, 4.6vw, 68px);
+  --step-head-s: clamp(28px, 2.6vw, 40px);
+  --step-lead: 20px;
+  --step-body: 17px;
+  --step-small: 14px;
+  --section: clamp(7.5rem, 12vw, 14rem);
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2 h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2 h3 { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em; line-height: 0.95; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 .button { border-radius: 0; background: var(--ink); color: var(--bg); font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 .link { font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-body { position: relative; z-index: 1; background: var(--bg); }
+
+/* ---------- hero: the title page of the book, cropped by the fold ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-hero { position: relative; min-height: 100svh; padding: 28px var(--margin) 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-field { position: relative; margin: 36px calc(var(--margin) * -1) 0; padding: 54px var(--margin) 72px; overflow: clip; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-field__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%; filter: grayscale(1) contrast(1.05); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-top { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-mono { color: var(--accent); display: inline-block; line-height: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-links { justify-self: center; display: flex; gap: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-top .button { justify-self: end; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card { position: relative; width: 50%; min-width: 320px; margin: 0 auto; background: var(--paper); padding: 56px; text-align: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner { position: absolute; width: 44px; height: 44px; border-radius: 50%; background: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--tl { top: -22px; left: -22px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--tr { top: -22px; right: -22px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--bl { bottom: -22px; left: -22px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--br { bottom: -22px; right: -22px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__title { font-size: var(--step-display); line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__l1 { text-align: left; padding-left: 4%; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__l2 { text-align: right; padding-right: 10%; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__sub { margin: 28px auto 0; max-width: 34ch; font-size: var(--step-lead); line-height: 1.45; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__facts { margin: 44px auto 0; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 14px; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__facts i { width: 10px; height: 10px; background: var(--ink); transform: rotate(45deg); flex: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index { margin-top: 44px; text-align: left; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__title { font-size: var(--step-head-s); max-width: 18ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__lead { margin-top: 12px; max-width: 44ch; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 .d2-index__ask[data-ui] { margin-top: 20px; border: 0; border-radius: 0; background: transparent; overflow: visible; max-width: 320px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__answer { margin-top: 16px; font-size: var(--step-body); max-width: 60ch; min-height: 3.2em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__cell { background: var(--accent); color: var(--accent-ink); padding: 0 0.3em; white-space: nowrap; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: var(--step-small); font-variant-numeric: tabular-nums; table-layout: fixed; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid th,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2-index__grid td { border: 1px solid var(--surface); height: 22px; padding: 0; text-align: center; font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid thead th { color: var(--muted); font-weight: 400; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid tbody th { color: var(--muted); font-weight: 400; width: 2.6em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid td.has-notes { background: var(--surface); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid td.is-on { background: var(--accent); color: var(--accent-ink); }
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .js .d2-card { animation: gallery-with-taste-skill-fable-5-1-source-app-designs-2-d2-d2-settle 900ms var(--ease-expo) both; }
+}
+@keyframes gallery-with-taste-skill-fable-5-1-source-app-designs-2-d2-d2-settle { from { transform: translateY(24px); } to { transform: none; } }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-top { grid-template-columns: auto 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-links { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-field { margin-top: 28px; padding: 40px var(--margin) 48px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card { width: 100%; min-width: 0; padding: 36px 20px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__title { font-size: 12vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-card__l1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2-card__l2 { text-align: center; padding: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner { width: 32px; height: 32px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--tl { top: -16px; left: -16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--tr { top: -16px; right: -16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--bl { bottom: -16px; left: -16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-corner--br { bottom: -16px; right: -16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-index__grid tbody th { width: 2.2em; }
+}
+
+/* ---------- features: stacking sheets, like tabbed folders ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-stack { padding-top: var(--section); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-stack__title { padding: 0 var(--margin) 48px; font-size: var(--step-head); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheets { position: relative; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet { position: sticky; top: calc(var(--n) * 72px); height: 80svh; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); padding: 0 var(--margin); background: var(--sheet); color: var(--sheet-ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet--surface { --sheet: var(--surface); --sheet-ink: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet--stone { --sheet: var(--field-1); --sheet-ink: var(--field-1-ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet--paper { --sheet: var(--paper); --sheet-ink: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__name { grid-column: 1 / 7; grid-row: 1; height: 72px; display: flex; align-items: center; font-size: var(--step-head-s); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__text { grid-column: 1 / 6; grid-row: 2; align-self: end; padding-bottom: 48px; font-size: var(--step-lead); line-height: 1.45; max-width: 38ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__pic { grid-column: 7 / 13; grid-row: 1 / 3; margin-top: 72px; min-height: 0; overflow: clip; background: var(--sheet); display: grid; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__pic img { width: 100%; height: calc(80svh - 72px); object-fit: cover; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2 .d2-files[data-ui] { width: min(100%, 460px); justify-self: center; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet { top: calc(var(--n) * 52px); height: auto; min-height: 70svh; display: flex; flex-direction: column; padding-bottom: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__name { height: 52px; font-size: 22px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__pic { margin-top: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__pic img { aspect-ratio: 4 / 3; height: auto; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-sheet__text { padding: 20px 0 0; font-size: var(--step-body); }
+}
+
+/* ---------- how it works: the return schedule on a slip ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip { padding: var(--section) 0 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip .grid { background: var(--field-1); color: var(--field-1-ink); padding: 96px var(--margin); align-items: start; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__text { grid-column: 1 / 6; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__text h2 { font-size: var(--step-head); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__text p { margin-top: 28px; max-width: 32ch; font-size: var(--step-lead); line-height: 1.45; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__paper { grid-column: 7 / 12; background: var(--paper); color: var(--ink); padding: 32px 28px 56px; clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), 96% 100%, 92% calc(100% - 14px), 88% 100%, 84% calc(100% - 14px), 80% 100%, 76% calc(100% - 14px), 72% 100%, 68% calc(100% - 14px), 64% 100%, 60% calc(100% - 14px), 56% 100%, 52% calc(100% - 14px), 48% 100%, 44% calc(100% - 14px), 40% 100%, 36% calc(100% - 14px), 32% 100%, 28% calc(100% - 14px), 24% 100%, 20% calc(100% - 14px), 16% 100%, 12% calc(100% - 14px), 8% 100%, 4% calc(100% - 14px), 0 100%); font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__group + .d2-slip__group { margin-top: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__group h3 { font-family: var(--font-text); font-weight: 500; font-size: var(--step-body); letter-spacing: 0; line-height: 1.4; margin-bottom: 10px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__row { display: flex; align-items: baseline; gap: 10px; padding: 5px 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__row span:last-child { white-space: nowrap; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__dots { flex: 1; border-bottom: 4px dotted var(--surface); transform: translateY(-4px); min-width: 24px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__total { margin: 28px -28px -56px; padding: 10px 28px; min-height: 44px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 16px; background: var(--ink); color: var(--paper); font-weight: 500; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip .grid { padding: 64px var(--margin); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__text,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2-slip__paper { grid-column: 1 / -1; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__paper { margin-top: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-slip__text p { font-size: var(--step-body); }
+}
+
+/* ---------- showcase: the square plate with tabs ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate { margin-top: var(--section); display: grid; grid-template-columns: 1fr 1fr; min-height: 88svh; background: var(--surface); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__pic { padding: 40px; display: grid; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__pic img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background: var(--field-1); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__text { display: flex; flex-direction: column; justify-content: space-between; padding: 40px var(--margin) 40px 40px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__tabs { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__tabs button { font: inherit; color: #5f5b55; padding: 6px 0; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.2em; transition: color var(--t-hover) ease, text-decoration-color var(--t-hover) ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__tabs button.is-on { color: var(--ink); text-decoration-color: currentColor; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__tabs button:hover { color: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__mid { animation: gallery-with-taste-skill-fable-5-1-source-app-designs-2-d2-d2-fade 240ms var(--ease-out) both; padding: 40px 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__mid h2 { font-size: var(--step-head-s); max-width: 16ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__mid p { margin-top: 24px; max-width: 34ch; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-cell { display: flex; align-items: center; justify-content: center; height: 72px; background: var(--field-1); color: var(--ink); text-decoration: none; font-weight: 500; transition: opacity var(--t-hover) ease, transform var(--t-press) var(--ease-out); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-cell--ink { background: var(--ink); color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-cell:hover { opacity: 0.9; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-cell:active { transform: scale(0.98); }
+@keyframes gallery-with-taste-skill-fable-5-1-source-app-designs-2-d2-d2-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__mid { animation: none; } }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate { grid-template-columns: 1fr; min-height: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__pic { padding: var(--margin); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__text { padding: 0 var(--margin) 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__tabs { font-size: var(--step-body); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__mid { padding: 24px 0 32px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-plate__acts { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-cell { height: 60px; }
+}
+
+/* ---------- pricing: prices like a menu ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu { padding: var(--section) var(--margin) 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head { grid-column: 1 / 4; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head h2 { font-size: var(--step-head-s); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head figure { margin-top: 32px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 40% 50%; background: var(--surface); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head figcaption { margin-top: 10px; font-size: var(--step-small); color: var(--muted); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__list { grid-column: 5 / 13; columns: 2; column-gap: 64px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__group { break-inside: avoid; margin-bottom: 48px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__group:first-child h3 { margin-top: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__group h3 { font-family: var(--font-text); font-weight: 500; font-size: var(--step-lead); letter-spacing: 0; line-height: 1.2; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: baseline; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__cur { font-weight: 400; color: var(--muted); font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__item + .d2-menu__item { margin-top: 22px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__line { display: flex; justify-content: space-between; align-items: baseline; gap: 24px; font-size: var(--step-lead); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__item p { margin-top: 4px; font-size: var(--step-body); color: var(--muted); max-width: 36ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__list .button { break-inside: avoid; margin-top: 8px; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2-menu__list { grid-column: 1 / -1; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__head figure { width: 60%; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__list { columns: 1; margin-top: 48px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-menu__line { font-size: var(--step-body); }
+}
+
+/* ---------- faq: answers as reading text ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq { padding: var(--section) var(--margin) 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq h2 { grid-column: 1 / 4; font-size: var(--step-head-s); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq__text { grid-column: 5 / 13; columns: 2; column-gap: 56px; font-size: var(--step-body); line-height: 1.55; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq__text p { break-inside: avoid; margin-bottom: 20px; max-width: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq__text strong { font-weight: 500; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2-faq__text { grid-column: 1 / -1; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-faq__text { columns: 1; margin-top: 32px; }
+}
+
+/* ---------- footer: the back of the book, uncovered as the page lifts ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot { position: sticky; bottom: 0; z-index: 0; min-height: 92svh; background: var(--ink); color: var(--bg); padding: 40px var(--margin) 24px; display: grid; grid-template-rows: auto 1fr auto; row-gap: 48px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__cols div { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__cols strong { font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__cols span,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d2-foot__cols a { color: #c9c4bd; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__mark { align-self: end; font-family: var(--font-display); letter-spacing: -0.02em; color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__legal { font-size: var(--step-small); line-height: 1.5; color: #c9c4bd; max-width: 68ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__legal a { color: inherit; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-body { padding-bottom: var(--section); }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot { min-height: 0; row-gap: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d2-foot__cols { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+}

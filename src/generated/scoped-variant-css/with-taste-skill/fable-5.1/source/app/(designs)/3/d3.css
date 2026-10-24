@@ -1,0 +1,179 @@
+/* Iteration 3 — The printed annual. Bodoni Moda / Jost, orange and black, a fixed axis at 42%. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 {
+  --bg: #ff7a1f;
+  --surface: #ff8633;
+  --ink: #050f16;
+  --muted: #5a2306;
+  --accent: #050f16;
+  --accent-ink: #ff7a1f;
+  --field-1: #ffffff;
+  --field-1-ink: #050f16;
+  --font-display: "Fable v2 Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --font-text: "Fable v2 Jost", "Futura", "Helvetica Neue", Arial, sans-serif;
+  --font-ui: var(--font-text);
+  --margin: clamp(1.25rem, 3.3vw, 3rem);
+  --axis: 42vw;
+  --radius: 0px;
+  --step-display: clamp(56px, 6.6vw, 104px);
+  --step-head: clamp(40px, 4.4vw, 64px);
+  --step-head-s: clamp(28px, 2.4vw, 36px);
+  --step-lead: 22px;
+  --step-body: 18px;
+  --step-small: 14px;
+  --section: clamp(7.5rem, 12vw, 14rem);
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3 h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3 h3 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.02em; line-height: 0.95; font-optical-sizing: auto; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .button { border-radius: 0; background: var(--ink); color: var(--bg); font-size: var(--step-body); letter-spacing: 0.01em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .button--inv { background: var(--bg); color: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .link { font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-wordmark { font-family: var(--font-display); font-weight: 500; font-size: 24px; letter-spacing: -0.02em; text-decoration: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-ax { display: grid; grid-template-columns: calc(var(--axis) - var(--margin)) 1fr; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .only-narrow { display: none; }
+@media (max-width: 900px) { :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .only-wide { display: none; } :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .only-narrow { display: block; } }
+
+/* ---------- hero: masthead band, then the title on the axis ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-hero { min-height: 100svh; padding: 44px var(--margin) 0; display: grid; grid-template-rows: auto auto 1fr; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-top { display: grid; grid-template-columns: calc(var(--axis) - var(--margin)) 1fr auto; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-top__links { display: flex; gap: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-masthead { margin: 28px calc(var(--margin) * -1) 0; height: clamp(280px, 40vh, 440px); overflow: clip; display: grid; grid-template-columns: 3fr 1fr 2fr 2fr 1fr 3fr; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-masthead img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.05); background: var(--surface); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-masthead__ink { background: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-masthead__white { background: var(--field-1); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-title { display: grid; grid-template-columns: calc(var(--axis) - var(--margin)) 1fr; align-items: end; padding: 40px 0 56px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-title__aside { font-size: var(--step-body); color: var(--muted); max-width: 30ch; padding-right: 40px; line-height: 1.5; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-title h1 { font-size: var(--step-display); letter-spacing: -0.04em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-standfirst { margin-top: 24px; font-size: var(--step-lead); line-height: 1.4; max-width: 42ch; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 { --axis: var(--margin); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-hero { padding-top: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-top { grid-template-columns: 1fr auto; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-top__links { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-masthead { height: clamp(220px, 34vh, 360px); grid-template-columns: 3fr 2fr 2fr 3fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-masthead__ink,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3-masthead__white { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-title { display: block; padding: 28px 0 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-title__aside { order: 2; margin-top: 20px; padding: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-title h1 { font-size: 12.5vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-standfirst { font-size: var(--step-body); }
+}
+
+/* ---------- features: fixed output, live controls ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin { display: grid; grid-template-columns: var(--axis) 1fr; align-items: start; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin__field { position: sticky; top: 0; height: 100svh; background: var(--field-1); color: var(--field-1-ink); display: grid; place-items: center; padding: 40px var(--margin); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-card[data-ui] { width: min(100%, 440px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-card__curve { margin-top: 16px; color: var(--ui-ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin__col { padding: 72px var(--margin) 96px 64px; max-width: calc(44ch + 64px + var(--margin)); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin__col h2 { font-size: var(--step-head); max-width: 14ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-block { margin-top: 32vh; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-block h3 { font-size: var(--step-head-s); max-width: 20ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-block p { margin-top: 16px; font-size: var(--step-body); max-width: 44ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-block [data-ui] { margin-top: 20px; --ui-muted: var(--muted); --ui-ink: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-toggle[data-ui] { border: 0; border-radius: 0; background: transparent; overflow: visible; font-size: 16px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-field[data-ui] { border: 0; border-radius: 0; background: transparent; overflow: visible; max-width: 320px; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin { display: block; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin__field { height: auto; min-height: 0; position: static; padding: 32px var(--margin); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-pin__col { padding: 40px var(--margin) 64px; max-width: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-block { margin-top: 64px; }
+}
+
+/* ---------- how it works: stages as one bar ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar { padding: var(--section) var(--margin) 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar h2 { font-size: var(--step-display); margin-left: calc(var(--axis) - var(--margin)); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-bar__bar[data-ui] { margin-top: 64px; display: flex; gap: 6px; height: 22vh; min-height: 170px; border: 0; border-radius: 0; background: transparent; overflow: visible; font-family: var(--font-text); list-style: none; padding: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-seg { flex: var(--w) 1 0; min-width: 0; padding: 20px; font-size: var(--step-head-s); line-height: 1.1; letter-spacing: -0.01em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-seg--ink { background: var(--ink); color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-seg--white { background: var(--field-1); color: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-seg--surface { background: var(--surface); color: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar__clauses { display: flex; gap: 6px; margin-top: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar__clauses li { flex: var(--w) 1 0; min-width: 0; font-size: var(--step-body); max-width: 22ch; line-height: 1.45; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar h2 { margin-left: 0; font-size: 11vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-bar__bar[data-ui] { flex-direction: column; height: auto; min-height: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-seg { flex: var(--w) 1 0; min-height: 72px; padding: 16px; font-size: 22px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar__clauses { flex-direction: column; gap: 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-bar__clauses li { max-width: none; }
+}
+
+/* ---------- showcase: the figures on a square plate ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate { margin-top: var(--section); display: grid; grid-template-columns: 1fr 1fr; min-height: 88svh; background: var(--field-1); color: var(--field-1-ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__pic { padding: 40px; display: grid; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__pic img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; filter: grayscale(1) contrast(1.05); background: #e9e9e9; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__text { display: flex; flex-direction: column; justify-content: space-between; padding: 40px var(--margin) 40px 40px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__tabs { display: flex; flex-wrap: wrap; gap: 8px 28px; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__tabs button { font: inherit; color: #6b6b6b; padding: 6px 0; text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.2em; transition: color var(--t-hover) ease, text-decoration-color var(--t-hover) ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__tabs button.is-on { color: var(--ink); text-decoration-color: currentColor; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__tabs button:hover { color: var(--ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__mid { animation: gallery-with-taste-skill-fable-5-1-source-app-designs-3-d3-d3-fade 240ms var(--ease-out) both; padding: 40px 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__mid h2 { font-size: var(--step-head-s); max-width: 16ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__mid p { margin-top: 24px; max-width: 34ch; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__acts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-cell { display: flex; align-items: center; justify-content: center; height: 72px; background: #e9e9e9; color: var(--ink); text-decoration: none; font-weight: 500; transition: opacity var(--t-hover) ease, transform var(--t-press) var(--ease-out); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-cell--ink { background: var(--ink); color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-cell:hover { opacity: 0.9; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-cell:active { transform: scale(0.98); }
+@keyframes gallery-with-taste-skill-fable-5-1-source-app-designs-3-d3-d3-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__mid { animation: none; } }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate { display: flex; flex-direction: column; min-height: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__pic { order: 1; padding: 0 var(--margin) 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__text { order: 0; padding: 40px var(--margin) 32px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__mid { padding: 24px 0 32px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plate__acts { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-cell { height: 60px; }
+}
+
+/* ---------- pricing: plans as a large table ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plans { padding: var(--section) var(--margin) 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table { width: 100%; border-collapse: collapse; table-layout: fixed; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table th,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3-table td { text-align: left; vertical-align: top; padding: 20px 20px 20px 0; font-size: var(--step-lead); font-weight: 400; line-height: 1.35; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table th:first-child,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3-table td:first-child { width: 30%; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table thead th { padding-bottom: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table__lead h2 { font-size: var(--step-head); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table__name { display: block; font-family: var(--font-display); font-weight: 500; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.02em; line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table__price { display: block; font-family: var(--font-display); font-weight: 400; font-size: clamp(28px, 3vw, 44px); letter-spacing: -0.02em; line-height: 1; margin-top: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table__period { display: block; font-size: var(--step-body); margin-top: 10px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table tbody tr:nth-child(even) { background: var(--surface); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table tbody th,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3-table tbody td { padding-left: 12px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table .is-rec { background: var(--ink); color: var(--bg); padding-left: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table thead .is-rec { padding-top: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-table__acts td { padding-top: 28px; padding-bottom: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plans__stack h2 { font-size: var(--step-head); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan { margin-top: 40px; padding: 24px var(--margin); margin-left: calc(var(--margin) * -1); margin-right: calc(var(--margin) * -1); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan.is-rec { background: var(--ink); color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan__head { display: flex; justify-content: space-between; align-items: baseline; font-family: var(--font-display); font-weight: 500; font-size: 9vw; letter-spacing: -0.02em; line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan__price { font-weight: 400; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan__period { margin-top: 8px; font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan dl { margin-top: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan dl div { padding: 10px 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan dt { font-size: var(--step-body); opacity: 0.8; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan dd { font-size: var(--step-body); font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan .button { width: 100%; margin-top: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-plan.is-rec .button { background: var(--bg); color: var(--ink); }
+
+/* ---------- faq: answers as reading text ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq { margin-top: var(--section); padding: var(--section) var(--margin) 120px; background: var(--field-1); color: var(--field-1-ink); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq h2 { font-size: var(--step-head-s); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq__text { columns: 2; column-gap: 56px; font-size: var(--step-body); line-height: 1.55; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq__text p { break-inside: avoid; margin-bottom: 20px; max-width: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq__text strong { font-weight: 500; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq { padding: 72px var(--margin); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3 .d3-ax { display: block; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-faq__text { columns: 1; margin-top: 28px; }
+}
+
+/* ---------- footer: columns above, the name below ---------- */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot { min-height: 90svh; background: var(--ink); color: var(--bg); padding: 40px var(--margin) 24px; display: grid; grid-template-rows: auto 1fr auto; row-gap: 48px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: var(--gutter); font-size: var(--step-body); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__cols div { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__cols strong { font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__cols span,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"])  .d3-foot__cols a { color: #f3b58a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__mark { align-self: end; color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__legal { font-size: var(--step-small); line-height: 1.5; color: #f3b58a; max-width: 68ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__legal a { color: inherit; }
+@media (max-width: 900px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot { min-height: 0; row-gap: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="fable-5.1"]) .d3-foot__cols { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+}

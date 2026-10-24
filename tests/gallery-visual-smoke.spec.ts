@@ -105,6 +105,29 @@ for (const iteration of ["1", "2", "3", "4", "5"]) {
   });
 }
 
+// Fable 5.1 taste-skill v2 rerun: the source's corner switcher stays out, local pictures load, and with
+// reduced motion (where the gallery shortens every transition) the fitted footer address on /1 still fits.
+for (const iteration of ["1", "2", "3", "4", "5"]) {
+  test(`fable-5.1 with-taste-skill v2 iteration ${iteration} renders on mobile`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.emulateMedia({ reducedMotion: "reduce" });
+    await page.setViewportSize({ width: 390, height: 844 });
+    const response = await page.goto(`/preview/with-taste-skill/fable-5.1/${iteration}`);
+    expect(response?.ok()).toBe(true);
+    await expect(page.locator("[data-source-body] h1").first()).toBeVisible();
+    await expect(page.locator("[data-source-body] .switcher")).toHaveCount(0);
+    const firstImage = page.locator('[data-source-body] img[src^="/variants/with-taste-skill/fable-5.1/"]').first();
+    await firstImage.scrollIntoViewIfNeeded();
+    await expect(firstImage).toHaveJSProperty("complete", true);
+    expect(await firstImage.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+    await page.waitForLoadState("networkidle");
+    await page.evaluate(() => document.fonts.ready);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    expect(errors).toEqual([]);
+  });
+}
+
 for (const model of ["luna-6"]) {
   for (const group of ["with-design-skill", "without-design-skill"]) {
     for (const iteration of ["1", "2", "3", "4", "5"]) {

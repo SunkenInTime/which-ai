@@ -51,7 +51,7 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "with-design-skill/opus-4.8": 4.95,
   "with-design-skill/sonnet-5": 6.3,
   "with-taste-skill/fable": 22.79,
-  "with-taste-skill/fable-5.1": 10.09,
+  "with-taste-skill/fable-5.1": 37.9,
   "with-taste-skill/grok-4.5": 2.24,
   "with-taste-skill/grok-4.6": 4.01,
   "with-taste-skill/sonnet-5": 7.65,

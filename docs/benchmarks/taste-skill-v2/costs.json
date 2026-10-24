@@ -53,6 +53,29 @@
       "claudeCodeTotalCostUsd": 34.377212099999966,
       "claudeCodeCostBasis": "list",
       "note": "modelUsage has 16,624 more cache-write tokens than the per-message log; they are priced at the 5-minute rate with the other helper writes, and with that split the sum reproduces Claude Code's total_cost_usd exactly. Thinking tokens are counted inside outputTokens. Requests by thread, from the per-message usage in the log: 54 main thread, 563 across the five helper agents. Their logged cache reads (6,385,214 main, 180,602,315 helpers) sum to 1.2% less than modelUsage; the totals use modelUsage. The run used a Claude subscription, so this is an estimate at list price, not a cash charge. The v1 card showed $5.97 for a single-thread run."
+    },
+    {
+      "model": "fable-5.1",
+      "modelId": "claude-fable-5-1",
+      "condition": "design-taste",
+      "checkedAt": "2026-10-24",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "method": "Session totals from the modelUsage field of the stream-json result line (Claude Code's own count). The run had no helper agents, and every cache write in the log is a 1-hour write (cache_creation.ephemeral_5m_input_tokens is 0 throughout). Anthropic lists no long-context surcharge for Fable 5.1, and usage reports inference_geo global, so no US-only multiplier applies.",
+      "ratesUsdPerMillion": { "input": 10.0, "cacheWrite5m": 12.5, "cacheWrite1h": 20.0, "cacheRead": 0.25, "output": 50.0 },
+      "totals": {
+        "inputTokens": 1604,
+        "cacheWrite1hTokens": 763871,
+        "cacheWrite5mTokens": 0,
+        "cacheReadTokens": 21918453,
+        "outputTokens": 342579,
+        "thinkingTokens": 182635
+      },
+      "usd": { "input": 0.01604, "cacheWrite1h": 15.27742, "cacheWrite5m": 0.0, "cacheRead": 5.47961325, "output": 17.12895 },
+      "apiEquivalentUsd": 37.90202325,
+      "cardUsd": 37.9,
+      "claudeCodeTotalCostUsd": 37.902023249999985,
+      "claudeCodeCostBasis": "list",
+      "note": "The sum equals Claude Code's total_cost_usd. Thinking tokens are counted inside outputTokens. Fable 5.1 cache reads are priced at 0.025x the base input rate. The run used a Claude subscription, so this is an estimate at list price, not a cash charge. The v1 card showed $10.09."
     }
   ]
 }

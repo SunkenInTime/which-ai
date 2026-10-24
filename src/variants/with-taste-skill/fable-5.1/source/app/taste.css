@@ -1,0 +1,88 @@
+/* Shared foundation for the five iterations: token names, reset additions, states and the motion
+   helpers (from tasteskill base.css). Each iteration sets its own token values on its root element. */
+:root {
+  --bg: #ffffff;
+  --surface: #f2f2f2;
+  --ink: #111111;
+  --muted: #5c5c5c;
+  --accent: #111111;
+  --accent-ink: #ffffff;
+  --font-display: system-ui, sans-serif;
+  --font-text: system-ui, sans-serif;
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.25rem, 1.1rem + 0.7vw, 1.625rem);
+  --step-head: clamp(2rem, 1.3rem + 3.2vw, 4rem);
+  --step-display: clamp(3rem, 1rem + 9vw, 9rem);
+  --margin: clamp(1.25rem, 2.2vw, 2rem);
+  --gutter: clamp(1rem, 2vw, 2rem);
+  --section: clamp(7.5rem, 12vw, 14rem);
+  --radius: 0px;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-exit: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --t-press: 140ms;
+  --t-hover: 180ms;
+  --t-ui: 240ms;
+  --t-reveal: 800ms;
+  --t-open: 1200ms;
+  --stagger-line: 90ms;
+  --stagger-item: 70ms;
+}
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: auto; }
+body { margin: 0; font-kerning: normal; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+.page { background: var(--bg); color: var(--ink); font-family: var(--font-text); font-size: var(--step-body); line-height: 1.5; min-height: 100svh; }
+:where(.page) :where(h1, h2, h3, h4, p, figure, blockquote, ul, ol, dl, dd) { margin: 0; }
+:where(.page) :where(ul, ol) { padding: 0; list-style: none; }
+:where(.page) :where(img, video, svg, canvas) { display: block; max-width: 100%; }
+:where(.page) :where(img, video) { height: auto; }
+:where(.page) :where(button, input, select, textarea) { font: inherit; color: inherit; }
+:where(.page) :where(button) { background: none; border: 0; padding: 0; cursor: pointer; }
+:where(.page) :where(a) { color: inherit; }
+.page :target { scroll-margin-top: 6rem; }
+.page ::selection { background: var(--accent); color: var(--accent-ink); }
+.page :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+:where(.page) :where(h1, h2, h3) { font-family: var(--font-display); font-weight: inherit; text-wrap: balance; hyphens: none; }
+:where(.page) :where(p) { text-wrap: pretty; }
+.page .nums { font-variant-numeric: tabular-nums; }
+.page .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.page .wrap { padding-inline: var(--margin); }
+.page .button { display: inline-flex; align-items: center; justify-content: center; min-height: 3rem; padding: 0 1.4rem; background: var(--accent); color: var(--accent-ink); border-radius: var(--radius); text-decoration: none; white-space: nowrap; font-weight: 500; transition: transform var(--t-press) var(--ease-out), background-color var(--t-hover) ease, color var(--t-hover) ease, opacity var(--t-hover) ease; }
+.page .button:active { transform: scale(0.97); }
+.page .link { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 0.2em; text-decoration-thickness: 0.07em; transition: text-decoration-color var(--t-hover) ease; }
+.page .link-plain { text-decoration: underline; text-underline-offset: 0.18em; text-decoration-thickness: 0.07em; }
+@media (hover: hover) and (pointer: fine) {
+  .page .link:hover { text-decoration-color: currentColor; }
+  .page .button:hover { opacity: 0.88; }
+}
+
+/* ---------- motion helpers (content stays visible without JavaScript) ---------- */
+.lines .line { display: block; overflow: hidden; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.lines [data-line] { display: block; }
+.shutter { overflow: hidden; }
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-rise] { opacity: 0.06; transform: translateY(18px); animation: ad-rise var(--t-reveal) var(--ease-out) forwards; animation-delay: calc(var(--i, 0) * 90ms + 120ms); }
+  .js .lines [data-line] { transform: translateY(105%); animation: ad-line 900ms var(--ease-expo) forwards; animation-delay: calc(var(--i, 0) * 110ms + 150ms); }
+  .js [data-reveal] { opacity: 0.06; transform: translateY(24px); transition: opacity 700ms var(--ease-out), transform 900ms var(--ease-out); transition-delay: calc(var(--i, 0) * var(--stagger-item)); }
+  .js [data-reveal].is-in { opacity: 1; transform: none; }
+  .js .shutter[data-reveal] { opacity: 1; transform: none; clip-path: inset(0 0 100% 0); transition: clip-path 1100ms var(--ease-in-out); }
+  .js .shutter[data-reveal].is-in { clip-path: inset(0); }
+  .js [data-drift] { animation: ad-drift linear both; animation-timeline: view(); animation-range: entry 0% exit 100%; }
+}
+@keyframes ad-rise { to { opacity: 1; transform: none; } }
+@keyframes ad-line { to { transform: none; } }
+@keyframes ad-drift { from { object-position: 50% 30%; } to { object-position: 50% 70%; } }
+
+/* ---------- the iteration switcher (a small fixed control, not part of any design) ---------- */
+/* It lives flush in the bottom-right corner, inside the page's own margin, so it never sits on text. */
+.switcher { position: fixed; right: 0; bottom: 0; z-index: 50; display: flex; flex-direction: row-reverse; align-items: flex-end; font: 500 14px/1 system-ui, sans-serif; font-variant-numeric: tabular-nums; }
+.switcher__toggle { width: 36px; height: 36px; border-radius: 10px 0 0 0; background: #111; color: #fff; border: 0; cursor: pointer; font: inherit; display: grid; place-items: center; transition: background-color var(--t-hover) ease; }
+.switcher__toggle:focus-visible { outline: 2px solid #111; outline-offset: 2px; }
+.switcher__row { display: none; align-items: center; gap: 2px; height: 36px; padding: 0 4px; border-radius: 18px 0 0 0; background: #111; }
+.switcher.is-open .switcher__row, .switcher:focus-within .switcher__row { display: flex; }
+@media (hover: hover) { .switcher:hover .switcher__row { display: flex; } .switcher__toggle:hover { background: #333; } .switcher__row a:not([aria-current]):hover { background: #333; } }
+.switcher__row a { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; color: #fff; text-decoration: none; }
+.switcher__row a[aria-current="page"] { background: #fff; color: #111; }
+.switcher__row a:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }

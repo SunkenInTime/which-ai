@@ -179,6 +179,52 @@
       "apiEquivalentUsd": 34.3772121,
       "preflight": "The run operator reports an unscored setup check with Claude Haiku 5.5 in the same harness: the visible skills were design-taste-frontend and plugin-authoring (a built-in that could not be turned off), the browser tool read a test canvas from pixels, and no personal instructions loaded. Its files were not copied off the VM, so this is not confirmed here.",
       "earlierAttempts": "Unscored. On 2026-10-21 the Claude runs were first started on the Windows PC (Sonnet 5.5 18:20:12Z-18:37:18Z) and abandoned: headless mode stopped the background helper agents when the main turn ended, and one run hit the usage limit. The remains are in E:\\w\\taste-v2\\archive\\2026-10-21-claude-pc-helpers-killed."
+    },
+    {
+      "model": "fable-5.1",
+      "modelId": "claude-fable-5-1",
+      "condition": "design-taste",
+      "replaces": "with-taste-skill/fable-5.1 v1 (2026-09-01, gallery PR #24, which does not record the harness; card cost $10.09, added in commit ac8e8f5 \"Include Cursor-estimated generation costs\"). No docs/benchmarks folder or archive was kept for v1; its gallery copy stays in git history.",
+      "runner": "Claude Code 2.1.304 headless (claude -p, --output-format stream-json --verbose) on a boat.dev cloud VM (Ubuntu 24.04, 4 vCPU, 8 GB), as a dedicated Linux user; the same harness as sonnet-5.5, run next in the same VM sequence",
+      "command": "claude -p --model claude-fable-5-1 --effort xhigh --strict-mcp-config --mcp-config <run>/mcp.json --dangerously-skip-permissions --output-format stream-json --verbose <prompt>",
+      "launcher": "E:\\w\\taste-v2\\boat\\bin\\sequence.sh -> run.sh (setup in setup.sh); the exact argv and environment are in <run>/design-taste.invocation.json. The VM's sequence.log records the start (17:04:10Z) and finish (18:33:54Z, exit 0).",
+      "reasoningEffort": "xhigh",
+      "sandbox": "--dangerously-skip-permissions (the init event reports permissionMode bypassPermissions)",
+      "isolation": "As sonnet-5.5: env -i with an isolated HOME holding only the claude.ai login and empty files that block account skill and plugin sync; CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1, CLAUDE_CODE_SYNC_SKILLS=0, CLAUDE_CODE_SYNC_PLUGINS=0, CLAUDE_CODE_DISABLE_POLICY_SKILLS=1, DISABLE_AUTOUPDATER=1, CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1. The init event lists the skills design-taste-frontend, design, doctor and plugin-authoring, three built-in plugins (agents-md, telemetry, plugin-authoring), and reports claude.ai plugin sync disabled. The model invoked only design-taste-frontend. Context isolation only; no filesystem jail.",
+      "skillPlacement": "Project skill at work/.claude/skills/design-taste-frontend (SKILL.md sha256 d955dae4...), committed in the baseline. No skill file changed during the run.",
+      "browserConfigured": "Playwright MCP 0.0.83 as the only MCP server, \"browser\" (--strict-mcp-config): isolated headless Chromium, 1440x960, image responses allowed",
+      "browserObservedInScoredSession": "Connected; 10 browser calls (4 navigate, 3 evaluate, 2 resize, 1 close), all used to measure layout on /1, /3 and /4. No browser screenshots.",
+      "visualFeedbackUsed": "The skill's own inspector (scripts/inspect.mjs), called in 31 shell commands, and its draw.mjs direction sheets (16 commands). The session opened 45 images with Read: 32 inspector screenshots, 12 candidate pictures and one contact sheet. Final inspector reports (.taste-skill/d1-d5/inspect/report.json): 0 FAIL on every page; 1, 2, 2, 3 and 2 WARN on /1-/5.",
+      "subAgents": "None. The result line's subagent_stats reports 0 spawned, and the log has no Agent or Task calls. All work ran in the main thread.",
+      "toolUse": { "Skill": 1, "Bash": 130, "Read": 45, "Write": 1, "ToolSearch": 1, "browserMcp": 10, "webFetch": 0, "webSearch": 0 },
+      "fileWrites": "Every project file was written through Bash heredocs and scripts; the one Write call is the memory file below.",
+      "memoryFile": "At 18:33:32Z, 22 s before the end, the session wrote home/.claude/projects/-home-bench-boat-fable-5-1-work/memory/commonplace-iterations.md (and its MEMORY.md index): a note on where the five routes, direction sheets and credits live. It sits in the run's isolated HOME, was never read in this session, and is not part of the gallery source.",
+      "permissionDenials": "None (permission_denials is empty; no tool result is an error).",
+      "rateLimitEvents": "40 rate_limit_event records, all allowed_warning on the seven-day window (utilization 0.84 to 0.94). Nothing was blocked. The VM sequence was stopped by hand after this run at 94% of the weekly limit.",
+      "sessionId": "f2fb5b6f-1f1e-4e6e-8624-0d94ad6459d5",
+      "startedAt": "2026-10-23T17:04:10.227Z",
+      "finishedAt": "2026-10-23T18:33:54.449Z",
+      "wallSeconds": 5384.222,
+      "exitCode": 0,
+      "numTurns": 193,
+      "promptSha256": "1f02744b30166c3cc2c2155f6ff9f6874d95b4b9f5fa1a5681bbc85a5b11517b",
+      "baselineCommit": "c31f77e326eee03d28ca9bae5bc4ee59fef1658d (same tree, 291ff967, as sonnet-5.5's baseline 881e519)",
+      "completed": true,
+      "userTurns": 1,
+      "finalMessage": "fable-5-1.design-taste.final.txt (the result field of the last stream-json line)",
+      "networkFetchesByModel": "Pictures found and downloaded through the skill's assets.mjs (23 commands), from Wikimedia Commons, saved under public/assets with credits.json; 15 of the 24 are used by the pages and credited in each footer. Fonts are not saved: the pages load them at runtime from Google Fonts and Fontshare. No WebFetch or WebSearch calls.",
+      "usage": {
+        "source": "modelUsage in the stream-json result line; the per-message usage in the log sums to the same input, cache-write and cache-read totals",
+        "inputTokens": 1604,
+        "cacheCreationInputTokens": 763871,
+        "cacheCreation1hInputTokens": 763871,
+        "cacheReadInputTokens": 21918453,
+        "outputTokens": 342579,
+        "thinkingTokens": 182635,
+        "thinkingNote": "Thinking tokens are part of outputTokens."
+      },
+      "apiEquivalentUsd": 37.90202325,
+      "preflight": "Same harness and setup check as sonnet-5.5 (operator report, not confirmed here)."
     }
   ],
   "integrationChanges": {
@@ -206,6 +252,17 @@
       "Fonts: next/font in Next.js 16 names families plainly (\"Anton\", \"Work Sans\", \"Schibsted Grotesk\", \"Libre Franklin\", \"Source Serif 4\", \"Newsreader\", \"Switzer\"), and other gallery entries declare the same names with other files, weights and fallback metrics (on the gallery's /1 page: 214 other Newsreader faces, 15 Work Sans, 5 Anton). app/fonts.css declares the 48 @font-face rules the source's dev server served on 2026-10-24, with the 34 font files copied to /variants/with-taste-skill/sonnet-5.5/fonts/, under family names prefixed \"Sonnet v2 \", plus classes that set the same --font-* variables (and Switzer's font-family class). The five layouts use those class names instead of calling next/font/google and next/font/local.",
       "Five focus-ring selectors in four CSS modules ([data-ui] button:focus-visible, and [data-ui] input:focus-visible on /5) have no local class, which the gallery's webpack CSS-modules check rejects (the source's Turbopack build accepted them as global). Each is anchored to its page root, :where(:global(#p1)) on /1 and :where(:global([data-p5-root])) on /5, with :where(:not(.galleryPure)) on [data-ui] to make it pure; specificity is unchanged and the rules no longer reach other entries' data-ui elements. Measured focus rings on the 41 focusable data-ui controls of /1, /2 and /5 are identical in source and gallery.",
       "LayoutProps<\"/\">, LayoutProps<\"/1\"> and LayoutProps<\"/5\"> replaced with { children: React.ReactNode } (the gallery has no /1 or /5 route types)."
+    ],
+    "fable-5.1": [
+      "Copied app/ (layout.tsx, globals.css, taste.css, favicon.ico, and (designs)/ with the five pages, their live components and CSS, the shared ui.css and the helpers). app/page.tsx (a redirect to /1) is not copied. The project's .taste-skill notes, .playwright-mcp logs and next.config.ts change (devIndicators off) are covered by the source hashes.",
+      "Root html/body converted to data-source-html/data-source-body divs; global CSS scoped by the gallery generator. The source's inline script added the class js to <html> to arm the entrance motion; data-source-html carries it instead. LayoutProps<\"/\"> replaced with { children: React.ReactNode }.",
+      "The (designs) route-group layout only adds the corner design switcher, so the gallery renders each page inside the root layout without it (the gallery provides iteration navigation). That layout.tsx and switcher.tsx are kept unused.",
+      "Fifteen referenced pictures namespaced under /variants/with-taste-skill/fable-5.1/assets/; the 37 /assets/ paths in the pages and live components updated. The nine unreferenced downloads and credits.json are not copied.",
+      "Each page's imports of ../ui.css and ./dN.css point at the generated scoped copies.",
+      "Fonts: the source loads its faces with Google Fonts and Fontshare <link> tags (fonts.tsx). Those stylesheets would load on gallery routes under plain family names, and other gallery entries already declare Albert Sans, General Sans and Jost with other files. fonts.tsx now renders nothing, and app/fonts.css declares the 34 @font-face rules those services returned to Chromium on 2026-10-24, with the 25 woff2 files copied to /variants/with-taste-skill/fable-5.1/fonts/ (Fontshare's woff and ttf fallbacks dropped), under family names prefixed \"Fable v2 \". The five dN.css font variables, the four SvgWord font props and the /2 masthead's SVG fontFamily use the new names.",
+      "d1.css: the gallery's CSS scoping renames each file's keyframes, so /1's ad-rise animations (hero card and chips) no longer found the keyframe defined in taste.css. d1.css carries an identical copy.",
+      "d1.css: under prefers-reduced-motion the gallery's own src/app/globals.css gives every element a 0.01ms transition. FitText sets the footer address's font size and measures it at once, so it read the old size; at 390 px the address stayed at 260px and the page overflowed by 949 px. The fitted spans get transition-property: none, which matches the source, where they have no transition.",
+      "svg-word.tsx: the footer wordmark's measure moves the word by its own last offset, so its final position depends on whether the first measure has been applied when the fonts-ready measure runs. With the source's remote fonts it usually has: 46 of 48 production-build loads (pages 2-5, both widths, six loads each) landed low, while the dev server split about evenly. With the gallery's local fonts it never had, and every gallery load landed high. The fonts-ready measure now waits two animation frames, and every gallery load lands low."
     ]
   },
   "costBasis": {
@@ -215,7 +272,8 @@
         "shortContext": { "input": 2.0, "cachedInput": 0.1, "output": 10.0, "appliesTo": "requests with <=272K input tokens" },
         "longContext": { "input": 4.0, "cachedInput": 0.2, "output": 15.0, "appliesTo": "requests with >272K input tokens" }
       },
-      "claude-sonnet-5-5": { "input": 2.0, "cacheWrite5m": 2.5, "cacheWrite1h": 4.0, "cacheRead": 0.1, "output": 10.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" }
+      "claude-sonnet-5-5": { "input": 2.0, "cacheWrite5m": 2.5, "cacheWrite1h": 4.0, "cacheRead": 0.1, "output": 10.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" },
+      "claude-fable-5-1": { "input": 10.0, "cacheWrite5m": 12.5, "cacheWrite1h": 20.0, "cacheRead": 0.25, "output": 50.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" }
     },
     "checkedAt": "2026-10-21",
     "sources": ["https://developers.openai.com/api/docs/pricing", "https://platform.claude.com/docs/en/about-claude/pricing"]
