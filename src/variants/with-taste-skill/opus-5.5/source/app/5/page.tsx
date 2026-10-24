@@ -1,505 +1,448 @@
-import Image from "next/image";
-import {
-  AndroidLogo,
-  AppleLogo,
-  ArrowRight,
-  BookOpenText,
-  CalendarBlank,
-  Check,
-  DeviceMobile,
-  Globe,
-  Graph,
-  HardDrives,
-  LinuxLogo,
-  LockKey,
-  MarkdownLogo,
-  Plant,
-  Waveform,
-  WindowsLogo,
-} from "@phosphor-icons/react/ssr";
-import { Z } from "../lib/z";
-import { Hero } from "./_components/hero";
-import { RelatedNotes } from "./_components/related-notes";
-import { Reveal } from "./_components/reveal";
+/* eslint-disable @next/next/no-img-element -- pictures are pre-sized files in public/v5 with width, height and alt */
+import type { Metadata } from "next";
+import HeroRail from "./HeroRail";
+import { LinkedSection, NoteLink } from "./LinkedProse";
+import MarginDemo from "./MarginDemo";
+import MorningNote from "./MorningNote";
+import Questions from "./Questions";
+import Reveal from "./Reveal";
+import { NOTES, NOTE_ORDER, PRICES } from "./data";
+import s from "./page.module.css";
 
-/*
- * Shape rule: panels and images are 20px, every button and chip is a full pill.
- * Accent (amber) appears only on signup CTAs, the Pro plan and linked-state feedback.
- */
+// Gallery copy: the fonts come from app/fonts.css under "Opus v2" family names (see that file);
+// this stands in for the next/font result and sets the same CSS variable.
+const archivo = { variable: "opus-v2-archivo" };
 
-const SIGNUP = "#pricing";
+export const metadata: Metadata = {
+  title: "Engram, a second brain",
+  description:
+    "Engram is a note-taking app that brings your old notes back when they matter: in the margin while you write, and once each morning.",
+};
 
-const primaryBtnBase =
-  "inline-flex h-12 items-center gap-2 rounded-full bg-(--accent) px-6 text-[15px] font-medium whitespace-nowrap text-(--on-accent) transition-[background-color,transform] duration-300 hover:bg-(--accent-hover) focus-visible:outline-2 focus-visible:outline-offset-2 active:scale-[0.98]";
-// Primary CTAs only ever sit on photos or the deep-green Pro panel, so the focus ring is light.
-const primaryBtn = `${primaryBtnBase} focus-visible:outline-white`;
+const ROOMS = [
+  {
+    src: "/variants/with-taste-skill/opus-5.5/v5/loc-main-reading-room-highsmith.jpg",
+    w: 2400,
+    h: 1601,
+    alt: "The Main Reading Room of the Library of Congress seen from the gallery: rings of wooden desks under arched windows and marble columns",
+  },
+  {
+    src: "/variants/with-taste-skill/opus-5.5/v5/salle-labrouste-3.jpg",
+    w: 2400,
+    h: 1800,
+    alt: "The Salle Labrouste in Paris: rows of reading desks with green lamps between slender iron columns and domed vaults",
+  },
+  {
+    src: "/variants/with-taste-skill/opus-5.5/v5/long-room-interior-trinity-college-dublin-ireland.jpg",
+    w: 2400,
+    h: 1813,
+    alt: "The Long Room of Trinity College Dublin: two storeys of dark wooden bookcases under a barrel-vaulted ceiling, busts along the aisle",
+  },
+  {
+    src: "/variants/with-taste-skill/opus-5.5/v5/stockholms-stadsbibliotek-rotundan.jpg",
+    w: 2400,
+    h: 1596,
+    alt: "The rotunda of Stockholm Public Library: three tiers of books curving round a reading floor",
+  },
+];
 
-const h2 =
-  "text-4xl leading-[1.05] font-medium tracking-[-0.03em] text-balance md:text-5xl lg:text-[3.5rem]";
-
-const lead = "mt-5 max-w-[56ch] text-pretty text-lg leading-relaxed font-light text-(--muted) md:text-xl";
-
-function Nav() {
-  return (
-    <header
-      style={{ zIndex: Z.nav }}
-      className="absolute inset-x-0 top-0 text-white"
-    >
-      <nav
-        aria-label="Main"
-        className="mx-auto flex h-[72px] max-w-[1400px] items-center justify-between px-4 sm:px-8"
-      >
-        <a
-          href="#top"
-          className="flex items-center gap-2 text-xl font-medium tracking-[-0.02em]"
-        >
-          <Plant size={22} weight="light" aria-hidden />
-          Kept
-        </a>
-        <div className="flex items-center gap-8">
-          <ul className="hidden items-center gap-8 text-[15px] font-light text-white/85 md:flex">
-            <li>
-              <a href="#capture" className="transition-colors hover:text-white">
-                Features
-              </a>
-            </li>
-            <li>
-              <a href="#privacy" className="transition-colors hover:text-white">
-                Privacy
-              </a>
-            </li>
-            <li>
-              <a href="#pricing" className="transition-colors hover:text-white">
-                Pricing
-              </a>
-            </li>
-          </ul>
-          <a
-            href={SIGNUP}
-            className="inline-flex h-10 items-center rounded-full bg-white/15 px-5 text-sm font-medium whitespace-nowrap backdrop-blur-md transition-colors hover:bg-white/25 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            Start free
-          </a>
-        </div>
-      </nav>
-    </header>
-  );
-}
-
-function Capture() {
-  return (
-    <section id="capture" className="mx-auto max-w-[1400px] px-4 py-28 sm:px-8 md:py-40">
-      <Reveal className="max-w-3xl">
-        <h2 className={h2}>One place for everything you notice.</h2>
-        <p className={lead}>
-          Save a thought, a page, a voice memo or a highlight in seconds. Kept
-          files it away so you can get back to your day.
-        </p>
-      </Reveal>
-
-      {/* 5 items, 5 cells: tall photo + two small tiles, then a small photo tile and a wide photo tile. */}
-      <div className="mt-16 grid grid-cols-1 gap-4 md:mt-20 md:grid-cols-6 md:gap-5">
-        <Reveal className="md:col-span-4 md:row-span-2">
-          <article className="flex h-full flex-col overflow-hidden rounded-[20px] bg-(--surface)">
-            <div className="relative aspect-[4/3] w-full md:aspect-auto md:flex-1">
-              <Image
-                src="https://picsum.photos/seed/kept-grove-open-book-36/1400/1000"
-                alt="Hands writing in a notebook beside an open laptop"
-                fill
-                sizes="(min-width: 768px) 66vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="p-7 sm:p-9">
-              <h3 className="text-2xl font-medium tracking-[-0.02em]">Clip the web</h3>
-              <p className="mt-2 max-w-[44ch] font-light text-(--muted)">
-                Save a whole article, or only the paragraph that made you stop
-                scrolling.
-              </p>
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal className="md:col-span-2" delay={0.08}>
-          <article className="flex h-full flex-col justify-between gap-10 rounded-[20px] border border-(--line) p-7">
-            <div className="flex gap-2" aria-hidden>
-              <kbd className="grid h-11 min-w-11 place-items-center rounded-full border border-(--line) bg-(--surface) px-3 font-sans text-base">
-                ⌥
-              </kbd>
-              <kbd className="grid h-11 place-items-center rounded-full border border-(--line) bg-(--surface) px-5 font-sans text-sm">
-                Space
-              </kbd>
-            </div>
-            <div>
-              <h3 className="text-xl font-medium tracking-[-0.02em]">Quick capture</h3>
-              <p className="mt-2 font-light text-(--muted)">
-                One shortcut from any app. The note is saved before you look up.
-              </p>
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal className="md:col-span-2" delay={0.16}>
-          <article className="flex h-full flex-col justify-between gap-10 rounded-[20px] bg-(--deep) p-7 text-(--on-deep)">
-            <Waveform size={40} weight="light" aria-hidden />
-            <div>
-              <h3 className="text-xl font-medium tracking-[-0.02em]">Say it out loud</h3>
-              <p className="mt-2 font-light text-(--on-deep-muted)">
-                Voice memos are transcribed, so a long walk can turn into a note.
-              </p>
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal className="md:col-span-2">
-          <article className="flex h-full flex-col overflow-hidden rounded-[20px] bg-(--surface)">
-            <div className="relative aspect-[4/3] w-full">
-              <Image
-                src="https://picsum.photos/seed/kept-grove-morning-desk-18/800/600"
-                alt="Pages from old books laid out side by side"
-                fill
-                sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="flex items-start gap-3 p-7">
-              <BookOpenText size={22} weight="light" className="mt-1 shrink-0" aria-hidden />
-              <div>
-                <h3 className="text-xl font-medium tracking-[-0.02em]">Your highlights</h3>
-                <p className="mt-2 font-light text-(--muted)">
-                  Highlights from books and articles sync in on their own.
-                </p>
-              </div>
-            </div>
-          </article>
-        </Reveal>
-
-        <Reveal className="md:col-span-4" delay={0.08}>
-          <article className="grid h-full overflow-hidden rounded-[20px] bg-(--surface) sm:grid-cols-2">
-            <div className="relative aspect-[4/3] w-full sm:aspect-auto sm:min-h-[20rem]">
-              <Image
-                src="https://picsum.photos/seed/kept-grove-forest-morning-7/1000/900"
-                alt="A phone held up to photograph the sea at dusk"
-                fill
-                sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="flex flex-col justify-end gap-2 p-7 sm:p-9">
-              <DeviceMobile size={26} weight="light" className="mb-auto" aria-hidden />
-              <h3 className="mt-10 text-xl font-medium tracking-[-0.02em]">From your phone</h3>
-              <p className="font-light text-(--muted)">
-                Share anything to Kept from the share sheet on iPhone or Android.
-              </p>
-            </div>
-          </article>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function Resurfacing() {
-  return (
-    <section
-      id="how-it-works"
-      className="scroll-mt-8 py-28 md:py-40"
-    >
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-8">
-        <Reveal className="max-w-3xl">
-          <h2 className={h2}>Notes that come back to you.</h2>
-          <p className={lead}>
-            As you write, Kept looks through everything you have saved and offers
-            the older notes that belong nearby. Pick a note to try it.
-          </p>
-        </Reveal>
-        <Reveal className="mt-14 md:mt-16" delay={0.1}>
-          <RelatedNotes />
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function DailyNote() {
-  return (
-    <section className="mx-auto max-w-[1400px] px-4 py-28 sm:px-8 md:py-40">
-      <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-12 md:gap-16">
-        <Reveal className="md:col-span-7">
-          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[20px] md:aspect-[5/6]">
-            <Image
-              src="https://picsum.photos/seed/kept-grove-morning-desk-13/1400/1680"
-              alt="A cup of tea and an open book on a bed in soft morning light"
-              fill
-              sizes="(min-width: 768px) 58vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        </Reveal>
-        <Reveal className="md:col-span-5" delay={0.1}>
-          <h2 className={h2}>Start each day on a fresh page.</h2>
-          <p className={lead}>
-            Kept opens to today&rsquo;s note. Write what is on your mind, and the
-            people and projects you mention link to what you already know.
-          </p>
-          <ul className="mt-10 grid gap-6">
-            <li className="flex gap-4">
-              <CalendarBlank size={24} weight="light" className="mt-0.5 shrink-0" aria-hidden />
-              <p className="font-light">
-                <span className="font-medium">A new page every morning.</span>{" "}
-                <span className="text-(--muted)">Yesterday is one tap away.</span>
-              </p>
-            </li>
-            <li className="flex gap-4">
-              <Graph size={24} weight="light" className="mt-0.5 shrink-0" aria-hidden />
-              <p className="font-light">
-                <span className="font-medium">Type [[ to link any note.</span>{" "}
-                <span className="text-(--muted)">
-                  Backlinks and the graph show how ideas connect.
-                </span>
-              </p>
-            </li>
-          </ul>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function InlineIcon({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="ml-2 inline-grid size-[1.35em] translate-y-[0.18em] place-items-center rounded-full bg-(--deep) align-baseline text-(--on-deep)">
-      {children}
-    </span>
-  );
-}
-
-function Privacy() {
-  return (
-    <section id="privacy" className="scroll-mt-8 px-4 py-28 sm:px-8 md:py-44">
-      <Reveal className="mx-auto max-w-4xl text-center">
-        <h2 className="text-lg font-medium text-(--muted)">Your notes stay yours.</h2>
-        <p className="mt-8 text-[1.7rem] leading-[1.45] font-light tracking-[-0.015em] text-balance md:text-[2.4rem] md:leading-[1.4]">
-          Kept is{" "}
-          <span className="whitespace-nowrap">
-            local-first
-            <InlineIcon>
-              <HardDrives size="0.62em" weight="regular" aria-hidden />
-            </InlineIcon>
-          </span>
-          , so every note lives on your own device and works offline. Each one
-          is a plain{" "}
-          <span className="whitespace-nowrap">
-            Markdown file
-            <InlineIcon>
-              <MarkdownLogo size="0.62em" weight="regular" aria-hidden />
-            </InlineIcon>
-          </span>{" "}
-          you can open anywhere. Sync is end-to-end{" "}
-          <span className="whitespace-nowrap">
-            encrypted
-            <InlineIcon>
-              <LockKey size="0.62em" weight="regular" aria-hidden />
-            </InlineIcon>
-          </span>
-          , so nobody else can read it, including us.
-        </p>
-      </Reveal>
-    </section>
-  );
-}
-
-function Testimonial() {
-  return (
-    <section className="mx-auto max-w-[1400px] px-4 pb-28 sm:px-8 md:pb-40">
-      <Reveal>
-        <figure className="grid grid-cols-1 items-end gap-10 rounded-[20px] bg-(--surface) p-7 sm:p-12 md:grid-cols-12 md:gap-12 md:p-16">
-          <div className="relative aspect-[4/5] w-full max-w-[20rem] overflow-hidden rounded-[20px] md:col-span-4 md:-mt-32 md:max-w-none">
-            <Image
-              src="https://picsum.photos/seed/kept-grove-phone-walk-24/800/1000"
-              alt="Portrait of Ingrid Solberg"
-              fill
-              sizes="(min-width: 768px) 30vw, 20rem"
-              className="object-cover"
-            />
-          </div>
-          <div className="md:col-span-8 md:pb-2">
-            <blockquote className="text-[1.6rem] leading-[1.3] font-normal tracking-[-0.02em] md:text-[2.1rem]">
-              &ldquo;Kept brought back a note from three years ago, right when my
-              chapter needed it. My notebooks finally talk to each other.&rdquo;
-            </blockquote>
-            <figcaption className="mt-8">
-              <p className="font-medium">Ingrid Solberg</p>
-              <p className="font-light text-(--muted)">PhD student in marine ecology</p>
-            </figcaption>
-          </div>
-        </figure>
-      </Reveal>
-    </section>
-  );
-}
-
-function Pricing() {
-  return (
-    <section id="pricing" className="scroll-mt-8 mx-auto max-w-[1400px] px-4 py-28 sm:px-8 md:py-36">
-      <Reveal className="max-w-3xl">
-        <h2 className={h2}>Free to start, and to stay.</h2>
-        <p className={lead}>
-          Free has no limit on notes. Pro adds sync across every device.
-        </p>
-      </Reveal>
-
-      <div className="mt-14 grid grid-cols-1 items-stretch gap-4 md:mt-16 md:grid-cols-12 md:gap-5">
-        <Reveal className="md:col-span-5">
-          <div className="flex h-full flex-col rounded-[20px] border border-(--line) p-8 sm:p-10">
-            <h3 className="text-xl font-medium">Free</h3>
-            <p className="mt-6 flex items-baseline gap-2">
-              <span className="text-5xl font-medium tracking-[-0.03em]">$0</span>
-            </p>
-            <ul className="mt-8 grid gap-3 font-light">
-              {["Unlimited notes", "One device, plus the web", "Links, backlinks and the graph", "Daily notes and highlights"].map((f) => (
-                <li key={f} className="flex items-center gap-3">
-                  <Check size={18} weight="regular" className="shrink-0 text-(--muted)" aria-hidden />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <a
-              href={SIGNUP}
-              className="mt-auto inline-flex h-12 items-center justify-center self-start rounded-full border border-(--ink)/25 px-6 text-[15px] font-medium whitespace-nowrap transition-[background-color,transform] duration-300 hover:bg-(--surface) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ink) active:scale-[0.98] max-md:mt-10 md:mt-12"
-            >
-              Start free
-            </a>
-          </div>
-        </Reveal>
-
-        <Reveal className="md:col-span-7" delay={0.1}>
-          <div className="flex h-full flex-col rounded-[20px] bg-(--deep) p-8 text-(--on-deep) shadow-[0_30px_80px_-30px_var(--shadow)] ring-1 ring-(--accent)/40 sm:p-12">
-            <h3 className="text-xl font-medium">Pro</h3>
-            <p className="mt-6 flex items-baseline gap-2">
-              <span className="text-6xl font-medium tracking-[-0.035em] md:text-7xl">$8</span>
-              <span className="font-light text-(--on-deep-muted)">a month, billed yearly</span>
-            </p>
-            <p className="mt-4 font-light text-(--on-deep-muted)">Everything in Free, plus:</p>
-            <ul className="mt-5 grid gap-4 text-lg font-light">
-              {["Sync across all your devices, end-to-end encrypted", "Ask your notes, with answers that cite them", "Version history for every note"].map((f) => (
-                <li key={f} className="flex items-start gap-3">
-                  <Check size={20} weight="bold" className="mt-1 shrink-0 text-(--accent)" aria-hidden />
-                  {f}
-                </li>
-              ))}
-            </ul>
-            <div className="mt-12">
-              <a href={SIGNUP} className={primaryBtn}>
-                Start free
-                <ArrowRight size={16} weight="bold" aria-hidden />
-              </a>
-              <p className="mt-3 text-sm font-light text-(--on-deep-muted)">
-                Upgrade to Pro from inside the app, whenever you are ready.
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
-function ClosingCta() {
-  return (
-    <section className="mx-auto max-w-[1400px] px-4 pb-24 sm:px-8">
-      <Reveal>
-        <div className="relative isolate flex min-h-[32rem] items-center justify-center overflow-hidden rounded-[20px] px-6 py-20 text-center text-[#f3f6f0]">
-          <Image
-            src="https://picsum.photos/seed/kept-grove-closing-canopy-19/2000/1100"
-            alt=""
-            fill
-            sizes="(min-width: 1400px) 1400px, 100vw"
-            className="-z-10 object-cover"
-          />
-          <div aria-hidden className="absolute inset-0 -z-10 bg-[rgb(10_22_14/0.58)]" />
-          <div className="max-w-2xl">
-            <h2 className="text-4xl leading-[1.05] font-medium tracking-[-0.03em] text-balance md:text-6xl">
-              Give your ideas room to grow.
-            </h2>
-            <p className="mx-auto mt-5 max-w-[40ch] text-lg font-light text-[#dce4da] md:text-xl">
-              Your first note takes a few seconds. The rest can wait.
-            </p>
-            <div className="mt-9 flex justify-center">
-              <a href={SIGNUP} className={primaryBtn}>
-                Start free
-                <ArrowRight size={16} weight="bold" aria-hidden />
-              </a>
-            </div>
-          </div>
-        </div>
-      </Reveal>
-    </section>
-  );
-}
-
-const PLATFORMS = [
-  { name: "Mac", Icon: AppleLogo },
-  { name: "Windows", Icon: WindowsLogo },
-  { name: "Linux", Icon: LinuxLogo },
-  { name: "iPhone", Icon: DeviceMobile },
-  { name: "Android", Icon: AndroidLogo },
-  { name: "Web", Icon: Globe },
-] as const;
-
-function Footer() {
-  return (
-    <footer className="border-t border-(--line)">
-      <div className="mx-auto grid max-w-[1400px] grid-cols-1 gap-12 px-4 pt-16 pb-32 sm:px-8 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <a href="#top" className="flex items-center gap-2 text-xl font-medium tracking-[-0.02em]">
-            <Plant size={22} weight="light" aria-hidden />
-            Kept
-          </a>
-          <p className="mt-3 max-w-[30ch] font-light text-(--muted)">
-            A calm place for notes, and the ideas that grow out of them.
-          </p>
-        </div>
-        <div className="md:col-span-8">
-          <h2 className="text-sm font-medium">Download</h2>
-          <ul className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-3">
-            {PLATFORMS.map(({ name, Icon }) => (
-              <li key={name}>
-                <a
-                  href="#"
-                  className="flex h-12 items-center gap-3 rounded-full border border-(--line) px-5 font-light transition-colors hover:bg-(--surface) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--ink)"
-                >
-                  <Icon size={18} weight="regular" aria-hidden />
-                  {name}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <div className="mt-12 flex flex-wrap gap-x-8 gap-y-2 text-sm font-light text-(--muted)">
-            <span>&copy; 2026 Kept</span>
-            <a href="#" className="hover:text-(--ink)">Privacy policy</a>
-            <a href="#" className="hover:text-(--ink)">Terms</a>
-            <a href="#" className="hover:text-(--ink)">Contact</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  );
-}
+const CTA_MAIL =
+  "mailto:hello@engram.app?subject=Download%20Engram&body=Please%20send%20me%20the%20Engram%20download%20for%20my%20computer.";
 
 export default function Page() {
   return (
-    <main id="top" className="relative overflow-x-clip">
-      <Nav />
-      <Hero />
-      <Capture />
-      <Resurfacing />
-      <DailyNote />
-      <Privacy />
-      <Testimonial />
-      <Pricing />
-      <ClosingCta />
-      <Footer />
-    </main>
+    <div className={`${archivo.variable} ${s.page}`}>
+      {/* The pictures behind the rail: four reading rooms crossfading, then a closer look up into one vault. */}
+      <div className={s.heroPics}>
+        <div className={s.fade} data-crossfade="">
+          {ROOMS.map((room, i) => (
+            <img
+              key={room.src}
+              className={s.slide}
+              src={room.src}
+              width={room.w}
+              height={room.h}
+              alt={room.alt}
+              fetchPriority={i === 0 ? "high" : "low"}
+              decoding="async"
+            />
+          ))}
+        </div>
+        <figure className={s.detail}>
+          <img
+            className={s.detailImg}
+            src="/variants/with-taste-skill/opus-5.5/v5/bibliotheque-nationale-de-france-site-richelieu-louvois.jpg"
+            width={2400}
+            height={1800}
+            alt="Looking up into the Salle Labrouste: nine shallow domes with round skylights on iron arches, painted trees in the lunettes below"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption className={s.detailCaption}>The vaults of the Salle Labrouste, Paris.</figcaption>
+        </figure>
+        <div id="hero-end" className={s.heroEnd} />
+      </div>
+
+      <div className={s.heroTop} />
+      <HeroRail />
+      <div className={s.heroBottom}>
+        <div className={s.heroRest}>
+          <div className={s.heroPhone}>
+            <p className={s.heroPhoneLine}>Notes that come back when you need them.</p>
+            <a className={s.buttonPaper} href="#download">
+              Download Engram
+            </a>
+          </div>
+        </div>
+        <div className={s.heroDetailSpace} />
+      </div>
+
+      <main className={s.main}>
+        {/* The page is an Engram note: its [[links]] open the note they name in the margin. */}
+        <section className={`${s.section} ${s.linked}`} aria-labelledby="h-intro">
+          <h2 id="h-intro" className={`${s.h2} ${s.side}`} data-reveal="">
+            A notebook that remembers
+          </h2>
+          <LinkedSection initial="daniel">
+            <p className={s.body} data-reveal="">
+              Engram is a place for everything you want to keep: what you read, what you decided, what someone told you{" "}
+              <NoteLink slug="daniel">two years ago</NoteLink>. Write a note, link it to others with{" "}
+              <NoteLink slug="brackets">double brackets</NoteLink>, and stop worrying about it.
+            </p>
+            <p className={s.body} data-reveal="" style={{ ["--i" as string]: 2 }}>
+              When a note matters again, Engram puts it back in front of you, in the margin while you write and once each
+              morning. The notes are plain files <NoteLink slug="disk">on your own disk</NoteLink>, and nothing is sent away
+              to be read.
+            </p>
+            <p className={s.body} data-reveal="" style={{ ["--i" as string]: 3 }}>
+              Most of what we write down is forgotten within a month. Hermann Ebbinghaus measured it on himself in 1885 (
+              <NoteLink slug="curve">the forgetting curve</NoteLink>). A second brain is only worth keeping if it gives
+              things back.
+            </p>
+          </LinkedSection>
+        </section>
+
+        <section id="margin" className={`${s.section} ${s.showcase}`} aria-labelledby="h-margin">
+          <h2 id="h-margin" className={`${s.h2} ${s.side}`} data-reveal="">
+            Try the margin
+          </h2>
+          <p className={`${s.body} ${s.showcaseHead}`} data-reveal="" style={{ ["--i" as string]: 1 }}>
+            This is a note being written in Engram. The older notes in its margin are the ones Engram brought back, and
+            the settings beside them are the app’s own.
+          </p>
+          <div className={s.showcasePanel} data-reveal="" style={{ ["--i" as string]: 2 }}>
+            <MarginDemo />
+          </div>
+          <p className={s.showcaseFoot} data-reveal="" style={{ ["--i" as string]: 3 }}>
+            Change any setting and the margin answers at once, as it does in the app.
+          </p>
+        </section>
+
+        <section id="morning" className={s.morningSec} aria-label="The morning note">
+          <MorningNote />
+        </section>
+
+        <section id="how" className={`${s.section} ${s.how}`} aria-labelledby="h-how">
+          <h2 id="h-how" className={`${s.h2} ${s.side}`} data-reveal="">
+            How it works
+          </h2>
+
+          <div className={s.howBody}>
+          <div className={s.exchange}>
+            <h3 className={s.exLead} data-reveal="">
+              First, write it down.
+            </h3>
+            <div className={s.call} data-ui="" data-reveal="" style={{ ["--i" as string]: 1 }}>
+              <div className={s.captureTop}>
+                <span>Quick note</span>
+                <span className={s.keys}>⌥ Space</span>
+              </div>
+              <p className={s.captureText}>
+                Daniel: the hiring plan goes first at the budget review on the 18th. He wants numbers by Friday.
+                <span className={s.caret} aria-hidden="true" />
+              </p>
+              <div className={s.captureBottom}>
+                <span>Saves to Inbox</span>
+                <span className={s.uiButton}>Save</span>
+              </div>
+            </div>
+            <div className={s.response} data-ui="" data-reveal="" style={{ ["--i" as string]: 2 }}>
+              <p className={s.uiHead}>Inbox</p>
+              <div className={s.inboxRow} data-selected="">
+                <p className={s.inboxTitle}>
+                  Meeting with Daniel, 14 October <span className={s.pill}>New</span>
+                </p>
+                <p className={s.inboxMeta}>Today at 16:02</p>
+                <p className={s.inboxText}>The hiring plan goes first at the budget review on the 18th.</p>
+              </div>
+              <div className={s.inboxRow}>
+                <p className={s.inboxTitle}>Call the joiner about the worktop</p>
+                <p className={s.inboxMeta}>Yesterday at 08:40</p>
+                <p className={s.inboxText}>Ask whether oak can be fitted before the 30th.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={s.exchange}>
+            <h3 className={s.exLead} data-reveal="">
+              Then, link it with two brackets.
+            </h3>
+            <div className={s.call} data-ui="" data-reveal="" style={{ ["--i" as string]: 1 }}>
+              <p className={s.captureText}>
+                Bring this to <span className={s.typedLink}>[[Q3</span>
+                <span className={s.caret} aria-hidden="true" />
+              </p>
+              <div className={s.menu} role="presentation">
+                <p className={s.menuItem} data-selected="">
+                  Q3 planning: what slipped <span className={s.menuMeta}>Work</span>
+                </p>
+                <p className={s.menuItem}>
+                  Q3 hiring plan <span className={s.menuMeta}>Work</span>
+                </p>
+                <p className={s.menuItem}>
+                  Create a note called “Q3” <span className={s.menuMeta}>Enter</span>
+                </p>
+              </div>
+            </div>
+            <div className={s.response} data-ui="" data-reveal="" style={{ ["--i" as string]: 2 }}>
+              <p className={s.uiHead}>Q3 planning: what slipped</p>
+              <p className={s.uiSub}>Linked from 3 notes</p>
+              <div className={s.backRow} data-selected="">
+                <p className={s.inboxTitle}>
+                  Meeting with Daniel, 14 October <span className={s.pill}>New</span>
+                </p>
+                <p className={s.inboxText}>Bring this to Q3 planning: what slipped.</p>
+              </div>
+              <div className={s.backRow}>
+                <p className={s.inboxTitle}>Budget review prep, 30 September</p>
+                <p className={s.inboxText}>Carry over the two roles from Q3 planning.</p>
+              </div>
+              <div className={s.backRow}>
+                <p className={s.inboxTitle}>Team offsite, 11 July</p>
+                <p className={s.inboxText}>Everyone agreed the hiring plan comes before the tools budget.</p>
+              </div>
+            </div>
+          </div>
+
+          <div className={`${s.exchange} ${s.exchangeWide}`}>
+            <h3 className={s.exLead} data-reveal="">
+              Later, it comes back on its own.
+            </h3>
+            <div className={s.result} data-ui="" data-reveal="" style={{ ["--i" as string]: 1 }}>
+              <div className={s.resultMain}>
+                <p className={s.editorMeta}>Work, edited 2 December at 10:31</p>
+                <p className={s.editorTitle}>Budget review, 18 December</p>
+                <p className={s.editorText}>
+                  Agenda: headcount for Q1, the <mark className={s.match}>hiring plan</mark>, travel. Ask finance for the
+                  revised <mark className={s.match}>budget review</mark> template.
+                  <span className={s.caret} aria-hidden="true" />
+                </p>
+              </div>
+              <div className={s.recall}>
+                <p className={s.recallHead}>2 older notes brought back</p>
+                <div className={s.recallItem}>
+                  <p className={s.recallTitle}>Meeting with Daniel, 14 October</p>
+                  <p className={s.recallAge}>7 weeks ago</p>
+                  <p className={s.recallText}>The hiring plan goes first at the budget review on the 18th. He wants numbers by Friday.</p>
+                  <p className={s.recallWhy}>Shares hiring plan, budget review</p>
+                </div>
+                <div className={s.recallItem}>
+                  <p className={s.recallTitle}>Q3 planning: what slipped</p>
+                  <p className={s.recallAge}>4 months ago</p>
+                  <p className={s.recallText}>The hiring plan slipped twice. Both times we were waiting on the budget review.</p>
+                  <p className={s.recallWhy}>Shares hiring plan, budget review</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </section>
+
+        <section className={`${s.section} ${s.letterSec}`} aria-labelledby="h-letter">
+          <h2 id="h-letter" className={`${s.h2} ${s.side}`} data-reveal="">
+            Why we built Engram
+          </h2>
+          <div className={s.letter}>
+            <div className={s.monogram} aria-hidden="true" data-reveal="">
+              IB
+            </div>
+            <p className={s.body} data-reveal="">
+              I have kept notes for twenty years: in paper notebooks, in four different apps, in emails to myself. I could
+              always find a note if I remembered that it existed. The trouble was all the notes I had forgotten.
+            </p>
+            <p className={s.body} data-reveal="">
+              Writing something down is easy. Meeting it again at the moment it matters is the hard part, and none of the
+              apps I used even tried. They were filing cabinets, good at keeping and silent about what they kept.
+            </p>
+            <p className={s.body} data-reveal="">
+              Engram began as a small script that read my notes every morning and sent me three from the past. Within a
+              month it had reminded me of a promise to a friend, a supplier we had already tried, and{" "}
+              <NoteLink slug="commonplace">a commonplace book</NoteLink> I had let lapse.
+            </p>
+            <p className={s.body} data-reveal="">
+              So we built the rest around that: a margin that answers while you write, links you make with two brackets,
+              and plain files you can take anywhere. Your notes stay on your disk. We would rather not read them, and we
+              built Engram so that we cannot.
+            </p>
+            <p className={s.body} data-reveal="">
+              Write one thing down today. Some morning next year, it will come back to you.
+            </p>
+            <p className={s.signName} data-reveal="">
+              Ilse Brandt
+            </p>
+            <p className={s.signRole}>Wrote the first version of Engram</p>
+          </div>
+          <figure className={s.letterFig} data-reveal="" style={{ ["--i" as string]: 1 }}>
+            <img
+              src="/variants/with-taste-skill/opus-5.5/v5/british-museum-reading-room-reading-desk-f1.jpg"
+              width={1600}
+              height={1200}
+              alt="Reading desk F1 in the British Museum Reading Room: a leather-topped desk with a brass lamp, a chair and curved bookcases behind"
+              loading="lazy"
+              decoding="async"
+            />
+            <figcaption className={s.caption}>Reading desk F1, British Museum Reading Room, London.</figcaption>
+          </figure>
+        </section>
+
+        <section id="pricing" className={`${s.section} ${s.pricing}`} aria-labelledby="h-pricing">
+          <div className={s.priceLead}>
+            <h2 id="h-pricing" className={s.h2} data-reveal="">
+              Pricing
+            </h2>
+            <figure className={s.priceFig} data-reveal="" style={{ ["--i" as string]: 1 }}>
+              <img
+                src="/variants/with-taste-skill/opus-5.5/v5/flanagan-clock-in-the-library-of-congress.jpg"
+                width={1600}
+                height={1011}
+                alt="The Flanagan clock above the Main Reading Room of the Library of Congress: a bronze Father Time with his scythe over the dial"
+                loading="lazy"
+                decoding="async"
+              />
+              <figcaption className={s.caption}>The Flanagan clock, Library of Congress.</figcaption>
+            </figure>
+          </div>
+          <div className={s.priceCols}>
+            {PRICES.map((col, c) => (
+              <div key={c} className={s.priceCol}>
+                {col.map((group, g) => (
+                  <div key={group.name} className={s.priceGroup} data-reveal="" style={{ ["--i" as string]: c + g }}>
+                    <h3 className={s.priceGroupName}>{group.name}</h3>
+                    <ul className={s.priceItems}>
+                      {group.items.map((item) => (
+                        <li key={item.name + item.price} className={s.priceItem}>
+                          <span className={s.priceRow}>
+                            <span>{item.name}</span>
+                            <span className={s.priceFigure}>{item.price}</span>
+                          </span>
+                          <span className={s.priceNote}>{item.note}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            ))}
+            <div className={s.priceAction} data-reveal="">
+              <a className={s.button} href={CTA_MAIL}>
+                Download Engram
+              </a>
+              <p className={s.priceActionNote}>Start on the free plan. Add Sync when your phone should have the same notes.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="questions" className={`${s.section} ${s.faqSec}`} aria-labelledby="h-questions">
+          <Questions />
+        </section>
+
+        <section id="linked" className={`${s.section} ${s.notesSec}`} aria-labelledby="h-linked">
+          <h2 id="h-linked" className={`${s.h2} ${s.side}`} data-reveal="">
+            Every note this page links to
+          </h2>
+          <ul className={s.noteList}>
+            {NOTE_ORDER.map((slug, i) => {
+              const note = NOTES[slug];
+              return (
+                <li key={slug} id={`note-${slug}`} className={s.noteItem} data-reveal="" style={{ ["--i" as string]: i % 2 }}>
+                  <p className={s.noteTitle}>{note.title}</p>
+                  <p className={s.noteMeta}>
+                    {note.folder}, edited {note.edited}. Linked from {note.backlinks} {note.backlinks === 1 ? "note" : "notes"}.
+                  </p>
+                  {note.body.map((line) => (
+                    <p key={line} className={s.noteBody}>
+                      {line}
+                    </p>
+                  ))}
+                  {slug === "bm" && (
+                    <img
+                      className={s.noteImg}
+                      src="/variants/with-taste-skill/opus-5.5/v5/british-museum-reading-room.jpg"
+                      width={1600}
+                      height={1200}
+                      alt="The round British Museum Reading Room: two tiers of bookcases curving under the windows of the dome, desks on the floor below"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+
+        <section id="download" className={s.cta} aria-labelledby="h-cta">
+          <h2 id="h-cta" className={s.ctaLine} data-reveal="">
+            Write one thing down today, and see what Engram brings back.
+          </h2>
+          <a className={s.button} href={CTA_MAIL} data-reveal="" style={{ ["--i" as string]: 1 }}>
+            Download Engram
+          </a>
+        </section>
+      </main>
+
+      <footer className={s.footer}>
+        <p className={s.credits}>
+          Pictures:{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:LOC_Main_Reading_Room_Highsmith.jpg">“LOC Main Reading Room”</a> by
+          Carol M. Highsmith, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>;{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:Salle_Labrouste_3.jpg">“Salle Labrouste 3”</a> by Peccadille,{" "}
+          <a href="https://creativecommons.org/licenses/by/4.0">CC BY 4.0</a>;{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:Long_Room_Interior,_Trinity_College_Dublin,_Ireland_-_Diliff.jpg">
+            “Long Room Interior, Trinity College Dublin”
+          </a>{" "}
+          by Diliff, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:Stockholms_stadsbibliotek_rotundan.jpg">“Stockholms stadsbibliotek rotundan”</a>{" "}
+          by Bermax, <a href="https://creativecommons.org/publicdomain/mark/1.0/">public domain</a>;{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:Biblioth%C3%A8que_nationale_de_France_-_Site_Richelieu-Louvois_-_Salle_Labrouste_-_Ensemble_-2.JPG">
+            “Salle Labrouste, Ensemble 2”
+          </a>{" "}
+          by MOSSOT, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:British_Museum_Reading_Room,_reading_desk_F1.jpg">
+            “British Museum Reading Room, reading desk F1”
+          </a>{" "}
+          by Bobulous, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>;{" "}
+          <a href="https://commons.wikimedia.org/w/index.php?curid=163125400">“Flanagan clock in the Library of Congress Main Reading Room”</a> by
+          Library of Congress Life, <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en/">CC0</a>;{" "}
+          <a href="https://commons.wikimedia.org/wiki/File:British_Museum_Reading_Room.jpg">“British Museum Reading Room”</a> by J Brew,{" "}
+          <a href="https://creativecommons.org/licenses/by-sa/2.0">CC BY-SA 2.0</a>. All via Wikimedia Commons.
+        </p>
+        <div className={s.footLine}>
+          <span className={s.footWhat}>Engram, a second brain</span>
+          <nav className={s.footLinks} aria-label="Footer">
+            <a href={CTA_MAIL}>Download</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#questions">Questions</a>
+            <a href="mailto:hello@engram.app">Contact</a>
+          </nav>
+          <span className={s.footYear}>
+            © 2026 Engram <a href="mailto:hello@engram.app?subject=Privacy">Privacy</a>
+          </span>
+        </div>
+      </footer>
+
+      <Reveal />
+      {/* Gallery copy: the corner iteration switcher is not rendered; the gallery has its own iteration navigation. */}
+    </div>
   );
 }

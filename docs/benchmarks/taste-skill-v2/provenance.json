@@ -225,6 +225,55 @@
       },
       "apiEquivalentUsd": 37.90202325,
       "preflight": "Same harness and setup check as sonnet-5.5 (operator report, not confirmed here)."
+    },
+    {
+      "model": "opus-5.5",
+      "modelId": "claude-opus-5-5",
+      "condition": "design-taste",
+      "replaces": "with-taste-skill/opus-5.5 v1 (added 2026-09-22 in gallery PR #43 with Sol 6; card cost $19.12). PR #43 does not record the v1 harness or skill version, and no docs/benchmarks folder or archive was kept for it; its gallery copy stays in git history.",
+      "runner": "Claude Code 2.1.304 headless (claude -p, --output-format stream-json --verbose) on a boat.dev cloud VM (Ubuntu 24.04), as a dedicated Linux user; the same harness as the sonnet-5.5 run",
+      "command": "claude -p --model claude-opus-5-5 --effort xhigh --strict-mcp-config --mcp-config <run>/mcp.json --dangerously-skip-permissions --output-format stream-json --verbose <prompt>",
+      "launcher": "E:\\w\\taste-v2\\boat\\bin\\sequence.sh -> run.sh (setup in setup.sh); the exact argv and environment are in <run>/design-taste.invocation.json. The VM's sequence.log records the start and finish.",
+      "reasoningEffort": "xhigh",
+      "sandbox": "--dangerously-skip-permissions (the init event reports permissionMode bypassPermissions)",
+      "isolation": "Run under env -i with an isolated HOME holding only the claude.ai login and empty files that block account skill and plugin sync. Environment: CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1, CLAUDE_CODE_SYNC_SKILLS=0, CLAUDE_CODE_SYNC_PLUGINS=0, CLAUDE_CODE_DISABLE_POLICY_SKILLS=1, DISABLE_AUTOUPDATER=1, CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1. The init event lists the skills design-taste-frontend, design, doctor and plugin-authoring, three built-in plugins (agents-md, telemetry, plugin-authoring), and reports claude.ai plugin sync disabled. The model invoked only design-taste-frontend (one Skill call, at 09:31:20Z). Context isolation only; no filesystem jail.",
+      "skillPlacement": "Project skill at work/.claude/skills/design-taste-frontend (SKILL.md sha256 d955dae4...), committed in the baseline; no skill file differs from the baseline at the end of the run",
+      "browserConfigured": "Playwright MCP 0.0.83 as the only MCP server, \"browser\" (--strict-mcp-config): isolated headless Chromium, 1440x960, image responses allowed",
+      "browserObservedInScoredSession": "Connected; the init event lists 25 browser tools. Main thread: 15 browser calls (1 resize, 1 navigate, 3 click, 3 key press, 3 evaluate, 1 run_code, 2 console reads, 1 screenshot), all between 10:28:13Z and 10:29:06Z, to try the switcher and capture page ends. Helper agents: 17 calls, all by the /2 helper (5 navigate, 8 evaluate, 2 resize, 2 screenshots).",
+      "visualFeedbackUsed": "The skill's own inspector (scripts/inspect.mjs) ran in 67 Bash commands (5 by the main thread, one of them looping over all five pages; 62 by the helpers). The session opened 193 images with Read (31 main thread, 162 helpers: inspector screenshots, contact sheets and candidate pictures) and took 3 browser screenshots.",
+      "subAgents": "Five forks (subagent_type fork, foreground), one per page, spawned in one main-thread turn at 09:39:39-09:40:08Z after the main thread wrote .taste-skill/brief.md, the shared switcher and inline-script components, and dealt one direction per page with the skill's draw.mjs (12 draw.mjs commands; the final message says /3 was redrawn once to keep its palette apart from /2's). They returned at 10:07:44Z (/3), 10:12:45Z (/5), 10:14:38Z (/1), 10:20:09Z (/2) and 10:22:35Z (/4). All five completed; none failed or was stopped (result line subagent_stats: spawned 5, completed 5, failed 0, killed 0). The /1 helper reported one covered-text inspector FAIL caused by the corner switcher; the main thread then rewrote the switcher from an open row into a single button and reran the inspector on all five pages (0 FAIL; 2, 0, 0, 3 and 2 WARN).",
+      "toolUse": {
+        "mainThread": { "Skill": 1, "Agent": 5, "Bash": 46, "Read": 32, "Write": 5, "ToolSearch": 2, "browserMcp": 15 },
+        "helpers": { "Bash": 343, "Read": 162, "Write": 43, "Edit": 2, "ToolSearch": 1, "browserMcp": 17 },
+        "webFetch": 0,
+        "webSearch": 0
+      },
+      "toolErrors": "9 tool results were errors, none of them permission denials (the result line's permission_denials is empty): five helper checks for Python's PIL module (not installed), two Wikimedia Commons video downloads refused with HTTP 429, one Read of an inspector screenshot that did not exist, and one main-thread browser click whose selector matched 13 elements.",
+      "rateLimitEvents": "35 rate_limit_event records, all status allowed on the five-hour window (five-hour utilization 0.24 to 0.53, seven-day 0.04 to 0.09). Nothing was blocked.",
+      "sessionId": "4646ebc5-da38-4499-8874-0c0a0fc6353b",
+      "startedAt": "2026-10-24T09:31:13.554Z",
+      "finishedAt": "2026-10-24T10:31:33.936Z",
+      "wallSeconds": 3620.382,
+      "exitCode": 0,
+      "numTurns": 108,
+      "promptSha256": "62766cbc85f2afb9e3949690610e7d21ff051498726d385696b0722a33c07565",
+      "baselineCommit": "fb1d00b66862546ccf7d0ded1b90a956a83e5ed7",
+      "completed": true,
+      "userTurns": 1,
+      "finalMessage": "opus-5-5.design-taste.final.txt (the result field of the last stream-json line)",
+      "finalChecksByModel": "From the log: the main thread's last inspector pass over /1-/5 at 10:24Z returned 0 FAIL with 2, 0, 0, 3 and 2 WARN; next build compiled and generated 9 static pages at 10:30Z; the skill's lint.mjs reported 0 FAIL, 0 WARN over 49 files.",
+      "networkFetchesByModel": "Pictures and clips found and downloaded through the skill's assets.mjs (56 commands) and curl, from Wikimedia Commons, the Met, the Art Institute of Chicago and the Library of Congress, saved under public/v1-v5 with credits files and credited in each footer. Google fonts through next/font; Pilcrow Rounded woff2 files downloaded from Fontshare into app/4/fonts with curl. No WebFetch or WebSearch calls.",
+      "usage": {
+        "source": "modelUsage in the stream-json result line (main thread and helpers together)",
+        "inputTokens": 1132,
+        "cacheCreationInputTokens": 1745970,
+        "cacheReadInputTokens": 191897974,
+        "outputTokens": 837208,
+        "thinkingTokens": 447803,
+        "thinkingNote": "Thinking tokens are part of outputTokens."
+      },
+      "apiEquivalentUsd": 64.7958338,
+      "stoppedAttempt": "Unscored. The VM sequence started Opus 5.5 at 2026-10-23T18:33:57Z (session f11ebe5d-062e-48f6-b76f-b9752e1ed8fd). Its four rate-limit records are allowed_warning on the seven-day window at 0.95. The log has no result line. The sequence log records it stopped by hand at 18:37:09Z because the weekly Claude limit was at 94%, to ask Dara; the run's finish record is 18:37:00Z with exit code 143. In those three minutes the main thread invoked the skill and ran 22 Bash commands that read files and listed options (Next.js docs, skill references, draw.mjs --help and --list, a check for a browser and network access); it spawned no helpers and wrote no project files. The earliest file in the scored run's .taste-skill/ is from 09:34:31Z on 2026-10-24. The scored session got a fresh isolated home. Its log and home folder are in opus-5-5/archive/2026-10-23-stopped-for-weekly-limit/ in the run folder."
     }
   ],
   "integrationChanges": {
@@ -263,6 +312,16 @@
       "d1.css: the gallery's CSS scoping renames each file's keyframes, so /1's ad-rise animations (hero card and chips) no longer found the keyframe defined in taste.css. d1.css carries an identical copy.",
       "d1.css: under prefers-reduced-motion the gallery's own src/app/globals.css gives every element a 0.01ms transition. FitText sets the footer address's font size and measures it at once, so it read the old size; at 390 px the address stayed at 260px and the page overflowed by 949 px. The fitted spans get transition-property: none, which matches the source, where they have no transition.",
       "svg-word.tsx: the footer wordmark's measure moves the word by its own last offset, so its final position depends on whether the first measure has been applied when the fonts-ready measure runs. With the source's remote fonts it usually has: 46 of 48 production-build loads (pages 2-5, both widths, six loads each) landed low, while the dev server split about evenly. With the gallery's local fonts it never had, and every gallery load landed high. The fonts-ready measure now waits two animation frames, and every gallery load lands low."
+    ],
+    "opus-5.5": [
+      "Copied app/ (layout.tsx, page.tsx, globals.css, favicon.ico, 1-5 with their components and CSS modules, _components). Not copied: app/4/fonts (the three Pilcrow Rounded woff2 files, now served from /variants/with-taste-skill/opus-5.5/fonts/ and byte-identical), the five public credits.json files, the starter's unused SVGs, the next.config.ts change (devIndicators off) and the .taste-skill notes; all are covered by the source hashes.",
+      "Root html/body converted to data-source-html/data-source-body divs, and the root layout's LayoutProps<\"/\"> replaced with { children: React.ReactNode }. The source adds the class js to <html> with an inline script before first paint; the gallery's root div carries className \"js\" from the server instead, and the InlineScript component is no longer rendered (file kept unused).",
+      "The 43 :global(html.js) selectors in the five page CSS modules (entrance motion on all five pages, and on /5 the FAQ layout) became :global(div:where([data-source-html]).js), which has the same specificity and matches the root div. On /1 three of them had no local class ([data-reveal] and [data-reveal][data-in]), which the gallery's webpack CSS-modules check rejects; they are anchored to the page root with :where(.page), which keeps specificity and keeps them off other entries' [data-reveal] elements.",
+      "Each page rendered <VersionSwitcher current={n} /> inside its own root. Those five calls and their imports are removed, because the gallery provides iteration navigation; this also removes the switcher's window key handler (1-5, [ and ]), which would have routed to /1-/5 at the site root. The component file is kept unused.",
+      "Pictures and clips namespaced under /variants/with-taste-skill/opus-5.5/v1-v5/; the 50 /vN/ paths in the pages and components updated.",
+      "Fonts: next/font in Next.js 16 names families plainly (\"Hanken Grotesk\", \"Barlow\", \"Barlow Condensed\", \"Newsreader\", \"Archivo\", and \"pilcrow\" for the local Pilcrow Rounded), and other gallery entries declare the same names with other files and weights (counted on this entry's gallery /1 page: 296 other Archivo faces, 214 Newsreader, 36 Hanken Grotesk, 10 Barlow, 10 Barlow Condensed). app/fonts.css declares the 58 @font-face rules (52 faces and 6 fallback faces) the source's dev server served on 2026-10-24, with the 38 font files copied to /variants/with-taste-skill/opus-5.5/fonts/, under family names prefixed \"Opus v2 \", plus classes that set the same --font-* variables. The five pages and app/4/fonts.ts use those class names instead of calling next/font/google and next/font/local.",
+      "globals.css adds a rule for reduced motion: inside this entry, transition-duration: 0s !important on every element. Reason: the gallery's own src/app/globals.css sets transition-duration: 0.01ms !important on every element under reduced motion, which turns each font-size change into a one-frame transition. The fit-to-width lines on /2 (footer address), /3 (footer address) and /4 (footer word) set a size and measure it at once, so they read the previous size and fit wrong: in the first gallery build they came out visibly smaller at 1440 px, and on /3 at 390 px the footer address sometimes grew to 2,295 px wide. With the rule, all three match the source at both sizes. Without reduced motion nothing changes.",
+      "/3 pricing headline: `<span>$6</span> a&nbsp;month` became `<span>$6</span>{\" \"}a&nbsp;month`. The gallery's compiler (Next.js 16.2.0, webpack) dropped the space when the JSX text began with a space and held &nbsp;; the source's Next.js 16.3.8 kept it. No other JSX text in the source has that shape."
     ]
   },
   "costBasis": {
@@ -273,7 +332,8 @@
         "longContext": { "input": 4.0, "cachedInput": 0.2, "output": 15.0, "appliesTo": "requests with >272K input tokens" }
       },
       "claude-sonnet-5-5": { "input": 2.0, "cacheWrite5m": 2.5, "cacheWrite1h": 4.0, "cacheRead": 0.1, "output": 10.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" },
-      "claude-fable-5-1": { "input": 10.0, "cacheWrite5m": 12.5, "cacheWrite1h": 20.0, "cacheRead": 0.25, "output": 50.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" }
+      "claude-fable-5-1": { "input": 10.0, "cacheWrite5m": 12.5, "cacheWrite1h": 20.0, "cacheRead": 0.25, "output": 50.0, "appliesTo": "all requests; no long-context surcharge", "checkedAt": "2026-10-24" },
+      "claude-opus-5-5": { "input": 4.0, "cacheWrite5m": 5.0, "cacheWrite1h": 8.0, "cacheRead": 0.2, "output": 20.0, "appliesTo": "all requests; no long-context surcharge (full 1M context at standard rates); global inference_geo", "checkedAt": "2026-10-24" }
     },
     "checkedAt": "2026-10-21",
     "sources": ["https://developers.openai.com/api/docs/pricing", "https://platform.claude.com/docs/en/about-claude/pricing"]

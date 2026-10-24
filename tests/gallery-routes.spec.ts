@@ -370,7 +370,8 @@ test("home page hides superseded-generation cards until Show Archived", async ({
   );
   await expect(page.getByTestId("gallery-card").filter({ hasText: "GPT 5.5 low" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
-  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
+  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
   for (const { label } of forceArchivedModels) {
     await expect(page.getByTestId("gallery-card").filter({ hasText: label })).toHaveCount(0);
   }
@@ -403,7 +404,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(lowCards).toHaveCount(2);
   await expect(lowCards.first()).toContainText("Archived");
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
-  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
+  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
   await expect(page.getByRole("button", { name: "Show Archived" })).toHaveCount(0);
   await expect(page).toHaveURL(/\?q=5\.5$/);
 
@@ -412,7 +414,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(page.getByText("No models match")).toBeVisible();
 
   await page.getByRole("button", { name: "Clear search" }).last().click();
-  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
+  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -625,7 +628,7 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
 }
 
 // Taste-skill v2 reruns replace the model's v1 "With Taste Skill" entry in place.
-const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1"] as const;
+const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5"] as const;
 
 test("taste-skill v2 reruns are marked on their card and in the skill picker", async ({ page }) => {
   const v2Entries = galleryManifest.filter((entry) => entry.skillVersion === "v2");

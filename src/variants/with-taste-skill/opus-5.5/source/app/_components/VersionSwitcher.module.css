@@ -1,0 +1,113 @@
+/* Flat and square, with no shadow: it follows the house rules of every page it sits on.
+   Pages may set --switch-bg and --switch-ink on their root to tune it to their palette. */
+.switcher {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font: inherit;
+  font-size: 15px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 52px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: var(--switch-bg, #141414);
+  color: var(--switch-ink, #ffffff);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 140ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chevron {
+  transition: transform 240ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.button[aria-expanded="true"] .chevron {
+  transform: rotate(180deg);
+}
+
+.menu {
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  min-width: 220px;
+  background: var(--switch-bg, #141414);
+  color: var(--switch-ink, #ffffff);
+  animation: menu-in 240ms cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: bottom right;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: 44px;
+  padding: 0 14px 0 10px;
+  color: inherit;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+.number {
+  min-width: 1ch;
+  font-weight: 600;
+}
+
+.item[aria-current="page"] {
+  background: var(--switch-ink, #ffffff);
+  color: var(--switch-bg, #141414);
+}
+
+.button:active {
+  transform: scale(0.94);
+}
+
+.button:focus-visible,
+.item:focus-visible {
+  outline: 2px solid var(--switch-ink, #ffffff);
+  outline-offset: -4px;
+}
+
+.item[aria-current="page"]:focus-visible {
+  outline-color: var(--switch-bg, #141414);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .item:not([aria-current="page"]):hover {
+    background: color-mix(in srgb, var(--switch-ink, #ffffff) 16%, var(--switch-bg, #141414));
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .menu {
+    animation: none;
+  }
+}
+
+@media print {
+  .switcher {
+    display: none;
+  }
+}

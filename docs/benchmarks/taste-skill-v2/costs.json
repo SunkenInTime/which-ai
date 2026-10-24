@@ -76,6 +76,29 @@
       "claudeCodeTotalCostUsd": 37.902023249999985,
       "claudeCodeCostBasis": "list",
       "note": "The sum equals Claude Code's total_cost_usd. Thinking tokens are counted inside outputTokens. Fable 5.1 cache reads are priced at 0.025x the base input rate. The run used a Claude subscription, so this is an estimate at list price, not a cash charge. The v1 card showed $10.09."
+    },
+    {
+      "model": "opus-5.5",
+      "modelId": "claude-opus-5-5",
+      "condition": "design-taste",
+      "checkedAt": "2026-10-24",
+      "source": "https://platform.claude.com/docs/en/about-claude/pricing",
+      "method": "Session totals from the modelUsage field of the stream-json result line (Claude Code's own count, main thread and helper agents together). Cache writes split by duration from the per-message usage in the log: every main-thread write was a 1-hour write, every helper-agent write a 5-minute write. Anthropic lists no long-context surcharge for Opus 5.5 (the full 1M context is at standard rates), and the result line reports inference_geo global and service tier standard, so one rate per token category applies.",
+      "ratesUsdPerMillion": { "input": 4.0, "cacheWrite5m": 5.0, "cacheWrite1h": 8.0, "cacheRead": 0.2, "output": 20.0 },
+      "totals": {
+        "inputTokens": 1132,
+        "cacheWrite1hTokens": 312567,
+        "cacheWrite5mTokens": 1433403,
+        "cacheReadTokens": 191897974,
+        "outputTokens": 837208,
+        "thinkingTokens": 447803
+      },
+      "usd": { "input": 0.004528, "cacheWrite1h": 2.500536, "cacheWrite5m": 7.167015, "cacheRead": 38.3795948, "output": 16.74416 },
+      "apiEquivalentUsd": 64.7958338,
+      "cardUsd": 64.8,
+      "claudeCodeTotalCostUsd": 64.79583379999997,
+      "claudeCodeCostBasis": "list",
+      "note": "modelUsage has 3,981 more cache-write tokens than the per-message log; they are priced at the 5-minute rate with the other helper writes, and with that split the sum reproduces Claude Code's total_cost_usd exactly. Thinking tokens are counted inside outputTokens. Requests by thread, from the per-message usage in the log: 75 main thread, 481 across the five helper agents. Their logged cache reads (14,906,616 main, 174,487,661 helpers) sum to 1.3% less than modelUsage; the totals use modelUsage. Cache reads are $38.38 of the total. The run used a Claude subscription, so this is an estimate at list price, not a cash charge. The v1 card showed $19.12."
     }
   ]
 }

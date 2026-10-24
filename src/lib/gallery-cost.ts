@@ -33,7 +33,7 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "with-taste-skill/sol-6": 3.52,
   "without-design-skill/sol-6": 0.97,
   "with-design-skill/opus-5.5": 3.3,
-  "with-taste-skill/opus-5.5": 19.12,
+  "with-taste-skill/opus-5.5": 64.8,
   "without-design-skill/opus-5.5": 6.46,
   "with-design-skill/grok-4.7": 7.43,
   "with-taste-skill/grok-4.7": 6.48,
