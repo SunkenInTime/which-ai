@@ -20,6 +20,16 @@
       "cardUsd": 2.48,
       "allShortContextUsd": 2.2221844,
       "note": "The largest single request carried 308,123 input tokens. The pricing page does not say whether the long-context rate applies per request or to a whole session; per request is used here. Failed or retried transport attempts during the network outages are not in the usage records."
+    },
+    {
+      "model": "gemini-4-argon",
+      "modelId": "gemini-4-argon-high",
+      "condition": "design-taste",
+      "apiEquivalentUsd": null,
+      "cardUsd": null,
+      "status": "unknown, pending Cursor's usage export",
+      "observed": "cursor-agent 2026.10.19-6bbf2c4 printed no usage summary. The stream-json logs of the three scored sessions (design-taste, design-taste-resume1, design-taste-resume2) and of the discarded first attempt contain no token, usage, cost or credit fields. No estimate is made without a usage record; the gallery card shows no cost.",
+      "toCompute": "Match Cursor's exported per-event usage for chat 8207a939-19a3-4cd3-a3af-cf5e97c08e45 to the session windows in provenance.json, then price it the way docs/benchmarks/gemini-4-argon/costs.json priced the v1 run. The discarded first attempt (chat ffd985e7-dd11-49b0-8037-f29c5fd985e5) is unscored and should be reported separately."
     }
   ]
 }

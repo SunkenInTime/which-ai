@@ -1,477 +1,1042 @@
-import Image from "next/image";
-import Link from "next/link";
-import {
-  GridFour,
-  TreeStructure,
-  KeyReturn,
-  ArrowsMerge,
-  ArrowRight,
-  Quotes,
-} from "@phosphor-icons/react/dist/ssr";
-import { TrustedLogos } from "../components/TrustedLogos";
-import { Z_INDEX } from "../components/z-index";
-import { ZettelSlipBoxIndex, ZettelReveal } from "./ZettelInteractive";
+"use client";
 
-/**
- * ITERATION /4: ZETTEL
- * Design Read: "Reading this as: high-density index landing page for power note-takers and Zettelkasten practitioners, with a Swiss brutalist architectural language, leaning toward native CSS 1px hairlines + Geist & JetBrains Mono + Stone & Brick-Red palette."
- * Dials: DESIGN_VARIANCE: 8, MOTION_INTENSITY: 4, VISUAL_DENSITY: 8
- * High-Density Rules (Section 4.4 & Section 7):
- * - VISUAL_DENSITY > 7: No generic floating card boxes; 1px architectural hairlines separate data.
- * - Mandatory font-mono (JetBrains Mono) for all numerical metrics.
- * Palette Lock (Section 4.2): Stone architectural paper (stone-100 / dark:stone-950) + single Brick Red accent (red-600 / dark:red-500).
- * Shape Lock (Section 4.4): All-sharp rounded-none (0px radius) across the entire page.
- * CTA Intent Lock (Section 4.5): "Claim slip-box" used for all primary signup CTAs.
- */
+import { useState } from "react";
+import { useScrollReveal } from "@/variants/with-taste-skill/gemini-4-argon/source/components/useScrollReveal";
+import { AssetCredits } from "@/variants/with-taste-skill/gemini-4-argon/source/components/AssetCredits";
 
-const PRACTITIONER_QUOTES = [
+const POSTER_CARDS = [
   {
-    quote:
-      "Niklas Luhmann wrote seventy books out of a wooden slip-box because his numbering system forced ideas to collide. Zettel is the first software that implements true Folgezettel sequences without folder clutter.",
-    author: "Prof. Lukas Baumgartner",
-    role: "Chair of Media Sociology, ETH Zurich",
+    code: "21 / 3a",
+    title: "Folders kill surprise.",
+    words: "178 / 240w",
+    body: "When you file a note into a topic folder, you only ever re-read it when you are already thinking about that topic. The slip-box breaks this echo chamber by filing thoughts behind neighboring arguments instead of abstract categories.",
+    links: ["21/3a1", "14/8b", "9c/2a"],
   },
   {
-    quote:
-      "Every action in Zettel is bound to a two-key chord. I can file an atomic note, branch a sequence, and cite three prior slips without touching the mouse.",
-    author: "Claire Vance-Kowalski",
-    role: "Investigative Journalist & Non-Fiction Author",
+    code: "21 / 3a1",
+    title: "Enforce 240-word cards.",
+    words: "164 / 240w",
+    body: "An A6 paper slip holds roughly 240 words. Kasten locks every note to that exact boundary. When an argument grows longer, you split it into a new branching address and link the two slips explicitly.",
+    links: ["21/3a", "21/3a2", "33/1a"],
+  },
+  {
+    code: "14 / 8b",
+    title: "Index entry doors only.",
+    words: "152 / 240w",
+    body: "Never tag every note. In Luhmann's Bielefeld archive, the Schlagwort register listed only one or two starting addresses per keyword. Once inside the chain, internal links carry you across decades of work.",
+    links: ["14/8b1", "21/3a"],
+  },
+  {
+    code: "9c / 2a4",
+    title: "Compile drafts in 1 second.",
+    words: "142 / 240w",
+    body: "Pull any Folgezettel branch onto the Manuscript Desk. Kasten concatenates the plain Markdown slips in sequence and generates a clean LaTeX, DOCX, or Pandoc chapter with all citations intact.",
+    links: ["9c/2a3", "21/3a1"],
   },
 ];
 
-export default function ZettelPage() {
-  return (
-    <div className="min-h-[100dvh] bg-stone-100 text-stone-900 dark:bg-stone-950 dark:text-stone-100 font-sans selection:bg-red-600 selection:text-white">
-      {/* Sticky Single-Line Architectural Header (64px height <= 80px cap) */}
-      <header
-        className={`sticky top-0 ${Z_INDEX.stickyNav} h-16 border-b border-stone-300 bg-stone-100/95 backdrop-blur-md dark:border-stone-800 dark:bg-stone-950/95`}
-      >
-        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/with-taste-skill/gemini-4-argon/4" className="flex items-center gap-2.5">
-            <GridFour
-              size={22}
-              weight="regular"
-              className="text-red-600 dark:text-red-500"
-            />
-            <span className="font-jetbrains text-base font-bold tracking-tight">
-              ZETTEL
-            </span>
-          </Link>
+export default function IterationFourPage() {
+  useScrollReveal();
 
-          <nav className="hidden md:flex items-center gap-8 font-jetbrains text-xs font-semibold text-stone-600 dark:text-stone-400">
+  const [activeCardIdx, setActiveCardIdx] = useState(0);
+  const [hoveredStage, setHoveredStage] = useState<number | null>(null);
+  const [openFaq, setOpenFaq] = useState<number>(0);
+
+  const activeCard = POSTER_CARDS[activeCardIdx];
+
+  return (
+    <div className="theme-iter4">
+      {/* ================================================================
+          SECTION 1 · HERO: Poster type and an angled slip-card
+          ================================================================ */}
+      <header
+        style={{
+          backgroundColor: "#ffffff",
+          borderBottom: "3px solid #0a0a0a",
+        }}
+      >
+        {/* Top Utility Strip */}
+        <div
+          className="iter4-container"
+          style={{
+            paddingTop: "22px",
+            paddingBottom: "22px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "16px",
+          }}
+        >
+          <div
+            style={{
+              fontFamily: "var(--font-display)",
+              fontWeight: 800,
+              fontSize: "18px",
+              letterSpacing: "-0.04em",
+            }}
+          >
+            KASTEN!
+          </div>
+
+          <nav
+            aria-label="Primary navigation"
+            style={{
+              display: "flex",
+              gap: "24px",
+              flexWrap: "wrap",
+              alignItems: "center",
+              fontWeight: 500,
+            }}
+          >
             <a
-              href="#metrics"
-              className="transition-colors hover:text-red-600 dark:hover:text-red-400"
+              href="#poster-showcase"
+              style={{ color: "#0a0a0a", textDecoration: "none" }}
             >
-              TELEMETRY
+              Slip-Box
             </a>
             <a
-              href="#index"
-              className="transition-colors hover:text-red-600 dark:hover:text-red-400"
+              href="#colour-quadrant"
+              style={{ color: "#0a0a0a", textDecoration: "none" }}
             >
-              SLIP-BOX
+              Rules
             </a>
             <a
-              href="#principles"
-              className="transition-colors hover:text-red-600 dark:hover:text-red-400"
+              href="#four-stages"
+              style={{ color: "#0a0a0a", textDecoration: "none" }}
             >
-              STRUCTURE
+              Ritual
             </a>
             <a
-              href="#practitioners"
-              className="transition-colors hover:text-red-600 dark:hover:text-red-400"
+              href="#poster-pricing"
+              style={{
+                backgroundColor: "var(--field-1)",
+                color: "#ffffff",
+                padding: "10px 20px",
+                textDecoration: "none",
+                fontWeight: 500,
+              }}
             >
-              AUTHORS
+              Get Kasten ($0 / $68)
             </a>
           </nav>
+        </div>
 
-          <a
-            href="#claim"
-            className="inline-flex h-10 items-center justify-center rounded-none bg-red-600 px-5 font-jetbrains text-xs font-bold text-white transition-colors hover:bg-red-700 active:scale-[0.98] whitespace-nowrap dark:bg-red-500 dark:text-stone-950 dark:hover:bg-red-400"
+        {/* Hero Main Stage */}
+        <div
+          className="iter4-container iter4-hero-grid"
+          style={{
+            paddingTop: "48px",
+            paddingBottom: "72px",
+          }}
+        >
+          {/* Columns 1–7: Oversized Poster Headline */}
+          <div className="anim-load-1">
+            <h1
+              className="iter4-h1"
+              style={{
+                lineHeight: 0.92,
+                marginBottom: "28px",
+              }}
+            >
+              FILE BY{" "}
+              <span style={{ color: "var(--field-1)" }}>SPINE.</span>
+            </h1>
+
+            <p
+              style={{
+                fontSize: "18px",
+                maxWidth: "48ch",
+                margin: "0 0 32px 0",
+                color: "#0a0a0a",
+              }}
+            >
+              Kasten is a brutalist, local-first Zettelkasten where every note
+              is a 240-word plain Markdown slip filed along Luhmann&apos;s
+              branching alphanumeric spine.
+            </p>
+
+            <div
+              className="anim-load-2"
+              style={{
+                display: "flex",
+                gap: "16px",
+                flexWrap: "wrap",
+                alignItems: "center",
+              }}
+            >
+              <a
+                href="#poster-showcase"
+                style={{
+                  backgroundColor: "var(--field-2)",
+                  color: "#ffffff",
+                  padding: "18px 28px",
+                  textDecoration: "none",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 800,
+                  fontSize: "15px",
+                  border: "3px solid #0a0a0a",
+                }}
+              >
+                INSPECT LIVE BOARD ↓
+              </a>
+              <span style={{ fontWeight: 500, fontSize: "18px" }}>
+                macOS · Linux · Windows · 100% Offline .md
+              </span>
+            </div>
+          </div>
+
+          {/* Columns 8–12: Physical Slip-Card Tilted over Electric Blue Block */}
+          <div
+            className="anim-load-3"
+            style={{
+              position: "relative",
+              padding: "28px 16px",
+            }}
           >
-            Claim slip-box
-          </a>
+            {/* Electric Blue Poster Backdrop */}
+            <div
+              style={{
+                backgroundColor: "var(--field-1)",
+                padding: "24px",
+                border: "3px solid #0a0a0a",
+              }}
+            >
+              {/* Archival Photo Window */}
+              <div
+                style={{
+                  height: "240px",
+                  overflow: "hidden",
+                  border: "2px solid #0a0a0a",
+                  marginBottom: "20px",
+                }}
+              >
+                <img
+                  src="/variants/with-taste-skill/gemini-4-argon/assets/catalog-card-for-kazantzakis-askitiki-the-photo.jpg"
+                  width={1920}
+                  height={1440}
+                  alt="Archival library index card with blue ink classification and brass rod punch hole"
+                  decoding="async"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+
+              {/* Tilted Physical Slip Card (-3deg) */}
+              <div
+                data-ui="hero-angled-slip"
+                style={{
+                  backgroundColor: "#ffffff",
+                  color: "#0a0a0a",
+                  padding: "24px",
+                  border: "3px solid #0a0a0a",
+                  transform: "rotate(-3deg)",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "12px",
+                    gap: "8px",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <span
+                    style={{
+                      backgroundColor: "var(--field-2)",
+                      color: "#ffffff",
+                      padding: "4px 10px",
+                      fontWeight: 700,
+                      fontSize: "15px",
+                    }}
+                  >
+                    SLIP 21 / 3a1
+                  </span>
+                  <span style={{ fontWeight: 500, fontSize: "15px" }}>
+                    A6 · 240W MAX
+                  </span>
+                </div>
+
+                <p
+                  style={{
+                    margin: "0 0 14px 0",
+                    fontSize: "18px",
+                    fontWeight: 500,
+                  }}
+                >
+                  &ldquo;A note that requires scrolling is not an atomic
+                  thought; it is an unedited draft hiding inside your
+                  cabinet.&rdquo;
+                </p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: "15px",
+                    color: "var(--muted)",
+                  }}
+                >
+                  <span>~/Kasten/21-3a1.md</span>
+                  <strong style={{ color: "var(--field-1)" }}>↗ [[14/8b]]</strong>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
 
-      <main>
-        {/* SECTION 1: Swiss Brutalist Asymmetric Split Hero (min-h-[100dvh], pt-12 md:pt-16 <= pt-24 cap, max 4 text elements) */}
-        <section className="min-h-[calc(100dvh-4rem)] pt-12 pb-16 md:pt-16 md:pb-20 flex items-center border-b border-stone-300 dark:border-stone-800">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center gap-10 lg:grid-cols-12">
-              {/* Left 7 Cols: Max 4 Text Elements (Eyebrow #1, Headline <= 2 lines, Subtext <= 20 words, CTAs) */}
-              <div className="lg:col-span-7 space-y-6">
-                <p className="font-jetbrains text-xs uppercase tracking-[0.18em] text-red-600 dark:text-red-400 font-bold">
-                  Luhmann Folgezettel Engine
-                </p>
-
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter leading-none">
-                  Atomic thoughts, chained into{" "}
-                  <span className="text-red-600 dark:text-red-500">
-                    compound
-                  </span>{" "}
-                  intelligence.
-                </h1>
-
-                <p className="text-base sm:text-lg text-stone-700 dark:text-stone-300 leading-relaxed max-w-[56ch]">
-                  Build a lifelong Zettelkasten with alphanumeric Folgezettel branching, keyboard-only navigation, and zero folder hierarchy.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <a
-                    href="#claim"
-                    className="inline-flex h-12 items-center justify-center gap-2 rounded-none bg-red-600 px-6 font-jetbrains text-xs font-bold text-white transition-colors hover:bg-red-700 active:scale-[0.98] whitespace-nowrap dark:bg-red-500 dark:text-stone-950 dark:hover:bg-red-400"
-                  >
-                    <span>Claim slip-box</span>
-                    <ArrowRight size={15} weight="bold" />
-                  </a>
-                  <a
-                    href="#index"
-                    className="inline-flex h-12 items-center justify-center rounded-none border border-stone-400 bg-white px-6 font-jetbrains text-xs font-bold text-stone-900 transition-colors hover:bg-stone-200 active:scale-[0.98] whitespace-nowrap dark:border-stone-700 dark:bg-stone-900 dark:text-stone-100 dark:hover:bg-stone-800"
-                  >
-                    Browse index
-                  </a>
-                </div>
-              </div>
-
-              {/* Right 5 Cols: Real Archival Index Photography in Sharp Hairline Frame */}
-              <div className="lg:col-span-5">
-                <ZettelReveal>
-                  <div className="border border-stone-400 bg-white p-3 dark:border-stone-700 dark:bg-stone-900">
-                    <div className="relative aspect-[4/3] w-full overflow-hidden rounded-none bg-stone-200 dark:bg-stone-800">
-                      <Image
-                        src="https://picsum.photos/seed/zettel-swiss-archival-cabinet/1000/750"
-                        alt="Architectural index drawers and structured reference slips"
-                        fill
-                        priority
-                        sizes="(max-width: 1024px) 100vw, 42vw"
-                        className="object-cover contrast-105"
-                      />
-                    </div>
-                    <div className="mt-3 flex items-center justify-between border-t border-stone-300 pt-2.5 font-jetbrains text-xs text-stone-700 dark:border-stone-800 dark:text-stone-300">
-                      <span>REGISTER: 90,000 ATOMIC SLIPS</span>
-                      <span className="font-bold text-red-600 dark:text-red-400">
-                        14a1a2
-                      </span>
-                    </div>
-                  </div>
-                </ZettelReveal>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 2: Logo Wall (Under Hero, Real SVG Marks, Logo-Only rule) */}
-        <section
-          aria-label="Universities and editorial teams using Zettel"
-          className="border-b border-stone-300 bg-white py-10 dark:border-stone-800 dark:bg-stone-900/60"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <TrustedLogos className="text-stone-700 dark:text-stone-400" />
-          </div>
-        </section>
-
-        {/* SECTION 3: High-Density 1px Hairline Telemetry Strip (VISUAL_DENSITY: 8 - No card boxes, font-mono numbers) */}
-        <section
-          id="metrics"
-          className="border-b border-stone-300 bg-stone-100 dark:border-stone-800 dark:bg-stone-950"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 divide-y divide-stone-300 border-x border-stone-300 md:grid-cols-4 md:divide-x md:divide-y-0 dark:divide-stone-800 dark:border-stone-800">
-              <div className="p-6 sm:p-8">
-                <p className="font-jetbrains text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-400">
-                  90,000
-                </p>
-                <p className="mt-2 text-xs font-semibold text-stone-900 dark:text-stone-100">
-                  Luhmann Archive Capacity
-                </p>
-                <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
-                  Tested with ninety thousand cross-linked slips at zero frame drop.
-                </p>
-              </div>
-
-              <div className="p-6 sm:p-8">
-                <p className="font-jetbrains text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100">
-                  0
-                </p>
-                <p className="mt-2 text-xs font-semibold text-stone-900 dark:text-stone-100">
-                  Nested Topic Folders
-                </p>
-                <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
-                  Structure emerges bottom-up from alphanumeric Folgezettel chains.
-                </p>
-              </div>
-
-              <div className="p-6 sm:p-8">
-                <p className="font-jetbrains text-3xl sm:text-4xl font-bold text-stone-900 dark:text-stone-100">
-                  100%
-                </p>
-                <p className="mt-2 text-xs font-semibold text-stone-900 dark:text-stone-100">
-                  Keyboard Chord Control
-                </p>
-                <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
-                  Branch, transclude, and split atomic notes without leaving home row.
-                </p>
-              </div>
-
-              <div className="p-6 sm:p-8">
-                <p className="font-jetbrains text-3xl sm:text-4xl font-bold text-red-600 dark:text-red-400">
-                  1.2 ms
-                </p>
-                <p className="mt-2 text-xs font-semibold text-stone-900 dark:text-stone-100">
-                  Transclusion Resolution
-                </p>
-                <p className="mt-1 text-xs text-stone-600 dark:text-stone-400">
-                  Sample latency assembling a 40-slip outline into a continuous draft.
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 4: Interactive Slip-Box Linker (Client Leaf Component, Eyebrow #2 of 2) */}
-        <section
-          id="index"
-          className="border-b border-stone-300 py-20 sm:py-24 dark:border-stone-800"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 max-w-2xl space-y-3">
-              <p className="font-jetbrains text-xs uppercase tracking-[0.18em] text-red-600 dark:text-red-400 font-bold">
-                Interactive Folgezettel Register
-              </p>
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Inspect the slip-box and file an atomic proposition.
+      {/* ================================================================
+          SECTION 2 · SHOWCASE: Product on a colour block
+          ================================================================ */}
+      <section
+        id="poster-showcase"
+        style={{
+          backgroundColor: "var(--field-1)",
+          color: "#ffffff",
+          padding: "88px 0",
+          borderBottom: "3px solid #0a0a0a",
+        }}
+      >
+        <div className="iter4-container">
+          <div
+            data-reveal
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "end",
+              flexWrap: "wrap",
+              gap: "24px",
+              marginBottom: "40px",
+            }}
+          >
+            <div>
+              <h2 className="iter4-h2">
+                FOUR SLIPS. ONE SPINE.
               </h2>
-              <p className="text-base text-stone-600 dark:text-stone-400 leading-relaxed max-w-[65ch]">
-                Select any alphanumeric slip address below to inspect its argument, or file a new child slip into the sequence.
-              </p>
             </div>
-
-            <ZettelSlipBoxIndex />
+            <p style={{ margin: 0, maxWidth: "42ch", fontSize: "18px" }}>
+              Click any Folgezettel address below to inspect the live A6 card on
+              the cobalt worktable.
+            </p>
           </div>
-        </section>
 
-        {/* SECTION 5: Asymmetric 4-Cell Architectural Hairline Grid (4 items = 4 cells, background diversity) */}
-        <section
-          id="principles"
-          className="border-b border-stone-300 bg-white py-20 sm:py-24 dark:border-stone-800 dark:bg-stone-900/40"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-3">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Four rules of the Swiss slip-box.
-              </h2>
-              <p className="text-base text-stone-600 dark:text-stone-400 leading-relaxed max-w-[65ch]">
-                Designed around strict epistemic constraints that turn daily reading into published work.
-              </p>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 border border-stone-300 md:grid-cols-12 dark:border-stone-800">
-              {/* Cell 1 (col-span-7): Brick-Red High-Contrast Cell */}
-              <div className="md:col-span-7 flex flex-col justify-between border-b border-stone-300 bg-red-600 p-8 text-white md:border-r dark:border-stone-800 dark:bg-red-500 dark:text-stone-950">
-                <div className="space-y-3">
-                  <TreeStructure size={26} weight="regular" />
-                  <h3 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                    Alphanumeric Folgezettel Chains
-                  </h3>
-                  <p className="text-sm opacity-95 leading-relaxed max-w-[55ch]">
-                    When slip `14a` sparks a corollary, file it as `14a1`. When a rival interpretation appears, branch to `14b`. Your line of argument grows organically without reorganizing folders.
-                  </p>
-                </div>
-                <p className="mt-8 border-t border-current/25 pt-4 font-jetbrains text-xs font-bold">
-                  14a  14a1  14a1a  14a2  14b
-                </p>
-              </div>
-
-              {/* Cell 2 (col-span-5): Real Architectural Photography Cell */}
-              <div className="md:col-span-5 flex flex-col justify-between border-b border-stone-300 bg-stone-100 p-6 dark:border-stone-800 dark:bg-stone-900">
-                <div className="relative h-48 w-full overflow-hidden rounded-none bg-stone-200 dark:bg-stone-800">
-                  <Image
-                    src="https://picsum.photos/seed/zettel-brutalist-library-concrete/800/550"
-                    alt="Swiss brutalist library facade with strict modular grid"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 40vw"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="mt-5 space-y-2">
-                  <h3 className="text-xl font-bold tracking-tight">
-                    Mandatory Single-Screen Atomicity
-                  </h3>
-                  <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                    Slips are capped at 300 words so every note remains a sharp, reusable building block rather than an unfocused dump.
-                  </p>
-                </div>
-              </div>
-
-              {/* Cell 3 (col-span-5): Dark Stone Command Cell */}
-              <div className="md:col-span-5 flex flex-col justify-between border-b border-stone-300 bg-stone-900 p-8 text-stone-100 md:border-b-0 md:border-r dark:border-stone-800">
-                <div className="space-y-3">
-                  <KeyReturn
-                    size={26}
-                    weight="regular"
-                    className="text-red-500"
-                  />
-                  <h3 className="text-xl font-bold tracking-tight">
-                    Modal Keyboard Ergonomics
-                  </h3>
-                  <p className="text-sm text-stone-300 leading-relaxed">
-                    Navigate parent, sibling, and child slips with `J`, `K`, `H`, `L`. Split a long note into two linked slips with a single keystroke.
-                  </p>
-                </div>
-                <p className="mt-8 font-jetbrains text-xs text-red-400">
-                  [g][f] Follow branch  [c][s] Split atomic slip
-                </p>
-              </div>
-
-              {/* Cell 4 (col-span-7): Split Image + Manuscript Transclusion Cell */}
-              <div className="md:col-span-7 grid grid-cols-1 gap-6 bg-white p-6 sm:grid-cols-2 sm:items-center dark:bg-stone-950">
-                <div className="space-y-3">
-                  <ArrowsMerge
-                    size={26}
-                    weight="regular"
-                    className="text-red-600 dark:text-red-400"
-                  />
-                  <h3 className="text-xl font-bold tracking-tight">
-                    Live Outline Transclusion
-                  </h3>
-                  <p className="text-sm text-stone-600 dark:text-stone-400 leading-relaxed">
-                    Pull any sequence of slips into an essay outline. Editing a transcluded paragraph updates the canonical atomic slip in place.
-                  </p>
-                </div>
-                <div className="relative h-48 w-full overflow-hidden rounded-none bg-stone-200 dark:bg-stone-800">
-                  <Image
-                    src="https://picsum.photos/seed/zettel-typewriter-manuscript-grid/800/600"
-                    alt="Monospace manuscript sheets arranged in sequential order"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 35vw"
-                    className="object-cover"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 6: Practitioner Quotes (1px hairline grid, <= 3 lines of quote body, zero em-dashes) */}
-        <section
-          id="practitioners"
-          className="border-b border-stone-300 py-20 sm:py-24 dark:border-stone-800"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-3">
-              <h2 className="text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Used by serious Zettelkasten practitioners.
-              </h2>
-              <p className="text-base text-stone-600 dark:text-stone-400 leading-relaxed max-w-[65ch]">
-                Writers and sociologists who publish from permanent slip-boxes.
-              </p>
-            </div>
-
-            <div className="mt-10 grid grid-cols-1 divide-y divide-stone-300 border border-stone-300 bg-white md:grid-cols-2 md:divide-x md:divide-y-0 dark:divide-stone-800 dark:border-stone-800 dark:bg-stone-900">
-              {PRACTITIONER_QUOTES.map((item) => (
-                <blockquote
-                  key={item.author}
-                  className="flex flex-col justify-between p-8"
-                >
-                  <div>
-                    <Quotes
-                      size={26}
-                      weight="regular"
-                      className="text-red-600 dark:text-red-400"
-                    />
-                    <p className="mt-4 text-base sm:text-lg font-medium leading-relaxed text-stone-900 dark:text-stone-100 line-clamp-3">
-                      “{item.quote}”
-                    </p>
-                  </div>
-                  <footer className="mt-6 border-t border-stone-300 pt-4 dark:border-stone-800">
-                    <p className="text-sm font-bold text-stone-900 dark:text-stone-100">
-                      {item.author}
-                    </p>
-                    <p className="font-jetbrains text-xs text-stone-600 dark:text-stone-400">
-                      {item.role}
-                    </p>
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 7: Conversion Section (All-sharp rounded-none, Label above input, locked CTA "Claim slip-box") */}
-        <section id="claim" className="py-20 sm:py-24">
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <div className="border border-stone-400 bg-white p-8 sm:p-12 dark:border-stone-700 dark:bg-stone-900">
-              <div className="space-y-3">
-                <h2 className="text-3xl sm:text-4xl font-bold tracking-tighter leading-none">
-                  Initialize your permanent slip-box.
-                </h2>
-                <p className="text-base text-stone-600 dark:text-stone-400 leading-relaxed max-w-[60ch]">
-                  Local plain-text storage with strict Folgezettel indexing and keyboard-first navigation.
-                </p>
-              </div>
-
-              <form
-                action="#claim"
-                className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-12 sm:items-end"
-              >
-                <div className="sm:col-span-8 flex flex-col gap-2">
-                  <label
-                    htmlFor="zettel-claim-email"
-                    className="text-xs font-bold text-stone-900 dark:text-stone-100"
-                  >
-                    Practitioner email address
-                  </label>
-                  <input
-                    id="zettel-claim-email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="baumgartner@ethz.ch"
-                    className="h-12 rounded-none border border-stone-400 bg-stone-50 px-4 font-jetbrains text-xs text-stone-900 placeholder:text-stone-500 focus:border-red-600 focus:bg-white focus:outline-none dark:border-stone-700 dark:bg-stone-950 dark:text-stone-100 dark:placeholder:text-stone-400"
-                  />
-                </div>
-                <div className="sm:col-span-4">
+          <div className="iter4-showcase-grid">
+            {/* Left Column: Address Selector Buttons */}
+            <div
+              data-reveal
+              data-ui="poster-card-tabs"
+              style={{
+                display: "grid",
+                gap: "12px",
+              }}
+            >
+              {POSTER_CARDS.map((c, idx) => {
+                const active = idx === activeCardIdx;
+                return (
                   <button
-                    type="submit"
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-none bg-red-600 px-6 font-jetbrains text-xs font-bold text-white transition-colors hover:bg-red-700 active:scale-[0.98] whitespace-nowrap dark:bg-red-500 dark:text-stone-950 dark:hover:bg-red-400"
+                    key={c.code}
+                    type="button"
+                    onClick={() => setActiveCardIdx(idx)}
+                    style={{
+                      padding: "20px",
+                      backgroundColor: active ? "#ffffff" : "#050a5c",
+                      color: active ? "#0a0a0a" : "#ffffff",
+                      border: "3px solid #0a0a0a",
+                      textAlign: "left",
+                      cursor: "pointer",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "12px",
+                    }}
                   >
-                    <span>Claim slip-box</span>
+                    <div>
+                      <div
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontSize: "24px",
+                          fontWeight: 800,
+                          marginBottom: "4px",
+                        }}
+                      >
+                        {c.code}
+                      </div>
+                      <div style={{ fontSize: "15px", fontWeight: 500 }}>
+                        {c.title}
+                      </div>
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "24px",
+                        fontWeight: 800,
+                      }}
+                    >
+                      →
+                    </span>
                   </button>
+                );
+              })}
+            </div>
+
+            {/* Right Column: Live Crisp White Slip Canvas */}
+            <div
+              data-reveal
+              data-ui="poster-slip-canvas"
+              style={{
+                backgroundColor: "#ffffff",
+                color: "#0a0a0a",
+                border: "3px solid #0a0a0a",
+                padding: "36px",
+                minHeight: "360px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "24px",
+              }}
+            >
+              <div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    borderBottom: "3px solid #0a0a0a",
+                    paddingBottom: "16px",
+                    marginBottom: "24px",
+                    flexWrap: "wrap",
+                    gap: "12px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-display)",
+                      fontSize: "24px",
+                      fontWeight: 800,
+                      color: "var(--field-1)",
+                    }}
+                  >
+                    {activeCard.code}
+                  </span>
+                  <span
+                    style={{
+                      backgroundColor: "#0a0a0a",
+                      color: "#ffffff",
+                      padding: "6px 14px",
+                      fontWeight: 500,
+                      fontSize: "15px",
+                    }}
+                  >
+                    {activeCard.words}
+                  </span>
                 </div>
-              </form>
+
+                <h3
+                  style={{
+                    fontSize: "24px",
+                    marginBottom: "16px",
+                    textTransform: "none",
+                  }}
+                >
+                  {activeCard.title}
+                </h3>
+
+                <p
+                  style={{
+                    fontSize: "18px",
+                    lineHeight: 1.5,
+                    margin: 0,
+                  }}
+                >
+                  {activeCard.body}
+                </p>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  paddingTop: "20px",
+                  borderTop: "2px solid #0a0a0a",
+                  flexWrap: "wrap",
+                  gap: "12px",
+                }}
+              >
+                <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                  {activeCard.links.map((lk) => (
+                    <span
+                      key={lk}
+                      style={{
+                        backgroundColor: "var(--field-2)",
+                        color: "#ffffff",
+                        padding: "4px 12px",
+                        fontWeight: 700,
+                        fontSize: "15px",
+                      }}
+                    >
+                      ↗ [[{lk}]]
+                    </span>
+                  ))}
+                </div>
+                <span style={{ fontWeight: 500, fontSize: "15px" }}>
+                  ~/Kasten/Hauptkasten/
+                  {activeCard.code.replace(/\s+/g, "").replace("/", "-")}.md
+                </span>
+              </div>
             </div>
           </div>
-        </section>
-      </main>
+        </div>
+      </section>
 
-      <footer className="border-t border-stone-300 bg-white py-12 dark:border-stone-800 dark:bg-stone-950">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2.5">
-            <GridFour
-              size={20}
-              weight="regular"
-              className="text-red-600 dark:text-red-500"
-            />
-            <span className="font-jetbrains text-sm font-bold">ZETTEL</span>
-            <span className="text-xs text-stone-500 dark:text-stone-400">
-              Swiss Brutalist Zettelkasten Engine
-            </span>
+      {/* ================================================================
+          SECTION 3 · FEATURES: Four-colour quadrant grid (2×2 edge-to-edge)
+          ================================================================ */}
+      <section id="colour-quadrant">
+        <div className="iter4-quadrant-grid">
+          {/* Quadrant 1: Electric Blue */}
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--field-1)",
+              color: "#ffffff",
+              padding: "56px 28px",
+              borderBottom: "3px solid #0a0a0a",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              minHeight: "420px",
+              gap: "28px",
+            }}
+          >
+            <div>
+              <h2 className="iter4-h2" style={{ marginBottom: "16px" }}>
+                240-WORD CAP.
+              </h2>
+              <p style={{ margin: 0, fontSize: "18px", maxWidth: "44ch" }}>
+                Long documents become graveyards of half-baked paragraphs.
+                Kasten caps every card at 240 words, forcing you to distill each
+                idea down to one sharp, linkable brick.
+              </p>
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "44px",
+                fontWeight: 800,
+                lineHeight: 0.9,
+              }}
+            >
+              148 × 105 MM
+            </div>
           </div>
-          <div className="flex flex-wrap items-center gap-6 font-jetbrains text-xs font-semibold text-stone-600 dark:text-stone-400">
-            <a href="#metrics" className="hover:text-red-600 dark:hover:text-red-400">
-              TELEMETRY
-            </a>
-            <a href="#index" className="hover:text-red-600 dark:hover:text-red-400">
-              SLIP-BOX
-            </a>
-            <a href="#principles" className="hover:text-red-600 dark:hover:text-red-400">
-              STRUCTURE
-            </a>
-            <a href="#claim" className="hover:text-red-600 dark:hover:text-red-400">
-              Claim slip-box
+
+          {/* Quadrant 2: Poster Red */}
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--field-2)",
+              color: "#ffffff",
+              padding: "56px 28px",
+              borderBottom: "3px solid #0a0a0a",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              minHeight: "420px",
+              gap: "28px",
+            }}
+          >
+            <div>
+              <h2 className="iter4-h2" style={{ marginBottom: "16px" }}>
+                MIDNIGHT INBOX.
+              </h2>
+              <p style={{ margin: 0, fontSize: "18px", maxWidth: "44ch" }}>
+                Your Flüchtige Notizen tray holds quick captures for 24 hours
+                only. At midnight, promote the survivors into permanent slips or
+                let them clear cleanly.
+              </p>
+            </div>
+            <div
+              style={{
+                height: "170px",
+                overflow: "hidden",
+                border: "3px solid #0a0a0a",
+              }}
+            >
+              <video
+                src="/variants/with-taste-skill/gemini-4-argon/assets/teleprinter-automatic-printing.webm"
+                poster="/variants/with-taste-skill/gemini-4-argon/assets/teleprinter-automatic-printing-poster.jpg"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+          </div>
+
+          {/* Quadrant 3: Stark Black */}
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "#0a0a0a",
+              color: "#ffffff",
+              padding: "56px 28px",
+              borderBottom: "3px solid #0a0a0a",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              minHeight: "420px",
+              gap: "28px",
+            }}
+          >
+            <div>
+              <h2 className="iter4-h2" style={{ marginBottom: "16px" }}>
+                ZERO LOCK-IN.
+              </h2>
+              <p style={{ margin: 0, fontSize: "18px", maxWidth: "44ch" }}>
+                No proprietary SQLite blobs. No mandatory account creation.
+                Every card is a standard UTF-8 Markdown file inside{" "}
+                <strong>~/Kasten/</strong> that you can grep, git-commit, or
+                read in fifty years.
+              </p>
+            </div>
+            <div
+              style={{
+                height: "170px",
+                overflow: "hidden",
+                border: "2px solid #ffffff",
+              }}
+            >
+              <img
+                src="/variants/with-taste-skill/gemini-4-argon/assets/index-card-3-by-5-inch-agr.jpg"
+                width={1920}
+                height={1198}
+                alt="1919 United States Department of Agriculture typed index card"
+                loading="lazy"
+                decoding="async"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+          </div>
+
+          {/* Quadrant 4: Crisp White */}
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "#ffffff",
+              color: "#0a0a0a",
+              padding: "56px 28px",
+              borderBottom: "3px solid #0a0a0a",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              minHeight: "420px",
+              gap: "28px",
+            }}
+          >
+            <div>
+              <h2 className="iter4-h2" style={{ marginBottom: "16px" }}>
+                0.8 MS GRAPH.
+              </h2>
+              <p style={{ margin: 0, fontSize: "18px", maxWidth: "44ch" }}>
+                Written in native Rust with a memory-mapped link table. Traverse
+                ninety thousand cards, backlinks, and Folgezettel branches in
+                0.8 milliseconds flat.
+              </p>
+            </div>
+            <div
+              style={{
+                height: "170px",
+                overflow: "hidden",
+                border: "3px solid #0a0a0a",
+              }}
+            >
+              <img
+                src="/variants/with-taste-skill/gemini-4-argon/assets/cololejeunea-khanii-holotype-index-card-at-museum.jpg"
+                width={1824}
+                height={1399}
+                alt="Museum botanical holotype index card with blue fountain pen notes"
+                loading="lazy"
+                decoding="async"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          SECTION 4 · HOW IT WORKS: Four-column colour-block process
+          ================================================================ */}
+      <section id="four-stages">
+        <div className="iter4-process-grid">
+          {[
+            {
+              bg: "#ffffff",
+              fg: "#0a0a0a",
+              title: "I. JOT FAST",
+              body: "Hit Cmd+Shift+K anywhere to drop a fleeting thought into the 24-hour tray without breaking reading flow.",
+            },
+            {
+              bg: "#1422cc",
+              fg: "#ffffff",
+              title: "II. CUT TO A6",
+              body: "Rewrite the surviving thought in your own prose under the 240-word A6 ceiling with its page citation.",
+            },
+            {
+              bg: "#a81800",
+              fg: "#ffffff",
+              title: "III. PIN SPINE",
+              body: "Slot the card directly behind the argument it continues or contradicts (21/3a → 21/3a1).",
+            },
+            {
+              bg: "#0a0a0a",
+              fg: "#ffffff",
+              title: "IV. COMPILE",
+              body: "Select any branch and export a finished chapter draft with automatic footnotes in one keystroke.",
+            },
+          ].map((col, idx) => (
+            <div
+              key={col.title}
+              data-reveal
+              onMouseEnter={() => setHoveredStage(idx)}
+              onMouseLeave={() => setHoveredStage(null)}
+              style={{
+                backgroundColor: hoveredStage === idx ? "#050a5c" : col.bg,
+                color: hoveredStage === idx ? "#ffffff" : col.fg,
+                padding: "48px 24px",
+                minHeight: "340px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                transition: "background-color 320ms ease, color 320ms ease",
+              }}
+            >
+              <h3 style={{ fontSize: "24px", lineHeight: 1.05 }}>
+                {col.title}
+              </h3>
+
+              <p style={{ margin: 0, fontSize: "18px" }}>{col.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ================================================================
+          SECTION 5 · SOCIAL PROOF: Full-bleed quote on Red
+          ================================================================ */}
+      <section
+        style={{
+          backgroundColor: "var(--field-2)",
+          color: "#ffffff",
+          padding: "96px 0",
+          borderBottom: "3px solid #0a0a0a",
+        }}
+      >
+        <div className="iter4-container" data-reveal>
+          <blockquote style={{ margin: 0 }}>
+            <p
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "24px",
+                lineHeight: 1.2,
+                margin: "0 0 28px 0",
+                maxWidth: "36ch",
+              }}
+            >
+              &ldquo;MY ARCHIVE FINALLY ARGUES BACK.&rdquo;
+            </p>
+            <footer style={{ fontSize: "18px", fontWeight: 500 }}>
+              — DR. MAREN VOGEL, HISTORIAN OF MEDIA AT BASEL · 18,400 SLIPS ON
+              DISK AFTER DELETING 14,000 TAGGED CLOUD NOTES
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* ================================================================
+          SECTION 6 · PRICING: Two-column colour split
+          ================================================================ */}
+      <section id="poster-pricing">
+        <div className="iter4-pricing-grid">
+          {/* Free Tier on White */}
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "#ffffff",
+              color: "#0a0a0a",
+              padding: "64px 28px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              gap: "32px",
+            }}
+          >
+            <div>
+              <h2 style={{ fontSize: "24px", marginBottom: "16px" }}>
+                STARTER DRAWER
+              </h2>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "44px",
+                  fontWeight: 800,
+                  lineHeight: 0.9,
+                  marginBottom: "20px",
+                }}
+              >
+                $0
+              </div>
+              <p style={{ margin: "0 0 24px 0", fontSize: "18px" }}>
+                Full local Markdown storage for up to 500 permanent slips. No
+                time limit, no telemetry, no account required.
+              </p>
+            </div>
+
+            <a
+              href="#poster-pricing"
+              style={{
+                display: "inline-block",
+                backgroundColor: "#0a0a0a",
+                color: "#ffffff",
+                padding: "18px 24px",
+                textDecoration: "none",
+                fontFamily: "var(--font-display)",
+                fontWeight: 800,
+                fontSize: "15px",
+                textAlign: "center",
+              }}
+            >
+              DOWNLOAD MAC / LINUX / WIN
             </a>
           </div>
+
+          {/* Paid Tier on Electric Blue */}
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--field-1)",
+              color: "#ffffff",
+              padding: "64px 28px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              gap: "32px",
+            }}
+          >
+            <div>
+              <h2 style={{ fontSize: "24px", marginBottom: "16px" }}>
+                PERMANENT CABINET
+              </h2>
+              <div
+                style={{
+                  fontFamily: "var(--font-display)",
+                  fontSize: "44px",
+                  fontWeight: 800,
+                  lineHeight: 0.9,
+                  marginBottom: "20px",
+                }}
+              >
+                $68
+              </div>
+              <p
+                style={{
+                  margin: "0 0 24px 0",
+                  fontSize: "18px",
+                  maxWidth: "46ch",
+                }}
+              >
+                One-time lifetime license. Unlimited drawers (tested to 90,000+
+                slips), full BibTeX Literaturkasten, Manuscript Desk compiler,
+                and 5 years of native updates.
+              </p>
+            </div>
+
+            <div>
+              <a
+                href="#poster-pricing"
+                style={{
+                  display: "inline-block",
+                  backgroundColor: "var(--field-2)",
+                  color: "#ffffff",
+                  padding: "18px 28px",
+                  textDecoration: "none",
+                  fontFamily: "var(--font-display)",
+                  fontWeight: 800,
+                  fontSize: "15px",
+                  border: "3px solid #0a0a0a",
+                }}
+              >
+                BUY LIFETIME KEY ($68) →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          SECTION 7 · FAQ: Split heading and accordion
+          ================================================================ */}
+      <section
+        style={{
+          backgroundColor: "#ffffff",
+          color: "#0a0a0a",
+          padding: "88px 0",
+          borderBottom: "3px solid #0a0a0a",
+        }}
+      >
+        <div className="iter4-container iter4-faq-grid" data-reveal>
+          <div>
+            <h2 className="iter4-h2" style={{ marginBottom: "16px" }}>
+              BLUNT ANSWERS.
+            </h2>
+            <p style={{ margin: 0, color: "#0a0a0a" }}>
+              Everything you need to know before moving your notes out of the
+              cloud.
+            </p>
+          </div>
+
+          <div data-ui="poster-faq-accordion">
+            {[
+              {
+                q: "Why 240 words? What if I write long essays?",
+                a: "Long essays are built by chaining atomic slips together on the Manuscript Desk. Keeping individual slips under 240 words lets you recombine the same evidence across multiple essays without copy-pasting.",
+              },
+              {
+                q: "Can I import an existing Obsidian or Roam vault?",
+                a: "Yes. Kasten includes a local vault importer that converts existing [[wikilinks]] and helps you assign initial Folgezettel spine addresses.",
+              },
+              {
+                q: "How do I sync across my laptop and phone?",
+                a: "Because every card is a plain file inside ~/Kasten/, you can use Syncthing, iCloud Drive, Git, or our optional $2/mo zero-knowledge relay.",
+              },
+            ].map((item, idx) => {
+              const isOpen = openFaq === idx;
+              return (
+                <div
+                  key={item.q}
+                  style={{
+                    borderBottom: "3px solid #0a0a0a",
+                    padding: "20px 0",
+                  }}
+                >
+                  <button
+                    type="button"
+                    onClick={() => setOpenFaq(isOpen ? -1 : idx)}
+                    style={{
+                      width: "100%",
+                      background: "none",
+                      border: 0,
+                      padding: 0,
+                      textAlign: "left",
+                      cursor: "pointer",
+                      display: "flex",
+                      justifyContent: "space-between",
+                      alignItems: "center",
+                      gap: "16px",
+                      fontSize: "18px",
+                      fontWeight: 700,
+                      color: "#0a0a0a",
+                    }}
+                  >
+                    <span>{item.q}</span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-display)",
+                        color: "var(--field-1)",
+                      }}
+                    >
+                      {isOpen ? "−" : "+"}
+                    </span>
+                  </button>
+                  {isOpen && (
+                    <p
+                      style={{
+                        margin: "14px 0 0 0",
+                        fontSize: "18px",
+                        color: "#0a0a0a",
+                      }}
+                    >
+                      {item.a}
+                    </p>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* ================================================================
+          SECTION 8 · FOOTER: Minimal bar with Oversized Wordmark
+          ================================================================ */}
+      <footer
+        style={{
+          backgroundColor: "#0a0a0a",
+          color: "#ffffff",
+          padding: "56px 0 40px 0",
+        }}
+      >
+        <div className="iter4-container">
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              flexWrap: "wrap",
+              gap: "24px",
+              marginBottom: "32px",
+            }}
+          >
+            <div
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "44px",
+                fontWeight: 800,
+                letterSpacing: "-0.04em",
+                lineHeight: 0.9,
+              }}
+            >
+              KASTEN!
+            </div>
+
+            <div style={{ display: "flex", gap: "24px", flexWrap: "wrap" }}>
+              <a
+                href="#poster-showcase"
+                style={{ color: "#ffffff", textDecoration: "none" }}
+              >
+                Slip-Box
+              </a>
+              <a
+                href="#colour-quadrant"
+                style={{ color: "#ffffff", textDecoration: "none" }}
+              >
+                240-Word Rule
+              </a>
+              <a
+                href="#poster-pricing"
+                style={{
+                  color: "#ffffff",
+                  textDecoration: "underline",
+                  fontWeight: 700,
+                }}
+              >
+                Download v2.4
+              </a>
+            </div>
+
+            <div style={{ color: "#d4d4d4", fontSize: "15px" }}>
+              © 2026 KASTEN · SPEC v2.4
+            </div>
+          </div>
+
+          <AssetCredits color="#d4d4d4" linkColor="#ffffff" />
         </div>
       </footer>
     </div>

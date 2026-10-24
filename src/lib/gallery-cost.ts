@@ -12,7 +12,6 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "with-taste-skill/kimi-k3-1-pro": 8.057301,
   "without-design-skill/gemini-4-argon": 1.57,
   "with-design-skill/gemini-4-argon": 1.76,
-  "with-taste-skill/gemini-4-argon": 3.19,
   "without-design-skill/muse-wonder-1.0": 1.9,
   "with-taste-skill/muse-wonder-1.0": 2.54,
   "with-design-skill/muse-wonder-1.0": 1.68,

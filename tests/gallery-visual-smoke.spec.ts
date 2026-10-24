@@ -67,6 +67,25 @@ for (const iteration of ["1", "2", "3", "4", "5"]) {
   });
 }
 
+// Gemini 4 Argon taste-skill v2 rerun: the source's iteration bar stays out, local archive pictures load.
+for (const iteration of ["1", "2", "3", "4", "5"]) {
+  test(`gemini-4-argon with-taste-skill v2 iteration ${iteration} renders on mobile`, async ({ page }) => {
+    const errors: string[] = [];
+    page.on("pageerror", (error) => errors.push(error.message));
+    await page.setViewportSize({ width: 390, height: 844 });
+    const response = await page.goto(`/preview/with-taste-skill/gemini-4-argon/${iteration}`);
+    expect(response?.ok()).toBe(true);
+    await expect(page.locator("[data-source-body] h1").first()).toBeVisible();
+    await expect(page.getByRole("navigation", { name: "Switch landing page iteration" })).toHaveCount(0);
+    const firstImage = page.locator('[data-source-body] img[src^="/variants/with-taste-skill/gemini-4-argon/assets/"]:visible').first();
+    await firstImage.scrollIntoViewIfNeeded();
+    await expect(firstImage).toHaveJSProperty("complete", true);
+    expect(await firstImage.evaluate((img: HTMLImageElement) => img.naturalWidth)).toBeGreaterThan(0);
+    expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(390);
+    expect(errors).toEqual([]);
+  });
+}
+
 for (const model of ["luna-6"]) {
   for (const group of ["with-design-skill", "without-design-skill"]) {
     for (const iteration of ["1", "2", "3", "4", "5"]) {

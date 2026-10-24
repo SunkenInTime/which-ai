@@ -64,6 +64,72 @@
         "attribution": "Unresolved. The run operator reported it as a model edit; the session log does not show the model making it. The change is to the skill's inspector, not the generated app, and is not part of the gallery source."
       },
       "preflight": "Run operator reports an unscored preflight that confirmed design-taste-frontend was the only visible skill and that the browser could be read from pixels. The preflight records were not in the transfer received for this import."
+    },
+    {
+      "model": "gemini-4-argon",
+      "modelId": "gemini-4-argon-high",
+      "condition": "design-taste",
+      "replaces": "with-taste-skill/gemini-4-argon v1 (2026-10-13, Cursor desktop 3.24.12 on macOS, High reasoning, taste skill SKILL.md sha256 aa194351b246b8b4799099d4ed7b033d29eab6e6e3d58d8d2172978be7b3ec89); see docs/benchmarks/gemini-4-argon",
+      "runner": "cursor-agent CLI 2026.10.19-6bbf2c4, headless (--print --output-format stream-json), on Windows 11",
+      "command": "node <cursor-agent>/index.js --print --output-format stream-json --model gemini-4-argon-high --force --approve-mcps --trust --sandbox disabled --workspace <run>/work [--resume <chat id>] <prompt>",
+      "launcher": "E:\\w\\taste-v2\\bin\\run-argon.ps1 -> launch.ps1 (detached via Win32_Process.Create) -> run.ps1; resumes through launch.ps1 -ResumeChatId. Exact argv and environment of each session are in <run>/<label>.invocation.json.",
+      "reasoningEffort": "high (model id gemini-4-argon-high)",
+      "sandbox": "--sandbox disabled, --force (commands run without approval prompts)",
+      "isolation": "Whitelisted environment: HOME, USERPROFILE, APPDATA and LOCALAPPDATA point into the run folder, which held only a copy of Cursor's CLI auth.json; PATH limited to a no-profile PowerShell 7, Node.js, Git and Windows system folders. cursor-agent syncs the account's marketplace plugins into any home it runs in; their eight MCP servers (Gmail, Google Calendar, Granola, Slack, Supabase, Wispr Flow, X, GitHub) were disabled for this workspace with `cursor-agent mcp disable`. The setup notes say plugin skills and subagents still appear in Cursor's catalog. The pre-run guard checked a clean work tree at the baseline commit, the prompt hash, the SKILL.md hash and a free port 3305. Context isolation only; no filesystem jail.",
+      "browserConfigured": "Playwright MCP 0.0.83 as project MCP server \"browser\" (work/.cursor/mcp.json): isolated headless Chromium, 1440x960, image responses allowed; approved in the isolated home.",
+      "browserObservedInScoredSession": "No browser MCP calls in any of the three session logs. The model's two getMcpTools calls asked for Cursor's AwaitShell tool.",
+      "visualFeedbackUsed": "The skill's own headless-Chrome inspector (scripts/inspect.mjs) on /1 to /5, whose screenshots the model opened with Cursor's file reader: 24 inspector screenshots in design-taste and 3 in design-taste-resume2. It also opened 12 downloaded candidate photos in 16 reads: the first four reads never completed and were repeated after a connection retry.",
+      "skillFilesRead": "SKILL.md, references (colour, copy, critique, imagery, layout, motion, scenes, type), assets/app.css, assets/base.css, scripts draw.mjs, inspect.mjs, lint.mjs, lib/probe.mjs, lib/rules.mjs; resume1 reread SKILL.md and references/critique.md. No skill file was modified (git status of work/ shows no change under .agents/).",
+      "chatId": "8207a939-19a3-4cd3-a3af-cf5e97c08e45",
+      "sessions": [
+        {
+          "label": "design-taste",
+          "prompt": "design-taste.prompt.txt (the v1 prompt with port 3305)",
+          "startedAt": "2026-10-21T22:23:43.403Z",
+          "lastEventAt": "2026-10-21T23:30:08.508Z",
+          "stoppedAt": "2026-10-21T23:52:10.538Z",
+          "exitCode": -1,
+          "toolCalls": { "read": 87, "edit": 83, "shell": 59, "await": 14, "grep": 4, "glob": 2, "getMcpTools": 2 },
+          "connectionRetries": 2,
+          "ending": "The model's last tool call (the skill's lint.mjs, 23:29:52Z) completed. At 23:30:08.508Z the log received 16 task notifications for earlier background commands at once, then nothing for 1,322 s, no tool call, no thinking, no assistant message. The operator stopped the session."
+        },
+        {
+          "label": "design-taste-resume1",
+          "prompt": "resume1.prompt.txt: \"Continue.\"",
+          "startedAt": "2026-10-21T23:53:03.815Z",
+          "lastEventAt": "2026-10-21T23:56:22.538Z",
+          "stoppedAt": "2026-10-21T23:56:23.181Z",
+          "exitCode": -1,
+          "toolCalls": { "read": 7, "edit": 3, "shell": 3, "await": 1, "grep": 1 },
+          "edits": "After rereading SKILL.md and references/critique.md: set the hero picture frames on /4 and /5 to 240 px high and gave two of the bento cards on /5 archival pictures.",
+          "ending": "The last logged event is the start of the model's command `Stop-Process -Name \"node\" -Force -ErrorAction SilentlyContinue; Stop-Process -Id 62340 -Force ...`, which it ran to restart a dev server it judged stuck. The command has no completion event; the session ended 0.643 s later with exit code -1, consistent with the command having stopped cursor-agent's own node.exe."
+        },
+        {
+          "label": "design-taste-resume2",
+          "prompt": "resume2.prompt.txt: \"Continue.\"",
+          "startedAt": "2026-10-22T03:01:15.829Z",
+          "lastEventAt": "2026-10-22T03:04:17.226Z",
+          "stoppedAt": "2026-10-22T03:20:36.848Z",
+          "exitCode": -1,
+          "toolCalls": { "read": 7, "await": 4, "shell": 3 },
+          "commandReviewer": "Cursor beforeShellExecution hook (home/.cursor/hooks.json, failClosed, 90 s timeout) running E:\\w\\taste-v2\\tools\\reviewer\\review.mjs: hard-deny rules (including Stop-Process without -Id and taskkill without /PID), then a claude-haiku-5-5 check. reviewer.jsonl: 3 decisions, all allow (1 by Haiku, 2 by rule), 0 denials.",
+          "ending": "The model restarted the dev server, reran the inspector on /4 and /5 (both 0 FAIL, 0 WARN; the inspector then tells the model to score its screenshots with references/critique.md), and opened three of the new screenshots. Those reads completed by 03:03:29.855Z. A task notification arrived at 03:04:17.226Z, then nothing for 980 s. The operator stopped the session."
+        }
+      ],
+      "wallSeconds": 6667.52,
+      "wallTimeNote": "Sum of the three session windows, start to operator stop. Up to each session's last logged event: 4,365.225 s. The 3 h 05 min gap between resume1 and resume2 (adding the command reviewer) is not counted.",
+      "completed": false,
+      "finalMessage": "None. No assistant text message appears in any of the three logs.",
+      "userTurns": 3,
+      "operatorNudges": "Two neutral \"Continue.\" resumes of the same chat, sent by the orchestrating agent (not Dara). The operator reports that headless cursor-agent stalled waiting on Cursor's API and that this mirrors Cursor desktop's automatic continue. The logs show the silences and the two connection retries (22:29:29Z and 22:55:37Z in design-taste); they do not show what the CLI was waiting on.",
+      "discardedAttempt": "Attempt 1 (chat ffd985e7-dd11-49b0-8037-f29c5fd985e5) started 2026-10-21T16:42:54.093Z; its log ends at 17:24:13.300Z after the model opened an inspector screenshot, with no finish record. It was archived in E:\\w\\taste-v2\\archive\\2026-10-21-argon-hung-1724 and the work tree was reset; the pre-run guard for attempt 2 required a clean tree at the baseline commit. Unscored.",
+      "incident": "In design-taste-resume1 the model ran `Stop-Process -Name \"node\" -Force` on the shared Windows PC. The operator reports it stopped every Node.js process on the machine, including other applications'. The command reviewer was added before resume2.",
+      "promptSha256": "8cea31b706fd6522e766067ba92ec188f68b36efb1ca7d8a060874e1e3267dd2",
+      "baselineCommit": "3816e5eb642c543cc99e7f1112427a469a4936bc",
+      "networkFetchesByModel": "Pictures and one video clip found and downloaded through the skill's assets.mjs (Wikimedia Commons, Openverse, The Met), saved into the project with a credits file. Fonts are loaded at page load from Google Fonts and Fontshare <link> tags, not downloaded.",
+      "finalInspectorResults": "All five pages: 0 FAIL, 0 WARN in .taste-skill/inspect-{1..5}/report.json (/4 and /5 from resume2).",
+      "usage": "None recorded; see costs.json.",
+      "apiEquivalentUsd": null
     }
   ],
   "integrationChanges": {
@@ -73,6 +139,15 @@
       "The source header's design switcher is no longer rendered because the gallery provides iteration navigation (its .design-switcher class would also pick up the gallery's own global .design-switcher styles); the Switcher component itself is left in the file unused.",
       "The wordmark's numeric self-link points to the gallery route /with-taste-skill/sol-6-1/{n}.",
       "Gallery wrapper renders the source's shared Landing component with the gallery iteration number, the same component the source's /[version] route renders."
+    ],
+    "gemini-4-argon": [
+      "Copied app/layout.tsx, app/page.tsx, app/globals.css, app/favicon.ico, app/1-5/page.tsx and components/ (AssetCredits, IterationSwitcher, useScrollReveal). The project's assets/ download folder (a duplicate of public/assets) and the .taste-skill notes are not copied; they are covered by the source hashes.",
+      "Root html/body converted to data-source-html/data-source-body divs; the html element's \"js\" class moves to data-source-html, and the six `html.js [data-reveal...]` selectors in globals.css become `[data-source-html].js [data-reveal...]` so the scroll-reveal rules still match. Global CSS scoped by the gallery generator.",
+      "The IterationSwitcher bar the source renders above every page is not rendered; the gallery provides iteration navigation. The component file is kept unused. Without it every page is 36.6 px shorter than in the source.",
+      "The source's Google Fonts and Fontshare <link> tags are replaced by app/fonts.css: the same @font-face rules and font file URLs those stylesheets returned on 2026-10-24, with family names prefixed \"Argon v2 \", and the five theme font variables in globals.css renamed to match. Reason: the gallery loads every entry's CSS on every route, and other entries declare EB Garamond, Hanken Grotesk, Albert Sans and Syne at weights this source never loads, so bold text rendered with real bold faces instead of the browser's synthesized bold, and an unweighted Syne quote rendered at 400 instead of falling back to 700. Fontshare returns Boska and Satoshi for this request and no Switzer, so /4's Switzer text falls back to sans-serif in both.",
+      "globals.css adds browser-default restores (`margin: revert` on paragraphs, headings and other block elements; margin, padding and list-style on lists; margin, padding, border, radius, background and color on form controls) because the gallery's Tailwind preflight resets them and the source has no Tailwind. The source's own rules and inline styles still override these.",
+      "Twelve referenced pictures and the teleprinter clip (webm and poster) namespaced under /variants/with-taste-skill/gemini-4-argon/assets/; the 35 /assets/ paths in the five pages updated. Unreferenced card-catalog-at-the-indiana-state-library.jpg and credits.json not copied.",
+      "`@/components/...` imports in the five pages point at the copied components under the variant's source folder."
     ]
   },
   "costBasis": {
