@@ -1,0 +1,22 @@
+Five landing pages for the note-taking app are live at `/1` through `/5`, with a small corner switcher. The dev server is running on port 3301.
+
+**What I built**
+
+The product is a sample name, **Commonplace**, named for the commonplace book (a reader's own book of passages) so each design could draw on that world: Locke's 1706 index method, Luhmann's slip box, the Ebbinghaus forgetting curve, card catalogues, Cajal's neuron drawings. All five share one sample dataset of notes and one stylesheet for the interface fragments. The switcher sits flush in the bottom-right corner, opens into the numbers 1 to 5, and the `[` and `]` keys also move between designs.
+
+- **/1 The sentence is the layout** (Imbue and Albert Sans, sand and moss). The headline "Every [note] comes back" holds a real note card that changes every visit. Live: swap the note, change its return day, show its links, drag through four stages, and a search field set as the section headline.
+- **/2 The page is the object** (Gambarino and General Sans, three stones). The first screen is the title page of a commonplace book on a 1900 reading room, and Locke's index is typed into: a word files itself into its letter-and-vowel cell beside the sample notes already there. Sections are stacked folder sheets, a receipt-like return schedule, a tabbed plate, a menu of prices, and a footer uncovered as the page lifts.
+- **/3 The printed annual** (Bodoni Moda and Jost, orange and black). A greyscale masthead mosaic, a fixed axis at 42%, and the forgetting curve as a figure you operate with four controls. The plans are a large-type table.
+- **/4 The product performs** (Switzer, greys and mint). An editor on a mint stage links to older notes as you type. A morning page is set live by a slider, folder chips, an hour and a toggle; a dark row of true-size panels; plan names with one live figure; a board of tiles as the footer.
+- **/5 Colour chapters** (Cabinet Grotesk, mint and pink). A photograph panel with the five chapter colours as the navigation, specimens on tiles, a pink-and-white stage slider, three portrait chapters, a ticket for the price, and a fixed strip of five squares that follows you.
+
+**Checks run**
+
+The skill's inspector reports 0 FAIL on every page at 1440, 768 and 390. Lint, TypeScript and ESLint are clean. The remaining warnings are each defended in `.taste-skill/notes.md`: no footage (the open collections had no honest clip of this subject), the dealt stacking sheets and lit-panel row, and a soft-grey reading on page 3 that is in fact the muted aside. My own critique scores land between 7.3 and 7.85; the weakest is /4, whose dark row shows one and a half panels at desktop width.
+
+**To swap before launch**
+
+- The name Commonplace, the prices (free to 500 notes, then â‚¬6 a month or â‚¬60 a year), the platforms, Lisbon, the support hours, the social links and the sample notes are all invented.
+- Every picture is archival and credited in each footer; the full list with licences is in `public/assets/credits.json`. Four carry share-alike or attribution terms (the Thesaurus slip boxes, the Indiana catalogue card, the MÃ¼nster slip box, the Graz catalogue, the Vienna drawers, the Luhmann portrait).
+- The download buttons point at `#download`; nothing is wired to a real store.
+- `.taste-skill/` and `.playwright-mcp/` are working folders with screenshots and are untracked.

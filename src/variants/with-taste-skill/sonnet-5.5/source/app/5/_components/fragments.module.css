@@ -1,0 +1,631 @@
+/* Product fragments. Every root carries data-ui, so the product's own conventions apply inside:
+   1px control borders, small radii, a lift on what floats. Tokens come from page.module.css. */
+
+[data-ui].frag {
+  position: relative;
+  overflow: hidden;
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.005em;
+}
+
+[data-ui] .fh {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 0 16px;
+  background: var(--ui-raised);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+[data-ui] .fh .count,
+[data-ui] .count {
+  color: var(--ui-muted);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-ui] .fh .right {
+  margin-left: auto;
+  color: var(--ui-muted);
+  font-weight: 400;
+}
+
+[data-ui] .muted {
+  color: var(--ui-muted);
+}
+
+[data-ui] .hit {
+  color: var(--ui-link);
+  background: var(--ui-accent-bg);
+  border-radius: 3px;
+}
+
+/* Gallery copy: anchored to this page's root and made pure for webpack's CSS modules (the source's Turbopack build accepted the bare global selector). :not(.galleryPure) matches every element. */
+:where(:global([data-p5-root])) [data-ui]:where(:not(.galleryPure)) button:focus-visible,
+:where(:global([data-p5-root])) [data-ui]:where(:not(.galleryPure)) input:focus-visible {
+  outline: 2px solid var(--ui-link);
+  outline-offset: 1px;
+}
+
+[data-ui] .btn,
+[data-ui] .btnGhost {
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out), color 150ms;
+}
+
+[data-ui] .btn {
+  background: var(--ui-ink);
+  color: #fff;
+}
+
+[data-ui] .btn:hover:not(:disabled) {
+  background: #000;
+}
+
+[data-ui] .btnGhost {
+  border: 1px solid var(--ui-line);
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+}
+
+[data-ui] .btnGhost:hover:not(:disabled) {
+  background: var(--ui-accent-bg);
+}
+
+[data-ui] .btn:active:not(:disabled),
+[data-ui] .btnGhost:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+[data-ui] .btn:disabled {
+  background: var(--ui-line);
+  color: var(--ui-muted);
+  cursor: default;
+}
+
+[data-ui] .btnGhost:disabled {
+  color: var(--ui-muted);
+  cursor: default;
+}
+
+/* ---------- linked from ---------- */
+
+[data-ui] .rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[data-ui] .lrow {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) auto;
+  gap: 4px 20px;
+  align-items: baseline;
+  padding: 12px 16px;
+  transition: background-color 150ms var(--ease-out);
+}
+
+[data-ui] .lrow:hover {
+  background: var(--ui-raised);
+}
+
+[data-ui] .lrow[data-fresh] {
+  animation: fresh 2600ms var(--ease-out) both;
+}
+
+[data-ui] .ltitle {
+  font-weight: 500;
+}
+
+[data-ui] .lctx {
+  color: var(--ui-ink);
+  font-size: 14px;
+  line-height: 21px;
+}
+
+[data-ui] .lage {
+  color: var(--ui-muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+[data-ui] .gap {
+  height: 0;
+}
+
+[data-ui] .mention {
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr) auto;
+  gap: 4px 20px;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+[data-ui] .emptyline {
+  padding: 14px 16px;
+  color: var(--ui-muted);
+}
+
+/* ---------- ask ---------- */
+
+[data-ui] .askForm {
+  display: flex;
+  gap: 8px;
+  padding: 14px 16px 10px;
+}
+
+[data-ui] .askInput {
+  flex: 1;
+  min-width: 0;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--ui-line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ui-ink);
+  font: inherit;
+  font-size: 15px;
+}
+
+[data-ui] .askInput::placeholder {
+  color: var(--ui-muted);
+}
+
+[data-ui] .askForm .btn {
+  height: 40px;
+}
+
+[data-ui] .chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0;
+  padding: 0 16px 14px;
+  list-style: none;
+}
+
+[data-ui] .chip {
+  height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--ui-line);
+  border-radius: 14px;
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out);
+}
+
+[data-ui] .chip:hover {
+  background: var(--ui-accent-bg);
+}
+
+[data-ui] .chip:active {
+  transform: scale(0.96);
+}
+
+[data-ui] .chip[aria-pressed="true"] {
+  background: var(--ui-accent-bg);
+  border-color: var(--ui-link);
+  color: var(--ui-link);
+}
+
+[data-ui] .answer {
+  padding: 16px;
+  background: var(--ui-raised);
+  min-height: 250px;
+  animation: swap 260ms var(--ease-out) both;
+}
+
+[data-ui] .aq {
+  margin: 0 0 6px;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+[data-ui] .atext {
+  margin: 0;
+  font-size: 17px;
+  line-height: 26px;
+  letter-spacing: -0.01em;
+}
+
+[data-ui] .fn {
+  display: inline-block;
+  min-width: 18px;
+  height: 18px;
+  margin: 0 0 0 2px;
+  padding: 0 3px;
+  border-radius: 9px;
+  background: var(--ui-accent-bg);
+  color: var(--ui-link);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+  vertical-align: 3px;
+}
+
+[data-ui] .sources {
+  display: grid;
+  gap: 8px;
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+[data-ui] .source {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  gap: 8px;
+  align-items: start;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+[data-ui] .sourceTitle {
+  font-weight: 600;
+}
+
+[data-ui] .sourceQuote {
+  color: var(--ui-muted);
+}
+
+[data-ui] .nosrc {
+  margin: 14px 0 0;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+/* ---------- resurface ---------- */
+
+[data-ui] .due {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px 12px;
+  align-items: center;
+  padding: 12px 16px;
+  transition: background-color 150ms var(--ease-out), opacity 300ms;
+}
+
+[data-ui] .due:hover {
+  background: var(--ui-raised);
+}
+
+[data-ui] .due[data-done] {
+  opacity: 0.6;
+}
+
+[data-ui] .dueTitle {
+  font-weight: 500;
+}
+
+[data-ui] .dueMeta {
+  color: var(--ui-muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+[data-ui] .dueBtns {
+  display: flex;
+  gap: 6px;
+}
+
+[data-ui] .dueBtns .btn,
+[data-ui] .dueBtns .btnGhost {
+  height: 28px;
+  padding: 0 10px;
+  font-size: 13px;
+}
+
+[data-ui] .dueResult {
+  color: var(--ui-link);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---------- files ---------- */
+
+[data-ui] .files {
+  margin: 0;
+  padding: 6px 0;
+  list-style: none;
+}
+
+[data-ui] .file {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  gap: 16px;
+  align-items: baseline;
+  padding: 6px 16px;
+  font-size: 14px;
+}
+
+[data-ui] .file[data-open] {
+  background: var(--ui-accent-bg);
+  color: var(--ui-link);
+  font-weight: 500;
+}
+
+[data-ui] .file .size,
+[data-ui] .file .when {
+  color: var(--ui-muted);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-ui] .file[data-open] .size,
+[data-ui] .file[data-open] .when {
+  color: var(--ui-link);
+}
+
+[data-ui] .src {
+  margin: 0;
+  padding: 14px 16px 16px;
+  background: var(--ui-raised);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace; /* taste-skill-ignore: real Markdown source in <pre><code> */
+  font-size: 13px;
+  line-height: 20px;
+  color: var(--ui-ink);
+}
+
+[data-ui] .src .y {
+  color: var(--ui-muted);
+}
+
+/* ---------- map ---------- */
+
+[data-ui] .mapWrap {
+  padding: 8px 8px 0;
+}
+
+[data-ui] .map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+[data-ui] .edge {
+  stroke: #c9c4bd;
+  stroke-width: 1.5;
+  transition: stroke 300ms var(--ease-out), stroke-width 300ms;
+}
+
+[data-ui] .edge[data-on] {
+  stroke: var(--ui-link);
+  stroke-width: 2.25;
+}
+
+[data-ui] .node circle {
+  fill: #fff;
+  stroke: #a8a29a;
+  stroke-width: 1.5;
+  transition: fill 300ms var(--ease-out), stroke 300ms, r 300ms;
+}
+
+[data-ui] .node[data-near] circle {
+  stroke: var(--ui-link);
+  fill: var(--ui-accent-bg);
+}
+
+[data-ui] .node[data-on] circle {
+  stroke: var(--ui-link);
+  fill: var(--ui-link);
+}
+
+[data-ui] .node[data-lone] circle {
+  stroke-dasharray: 3 3;
+}
+
+[data-ui] .node text {
+  fill: var(--ui-ink);
+  font-size: 13px;
+  font-family: inherit;
+  paint-order: stroke;
+  stroke: var(--ui-bg);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+}
+
+[data-ui] .node[data-on] text {
+  font-weight: 600;
+}
+
+[data-ui] .node[data-dim] text {
+  fill: var(--ui-muted);
+}
+
+[data-ui] .mapNote {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px 14px;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+/* ---------- capture (static copy of the dialog, for the journey) ---------- */
+
+[data-ui] .capText {
+  margin: 0;
+  padding: 18px 18px 8px;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+}
+
+[data-ui] .capRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px 14px;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+[data-ui] .capSaved {
+  padding: 12px 18px;
+  background: var(--ui-raised);
+  color: var(--ui-link);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+[data-ui] .sugRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 12px 18px 16px;
+}
+
+[data-ui] .sugChip {
+  display: inline-flex;
+  align-items: center;
+  height: 28px;
+  padding: 0 10px;
+  border-radius: 6px;
+  background: var(--ui-accent-bg);
+  color: var(--ui-link);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* ---------- return dates ---------- */
+
+[data-ui] .ret {
+  display: grid;
+  grid-template-columns: 74px 1fr auto;
+  gap: 12px;
+  align-items: baseline;
+  padding: 11px 18px;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-ui] .ret b {
+  font-weight: 600;
+}
+
+[data-ui] .retDay {
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+[data-ui] .retOk {
+  color: var(--ui-link);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+[data-ui] .retTrack {
+  position: relative;
+  height: 8px;
+  margin: 18px 18px 6px;
+  background: var(--ui-raised);
+  border-radius: 4px;
+}
+
+[data-ui] .retDot {
+  position: absolute;
+  top: -3px;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--ui-link);
+}
+
+[data-ui] .retNow {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--ui-ink);
+}
+
+[data-ui] .retLegend {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 18px 14px;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+@keyframes fresh {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+    background: var(--ui-accent-bg);
+  }
+  18% {
+    opacity: 1;
+    transform: none;
+  }
+  70% {
+    background: var(--ui-accent-bg);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@keyframes swap {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+@media (max-width: 720px) {
+  [data-ui] .lrow,
+  [data-ui] .mention {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  [data-ui] .lctx {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+
+  [data-ui] .askForm {
+    flex-direction: column;
+  }
+
+  [data-ui] .answer {
+    min-height: 0;
+  }
+
+  [data-ui] .file {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  [data-ui] .file .when {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-ui] .answer,
+  [data-ui] .lrow[data-fresh] {
+    animation: none;
+  }
+}

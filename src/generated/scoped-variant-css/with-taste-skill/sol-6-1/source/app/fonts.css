@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/bricolage-0.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/bricolage-1.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/bricolage-2.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: normal;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/bricolage-3.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Anton';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/anton-0.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/work-0.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/work-1.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/work-2.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Work Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/work-3.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/albert-0.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/albert-1.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/albert-2.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Albert Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/albert-3.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlowcondensed-0.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlowcondensed-1.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlowcondensed-2.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow Condensed';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlowcondensed-3.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlow-0.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlow-1.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlow-2.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'Barlow';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/barlow-3.woff2") format("woff2");
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/general-0.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/general-1.woff2") format("woff2");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'General Sans';
+  src: url("/variants/with-taste-skill/sol-6-1/fonts/general-2.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+  font-style: normal;
+}

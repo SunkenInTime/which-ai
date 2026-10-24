@@ -1,0 +1,13 @@
+Built and running on port 3304:
+
+- [1 — Archive](http://localhost:3304/1)
+- [2 — Atlas](http://localhost:3304/2)
+- [3 — Reading room](http://localhost:3304/3)
+- [4 — Workspace](http://localhost:3304/4)
+- [5 — Canvas](http://localhost:3304/5)
+
+Switch using the small header button. Includes working notes, search, local saving, and Markdown export.
+
+All five pass desktop, tablet, and mobile inspection. Lint, TypeScript, and production build pass.
+
+[Design report, scores, and image credits](/Users/Shared/whichai-taste-v2/sol-6-1/work/.taste-skill/design-notes.md)

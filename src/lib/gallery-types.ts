@@ -75,6 +75,12 @@ export interface GalleryEntry {
   defaultIteration: IterationId;
   summary: string;
   iterations: GalleryIteration[];
+  /**
+   * Version of the group's skill that produced this run, when it differs from the original.
+   * Taste-skill reruns with design-taste-frontend v2.1.4 (Leonxlnx/taste-skill@6010f91a) set `"v2"`;
+   * absent means the original v1 skill recorded in that run's provenance.
+   */
+  skillVersion?: "v2";
 }
 
 export interface VariantRenderProps {

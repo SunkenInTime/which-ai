@@ -1,427 +1,1421 @@
-import Image from "next/image";
-import Link from "next/link";
-import {
-  BoundingBox,
-  CubeTransparent,
-  Palette,
-  Quotes,
-  Camera,
-} from "@phosphor-icons/react/dist/ssr";
-import { TrustedLogos } from "../components/TrustedLogos";
-import { Z_INDEX } from "../components/z-index";
-import { AtelierStickyStack } from "./AtelierStickyStack";
-import {
-  AtelierSpatialBoard,
-  MagneticStudioButton,
-} from "./AtelierSpatialBoard";
+"use client";
 
-/**
- * ITERATION /3: ATELIER
- * Design Read: "Reading this as: spatial studio landing page for creative directors, architects, and visual thinkers, with a tactile kinetic choreography language, leaning toward Tailwind v4 + Outfit + GSAP ScrollTrigger sticky-stack + Silver-Smoke & Vermilion palette."
- * Dials: DESIGN_VARIANCE: 9, MOTION_INTENSITY: 8, VISUAL_DENSITY: 3
- * Palette Lock (Section 4.2): Cold Luxury Silver-Smoke (zinc-100 / dark:zinc-950) + single Vermilion / Burnt Orange accent (orange-600 / dark:orange-500).
- * Shape Lock (Section 4.4): rounded-2xl across all containers, buttons, and inputs.
- * CTA Intent Lock (Section 4.5): "Open studio" used for all primary signup CTAs.
- */
+import { useState } from "react";
+import { useScrollReveal } from "@/variants/with-taste-skill/gemini-4-argon/source/components/useScrollReveal";
+import { AssetCredits } from "@/variants/with-taste-skill/gemini-4-argon/source/components/AssetCredits";
 
-const DIRECTOR_QUOTES = [
+const DRAWER_CLUSTERS = [
   {
-    quote:
-      "Linear documents flatten how our architecture studio thinks. Atelier lets us lay out two hundred facade studies, material samples, and structural notes on a single table.",
-    author: "Kaspar Lindholm",
-    role: "Founding Partner, Lindholm & Vestergaard Architects",
+    id: "21",
+    label: "Drawer 21 · Systems & Contingency",
+    slips: [
+      {
+        code: "21/3a",
+        title: "Dialogue needs double contingency",
+        words: 178,
+        links: ["21/3a1", "14/8b", "9c/2a"],
+        excerpt:
+          "Dialogue only begins when neither participant can predict the other's next move with certainty; the slip-box acts as that unpredictable interlocutor.",
+      },
+      {
+        code: "21/3a1",
+        title: "Topical folders kill surprise",
+        words: 164,
+        links: ["21/3a", "21/3a2", "33/1a"],
+        excerpt:
+          "Retrieving only what you filed under a predictable heading echoes your past assumptions back to you without friction.",
+      },
+      {
+        code: "21/3a2",
+        title: "Branching addresses keep friction",
+        words: 212,
+        links: ["21/3a1", "7b/4a"],
+        excerpt:
+          "Inserting card 21/3a2 directly behind 21/3a1 keeps two competing dates of thought side by side in the same physical sequence.",
+      },
+    ],
   },
   {
-    quote:
-      "Every film treatment begins as a chaotic wall of stills and lighting notes. Atelier remembers where every frame came from and turns the board into a pitch deck in seconds.",
-    author: "Nadia Okafor",
-    role: "Creative Director, Studio Monochrome",
+    id: "14",
+    label: "Drawer 14 · Schlagwort Register",
+    slips: [
+      {
+        code: "14/8b",
+        title: "Keywords point to chains",
+        words: 152,
+        links: ["14/8b1", "21/3a"],
+        excerpt:
+          "An index entry should list at most three entry-point addresses; from those doors, the internal Folgezettel links guide the reader.",
+      },
+      {
+        code: "14/8b1",
+        title: "Hub slips bridge drawers",
+        words: 196,
+        links: ["14/8b", "9c/2a4"],
+        excerpt:
+          "When a sequence in Drawer 14 begins colliding with Drawer 9c, create a bridge card that lists the four pivotal intersections.",
+      },
+    ],
+  },
+  {
+    id: "9c",
+    label: "Drawer 9c · Manuscript Assembly",
+    slips: [
+      {
+        code: "9c/2a4",
+        title: "A6 cards become chapters",
+        words: 142,
+        links: ["9c/2a3", "21/3a1"],
+        excerpt:
+          "Because every card is already written in publishable sentences under 240 words, pulling ten cards onto the desk produces a draft chapter.",
+      },
+    ],
   },
 ];
 
-export default function AtelierPage() {
-  return (
-    <div className="min-h-[100dvh] bg-zinc-100 text-zinc-900 dark:bg-zinc-950 dark:text-zinc-100 font-sans selection:bg-orange-600 selection:text-white">
-      {/* Sticky Single-Line Navigation (64px height <= 80px cap) */}
-      <header
-        className={`sticky top-0 ${Z_INDEX.stickyNav} h-16 border-b border-zinc-300/80 bg-zinc-100/90 backdrop-blur-md dark:border-zinc-800/80 dark:bg-zinc-950/90`}
-      >
-        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/with-taste-skill/gemini-4-argon/3" className="flex items-center gap-2.5">
-            <BoundingBox
-              size={22}
-              weight="regular"
-              className="text-orange-600 dark:text-orange-400"
-            />
-            <span className="font-outfit text-xl font-bold tracking-tight">
-              ATELIER
-            </span>
-          </Link>
+const FAQ_ITEMS = [
+  {
+    q: "How does Kasten store links in plain Markdown?",
+    a: "Each card in ~/Kasten/ uses standard [[21/3a1]] wikilinks and a three-line YAML frontmatter block. Kasten rebuilds its in-memory index from raw files in 18 milliseconds.",
+  },
+  {
+    q: "What happens when a branch goes four levels deep?",
+    a: "Alternate numerals and letters without limit: 21 → 21a → 21a1 → 21a1a. Kasten indents the active branch while keeping sibling arguments one keystroke away.",
+  },
+  {
+    q: "Can I edit slips in Neovim, Emacs, or VS Code?",
+    a: "Yes. Kasten watches ~/Kasten/ via native filesystem events. Save any file externally and the board updates its link counters within a single frame.",
+  },
+  {
+    q: "Does the $68 Permanent Cabinet license ever expire?",
+    a: "Never. Your license key unlocks the native binary on macOS, Linux, and Windows forever, and your notes always remain ordinary UTF-8 Markdown files.",
+  },
+];
 
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-600 dark:text-zinc-400">
-            <a
-              href="#layers"
-              className="transition-colors hover:text-orange-600 dark:hover:text-orange-400"
+export default function IterationThreePage() {
+  useScrollReveal();
+
+  const [clusterIdx, setClusterIdx] = useState(0);
+  const [slipIdx, setSlipIdx] = useState(0);
+  const [faqIdx, setFaqIdx] = useState(0);
+
+  const activeCluster = DRAWER_CLUSTERS[clusterIdx];
+  const activeSlip =
+    activeCluster.slips[slipIdx] || activeCluster.slips[0];
+
+  return (
+    <div className="theme-iter3">
+      <div className="iter3-board">
+        {/* ================================================================
+            SECTION 1 · HERO: Name band and rails (Dense tiles board)
+            ================================================================ */}
+        <header style={{ marginBottom: "8px" }}>
+          {/* Full-width top band tile holding oversized wordmark */}
+          <div
+            className="anim-load-1"
+            style={{
+              backgroundColor: "var(--surface)",
+              padding: "20px 28px",
+              marginBottom: "8px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+              flexWrap: "wrap",
+              gap: "16px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "clamp(64px, 7.6vw, 96px)",
+                fontWeight: 600,
+                letterSpacing: "-0.045em",
+                lineHeight: 0.88,
+                color: "#ffffff",
+              }}
             >
-              Spatial Stack
-            </a>
-            <a
-              href="#canvas"
-              className="transition-colors hover:text-orange-600 dark:hover:text-orange-400"
-            >
-              Interactive Table
-            </a>
-            <a
-              href="#materials"
-              className="transition-colors hover:text-orange-600 dark:hover:text-orange-400"
-            >
-              Materiality
-            </a>
-            <a
-              href="#directors"
-              className="transition-colors hover:text-orange-600 dark:hover:text-orange-400"
-            >
-              Studios
-            </a>
+              KASTEN
+            </div>
+            <div style={{ color: "var(--accent)", fontSize: "16px", fontWeight: 500 }}>
+              BIELEFELD SLIP-BOX ENGINE · v2.4 LOCAL ARCHIVE
+            </div>
+          </div>
+
+          {/* 4-column row of navigation link tiles */}
+          <nav
+            aria-label="Primary navigation"
+            className="iter3-nav-grid anim-load-2"
+            style={{ marginBottom: "8px" }}
+          >
+            {[
+              { href: "#live-board-demo", label: "Drawer Inspector", sub: "90k graph" },
+              { href: "#macro-board", label: "Close-Up Tools", sub: "300% UI" },
+              { href: "#four-fields", label: "Card Progression", sub: "Four stages" },
+              { href: "#table-pricing", label: "Permanent License", sub: "$68 key" },
+            ].map((nav) => (
+              <a
+                key={nav.href}
+                href={nav.href}
+                style={{
+                  backgroundColor: "var(--surface)",
+                  color: "#ffffff",
+                  padding: "14px 20px",
+                  textDecoration: "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "baseline",
+                  gap: "8px",
+                }}
+              >
+                <strong style={{ fontSize: "16px" }}>{nav.label}</strong>
+                <span style={{ fontSize: "14px", color: "var(--muted)" }}>
+                  {nav.sub}
+                </span>
+              </a>
+            ))}
           </nav>
 
-          <a
-            href="#join"
-            className="inline-flex h-10 items-center justify-center rounded-2xl bg-orange-600 px-4 text-sm font-semibold text-white transition-all hover:bg-orange-700 active:scale-[0.98] whitespace-nowrap dark:bg-orange-500 dark:text-zinc-950 dark:hover:bg-orange-400"
-          >
-            Open studio
-          </a>
-        </div>
-      </header>
-
-      <main>
-        {/* SECTION 1: Asymmetric High-Variance Split Hero (min-h-[100dvh], pt-16 <= pt-24 cap, max 4 text elements) */}
-        <section className="min-h-[calc(100dvh-4rem)] pt-12 pb-16 md:pt-20 md:pb-24 flex items-center">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
-              {/* Left 6 Cols: Max 4 Text Elements (Eyebrow #1, Headline <= 2 lines, Subtext <= 20 words, CTAs) */}
-              <div className="lg:col-span-6 space-y-6">
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-orange-600 dark:text-orange-400 font-semibold">
-                  Spatial Second Brain
-                </p>
-
-                <h1 className="font-outfit text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tighter leading-[1.1] pb-1">
-                  Think across infinite canvases, not{" "}
-                  <span className="italic font-normal">rigid</span> folders.
-                </h1>
-
-                <p className="text-base sm:text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[54ch]">
-                  Arrange architectural references, film frames, and handwritten sketches on an infinite spatial table that remembers how ideas connect.
-                </p>
-
-                <div className="flex flex-wrap items-center gap-4 pt-2">
-                  <MagneticStudioButton href="#join" label="Open studio" />
-                  <a
-                    href="#canvas"
-                    className="inline-flex h-12 items-center justify-center rounded-2xl border border-zinc-300 bg-white px-6 text-sm font-semibold text-zinc-900 transition-all hover:border-zinc-400 hover:bg-zinc-200/60 active:scale-[0.98] whitespace-nowrap dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100 dark:hover:bg-zinc-800"
-                  >
-                    Inspect board
-                  </a>
-                </div>
-              </div>
-
-              {/* Right 6 Cols: High-Variance Offset Multi-Aspect Composition (4:3 next to 16:9 per Section 7) */}
-              <div className="lg:col-span-6 grid grid-cols-1 gap-4 sm:grid-cols-12">
-                <div className="sm:col-span-7 rounded-2xl border border-zinc-300 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-900">
-                  <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
-                    <Image
-                      src="https://picsum.photos/seed/atelier-hero-architectural-table/900/675"
-                      alt="Curated architectural models and tactile material swatches on studio desk"
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 100vw, 35vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="mt-2.5 px-1 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-                    North Pavilion Material Board (240 linked notes)
-                  </p>
-                </div>
-
-                <div className="sm:col-span-5 sm:mt-8 rounded-2xl border border-zinc-300 bg-white p-3 dark:border-zinc-800 dark:bg-zinc-900">
-                  <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
-                    <Image
-                      src="https://picsum.photos/seed/atelier-hero-color-optics/700/450"
-                      alt="Color optics and lighting study pinned on spatial canvas"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 25vw"
-                      className="object-cover"
-                    />
-                  </div>
-                  <p className="mt-2.5 px-1 font-mono text-xs text-orange-600 dark:text-orange-400 font-semibold">
-                    Optical Palette Extraction
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 2: Logo Wall (Under Hero, Real SVG Marks, Logo-Only rule) */}
-        <section
-          aria-label="Design studios and creative teams using Atelier"
-          className="border-y border-zinc-300/80 bg-white py-12 dark:border-zinc-800/80 dark:bg-zinc-900/50"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <TrustedLogos className="text-zinc-600 dark:text-zinc-400" />
-          </div>
-        </section>
-
-        {/* SECTION 3: GSAP ScrollTrigger Sticky-Stack Choreography (Section 5.A canonical skeleton) */}
-        <section id="layers" className="py-16">
-          <div className="mx-auto max-w-7xl px-4 pt-12 pb-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-3">
-              <h2 className="font-outfit text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Three spatial layers for visual recall.
-              </h2>
-              <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[65ch]">
-                Scroll through how Atelier takes raw creative fragments from first capture to finished client folio.
-              </p>
-            </div>
-          </div>
-
-          <AtelierStickyStack />
-        </section>
-
-        {/* SECTION 4: Interactive Spatial Moodboard Workbench (Client Leaf Component, Eyebrow #2 of 2) */}
-        <section
-          id="canvas"
-          className="border-y border-zinc-300/80 bg-zinc-200/50 py-24 sm:py-32 dark:border-zinc-800/80 dark:bg-zinc-900/40"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="mb-12 max-w-2xl space-y-3">
-              <p className="font-mono text-xs uppercase tracking-[0.18em] text-orange-600 dark:text-orange-400 font-semibold">
-                Interactive Studio Canvas
-              </p>
-              <h2 className="font-outfit text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Filter your spatial board and pin new swatches.
-              </h2>
-              <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[65ch]">
-                Test live hue clustering, medium filtering, and coordinate pinning on an interactive Atelier board.
-              </p>
-            </div>
-
-            <AtelierSpatialBoard />
-          </div>
-        </section>
-
-        {/* SECTION 5: Asymmetric 3-Cell Bento Grid (3 items = 3 cells, background diversity) */}
-        <section id="materials" className="py-24 sm:py-32">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-3">
-              <h2 className="font-outfit text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Built for high-resolution visual memory.
-              </h2>
-              <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[65ch]">
-                Every pixel, colour profile, and margin sketch remains sharp at any zoom level.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-12">
-              {/* Cell 1 (col-span-7): Vermilion Accent Surface */}
-              <div className="md:col-span-7 flex flex-col justify-between rounded-2xl bg-orange-600 p-8 text-white dark:bg-orange-500 dark:text-zinc-950">
-                <div className="space-y-3">
-                  <Palette size={28} weight="regular" />
-                  <h3 className="font-outfit text-3xl font-bold tracking-tight">
-                    Automatic Perceptual Color Indexing
-                  </h3>
-                  <p className="text-sm opacity-90 leading-relaxed max-w-[55ch]">
-                    Search your second brain by Oklch color harmony, lighting temperature, or surface texture without manually tagging a single image.
-                  </p>
-                </div>
-                <div className="mt-8 flex flex-wrap gap-3 border-t border-current/20 pt-5 font-mono text-xs font-semibold">
-                  <span className="rounded-2xl bg-black/15 px-3.5 py-1.5">
-                    Oklch Gamut
-                  </span>
-                  <span className="rounded-2xl bg-black/15 px-3.5 py-1.5">
-                    Display P3 Native
-                  </span>
-                  <span className="rounded-2xl bg-black/15 px-3.5 py-1.5">
-                    RAW + EXIF
-                  </span>
-                </div>
-              </div>
-
-              {/* Cell 2 (col-span-5): Dark Chrome Surface */}
-              <div className="md:col-span-5 flex flex-col justify-between rounded-2xl bg-zinc-900 p-8 text-zinc-100 dark:border dark:border-zinc-800">
-                <div className="space-y-3">
-                  <CubeTransparent
-                    size={28}
-                    weight="regular"
-                    className="text-orange-500"
-                  />
-                  <h3 className="font-outfit text-2xl font-bold tracking-tight">
-                    Infinite Zoom Without Blur
-                  </h3>
-                  <p className="text-sm text-zinc-300 leading-relaxed">
-                    Tiled mipmap streaming lets you zoom from a 5,000-item bird’s-eye project overview down to individual pencil strokes at 120 frames per second.
-                  </p>
-                </div>
-                <p className="mt-8 font-mono text-xs text-orange-400">
-                  Zoom range: 2% overview to 6400% detail
-                </p>
-              </div>
-
-              {/* Cell 3 (col-span-12): Full-Width Split Image + Feature Row */}
-              <div className="md:col-span-12 grid grid-cols-1 gap-8 rounded-2xl border border-zinc-300 bg-white p-6 sm:p-8 lg:grid-cols-12 lg:items-center dark:border-zinc-800 dark:bg-zinc-900">
-                <div className="lg:col-span-5 space-y-3">
-                  <Camera
-                    size={28}
-                    weight="regular"
-                    className="text-orange-600 dark:text-orange-400"
-                  />
-                  <h3 className="font-outfit text-2xl sm:text-3xl font-bold tracking-tight">
-                    iOS Companion Loupe for Field Capture
-                  </h3>
-                  <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    Snap architectural details, fabric weaves, or exhibition plaques on your phone. They land directly on your active desktop table with GPS and compass orientation preserved.
-                  </p>
-                </div>
-                <div className="lg:col-span-7">
-                  <div className="relative h-64 w-full overflow-hidden rounded-2xl bg-zinc-200 dark:bg-zinc-800">
-                    <Image
-                      src="https://picsum.photos/seed/atelier-field-photography-loupe/1100/550"
-                      alt="Architectural facade detail captured during site visit"
-                      fill
-                      sizes="(max-width: 1024px) 100vw, 58vw"
-                      className="object-cover"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 6: Creative Director Testimonials (Max 3 lines of quote body, zero em-dashes) */}
-        <section
-          id="directors"
-          className="border-t border-zinc-300/80 bg-white py-24 sm:py-32 dark:border-zinc-800/80 dark:bg-zinc-900/40"
-        >
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="max-w-2xl space-y-3">
-              <h2 className="font-outfit text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                Adopted by visual directors and architects.
-              </h2>
-              <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[65ch]">
-                How multi-disciplinary studios replace scattered reference folders with Atelier.
-              </p>
-            </div>
-
-            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-2">
-              {DIRECTOR_QUOTES.map((item) => (
-                <blockquote
-                  key={item.author}
-                  className="flex flex-col justify-between rounded-2xl border border-zinc-200 bg-zinc-100/80 p-8 dark:border-zinc-800 dark:bg-zinc-900"
-                >
-                  <div>
-                    <Quotes
-                      size={28}
-                      weight="regular"
-                      className="text-orange-600 dark:text-orange-400"
-                    />
-                    <p className="mt-4 font-outfit text-xl leading-snug text-zinc-900 dark:text-zinc-100 line-clamp-3">
-                      “{item.quote}”
-                    </p>
-                  </div>
-                  <footer className="mt-6 border-t border-zinc-300/80 pt-4 dark:border-zinc-800">
-                    <p className="font-outfit text-sm font-bold text-zinc-900 dark:text-zinc-100">
-                      {item.author}
-                    </p>
-                    <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                      {item.role}
-                    </p>
-                  </footer>
-                </blockquote>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* SECTION 7: Conversion Section (Label above input, locked CTA "Open studio") */}
-        <section
-          id="join"
-          className="border-t border-zinc-300/80 py-24 sm:py-32 dark:border-zinc-800/80"
-        >
-          <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-            <div className="rounded-2xl border border-zinc-300 bg-white p-8 sm:p-12 dark:border-zinc-800 dark:bg-zinc-900">
-              <div className="space-y-3">
-                <h2 className="font-outfit text-4xl md:text-5xl font-bold tracking-tighter leading-none">
-                  Set up your spatial studio table.
-                </h2>
-                <p className="text-base text-zinc-600 dark:text-zinc-400 leading-relaxed max-w-[60ch]">
-                  Start with unlimited spatial boards, Display P3 color indexing, and native macOS & iPadOS sync.
-                </p>
-              </div>
-
-              <form
-                action="#join"
-                className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-12 sm:items-end"
+          {/* Lower 3-column unequal board: Left rail (3fr) + Centre column (5fr) + Right stack (4fr) */}
+          <div className="iter3-hero-board anim-load-3">
+            {/* Left Rail */}
+            <div
+              className="iter3-hide-mobile"
+              style={{ display: "grid", gap: "8px" }}
+            >
+              <div
+                style={{
+                  backgroundColor: "var(--surface)",
+                  overflow: "hidden",
+                  height: "190px",
+                }}
               >
-                <div className="sm:col-span-8 flex flex-col gap-2">
-                  <label
-                    htmlFor="atelier-studio-email"
-                    className="text-xs font-semibold text-zinc-800 dark:text-zinc-200"
-                  >
-                    Studio or personal email address
-                  </label>
-                  <input
-                    id="atelier-studio-email"
-                    name="email"
-                    type="email"
-                    required
-                    placeholder="kaspar@lindholm-architects.dk"
-                    className="h-12 rounded-2xl border border-zinc-300 bg-zinc-100 px-4 text-sm text-zinc-900 placeholder:text-zinc-500 focus:border-orange-600 focus:bg-white focus:outline-none focus:ring-2 focus:ring-orange-600/20 dark:border-zinc-700 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-400"
-                  />
+                <img
+                  src="/variants/with-taste-skill/gemini-4-argon/assets/card-catalog-at-the-indiana-state-library-2.jpg"
+                  width={1920}
+                  height={2560}
+                  alt="Brass drawer plates 808 and 809 on a dark wooden card catalog"
+                  decoding="async"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: "var(--surface)",
+                  padding: "22px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "10px",
+                }}
+              >
+                <strong style={{ color: "var(--accent)", fontSize: "16px" }}>
+                  ARCHIVE SPECIFICATION
+                </strong>
+                <div style={{ fontSize: "16px", color: "#ffffff" }}>
+                  Card ceiling: <strong>240 words (A6)</strong>
                 </div>
-                <div className="sm:col-span-4">
-                  <button
-                    type="submit"
-                    className="inline-flex h-12 w-full items-center justify-center gap-2 rounded-2xl bg-orange-600 px-6 text-sm font-semibold text-white transition-all hover:bg-orange-700 active:scale-[0.98] whitespace-nowrap dark:bg-orange-500 dark:text-zinc-950 dark:hover:bg-orange-400"
-                  >
-                    <span>Open studio</span>
-                  </button>
+                <div style={{ fontSize: "16px", color: "#ffffff" }}>
+                  Addressing: <strong>Folgezettel spine</strong>
                 </div>
-              </form>
+                <div style={{ fontSize: "16px", color: "#ffffff" }}>
+                  Disk format: <strong>Plain UTF-8 .md</strong>
+                </div>
+                <div style={{ fontSize: "16px", color: "#ffffff" }}>
+                  Graph latency: <strong>0.8 ms local</strong>
+                </div>
+              </div>
+            </div>
+
+            {/* Wide Centre Column: Statement Tile on Top + Hero Photograph Below */}
+            <div style={{ display: "grid", gap: "8px" }}>
+              <div
+                style={{
+                  backgroundColor: "var(--surface-alt)",
+                  padding: "28px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "14px",
+                }}
+              >
+                <h1
+                  style={{
+                    fontSize: "40px",
+                    lineHeight: 0.96,
+                    color: "#ffffff",
+                  }}
+                >
+                  Plain-text slip-box on disk.
+                </h1>
+                <p style={{ margin: 0, color: "#ffffff", fontSize: "16px" }}>
+                  Kasten replaces sprawling cloud documents with atomic A6
+                  Markdown slips filed along an alphanumeric Folgezettel spine
+                  right on your local drive.
+                </p>
+              </div>
+
+              <div
+                style={{
+                  backgroundColor: "var(--surface)",
+                  overflow: "hidden",
+                  height: "210px",
+                }}
+              >
+                <img
+                  src="/variants/with-taste-skill/gemini-4-argon/assets/cardfile-at-indiana-state-library-35426.jpg"
+                  width={1920}
+                  height={2654}
+                  alt="Grand dark mahogany sixty-drawer library card catalog illuminated by warm brass lamps"
+                  decoding="async"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                  }}
+                />
+              </div>
+            </div>
+
+            {/* Right Rail: Vertical Stack of 5 Filled Colour Tiles */}
+            <div style={{ display: "grid", gap: "8px" }}>
+              <a
+                href="#table-pricing"
+                style={{
+                  backgroundColor: "var(--accent)",
+                  color: "var(--accent-ink)",
+                  padding: "20px 22px",
+                  textDecoration: "none",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  fontWeight: 600,
+                  fontSize: "22px",
+                }}
+              >
+                <span>Download Kasten v2.4</span>
+                <span>→</span>
+              </a>
+              <div
+                style={{
+                  backgroundColor: "#1d1914",
+                  padding: "16px 22px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ color: "var(--muted)" }}>I. Flüchtige Notizen</span>
+                <strong style={{ color: "#ffffff" }}>24h Inbox Triage</strong>
+              </div>
+              <div
+                style={{
+                  backgroundColor: "#241f18",
+                  padding: "16px 22px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ color: "var(--muted)" }}>II. Literaturkasten</span>
+                <strong style={{ color: "#ffffff" }}>BibTeX + Page Cite</strong>
+              </div>
+              <div
+                style={{
+                  backgroundColor: "#2b241c",
+                  padding: "16px 22px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ color: "var(--muted)" }}>III. Hauptkasten</span>
+                <strong style={{ color: "#ffffff" }}>Branching 21/3a1</strong>
+              </div>
+              <div
+                style={{
+                  backgroundColor: "#332a1f",
+                  padding: "16px 22px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                }}
+              >
+                <span style={{ color: "var(--muted)" }}>IV. Schlagwort Index</span>
+                <strong style={{ color: "var(--accent)" }}>Entry Doors</strong>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        {/* ================================================================
+            SIGNATURE MOTION · Edge-to-edge Marquee Strip Tile
+            ================================================================ */}
+        <div
+          data-ui="address-ticker"
+          style={{
+            backgroundColor: "var(--surface)",
+            padding: "14px 0",
+            marginBottom: "8px",
+            overflow: "hidden",
+          }}
+        >
+          <div className="iter3-marquee-track">
+            {[1, 2].map((pass) => (
+              <div
+                key={pass}
+                style={{
+                  display: "flex",
+                  gap: "44px",
+                  paddingRight: "44px",
+                  whiteSpace: "nowrap",
+                  fontSize: "16px",
+                  color: "#ffffff",
+                }}
+              >
+                <span>
+                  <strong style={{ color: "var(--accent)" }}>21/3a1</strong> · Why
+                  folders destroy surprise
+                </span>
+                <span>
+                  <strong style={{ color: "var(--accent)" }}>14/8b</strong> ·
+                  Keywords point to chains, not buckets
+                </span>
+                <span>
+                  <strong style={{ color: "var(--accent)" }}>9c/2a4</strong> · 240
+                  words per A6 slip
+                </span>
+                <span>
+                  <strong style={{ color: "var(--accent)" }}>33/1a</strong> ·
+                  Sub-millisecond local graph traversal
+                </span>
+                <span>
+                  <strong style={{ color: "var(--accent)" }}>1a/1</strong> · Plain
+                  UTF-8 Markdown inside ~/Kasten/
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ================================================================
+            SECTION 2 · SHOWCASE: Live demo with controls (62% / 38% split)
+            ================================================================ */}
+        <section id="live-board-demo" style={{ marginBottom: "8px" }}>
+          <div data-reveal className="iter3-showcase-split">
+            {/* Left 62% Tile: Live Interactive Slip-Box Inspector */}
+            <div
+              data-ui="live-drawer-stage"
+              style={{
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "24px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  flexWrap: "wrap",
+                  gap: "12px",
+                }}
+              >
+                <strong
+                  style={{
+                    color: "var(--accent)",
+                    fontSize: "16px",
+                  }}
+                >
+                  ACTIVE DRAWER: {activeCluster.label.toUpperCase()}
+                </strong>
+                <div style={{ display: "flex", gap: "6px", flexWrap: "wrap" }}>
+                  {activeCluster.slips.map((s, idx) => (
+                    <button
+                      key={s.code}
+                      type="button"
+                      onClick={() => setSlipIdx(idx)}
+                      style={{
+                        padding: "6px 14px",
+                        backgroundColor:
+                          slipIdx === idx ? "var(--accent)" : "#26211b",
+                        color: slipIdx === idx ? "#0c0a08" : "#ffffff",
+                        border: 0,
+                        cursor: "pointer",
+                        fontWeight: 600,
+                      }}
+                    >
+                      {s.code}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Active Card Surface */}
+              <div
+                style={{
+                  backgroundColor: "#221e19",
+                  padding: "24px",
+                  border: "1px solid #383129",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "baseline",
+                    marginBottom: "14px",
+                    flexWrap: "wrap",
+                    gap: "8px",
+                  }}
+                >
+                  <strong
+                    style={{
+                      fontSize: "22px",
+                      color: "var(--accent)",
+                    }}
+                  >
+                    Slip {activeSlip.code}
+                  </strong>
+                  <span style={{ color: "var(--muted)", fontSize: "14px" }}>
+                    {activeSlip.words} / 240 words · ~/Kasten/
+                    {activeSlip.code.replace("/", "-")}.md
+                  </span>
+                </div>
+
+                <h3
+                  style={{
+                    fontSize: "22px",
+                    marginBottom: "12px",
+                    color: "#ffffff",
+                  }}
+                >
+                  {activeSlip.title}
+                </h3>
+
+                <p
+                  style={{
+                    margin: "0 0 20px 0",
+                    fontSize: "16px",
+                    color: "#ffffff",
+                    lineHeight: 1.55,
+                  }}
+                >
+                  {activeSlip.excerpt}
+                </p>
+
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "10px",
+                    flexWrap: "wrap",
+                    alignItems: "center",
+                  }}
+                >
+                  <span style={{ fontSize: "14px", color: "var(--muted)" }}>
+                    Connected addresses:
+                  </span>
+                  {activeSlip.links.map((lk) => (
+                    <span
+                      key={lk}
+                      style={{
+                        padding: "4px 12px",
+                        backgroundColor: "#14110e",
+                        color: "var(--accent)",
+                        fontSize: "14px",
+                        fontWeight: 500,
+                      }}
+                    >
+                      ↗ [[{lk}]]
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  color: "var(--muted)",
+                  fontSize: "14px",
+                  flexWrap: "wrap",
+                  gap: "8px",
+                }}
+              >
+                <span>Folgezettel Spine Depth: 4 levels</span>
+                <span>Graph Index Rebuilt in 0.8 ms</span>
+              </div>
+            </div>
+
+            {/* Right 38% Tile: Heading, Copy & Stacked Drawer Controls */}
+            <div
+              style={{
+                backgroundColor: "var(--surface-alt)",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "24px",
+              }}
+            >
+              <div>
+                <h2
+                  style={{
+                    fontSize: "40px",
+                    marginBottom: "14px",
+                  }}
+                >
+                  Pull any drawer to trace its chain.
+                </h2>
+                <p style={{ margin: 0, color: "#ffffff", fontSize: "16px" }}>
+                  Select a drawer below to switch the live cabinet view on the
+                  left and inspect how individual A6 slips cross-reference one
+                  another.
+                </p>
+              </div>
+
+              <div
+                data-ui="drawer-selector-controls"
+                style={{ display: "grid", gap: "8px" }}
+              >
+                {DRAWER_CLUSTERS.map((cl, idx) => {
+                  const active = idx === clusterIdx;
+                  return (
+                    <button
+                      key={cl.id}
+                      type="button"
+                      onClick={() => {
+                        setClusterIdx(idx);
+                        setSlipIdx(0);
+                      }}
+                      style={{
+                        padding: "16px 18px",
+                        backgroundColor: active ? "var(--accent)" : "#14110e",
+                        color: active ? "#0c0a08" : "#ffffff",
+                        border: 0,
+                        textAlign: "left",
+                        cursor: "pointer",
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                        fontWeight: 600,
+                      }}
+                    >
+                      <span>{cl.label}</span>
+                      <span>{cl.slips.length} slips</span>
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>
-      </main>
 
-      <footer className="border-t border-zinc-300/80 bg-white py-12 dark:border-zinc-800/80 dark:bg-zinc-950">
-        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 px-4 sm:flex-row sm:items-center sm:px-6 lg:px-8">
-          <div className="flex items-center gap-2.5">
-            <BoundingBox
-              size={20}
-              weight="regular"
-              className="text-orange-600 dark:text-orange-400"
-            />
-            <span className="font-outfit text-base font-bold">ATELIER</span>
-            <span className="text-xs text-zinc-500 dark:text-zinc-400">
-              Spatial Second Brain for Visual Thinkers
-            </span>
+        {/* ================================================================
+            SECTION 3 · FEATURES: Close-ups on a board (Macro UI details)
+            ================================================================ */}
+        <section id="macro-board" style={{ marginBottom: "8px" }}>
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--surface)",
+              padding: "28px",
+              marginBottom: "8px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "end",
+              flexWrap: "wrap",
+              gap: "16px",
+            }}
+          >
+            <h2 style={{ fontSize: "40px" }}>
+              Fifty years of daily filing.
+            </h2>
+            <p style={{ margin: 0, color: "#ffffff", maxWidth: "46ch" }}>
+              Every tile on the Kasten board exposes one physical instrument at
+              macro scale, with no nested settings menus.
+            </p>
           </div>
-          <div className="flex flex-wrap items-center gap-6 text-xs font-medium text-zinc-600 dark:text-zinc-400">
-            <a href="#layers" className="hover:text-orange-600 dark:hover:text-orange-400">
-              Spatial Stack
-            </a>
-            <a href="#canvas" className="hover:text-orange-600 dark:hover:text-orange-400">
-              Interactive Table
-            </a>
-            <a href="#materials" className="hover:text-orange-600 dark:hover:text-orange-400">
-              Materiality
-            </a>
-            <a href="#join" className="hover:text-orange-600 dark:hover:text-orange-400">
-              Open studio
-            </a>
+
+          <div
+            data-reveal
+            className="grid-12"
+            style={{ gap: "8px" }}
+          >
+            {/* Tile 1 (Span 5): Macro Folgezettel Address Stamp */}
+            <div
+              data-ui="macro-address-tile"
+              style={{
+                gridColumn: "span 5",
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: "260px",
+              }}
+            >
+              <div>
+                <h3 style={{ fontSize: "22px", marginBottom: "8px" }}>
+                  Alphanumeric Spine
+                </h3>
+                <p style={{ margin: 0, color: "#ffffff" }}>
+                  Branch infinitely between any two existing thoughts without
+                  renumbering your drawer.
+                </p>
+              </div>
+              <div
+                style={{
+                  fontSize: "64px",
+                  fontWeight: 600,
+                  color: "var(--accent)",
+                  letterSpacing: "-0.04em",
+                  lineHeight: 0.9,
+                }}
+              >
+                21/3a1b
+              </div>
+            </div>
+
+            {/* Tile 2 (Span 4): Macro 240-Word Gauge */}
+            <div
+              data-ui="macro-word-gauge"
+              style={{
+                gridColumn: "span 4",
+                backgroundColor: "var(--surface-alt)",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: "260px",
+              }}
+            >
+              <div>
+                <h3 style={{ fontSize: "22px", marginBottom: "8px" }}>
+                  240-Word A6 Cap
+                </h3>
+                <p style={{ margin: 0, color: "#ffffff" }}>
+                  Prevents collector&apos;s dumps by enforcing the exact capacity
+                  of a 148 × 105 mm paper index card.
+                </p>
+              </div>
+              <div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: "22px",
+                    fontWeight: 600,
+                    marginBottom: "10px",
+                  }}
+                >
+                  <span>184 words</span>
+                  <span style={{ color: "var(--accent)" }}>56 left</span>
+                </div>
+                <div
+                  style={{
+                    height: "18px",
+                    backgroundColor: "#12100d",
+                    width: "100%",
+                  }}
+                >
+                  <div
+                    style={{
+                      width: "76%",
+                      height: "100%",
+                      backgroundColor: "var(--accent)",
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Tile 3 (Span 3): Archival Teleprinter Video Tile */}
+            <div
+              style={{
+                gridColumn: "span 3",
+                backgroundColor: "var(--surface)",
+                overflow: "hidden",
+                minHeight: "260px",
+              }}
+            >
+              <video
+                src="/variants/with-taste-skill/gemini-4-argon/assets/teleprinter-automatic-printing.webm"
+                poster="/variants/with-taste-skill/gemini-4-argon/assets/teleprinter-automatic-printing-poster.jpg"
+                autoPlay
+                loop
+                muted
+                playsInline
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+
+            {/* Tile 4 (Span 4): Archival Photo Tile 2 */}
+            <div
+              style={{
+                gridColumn: "span 4",
+                backgroundColor: "var(--surface)",
+                overflow: "hidden",
+                minHeight: "250px",
+              }}
+            >
+              <img
+                src="/variants/with-taste-skill/gemini-4-argon/assets/schlagwortkatalog.jpg"
+                width={1920}
+                height={1624}
+                alt="Open drawer of a German Schlagwortkatalog subject index"
+                loading="lazy"
+                decoding="async"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              />
+            </div>
+
+            {/* Tile 5 (Span 8): Macro Bidirectional Link Matrix */}
+            <div
+              data-ui="macro-backlink-matrix"
+              style={{
+                gridColumn: "span 8",
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                minHeight: "250px",
+                gap: "16px",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "baseline",
+                  gap: "16px",
+                  flexWrap: "wrap",
+                }}
+              >
+                <h3 style={{ fontSize: "22px" }}>
+                  Sub-Millisecond Local Link Graph
+                </h3>
+                <span style={{ color: "var(--accent)", fontWeight: 600 }}>
+                  ~/Kasten/Hauptkasten · 0.8 ms traversal
+                </span>
+              </div>
+
+              <div className="iter3-edge-grid">
+                {[
+                  { from: "21/3a1", to: "14/8b", label: "Contradicts folder taxonomy" },
+                  { from: "14/8b", to: "9c/2a4", label: "Feeds chapter outline III" },
+                  { from: "9c/2a4", to: "33/1a", label: "Transcludes Spinoza citation" },
+                ].map((edge) => (
+                  <div
+                    key={edge.from}
+                    style={{
+                      backgroundColor: "#241f18",
+                      padding: "16px",
+                    }}
+                  >
+                    <div
+                      style={{
+                        color: "var(--accent)",
+                        fontSize: "22px",
+                        fontWeight: 600,
+                        marginBottom: "6px",
+                      }}
+                    >
+                      {edge.from} → {edge.to}
+                    </div>
+                    <div style={{ fontSize: "14px", color: "#ffffff" }}>
+                      {edge.label}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
-      </footer>
+        </section>
+
+        {/* ================================================================
+            SECTION 4 · HOW IT WORKS: One card, four fields
+            ================================================================ */}
+        <section id="four-fields" style={{ marginBottom: "8px" }}>
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--surface)",
+              padding: "28px",
+              marginBottom: "8px",
+            }}
+          >
+            <h2 style={{ fontSize: "40px" }}>
+              One card across four stages.
+            </h2>
+          </div>
+
+          <div
+            data-reveal
+            className="iter3-four-fields"
+          >
+            {[
+              {
+                bg: "#161310",
+                stage: "Stage I · Fleeting Inbox",
+                badge: "11:42 AM · Unfiled",
+                code: "Flüchtig #4",
+                text: "Quick hunch while reading: folders group notes by where they came from, not where they are going.",
+                footer: "Expires in 12h 18m · ~/Kasten/Fluechtig",
+              },
+              {
+                bg: "#1f1a15",
+                stage: "Stage II · Source Attached",
+                badge: "08:15 PM · Cited",
+                code: "Lit · Luhmann 1981",
+                text: "Luhmann (1981, p. 224) notes that fixed thematic categories stifle combinatorial surprise over multi-year spans.",
+                footer: "BibTeX key: luhmann1981k · ~/Kasten/Lit",
+              },
+              {
+                bg: "#28221b",
+                stage: "Stage III · Folgezettel Filed",
+                badge: "08:19 PM · Indexed",
+                code: "Slip 21 / 3a1",
+                text: "Filing a note behind 21/3a forces it into dialogue with prior arguments instead of hiding it inside a topic folder.",
+                footer: "Parent: 21/3a · 38 words · ~/Kasten/Haupt",
+              },
+              {
+                bg: "#332b20",
+                stage: "Stage IV · Manuscript Draft",
+                badge: "Chapter II · Transcluded",
+                code: "Slip 21 / 3a1 → §2.4",
+                text: "Transcluded directly into Chapter II ('Architecture of Surprise') with automatic footnote generation.",
+                footer: "3 outbound · 4 inbound links",
+              },
+            ].map((item) => (
+              <div
+                key={item.stage}
+                style={{
+                  backgroundColor: item.bg,
+                  padding: "24px",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "20px",
+                }}
+              >
+                <strong
+                  style={{
+                    fontSize: "16px",
+                    color: "var(--accent)",
+                  }}
+                >
+                  {item.stage}
+                </strong>
+
+                {/* The same card maturing across each field */}
+                <div
+                  data-ui={`stage-card-${item.code}`}
+                  style={{
+                    backgroundColor: "#0c0a08",
+                    padding: "20px",
+                    border: "1px solid #3c342a",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      fontSize: "14px",
+                      color: "var(--muted)",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    <span>{item.code}</span>
+                    <span>{item.badge}</span>
+                  </div>
+                  <p
+                    style={{
+                      margin: "0 0 12px 0",
+                      fontSize: "16px",
+                      color: "#ffffff",
+                    }}
+                  >
+                    {item.text}
+                  </p>
+                  <div
+                    style={{
+                      fontSize: "14px",
+                      color: "var(--accent)",
+                    }}
+                  >
+                    {item.footer}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ================================================================
+            SECTION 5 · STATS: Stepped figure tiles
+            ================================================================ */}
+        <section style={{ marginBottom: "8px" }}>
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--surface)",
+              padding: "28px",
+              marginBottom: "8px",
+            }}
+          >
+            <h2 style={{ fontSize: "40px" }}>
+              Archival scale without bloat.
+            </h2>
+          </div>
+
+          <div data-reveal className="iter3-stepped-stats">
+            <div
+              style={{
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                minHeight: "300px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "64px",
+                  fontWeight: 600,
+                  color: "var(--accent)",
+                  lineHeight: 0.9,
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                0.8 ms
+              </div>
+              <p style={{ margin: 0, color: "#ffffff", fontSize: "16px" }}>
+                Full backlink and Folgezettel tree traversal across ninety
+                thousand local Markdown slips on an M2 Air.
+              </p>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: "var(--surface-alt)",
+                padding: "28px",
+                minHeight: "230px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "64px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  lineHeight: 0.9,
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                90,000
+              </div>
+              <p style={{ margin: 0, color: "#ffffff", fontSize: "16px" }}>
+                Tested Bielefeld cabinet card capacity in plain UTF-8 files.
+              </p>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                minHeight: "180px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "64px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  lineHeight: 0.9,
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                14 MB
+              </div>
+              <p style={{ margin: 0, color: "#ffffff", fontSize: "16px" }}>
+                Native desktop binary size for macOS, Linux, and Windows.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================
+            SECTION 6 · PRICING: Plans as a large table (Words, no checkmarks)
+            ================================================================ */}
+        <section id="table-pricing" style={{ marginBottom: "8px" }}>
+          <div
+            data-reveal
+            style={{
+              backgroundColor: "var(--surface)",
+              padding: "28px",
+            }}
+          >
+            <h2
+              style={{
+                fontSize: "40px",
+                marginBottom: "24px",
+              }}
+            >
+              Editions in plain words.
+            </h2>
+
+            <table
+              style={{
+                width: "100%",
+                borderCollapse: "collapse",
+                textAlign: "left",
+                fontSize: "16px",
+              }}
+            >
+              <thead>
+                <tr>
+                  <th
+                    style={{
+                      padding: "14px",
+                      borderBottom: "1px solid #332c24",
+                      color: "var(--muted)",
+                      width: "34%",
+                    }}
+                  >
+                    Capability
+                  </th>
+                  <th
+                    style={{
+                      padding: "14px",
+                      borderBottom: "1px solid #332c24",
+                      width: "33%",
+                    }}
+                  >
+                    <div style={{ fontSize: "22px", fontWeight: 600 }}>
+                      Starter · $0
+                    </div>
+                  </th>
+                  <th
+                    style={{
+                      padding: "14px",
+                      backgroundColor: "var(--accent)",
+                      color: "#0c0a08",
+                      width: "33%",
+                    }}
+                  >
+                    <div style={{ fontSize: "22px", fontWeight: 600 }}>
+                      Cabinet · $68
+                    </div>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {[
+                  {
+                    cap: "Hauptkasten capacity",
+                    free: "Up to 500 slips",
+                    paid: "Unlimited (90,000+)",
+                  },
+                  {
+                    cap: "Disk storage format",
+                    free: "Plain UTF-8 .md",
+                    paid: "Plain .md + Git bridge",
+                  },
+                  {
+                    cap: "Daily Flüchtig inbox",
+                    free: "24-hour triage timer",
+                    paid: "Triage + BibTeX cite",
+                  },
+                  {
+                    cap: "Manuscript Desk",
+                    free: "Single-chain export",
+                    paid: "Full chapter compiler",
+                  },
+                ].map((row) => (
+                  <tr key={row.cap}>
+                    <td
+                      style={{
+                        padding: "14px",
+                        borderBottom: "1px solid #2b251e",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {row.cap}
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px",
+                        borderBottom: "1px solid #2b251e",
+                        color: "#ffffff",
+                      }}
+                    >
+                      {row.free}
+                    </td>
+                    <td
+                      style={{
+                        padding: "14px",
+                        backgroundColor: "#bf994f",
+                        color: "#0c0a08",
+                        borderBottom: "1px solid #a6823c",
+                        fontWeight: 500,
+                      }}
+                    >
+                      {row.paid}
+                    </td>
+                  </tr>
+                ))}
+                <tr>
+                  <td style={{ padding: "14px", fontWeight: 500 }}>
+                    Native desktop installer package for macOS, Linux, and Windows
+                  </td>
+                  <td style={{ padding: "14px" }}>
+                    <a
+                      href="#table-pricing"
+                      style={{
+                        display: "inline-block",
+                        padding: "10px 14px",
+                        backgroundColor: "#2b251e",
+                        color: "#ffffff",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                      }}
+                    >
+                      Get Starter ($0)
+                    </a>
+                  </td>
+                  <td
+                    style={{
+                      padding: "14px",
+                      backgroundColor: "var(--accent)",
+                    }}
+                  >
+                    <a
+                      href="#table-pricing"
+                      style={{
+                        display: "inline-block",
+                        padding: "10px 14px",
+                        backgroundColor: "#0c0a08",
+                        color: "#ffffff",
+                        textDecoration: "none",
+                        fontWeight: 600,
+                      }}
+                    >
+                      Buy Key ($68)
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* ================================================================
+            SECTION 7 · FAQ: Question index, one answer
+            ================================================================ */}
+        <section style={{ marginBottom: "8px" }}>
+          <div data-reveal className="iter3-faq-split">
+            {/* Columns 1–5: Question List with 8px dot indicators */}
+            <div
+              style={{
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+              }}
+            >
+              <h2
+                style={{
+                  fontSize: "40px",
+                  marginBottom: "20px",
+                }}
+              >
+                Technical Questions
+              </h2>
+
+              <div
+                data-ui="faq-index-list"
+                style={{ display: "grid", gap: "8px" }}
+              >
+                {FAQ_ITEMS.map((item, idx) => {
+                  const active = idx === faqIdx;
+                  return (
+                    <button
+                      key={item.q}
+                      type="button"
+                      onClick={() => setFaqIdx(idx)}
+                      style={{
+                        padding: "14px 16px",
+                        backgroundColor: active ? "#28221b" : "#14110e",
+                        color: "#ffffff",
+                        border: 0,
+                        textAlign: "left",
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "12px",
+                        fontSize: "16px",
+                        fontWeight: active ? 600 : 400,
+                      }}
+                    >
+                      <span
+                        aria-hidden="true"
+                        style={{
+                          width: "8px",
+                          height: "8px",
+                          borderRadius: "50%",
+                          backgroundColor: active
+                            ? "var(--accent)"
+                            : "transparent",
+                          border: "1px solid var(--accent)",
+                          flexShrink: 0,
+                        }}
+                      />
+                      <span>{item.q}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Columns 6–12: Answer Pane */}
+            <div
+              style={{
+                backgroundColor: "var(--surface-alt)",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "20px",
+              }}
+            >
+              <h3 style={{ fontSize: "22px", color: "var(--accent)" }}>
+                {FAQ_ITEMS[faqIdx].q}
+              </h3>
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "22px",
+                  lineHeight: 1.48,
+                  color: "#ffffff",
+                }}
+              >
+                {FAQ_ITEMS[faqIdx].a}
+              </p>
+              <div style={{ color: "var(--muted)", fontSize: "14px" }}>
+                Verified on Kasten v2.4 · Local File Tree Specification
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ================================================================
+            SECTION 8 · FOOTER: A footer of tiles
+            ================================================================ */}
+        <footer>
+          <div className="iter3-footer-grid" style={{ marginBottom: "8px" }}>
+            <div
+              style={{
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                gap: "12px",
+              }}
+            >
+              <strong
+                style={{
+                  fontSize: "16px",
+                  color: "var(--accent)",
+                }}
+              >
+                KASTEN ARCHIVE
+              </strong>
+              <p style={{ margin: 0, color: "#ffffff" }}>
+                The plain-text Zettelkasten board for researchers, historians,
+                and long-form writers.
+              </p>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: "var(--surface)",
+                padding: "28px",
+                display: "grid",
+                gap: "8px",
+              }}
+            >
+              <strong style={{ color: "#ffffff" }}>Direct Downloads</strong>
+              <a
+                href="#table-pricing"
+                style={{ color: "#ffffff", textDecoration: "none" }}
+              >
+                macOS Universal (.dmg · Apple Silicon & Intel)
+              </a>
+              <a
+                href="#table-pricing"
+                style={{ color: "#ffffff", textDecoration: "none" }}
+              >
+                Linux AppImage & .deb (x86_64 & ARM64)
+              </a>
+              <a
+                href="#table-pricing"
+                style={{ color: "#ffffff", textDecoration: "none" }}
+              >
+                Windows 11 Native Installer (.msi)
+              </a>
+            </div>
+
+            <div
+              style={{
+                backgroundColor: "var(--accent)",
+                color: "#0c0a08",
+                padding: "28px",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+              }}
+            >
+              <strong style={{ fontSize: "16px" }}>
+                Start your permanent drawer today.
+              </strong>
+              <a
+                href="#table-pricing"
+                style={{
+                  color: "#0c0a08",
+                  fontWeight: 600,
+                  textDecoration: "underline",
+                  fontSize: "16px",
+                }}
+              >
+                Download Kasten v2.4 Free →
+              </a>
+            </div>
+          </div>
+
+          <div
+            style={{
+              backgroundColor: "var(--surface)",
+              padding: "24px 28px",
+            }}
+          >
+            <AssetCredits color="#b8b2a8" linkColor="#c9a45a" />
+          </div>
+        </footer>
+      </div>
     </div>
   );
 }

@@ -71,6 +71,15 @@ export function GalleryCard({
               className="h-[1em] w-auto shrink-0 object-contain"
               aria-hidden
             />
+            {entry.skillVersion ? (
+              <span
+                data-testid="gallery-card-skill-version"
+                title={`Generated with skill ${entry.skillVersion}`}
+                className="inline-flex h-5 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-surface-subtle)] px-1.5 text-[11px] font-medium leading-none text-[var(--gallery-text-secondary)]"
+              >
+                {entry.skillVersion}
+              </span>
+            ) : null}
           </h3>
           {cost !== null ? (
             <p

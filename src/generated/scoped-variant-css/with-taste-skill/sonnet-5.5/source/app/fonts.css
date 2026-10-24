@@ -1,0 +1,460 @@
+/* Gallery copy only. The source loads its fonts with next/font, which names the families
+   "Anton", "Newsreader" and so on. The gallery loads every entry's CSS on every route, and other
+   entries declare the same family names with other files, weights and fallback metrics, so the
+   browser mixed them. These are the same @font-face rules and font files the source's dev server
+   served on 2026-10-24, under family names prefixed "Sonnet v2 ", and the classes below set the
+   same variables next/font set, with the new names. */
+
+@font-face {
+  font-family: "Sonnet v2 Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/0e7b7e0b829e3eb9-s.2j75_l12byk_u.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/daf789e4474d0d90-s.07wt1b-68kohk.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Anton";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/9e9f04e3c37952ab-s.p.0pan85mumqyf3.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Anton Fallback";
+  src: local(Arial);
+  ascent-override: 129.7%;
+  descent-override: 36.29%;
+  line-gap-override: 0.0%;
+  size-adjust: 90.69%;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/8e3fbf4aa84d044b-s.3ynaompv6mu4n.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/57dc28f7118abe14-s.3bsu95r7x7mat.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/7ddd198311ba7843-s.p.3kq6k02b2ysv1.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/8e3fbf4aa84d044b-s.3ynaompv6mu4n.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/57dc28f7118abe14-s.3bsu95r7x7mat.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/7ddd198311ba7843-s.p.3kq6k02b2ysv1.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Work Sans Fallback";
+  src: local(Arial);
+  ascent-override: 83.09%;
+  descent-override: 21.71%;
+  line-gap-override: 0.0%;
+  size-adjust: 111.93%;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/481eac7be1c268b7-s.1shg3f9j2jih-.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/31a9145ccb84606d-s.p.3j3x29wbycqkn.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/481eac7be1c268b7-s.1shg3f9j2jih-.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/31a9145ccb84606d-s.p.3j3x29wbycqkn.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/481eac7be1c268b7-s.1shg3f9j2jih-.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/31a9145ccb84606d-s.p.3j3x29wbycqkn.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Schibsted Grotesk Fallback";
+  src: local(Arial);
+  ascent-override: 93.46%;
+  descent-override: 24.67%;
+  line-gap-override: 0.0%;
+  size-adjust: 104.49%;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/61b2b84ab35dead5-s.3ujxbuh3-3abj.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/eba33977c8ed1a9d-s.2bkt209vmlsr6.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/6a1997311f9003a9-s.18-5_2n-rl46i.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/2245c258b0d2c062-s.2eb4s6ll1afkj.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/8a4bb24664ac8500-s.p.2_7gz-nbwppeo.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Libre Franklin Fallback";
+  src: local(Arial);
+  ascent-override: 92.61%;
+  descent-override: 23.58%;
+  line-gap-override: 0.0%;
+  size-adjust: 104.31%;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/62492e45f348cf87-s.0vqmbwhmasd3s.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/8f9704ed0c18c9e0-s.3z3r2tlv4w3ci.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/c73d4b34880585a8-s.1kfk2fgmve45d.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/f00b8cc54454926d-s.279r3nznpjtnk.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/741805f5bd1ef272-s.11fkykdv8-rjr.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/ea3421846039b7f3-s.p.0l4a8qxfzwpm8.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/20aee433927f7d4b-s.22-vwy_zcz7be.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/256e1f7f180674ba-s.3_q_pmj-3v7pv.woff2") format("woff2");
+  unicode-range: U+301, U+400-45F, U+490-491, U+4B0-4B1, U+2116;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/be3bf58b83159894-s.0kupvvif_223v.woff2") format("woff2");
+  unicode-range: U+370-377, U+37A-37F, U+384-38A, U+38C, U+38E-3A1, U+3A3-3FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/753b6407f468151f-s.11jlrhjosin9v.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/292081311a6a8abc-s.3z1vcboutudqk.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4";
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/68d403cf9f2c68c5-s.p.012bmydply3go.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Source Serif 4 Fallback";
+  src: local(Times New Roman);
+  ascent-override: 87.87%;
+  descent-override: 28.41%;
+  line-gap-override: 0.0%;
+  size-adjust: 117.91%;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/ca8956476e4b15e1-s.0spvl5h7nh4kj.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/0ada71b763703d9d-s.0bgqpv90abx9d.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/2b7d3311b69a4dca-s.p.1elj1f4z6aq4a.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/6632a144c419935f-s.08di4g7n39o46.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/7b27d9904b50e540-s.3szkwhi_rfrst.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/d38f3bca7db33566-s.p.0op912u62qdhl.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Newsreader Fallback";
+  src: local(Times New Roman);
+  ascent-override: 69.68%;
+  descent-override: 25.12%;
+  line-gap-override: 0.0%;
+  size-adjust: 105.48%;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Switzer";
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/Switzer_Regular-s.p.2-8jtw7dj7qzq.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Switzer";
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/Switzer_Medium-s.p.3l_u-a-fiviai.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Switzer";
+  src: url("/variants/with-taste-skill/sonnet-5.5/fonts/Switzer_Semibold-s.p.394xklrezc08f.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sonnet v2 Switzer Fallback";
+  src: local(Arial);
+  ascent-override: 96.67%;
+  descent-override: 24.66%;
+  line-gap-override: 8.88%;
+  size-adjust: 101.38%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-anton {
+  --font-anton: "Sonnet v2 Anton", "Sonnet v2 Anton Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-work-sans {
+  --font-work: "Sonnet v2 Work Sans", "Sonnet v2 Work Sans Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-schibsted-grotesk {
+  --font-grotesk: "Sonnet v2 Schibsted Grotesk", "Sonnet v2 Schibsted Grotesk Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-libre-franklin {
+  --font-display: "Sonnet v2 Libre Franklin", "Sonnet v2 Libre Franklin Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-source-serif-4 {
+  --font-text: "Sonnet v2 Source Serif 4", "Sonnet v2 Source Serif 4 Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-newsreader {
+  --font-newsreader: "Sonnet v2 Newsreader", "Sonnet v2 Newsreader Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-switzer {
+  --font-switzer: "Sonnet v2 Switzer", "Sonnet v2 Switzer Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sonnet-v2-switzer-family {
+  font-family: "Sonnet v2 Switzer", "Sonnet v2 Switzer Fallback";
+}

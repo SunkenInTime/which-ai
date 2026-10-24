@@ -1,0 +1,556 @@
+/* Gallery copy only. The source loads its fonts with next/font, which names the families
+   "Hanken Grotesk", "Barlow", "Newsreader" and so on. The gallery loads every entry's CSS on every
+   route, and other entries declare the same family names with other files, weights and fallback
+   metrics, so the browser could mix them. These are the same @font-face rules and font files the
+   source's dev server served on 2026-10-24, under family names prefixed "Opus v2 ", and the classes
+   below set the same variables next/font set, with the new names. */
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/14d4d63e19d804c8-s.0s5t8-c2jtqkg.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/f9796a0a2d7214e5-s.1x1y7jiuqp3re.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/c6c1a0748af42b20-s.2uuywlasdmkpq.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/cc2b2ba9b11d3453-s.p.3mm4bn5tfabgi.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/14d4d63e19d804c8-s.0s5t8-c2jtqkg.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/f9796a0a2d7214e5-s.1x1y7jiuqp3re.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/c6c1a0748af42b20-s.2uuywlasdmkpq.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/cc2b2ba9b11d3453-s.p.3mm4bn5tfabgi.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/91bd2e40df15814e-s.19s5evoqhirey.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/a63431c4ac64ea8b-s.386o_ri1vb0yv.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/8b4ed0a90d903ab5-s.44dak0sams9f0.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/c47649aa31f9e140-s.p.3lxpqujs87tck.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/91bd2e40df15814e-s.19s5evoqhirey.woff2") format("woff2");
+  unicode-range: U+460-52F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/a63431c4ac64ea8b-s.386o_ri1vb0yv.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/8b4ed0a90d903ab5-s.44dak0sams9f0.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/c47649aa31f9e140-s.p.3lxpqujs87tck.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Hanken Grotesk Fallback";
+  src: local(Arial);
+  ascent-override: 99.07%;
+  descent-override: 30.02%;
+  line-gap-override: 0.0%;
+  size-adjust: 100.94%;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/e37557cf0085218d-s.2dbbbbabmw4n4.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/146a3e5eadafdf83-s.1oqo1buse5xew.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow Condensed";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/d9b5d46d9a89ffe6-s.p.0xxdg0o7uh536.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow Condensed Fallback";
+  src: local(Arial);
+  ascent-override: 130.73%;
+  descent-override: 26.15%;
+  line-gap-override: 0.0%;
+  size-adjust: 76.49%;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/6d17aaf9688500d5-s.13l88b10svigj.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/94647ffa920346ad-s.40iv6h8sm2m8-.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/07ad42c7cbfbb93f-s.p.1u3uiwvr4hxzg.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/c38436978873060d-s.3-mpl5g0sz1pj.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/6b81730c0a5df772-s.3ieg1wriviqld.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/ccb04bdeaf6be910-s.p.01tr6x6g38e6j.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/31e5e20239562b7a-s.3_otmf38u2y4x.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/9a8b04342f903b9d-s.00hyb-x0mjr9g.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/c6e2684784a55443-s.p.2p4adm_386h58.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/742f0fcf9aa5cfe6-s.1x39li9dshdhc.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/b524e3bdcc8dfcd3-s.1qsgyx-tuq4mu.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/a083361d37caf3d1-s.p.0s4utfvp8prsy.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Barlow Fallback";
+  src: local(Arial);
+  ascent-override: 103.43%;
+  descent-override: 20.69%;
+  line-gap-override: 0.0%;
+  size-adjust: 96.68%;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/ca8956476e4b15e1-s.0spvl5h7nh4kj.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/0ada71b763703d9d-s.0bgqpv90abx9d.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader";
+  font-style: italic;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/2b7d3311b69a4dca-s.p.1elj1f4z6aq4a.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/6632a144c419935f-s.08di4g7n39o46.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/7b27d9904b50e540-s.3szkwhi_rfrst.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader";
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/d38f3bca7db33566-s.p.0op912u62qdhl.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Newsreader Fallback";
+  src: local(Times New Roman);
+  ascent-override: 69.68%;
+  descent-override: 25.12%;
+  line-gap-override: 0.0%;
+  size-adjust: 105.48%;
+}
+
+@font-face {
+  font-family: "Opus v2 pilcrow";
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/PilcrowRounded_400-s.p.4406kucxjwkyc.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opus v2 pilcrow";
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/PilcrowRounded_500-s.p.1ktlc0d_o1wxu.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opus v2 pilcrow";
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/PilcrowRounded_700-s.p.42r3k4x590zis.woff2") format("woff2");
+  font-display: swap;
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Opus v2 pilcrow Fallback";
+  src: local(Arial);
+  ascent-override: 100.23%;
+  descent-override: 25.06%;
+  line-gap-override: 9.11%;
+  size-adjust: 87.8%;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/09f44d58a7ba7137-s.07m3ipc68q_ge.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/ecb967cca72aaa3f-s.3pnix8lf_tss7.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: italic;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/113fa3cd4dc959e6-s.p.41entnodl3flq.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/09f44d58a7ba7137-s.07m3ipc68q_ge.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/ecb967cca72aaa3f-s.3pnix8lf_tss7.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: italic;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/113fa3cd4dc959e6-s.p.41entnodl3flq.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/a2947afc6a06879b-s.1gyfqm5yhhzs7.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/651aaf1801011892-s.357dd_6abeqge.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/75affa71d1e2f6a7-s.p.17-aodiw50953.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/a2947afc6a06879b-s.1gyfqm5yhhzs7.woff2") format("woff2");
+  unicode-range: U+102-103, U+110-111, U+128-129, U+168-169, U+1A0-1A1, U+1AF-1B0, U+300-301, U+303-304, U+308-309, U+323, U+329, U+1EA0-1EF9, U+20AB;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/651aaf1801011892-s.357dd_6abeqge.woff2") format("woff2");
+  unicode-range: U+100-2BA, U+2BD-2C5, U+2C7-2CC, U+2CE-2D7, U+2DD-2FF, U+304, U+308, U+329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo";
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("/variants/with-taste-skill/opus-5.5/fonts/75affa71d1e2f6a7-s.p.17-aodiw50953.woff2") format("woff2");
+  unicode-range: U+??, U+131, U+152-153, U+2BB-2BC, U+2C6, U+2DA, U+2DC, U+304, U+308, U+329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Opus v2 Archivo Fallback";
+  src: local(Arial);
+  ascent-override: 88.96%;
+  descent-override: 21.28%;
+  line-gap-override: 0.0%;
+  size-adjust: 98.7%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .opus-v2-hanken-grotesk {
+  --font-hanken: "Opus v2 Hanken Grotesk", "Opus v2 Hanken Grotesk Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .opus-v2-barlow-condensed {
+  --font-display: "Opus v2 Barlow Condensed", "Opus v2 Barlow Condensed Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .opus-v2-barlow {
+  --font-text: "Opus v2 Barlow", "Opus v2 Barlow Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .opus-v2-newsreader {
+  --font-news: "Opus v2 Newsreader", "Opus v2 Newsreader Fallback";
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .opus-v2-pilcrow {
+  --font-pilcrow: "Opus v2 pilcrow", "Opus v2 pilcrow Fallback", ui-rounded, Helvetica Neue, Arial, sans-serif;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) .opus-v2-archivo {
+  --font-archivo: "Opus v2 Archivo", "Opus v2 Archivo Fallback";
+}

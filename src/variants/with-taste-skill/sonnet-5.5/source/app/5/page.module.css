@@ -1,0 +1,392 @@
+/* /5: the page is the product.
+   Direction: The product performs. Type: Switzer. Colour: three stones, one grey-green.
+   Sizes (five): --t-s, --t-b, --t-l, --t-h, --t-d. Interface text lives inside [data-ui] at 13-15px. */
+
+.root {
+  /* the three stones and the one hue */
+  --bg: #eeecea;
+  --surface: #e4e1dd;
+  --field: #cdc3b6;
+  --ink: #333231;
+  --muted: #5f5b57;
+  --accent: #5c6b54;
+  --accent-deep: #4a5943;
+  --accent-ink: #ffffff;
+
+  /* the product's own interface tokens (used inside [data-ui]) */
+  --ui-bg: #fafaf9;
+  --ui-raised: #f2f0ee;
+  --ui-line: #d9d5cf;
+  --ui-ink: #2b2a29;
+  --ui-muted: #67635f;
+  --ui-link: #4a5943;
+  --ui-accent-bg: #e4e9dd;
+  --ui-hover: #e6e3de;
+  --ui-select: #cfd8c7;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-soft: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+
+  --m: 24px; /* the one pair of outer margins */
+  --gap: 16px; /* the one gutter */
+  --section: clamp(96px, 12vw, 200px);
+
+  --t-s: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem);
+  --t-b: clamp(1.0625rem, 1rem + 0.25vw, 1.25rem);
+  --t-l: clamp(1.375rem, 1rem + 1.2vw, 2.125rem);
+  --t-h: clamp(2rem, 1rem + 3vw, 3.75rem);
+  --t-d: clamp(3.5rem, 1.2rem + 7vw, 7rem);
+
+  min-height: 100svh;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: var(--t-b);
+  line-height: 1.5;
+  letter-spacing: -0.005em;
+  font-feature-settings: "ss01" 0;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+@media (max-width: 1023px) {
+  .root {
+    --m: 20px;
+  }
+}
+
+@media (max-width: 599px) {
+  .root {
+    --m: 16px;
+  }
+}
+
+.root *,
+.root *::before,
+.root *::after {
+  box-sizing: border-box;
+}
+
+.root :where(h1, h2, h3, h4, p, ul, ol, figure, blockquote) {
+  margin: 0;
+}
+
+.root :where(ul, ol) {
+  padding: 0;
+  list-style: none;
+}
+
+.root :where(h1, h2, h3) {
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  text-wrap: balance;
+  color: var(--ink);
+}
+
+.root :where(p) {
+  text-wrap: pretty;
+}
+
+.root :where(a) {
+  color: inherit;
+}
+
+.root :where(button) {
+  font: inherit;
+  color: inherit;
+  letter-spacing: inherit;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.root ::selection {
+  background: var(--accent);
+  color: var(--accent-ink);
+}
+
+.root :focus-visible {
+  outline: 2px solid var(--accent-deep);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: var(--m);
+  top: -80px;
+  z-index: 10;
+  padding: 10px 14px;
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.skip:focus {
+  top: 12px;
+}
+
+/* ---------- buttons and links ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 52px;
+  padding: 0 26px;
+  border-radius: 4px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: var(--t-b);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  transition: background-color 180ms var(--ease-out), transform 140ms var(--ease-out);
+}
+
+.btn:hover {
+  background: var(--accent-deep);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn:focus-visible {
+  outline-color: var(--ink);
+}
+
+.textLink {
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: text-underline-offset 200ms var(--ease-out), color 180ms;
+}
+
+.textLink:hover {
+  text-underline-offset: 8px;
+}
+
+/* ---------- entrances ---------- */
+
+.rise {
+  animation: rise 1000ms var(--ease-expo) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 80ms);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+}
+
+.root[data-js] [data-rv]:not([data-in]) {
+  opacity: 0;
+  transform: translateY(26px);
+}
+
+.root [data-rv] {
+  transition: opacity 900ms var(--ease-expo), transform 900ms var(--ease-expo);
+  transition-delay: calc(var(--d, 0) * 1ms);
+}
+
+.root [data-rv][data-done] {
+  transition-delay: 0ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+  }
+
+  .root [data-rv] {
+    transition: none;
+  }
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 0 var(--m) 40px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: 72px;
+  flex: none;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--t-b);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.4vw, 36px);
+  font-size: var(--t-s);
+}
+
+.navLinks a {
+  padding: 8px 0;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  transition: text-decoration-color 200ms var(--ease-out);
+}
+
+.navLinks a:hover {
+  text-decoration-color: currentColor;
+}
+
+.heroGrid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: stretch;
+  padding-top: 12px;
+}
+
+.heroText {
+  grid-column: 1 / span 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 48px;
+  min-width: 0;
+}
+
+.h1 {
+  font-size: var(--t-h);
+  max-width: 11em;
+}
+
+.lead {
+  max-width: 30em;
+  margin-top: 28px;
+  font-size: var(--t-b);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px 28px;
+  margin-top: 32px;
+}
+
+.try {
+  display: grid;
+  gap: 10px;
+  max-width: 30em;
+  font-size: var(--t-s);
+}
+
+.try li {
+  display: block;
+}
+
+.try b {
+  font-weight: 600;
+}
+
+.heroWin {
+  grid-column: 6 / span 7;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.heroWin > * {
+  flex: 1;
+}
+
+@media (max-width: 1023px) {
+  .hero {
+    min-height: 0;
+  }
+
+  .heroText {
+    grid-column: 1 / -1;
+    gap: 40px;
+  }
+
+  .heroWin {
+    grid-column: 1 / -1;
+    margin-top: 40px;
+    order: 2;
+  }
+
+  .try {
+    order: 3;
+    margin-top: 32px;
+  }
+
+  .heroGrid {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 599px) {
+  .navLinks a:not(:last-child) {
+    display: none;
+  }
+
+  .nav {
+    height: 64px;
+  }
+
+  .actions {
+    margin-top: 28px;
+  }
+}
+
+.heroPhoto {
+  flex: 1;
+  position: relative;
+  min-height: 160px;
+  margin: 0;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.heroPhoto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 64%;
+}
+
+@media (max-width: 1023px) {
+  .heroPhoto {
+    display: none;
+  }
+}
+
+/* the stone ground reaches the viewport edges, and leaves with the page when the design is switched */
+:global(html):has(.root),
+:global(body):has(.root) {
+  background: #eeecea;
+}

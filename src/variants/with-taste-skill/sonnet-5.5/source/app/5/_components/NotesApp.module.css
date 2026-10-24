@@ -1,0 +1,569 @@
+/* The hero window: a working Engram note. Inside [data-ui] the product's own conventions apply
+   (1px control borders, small radii, a lifted open menu). Tokens come from page.module.css. */
+
+[data-ui].win {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.005em;
+}
+
+[data-ui].win:focus-within {
+  border-color: #aab69f;
+}
+
+[data-ui] .bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: none;
+  height: 44px;
+  padding: 0 8px 0 12px;
+  background: var(--ui-raised);
+}
+
+[data-ui] .mark {
+  display: grid;
+  place-items: center;
+  flex: none;
+  color: var(--ui-ink);
+}
+
+[data-ui] .crumb {
+  color: var(--ui-muted);
+}
+
+[data-ui] .back {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 28px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ui-ink);
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out);
+}
+
+[data-ui] .back:hover {
+  background: var(--ui-hover);
+}
+
+[data-ui] .crumbTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
+
+[data-ui] .capture {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex: none;
+  height: 30px;
+  padding: 0 6px 0 10px;
+  border: 1px solid var(--ui-line);
+  border-radius: 6px;
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out);
+}
+
+[data-ui] .capture:hover {
+  background: var(--ui-accent-bg);
+}
+
+[data-ui] .capture:active {
+  transform: scale(0.97);
+}
+
+[data-ui] .capture kbd {
+  font: inherit;
+  font-size: 13px;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--ui-raised);
+  color: var(--ui-muted);
+}
+
+[data-ui] .body {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 252px;
+}
+
+/* ---------- the note ---------- */
+
+[data-ui] .doc {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 20px 8px 0 24px;
+}
+
+[data-ui] .title {
+  margin: 0;
+  padding-right: 16px;
+  font-size: 22px;
+  line-height: 28px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+[data-ui] .meta {
+  margin: 4px 0 14px;
+  color: var(--ui-muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+[data-ui] .ed {
+  position: relative;
+  flex: 1;
+  min-height: 160px;
+}
+
+[data-ui] .mirror,
+[data-ui] .input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0 16px 0 0;
+  border: 0;
+  font-family: inherit;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: -0.005em;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  word-break: normal;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+  tab-size: 4;
+}
+
+[data-ui] .mirror {
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--ui-ink);
+}
+
+[data-ui] .input {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  overflow-y: auto;
+  background: transparent;
+  color: transparent;
+  caret-color: var(--ui-ink);
+  outline: none;
+}
+
+[data-ui] .input::selection {
+  background: var(--ui-select);
+  color: transparent;
+}
+
+[data-ui] .link {
+  color: var(--ui-link);
+  background: var(--ui-accent-bg);
+  border-radius: 3px;
+}
+
+[data-ui] .dead {
+  color: var(--ui-muted);
+  text-decoration: underline dotted;
+}
+
+[data-ui] .marker {
+  display: inline-block;
+  width: 0;
+  height: 1em;
+}
+
+[data-ui] .menu {
+  position: absolute;
+  z-index: 5;
+  width: 300px;
+  max-width: calc(100% - 16px);
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  background: var(--ui-bg);
+  border: 1px solid var(--ui-line);
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgb(51 50 49 / 0.18);
+  animation: pop 140ms var(--ease-out) both;
+}
+
+[data-ui] .opt {
+  display: block;
+  width: 100%;
+  padding: 7px 10px;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--ui-ink);
+  text-align: left;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+[data-ui] .opt[data-active] {
+  background: var(--ui-accent-bg);
+  color: var(--ui-link);
+}
+
+[data-ui] .none {
+  padding: 8px 10px;
+  color: var(--ui-muted);
+}
+
+[data-ui] .foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 12px;
+  flex: none;
+  padding: 12px 0 14px;
+}
+
+[data-ui] .linkBtn {
+  display: inline-flex;
+  gap: 6px;
+  height: 32px;
+  align-items: center;
+  padding: 0 10px;
+  border: 1px solid var(--ui-line);
+  border-radius: 6px;
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out);
+}
+
+[data-ui] .linkBtn span {
+  color: var(--ui-link);
+  font-weight: 600;
+}
+
+[data-ui] .linkBtn:hover {
+  background: var(--ui-accent-bg);
+}
+
+[data-ui] .linkBtn:active {
+  transform: scale(0.97);
+}
+
+[data-ui] .hint {
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+/* ---------- the panel ---------- */
+
+[data-ui] .side {
+  min-height: 0;
+  overflow: auto;
+  padding: 16px 16px 12px;
+  background: var(--ui-raised);
+  scrollbar-width: thin;
+}
+
+[data-ui] .sh {
+  display: flex;
+  align-items: baseline;
+  margin: 18px 0 6px;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+[data-ui] .side > .sh:first-child {
+  margin-top: 0;
+}
+
+[data-ui] .count {
+  margin-left: 6px;
+  color: var(--ui-muted);
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+}
+
+[data-ui] .list {
+  display: grid;
+  gap: 1px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+[data-ui] .item {
+  display: block;
+  width: calc(100% + 16px);
+  margin: 0 -8px;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--ui-ink);
+  text-align: left;
+  font-size: 13px;
+  line-height: 18px;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out);
+}
+
+[data-ui] .item:hover {
+  background: var(--ui-hover);
+}
+
+[data-ui] .item[data-fresh] {
+  animation: fresh 2400ms var(--ease-out) both;
+}
+
+[data-ui] .sug {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 4px 0;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+[data-ui] .add {
+  flex: none;
+  height: 24px;
+  padding: 0 9px;
+  border: 1px solid var(--ui-line);
+  border-radius: 5px;
+  background: var(--ui-bg);
+  color: var(--ui-link);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out);
+}
+
+[data-ui] .add:hover {
+  background: var(--ui-accent-bg);
+}
+
+[data-ui] .add:active {
+  transform: scale(0.95);
+}
+
+[data-ui] .empty {
+  margin: 0;
+  color: var(--ui-muted);
+  font-size: 13px;
+}
+
+[data-ui] .file {
+  margin: 18px 0 0;
+  color: var(--ui-muted);
+  font-size: 13px;
+  line-height: 18px;
+  word-break: break-all;
+}
+
+[data-ui] .status {
+  min-height: 36px;
+  margin: 6px 0 0;
+  color: var(--ui-link);
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* ---------- capture ---------- */
+
+.scrim {
+  position: fixed;
+  inset: 0;
+  z-index: 2147482000;
+  display: grid;
+  place-items: start center;
+  padding: 18vh 16px 0;
+  background: rgb(51 50 49 / 0.38);
+  animation: fadein 160ms var(--ease-out) both;
+}
+
+[data-ui].dialog {
+  width: min(560px, 100%);
+  padding: 14px 14px 12px;
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+  border: 1px solid var(--ui-line);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgb(51 50 49 / 0.3);
+  font-size: 14px;
+  animation: pop 180ms var(--ease-out) both;
+}
+
+[data-ui] .cap {
+  display: block;
+  width: 100%;
+  padding: 4px 4px 8px;
+  border: 0;
+  background: transparent;
+  color: var(--ui-ink);
+  font: inherit;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.01em;
+  resize: none;
+  outline: none;
+}
+
+[data-ui] .cap::placeholder {
+  color: var(--ui-muted);
+}
+
+[data-ui] .capFoot {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+[data-ui] .capFoot .hint {
+  flex: 1;
+}
+
+[data-ui] .ghost,
+[data-ui] .save {
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 150ms var(--ease-out), transform 120ms var(--ease-out);
+}
+
+[data-ui] .ghost {
+  border: 1px solid var(--ui-line);
+  background: var(--ui-bg);
+  color: var(--ui-ink);
+}
+
+[data-ui] .ghost:hover {
+  background: var(--ui-raised);
+}
+
+[data-ui] .save {
+  background: var(--ui-ink);
+  color: #fff;
+}
+
+[data-ui] .save:hover:not(:disabled) {
+  background: #000;
+}
+
+[data-ui] .save:disabled {
+  background: var(--ui-line);
+  color: var(--ui-muted);
+  cursor: default;
+}
+
+[data-ui] .save:active:not(:disabled),
+[data-ui] .ghost:active {
+  transform: scale(0.97);
+}
+
+/* Gallery copy: anchored to this page's root and made pure for webpack's CSS modules (the source's Turbopack build accepted the bare global selector). :not(.galleryPure) matches every element. */
+:where(:global([data-p5-root])) [data-ui]:where(:not(.galleryPure)) button:focus-visible,
+[data-ui].dialog button:focus-visible {
+  outline: 2px solid var(--ui-link);
+  outline-offset: 1px;
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.985);
+  }
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes fresh {
+  0% {
+    opacity: 0;
+    transform: translateY(-6px);
+    background: var(--ui-accent-bg);
+  }
+  18% {
+    opacity: 1;
+    transform: none;
+  }
+  70% {
+    background: var(--ui-accent-bg);
+  }
+  100% {
+    background: transparent;
+  }
+}
+
+@media (max-width: 720px) {
+  [data-ui].win {
+    height: auto;
+  }
+
+  [data-ui] .body {
+    display: block;
+  }
+
+  [data-ui] .doc {
+    padding: 16px 12px 0 16px;
+  }
+
+  [data-ui] .ed {
+    flex: none;
+    height: 232px;
+  }
+
+  [data-ui] .side {
+    overflow: visible;
+    padding: 16px;
+  }
+
+  [data-ui] .capture kbd {
+    display: none;
+  }
+
+  .scrim {
+    padding-top: 12vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-ui] .menu,
+  .scrim,
+  [data-ui].dialog {
+    animation: none;
+  }
+
+  [data-ui] .item[data-fresh] {
+    animation: none;
+    background: var(--ui-accent-bg);
+  }
+}

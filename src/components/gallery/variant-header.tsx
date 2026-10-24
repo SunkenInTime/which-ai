@@ -95,7 +95,7 @@ function getSkillOptions(currentEntry: GalleryEntry, iteration: IterationId, hre
       );
       return {
         group,
-        label,
+        label: targetEntry?.skillVersion ? `${label} ${targetEntry.skillVersion}` : label,
         availableForModel: Boolean(targetEntry),
         href: targetEntry ? hrefFor(targetEntry.group, targetEntry.model, iteration) : null,
       };

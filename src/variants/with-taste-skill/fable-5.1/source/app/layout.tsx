@@ -1,31 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { IterationSwitcher } from "./_shared/IterationSwitcher";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import "@/generated/scoped-variant-css/with-taste-skill/fable-5.1/source/app/fonts.css";
+import "@/generated/scoped-variant-css/with-taste-skill/fable-5.1/source/app/globals.css";
+import "@/generated/scoped-variant-css/with-taste-skill/fable-5.1/source/app/taste.css";
 
 export const metadata: Metadata = {
-  title: "Loam. Notes that come back to you.",
+  title: "Commonplace, a notebook that remembers for you",
   description:
-    "Loam is a second brain built on plain Markdown files. Capture anywhere, link as you write, and let old notes resurface when they matter.",
+    "Commonplace is a note-taking app that works as a second brain: every note links to what you already know and comes back before you forget it.",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+// Gallery copy: <html>/<body> become divs. The source's inline script added the `js` class to
+// <html> to arm the entrance motion; here the outer div carries it. The (designs) layout, which
+// only adds the corner design switcher, is not rendered because the gallery has its own
+// iteration navigation.
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-full">
-        {children}
-        <IterationSwitcher />
-      </body>
-    </html>
+    <div data-source-html lang="en" className="js">
+      <div data-source-body>{children}</div>
+    </div>
   );
 }

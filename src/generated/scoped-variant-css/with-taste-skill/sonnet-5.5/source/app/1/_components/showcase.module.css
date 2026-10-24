@@ -1,0 +1,457 @@
+/* The live card. Everything inside [data-ui] is the product; the rest is the page. */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .showcase {
+  --paper: #e3e2da;
+  --paper-ink: #161c1a;
+  --paper-2: #d2d3c8;
+  --moss: #2f3d38;
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  padding: var(--section) var(--margin);
+  min-height: max(88svh, 720px);
+  background: var(--surface);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .plate {
+  grid-column: 1 / span 6;
+  display: flex;
+  align-items: center;
+  min-width: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .text {
+  grid-column: 7 / -1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs button {
+  position: relative;
+  padding: 10px 0 12px;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font: inherit;
+  font-size: var(--step-body);
+  cursor: pointer;
+  transition: color 180ms ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 320ms var(--ease-out);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs button[aria-pressed="true"] {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs button[aria-pressed="true"]::after {
+  transform: scaleX(1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs button:hover {
+    color: var(--ink);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .copy {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .copy p {
+  max-width: 36ch;
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .h2 {
+  font-family: var(--font-anton), Impact, sans-serif;
+  font-weight: 400;
+  font-size: var(--step-head);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cells {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cellInk,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+.cellTone {
+  display: grid;
+  place-items: center;
+  min-height: 72px;
+  padding: 12px 16px;
+  text-align: center;
+  font-weight: 600;
+  font-size: var(--step-body);
+  text-decoration: none;
+  transition:
+    transform 140ms var(--ease-out),
+    background-color 180ms ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cellInk {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cellTone {
+  background: var(--surface-2);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cellInk:active,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+.cellTone:active {
+  transform: scale(0.98);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cellInk:hover {
+    background: var(--accent);
+  }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cellTone:hover {
+    background: var(--moss);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .sr {
+  position: absolute;
+  width: 1px;
+  height: 1px; /* taste-skill-ignore: screen-reader-only text */
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ───── the product fragment ───── */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui].live {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: var(--step-body);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--paper-ink);
+  padding: 0 28px 56px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 44px;
+  margin-inline: -28px;
+  padding-inline: 28px;
+  background: var(--paper-2);
+  font-size: var(--step-small);
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .addr {
+  font-variant-numeric: tabular-nums;
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-1-_components-showcase-module-tick 420ms var(--ease-out);
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-1-_components-showcase-module-tick {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .title,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .body {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  color: inherit;
+  font-family: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .title {
+  margin-top: 20px;
+  padding: 4px 0;
+  font-size: var(--step-lead);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .body {
+  margin-top: 8px;
+  padding: 0;
+  height: 140px;
+  resize: none;
+  font-size: var(--step-body);
+  line-height: 28px;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='8' height='56'><rect y='28' width='8' height='28' fill='%23dcddd2'/></svg>");
+  background-size: 100% 56px;
+  background-attachment: local;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .title:focus-visible,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .body:focus-visible {
+  outline: 3px solid var(--moss);
+  outline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .bodyWrap {
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .picker {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 3;
+  margin-top: 6px;
+  background: var(--paper-ink);
+  color: var(--paper);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.35);
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-1-_components-showcase-module-pop 180ms var(--ease-out);
+}
+
+@keyframes gallery-with-taste-skill-sonnet-5-5-source-app-1-_components-showcase-module-pop {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .picker button {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--step-small);
+  text-align: left;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .picker button span {
+  min-width: 5ch;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .picker button:hover {
+    background: var(--moss);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .see {
+  margin-top: 20px;
+  min-height: 92px;
+  font-size: var(--step-small);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .see > p:first-child,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .suggest > p:first-child {
+  font-weight: 600;
+  font-size: var(--step-small);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .see li {
+  display: flex;
+  gap: 12px;
+  padding: 3px 0;
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-1-_components-showcase-module-pop 320ms var(--ease-out);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .see li span {
+  min-width: 6ch;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .none {
+  margin-top: 4px;
+  color: #3a4540;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest .none {
+  color: #aab1aa;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .hole {
+  position: absolute;
+  left: 50%;
+  bottom: 18px;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest {
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest > p:first-child {
+  margin-bottom: 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest ul {
+  display: grid;
+  gap: 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest li {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  padding-left: 16px;
+  background: var(--surface-2);
+  animation: gallery-with-taste-skill-sonnet-5-5-source-app-1-_components-showcase-module-pop 320ms var(--ease-out);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest li > div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 12px;
+  padding: 10px 0;
+  align-items: baseline;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .sa {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  min-width: 6ch;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .st {
+  font-size: var(--step-small);
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .sw {
+  grid-column: 2;
+  font-size: var(--step-small);
+  color: #aab1aa;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest button {
+  flex: none;
+  min-width: 76px;
+  border: 0;
+  background: var(--ink);
+  color: var(--bg);
+  font: inherit;
+  font-size: var(--step-small);
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background-color 180ms ease,
+    transform 140ms var(--ease-out);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest button:active {
+  transform: scale(0.96);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest button:hover {
+    background: var(--accent);
+  }
+}
+
+/* Gallery copy: anchored to this page's root and made pure for webpack's CSS modules (the source's Turbopack build accepted the bare global selector). :not(.galleryPure) matches every element. */
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) :where(:global(#p1)) [data-ui]:where(:not(.galleryPure)) button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .addr,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+  [data-ui] .see li,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+  [data-ui] .suggest li,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+  [data-ui] .picker {
+    animation: none;
+  }
+}
+
+@media (max-width: 899px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    min-height: 0;
+  }
+
+  /* heading and words first, then the choice of card, then the card, then the actions */
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .text {
+    display: contents;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .copy {
+    order: 1;
+    gap: 20px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .tabs {
+    order: 2;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .plate {
+    order: 3;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cells {
+    order: 4;
+    grid-template-columns: 1fr;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .card {
+    padding-inline: 18px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .head {
+    margin-inline: -18px;
+    padding-inline: 18px;
+  }
+}

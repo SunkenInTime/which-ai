@@ -1,9 +1,18 @@
+/* Each iteration (/1 … /5) sets its own type and colour in its own CSS module.
+   Only the reset from Tailwind's preflight is shared. */
 :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) {
-  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
+/* Gallery copy only. Under reduced motion the gallery's own stylesheet gives every element
+   transition-duration: 0.01ms !important, which turns each font-size change into a one-frame
+   transition. The fit-to-width lines on /2, /3 and /4 set a size and measure it straight away, so
+   they read the old size and fit wrong (on /3 at 390 px the footer address grew to 2,295 px wide).
+   Inside this entry they take 0s instead, so a size set in script is the size measured. */
 @media (prefers-reduced-motion: reduce) {
-  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) {
-    scroll-behavior: auto;
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) [data-source-html] *,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) 
+  [data-source-html] *::before,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="opus-5.5"]) 
+  [data-source-html] *::after {
+    transition-duration: 0s !important;
   }
 }

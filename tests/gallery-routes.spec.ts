@@ -370,7 +370,8 @@ test("home page hides superseded-generation cards until Show Archived", async ({
   );
   await expect(page.getByTestId("gallery-card").filter({ hasText: "GPT 5.5 low" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
-  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
+  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
   for (const { label } of forceArchivedModels) {
     await expect(page.getByTestId("gallery-card").filter({ hasText: label })).toHaveCount(0);
   }
@@ -403,7 +404,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(lowCards).toHaveCount(2);
   await expect(lowCards.first()).toContainText("Archived");
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
-  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
+  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
   await expect(page.getByRole("button", { name: "Show Archived" })).toHaveCount(0);
   await expect(page).toHaveURL(/\?q=5\.5$/);
 
@@ -412,7 +414,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(page.getByText("No models match")).toBeVisible();
 
   await page.getByRole("button", { name: "Clear search" }).last().click();
-  await expect(page.getByRole("heading", { name: "Opus 5.5", exact: true })).toHaveCount(3);
+  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -623,6 +626,33 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
     await expect(page.getByRole("main").first()).toBeVisible();
   });
 }
+
+// Taste-skill v2 reruns replace the model's v1 "With Taste Skill" entry in place.
+const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5"] as const;
+
+test("taste-skill v2 reruns are marked on their card and in the skill picker", async ({ page }) => {
+  const v2Entries = galleryManifest.filter((entry) => entry.skillVersion === "v2");
+  expect(v2Entries.map((entry) => `${entry.group}/${entry.model}`).sort()).toEqual(
+    TASTE_SKILL_V2_MODELS.map((model) => `with-taste-skill/${model}`).sort(),
+  );
+
+  await page.goto("/");
+  await expect(page.getByTestId("gallery-card-skill-version")).toHaveCount(TASTE_SKILL_V2_MODELS.length);
+  for (const model of TASTE_SKILL_V2_MODELS) {
+    const card = page
+      .getByTestId("gallery-card")
+      .filter({ has: page.locator(`a[href="/with-taste-skill/${model}/1"]`) });
+    await expect(card.getByTestId("gallery-card-skill-version")).toHaveText("v2");
+  }
+
+  for (const model of TASTE_SKILL_V2_MODELS) {
+    await page.goto(`/with-design-skill/${model}/1`);
+    await page.getByRole("button", { name: /Switch skill set/ }).click();
+    const menu = page.getByRole("menu", { name: "Switch skill set" });
+    await expect(menu.getByText("With Taste Skill v2", { exact: true })).toBeVisible();
+    await expect(menu.getByText("With Design Skill", { exact: true })).toBeVisible();
+  }
+});
 
 test("Sol 6 and Opus 5.5 appear in all groups with the correct labs", async ({ page }) => {
   await page.goto("/");

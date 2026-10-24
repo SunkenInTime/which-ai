@@ -1,0 +1,35 @@
+All five iterations are built and running at **http://localhost:3302/1** to **/5**; `/` redirects to `/1`. Each one passes the skill's inspector with 0 FAIL at 1440, 768 and 390px. The production build, TypeScript, ESLint and the skill's linter are all clean. Nothing is committed.
+
+**The switcher** is a small square button in the bottom-right corner showing the current number. Clicking it opens a menu of the five with short names, and keys 1–5, `[` and `]` also switch (ignored while you're typing in a field). It started as an always-open row, but that covered headings on phones and failed the inspector on several pages, so I shrank it to the button.
+
+I named the app **Engram** (the trace a memory leaves in the brain) and used one set of sample product facts across all five, so you're comparing designs rather than copy.
+
+| | Direction (dealt by the skill) | Idea | What you can do on the page | Self-score |
+|---|---|---|---|---|
+| **/1** Recall margin | The product performs · Hanken Grotesk · slate and teal | The hero is the working app: older notes appear in the margin as you type | Type in the note; matching notes rise into the margin, and you can link or dismiss them | 7.8 |
+| **/2** Catalogue card | The page is the object · Barlow Condensed · bone, green, chocolate | The page is a library catalogue card, and every section is more of the same stationery | Write a card and file it; it lands beside the cards it links to | 7.9 |
+| **/3** Kept things | The sentence is the layout · Newsreader · near-black and pink | "Every note you ▭ comes back": the gap is a reel of things people kept | A display-size search over a sample set of notes | 8.0 |
+| **/4** Forgetting curve | One motif · Pilcrow Rounded · grey and cobalt | Ebbinghaus's 1885 forgetting curve is the only shape on the page | A poster-size "Resurface" switch redraws the curve | 8.1 |
+| **/5** Quiet note | Quiet instrument · Archivo · white and mint | The page is written as a note, and its [[links]] open the linked notes | Hover a link to open its note; a margin demo with eight working settings | 7.8 |
+
+The scores are the builds' own critique ratings out of 10, weighted the way Awwwards judges. Take them as rough, not independent.
+
+- **One redraw:** /3 was dealt the same bone background as /2, so I redrew its palette once to keep the five distinct.
+- **Known soft spots:**
+  - /3's opening clip of a pen writing is its plainest picture.
+  - /4's tabbed FAQ cards read partly as plain rows.
+  - /5 has no video; the only reading-room clip found shows identifiable people.
+- **Pictures:** every image and clip comes from open collections (Wikimedia Commons, the Met, Art Institute of Chicago, Library of Congress), downloaded into `public/v1`–`public/v5`. Each page credits them in its footer, and the full title, creator, licence and source for each are in that folder's `credits.json`. Nothing is presented as Engram's own product or people, and there are no stock photos.
+- **Before launch:**
+  - All product facts are sample: prices ($0 / $6 / $10), features, platforms, the 80 MB on-device model, and `hello@engram.app`. They're listed in `.taste-skill/brief.md`.
+  - The founders in the letters are fictional (Mara Lind, Ines Vandaele, Ilse Brandt) and shown with monograms, not photos.
+  - Every demo note is sample content.
+  - The download buttons go to `#download` or a pre-filled email; there's no real download yet.
+
+**Shared files I changed:**
+- `app/layout.tsx`: adds a class to the page before first paint so animations never hide content when scripts are off.
+- `app/page.tsx`: the redirect to `/1`.
+- `next.config.ts`: hides the Next.js dev indicator.
+- `app/globals.css`: trimmed down to Tailwind's reset.
+
+Each iteration lives in its own `app/<n>/` folder with its own CSS module and fonts, so none can leak styles into another. My working notes, critiques and screenshots are in `.taste-skill/`.

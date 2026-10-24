@@ -1,40 +1,28 @@
-import type { Metadata } from "next";
-import { jetbrains, sora } from "./fonts";
-import {
-  Bento,
-  Closing,
-  Files,
-  Footer,
-  Hero,
-  ImportStrip,
-  Nav,
-  Quotes,
-  WorkflowSection,
-} from "./sections";
+import { Board } from "./_components/Board";
+import { Cta } from "./_components/Cta";
+import { Diagram } from "./_components/Diagram";
+import { Faq } from "./_components/Faq";
+import { Footer } from "./_components/Footer";
+import { GrowCell } from "./_components/GrowCell";
+import { Hero } from "./_components/Hero";
+import { NameBand } from "./_components/NameBand";
+import { Plans } from "./_components/Plans";
+import { RevealRoot } from "./_components/RevealRoot";
 
-export const metadata: Metadata = { title: "2 Graph" };
-
-/*
-  Iteration 2: Graph.
-  Dark tech, Sora + Geist + JetBrains Mono, near-black with one desaturated lime.
-  Dark is the default here (the brand insists); the switcher can force light.
-  The hero is a real canvas graph, not a picture of one.
-  DESIGN_VARIANCE 7, MOTION_INTENSITY 7, VISUAL_DENSITY 4.
-*/
 export default function Page() {
   return (
-    <div className={`v2 ${sora.variable} ${jetbrains.variable} min-h-dvh bg-[color:var(--bg)] font-[family-name:var(--v-body)] text-[color:var(--fg)]`}>
-      <Nav />
+    <RevealRoot>
+      <Hero />
       <main>
-        <Hero />
-        <ImportStrip />
-        <Bento />
-        <Files />
-        <WorkflowSection />
-        <Quotes />
-        <Closing />
+        <GrowCell />
+        <Board />
+        <NameBand />
+        <Diagram />
+        <Plans />
+        <Faq />
+        <Cta />
       </main>
       <Footer />
-    </div>
+    </RevealRoot>
   );
 }

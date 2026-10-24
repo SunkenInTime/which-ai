@@ -1,0 +1,430 @@
+/* Engram's own interface, as it appears in the fragments on the page.
+   Everything here lives under a data-ui root: small radii, 1px control borders, one shadow on the open menu. */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .frag[data-ui],:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+.cell[data-ui] {
+  --u-bg: #ffffff;
+  --u-line: #d5dad6;
+  --u-wash: #f1f3f1;
+  --u-ink: #0d2a1c;
+  --u-muted: #55615a;
+  --u-accent: #f6e016;
+  font-family: var(--font-display), system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  color: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .frag[data-ui] {
+  background: var(--u-bg);
+  border: 1px solid var(--u-line);
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 16px;
+  background: var(--u-wash);
+  border-bottom: 1px solid var(--u-line);
+  font-size: 14px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .barTitle {
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .meta {
+  color: var(--u-muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .keys {
+  display: inline-flex;
+  gap: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .keys kbd {
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 2px 8px;
+  background: var(--u-bg);
+  border: 1px solid var(--u-line);
+  border-bottom-width: 2px;
+  border-radius: 5px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .editor {
+  padding: 18px 18px 20px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .typed,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .body {
+  font-family: var(--font-text), Georgia, serif;
+  font-size: 17px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .typedLink {
+  background: var(--u-accent);
+  padding: 0 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .noteTitle {
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggest {
+  padding: 14px 18px 18px;
+  background: var(--u-wash);
+  border-top: 1px solid var(--u-line);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggestHead,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .backHead {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .chips {
+  display: grid;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .chips li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 6px 6px 6px 12px;
+  background: var(--u-bg);
+  border: 1px solid var(--u-line);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .chipBtn,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .ghostBtn {
+  font: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 5px;
+  border: 1px solid var(--u-ink);
+  background: var(--u-ink);
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 160ms ease, color 160ms ease, transform 120ms ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .chipBtn:hover {
+  background: var(--u-accent);
+  color: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .ghostBtn {
+  background: transparent;
+  color: var(--u-ink);
+  border-color: var(--u-line);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .ghostBtn:hover {
+  background: var(--u-wash);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .chipBtn:active,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) 
+[data-ui] .ghostBtn:active {
+  transform: scale(0.96);
+}
+
+/* the link picker is the only thing in these fragments that floats, so it alone is lifted */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .menu {
+  list-style: none;
+  margin: 12px;
+  padding: 4px;
+  background: var(--u-bg);
+  border: 1px solid var(--u-line);
+  border-radius: 8px;
+  box-shadow: 0 10px 28px rgb(13 42 28 / 0.16);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .menu li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 5px;
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .menuOn {
+  background: var(--u-accent);
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .menuOn .meta {
+  color: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .backlinks {
+  padding: 8px 18px 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .backList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 15px;
+  color: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .backList li {
+  padding-left: 18px;
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .backList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 8px;
+  height: 8px;
+  background: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .setting {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .settingName {
+  font-weight: 700;
+  font-size: 17px;
+  margin: 0 0 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .switch {
+  flex: none;
+  width: 48px;
+  height: 28px;
+  padding: 3px;
+  background: var(--u-ink);
+  border-radius: 14px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .switch span {
+  width: 22px;
+  height: 22px;
+  border-radius: 11px;
+  background: var(--u-accent);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rows li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+  padding: 14px 18px;
+  border-top: 1px solid var(--u-line);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rows li:first-child {
+  border-top: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rowOn {
+  background: var(--u-accent);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rowOn .meta {
+  color: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rowTitle {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .rowNext {
+  margin: 0;
+  font-size: 14px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+/* the plate: one note opened into six cells */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cell[data-ui] {
+  background: var(--u-bg);
+  border-inline: 1px solid var(--u-line);
+  border-top: 1px solid var(--u-line);
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cell[data-ui][data-n="0"] {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cell[data-ui][data-n="5"] {
+  border-bottom: 1px solid var(--u-line);
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .file {
+  margin: 0;
+  font-size: 13px;
+  color: var(--u-muted);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .panelTitle {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .panelBody {
+  margin: 0;
+  font-family: var(--font-text), Georgia, serif;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .wiki {
+  background: var(--u-accent);
+  padding: 0 3px;
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .panelSuggest {
+  display: grid;
+  gap: 8px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .suggestRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .btnPair {
+  display: inline-flex;
+  gap: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .steps {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  gap: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .steps li {
+  min-width: 36px;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  background: var(--u-wash);
+  color: var(--u-muted);
+  border-radius: 5px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .steps .stepDone {
+  background: var(--u-ink);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .steps .stepNext {
+  background: var(--u-accent);
+  color: var(--u-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .askQ {
+  margin: 0;
+  padding: 8px 12px;
+  background: var(--u-wash);
+  border: 1px solid var(--u-line);
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .askA {
+  margin: 8px 0 0;
+  font-family: var(--font-text), Georgia, serif;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .sources {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 13px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) [data-ui] .sources li {
+  padding: 3px 8px;
+  background: var(--u-accent);
+  border-radius: 5px;
+  font-weight: 500;
+}
+
+@media (max-width: 1000px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="sonnet-5.5"]) .cell[data-ui] {
+    border: 1px solid var(--u-line);
+    border-radius: 8px;
+  }
+}
