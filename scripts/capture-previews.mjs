@@ -7,6 +7,9 @@ import sharp from "sharp";
 import { chromium } from "@playwright/test";
 
 const entries = [
+  { group: "without-design-skill", model: "kimi-k3-1-pro", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-design-skill", model: "kimi-k3-1-pro", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-taste-skill", model: "kimi-k3-1-pro", iterations: ["1", "2", "3", "4", "5"] },
   { group: "without-design-skill", model: "gemini-4-argon", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "gemini-4-argon", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-taste-skill", model: "gemini-4-argon", iterations: ["1", "2", "3", "4", "5"] },

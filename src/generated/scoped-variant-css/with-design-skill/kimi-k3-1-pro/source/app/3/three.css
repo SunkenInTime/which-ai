@@ -1,0 +1,136 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-page { --night: #11162a; --ink: #f2efe8; --gold: #f0cc68; --lavender: #a5a2e8; background: var(--night); color: var(--ink); font-family: var(--font-dm-sans), sans-serif; overflow: hidden; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-nav { max-width: 1380px; height: 88px; margin: auto; padding: 0 44px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid #34384a; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-brand { display: flex; align-items: center; gap: 9px; font-size: 23px; font-weight: 700; letter-spacing: -1px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-brand svg { width: 24px; color: var(--gold); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-nav nav { display: flex; gap: 32px; color: #9b9dad; font-size: 11px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-nav nav a:hover { color: var(--gold); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-login { display: flex; align-items: center; gap: 8px; color: var(--gold); font-size: 11px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-login svg { width: 15px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero { padding-top: 80px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-title { max-width: 1292px; margin: auto; padding: 0 44px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-title > span { display: block; margin-bottom: 25px; color: var(--gold); font-family: var(--font-instrument-serif), serif; font-size: 18px; font-style: italic; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero h1 { margin: 0; font-family: var(--font-instrument-serif), Georgia, serif; font-size: clamp(80px, 10.3vw, 145px); font-weight: 400; line-height: .79; letter-spacing: -4px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-bottom { max-width: 1292px; margin: 35px auto 70px; padding: 0 44px; display: flex; justify-content: flex-end; align-items: center; gap: 65px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-bottom p { max-width: 380px; margin: 0; color: #a5a7b4; font-size: 13px; line-height: 1.7; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-bottom a { display: flex; align-items: center; gap: 25px; padding: 14px 19px; background: var(--gold); color: #1c1a18; font-size: 11px; font-weight: 700; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-bottom a svg { width: 17px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-reel { display: flex; align-items: stretch; gap: 15px; width: max-content; padding: 0 0 20px 5vw; animation: gallery-with-design-skill-kimi-k3-1-pro-source-app-3-three-stream-drift 30s ease-in-out infinite alternate; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory { position: relative; flex: 0 0 275px; height: 350px; padding: 25px; overflow: hidden; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory > span { font-size: 8px; letter-spacing: .03em; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-photo { background: #8b7eaa; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-sun { position: absolute; width: 125px; height: 125px; left: 75px; top: 50px; border-radius: 50%; background: #f0cc68; box-shadow: 0 0 45px #f0cc6866; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hills { position: absolute; width: 130%; height: 230px; left: -15%; bottom: -70px; border-radius: 50% 45% 0 0; background: #3c4962; transform: rotate(-12deg); box-shadow: 40px -30px 0 #687187; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-photo > span,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-memory-photo > p { position: relative; z-index: 1; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-photo > p { margin-top: 224px; font-family: var(--font-instrument-serif), serif; font-size: 19px; line-height: 1.05; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-quote { background: #ddd3bd; color: #272837; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-quote blockquote { margin: 55px 0 20px; font-family: var(--font-instrument-serif), serif; font-size: 23px; line-height: 1.12; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-quote small { font-size: 8px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-audio { background: #353853; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-play { display: grid; place-items: center; width: 65px; height: 65px; margin: 35px auto 25px; border: 1px solid #8285a6; border-radius: 50%; color: var(--gold); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-play svg { width: 22px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-wave,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-small-wave { display: flex; align-items: center; justify-content: center; gap: 3px; height: 40px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-wave i,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-small-wave i { width: 2px; height: 12px; background: var(--lavender); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-wave i:nth-child(3n),:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-small-wave i:nth-child(3n) { height: 30px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-wave i:nth-child(4n),:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-small-wave i:nth-child(4n) { height: 21px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-wave i:nth-child(5n),:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-small-wave i:nth-child(5n) { height: 7px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-audio p { margin-top: 25px; color: #d5d3e6; font-family: var(--font-instrument-serif), serif; font-size: 18px; line-height: 1.2; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-note { background: #b66655; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-note h3 { margin: 52px 0 20px; font-family: var(--font-instrument-serif), serif; font-size: 29px; font-weight: 400; line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-note p { color: #f0d5cd; font-size: 11px; line-height: 1.8; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-note > div { position: absolute; bottom: 25px; font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-link { background: #233d3d; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-link-art { display: grid; place-items: center; height: 110px; margin: 20px -25px; background: #aac8af; color: #233d3d; font-family: var(--font-instrument-serif), serif; font-size: 100px; font-style: italic; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-link h3 { margin: 15px 0 10px; font-family: var(--font-instrument-serif), serif; font-size: 24px; font-weight: 400; line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-link p { color: #b1c6c1; font-size: 10px; line-height: 1.5; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory-link small { font-size: 8px; color: #8aa39d; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-scroll { display: flex; justify-content: space-between; max-width: 1292px; margin: 20px auto 0; padding: 0 44px 35px; color: #717587; font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-scroll span { color: var(--gold); font-size: 17px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-remember { max-width: 1200px; margin: auto; padding: 140px 44px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro { display: grid; grid-template-columns: .65fr 1.2fr 1fr; gap: 40px; align-items: start; margin-bottom: 90px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro > span,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"])  .stream-recall-copy > span { color: var(--gold); font-size: 10px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro h2 { margin: 0; font-family: var(--font-instrument-serif), serif; font-size: 51px; font-weight: 400; line-height: .95; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro p { margin: 0; color: #a3a6b5; font-size: 12px; line-height: 1.8; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline { display: grid; grid-template-columns: .5fr 2fr; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-time-rail { display: flex; flex-direction: column; align-items: flex-start; color: #777b8f; font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-time-rail i { height: 135px; margin: 8px 0 8px 3px; border-left: 1px solid #383c50; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content article { display: grid; grid-template-columns: 60px 1fr 160px; gap: 20px; min-height: 170px; padding: 0 0 35px; margin-bottom: 35px; border-bottom: 1px solid #34384a; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content time { color: #73778b; font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content article span { color: var(--lavender); font-size: 8px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content h3 { margin: 12px 0; font-family: var(--font-instrument-serif), serif; font-size: 28px; font-weight: 400; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content p { margin: 0; color: #888b9e; font-size: 10px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-context { align-self: center; padding: 15px; border: 1px solid #363b50; color: #888b9e; font-size: 8px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-context strong { display: block; margin-top: 7px; color: #d5d5de; font-weight: 400; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-small-wave { justify-content: flex-start; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall { padding: 120px max(44px, calc((100vw - 1150px)/2)); display: grid; grid-template-columns: .8fr 1.2fr; gap: 85px; align-items: center; background: #e4dfd3; color: #202235; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy h2 { margin: 22px 0; font-family: var(--font-instrument-serif), serif; font-size: 57px; font-weight: 400; line-height: .93; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy > span { color: #6c5841; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy p { color: #626473; font-size: 12px; line-height: 1.8; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy ul { padding: 0; list-style: none; font-size: 10px; line-height: 2.7; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy li::before { content: "—"; margin-right: 10px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query { padding: 30px; background: #f8f6ef; box-shadow: 14px 15px 0 #b9b3a6; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query-bar { display: flex; align-items: center; gap: 13px; padding: 15px; border: 1px solid #c9c5b9; font-size: 10px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query-bar svg { width: 16px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-thinking { display: flex; align-items: center; gap: 7px; margin: 25px 0; color: #777887; font-size: 8px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-thinking svg { width: 12px; color: #8d80b4; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query > p { font-family: var(--font-instrument-serif), serif; font-size: 27px; line-height: 1.25; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query > p strong { font-weight: 400; background: #e4dcae; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-source-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 25px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-source-grid article { padding: 15px; border: 1px solid #d8d4c9; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-source-grid span { color: #88888f; font-size: 7px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-source-grid p { font-size: 9px; line-height: 1.6; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy { max-width: 1200px; margin: auto; padding: 65px 44px; display: grid; grid-template-columns: 1fr 1.2fr .7fr; align-items: center; gap: 45px; border-bottom: 1px solid #34384a; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy > div { display: flex; align-items: center; gap: 12px; font-family: var(--font-instrument-serif), serif; font-size: 17px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy svg { width: 25px; color: var(--gold); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy p { color: #9699aa; font-size: 10px; line-height: 1.8; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy > a { display: flex; align-items: center; gap: 7px; color: var(--gold); font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy > a svg { width: 14px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final { padding: 120px 30px; text-align: center; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final > span { color: var(--gold); font-family: var(--font-instrument-serif), serif; font-size: 18px; font-style: italic; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final h2 { margin: 25px 0 35px; font-family: var(--font-instrument-serif), serif; font-size: clamp(80px, 11vw, 145px); font-weight: 400; line-height: .9; letter-spacing: -3px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final > a { display: inline-flex; align-items: center; gap: 28px; padding: 15px 20px; background: var(--gold); color: #1c1a18; font-size: 11px; font-weight: 700; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final > a svg { width: 18px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final > p { color: #777b8d; font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-footer { display: flex; align-items: center; justify-content: space-between; padding: 25px 44px; border-top: 1px solid #34384a; color: #797d90; font-size: 9px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-footer > a { display: flex; align-items: center; gap: 7px; color: #e7e6e1; font-size: 16px; font-weight: 700; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-footer svg { width: 18px; }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-footer > div { display: flex; gap: 25px; }
+@keyframes gallery-with-design-skill-kimi-k3-1-pro-source-app-3-three-stream-drift { from { transform: translateX(0); } to { transform: translateX(-220px); } }
+@media (max-width: 950px) {
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro { grid-template-columns: 1fr 2fr; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro p { grid-column: 2; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall { grid-template-columns: 1fr; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy { max-width: 560px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy { grid-template-columns: 1fr 1fr; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy > a { grid-column: 2; }
+}
+@media (max-width: 650px) {
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-nav { height: 73px; padding: 0 20px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-nav nav { display: none; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero { padding-top: 60px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-title { padding: 0 20px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero h1 { font-size: 77px; letter-spacing: -2px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-hero-bottom { margin: 30px auto 55px; padding: 0 20px; flex-direction: column; align-items: flex-start; gap: 25px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-reel { padding-left: 20px; animation: none; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-memory { flex-basis: 240px; height: 325px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-scroll { padding: 0 20px 25px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-remember { padding: 85px 20px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro { grid-template-columns: 1fr; gap: 20px; margin-bottom: 65px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro p { grid-column: 1; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-section-intro h2 { font-size: 43px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline { grid-template-columns: 1fr; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-time-rail { display: none; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content article { grid-template-columns: 40px 1fr; gap: 10px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-context { grid-column: 2; justify-self: start; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-timeline-content h3 { font-size: 24px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall { padding: 80px 20px; gap: 45px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-recall-copy h2 { font-size: 50px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query { padding: 20px; box-shadow: 8px 9px 0 #b9b3a6; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-query > p { font-size: 23px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-source-grid { grid-template-columns: 1fr; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy { padding: 55px 20px; grid-template-columns: 1fr; gap: 20px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-privacy > a { grid-column: 1; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final { padding: 90px 20px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-final h2 { font-size: 85px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-footer { padding: 25px 20px 80px; }
+ :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="kimi-k3-1-pro"]) .stream-footer > span { display: none; }
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "command": [
+      "node",
+      "/Users/Shared/whichai-kimi-k3-1-pro/sandboxes/63965ea9-a5ff-49de-a1c8-ca845a7595bc/project/1/motion.mjs",
+      "check",
+      "--project",
+      "/Users/Shared/whichai-kimi-k3-1-pro/sandboxes/63965ea9-a5ff-49de-a1c8-ca845a7595bc/project/1"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "node",
+      "/Users/Shared/whichai-kimi-k3-1-pro/sandboxes/63965ea9-a5ff-49de-a1c8-ca845a7595bc/project/2/motion.mjs",
+      "check",
+      "--project",
+      "/Users/Shared/whichai-kimi-k3-1-pro/sandboxes/63965ea9-a5ff-49de-a1c8-ca845a7595bc/project/2"
+    ],
+    "exitCode": 0
+  },
+  {
+    "command": [
+      "node",
+      "/Users/Shared/whichai-kimi-k3-1-pro/sandboxes/63965ea9-a5ff-49de-a1c8-ca845a7595bc/project/3/motion.mjs",
+      "check",
+      "--project",
+      "/Users/Shared/whichai-kimi-k3-1-pro/sandboxes/63965ea9-a5ff-49de-a1c8-ca845a7595bc/project/3"
+    ],
+    "exitCode": 0
+  }
+]

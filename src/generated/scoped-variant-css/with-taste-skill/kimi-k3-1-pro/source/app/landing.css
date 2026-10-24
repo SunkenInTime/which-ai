@@ -1,0 +1,180 @@
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) {
+  --page-gutter: clamp(16px, 2.5vw, 40px);
+  --section-space: clamp(96px, 11vw, 176px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) * { box-sizing: border-box; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) { scroll-behavior: smooth; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) [data-source-body] { margin: 0; background: #fff; color: #111; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]),:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  input { font: inherit; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) a { color: inherit; text-decoration: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  summary { cursor: pointer; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  input { border-radius: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) button { color: inherit; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  svg { display: block; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) ::selection { background: currentColor; color: var(--bg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) :focus-visible { outline: 3px solid var(--accent, #146ef5); outline-offset: 4px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version { min-height: 100svh; overflow: clip; background: var(--bg); color: var(--ink); font-family: var(--font); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version h3,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version p { margin-top: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version h3 { text-wrap: balance; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version h2 { font-family: var(--display); font-weight: var(--display-weight, 600); letter-spacing: var(--display-tracking, -0.045em); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version h2 { font-size: var(--section-title, clamp(48px, 6.2vw, 96px)); line-height: .94; margin-bottom: 32px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version h3 { letter-spacing: -.025em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version p { font-size: 18px; line-height: 1.55; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .section-pad { padding: var(--section-space) var(--page-gutter); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .section-heading { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(260px, .6fr); align-items: end; gap: 56px; margin-bottom: clamp(56px, 7vw, 104px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .section-heading h2 { margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .section-heading p { max-width: 38ch; margin: 0 0 6px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .button { display: inline-flex; min-height: 52px; align-items: center; justify-content: center; padding: 0 24px; font-size: 16px; font-weight: 600; transition: transform .2s ease, background-color .2s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .button:hover { transform: translateY(-3px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .button:active { transform: translateY(1px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .button--lime { background: #def915; color: #0a0a0a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .button--green { background: #0f7d45; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .button--magenta { background: #b0298f; color: #fff; border-radius: 999px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-mark { display: inline-block; flex: none; width: .65em; height: .65em; border-radius: 50%; background: currentColor; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav { position: relative; z-index: 10; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px var(--page-gutter); font-size: 15px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .wordmark { display: inline-flex; align-items: center; gap: 10px; font-size: 21px; font-weight: 600; letter-spacing: -.04em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav nav { display: flex; align-items: center; gap: clamp(18px, 2.5vw, 40px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav nav a { position: relative; min-height: 36px; display: inline-flex; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav nav a:not(.nav-action)::after { content: ""; position: absolute; left: 0; right: 100%; bottom: 4px; height: 2px; background: currentColor; transition: right .25s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav nav a:hover::after { right: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .nav-action { text-decoration: underline; text-underline-offset: 5px; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search { --ui-bg: #050505; --ui-surface: #151515; --ui-raised: #292929; --ui-text: #fff; --ui-muted: #b4b4b4; --ui-faint: #949494; --ui-accent: #c6f24e; width: 100%; min-height: 520px; overflow: hidden; background: var(--ui-bg); color: var(--ui-text); border-radius: 16px; font-family: var(--font-bricolage), sans-serif; font-size: 14px; text-align: left; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .brain-search input { font-family: inherit; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__topbar { display: flex; min-height: 54px; align-items: center; justify-content: space-between; gap: 16px; padding: 0 20px; border-bottom: 1px solid #242424; /* taste-skill-ignore: product interface rule */ }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__brand { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__brand .memory-mark { color: var(--ui-accent); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__brand > span:last-child { color: var(--ui-muted); font-weight: 400; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__saved { color: var(--ui-muted); font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__workspace { display: grid; grid-template-columns: minmax(300px, .85fr) minmax(320px, 1.15fr); min-height: 464px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__results-pane { padding: 22px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__label { display: block; margin-bottom: 10px; font-size: 14px; font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__input-wrap { display: flex; height: 46px; align-items: center; gap: 10px; padding: 0 14px; background: var(--ui-raised); border-radius: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .search-glyph { width: 14px; height: 14px; flex: none; border: 2px solid var(--ui-muted); border-radius: 50%; position: relative; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .search-glyph::after { content: ""; position: absolute; width: 6px; height: 2px; right: -5px; bottom: -2px; background: var(--ui-muted); transform: rotate(45deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__input-wrap input { min-width: 0; flex: 1; border: 0; outline: 0; background: transparent; color: var(--ui-text); font-size: 15px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__input-wrap input::placeholder { color: var(--ui-faint); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__count { flex: none; color: var(--ui-muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__suggestions { display: flex; flex-wrap: wrap; gap: 7px; margin: 12px 0 18px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__suggestions button { min-height: 30px; padding: 0 10px; border: 1px solid #444; /* taste-skill-ignore: product interface control */ background: transparent; border-radius: 999px; color: var(--ui-muted); font-size: 13px; transition: border-color .2s, color .2s; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__suggestions button:hover { border-color: #fff; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__results { display: grid; gap: 7px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; width: 100%; min-height: 82px; padding: 13px 14px; border: 1px solid transparent; /* taste-skill-ignore: product interface selection */ background: var(--ui-surface); border-radius: 8px; color: var(--ui-text); text-align: left; transition: background .2s, transform .2s; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result:hover { background: var(--ui-raised); transform: translateX(3px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result.is-active { background: var(--ui-raised); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result strong { grid-column: 1; font-size: 15px; font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result__kind { grid-column: 1; color: var(--ui-accent); font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result > span:last-child { grid-column: 2; grid-row: 2; color: var(--ui-muted); font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__empty { display: grid; gap: 8px; min-height: 150px; align-content: center; padding: 20px; background: var(--ui-surface); border-radius: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__empty span { color: var(--ui-muted); line-height: 1.5; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail { display: flex; flex-direction: column; margin: 14px 14px 14px 0; padding: clamp(24px, 3vw, 48px); background: var(--ui-surface); border-radius: 12px; animation: gallery-with-taste-skill-kimi-k3-1-pro-source-app-landing-note-in .35s ease both; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__meta { display: flex; justify-content: space-between; gap: 12px; color: var(--ui-muted); font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__meta span:first-child { color: var(--ui-accent); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail h3 { margin: clamp(40px, 6vh, 72px) 0 20px; font-family: inherit; font-size: clamp(26px, 2.5vw, 40px); font-weight: 500; line-height: 1.05; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail > p { max-width: 48ch; color: #e8e8e8; font-size: 16px; line-height: 1.6; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__tags span { padding: 5px 9px; background: var(--ui-raised); border-radius: 4px; color: var(--ui-muted); font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__related { display: grid; gap: 8px; margin-top: auto; padding-top: 24px; color: var(--ui-muted); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__related strong { margin-bottom: 4px; color: var(--ui-text); font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail__related span::before { content: ""; display: inline-block; width: 5px; height: 5px; margin: 0 9px 2px 0; border-radius: 50%; background: var(--ui-accent); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search--compact { min-height: 430px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search--compact .brain-search__workspace { min-height: 376px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search--compact .memory-detail h3 { margin-top: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search--compact .memory-detail { padding: 26px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search--compact .memory-detail__related { display: none; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list { display: grid; gap: 12px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list details { background: var(--faq-surface, rgba(255,255,255,.15)); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list summary { display: flex; min-height: 82px; align-items: center; justify-content: space-between; gap: 24px; padding: 22px 26px; list-style: none; font-size: 19px; font-weight: 600; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list summary::-webkit-details-marker { display: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-plus { position: relative; width: 18px; height: 18px; flex: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-plus::before,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .faq-plus::after { content: ""; position: absolute; top: 8px; left: 0; width: 18px; height: 2px; background: currentColor; transition: transform .25s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-plus::after { transform: rotate(90deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list details[open] .faq-plus::after { transform: rotate(0); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list details > p { max-width: 64ch; margin: 0; padding: 0 72px 28px 26px; font-size: 17px; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form > label { display: block; margin-bottom: 12px; font-size: 16px; font-weight: 600; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form > div { display: flex; gap: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form input { min-width: 0; min-height: 58px; flex: 1; padding: 0 18px; border: 0; background: var(--form-input, #fff); color: var(--form-ink, #111); font-size: 17px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form input::placeholder { color: var(--form-muted, #626262); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form button { min-height: 58px; padding: 0 22px; border: 0; background: var(--accent); color: var(--accent-ink); font-size: 16px; font-weight: 600; transition: transform .2s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form button:hover { transform: translateY(-3px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form > p { max-width: 56ch; margin: 14px 0 0; color: var(--muted); font-size: 14px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer { padding: clamp(72px, 8vw, 120px) var(--page-gutter) 32px; background: var(--footer-bg, var(--ink)); color: var(--footer-ink, var(--bg)); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer > h2 { margin: 0 0 64px; font-size: clamp(100px, 20vw, 310px); line-height: .7; letter-spacing: -.07em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__bottom { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; align-items: end; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__bottom p { margin: 0; font-size: 16px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__bottom nav { display: grid; grid-template-columns: 1fr 1fr; gap: 12px 28px; font-size: 16px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__bottom nav a:hover { text-decoration: underline; text-underline-offset: 4px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__small { color: var(--footer-muted, var(--muted)); font-size: 13px !important; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-switches { display: grid; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band { display: flex; min-height: 144px; align-items: center; justify-content: space-between; gap: 32px; padding: 28px 0; transition: padding .3s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band + .capability-band { margin-top: 8px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band h3 { margin: 0 0 8px; font-family: var(--display); font-size: clamp(25px, 3vw, 48px); line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band p { max-width: 64ch; margin: 0; font-size: 16px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band button { position: relative; width: 68px; height: 40px; flex: none; padding: 4px; border: 0; border-radius: 999px; background: #656565; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band button span { display: block; width: 32px; height: 32px; border-radius: 50%; background: #fff; transition: transform .25s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band.is-on button { background: var(--accent); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band.is-on button span { transform: translateX(28px); }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher { position: fixed; z-index: 100; right: 20px; bottom: 20px; font-family: Arial, sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > summary { display: flex; height: 48px; align-items: center; gap: 12px; padding: 0 16px; background: #fff; color: #111; border: 2px solid #111; border-radius: 999px; list-style: none; font-size: 13px; box-shadow: 0 6px 24px rgba(0,0,0,.14); /* taste-skill-ignore: floating design picker */ }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > summary::-webkit-details-marker { display: none; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > summary strong { font-size: 14px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher[open] > summary { background: #111; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > nav { position: absolute; right: 0; bottom: 58px; width: 216px; padding: 16px; background: #fff; color: #111; border: 2px solid #111; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,.18); /* taste-skill-ignore: floating design picker menu */ }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > nav p { margin: 0 0 12px; font-size: 13px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > nav > div { display: flex; gap: 6px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > nav a { display: grid; width: 32px; height: 36px; place-items: center; border: 0; background: #eee; font-size: 14px; transition: transform .2s, background .2s; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > nav a:hover { transform: translateY(-2px); background: #ddd; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > nav a[aria-current="page"] { background: #111; color: #fff; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .motion-ready [data-reveal] { opacity: 0; transform: translateY(28px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .motion-ready [data-reveal].is-visible { opacity: 1; transform: translateY(0); transition: transform .8s cubic-bezier(.2,.75,.25,1), opacity .65s ease; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .motion-ready [data-reveal].is-visible > * { animation: gallery-with-taste-skill-kimi-k3-1-pro-source-app-landing-content-in .65s .08s ease both; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) [data-hero] { animation: gallery-with-taste-skill-kimi-k3-1-pro-source-app-landing-hero-in 1s cubic-bezier(.2,.75,.25,1) both; }
+@keyframes gallery-with-taste-skill-kimi-k3-1-pro-source-app-landing-hero-in { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes gallery-with-taste-skill-kimi-k3-1-pro-source-app-landing-content-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes gallery-with-taste-skill-kimi-k3-1-pro-source-app-landing-note-in { from { opacity: 0; transform: translateX(12px); } to { opacity: 1; transform: translateX(0); } }
+
+@media (max-width: 800px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) { --section-space: 88px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .section-heading { grid-template-columns: 1fr; align-items: start; gap: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .section-heading p { max-width: 48ch; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav { padding-top: 18px; padding-bottom: 18px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-nav nav a:not(.nav-action) { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__workspace { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__results-pane { padding: 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail { margin: 0 14px 14px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-detail h3 { margin-top: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__saved { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__brand > span:last-child { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__count { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version p { font-size: 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list summary { padding: 20px; font-size: 17px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .faq-list details > p { padding: 0 52px 24px 20px; font-size: 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form > div { flex-direction: column; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .waitlist-form button { width: 100%; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__bottom { grid-template-columns: 1fr 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__small { grid-column: 1 / -1; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .capability-band { min-height: 132px; gap: 16px; }
+}
+
+@media (max-width: 480px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search { border-radius: 10px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .brain-search__topbar { padding: 0 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .memory-result > span:last-child { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer__bottom { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .site-footer > h2 { margin-bottom: 48px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher { right: 12px; bottom: 12px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-switcher > summary > span { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) { scroll-behavior: auto; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) *,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  *::before,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .motion-ready [data-reveal] { opacity: 1; transform: none; }
+}

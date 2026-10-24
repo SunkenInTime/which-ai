@@ -1,3 +1,6 @@
+import withTasteKimi31Pro from "@/variants/with-taste-skill/kimi-k3-1-pro";
+import withKimi31Pro from "@/variants/with-design-skill/kimi-k3-1-pro";
+import withoutKimi31Pro from "@/variants/without-design-skill/kimi-k3-1-pro";
 import withTasteArgon from "@/variants/with-taste-skill/gemini-4-argon";
 import withArgon from "@/variants/with-design-skill/gemini-4-argon";
 import withoutArgon from "@/variants/without-design-skill/gemini-4-argon";
@@ -127,6 +130,10 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "without-design-skill:kimi-k3-1-pro": withoutKimi31Pro,
+  "with-design-skill:kimi-k3-1-pro": withKimi31Pro,
+  "with-taste-skill:kimi-k3-1-pro": withTasteKimi31Pro,
+
   "with-taste-skill:gemini-4-argon": withTasteArgon,
   "with-design-skill:gemini-4-argon": withArgon,
   "without-design-skill:gemini-4-argon": withoutArgon,

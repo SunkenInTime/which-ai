@@ -1,0 +1,54 @@
+[
+  {
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/anthropic-frontend-design.source.tar.gz",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/design-taste.source.tar.gz",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/motion.source.tar.gz",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/benchmarks/kimi-k3-1-pro/2026-10-23/no-skills.source.tar.gz",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/1.preview.mp4",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/1.mp4",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/2.mp4",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/3.mp4",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/2.preview.mp4",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/3.preview.mp4",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/2.jpg",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/3.jpg",
+    "sha256Verified": true
+  },
+  {
+    "url": "https://media.whichai.dev/baseline/kimi-k3-1-pro/1.jpg",
+    "sha256Verified": true
+  }
+]

@@ -1,0 +1,284 @@
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-three {
+  --bg: #b7dde4;
+  --ink: #141414;
+  --muted: #3c5054;
+  --accent: #0f5257;
+  --accent-ink: #fff;
+  --font: var(--font-red-text), sans-serif;
+  --display: var(--font-red-display), sans-serif;
+  --display-weight: 900;
+  --display-tracking: -.055em;
+  --section-title: clamp(64px, 9vw, 138px);
+  --faq-surface: #a6d1d9;
+  --form-input: #fff;
+  --form-muted: #4d5b5e;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-three h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .version-three h2 { text-transform: uppercase; line-height: .82; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-three .brain-search { font-family: var(--font-red-text), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .chapter { min-height: 90svh; padding: var(--section-space) var(--page-gutter); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero { display: flex; min-height: 100svh; flex-direction: column; padding: 0; background: #b7dde4; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero h1 { display: flex; flex: 1; flex-direction: column; justify-content: center; margin: 0; padding: 32px var(--page-gutter); font-size: clamp(116px, 20vw, 300px); line-height: .72; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero h1 span:last-child { color: #0f5257; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero__aside { display: flex; align-items: flex-end; justify-content: center; gap: 48px; padding: 0 var(--page-gutter) 40px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero__aside p { max-width: 35ch; margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero__aside a.v3-hero__button { display: inline-flex; min-height: 52px; flex: none; align-items: center; padding: 0 22px; border: 0; background: #0f5257; color: #fff; font-weight: 600; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-recall { display: grid; grid-template-columns: .75fr 1.25fr; gap: 64px; align-items: center; background: #f5c1d0; min-height: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-chapter-heading p { max-width: 34ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-recall .brain-search { min-width: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-recall .v3-chapter-heading h2 { font-size: clamp(64px, 6vw, 92px); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture { display: grid; grid-template-columns: 1.15fr .85fr; gap: 80px; align-items: center; background: #f0e3a1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture h2 { margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture__copy > p { max-width: 38ch; margin-bottom: 64px; font-size: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture-slip { display: flex; min-height: 270px; flex-direction: column; padding: 28px; background: #141414; color: #f0e3a1; transform: rotate(3deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture-slip span { font-size: 14px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture-slip strong { margin: auto 0; font-size: 24px; line-height: 1.15; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-source-tray { display: flex; min-height: 210px; flex-direction: column; margin-top: 24px; padding: 28px; background: #0f5257; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-source-tray > span { font-size: 14px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-source-tray > strong { margin: auto 0 16px; font-size: 26px; line-height: 1.1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-source-tray > p { margin: 0; font-size: 15px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features { background: #bcd2b5; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features > h2 { margin-bottom: 80px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band { padding: 28px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band.is-on { background: #0f5257; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band:not(.is-on) { background: #c9ddc3; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band button { background: #657565; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band.is-on button { background: #f0e3a1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band.is-on button span { background: #0f5257; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-pricing { display: grid; grid-template-columns: .65fr 1.35fr; gap: 64px; background: #f9cdbd; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices { display: grid; grid-template-columns: .8fr 1.2fr; gap: 10px; align-items: end; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices article { display: flex; min-height: 390px; flex-direction: column; padding: 32px; background: #f5c1d0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices article:last-child { min-height: 540px; background: #0f5257; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices h3 { font-size: 24px; text-transform: uppercase; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices strong { margin: 24px 0; font-family: var(--display); font-size: clamp(48px, 6vw, 82px); line-height: 1; letter-spacing: -.05em; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices strong span { font-family: var(--font); font-size: 17px; letter-spacing: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices a { margin-top: auto; padding: 16px; background: #141414; color: #fff; text-align: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices article:last-child a { background: #f0e3a1; color: #141414; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 72px; background: #b7dde4; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-start { background: #0f5257; color: #fff; --muted: #d2e5e7; --accent: #f0e3a1; --accent-ink: #141414; min-height: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-start { display: grid; grid-template-columns: 1.1fr .9fr; gap: 72px; align-items: end; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-start h2 { margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-three .site-footer { --footer-bg: #141414; --footer-ink: #f5c1d0; --footer-muted: #b4b4b4; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-four {
+  --bg: #ebe5e3;
+  --ink: #2b2622;
+  --muted: #645b57;
+  --accent: #0f7d45;
+  --accent-ink: #fff;
+  --font: var(--font-hanken), sans-serif;
+  --display: var(--font-hanken), sans-serif;
+  --display-weight: 500;
+  --display-tracking: -.05em;
+  --section-title: clamp(52px, 6.6vw, 100px);
+  --faq-surface: #e1dad7;
+  --form-input: #f7f3f1;
+  --form-muted: #665e5a;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero { position: relative; min-height: 100svh; padding: 6vh var(--page-gutter); background: #665d59; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card { position: relative; z-index: 2; display: flex; width: min(980px, 78vw); min-height: 88svh; flex-direction: column; margin: 0 auto; background: #ebe5e3; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card .site-nav { padding-right: 32px; padding-left: 32px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__body { display: grid; grid-template-columns: 1fr; gap: 40px; align-items: end; margin: auto 0; padding: 56px 48px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card h1 { margin: 0; font-size: clamp(58px, 7.4vw, 112px); line-height: .9; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__body p { margin: 0 0 8px; font-size: 19px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__foot { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 28px 32px; background: #e1dad7; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__foot > span { font-size: 15px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-background-note { position: absolute; left: var(--page-gutter); bottom: 32px; color: #d8cfcb; font-size: 15px; transform: rotate(-4deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search { display: grid; grid-template-columns: .7fr 1.3fr; gap: 64px; align-items: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__intro p { max-width: 36ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__paper { padding: 24px; background: #f7f3f1; transform: rotate(1deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__paper .brain-search { min-height: 600px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__paper .brain-search__workspace { min-height: 546px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-section-note { grid-column: 1 / -1; margin: 0; text-align: right; font-size: 14px; color: var(--muted); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-method { display: grid; grid-template-columns: 1fr 1fr; gap: 100px; align-items: start; background: #e1dad7; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-method > div:first-child p { max-width: 36ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary { padding: 40px 36px 56px; background: #2b2622; color: #ebe5e3; clip-path: polygon(0 0,100% 0,100% 97%,96% 100%,92% 97%,88% 100%,84% 97%,80% 100%,76% 97%,72% 100%,68% 97%,64% 100%,60% 97%,56% 100%,52% 97%,48% 100%,44% 97%,40% 100%,36% 97%,32% 100%,28% 97%,24% 100%,20% 97%,16% 100%,12% 97%,8% 100%,4% 97%,0 100%); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary h3 { margin-bottom: 40px; font-size: 28px; font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary dl { display: grid; gap: 24px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary dl > div { display: flex; justify-content: space-between; gap: 24px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary dt,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v4-itinerary dd { font-size: 17px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary dd { margin: 0; font-variant-numeric: tabular-nums; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary > p { margin: 40px -36px 0; padding: 20px 36px; background: #ebe5e3; color: #2b2622; font-size: 16px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-features > h2 { margin-bottom: 80px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack { display: grid; gap: 16px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article { position: relative; top: auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 48px; min-height: 340px; padding: 36px; align-items: start; background: #e1dad7; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article:nth-child(2) { background: #d4dfd1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article:nth-child(3) { background: #e8e2df; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article:nth-child(4) { background: #cad9cc; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack h3 { max-width: none; font-size: clamp(32px, 3.4vw, 50px); font-weight: 500; line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article > p { margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article > div { display: flex; min-height: 200px; flex-direction: column; justify-content: space-between; padding: 24px; background: #2b2622; color: #ebe5e3; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article > div span { font-size: 14px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article > div strong { max-width: 22ch; font-size: 20px; line-height: 1.3; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-pricing { display: grid; grid-template-columns: .8fr 1.2fr; gap: 96px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-pricing > div:first-child p { max-width: 36ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list { display: grid; gap: 32px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list > div { display: grid; grid-template-columns: 1fr auto; gap: 8px 24px; padding: 28px; background: #e1dad7; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list h3 { grid-column: 1; margin: 0; font-size: 28px; font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list div > span { grid-column: 1; color: var(--muted); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list strong { grid-column: 2; grid-row: 1 / 3; align-self: center; font-size: 24px; font-weight: 500; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list > a { padding: 18px; background: #0f7d45; color: #fff; text-align: center; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; background: #e1dad7; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-faq .faq-list details:nth-child(2n) { background: #d4dfd1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-faq .faq-list details { transform: rotate(-.4deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-faq .faq-list details:nth-child(2n) { transform: rotate(.5deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-start { background: #665d59; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-start__card { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 72px; padding: clamp(32px, 5vw, 72px); background: #ebe5e3; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-start__card h2 { margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-start__card > p { max-width: 36ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-start__card .waitlist-form { grid-column: 1 / -1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-four .site-footer { --footer-bg: #2b2622; --footer-ink: #ebe5e3; --footer-muted: #bdb3ae; }
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-five {
+  --bg: #cbe4f2;
+  --ink: #0a0a0a;
+  --muted: #3d5662;
+  --accent: #b0298f;
+  --accent-ink: #fff;
+  --font: var(--font-figtree), sans-serif;
+  --display: var(--font-league), sans-serif;
+  --display-weight: 700;
+  --display-tracking: -.04em;
+  --section-title: clamp(58px, 7.8vw, 118px);
+  --faq-surface: #e8d9ab;
+  --form-input: #fff;
+  --form-muted: #555;
+}
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-five .brain-search { font-family: var(--font-figtree), sans-serif; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero { position: relative; min-height: 100svh; overflow: hidden; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__intro { position: relative; z-index: 3; width: 57%; padding: clamp(80px, 13vh, 140px) 0 80px var(--page-gutter); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero h1 { margin-bottom: 32px; font-size: clamp(84px, 11vw, 168px); line-height: .8; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__intro p { max-width: 37ch; margin-bottom: 32px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__stage { position: absolute; right: -18vw; bottom: -46%; display: flex; width: min(78vw, 1100px); aspect-ratio: 1; align-items: center; justify-content: center; padding: 11%; border-radius: 50%; background: #ffc013; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__stage .brain-search { position: relative; z-index: 2; width: 650px; min-width: 650px; transform: rotate(-3deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-orbit-note { position: absolute; z-index: 3; top: 8%; left: 6%; display: flex; width: 150px; height: 150px; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; background: #b0298f; color: #fff; font-size: 17px; line-height: 1.25; transform: rotate(8deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search { display: grid; grid-template-columns: 1.15fr .85fr; gap: 80px; align-items: center; background: #f1e3b5; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__sample { display: flex; aspect-ratio: 1; align-items: center; justify-content: center; overflow: hidden; padding: 9%; border-radius: 50%; background: #ffc013; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__sample .brain-search { min-width: 620px; transform: rotate(4deg); }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__copy p { max-width: 38ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__copy a { display: inline-block; padding-bottom: 4px; border-bottom: 3px solid currentColor; font-weight: 600; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method { background: #cbe4f2; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop { display: grid; grid-template-columns: 1.2fr .8fr 1fr; gap: 56px; align-items: start; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop article:nth-child(2) { padding-top: 96px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-node { display: block; width: 88px; height: 88px; margin-bottom: 40px; border-radius: 50%; background: #b0298f; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop article:nth-child(2) .v5-node { width: 140px; height: 140px; background: #ffc013; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop article:nth-child(3) .v5-node { width: 110px; height: 110px; background: #0a0a0a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop h3 { font-family: var(--display); font-size: 44px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop p { max-width: 32ch; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 88px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments > div { display: flex; min-height: 230px; flex-direction: column; padding: 28px; background: #0a0a0a; color: #cbe4f2; border-radius: 80px 0 0 80px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments > div:last-child { border-radius: 0 80px 80px 0; background: #ffc013; color: #0a0a0a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments span { font-size: 14px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments strong { margin: auto 0 16px; font-size: 25px; line-height: 1.15; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments p { margin: 0; font-size: 15px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-features { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; background: #f1e3b5; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines { display: grid; gap: 48px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines article { display: grid; grid-template-columns: 48px 1fr; gap: 8px 24px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines .v5-node { grid-row: 1 / 3; width: 40px; height: 40px; margin: 4px 0 0; background: #b0298f; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines article:nth-child(2n) .v5-node { background: #0a0a0a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines h3 { margin: 0; font-size: 30px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines p { grid-column: 2; max-width: 50ch; margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-pricing { display: grid; grid-template-columns: .65fr 1.35fr; gap: 64px; align-items: end; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices { display: grid; grid-template-columns: .85fr 1.15fr; gap: 8px; align-items: end; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices article { display: flex; min-height: 390px; flex-direction: column; padding: 32px; background: #ffc013; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices article:last-child { min-height: 550px; background: #0a0a0a; color: #cbe4f2; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices h3 { font-family: var(--display); font-size: 32px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices strong { margin-bottom: 32px; font-family: var(--display); font-size: clamp(48px, 6vw, 80px); line-height: 1; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices strong span { font-family: var(--font); font-size: 17px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices p { margin-bottom: 8px; font-size: 17px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices a { margin: auto -32px -32px; padding: 22px 32px; background: #b0298f; color: #fff; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices article:last-child a { background: #cbe4f2; color: #0a0a0a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-faq { display: grid; grid-template-columns: .7fr 1.3fr; gap: 80px; background: #f1e3b5; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-faq .faq-list details { border-radius: 40px 0 0 40px; padding-left: 20px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-start { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; background: #b0298f; color: #fff; --muted: #fff; --accent: #ffc013; --accent-ink: #0a0a0a; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-start h2 { margin: 0; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-start .waitlist-form input,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v5-start .waitlist-form button { border-radius: 999px; }
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-five .site-footer { --footer-bg: #0a0a0a; --footer-ink: #cbe4f2; --footer-muted: #8ba4b0; }
+
+@media (max-width: 1100px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-recall { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-recall .brain-search { min-width: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture { gap: 48px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-pricing { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card { width: 90vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__body { grid-template-columns: 1fr; align-items: start; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__body p { max-width: 44ch; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__intro { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article { grid-template-columns: 1fr 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article > div { grid-column: 2; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__stage { right: -32vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search { gap: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__sample { padding: 6%; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__sample .brain-search { min-width: 560px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-features,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v5-pricing { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 800px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .chapter { min-height: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero { min-height: 100svh; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero h1 { font-size: 23.5vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero__aside { flex-direction: column; align-items: flex-start; gap: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v3-faq,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v3-start { grid-template-columns: 1fr; gap: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-capture__copy > p { margin-bottom: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices { grid-template-columns: 1fr 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices article,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v3-prices article:last-child { min-height: 400px; padding: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero { padding: 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card { width: 100%; min-height: calc(100svh - 32px); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__body { padding: 40px 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card h1 { font-size: clamp(54px, 15vw, 84px); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-background-note { display: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__intro,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v4-method,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v4-pricing,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v4-faq,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v4-start__card { grid-template-columns: 1fr; gap: 32px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-faq .faq-list details,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v4-faq .faq-list details:nth-child(2n) { transform: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article { position: relative; top: auto !important; grid-template-columns: 1fr; min-height: 0; gap: 24px; padding: 28px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-paper-stack article > div { grid-column: 1; min-height: 150px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list > div { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-price-list strong { grid-column: 1; grid-row: auto; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-start__card .waitlist-form { grid-column: 1; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero { min-height: 0; overflow: hidden; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__intro { width: 100%; padding: 72px var(--page-gutter) 64px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero h1 { font-size: clamp(78px, 23vw, 118px); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__stage { position: relative; right: auto; bottom: auto; width: calc(100% + 16px); aspect-ratio: auto; margin-left: 0; padding: 128px 16px 32px; border-radius: 140px 0 0 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-hero__stage .brain-search { width: 100%; min-width: 0; transform: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-orbit-note { top: 24px; left: 24px; width: 92px; height: 92px; font-size: 13px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__sample { aspect-ratio: auto; padding: 64px 16px; border-radius: 100px 100px 0 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-search__sample .brain-search { min-width: 0; transform: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop { grid-template-columns: 1fr; gap: 48px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop article:nth-child(2) { padding-top: 0; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop article:nth-child(n) .v5-node { width: 64px; height: 64px; margin-bottom: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments { grid-template-columns: 1fr; margin-top: 64px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-method__fragments > div,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v5-method__fragments > div:last-child { border-radius: 60px 0 0 60px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-faq,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v5-start { grid-template-columns: 1fr; gap: 40px; }
+}
+
+@media (min-width: 481px) and (max-width: 1100px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__foot { padding-right: 140px; }
+}
+
+@media (min-width: 601px) and (max-width: 800px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop { grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-loop article:nth-child(2) { padding-top: 48px; }
+}
+
+@media (max-width: 480px) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-three { --section-title: clamp(54px, 17vw, 76px); }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .version-three .site-footer > h2 { font-size: 19vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-hero h1 { font-size: 23.5vw; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices { grid-template-columns: 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-prices article,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v3-prices article:last-child { min-height: 350px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v3-features .capability-band { padding: 20px 14px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card .site-nav { padding-right: 18px; padding-left: 18px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-hero-card__foot { flex-direction: column; align-items: stretch; padding: 20px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-search__paper { padding: 8px; transform: none; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary { padding-right: 24px; padding-left: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v4-itinerary > p { margin-right: -24px; margin-left: -24px; padding-right: 24px; padding-left: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices { grid-template-columns: 1fr 1fr; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices article,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"])  .v5-prices article:last-child { min-height: 420px; padding: 20px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices h3 { font-size: 24px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices strong { font-size: 40px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices p { font-size: 15px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-prices a { margin: auto -20px -20px; padding: 18px 20px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines article { grid-template-columns: 32px 1fr; gap: 8px 16px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines .v5-node { width: 28px; height: 28px; }
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="kimi-k3-1-pro"]) .v5-feature-lines h3 { font-size: 25px; }
+}

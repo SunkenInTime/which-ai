@@ -1,0 +1,85 @@
+{
+  "model": "openrouter/moonshotai/kimi-k3.1-pro",
+  "reasoning": "high",
+  "harness": "OpenCode 1.18.32",
+  "date": "2026-10-23",
+  "conditions": {
+    "no-skills": {
+      "costUsd": 0.7195155999999999,
+      "assistantMessages": 17,
+      "parentOnlyCostUsd": 0.7195156000000001,
+      "promptSha256": "aaac8b46f0d88af4bc2325b161e6111267e61b335d63b79718619410f6305ff3",
+      "startedAt": 1792782166.656458,
+      "finishedAt": 1792782728.833654,
+      "resumptions": [],
+      "sourceArchiveSha256": "ae16636a575a65ebd25a19fbbb51aeb66febca24ab1cf22d705ea3a64ca3ef38"
+    },
+    "anthropic-frontend-design": {
+      "costUsd": 0.7933308,
+      "assistantMessages": 24,
+      "parentOnlyCostUsd": 0.7933307999999999,
+      "promptSha256": "6a4f4470d218d1896149654f0559dc79976249d9dcfe10aff20c7bc1410d16fe",
+      "startedAt": 1792782728.835587,
+      "finishedAt": 1792783408.975271,
+      "resumptions": [],
+      "sourceArchiveSha256": "bd94f9066d40f6d2a43aba29c859a806a8dca504af44b25cfae8da7d1c198b66"
+    },
+    "design-taste": {
+      "costUsd": 8.0573012,
+      "assistantMessages": 169,
+      "parentOnlyCostUsd": 8.057301200000007,
+      "promptSha256": "e90149298d1bb00b0522ac2d5e2019d216c8c4be67d1280c39e63764c665abe0",
+      "startedAt": 1792783408.976591,
+      "finishedAt": 1792794678.833973,
+      "resumptions": [
+        {
+          "at": 1792787788.799621,
+          "priorStatus": "failed",
+          "priorErrors": 1,
+          "priorUsage": {
+            "cost": 2.244849800000001,
+            "input": 164116,
+            "output": 35630,
+            "reasoning": 9729,
+            "cache_read": 7315139,
+            "cache_write": 0
+          },
+          "prompt": "Continue the original task from the interrupted request.",
+          "transcript": "resume-1.jsonl"
+        },
+        {
+          "at": 1792794488.283672,
+          "priorStatus": "failed",
+          "priorErrors": 1,
+          "priorUsage": {
+            "cost": 6.932470400000006,
+            "input": 689457,
+            "output": 59573,
+            "reasoning": 18125,
+            "cache_read": 23882882,
+            "cache_write": 0
+          },
+          "prompt": "Continue the original task from the interrupted request.",
+          "transcript": "resume-2.jsonl"
+        }
+      ],
+      "sourceArchiveSha256": "218b1f55439a9216624c67cf444d7507aa88cd9abd7a560434078a1ce29471e4"
+    },
+    "motion": {
+      "costUsd": 2.265482,
+      "assistantMessages": 142,
+      "parentOnlyCostUsd": 0.18405919999999998,
+      "promptSha256": "121fffa9f201842f81f7378c59a6c515356a429fb774eca68043903d44675bd6",
+      "startedAt": 1792794678.8350642,
+      "finishedAt": 1792795828.30246,
+      "resumptions": [],
+      "sourceArchiveSha256": "3065f50d89861340b4b270ae68e4c41f68d114cc7b27fa5a794fe762cee6d127"
+    }
+  },
+  "totalCostUsd": 11.835629599999999,
+  "costBasis": "OpenCode isolated database assistant-message costs including subagents and interrupted attempts; not invoice reconciliation.",
+  "caveats": [
+    "Design-taste resumed twice after provider-credit and network-certificate interruptions.",
+    "Motion rendered on Apple M5 Pro; Windows reference renderer was unreachable."
+  ]
+}

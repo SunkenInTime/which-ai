@@ -160,7 +160,7 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon"] as string[]).includes(entry.model))) {
+  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro"] as string[]).includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
   }
@@ -173,5 +173,16 @@ test("Argon joins Muse as a new arrival on October 13 and leads every group", ()
     const arrivals = entries.filter(entry => getGalleryEntryNewArrival(entries, entry, now)).map(entry => entry.model).sort();
     expect(arrivals).toEqual(["gemini-4-argon", "muse-wonder-1.0"]);
     expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("gemini-4-argon");
+  }
+});
+
+test("Kimi K3.1 Pro leads all groups on October 23 and its badge expires", () => {
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    const kimi = entries.find(entry => entry.model === "kimi-k3-1-pro")!;
+    const now = isoDateToUtcMs("2026-10-23");
+    expect(getGalleryEntryNewArrival(entries, kimi, now)).not.toBeNull();
+    expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("kimi-k3-1-pro");
+    expect(getGalleryEntryNewArrival(entries, kimi, isoDateToUtcMs("2026-11-06"))).toBeNull();
   }
 });
