@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-dm: var(--font-dm);
+  --font-serif: var(--font-instrument);
+  --font-grotesk: var(--font-grotesk);
+  --font-jb: var(--font-jetbrains);
+  --font-jakarta: var(--font-jakarta);
+  --font-bricolage: var(--font-bricolage);
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+[data-source-body] {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  background: #ffffff;
+}
+
+::selection {
+  background: #161310;
+  color: #ffffff;
+}
+
+/* Keyboard-only focus ring, visible on the light and dark directions alike. */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+[tabindex]:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #7c6cf6 !important;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Shared motion primitives (used sparingly, by one or two iterations each) */
+@keyframes cortex-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes cortex-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes cortex-dash {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+@keyframes cortex-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes cortex-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Gallery: keep the source's @theme font utilities, which the gallery scoper strips. */
+.font-sans { font-family: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+.font-dm { font-family: var(--font-dm); }
+.font-serif { font-family: var(--font-instrument); }
+.font-grotesk { font-family: var(--font-grotesk); }
+.font-jb { font-family: var(--font-jetbrains); }
+.font-jakarta { font-family: var(--font-jakarta); }
+.font-bricolage { font-family: var(--font-bricolage); }
