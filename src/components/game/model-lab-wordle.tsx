@@ -65,6 +65,7 @@ const GUESS_OPTIONS: GuessOption[] = [
   { slug: "meta", label: "Meta", logoLightPath: "/meta.svg" },
   { slug: "x-ai", label: "X AI", logoLightPath: "/xai-light.svg", logoDarkPath: "/xai-dark.svg" },
   { slug: "moonshot", label: "Kimi", logoLightPath: "/kimi-k2.webp" },
+  { slug: "deepseek", label: "DeepSeek", logoLightPath: "/deepseek.svg" },
   { slug: "z-ai", label: "GLM", logoLightPath: "/glm.webp" },
   { slug: "cursor", label: "Composer", logoLightPath: "/cursor-composer.webp" },
   { slug: "cognition", label: "SWE", logoLightPath: "/cognition.svg", logoDarkPath: "/cognition-dark.svg" },

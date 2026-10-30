@@ -1,0 +1,20 @@
+All five routes return 200, the build and lint are clean, and the swatches are verified. Here's what's on the server at `http://localhost:3392`.
+
+**The product I designed for:** Cairn, a note app for people who have been writing notes for years and can no longer find them. The five directions are five different answers to the same brief, not five color swaps of one page.
+
+| Route | Direction | The idea |
+|---|---|---|
+| `/1` | Catalogue | A dark pine filing cabinet; the hero is an index card half out of the drawer. Bodoni Moda + Courier Prime. |
+| `/2` | Constellation | Cyanotype blue, no third color. A 28-node note map draws itself once on load, then holds still. |
+| `/3` | Field ledger | Ruled lab sheet, red margin rule, monospace data in a real table. Archivo + IBM Plex Mono. |
+| `/4` | Highlighter | Cobalt + hot yellow. One loud gesture — the swept highlighter behind "read you back" — everything else flat. |
+| `/5` | The desk | Strictly achromatic page frame; all color comes from a working notes window: search filters live, clicking a note swaps it and its auto-found links. |
+
+**Switcher:** a fixed pill at the bottom center with all five labeled. It marks the current route via `usePathname`, includes a hover tooltip per direction, collapses to numerals on mobile, and supports number keys `1`–`5` (ignored while typing in the demo search).
+
+**Notes on the work:**
+- Every direction has a real content model — a made-up but coherent body of notes (a merge-bug postmortem, a commonplace book, a design-tokens interview, a bread table) so the pages argue a specific product rather than generic copy.
+- I caught two real bugs by inspecting the DOM rather than trusting the screenshots: the page-2 map's SVG labels were getting no styles at all (plain class names against a CSS module — they were rendering black on dark blue at 16px), and the page-5 demo dropped its entire "Cairn found" panel below 860px, which hid the product's main differentiator. Both fixed.
+- `prefers-reduced-motion` is respected, focus rings are visible, and each page is checked at 390px and 1440px.
+
+One thing I'll flag as a judgment call: `/4` and `/5` are the most conventional of the set — if you want the deck to keep pushing, those two are where I'd spend a second round.

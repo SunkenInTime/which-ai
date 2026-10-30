@@ -18,6 +18,7 @@
     { "id": "cursor", "label": "Cursor", "bin": "cursor", "manualOnly": true }
   ],
   "models": [
+    { "id": "deepseek-v4-1-flash", "label": "DeepSeek V4.1 Flash", "lab": "DeepSeek", "harness": "cursor", "modelArg": "deepseek-v41-flash-1017", "effort": "high" },
     { "id": "kimi-k3-1-pro", "label": "Kimi K3.1 Pro", "lab": "Moonshot", "harness": "opencode", "modelArg": "openrouter/moonshotai/kimi-k3.1-pro", "effort": "high" },
     { "id": "opus-5.5", "label": "Opus 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-opus-5-5" },
     { "id": "sonnet-5.5", "label": "Sonnet 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-sonnet-5-5" },

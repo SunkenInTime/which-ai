@@ -1,0 +1,94 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) [data-source-body] {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  background: #ffffff;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) ::selection {
+  background: #161310;
+  color: #ffffff;
+}
+
+/* Keyboard-only focus ring, visible on the light and dark directions alike. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) a:focus-visible,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+button:focus-visible,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+input:focus-visible,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+[tabindex]:focus-visible {
+  outline-width: 2px;
+  outline-style: solid;
+  outline-color: #7c6cf6 !important;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Shared motion primitives (used sparingly, by one or two iterations each) */
+@keyframes gallery-without-design-skill-deepseek-v4-1-flash-source-app-globals-cortex-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gallery-without-design-skill-deepseek-v4-1-flash-source-app-globals-cortex-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes gallery-without-design-skill-deepseek-v4-1-flash-source-app-globals-cortex-dash {
+  to {
+    stroke-dashoffset: -200;
+  }
+}
+
+@keyframes gallery-without-design-skill-deepseek-v4-1-flash-source-app-globals-cortex-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+
+@keyframes gallery-without-design-skill-deepseek-v4-1-flash-source-app-globals-cortex-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.06);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) *,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Gallery: keep the source's @theme font utilities, which the gallery scoper strips. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-sans { font-family: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-mono { font-family: var(--font-geist-mono); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-dm { font-family: var(--font-dm); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-serif { font-family: var(--font-instrument); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-grotesk { font-family: var(--font-grotesk); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-jb { font-family: var(--font-jetbrains); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-jakarta { font-family: var(--font-jakarta); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .font-bricolage { font-family: var(--font-bricolage); }

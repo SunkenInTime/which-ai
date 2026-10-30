@@ -1,0 +1,591 @@
+/* Direction 3 — field ledger.
+   A cool grey-green lab sheet with a red margin rule running the height of the
+   page. Data is monospaced and tabular; headings are a tight grotesque. The
+   only rounded thing on the page is a circle mark, never a card. */
+
+.page {
+  --sheet: #e7eae2;
+  --sheet-2: #dfe2d8;
+  --ink: #14181a;
+  --ink-soft: #4b544e;
+  --hair: #b6bdb0;
+  --red: #b3361c;
+  --stamp: #1f3d33;
+
+  background-color: var(--sheet);
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0 31px,
+    rgba(20, 24, 26, 0.045) 31px 32px
+  );
+  color: var(--ink);
+  font-family: var(--f-archivo), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-bottom: 88px;
+  overflow-x: hidden;
+}
+
+/* ---------- bar ---------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  padding: 18px clamp(20px, 4vw, 56px);
+  border-bottom: 1px solid var(--ink);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+}
+
+.barMeta {
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  padding-left: 20px;
+  border-left: 1px solid var(--hair);
+}
+
+.barNav {
+  display: flex;
+  gap: 22px;
+  margin-left: auto;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.barNav a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+}
+
+.barNav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--red);
+}
+
+.barCta {
+  padding: 8px 15px;
+  border: 1px solid var(--ink);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.barCta:hover {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.06fr) minmax(0, 0.94fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: stretch;
+  padding: clamp(36px, 5vw, 72px) clamp(20px, 4vw, 56px)
+    clamp(40px, 5vw, 64px);
+  max-width: 1280px;
+}
+
+.heroLeft {
+  position: relative;
+  padding-left: 26px;
+  border-left: 2px solid var(--red);
+}
+
+.entryStamp {
+  display: flex;
+  gap: 18px;
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.title {
+  margin-top: 18px;
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: clamp(42px, 6.4vw, 78px);
+  line-height: 0.97;
+  letter-spacing: -0.045em;
+}
+
+.lede {
+  max-width: 46ch;
+  margin-top: 24px;
+  font-size: 16.5px;
+  line-height: 1.66;
+  color: var(--ink-soft);
+}
+
+.ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 24px;
+  margin-top: 32px;
+}
+
+.cta {
+  display: inline-block;
+  padding: 13px 22px;
+  background: var(--ink);
+  color: var(--sheet);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.cta:hover {
+  background: var(--red);
+  transform: translateY(-1px);
+}
+
+.ctaAlt {
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--hair);
+  padding-bottom: 3px;
+}
+
+.ctaAlt:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+/* ---------- specimen card ---------- */
+
+.specimen {
+  position: relative;
+  background: #f2f4ee;
+  border: 1px solid var(--ink);
+  padding: clamp(20px, 2.6vw, 30px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: 7px 7px 0 var(--sheet-2), 7px 7px 0 1px var(--hair);
+}
+
+.specimenHead {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.specimenDate {
+  margin-top: 12px;
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--red);
+}
+
+.specimenTitle {
+  margin-top: 8px;
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: clamp(21px, 2.4vw, 27px);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+}
+
+.specimenBody {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.62;
+  color: #2a312d;
+  text-wrap: pretty;
+}
+
+.specimenMeta {
+  display: grid;
+  gap: 6px;
+  margin-top: 20px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hair);
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11.5px;
+}
+
+.specimenMeta > div {
+  display: grid;
+  grid-template-columns: 78px minmax(0, 1fr);
+  gap: 10px;
+}
+
+.specimenMeta dt {
+  color: var(--ink-soft);
+}
+
+.specimenMeta dd {
+  margin: 0;
+  color: var(--ink);
+}
+
+.specimenFoot {
+  margin-top: auto;
+  padding-top: 16px;
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+/* ---------- ledger table ---------- */
+
+.ledger {
+  padding: clamp(36px, 4.5vw, 60px) clamp(20px, 4vw, 56px);
+  border-top: 1px solid var(--ink);
+  background: var(--sheet-2);
+}
+
+.ledgerHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  max-width: 1280px;
+  margin-bottom: 26px;
+}
+
+.h2 {
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 2.9vw, 34px);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+
+.ledgerNote {
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.table {
+  width: 100%;
+  max-width: 1280px;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 12.5px;
+}
+
+.table th {
+  padding: 0 16px 8px 0;
+  border-bottom: 1px solid var(--ink);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  vertical-align: bottom;
+}
+
+.thNo {
+  width: 62px;
+}
+
+.thDate {
+  width: 132px;
+}
+
+.thMarks {
+  width: 150px;
+}
+
+.row {
+  border-bottom: 1px solid var(--hair);
+  transition: background-color 0.14s ease;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+.row td {
+  padding: 14px 16px 14px 0;
+  vertical-align: baseline;
+}
+
+.cellNo {
+  color: var(--red);
+  font-variant-numeric: tabular-nums;
+}
+
+.row[data-tone="flag"] .cellNo::before {
+  content: "◆ ";
+  font-size: 9px;
+  vertical-align: 1px;
+}
+
+.row[data-tone="note"] .cellNo::before {
+  content: "○ ";
+  font-size: 9px;
+  vertical-align: 1px;
+}
+
+.cellDate {
+  color: var(--ink-soft);
+  font-variant-numeric: tabular-nums;
+}
+
+.cellTitle {
+  display: block;
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: 15.5px;
+  line-height: 1.28;
+  letter-spacing: -0.022em;
+  color: var(--ink);
+}
+
+.cellObs {
+  display: block;
+  max-width: 62ch;
+  margin-top: 5px;
+  font-size: 12px;
+  line-height: 1.66;
+  color: var(--ink-soft);
+  transition: color 0.14s ease;
+}
+
+.row:hover .cellObs {
+  color: #2c342f;
+}
+
+.cellMarks {
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+/* ---------- marks list ---------- */
+
+.marks {
+  padding: clamp(40px, 5vw, 68px) clamp(20px, 4vw, 56px);
+  max-width: 1280px;
+}
+
+.markList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.mark {
+  padding: 20px 28px 0 0;
+}
+
+.mark + .mark {
+  padding-left: 28px;
+  border-left: 1px solid var(--hair);
+}
+
+.markHead {
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: -0.01em;
+  color: var(--red);
+}
+
+.markBody {
+  margin-top: 8px;
+  max-width: 36ch;
+  font-size: 14.5px;
+  line-height: 1.68;
+  color: #2c342f;
+}
+
+/* ---------- open ---------- */
+
+.open {
+  padding: 0 clamp(20px, 4vw, 56px) clamp(44px, 5vw, 68px);
+}
+
+.openInner {
+  max-width: 1280px;
+  padding: clamp(26px, 3.4vw, 44px);
+  border: 1px solid var(--ink);
+  background: var(--stamp);
+  color: #e9ece1;
+}
+
+.openNo {
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #93a89a;
+}
+
+.openTitle {
+  margin-top: 12px;
+  max-width: 30ch;
+  font-family: var(--f-archivo), sans-serif;
+  font-weight: 600;
+  font-size: clamp(26px, 3.4vw, 42px);
+  line-height: 1.1;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+
+.openRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 26px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid rgba(233, 236, 225, 0.22);
+}
+
+.open .cta {
+  background: #e9ece1;
+  color: var(--stamp);
+}
+
+.open .cta:hover {
+  background: #c7d2c3;
+}
+
+.openNote {
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11.5px;
+  color: #a9bab0;
+}
+
+/* ---------- foot ---------- */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 28px;
+  padding: 20px clamp(20px, 4vw, 56px);
+  border-top: 1px solid var(--hair);
+  font-family: var(--f-plex), ui-monospace, monospace;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.footBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--ink);
+}
+
+.footLine {
+  margin-right: auto;
+}
+
+.footLinks {
+  display: flex;
+  gap: 18px;
+}
+
+.footLinks a:hover {
+  color: var(--ink);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 1000px) {
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 34px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  .thMarks,
+  .cellMarks {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .barMeta,
+  .barNav {
+    display: none;
+  }
+
+  .barCta {
+    margin-left: auto;
+  }
+
+  .markList {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mark {
+    padding: 16px 0;
+  }
+
+  .mark + .mark {
+    padding-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--hair);
+  }
+}
+
+@media (max-width: 620px) {
+  .heroLeft {
+    padding-left: 18px;
+  }
+
+  .table thead {
+    display: none;
+  }
+
+  .row {
+    display: grid;
+    grid-template-columns: 52px minmax(0, 1fr);
+    padding: 14px 0;
+  }
+
+  .row td {
+    padding: 0;
+  }
+
+  .cellNo {
+    grid-row: 1;
+  }
+
+  .cellDate {
+    grid-row: 2;
+    font-size: 11px;
+  }
+
+  .cellEntry {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
