@@ -1,7 +1,7 @@
 {
   "baseline/deepseek-v4.1-flash/1": {
-    "source": "manual",
-    "harnessVersion": null,
+    "source": "runner",
+    "harnessVersion": "cursor-agent 2026.10.19-6bbf2c4",
     "modelArg": "deepseek-v41-flash-1017",
     "effort": "high",
     "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",
@@ -37,8 +37,8 @@
     "usage": null
   },
   "baseline/deepseek-v4.1-flash/2": {
-    "source": "manual",
-    "harnessVersion": null,
+    "source": "runner",
+    "harnessVersion": "cursor-agent 2026.10.19-6bbf2c4",
     "modelArg": "deepseek-v41-flash-1017",
     "effort": "high",
     "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",
@@ -74,8 +74,8 @@
     "usage": null
   },
   "baseline/deepseek-v4.1-flash/3": {
-    "source": "manual",
-    "harnessVersion": null,
+    "source": "runner",
+    "harnessVersion": "cursor-agent 2026.10.19-6bbf2c4",
     "modelArg": "deepseek-v41-flash-1017",
     "effort": "high",
     "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",

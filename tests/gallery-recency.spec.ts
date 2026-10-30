@@ -160,7 +160,7 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro"] as string[]).includes(entry.model))) {
+  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash"] as string[]).includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
   }
@@ -184,5 +184,16 @@ test("Kimi K3.1 Pro leads all groups on October 23 and its badge expires", () =>
     expect(getGalleryEntryNewArrival(entries, kimi, now)).not.toBeNull();
     expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("kimi-k3-1-pro");
     expect(getGalleryEntryNewArrival(entries, kimi, isoDateToUtcMs("2026-11-06"))).toBeNull();
+  }
+});
+
+test("DeepSeek V4.1 Flash leads all groups on October 29 and its badge expires", () => {
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    const deepseek = entries.find(entry => entry.model === "deepseek-v4-1-flash")!;
+    const now = isoDateToUtcMs("2026-10-29");
+    expect(getGalleryEntryNewArrival(entries, deepseek, now)).not.toBeNull();
+    expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("deepseek-v4-1-flash");
+    expect(getGalleryEntryNewArrival(entries, deepseek, isoDateToUtcMs("2026-11-12"))).toBeNull();
   }
 });

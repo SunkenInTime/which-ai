@@ -18,6 +18,7 @@
     { "id": "cursor", "label": "Cursor", "bin": "cursor", "manualOnly": true }
   ],
   "models": [
+    { "id": "deepseek-v4.1-flash", "label": "DeepSeek V4.1 Flash", "lab": "DeepSeek", "harness": "cursor", "modelArg": "deepseek-v41-flash-1017", "effort": "high" },
     { "id": "kimi-k3-1-pro", "label": "Kimi K3.1 Pro", "lab": "Moonshot", "harness": "opencode", "modelArg": "openrouter/moonshotai/kimi-k3.1-pro", "effort": "high" },
     { "id": "opus-5.5", "label": "Opus 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-opus-5-5" },
     { "id": "sonnet-5.5", "label": "Sonnet 5.5", "lab": "Anthropic", "harness": "claude-code", "modelArg": "claude-sonnet-5-5" },
@@ -27,7 +28,6 @@
     { "id": "gpt-6.1-sol", "label": "GPT-6.1 Sol", "lab": "OpenAI", "harness": "codex", "modelArg": "gpt-6.1-sol" },
     { "id": "grok-4.7", "label": "Grok 4.7", "lab": "xAI", "harness": "grok-cli", "modelArg": "grok-4.7" },
     { "id": "muse-wonder-1.0", "label": "Muse Wonder 1.0", "lab": "Meta", "harness": "muse-code", "modelArg": "muse-wonder-1.0" },
-    { "id": "gemini-4-argon", "label": "Gemini 4 Argon", "lab": "Google", "harness": "cursor", "modelArg": "gemini-4-argon", "effort": "high" },
-    { "id": "deepseek-v4.1-flash", "label": "DeepSeek V4.1 Flash", "lab": "DeepSeek", "harness": "cursor", "modelArg": "deepseek-v41-flash-1017", "effort": "high" }
+    { "id": "gemini-4-argon", "label": "Gemini 4 Argon", "lab": "Google", "harness": "cursor", "modelArg": "gemini-4-argon", "effort": "high" }
   ]
 }

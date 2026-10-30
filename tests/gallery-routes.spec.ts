@@ -644,7 +644,7 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
 }
 
 // Taste-skill v2 reruns replace the model's v1 "With Taste Skill" entry in place.
-const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5"] as const;
+const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5", "deepseek-v4-1-flash"] as const;
 
 test("taste-skill v2 reruns are marked on their card and in the skill picker", async ({ page }) => {
   const v2Entries = galleryManifest.filter((entry) => entry.skillVersion === "v2");

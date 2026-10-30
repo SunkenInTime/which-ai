@@ -1,0 +1,85 @@
+{
+  "model": "deepseek-v41-flash-1017-high (Cursor's DeepSeek V4.1 Flash 1017, High reasoning)",
+  "galleryModelSlug": "deepseek-v4-1-flash",
+  "motionModelId": "deepseek-v4.1-flash",
+  "date": "2026-10-29",
+  "machine": "Windows 11 PC (Ryzen 7 5800X, RTX 4070), E:\\w\\deepseek-v41",
+  "runner": "cursor-agent CLI 2026.10.19-6bbf2c4, headless",
+  "command": "node <cursor-agent>/index.js --print --output-format stream-json --model deepseek-v41-flash-1017-high --force --approve-mcps --trust --sandbox disabled --workspace <workspace> [--resume <chat id>] <prompt>",
+  "invocationRecords": "Each session's exact argv and environment are in <run>/<label>.invocation.json in E:\\w\\deepseek-v41 (not in the repo).",
+  "isolation": "Same as the Gemini 4 Argon taste-skill v2 run (../taste-skill-v2/provenance.json): whitelisted environment; HOME, USERPROFILE, APPDATA and LOCALAPPDATA point into the run folder, which held only a copy of Cursor's CLI auth.json; PATH limited to a no-profile PowerShell 7.6.9 shim, Node.js, Git and Windows system folders (motion also had ffmpeg). The account's marketplace plugins sync into any home cursor-agent runs in; their nine MCP servers (Gmail, Google Calendar, Granola, Slack, Supabase, Wispr Flow, X, GitHub, Google Drive) were disabled for each workspace with `cursor-agent mcp disable`. Their skills and subagents still appear in Cursor's catalog. Context isolation only; no filesystem jail.",
+  "preflight": "One unscored session (prompt in E:\\w\\deepseek-v41\\prompts\\preflight.txt) in a separate copy of the design-taste setup. It listed 14 Cursor built-in skills, 16 account-plugin skills and the one workspace skill, design-taste-frontend; no other workspace instructions besides the starter's stock AGENTS.md/CLAUDE.md. It used the Playwright MCP browser on a data: URL canvas and described the gold circle, cyan square and 'KOALA 42' text from the screenshot. The prompt itself contained the page source, so this shows the screenshot pipeline works, not that it couldn't have read the URL.",
+  "commandReviewer": "Cursor beforeShellExecution hook (home/.cursor/hooks.json, failClosed, 90 s timeout) running tools/reviewer/review.mjs: hard-deny rules (kills by process name, disk/registry/service commands, deletes outside the run folder, git push, global installs), then a claude-haiku-5-5 check for anything not on a routine-command list. Two rules were too broad at the start: `format` matched Format-Table and ffprobe's format=duration, and the path check read http://localhost as a drive path. Both were fixed at 20:00Z, while design-taste and motion were still running; the false denials before that are listed per condition below.",
+  "skills": {
+    "frontend-design": "anthropics/skills@683bc88e56f3e09ba94f7055977f3d3aa499f202 skills/frontend-design (SKILL.md blob a5333457, identical to upstream HEAD on 2026-10-29)",
+    "design-taste-frontend": "Leonxlnx/taste-skill v2.1.5 @12af471f627f866411b4bd785b19646d3672784c skills/taste-skill, installed as design-taste-frontend. The other v2 gallery entries used v2.1.4 @6010f91a; v2.1.5 (2026-10-24) is the newest release.",
+    "fileHashes": "skill-files.sha256"
+  },
+  "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, lockfile sha256 ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915, same as the other runs. Skills at work/.agents/skills/<name>.",
+  "browser": "Playwright MCP 0.0.83 as project MCP server (work/.cursor/mcp.json): isolated headless Chromium, 1440x960, image responses allowed, approved with --approve-mcps. Frontend conditions only; motion had no MCP server, like the motion runner's other isolated sessions.",
+  "promptPolicy": "The gallery prompts with only the port changed (3391, 3392, 3393). Motion used the current motion prompt (baseline.prompt.txt) from `motion:new`. The only later input was one neutral \"Continue.\" (resume.prompt.txt) in no-skills and design-taste, sent by the run operator, not Dara, after the session went silent; no design feedback.",
+  "stalls": "Headless cursor-agent went silent at the end of three of the four sessions: the process stayed alive with no new events after a shell command or a screenshot read, before the model's final message. The operator ended a session after 10 minutes of silence. Cursor desktop continues automatically at that point; the CLI doesn't. Each session got at most one resume: the resumed sessions stalled at the same spot again and further resumes started new polishing rounds.",
+  "conditions": {
+    "no-skills": {
+      "prompt": "no-skills.prompt.txt",
+      "promptSha256": "b814b6d3c470e9df067ff5bc18ae0f6401ea9bf523622076a114a2c10f79e72d",
+      "baselineCommit": "2bf0d77d6193c369528b4ea5441161c885a947cc",
+      "chat": "71340187-1b12-49c6-96ab-6357b9f91bcd",
+      "sessions": [
+        { "label": "no-skills", "started": "2026-10-29T19:36:59.319Z", "lastModelEvent": "2026-10-29T19:49:06.949Z", "ended": "2026-10-29T20:00:53.184Z", "exitCode": -1, "ending": "Silent after its cleanup command (Remove-Item .playwright-mcp; git status) and before a final message; ended by the operator." },
+        { "label": "no-skills-resume1", "prompt": "Continue.", "started": "2026-10-29T20:01:03.516Z", "lastModelEvent": "2026-10-29T20:09:29.487Z", "ended": "2026-10-29T20:16:27.641Z", "exitCode": -1, "ending": "Fixed dead in-page links, turned the email captures into working forms with a success state, added focus rings and page titles, rebuilt and re-swept with no errors, then went silent after the same cleanup command; ended by the operator. No final message." }
+      ],
+      "browserCalls": { "browser_navigate": 9, "browser_take_screenshot": 12, "browser_run_code_unsafe": 40, "browser_evaluate": 2, "browser_resize": 1 },
+      "imageReads": 21,
+      "reviewer": { "decisions": 38, "denied": 0 },
+      "appName": "Cortex"
+    },
+    "anthropic-frontend-design": {
+      "prompt": "frontend-design.prompt.txt",
+      "promptSha256": "77e67e4eeee1ad0e967a3f35ef3c1af669cee034a80825f45099e6c20d2af06e",
+      "baselineCommit": "7323502d6b657a1a4857347cfbd58836f27b1f3f",
+      "chat": "464ab2c1-52f9-4fa6-a7b6-05de350ca339",
+      "sessions": [
+        { "label": "frontend-design", "started": "2026-10-29T19:37:00.313Z", "lastModelEvent": "2026-10-29T19:50:10.422Z", "ended": "2026-10-29T20:00:53.587Z", "exitCode": -1, "ending": "Wrote its final summary (frontend-design.final.txt), then called Cursor's AskQuestion tool with an optional 'where should I take this next?' question, which headless mode rejects automatically ('Questions skipped by the user'). Silent after that; ended by the operator without a resume." }
+      ],
+      "browserCalls": { "browser_navigate": 22, "browser_take_screenshot": 27, "browser_click": 3, "browser_type": 3, "browser_evaluate": 3, "browser_resize": 2, "browser_press_key": 1, "browser_console_messages": 1, "browser_find": 1 },
+      "imageReads": 27,
+      "reviewer": { "decisions": 23, "denied": 1, "falseDenials": ["Remove-Item .playwright-mcp; curl http://localhost:3392/1..5 (path rule misread the URLs); the model reran the two parts separately"] },
+      "appName": "Cairn"
+    },
+    "design-taste": {
+      "prompt": "design-taste.prompt.txt",
+      "promptSha256": "ea08e0f491646510f06f078b335eb031880814808bfb228e6f4b6761c884f539",
+      "skillVersion": "v2.1.5",
+      "baselineCommit": "3f25ee39a78e61b86ba8c4794a6c871dae520c1e",
+      "chat": "25197df4-3d50-4beb-8aea-a648977dc1bf",
+      "sessions": [
+        { "label": "design-taste", "started": "2026-10-29T19:37:01.314Z", "lastModelEvent": "2026-10-29T21:06:37.539Z", "ended": "2026-10-29T21:17:31.894Z", "exitCode": -1, "ending": "Final production build passed and the skill's inspector ran on all five pages; silent after reading its last inspector screenshot, followed by a burst of background-task notifications; ended by the operator." },
+        { "label": "design-taste-resume1", "prompt": "Continue.", "started": "2026-10-29T21:17:35.085Z", "lastModelEvent": "2026-10-29T21:18:41.782Z", "ended": "2026-10-29T21:18:46.598Z (log last write; see note)", "exitCode": -1, "ending": "Restarted its dev server, confirmed /1-/5 return 200 with the switcher, ran git status, went silent; ended by the operator. The operator's cleanup also stopped the launcher before it wrote .finished/.exitcode, so both were written by hand from the log's last write (design-taste-resume1.note.txt in the run folder)." }
+      ],
+      "browserCalls": {},
+      "visualFeedbackUsed": "No browser MCP calls. It checked its pages with the skill's own headless-Chrome inspector (scripts/inspect.mjs) and opened 37 images with Cursor's file reader (inspector screenshots and candidate photos).",
+      "reviewer": { "decisions": 236, "denied": 1, "falseDenials": ["Stop-Process -Id 22716, its own Next.js server: the reviewer couldn't tie the PID to the run (next-server's command line carries no path) and Haiku denied it"] },
+      "assets": "Photos and one video from Wikimedia Commons and Lorem Picsum fetched with the skill's assets script; credits are written on page /5.",
+      "appName": "Lattice"
+    },
+    "motion": {
+      "prompt": "motion.prompt.txt (= docs/benchmarks/motion/baseline.prompt.txt)",
+      "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",
+      "runFolder": "E:\\w\\motionbench\\work\\baseline\\deepseek-v4.1-flash\\1793302315598 (sandbox collected into it)",
+      "chat": "a40d24ba-4de7-450a-98a6-234f2e2040ed",
+      "sessions": [
+        { "label": "motion", "started": "2026-10-29T19:37:02.383Z", "lastModelEvent": "2026-10-29T20:15:29.153Z", "ended": "2026-10-29T20:15:34.301Z", "exitCode": 0, "ending": "Final reply (motion.final.txt) and a result event; exited on its own." }
+      ],
+      "imageReads": 82,
+      "harnessGap": "PLAYWRIGHT_BROWSERS_PATH pointed at E:\\w\\taste-v2\\ms-playwright (Chromium 1247), which doesn't match the sandbox framekit's Playwright 1.58 (Chromium 1208). The model found motion.mjs couldn't launch a browser, the reviewer (Haiku) denied installing into that shared folder, and the model installed Chromium into the sandbox (.pw) and set the variable per command. The other motion harnesses find the user's default Playwright browsers.",
+      "reviewer": { "decisions": 83, "denied": 3, "falseDenials": ["Get-ChildItem | Format-Table (format rule)", "ffprobe -show_entries format=duration (format rule)"], "otherDenials": ["npx playwright install into E:\\w\\taste-v2\\ms-playwright (outside the workspace)"] },
+      "finish": "node scripts/motion/finish.mjs <run> --wall-seconds 2312 on the same PC after all sessions ended: check, then 1080p60 GPU render (RTX 4070, ANGLE/D3D11, 4 workers): all three ok, 41.8 s, 46.9 s and 38.7 s. Recorded as source \"runner\" with harnessVersion \"cursor-agent 2026.10.19-6bbf2c4\", like Kimi K3.1 Pro's OpenCode runs: an isolated headless session, not a hand-driven chat with personal setup. finish.mjs writes \"manual\" for any run it finishes by hand; the three records were changed afterwards in motion-runs.json and the run folder's run.json.",
+      "appName": "noema"
+    }
+  },
+  "timing": "The four scored sessions ran at the same time on one PC. lastModelEvent is the last model or tool event before the silence; ended is when the process ended. Not a latency benchmark.",
+  "cost": "Unknown. cursor-agent printed no usage, and the logs have no token or cost fields. The cards show no cost. It can be filled from Cursor's usage export for the four chats above, as ../gemini-4-argon/costs.json did.",
+  "sourceArchives": "Not uploaded. Original projects stay on the PC under E:\\w\\deepseek-v41\\<condition>\\work and the motion run folder; *.source-sha256.json record every file.",
+  "generationPolicy": "No orchestrator edits to generated source during runs. Gallery copies adapt only what embedding needs; see README.md."
+}

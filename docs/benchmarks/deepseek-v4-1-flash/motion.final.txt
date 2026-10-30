@@ -1,0 +1,128 @@
+I'll start by exploring the workspace to see what's already set up.
+
+I have the full contract. Let me set up shared assets (fonts) first, then build each video.
+
+Now let me download the fonts and libraries into each folder.
+
+Now I'll build Video 1 — a dark, cinematic 3D constellation of connected notes.
+
+Now the core of Video 1 — a dark cinematic 3D constellation of notes. Let me write it.
+
+The runner needs a Chromium build that isn't present. Let me install it into a workspace-local path.
+
+Check passes. Now let me look at the frames.
+
+The description suggests the ending may be empty. Let me look at individual frames.
+
+Let me verify numerically rather than trust the description.
+
+Let me debug numerically — something's off with the ending brightness.
+
+Found it — a NaN in the camera roll is poisoning transforms. Let me fix the interpolator.
+
+Ending works now. Let me check the middle.
+
+Solid foundation. Now let me rewrite Video 1 with a better camera path, a stronger ring formation, and a proper opening.
+
+Let me retime so the ring formation gets a real hold, and add an anchor triangle that plants the logo motif.
+
+Now let me restructure the camera path and add an anchor-triangle motif that plants the logo form.
+
+I need to fix the framing — the ring sits too high. Let me adjust the look-at height and widen the ring.
+
+Video 1 is in good shape. Now Video 2 — a completely different aesthetic. Let me get distinctive fonts.
+
+Video 1 is solid. Now Video 2 — a completely different, warm editorial "paper" aesthetic.
+
+Now Video 2 — a warm, tactile editorial paper aesthetic, completely different from the first.
+
+Video 2 has a 4-second dead zone. Let me add a third act with a focus beat.
+
+Act three works well. Let me check the transitions into and out of it.
+
+Video 2 is working. Now Video 3 — I'll take a completely different direction: high-key Swiss-brutalist kinetic type plus a real product UI moment.
+
+Now Video 3 — bold Swiss-editorial kinetic type with a real product interface moment.
+
+Let me add a crop tool to inspect specific regions at full resolution.
+
+The graph act reads well but the headline overlaps the lower nodes. Let me check the wipe transition and fix the overlap.
+
+Clean now. Let me verify the graph's top nodes aren't clipped by the top edge.
+
+All three acts read well. Now let me add sound to all three, since audio makes a launch film land.
+
+Let me verify the audio is actually musical and not broken, by analyzing its spectral/level envelope.
+
+Video 1's score is too flat and quiet. Let me make it more dynamic and melodic.
+
+All three pass. Now let me render previews to check the motion as actual video.
+
+Let me check for motion pops by analyzing frame-to-frame deltas in the previews.
+
+The wipe is too heavy — a black slab across an airy editorial piece. Let me make it a feathered paper sweep instead.
+
+The feathered sweep cuts through type awkwardly. Let me replace it with type-driven exits instead.
+
+The type slides out cleanly now. Let me verify the second transition and re-render the preview.
+
+Now let me tighten the last act's timing so the panel content resolves, and re-render preview to verify smoothness.
+
+Video 3's graph entry is still abrupt. Let me stagger the node reveals.
+
+The stagger math is off — nodes pop instantly. Let me fix the units.
+
+The overlap of act 1 type exiting over act 2 nodes is fine, but let me have act 1's right column fade before node arrival for a cleaner handoff.
+
+
+
+Video 3's end card is strong. Let me check the graph-to-UI handoff and then re-verify motion smoothness.
+
+The graph-to-UI transition now crossfades naturally. Let me verify the full timeline smoothness again.
+
+
+
+Fast full-frame whips read as harsh at 60fps. Let me make the exits a restrained drift-and-fade instead.
+
+The act-1 headline ignores the fade. Let me fix that.
+
+Let me do a final full-size quality review on a few key frames.
+
+All three films hold up. Let me clean up my scratch tooling and do a final verification.
+
+Let me remove the unused fonts so each folder only carries what it loads.
+
+All three still pass. Let me confirm video 2 still renders correctly after the font changes.
+
+Everything renders correctly. Let me clean up the render artifacts and confirm the final state.
+
+Three videos, three distinct films for the same product. All three pass `check`.
+
+## 1 — "Constellation" (dark, cinematic)
+A starfield in deep indigo. Twelve note cards drift in from the dark, links draw themselves between them with travelling light pulses, and the cards condense into a spinning ring of orbiting thoughts. Beats: **Fragments** → **Connected** → **Recall**, then everything collapses into a single point and blooms into the logo.
+
+- Real 3D camera with a bezier-interpolated dolly path, depth-of-field fade, atmospheric dust
+- Curved link threads that draw along their own arc, plus a three-node triangle motif that plants the logo before the reveal
+- Serif italic + Inter, warm amber on cool violet
+
+## 2 — "Commonplace" (warm, tactile, editorial)
+A blank index card on textured cream paper. Text writes itself on with a wipe, the camera pulls back to reveal nine more cards flying in from off-frame with real velocity-derived motion blur, ink links spider between them. Then the camera pushes back into the hero card, a highlighter swipe lands, and the mark resolves.
+
+- Procedural paper grain, fibres, and a soft light shaft
+- Hand-drawn ink rules and an underline using value noise, not straight lines
+- Every note is real written-on-card content, not lorem
+
+## 3 — "Signal" (Swiss, kinetic type, product UI)
+Off-white and ink. **THINK IN LINKS.** slams in line by line with a lime highlighter strike, dissolves; a knowledge graph assembles node by node with a live link counter; then the actual app UI rises — sidebar, breadcrumbs, note body, backlinks panel — before resolving to the wordmark.
+
+- Per-line type wipes with a clip-rect reveal, not fades
+- A real designed app surface, not a mockup approximation
+- Deliberate restraint: no fast whips, everything eased
+
+## Shared craft
+- Everything is `renderAt(t)`-pure: no clock, no cross-frame state, seeded noise only
+- All assets local — fonts and audio inside each folder, no network
+- Each has a bespoke 15s score, generated procedurally (pads, bells, keys, percussion) and mixed to −8.9 dB peak
+- I verified each via `check` (including the fresh-reload determinism test), full-size frames, `sheet.png`, and preview renders with a frame-delta scan to catch pops
+
+A note on the environment: Chromium wasn't installed for the renderer, so I installed Playwright's browser into `.pw/` inside the sandbox and pointed `PLAYWRIGHT_BROWSERS_PATH` at it for each run. That's a local render-tooling fix, not part of the videos.
