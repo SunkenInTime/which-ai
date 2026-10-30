@@ -1,0 +1,185 @@
+/* A neutral reset shared by all five designs. Each design sets its own tokens. */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) *,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+*::before,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+*::after {
+  box-sizing: border-box;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable both-edges;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) {
+    scroll-behavior: auto;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) {
+  margin: 0;
+  min-height: 100svh;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) h1,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h2,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h3,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h4,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+p,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+figure,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+blockquote,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+ul,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) ul,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+ol {
+  list-style: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+video {
+  display: block;
+  max-width: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) img {
+  height: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) input,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* ---------- the design switcher: chrome for this review, not part of any design ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 900;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 14px;
+  line-height: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw > button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 14px;
+  background: #101113;
+  color: #f4f4f2;
+  border-radius: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw > button:hover {
+  background: #2a2c30;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw > button .sw-n {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel {
+  position: absolute;
+  right: 0;
+  bottom: 48px;
+  width: 268px;
+  padding: 6px;
+  background: #f7f7f5;
+  color: #14161a;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel a {
+  display: block;
+  padding: 10px 12px;
+  text-decoration: none;
+  color: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel a + a {
+  margin-top: 1px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel a:hover,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+.sw-panel a:focus-visible {
+  background: #14161a;
+  color: #f7f7f5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel a[aria-current="page"] {
+  background: #d9d9d4;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel .sw-name {
+  display: flex;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sw-panel .sw-dir {
+  display: block;
+  margin-top: 3px;
+  padding-left: 22px;
+  font-size: 13px;
+  opacity: 0.68;
+}
+
+/* ---------- gallery adaptation, not part of the source ----------
+   The gallery's Tailwind base styles change a few browser defaults this source relies on.
+   These rules give them back the browser's own values; the designs' own rules still win. */
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) button,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+input,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+textarea,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+select {
+  letter-spacing: revert;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) button {
+  appearance: revert;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) input[type="range"] {
+  margin: revert;
+  background-color: revert;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) svg {
+  display: revert;
+}
+
+:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) svg,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+img,:where(.gallery-generation[data-gallery-group="with-taste-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+video {
+  vertical-align: revert;
+}
