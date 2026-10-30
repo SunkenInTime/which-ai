@@ -1,0 +1,124 @@
+/* Meta chrome for the review switcher: deliberately neutral so it reads as a
+   viewer control rather than part of any one page's identity. */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .nav {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 6px 12px;
+  border-radius: 999px;
+  background: #16130f;
+  color: #f6f1e7;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.12) inset,
+    0 8px 24px rgba(0, 0, 0, 0.28);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  max-width: calc(100vw - 24px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .caption {
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(246, 241, 231, 0.45);
+  padding-right: 8px;
+  border-right: 1px solid rgba(246, 241, 231, 0.16);
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  border-radius: 999px;
+  color: rgba(246, 241, 231, 0.62);
+  transition:
+    color 0.18s ease,
+    background-color 0.18s ease;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .item:hover {
+  color: #f6f1e7;
+  background: rgba(246, 241, 231, 0.08);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .item[data-current] {
+  background: #f6f1e7;
+  color: #16130f;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .num {
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.7;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .name {
+  font-size: 12.5px;
+  letter-spacing: -0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .tip {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 5px 9px;
+  border-radius: 6px;
+  background: #f6f1e7;
+  color: #16130f;
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.16s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .item:hover .tip,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+.item:focus-visible .tip {
+  opacity: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .item:focus-visible {
+  outline: 2px solid #f6f1e7;
+  outline-offset: 2px;
+}
+
+@media (max-width: 780px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .nav {
+    bottom: 10px;
+    gap: 0;
+    padding: 5px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .caption {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .name {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .item {
+    padding: 8px 12px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .num {
+    font-size: 12px;
+  }
+}

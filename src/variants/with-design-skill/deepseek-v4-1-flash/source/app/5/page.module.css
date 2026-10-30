@@ -1,0 +1,328 @@
+/* Direction 5 — the desk.
+   The page is chrome, deliberately colourless: paper grey, graphite ink, no
+   brand hue anywhere in the frame. Every bit of colour on the screen comes
+   from inside the app window, and the only serif is the writing itself. */
+
+.page {
+  --surface: #eff0ec;
+  --surface-2: #e6e7e2;
+  --ink: #171913;
+  --ink-soft: #565a51;
+  --hair: #cdd0c7;
+  --hair-soft: #dbddd5;
+
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--f-public), ui-sans-serif, system-ui, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  padding-bottom: 84px;
+  overflow-x: hidden;
+}
+
+/* ---------- bar ---------- */
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 15px clamp(18px, 4vw, 52px);
+  border-bottom: 1px solid var(--hair);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  color: var(--ink);
+}
+
+.barNav {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.barNav a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    border-bottom-color 0.15s ease;
+}
+
+.barNav a:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.barActions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.signIn {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+}
+
+.signIn:hover {
+  color: var(--ink);
+}
+
+.barCta {
+  padding: 8px 15px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  transition: background-color 0.15s ease;
+}
+
+.barCta:hover {
+  background: #3a3f36;
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  padding: clamp(30px, 4vw, 54px) clamp(18px, 4vw, 52px) 0;
+  max-width: 1300px;
+}
+
+.heroTop {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  align-items: end;
+  gap: 24px clamp(28px, 5vw, 72px);
+  margin-bottom: clamp(26px, 3.4vw, 40px);
+}
+
+.title {
+  font-family: var(--f-public), ui-sans-serif, system-ui, sans-serif;
+  font-weight: 600;
+  font-size: clamp(33px, 4.4vw, 55px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: 44ch;
+  padding-bottom: 6px;
+  font-size: 16px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+
+.desk {
+  position: relative;
+  padding: clamp(12px, 1.6vw, 22px);
+  background: var(--surface-2);
+  border-top: 1px solid var(--hair);
+  border-bottom: 1px solid var(--hair);
+  margin-inline: calc(clamp(18px, 4vw, 52px) * -1);
+  padding-inline: clamp(18px, 4vw, 52px);
+}
+
+.caption {
+  max-width: 1300px;
+  margin: 12px auto 0;
+  font-size: 11.5px;
+  color: #7b7f74;
+}
+
+/* ---------- facts ---------- */
+
+.facts {
+  padding: clamp(40px, 5vw, 72px) clamp(18px, 4vw, 52px) 0;
+  max-width: 1300px;
+}
+
+.factList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(22px, 3vw, 48px);
+  border-top: 1px solid var(--hair);
+}
+
+.fact {
+  padding-top: 16px;
+}
+
+.factHead {
+  font-family: var(--f-public), ui-sans-serif, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.028em;
+}
+
+.factBody {
+  margin-top: 6px;
+  max-width: 32ch;
+  font-size: 14.5px;
+  line-height: 1.64;
+  color: var(--ink-soft);
+}
+
+/* ---------- start ---------- */
+
+.start {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 26px;
+  margin: clamp(40px, 5vw, 72px) clamp(18px, 4vw, 52px) 0;
+  padding: clamp(24px, 3vw, 40px);
+  border: 1px solid var(--ink);
+}
+
+.startCopy {
+  max-width: 44ch;
+}
+
+.startTitle {
+  font-family: var(--f-public), ui-sans-serif, sans-serif;
+  font-weight: 600;
+  font-size: clamp(24px, 2.7vw, 32px);
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+}
+
+.startBody {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.62;
+  color: var(--ink-soft);
+}
+
+.startActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.download {
+  padding: 13px 22px;
+  background: var(--ink);
+  color: var(--surface);
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.download:hover {
+  background: #3a3f36;
+  transform: translateY(-1px);
+}
+
+.downloadAlt {
+  padding: 13px 22px;
+  border: 1px solid var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background-color 0.15s ease;
+}
+
+.downloadAlt:hover {
+  background: rgba(23, 25, 19, 0.06);
+}
+
+/* ---------- foot ---------- */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 26px;
+  margin-top: clamp(36px, 4.5vw, 62px);
+  padding: 18px clamp(18px, 4vw, 52px);
+  border-top: 1px solid var(--hair);
+  font-size: 12.5px;
+  color: var(--ink-soft);
+}
+
+.footBrand {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.footLine {
+  margin-right: auto;
+}
+
+.footLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.footLinks a:hover {
+  color: var(--ink);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .barNav {
+    display: none;
+  }
+
+  .barActions {
+    margin-left: auto;
+  }
+
+  .heroTop {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: 16px;
+  }
+
+  .factList {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .fact {
+    padding: 14px 0;
+  }
+
+  .fact + .fact {
+    border-top: 1px solid var(--hair-soft);
+  }
+}
+
+@media (max-width: 620px) {
+  .signIn {
+    display: none;
+  }
+
+  .desk {
+    padding-block: 8px;
+  }
+
+  .download,
+  .downloadAlt {
+    flex: 1;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  .startActions {
+    width: 100%;
+  }
+}

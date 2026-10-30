@@ -1,0 +1,600 @@
+/* Direction 1 — the filing cabinet.
+   A dark pine cabinet, brass label holders, and cream index cards. The whole
+   page is furniture: the hero is a card pulled halfway out of the drawer. */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .page {
+  --cabinet: #16343a;
+  --cabinet-deep: #0d2429;
+  --card: #f4f0e2;
+  --card-edge: #dcd6c2;
+  --ink: #1b2624;
+  --ink-soft: #4e5a55;
+  --rule: #c3bda9;
+  --brass: #c99a45;
+  --brass-pale: #e8c887;
+  --on-dark: #e9e4d4;
+  --on-dark-soft: #9db0ab;
+
+  background-color: var(--cabinet);
+  background-image: radial-gradient(
+      ellipse 80% 55% at 25% -5%,
+      rgba(94, 140, 143, 0.38),
+      transparent 70%
+    ),
+    radial-gradient(ellipse 70% 50% at 105% 105%, rgba(0, 0, 0, 0.4), transparent 70%);
+  color: var(--on-dark);
+  font-family: var(--f-courier), ui-monospace, monospace;
+  font-size: 15px;
+  line-height: 1.6;
+  padding-bottom: 96px;
+  overflow-x: hidden;
+}
+
+/* ---------- top bar ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .bar {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 20px clamp(20px, 4vw, 56px);
+  border-bottom: 1px solid rgba(201, 154, 69, 0.28);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-size: 23px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  color: var(--brass-pale);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barNav {
+  display: flex;
+  gap: 24px;
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--on-dark-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barNav a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition:
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barNav a:hover {
+  color: var(--on-dark);
+  border-bottom-color: var(--brass);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barCta {
+  padding: 9px 16px;
+  border: 1px solid var(--brass);
+  font-size: 12.5px;
+  letter-spacing: 0.03em;
+  background: var(--brass);
+  color: var(--cabinet-deep);
+  transition:
+    background-color 0.16s ease,
+    color 0.16s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barCta:hover {
+  background: transparent;
+  color: var(--brass-pale);
+}
+
+/* ---------- hero ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .hero {
+  padding: clamp(40px, 7vw, 88px) clamp(20px, 4vw, 56px)
+    clamp(48px, 6vw, 76px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 236px;
+  gap: clamp(30px, 5vw, 64px);
+  align-items: start;
+  max-width: 1180px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .cardStack {
+  position: relative;
+  padding-top: 16px;
+}
+
+/* the card behind, still in the drawer */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .cardBehind {
+  position: absolute;
+  inset: 0 0 20px 0;
+  background: #d9d3bf;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  transform: rotate(-0.8deg);
+  transform-origin: 50% 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .card {
+  position: relative;
+  background: var(--card);
+  color: var(--ink);
+  padding: clamp(26px, 3.4vw, 44px);
+  box-shadow:
+    0 2px 0 rgba(255, 255, 255, 0.6) inset,
+    0 26px 44px -24px rgba(0, 0, 0, 0.7);
+}
+
+/* two punch holes for a ring binder */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .card::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+.card::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 9px;
+  height: 9px;
+  margin-top: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--card-edge);
+  background: var(--cabinet);
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.06) inset;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .card::before {
+  left: 13px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .card::after {
+  right: 13px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .cardHead {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 14px;
+  margin-bottom: clamp(20px, 3vw, 32px);
+  border-bottom: 1px solid var(--card-edge);
+  font-size: 11px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: #7a6a4f;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .cardNo {
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .title {
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(40px, 7.2vw, 86px);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .lede {
+  max-width: 42ch;
+  margin-top: clamp(20px, 2.6vw, 30px);
+  font-size: 15.5px;
+  line-height: 1.68;
+  color: var(--ink-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ctaRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 22px;
+  margin-top: clamp(24px, 3.2vw, 36px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .btn {
+  display: inline-block;
+  padding: 13px 22px;
+  background: var(--ink);
+  color: var(--card);
+  font-size: 13.5px;
+  letter-spacing: 0.02em;
+  border: 1px solid var(--ink);
+  transition:
+    transform 0.14s ease,
+    background-color 0.16s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .btn:hover {
+  background: #2d4a49;
+  border-color: #2d4a49;
+  transform: translateY(-1px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ghost {
+  font-size: 13px;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2px;
+  transition: color 0.15s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ghost:hover {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .fine {
+  margin-top: 16px;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  color: #7a6a4f;
+}
+
+/* ---------- hero margin column ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .margin {
+  padding-top: 16px;
+  font-size: 12.5px;
+  line-height: 1.6;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .marginLabel {
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  border-bottom: 1px solid rgba(201, 154, 69, 0.34);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brass-pale);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .stat + .stat {
+  margin-top: 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .statNum {
+  display: block;
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-size: 42px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--card);
+  font-variant-numeric: lining-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .statLabel {
+  display: block;
+  margin-top: 5px;
+  color: var(--on-dark-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .marginNote {
+  margin-top: 24px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(201, 154, 69, 0.24);
+  color: var(--on-dark-soft);
+  font-size: 11.5px;
+  line-height: 1.65;
+}
+
+/* ---------- drawer ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .drawer {
+  padding: clamp(44px, 5vw, 68px) clamp(20px, 4vw, 56px);
+  border-top: 1px solid rgba(201, 154, 69, 0.22);
+  border-bottom: 1px solid rgba(201, 154, 69, 0.22);
+  background: rgba(0, 0, 0, 0.16);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sectionHead {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 24px;
+  max-width: 1180px;
+  margin-bottom: clamp(26px, 3.4vw, 40px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .h2 {
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(28px, 3.6vw, 40px);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  color: var(--card);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .sectionNote {
+  font-size: 12px;
+  color: var(--on-dark-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(268px, 1fr));
+  gap: 14px;
+  max-width: 1180px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .note {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 18px 20px 20px;
+  background: var(--card);
+  color: var(--ink);
+  border-top: 3px solid var(--brass);
+  transition:
+    box-shadow 0.18s ease,
+    transform 0.18s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .note:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+.note:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px -20px rgba(0, 0, 0, 0.9);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .noteTop {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10.5px;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: #7a6a4f;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .noteTitle {
+  margin-top: 10px;
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 1.18;
+  letter-spacing: -0.018em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .noteBody {
+  margin-top: 8px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .noteTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .tag {
+  padding: 3px 8px;
+  background: #e6e0cc;
+  font-size: 10.5px;
+  color: #5d5a4a;
+}
+
+/* ---------- rules ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .rules {
+  padding: clamp(48px, 6vw, 78px) clamp(20px, 4vw, 56px);
+  max-width: 1180px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ruleList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 44px);
+  margin-top: clamp(24px, 3vw, 36px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .rule {
+  padding-top: 14px;
+  border-top: 1px solid rgba(201, 154, 69, 0.42);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ruleMark {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--f-courier), ui-monospace, monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--brass);
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ruleMark::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: rgba(201, 154, 69, 0.24);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ruleHead {
+  margin-top: 10px;
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--card);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ruleBody {
+  margin-top: 8px;
+  max-width: 40ch;
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--on-dark-soft);
+}
+
+/* ---------- closing ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .close {
+  padding: 0 clamp(20px, 4vw, 56px) clamp(48px, 6vw, 72px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeCard {
+  max-width: 1180px;
+  padding: clamp(28px, 4vw, 52px);
+  background: var(--card);
+  color: var(--ink);
+  border-left: 6px solid var(--brass);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+  gap: clamp(20px, 4vw, 56px);
+  align-items: end;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeKicker {
+  grid-column: 1 / -1;
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #7a6a4f;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--card-edge);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeTitle {
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-weight: 500;
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.08;
+  letter-spacing: -0.026em;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeTitle em {
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeBody {
+  font-size: 13.5px;
+  line-height: 1.72;
+  color: var(--ink-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeRow {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 8px;
+  padding-top: 22px;
+  border-top: 1px solid var(--card-edge);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeFine {
+  font-size: 11.5px;
+  color: #7a6a4f;
+}
+
+/* ---------- footer ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 28px;
+  padding: 22px clamp(20px, 4vw, 56px);
+  border-top: 1px solid rgba(201, 154, 69, 0.22);
+  font-size: 11.5px;
+  color: var(--on-dark-soft);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--f-bodoni), Georgia, serif;
+  font-size: 16px;
+  color: var(--brass-pale);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .footLine {
+  margin-right: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .footLinks {
+  display: flex;
+  gap: 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .footLinks a {
+  border-bottom: 1px solid transparent;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .footLinks a:hover {
+  border-bottom-color: currentColor;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 940px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .heroGrid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .margin {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 28px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(201, 154, 69, 0.24);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .marginLabel {
+    grid-column: 1 / -1;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .marginNote {
+    grid-column: 1 / -1;
+    margin-top: 16px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .stat + .stat {
+    margin-top: 0;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .closeCard {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barNav {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .barCta {
+    margin-left: auto;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .card {
+    padding: 24px 22px 26px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .card::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+  .card::after {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .ruleList {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 460px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) .margin {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

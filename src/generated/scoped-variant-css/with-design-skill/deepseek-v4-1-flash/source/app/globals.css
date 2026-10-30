@@ -1,0 +1,84 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+*::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+*::after {
+  box-sizing: border-box;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]),:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h1,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h2,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h3,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+h4,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+p,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+figure,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+blockquote,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+ul,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+ol,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+dl,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+dd,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+fieldset {
+  margin: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) ul,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) fieldset {
+  border: 0;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) img,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) input {
+  font: inherit;
+  color: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) :focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) {
+  min-height: 100svh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="deepseek-v4-1-flash"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
