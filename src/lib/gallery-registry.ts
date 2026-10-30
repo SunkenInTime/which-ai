@@ -1,3 +1,6 @@
+import withTasteDeepSeek41Flash from "@/variants/with-taste-skill/deepseek-v4-1-flash";
+import withDeepSeek41Flash from "@/variants/with-design-skill/deepseek-v4-1-flash";
+import withoutDeepSeek41Flash from "@/variants/without-design-skill/deepseek-v4-1-flash";
 import withTasteKimi31Pro from "@/variants/with-taste-skill/kimi-k3-1-pro";
 import withKimi31Pro from "@/variants/with-design-skill/kimi-k3-1-pro";
 import withoutKimi31Pro from "@/variants/without-design-skill/kimi-k3-1-pro";
@@ -130,6 +133,10 @@ import withoutUnionAlpha from "@/variants/without-design-skill/union-alpha";
 type RegistryKey = `${GalleryGroupSlug}:${ModelSlug}`;
 
 const registry: Partial<Record<RegistryKey, VariantModule>> = {
+  "without-design-skill:deepseek-v4-1-flash": withoutDeepSeek41Flash,
+  "with-design-skill:deepseek-v4-1-flash": withDeepSeek41Flash,
+  "with-taste-skill:deepseek-v4-1-flash": withTasteDeepSeek41Flash,
+
   "without-design-skill:kimi-k3-1-pro": withoutKimi31Pro,
   "with-design-skill:kimi-k3-1-pro": withKimi31Pro,
   "with-taste-skill:kimi-k3-1-pro": withTasteKimi31Pro,

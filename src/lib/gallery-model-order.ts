@@ -48,6 +48,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "kimi-k-2.6": { familyOrder: 7, tier: 26 },
   "kimi-k3-1-pro": { familyOrder: 7, tier: 31 },
   "kimi-k3": { familyOrder: 7, tier: 30 },
+  "deepseek-v4-1-flash": { familyOrder: 7.5, tier: 41 },
   "swe-2": { familyOrder: 8, tier: 20 },
 };
 

@@ -7,6 +7,9 @@ import sharp from "sharp";
 import { chromium } from "@playwright/test";
 
 const entries = [
+  { group: "without-design-skill", model: "deepseek-v4-1-flash", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-design-skill", model: "deepseek-v4-1-flash", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-taste-skill", model: "deepseek-v4-1-flash", iterations: ["1", "2", "3", "4", "5"] },
   { group: "without-design-skill", model: "kimi-k3-1-pro", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "kimi-k3-1-pro", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-taste-skill", model: "kimi-k3-1-pro", iterations: ["1", "2", "3", "4", "5"] },

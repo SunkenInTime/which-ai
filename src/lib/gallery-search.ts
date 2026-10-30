@@ -19,6 +19,7 @@ const LAB_ALIASES: Record<LabSlug, string[]> = {
   "z-ai": ["zai", "zhipu", "zhipu ai", "glm"],
   cursor: ["anysphere", "composer"],
   cognition: ["devin", "swe", "swe bench", "swe-bench", "windsurf"],
+  deepseek: ["deep seek", "high-flyer"],
 };
 
 const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
@@ -45,6 +46,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "grok-4.6": ["grok4.6"],
   "grok-4.7": ["grok4.7"],
   "kimi-k3-1-pro": ["kimi k3.1 pro", "kimi k3.1", "high", "openrouter"],
+  "deepseek-v4-1-flash": ["deepseek v4.1 flash", "deepseek v4.1", "deepseek flash", "v4.1 flash", "high", "cursor"],
   "kimi-k3": ["kimi k3", "k3"],
   "glm-5.3-flash": ["ox alpha", "ox-alpha", "ox"],
   "muse-spark-1.3": ["muse", "spark"],

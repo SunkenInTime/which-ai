@@ -73,6 +73,7 @@ const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
   xAI: { light: "/xai-light.svg", dark: "/xai-dark.svg" },
   Meta: { light: "/meta.svg" },
   Google: { light: "/google-gemini.webp" },
+  DeepSeek: { light: "/deepseek.svg" },
 };
 
 export function getMotionModelLogo(model: MotionModel) {
@@ -87,6 +88,7 @@ const MOTION_LABS: Record<string, ModelLab> = {
   xAI: { slug: "x-ai", label: "xAI" },
   Meta: { slug: "meta", label: "Meta" },
   Google: { slug: "google", label: "Google" },
+  DeepSeek: { slug: "deepseek", label: "DeepSeek" },
 };
 
 export function getMotionModelLab(model: MotionModel): ModelLab {

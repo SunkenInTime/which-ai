@@ -12,7 +12,8 @@ export type LabSlug =
   | "moonshot"
   | "z-ai"
   | "cursor"
-  | "cognition";
+  | "cognition"
+  | "deepseek";
 
 export interface ModelLab {
   slug: LabSlug;
@@ -55,6 +56,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   "kimi-k-2.5": { slug: "moonshot", label: "Moonshot" },
   "kimi-k-2.6": { slug: "moonshot", label: "Moonshot" },
   "kimi-k3-1-pro": { slug: "moonshot", label: "Moonshot" },
+  "deepseek-v4-1-flash": { slug: "deepseek", label: "DeepSeek" },
   "kimi-k3": { slug: "moonshot", label: "Moonshot" },
   "muse-spark-1.2": { slug: "meta", label: "Meta" },
   "muse-spark-1.3": { slug: "meta", label: "Meta" },
