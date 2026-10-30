@@ -1,7 +1,7 @@
 {
   "model": "deepseek-v41-flash-1017-high (Cursor's DeepSeek V4.1 Flash 1017, High reasoning)",
   "galleryModelSlug": "deepseek-v4-1-flash",
-  "motionModelId": "deepseek-v4.1-flash",
+  "motionModelId": "deepseek-v4-1-flash (the local run folder still uses the first id, deepseek-v4.1-flash)",
   "date": "2026-10-29",
   "machine": "Windows 11 PC (Ryzen 7 5800X, RTX 4070), E:\\w\\deepseek-v41",
   "runner": "cursor-agent CLI 2026.10.19-6bbf2c4, headless",

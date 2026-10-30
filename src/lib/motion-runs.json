@@ -1,5 +1,5 @@
 {
-  "baseline/deepseek-v4.1-flash/1": {
+  "baseline/deepseek-v4-1-flash/1": {
     "source": "runner",
     "harnessVersion": "cursor-agent 2026.10.19-6bbf2c4",
     "modelArg": "deepseek-v41-flash-1017",
@@ -36,7 +36,7 @@
     },
     "usage": null
   },
-  "baseline/deepseek-v4.1-flash/2": {
+  "baseline/deepseek-v4-1-flash/2": {
     "source": "runner",
     "harnessVersion": "cursor-agent 2026.10.19-6bbf2c4",
     "modelArg": "deepseek-v41-flash-1017",
@@ -73,7 +73,7 @@
     },
     "usage": null
   },
-  "baseline/deepseek-v4.1-flash/3": {
+  "baseline/deepseek-v4-1-flash/3": {
     "source": "runner",
     "harnessVersion": "cursor-agent 2026.10.19-6bbf2c4",
     "modelArg": "deepseek-v41-flash-1017",
