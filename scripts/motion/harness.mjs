@@ -22,7 +22,7 @@ export const workRoot =
       : "/var/tmp/motionbench/work");
 
 // Files or folders that would hand a harness instructions, skills, or MCP servers if found in a parent folder.
-const configMarkers = ["CLAUDE.md", "CLAUDE.local.md", "AGENTS.md", "AGENTS.override.md", ".claude", ".agents", ".codex", ".grok", ".mcp.json", ".cursor"];
+const configMarkers = ["CLAUDE.md", "CLAUDE.local.md", "AGENTS.md", "AGENTS.override.md", ".claude", ".agents", ".codex", ".grok", ".mcp.json", ".cursor", ".devin", ".cognition", ".windsurf", ".windsurfrules"];
 
 export function assertCleanAncestors(dir) {
   for (let d = path.dirname(path.resolve(dir)); ; d = path.dirname(d)) {
@@ -40,6 +40,8 @@ export const authFiles = {
   "grok-cli": [".grok/auth.json"],
   // Muse keeps its token in the macOS keychain; auth.json only says which provider and login to look up.
   "muse-code": [".config/muse/auth.json"],
+  // Devin keeps its login in a plain file under XDG_DATA_HOME (macOS and Linux; it isn't run on Windows here).
+  devin: [".local/share/devin/credentials.toml"],
 };
 
 // Claude Code keeps its login in the keychain keyed to the config dir, so a fresh HOME is logged out.
@@ -161,7 +163,7 @@ const codexIsolation = [
   "features.remote_plugin=false",
 ].flatMap((setting) => ["-c", setting]);
 
-export function harnessCommand(harness, model, prompt, workdir) {
+export function harnessCommand(harness, model, prompt, workdir, home) {
   const effort = model.effort ?? config.effort;
   switch (harness.id) {
     case "claude-code":
@@ -179,6 +181,14 @@ export function harnessCommand(harness, model, prompt, workdir) {
       // --yolo turns off approvals and the sandbox, the same access the other harnesses get.
       return {
         args: ["exec", "--json", "--model", model.modelArg, "--reasoning-effort", effort, "--yolo", "--no-foreign-personal-context", "--user-input-auto-resolve", "--workspace", workdir, prompt],
+        stdin: null,
+      };
+    case "devin":
+      // Devin names the reasoning tier in the model id (swe-2-flash-high). Its -p output is plain text, so the
+      // structured transcript (steps, tool calls, token counts) comes from --export, written into the run's home.
+      // "dangerous" auto-approves every tool, the same access the other harnesses get.
+      return {
+        args: ["-p", prompt, "--model", `${model.modelArg}-${effort}`, "--permission-mode", "dangerous", "--respect-workspace-trust", "false", "--export", devinExportPath(home)],
         stdin: null,
       };
     case "grok-cli":
@@ -243,6 +253,69 @@ export function readMuseUsage(home) {
   // Tool calls write zero-token records too; only provider records are model calls.
   const modelCalls = [...seen.values()].filter((r) => r.usage_family === "provider").length;
   return { tokens: { input_tokens: sum("input_tokens"), cached_input_tokens: sum("cached_tokens"), output_tokens: sum("output_tokens"), reasoning_tokens: sum("reasoning_tokens") }, modelCalls };
+}
+
+// Devin loads far more than its own config: CLAUDE.md, skills and MCP servers from Claude Code, Cursor, Windsurf,
+// Copilot, OpenCode and Zed, skills from ~/.agents, and from the Devin account its MCP servers and plugins (personal
+// skills and org rules). A fresh home hides the folders, and read_config_from turns off the other tools' imports
+// and the account's MCP servers and personal plugins (`cloud`). As a second lock, the home gets a machine-only
+// plugin whose manifest forbids every other plugin. (A repo-level .devin/config.json forbid would do the same, but
+// Devin stops looking for it at the git root, so a project that is a git repo skips it.) Org-level plugins outrank
+// both and can't be blocked here; turn those off in the Devin web app.
+// Then it lists skills, rules, and MCP servers again and refuses to run if anything loads besides the skills Devin
+// ships with, or if it can't read a listing.
+export function prepareDevinHome(bin, home, workdir, env) {
+  if (isWindows) throw new Error("The Devin harness only runs on macOS and Linux here.");
+  const configDir = path.join(home, ".config", "devin");
+  fs.mkdirSync(configDir, { recursive: true });
+  const imports = Object.fromEntries(
+    ["agents_standard", "cursor", "windsurf", "claude", "copilot", "opencode", "zed", "cloud"].map((tool) => [tool, false]),
+  );
+  const settings = { version: 1, auto_update: false, attribution: false, show_hints: false, notify: "never", read_config_from: imports };
+  fs.writeFileSync(path.join(configDir, "config.json"), JSON.stringify(settings, null, 2) + "\n");
+  const lockdown = path.join(home, ".bench-lockdown");
+  fs.mkdirSync(path.join(lockdown, ".devin-plugin"), { recursive: true });
+  const manifest = { name: "bench-lockdown", version: "1.0.0", description: "Forbids every other plugin for benchmark runs.", skills: [], forbiddenPlugins: ["*"] };
+  fs.writeFileSync(path.join(lockdown, ".devin-plugin", "plugin.json"), JSON.stringify(manifest, null, 2) + "\n");
+  // --local keeps it on this machine (in the run's home); without it, the plugin would join the account's plugins.
+  execFileSync(bin, ["plugins", "install", "--local", "-y", lockdown], { cwd: workdir, env, stdio: "ignore", windowsHide: true });
+
+  const run = (...args) => execFileSync(bin, args, { cwd: workdir, env, encoding: "utf8", windowsHide: true });
+  // Skills Devin ships with report provider "Builtin"; anything else came from a folder, a plugin, or the account.
+  const skills = JSON.parse(run("skills", "list", "--json"));
+  if (!Array.isArray(skills)) throw new Error("Couldn't read `devin skills list --json`.");
+  const foreign = skills.filter((skill) => skill.provider !== "Builtin");
+  if (foreign.length) throw new Error(`Devin still loads skills it doesn't ship with: ${foreign.map((s) => `${s.name} (${s.provider}, ${s.base_dir})`).join(", ")}`);
+  // `rules list` has no JSON. With no rules it prints "No rules found." and then help text on where rules go; with
+  // any, a header and one line per rule. Anything other than that first line counts as rules, so a format change
+  // refuses the run instead of slipping a rule past.
+  const rulesOut = run("rules", "list");
+  if (rulesOut.trimStart().split("\n")[0].trim() !== "No rules found.") {
+    const ruleLines = rulesOut.split("\n").map((line) => line.trim()).filter((line) => line && !/^available rules$/i.test(line));
+    throw new Error(`Devin still loads rules (org-level ones have to be turned off in the Devin web app):\n${ruleLines.join("\n")}`);
+  }
+  const mcp = run("mcp", "list");
+  if (!/^No MCP servers configured\b/m.test(mcp)) throw new Error(`Devin still has MCP servers:\n${mcp.trim()}`);
+}
+
+export function devinExportPath(home) {
+  return path.join(home, "devin-session.json");
+}
+
+// Devin's export holds the session's totals. Prompt tokens include the cached ones, as in Codex's and Muse's counts.
+export function readDevinUsage(home) {
+  try {
+    const session = JSON.parse(fs.readFileSync(devinExportPath(home), "utf8"));
+    const m = session.final_metrics;
+    if (!m) return null;
+    const modelCalls = session.steps.filter((step) => step.metrics).length;
+    return {
+      tokens: { input_tokens: m.total_prompt_tokens, cached_input_tokens: m.total_cached_tokens, output_tokens: m.total_completion_tokens },
+      modelCalls,
+    };
+  } catch {
+    return null;
+  }
 }
 
 // npm installs CLIs on Windows as .cmd shims, which Node can only run through cmd.exe, and cmd.exe mangles

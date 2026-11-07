@@ -22,7 +22,9 @@ import {
   isolatedEnv,
   killProcessesIn,
   killTree,
+  prepareDevinHome,
   prepareMuseHome,
+  readDevinUsage,
   readMuseUsage,
   resolveBin,
   spawnHarness,
@@ -88,12 +90,13 @@ async function runSession(model) {
   fs.cpSync(path.join(templatesDir, harness.id), home, { recursive: true });
   const env = isolatedEnv(home, harness.id);
   if (harness.id === "muse-code") console.log(`muse ${key}: turned off ${prepareMuseHome(bin, home, workdir, env)} skills and plugins`);
+  if (harness.id === "devin") prepareDevinHome(bin, home, workdir, env);
   console.log(`run  ${key} with ${harness.label} ${version} in ${workdir}`);
 
   const transcriptPath = path.join(runDir, "transcript.jsonl");
   const transcript = fs.openSync(transcriptPath, "w");
   const stderr = fs.openSync(path.join(runDir, "stderr.log"), "w");
-  const command = harnessCommand(harness, model, prompt, workdir);
+  const command = harnessCommand(harness, model, prompt, workdir, home);
   const startedAt = Date.now();
   const child = spawnHarness(bin, command.args, {
     cwd: workdir,
@@ -135,7 +138,8 @@ async function runSession(model) {
   syncAuthBack(harness.id, home);
 
   console.log(`session ${key} ended after ${wallSeconds}s (logs in ${runDir})`);
-  const usage = harness.id === "muse-code" ? readMuseUsage(home) : readUsage(harness.id, transcriptPath);
+  const usage =
+    harness.id === "muse-code" ? readMuseUsage(home) : harness.id === "devin" ? readDevinUsage(home) : readUsage(harness.id, transcriptPath);
   const results = await finishRun(runDir, { exitCode, signal, timedOut, wallSeconds, endedAfterReply, usage });
   for (const { key: videoKey, run } of results) {
     const renderNote = run.render ? `, rendered in ${run.render.renderSeconds}s` : "";

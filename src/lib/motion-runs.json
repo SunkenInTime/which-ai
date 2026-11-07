@@ -1129,5 +1129,137 @@
       "costUsd": 34.3799206,
       "turns": 5
     }
+  },
+  "baseline/swe-2-flash/1": {
+    "source": "runner",
+    "harnessVersion": "3000.11.234",
+    "modelArg": "swe-2-flash",
+    "effort": "high",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-11-07T01:50:13.263Z",
+    "wallSeconds": 1199,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 4128938,
+      "previewSizeBytes": 375655,
+      "masterSizeBytes": 5766809,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 16.7,
+      "workers": 3,
+      "gl": "gpu",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "darwin",
+      "cpu": "Apple M5 Pro",
+      "memoryGb": 24
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 9528770,
+        "cached_input_tokens": 9431936,
+        "output_tokens": 93234
+      },
+      "modelCalls": 99
+    }
+  },
+  "baseline/swe-2-flash/2": {
+    "source": "runner",
+    "harnessVersion": "3000.11.234",
+    "modelArg": "swe-2-flash",
+    "effort": "high",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-11-07T01:50:13.263Z",
+    "wallSeconds": 1199,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 7594560,
+      "previewSizeBytes": 766241,
+      "masterSizeBytes": 10518248,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 20.8,
+      "workers": 3,
+      "gl": "gpu",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "darwin",
+      "cpu": "Apple M5 Pro",
+      "memoryGb": 24
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 9528770,
+        "cached_input_tokens": 9431936,
+        "output_tokens": 93234
+      },
+      "modelCalls": 99
+    }
+  },
+  "baseline/swe-2-flash/3": {
+    "source": "runner",
+    "harnessVersion": "3000.11.234",
+    "modelArg": "swe-2-flash",
+    "effort": "high",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-11-07T01:50:13.263Z",
+    "wallSeconds": 1199,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 5525311,
+      "previewSizeBytes": 506913,
+      "masterSizeBytes": 7540441,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 16.9,
+      "workers": 3,
+      "gl": "gpu",
+      "renderer": "ANGLE (Apple, ANGLE Metal Renderer: Apple M5 Pro, Unspecified Version)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "darwin",
+      "cpu": "Apple M5 Pro",
+      "memoryGb": 24
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 9528770,
+        "cached_input_tokens": 9431936,
+        "output_tokens": 93234
+      },
+      "modelCalls": 99
+    }
   }
 }
