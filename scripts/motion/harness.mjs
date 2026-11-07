@@ -298,6 +298,7 @@ export function prepareDevinHome(bin, home, workdir, env) {
   if (!/^No MCP servers configured\b/m.test(mcp)) throw new Error(`Devin still has MCP servers:\n${mcp.trim()}`);
 }
 
+// Where `devin --export` writes the session record; it lives in the run's home so it travels with the run.
 export function devinExportPath(home) {
   return path.join(home, "devin-session.json");
 }
