@@ -1,0 +1,17 @@
+{
+  "build": "npm run build passed (next build --webpack), no font transport shim needed.",
+  "tests": "test:routes 269 passed, test:visual 108 passed, gallery-recency 14 passed.",
+  "typecheck": "tsc --noEmit: 0 errors",
+  "targeted_lint": "eslint on the new variants, src/lib, scripts/capture-previews.mjs and the edited tests: 0 problems",
+  "previews": "15 WebP thumbnails captured from next start at 1440x960",
+  "visual_check": "All 15 gallery pages compared side by side with 1440x960 screenshots of the run's own dev servers (served by the orchestrator after the sessions ended). Layout, color, type and imagery match. Differences: the source iteration switchers are removed, and marquee strips show a different animation phase.",
+  "integration_changes": [
+    "Root html/body converted to divs with data-source-html/data-source-body, and :root/html/body selectors moved onto them to keep font and custom-property inheritance",
+    "Root layout props typed as { children: React.ReactNode } instead of Next's generated LayoutProps<\"/\">",
+    "Global CSS scoped by the gallery generator; Tailwind @theme font utilities materialized locally",
+    "@/ imports rewritten to the variant source path; default public SVGs namespaced",
+    "Source switchers removed from all three root layouts (each rendered its switcher only there)",
+    "design-taste numeric logo self-links (/1 to /5) point to gallery routes",
+    "SWE-2 Flash gets its own archive family (cognition-swe-flash) so it does not archive SWE-2"
+  ]
+}
