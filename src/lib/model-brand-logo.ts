@@ -54,6 +54,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "sonnet-5.5": { light: "/anthropic-claude.webp" },
   "sonnet-5": { light: "/anthropic-claude.webp" },
   "swe-2": { light: "/cognition.svg", dark: "/cognition-dark.svg" },
+  "swe-2-flash": { light: "/cognition.svg", dark: "/cognition-dark.svg" },
 };
 
 export function getModelBrandLogoPath(model: ModelSlug): string {

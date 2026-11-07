@@ -1,0 +1,463 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) [data-source-html] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) [data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ------------------------------------------------------------------ */
+/* Shared keyframes                                                    */
+/* ------------------------------------------------------------------ */
+
+@keyframes gallery-with-design-skill-swe-2-flash-source-app-globals-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gallery-with-design-skill-swe-2-flash-source-app-globals-twinkle {
+  0%,
+  100% {
+    opacity: var(--star-o, 0.8);
+  }
+  50% {
+    opacity: calc(var(--star-o, 0.8) * 0.35);
+  }
+}
+
+@keyframes gallery-with-design-skill-swe-2-flash-source-app-globals-draw-line {
+  from {
+    stroke-dashoffset: var(--line-len, 600);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gallery-with-design-skill-swe-2-flash-source-app-globals-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 1 — Atlas (cartography)                                   */
+/* ------------------------------------------------------------------ */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas {
+  --paper: #ece4d0;
+  --paper-deep: #e0d5ba;
+  --ink: #292319;
+  --ink-soft: #5d5544;
+  --faint: #a89a7c;
+  --accent: #b84a1e;
+  --sage: #6d7a58;
+  --rule: #c9bb9c;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-display {
+  font-family: var(--font-oswald);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-serif {
+  font-family: var(--font-newsreader);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-mono {
+  font-family: var(--font-plex);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-hand {
+  font-family: var(--font-caveat);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-frame {
+  border: 1.5px solid var(--ink);
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--faint);
+  pointer-events: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-btn {
+  font-family: var(--font-oswald);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid var(--ink);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .atlas-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 2 — Constellation (night sky)                             */
+/* ------------------------------------------------------------------ */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .constellation {
+  --sky: #0a1120;
+  --sky-2: #0e1830;
+  --star: #f2e8cf;
+  --dim: #8b9bbd;
+  --amber: #e2a93b;
+  --line: #2c3f6b;
+  --panel: #0d1526;
+  background: var(--sky);
+  color: var(--star);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-display {
+  font-family: var(--font-fraunces);
+  font-weight: 340;
+  letter-spacing: -0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-serif-i {
+  font-family: var(--font-fraunces);
+  font-style: italic;
+  font-weight: 340;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-mono {
+  font-family: var(--font-plex);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-btn {
+  font-family: var(--font-plex);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-btn:hover {
+  background: var(--amber);
+  color: var(--sky);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-btn-ghost {
+  border-color: var(--line);
+  color: var(--dim);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-btn-ghost:hover {
+  border-color: var(--star);
+  color: var(--star);
+  background: transparent;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-star {
+  animation: gallery-with-design-skill-swe-2-flash-source-app-globals-twinkle var(--tw-dur, 4s) ease-in-out var(--tw-delay, 0s) infinite;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .const-draw {
+  stroke-dasharray: var(--line-len, 600);
+  animation: gallery-with-design-skill-swe-2-flash-source-app-globals-draw-line 2.4s ease-out 0.4s both;
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 3 — Blueprint (technical drawing)                        */
+/* ------------------------------------------------------------------ */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .blueprint {
+  --sheet: #e9eef3;
+  --sheet-2: #dfe7ee;
+  --ink: #1d3550;
+  --ink-soft: #47617e;
+  --accent: #e4572e;
+  --wash: #c9d8e8;
+  --hair: rgba(29, 53, 80, 0.18);
+  background: var(--sheet);
+  color: var(--ink);
+  background-image:
+    linear-gradient(var(--hair) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-display {
+  font-family: var(--font-oswald);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-mono {
+  font-family: var(--font-plex);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-frame {
+  border: 1.5px solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-btn {
+  font-family: var(--font-plex);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid var(--ink);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-btn-solid {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bp-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 4 — Herbarium (field guide)                               */
+/* ------------------------------------------------------------------ */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .herbarium {
+  --paper: #f2ecdc;
+  --paper-2: #e9e1cb;
+  --ink: #2c3d2e;
+  --ink-soft: #5a6a55;
+  --accent: #9e3b26;
+  --wash: #dde4cf;
+  --rule: #cfc4a4;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-serif {
+  font-family: var(--font-newsreader);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-mono {
+  font-family: var(--font-plex);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-hand {
+  font-family: var(--font-caveat);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-plate {
+  background: #f7f2e4;
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 1px 0 rgba(44, 61, 46, 0.08),
+    0 12px 32px -18px rgba(44, 61, 46, 0.35);
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-tape {
+  position: absolute;
+  width: 92px;
+  height: 26px;
+  background: rgba(222, 212, 178, 0.85);
+  border-left: 1px dashed rgba(44, 61, 46, 0.25);
+  border-right: 1px dashed rgba(44, 61, 46, 0.25);
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-btn {
+  font-family: var(--font-newsreader);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1.7rem;
+  border: 1.5px solid var(--ink);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-btn-ghost:hover {
+  background: var(--wash);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-notebook {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 30px,
+    rgba(44, 61, 46, 0.16) 30px,
+    rgba(44, 61, 46, 0.16) 31px
+  );
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .hb-press {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(158, 59, 38, 0.05), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(44, 61, 46, 0.05), transparent 45%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 5 — Broadside (poster)                                    */
+/* ------------------------------------------------------------------ */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .broadside {
+  --paper: #faf8f1;
+  --ink: #16130e;
+  --accent: #e8440c;
+  --grey: #8d8677;
+  background: var(--paper);
+  color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-display {
+  font-family: var(--font-anton);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-mono {
+  font-family: var(--font-plex);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-ticker {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-ticker-track {
+  display: inline-flex;
+  animation: gallery-with-design-skill-swe-2-flash-source-app-globals-marquee 28s linear infinite;
+  will-change: transform;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-btn {
+  font-family: var(--font-plex);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem 1.8rem;
+  border: 2px solid var(--ink);
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-sticker {
+  display: inline-block;
+  font-family: var(--font-plex);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+  padding: 0.4rem 0.8rem;
+  transform: rotate(-4deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .bs-sticker-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+
+/* Source theme utilities retained for the gallery. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .font-sans { font-family: var(--font-plex); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) [data-source-html] { --font-sans: var(--font-plex); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) .font-mono { font-family: var(--font-plex); }
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2-flash"]) [data-source-html] { --font-mono: var(--font-plex); }

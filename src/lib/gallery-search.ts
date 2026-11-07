@@ -52,6 +52,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "muse-spark-1.3": ["muse", "spark"],
   "muse-wonder-1.0": ["muse", "wonder", "muse wonder", "muse-wonder-1.0", "extra high", "xhigh"],
   "swe-2": ["swe2", "swe 2", "swe-2 max"],
+  "swe-2-flash": ["swe 2 flash", "swe2 flash", "swe-2 flash", "flash", "devin", "swe-2-flash-high"],
 };
 
 const GROUP_ALIASES: Record<GalleryGroupSlug, string[]> = {

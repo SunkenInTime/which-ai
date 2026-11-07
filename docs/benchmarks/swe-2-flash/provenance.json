@@ -1,0 +1,139 @@
+{
+  "model": "swe-2-flash",
+  "date": "2026-11-06",
+  "runner": "Devin CLI 3000.11.234 (92c83011d113), headless `devin -p --prompt-file <prompt> --model swe-2-flash-high --permission-mode dangerous --respect-workspace-trust false --export <file>`",
+  "reasoning_effort": "high (Devin offers swe-2-flash-medium, -high and -max; the bench's other models ran at xhigh)",
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "session_id": "majestic-astronomy",
+      "model": "swe-2-flash-high",
+      "skills": [],
+      "completed": true,
+      "started": "2026-11-07T01:50:11Z",
+      "finished": "2026-11-07T02:04:54Z",
+      "tool_calls": {
+        "browser_preview": 1,
+        "edit": 9,
+        "exec": 22,
+        "get_output": 2,
+        "mcp_call_tool": 15,
+        "mcp_list_tools": 1,
+        "read": 2,
+        "todo_write": 2,
+        "write": 10
+      },
+      "browser_calls": {
+        "playwright.browser_console_messages": 2,
+        "playwright.browser_evaluate": 6,
+        "playwright.browser_navigate": 5,
+        "playwright.browser_resize": 1,
+        "playwright.browser_take_screenshot": 1
+      },
+      "screenshots_seen_by_model": 0,
+      "tokens": {
+        "input": 2781763,
+        "cached_input": 2747904,
+        "output": 47303
+      },
+      "model_steps": 59
+    },
+    {
+      "condition": "anthropic-frontend-design",
+      "session_id": "prism-ping",
+      "model": "swe-2-flash-high",
+      "skills": [
+        "frontend-design"
+      ],
+      "completed": true,
+      "started": "2026-11-07T01:50:11Z",
+      "finished": "2026-11-07T02:15:34Z",
+      "assigned_skill_read": true,
+      "tool_calls": {
+        "browser_preview": 1,
+        "edit": 9,
+        "exec": 11,
+        "get_output": 1,
+        "mcp_call_tool": 54,
+        "mcp_list_tools": 1,
+        "read": 8,
+        "skill": 1,
+        "todo_write": 2,
+        "write": 10
+      },
+      "browser_calls": {
+        "playwright.browser_console_messages": 1,
+        "playwright.browser_evaluate": 30,
+        "playwright.browser_navigate": 20,
+        "playwright.browser_resize": 2,
+        "playwright.browser_take_screenshot": 1
+      },
+      "screenshots_seen_by_model": 0,
+      "tokens": {
+        "input": 7664879,
+        "cached_input": 7542656,
+        "output": 70581
+      },
+      "model_steps": 95
+    },
+    {
+      "condition": "design-taste",
+      "session_id": "fancy-bobble",
+      "model": "swe-2-flash-high",
+      "skills": [
+        "design-taste-frontend"
+      ],
+      "completed": true,
+      "started": "2026-11-07T01:50:11Z",
+      "finished": "2026-11-07T02:22:08Z",
+      "assigned_skill_read": true,
+      "tool_calls": {
+        "edit": 60,
+        "exec": 34,
+        "get_output": 2,
+        "grep": 2,
+        "mcp_call_tool": 55,
+        "mcp_list_tools": 1,
+        "read": 13,
+        "skill": 1,
+        "todo_write": 1,
+        "write": 11
+      },
+      "browser_calls": {
+        "playwright.browser_console_messages": 1,
+        "playwright.browser_evaluate": 25,
+        "playwright.browser_navigate": 23,
+        "playwright.browser_resize": 5,
+        "playwright.browser_take_screenshot": 1
+      },
+      "screenshots_seen_by_model": 0,
+      "tokens": {
+        "input": 15844163,
+        "cached_input": 15725696,
+        "output": 73510
+      },
+      "model_steps": 151
+    }
+  ],
+  "starter": "Next.js 16.3.8 / React 19.2.8 from create-next-app@16.3.8, the Muse Wonder 1.0 starter copied file for file",
+  "starter_lockfile_sha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "skills": {
+    "frontend-design": "anthropics/skills@683bc88e56f3e09ba94f7055977f3d3aa499f202",
+    "design-taste-frontend": "Leonxlnx/taste-skill@ce26fc25c0e5e8cab638f883de62d9a86ee5e45b"
+  },
+  "skill_placement": "Project skills in .agents/skills/, byte-identical copies of the Muse Wonder run's pinned skill folders",
+  "browser": "Playwright MCP 0.0.83 (same install as the Muse Wonder run), isolated headless Chromium, initial viewport 1440x960, image responses allowed",
+  "prompt_policy": "Original prompt with only assigned skill clause and free port substituted; no extra browser-use instruction or follow-up coaching",
+  "preflight": "Separate unscored sessions at swe-2-flash-medium listed skills, tools and every instruction in context, and were asked to describe a canvas-only screenshot. no-skills saw only Devin's three built-in skills (devin-cli, declarative-repo-setup, upload-secrets); each skill folder also saw its assigned skill; playwright was the only MCP server. The model could not see the screenshot: Devin tells it the model does not support images, and the image arrives as an [Image 1] placeholder. It described the page correctly only by sampling canvas pixels with browser_evaluate. The preflights also surfaced an org-level always-on rule (roblox-session-guardrails) from the Devin account, which was then deleted in the Devin web app before the scored runs; a fresh `devin rules list` in every condition then showed only the starter's AGENTS.md.",
+  "isolation": "Devin ran with a separate HOME, XDG_CONFIG_HOME, XDG_DATA_HOME and XDG_CACHE_HOME holding only credentials.toml and the benchmark config. read_config_from turned off imports from Claude Code, Cursor, Windsurf, Copilot, OpenCode, Zed and Devin Cloud (cloud MCP servers and personal plugins); agents_standard stayed on so the starter's AGENTS.md loaded, matching the other harnesses. A machine-local plugin whose manifest forbids every plugin (installed with `plugins install --local`) blocked the account-synced personal plugins. Before the runs, each condition's skills (`skills list --json`), rules and MCP servers were listed and matched the preflight. Not run through T3 Code. Context isolation only; full filesystem and process access remained.",
+  "generation_policy": "No orchestrator edits to generated source during runs. Original completed sources retained outside the gallery; hash records describe files before import adapters.",
+  "timing": "Concurrent sessions, not a controlled latency benchmark. All three started at 2026-11-07T01:50:11Z; no-skills ended after 14m43s, anthropic-frontend-design after 25m23s, design-taste after 31m57s. Each `devin -p` exited on its own after its final reply. Its dev servers kept running and were stopped with SIGINT after source hashes were recorded.",
+  "cost": "SWE-2 Flash is listed as Free in `devin models list` for this account (no per-token price), so the sessions cost nothing. Token counts come from each session's --export file (final_metrics); input includes cached input.",
+  "run_caveats": [
+    "SWE-2 Flash takes no image input in Devin CLI. Every session took one Playwright screenshot, got only a placeholder, and checked its pages through DOM queries (browser_evaluate), navigation and console messages instead. It never saw its own pages.",
+    "no-skills and anthropic-frontend-design each called Devin's built-in browser_preview tool, which opens the page in the user's own browser for a human to look at; it returns nothing visual to the model.",
+    "design-taste added @phosphor-icons/react and motion to package.json and uses model-chosen seeded Picsum photographs.",
+    "next-env.d.ts is regenerated by Next.js whenever a dev server starts. The orchestrator's screenshot dev server rewrote it after hashes were recorded; it is excluded from the source hashes and not model-authored.",
+    "Next.js generated AGENTS.md/CLAUDE.md in the starter. Devin loads AGENTS.md (read_config_from.agents_standard) and was set not to load CLAUDE.md; the starter CLAUDE.md only references AGENTS.md."
+  ]
+}

@@ -53,7 +53,8 @@ export type ModelSlug =
   | "sol"
   | "luna"
   | "terra"
-  | "swe-2";
+  | "swe-2"
+  | "swe-2-flash";
 /** `"{group}/{model}"`, for per-entry data such as added dates and run costs. */
 export type GalleryEntryKey = `${GalleryGroupSlug}/${ModelSlug}`;
 export type IterationId = "1" | "2" | "3" | "4" | "5";

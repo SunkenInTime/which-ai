@@ -1,0 +1,472 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-plex);
+  --font-mono: var(--font-plex);
+}
+
+[data-source-html] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+[data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* ------------------------------------------------------------------ */
+/* Shared keyframes                                                    */
+/* ------------------------------------------------------------------ */
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: var(--star-o, 0.8);
+  }
+  50% {
+    opacity: calc(var(--star-o, 0.8) * 0.35);
+  }
+}
+
+@keyframes draw-line {
+  from {
+    stroke-dashoffset: var(--line-len, 600);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 1 — Atlas (cartography)                                   */
+/* ------------------------------------------------------------------ */
+
+.atlas {
+  --paper: #ece4d0;
+  --paper-deep: #e0d5ba;
+  --ink: #292319;
+  --ink-soft: #5d5544;
+  --faint: #a89a7c;
+  --accent: #b84a1e;
+  --sage: #6d7a58;
+  --rule: #c9bb9c;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.atlas-display {
+  font-family: var(--font-oswald);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.atlas-serif {
+  font-family: var(--font-newsreader);
+}
+
+.atlas-mono {
+  font-family: var(--font-plex);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+}
+
+.atlas-hand {
+  font-family: var(--font-caveat);
+}
+
+.atlas-frame {
+  border: 1.5px solid var(--ink);
+  position: relative;
+}
+
+.atlas-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid var(--faint);
+  pointer-events: none;
+}
+
+.atlas-btn {
+  font-family: var(--font-oswald);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  padding: 0.85rem 1.6rem;
+  border: 1.5px solid var(--ink);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.atlas-btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.atlas-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.atlas-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 2 — Constellation (night sky)                             */
+/* ------------------------------------------------------------------ */
+
+.constellation {
+  --sky: #0a1120;
+  --sky-2: #0e1830;
+  --star: #f2e8cf;
+  --dim: #8b9bbd;
+  --amber: #e2a93b;
+  --line: #2c3f6b;
+  --panel: #0d1526;
+  background: var(--sky);
+  color: var(--star);
+}
+
+.const-display {
+  font-family: var(--font-fraunces);
+  font-weight: 340;
+  letter-spacing: -0.01em;
+}
+
+.const-serif-i {
+  font-family: var(--font-fraunces);
+  font-style: italic;
+  font-weight: 340;
+}
+
+.const-mono {
+  font-family: var(--font-plex);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+}
+
+.const-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+}
+
+.const-btn {
+  font-family: var(--font-plex);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.const-btn:hover {
+  background: var(--amber);
+  color: var(--sky);
+}
+
+.const-btn-ghost {
+  border-color: var(--line);
+  color: var(--dim);
+}
+
+.const-btn-ghost:hover {
+  border-color: var(--star);
+  color: var(--star);
+  background: transparent;
+}
+
+.const-star {
+  animation: twinkle var(--tw-dur, 4s) ease-in-out var(--tw-delay, 0s) infinite;
+}
+
+.const-draw {
+  stroke-dasharray: var(--line-len, 600);
+  animation: draw-line 2.4s ease-out 0.4s both;
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 3 — Blueprint (technical drawing)                        */
+/* ------------------------------------------------------------------ */
+
+.blueprint {
+  --sheet: #e9eef3;
+  --sheet-2: #dfe7ee;
+  --ink: #1d3550;
+  --ink-soft: #47617e;
+  --accent: #e4572e;
+  --wash: #c9d8e8;
+  --hair: rgba(29, 53, 80, 0.18);
+  background: var(--sheet);
+  color: var(--ink);
+  background-image:
+    linear-gradient(var(--hair) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hair) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.bp-display {
+  font-family: var(--font-oswald);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.bp-mono {
+  font-family: var(--font-plex);
+}
+
+.bp-frame {
+  border: 1.5px solid var(--ink);
+}
+
+.bp-btn {
+  font-family: var(--font-plex);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.5rem;
+  border: 1.5px solid var(--ink);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.bp-btn-solid {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.bp-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.bp-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 4 — Herbarium (field guide)                               */
+/* ------------------------------------------------------------------ */
+
+.herbarium {
+  --paper: #f2ecdc;
+  --paper-2: #e9e1cb;
+  --ink: #2c3d2e;
+  --ink-soft: #5a6a55;
+  --accent: #9e3b26;
+  --wash: #dde4cf;
+  --rule: #cfc4a4;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.hb-serif {
+  font-family: var(--font-newsreader);
+}
+
+.hb-mono {
+  font-family: var(--font-plex);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+}
+
+.hb-hand {
+  font-family: var(--font-caveat);
+}
+
+.hb-plate {
+  background: #f7f2e4;
+  border: 1px solid var(--rule);
+  box-shadow:
+    0 1px 0 rgba(44, 61, 46, 0.08),
+    0 12px 32px -18px rgba(44, 61, 46, 0.35);
+  position: relative;
+}
+
+.hb-tape {
+  position: absolute;
+  width: 92px;
+  height: 26px;
+  background: rgba(222, 212, 178, 0.85);
+  border-left: 1px dashed rgba(44, 61, 46, 0.25);
+  border-right: 1px dashed rgba(44, 61, 46, 0.25);
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+}
+
+.hb-btn {
+  font-family: var(--font-newsreader);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.8rem 1.7rem;
+  border: 1.5px solid var(--ink);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.hb-btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.hb-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.hb-btn-ghost:hover {
+  background: var(--wash);
+}
+
+.hb-notebook {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 30px,
+    rgba(44, 61, 46, 0.16) 30px,
+    rgba(44, 61, 46, 0.16) 31px
+  );
+}
+
+.hb-press {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(158, 59, 38, 0.05), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(44, 61, 46, 0.05), transparent 45%);
+}
+
+/* ------------------------------------------------------------------ */
+/* Direction 5 — Broadside (poster)                                    */
+/* ------------------------------------------------------------------ */
+
+.broadside {
+  --paper: #faf8f1;
+  --ink: #16130e;
+  --accent: #e8440c;
+  --grey: #8d8677;
+  background: var(--paper);
+  color: var(--ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.bs-display {
+  font-family: var(--font-anton);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+}
+
+.bs-mono {
+  font-family: var(--font-plex);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.bs-ticker {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.bs-ticker-track {
+  display: inline-flex;
+  animation: marquee 28s linear infinite;
+  will-change: transform;
+}
+
+.bs-btn {
+  font-family: var(--font-plex);
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 1rem 1.8rem;
+  border: 2px solid var(--ink);
+  transition:
+    background-color 0.12s ease,
+    color 0.12s ease;
+}
+
+.bs-btn-solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.bs-btn-solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.bs-btn-ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.bs-sticker {
+  display: inline-block;
+  font-family: var(--font-plex);
+  font-weight: 600;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border: 2px solid var(--ink);
+  padding: 0.4rem 0.8rem;
+  transform: rotate(-4deg);
+}
+
+.bs-sticker-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--paper);
+}
+
+/* Source theme utilities retained for the gallery. */
+.font-sans { font-family: var(--font-plex); }
+[data-source-html] { --font-sans: var(--font-plex); }
+.font-mono { font-family: var(--font-plex); }
+[data-source-html] { --font-mono: var(--font-plex); }

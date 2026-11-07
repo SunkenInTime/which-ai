@@ -1,0 +1,57 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+[data-source-html] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-source-html] {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+[data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, -6%) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .aurora-blob {
+    animation: none !important;
+  }
+}
+
+/* Source theme utilities retained for the gallery. */
+.font-sans { font-family: var(--font-geist-sans); }
+[data-source-html] { --font-sans: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+[data-source-html] { --font-mono: var(--font-geist-mono); }
