@@ -23,7 +23,7 @@ function Ticker() {
   const row = [...tickerItems, ...tickerItems];
   return (
     <div className="overflow-hidden border-y-[3px] border-black bg-[#FFE600] py-3">
-      <div className="flex w-max animate-[marquee_28s_linear_infinite] items-center gap-6">
+      <div className="flex w-max animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-marquee_28s_linear_infinite] items-center gap-6">
         {[...row, ...row].map((item, i) => (
           <span
             key={i}

@@ -286,21 +286,21 @@ export default function IterationFive() {
           className="aurora-blob absolute -top-40 left-[10%] size-[560px] rounded-full opacity-[0.16] blur-[120px]"
           style={{
             background: `radial-gradient(circle, ${CYAN} 0%, transparent 65%)`,
-            animation: "drift 14s ease-in-out infinite",
+            animation: "gallery-with-taste-skill-swe-2-flash-source-app-globals-drift 14s ease-in-out infinite",
           }}
         />
         <div
           className="aurora-blob absolute right-[5%] top-[30%] size-[480px] rounded-full opacity-[0.12] blur-[120px]"
           style={{
             background: `radial-gradient(circle, ${AMBER} 0%, transparent 65%)`,
-            animation: "drift 18s ease-in-out infinite reverse",
+            animation: "gallery-with-taste-skill-swe-2-flash-source-app-globals-drift 18s ease-in-out infinite reverse",
           }}
         />
         <div
           className="aurora-blob absolute bottom-[10%] left-[35%] size-[420px] rounded-full opacity-[0.08] blur-[120px]"
           style={{
             background: `radial-gradient(circle, ${CYAN} 0%, transparent 65%)`,
-            animation: "drift 22s ease-in-out infinite",
+            animation: "gallery-with-taste-skill-swe-2-flash-source-app-globals-drift 22s ease-in-out infinite",
           }}
         />
       </div>

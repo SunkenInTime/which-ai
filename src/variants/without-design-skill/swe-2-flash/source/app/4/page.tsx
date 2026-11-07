@@ -41,9 +41,9 @@ function StickyWall() {
           strokeDasharray="7 9"
           strokeLinecap="round"
         >
-          <path d="M120 110 C 180 90, 220 140, 260 170" className="animate-[dash-flow_3s_linear_infinite]" />
-          <path d="M290 300 C 250 320, 210 300, 170 330" className="animate-[dash-flow_3s_linear_infinite_0.8s]" />
-          <path d="M140 360 C 190 370, 240 350, 280 300" className="animate-[dash-flow_3s_linear_infinite_1.4s]" />
+          <path d="M120 110 C 180 90, 220 140, 260 170" className="animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-dash-flow_3s_linear_infinite]" />
+          <path d="M290 300 C 250 320, 210 300, 170 330" className="animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-dash-flow_3s_linear_infinite_0.8s]" />
+          <path d="M140 360 C 190 370, 240 350, 280 300" className="animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-dash-flow_3s_linear_infinite_1.4s]" />
         </g>
         <circle cx="120" cy="110" r="4" fill="#C24E2A" />
         <circle cx="260" cy="170" r="4" fill="#C24E2A" />

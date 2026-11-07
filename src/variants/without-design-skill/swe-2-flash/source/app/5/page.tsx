@@ -133,7 +133,7 @@ function LogoStrip() {
       <p className="mb-6 text-center text-[11px] font-medium uppercase tracking-[0.25em] text-white/30">
         Powering second brains at
       </p>
-      <div className="flex w-max animate-[marquee_32s_linear_infinite] items-center gap-16">
+      <div className="flex w-max animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-marquee_32s_linear_infinite] items-center gap-16">
         {[...row, ...row].map((l, i) => (
           <span key={i} className="text-lg font-semibold tracking-tight text-white/35">
             {l}
@@ -309,13 +309,13 @@ export default function IterationFive() {
             </div>
           </div>
           {/* floating chips */}
-          <div className="absolute -left-3 top-20 hidden animate-[float-y_6s_ease-in-out_infinite] rounded-xl border border-white/10 bg-[#12172E]/90 px-4 py-2.5 text-xs font-medium text-white/80 shadow-xl backdrop-blur md:block">
+          <div className="absolute -left-3 top-20 hidden animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-float-y_6s_ease-in-out_infinite] rounded-xl border border-white/10 bg-[#12172E]/90 px-4 py-2.5 text-xs font-medium text-white/80 shadow-xl backdrop-blur md:block">
             <span className="text-[#B8AEFF]">✦</span> Backlinked ×14
           </div>
-          <div className="absolute -right-3 top-1/2 hidden animate-[float-y_7s_ease-in-out_infinite_1.2s] rounded-xl border border-white/10 bg-[#12172E]/90 px-4 py-2.5 text-xs font-medium text-white/80 shadow-xl backdrop-blur md:block">
+          <div className="absolute -right-3 top-1/2 hidden animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-float-y_7s_ease-in-out_infinite_1.2s] rounded-xl border border-white/10 bg-[#12172E]/90 px-4 py-2.5 text-xs font-medium text-white/80 shadow-xl backdrop-blur md:block">
             <span className="text-[#4DE3FF]">⚡</span> ⌘K → jump anywhere
           </div>
-          <div className="absolute -bottom-4 left-10 hidden animate-[float-y_8s_ease-in-out_infinite_0.6s] rounded-xl border border-white/10 bg-[#12172E]/90 px-4 py-2.5 text-xs font-medium text-white/80 shadow-xl backdrop-blur lg:block">
+          <div className="absolute -bottom-4 left-10 hidden animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-float-y_8s_ease-in-out_infinite_0.6s] rounded-xl border border-white/10 bg-[#12172E]/90 px-4 py-2.5 text-xs font-medium text-white/80 shadow-xl backdrop-blur lg:block">
             <span className="text-[#7CFFB2]">✓</span> End-to-end encrypted
           </div>
         </div>

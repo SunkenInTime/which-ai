@@ -26,7 +26,7 @@ function Marquee() {
   const row = [...tickerItems, ...tickerItems];
   return (
     <div className="overflow-hidden border-y border-[#17150F]/15 py-4">
-      <div className="flex w-max animate-[marquee_36s_linear_infinite] items-center gap-8">
+      <div className="flex w-max animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-marquee_36s_linear_infinite] items-center gap-8">
         {[...row, ...row].map((item, i) => (
           <span
             key={i}

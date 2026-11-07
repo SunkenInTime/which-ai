@@ -241,7 +241,7 @@ export default function IterationThree() {
         <section className="overflow-hidden border-y-2 border-[#1d1a14] bg-[#1d1a14] py-4">
           <div
             className="marquee-track flex w-max items-center gap-8 whitespace-nowrap"
-            style={{ animation: "marquee 36s linear infinite" }}
+            style={{ animation: "gallery-with-taste-skill-swe-2-flash-source-app-globals-marquee 36s linear infinite" }}
           >
             {[0, 1].map((copy) => (
               <div key={copy} className="flex items-center gap-8" aria-hidden={copy === 1}>

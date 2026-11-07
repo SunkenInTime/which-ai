@@ -73,7 +73,7 @@ function NetworkGraph() {
             strokeWidth="1"
             strokeOpacity="0.45"
             strokeDasharray="4 6"
-            className="animate-[dash-flow_1.4s_linear_infinite]"
+            className="animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-dash-flow_1.4s_linear_infinite]"
             style={{ animationDelay: `${i * 0.08}s` }}
           />
         );
@@ -86,7 +86,7 @@ function NetworkGraph() {
             r={n.r + 8}
             fill={n.c}
             opacity="0.12"
-            className="animate-[pulse-dot_3s_ease-in-out_infinite]"
+            className="animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-pulse-dot_3s_ease-in-out_infinite]"
             style={{ animationDelay: n.d }}
           />
           <circle cx={n.x} cy={n.y} r={n.r} fill={n.c} />
@@ -113,7 +113,7 @@ function LogoMarquee() {
   const row = [...logos, ...logos];
   return (
     <div className="relative overflow-hidden border-y border-white/[0.07] py-6">
-      <div className="flex w-max animate-[marquee_30s_linear_infinite] items-center gap-14">
+      <div className="flex w-max animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-marquee_30s_linear_infinite] items-center gap-14">
         {[...row, ...row].map((l, i) => (
           <span
             key={i}
@@ -184,9 +184,9 @@ export default function IterationTwo() {
     >
       {/* Ambient glows */}
       <div className="pointer-events-none fixed inset-0">
-        <div className="absolute -top-40 left-1/4 h-[500px] w-[500px] animate-[drift_22s_ease-in-out_infinite] rounded-full bg-[#7C6CFF]/15 blur-[140px]" />
-        <div className="absolute right-0 top-1/3 h-[400px] w-[400px] animate-[drift_26s_ease-in-out_infinite_reverse] rounded-full bg-[#4DE3FF]/10 blur-[140px]" />
-        <div className="absolute bottom-0 left-0 h-[350px] w-[350px] animate-[drift_30s_ease-in-out_infinite] rounded-full bg-[#7CFFB2]/8 blur-[140px]" />
+        <div className="absolute -top-40 left-1/4 h-[500px] w-[500px] animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-drift_22s_ease-in-out_infinite] rounded-full bg-[#7C6CFF]/15 blur-[140px]" />
+        <div className="absolute right-0 top-1/3 h-[400px] w-[400px] animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-drift_26s_ease-in-out_infinite_reverse] rounded-full bg-[#4DE3FF]/10 blur-[140px]" />
+        <div className="absolute bottom-0 left-0 h-[350px] w-[350px] animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-drift_30s_ease-in-out_infinite] rounded-full bg-[#7CFFB2]/8 blur-[140px]" />
       </div>
 
       {/* Nav */}
@@ -266,13 +266,13 @@ export default function IterationTwo() {
             </div>
           </div>
           {/* Floating chips */}
-          <div className="absolute -left-2 top-16 hidden animate-[float-y_6s_ease-in-out_infinite] rounded-xl border border-white/10 bg-[#0B1024]/90 px-4 py-2.5 font-mono text-[11px] text-white/70 shadow-xl backdrop-blur md:block">
+          <div className="absolute -left-2 top-16 hidden animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-float-y_6s_ease-in-out_infinite] rounded-xl border border-white/10 bg-[#0B1024]/90 px-4 py-2.5 font-mono text-[11px] text-white/70 shadow-xl backdrop-blur md:block">
             <span className="text-[#8B7CFF]">⟲</span> 14 backlinks
           </div>
-          <div className="absolute -right-2 top-1/3 hidden animate-[float-y_7s_ease-in-out_infinite_1s] rounded-xl border border-white/10 bg-[#0B1024]/90 px-4 py-2.5 font-mono text-[11px] text-white/70 shadow-xl backdrop-blur md:block">
+          <div className="absolute -right-2 top-1/3 hidden animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-float-y_7s_ease-in-out_infinite_1s] rounded-xl border border-white/10 bg-[#0B1024]/90 px-4 py-2.5 font-mono text-[11px] text-white/70 shadow-xl backdrop-blur md:block">
             <span className="text-[#4DE3FF]">⚡</span> synced 38ms ago
           </div>
-          <div className="absolute bottom-16 left-8 hidden animate-[float-y_8s_ease-in-out_infinite_0.5s] rounded-xl border border-white/10 bg-[#0B1024]/90 px-4 py-2.5 font-mono text-[11px] text-white/70 shadow-xl backdrop-blur lg:block">
+          <div className="absolute bottom-16 left-8 hidden animate-[gallery-without-design-skill-swe-2-flash-source-app-globals-float-y_8s_ease-in-out_infinite_0.5s] rounded-xl border border-white/10 bg-[#0B1024]/90 px-4 py-2.5 font-mono text-[11px] text-white/70 shadow-xl backdrop-blur lg:block">
             <span className="text-[#7CFFB2]">✦</span> cluster: “memory”
           </div>
         </div>
