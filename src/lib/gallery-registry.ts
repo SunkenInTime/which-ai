@@ -102,6 +102,7 @@ import withoutComposer20 from "@/variants/without-design-skill/composer-2.0";
 import withoutComposer25 from "@/variants/without-design-skill/composer-2.5";
 import withoutFable from "@/variants/without-design-skill/fable";
 import withoutFable51 from "@/variants/without-design-skill/fable-5.1";
+import withoutFable52 from "@/variants/without-design-skill/fable-5.2";
 import withoutGemini from "@/variants/without-design-skill/gemini";
 import withoutGemini35Flash from "@/variants/without-design-skill/gemini-3.5-flash";
 import withoutGemini37Flash from "@/variants/without-design-skill/gemini-3.7-flash";
@@ -244,6 +245,7 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "without-design-skill:composer-2.5": withoutComposer25,
   "without-design-skill:fable": withoutFable,
   "without-design-skill:fable-5.1": withoutFable51,
+  "without-design-skill:fable-5.2": withoutFable52,
   "without-design-skill:gemini": withoutGemini,
   "without-design-skill:gemini-3.5-flash": withoutGemini35Flash,
   "without-design-skill:gemini-3.7-flash": withoutGemini37Flash,

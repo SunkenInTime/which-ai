@@ -1,0 +1,260 @@
+/* The water in the hero of /5, and the one field that matters. */
+
+.water {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.drop {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 0;
+  height: 0;
+  animation: linger 26s linear forwards;
+}
+
+.drop[data-mine] {
+  animation: none;
+}
+
+@keyframes linger {
+  0%,
+  78% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.ring {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: clamp(9rem, 17vw, 15rem);
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--moss) 55%, transparent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.06);
+  opacity: 0;
+  animation: ripple 3.4s cubic-bezier(0.2, 0.6, 0.3, 1) forwards;
+}
+
+.ring:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.ring:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes ripple {
+  0% {
+    transform: translate(-50%, -50%) scale(0.06);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0;
+  }
+}
+
+.pebble {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0.8rem;
+  height: 0.6rem;
+  border-radius: 58% 42% 52% 48% / 56% 48% 52% 44%;
+  background: var(--stone);
+  box-shadow: 0 2px 3px rgba(44, 53, 49, 0.18);
+  transform: translate(-50%, -50%) scale(0);
+  animation: land 0.5s cubic-bezier(0.3, 1.5, 0.5, 1) 0.1s forwards;
+}
+
+.drop[data-mine] .pebble {
+  width: 1rem;
+  height: 0.74rem;
+  background: var(--moss);
+}
+
+@keyframes land {
+  to {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+.drop span {
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: max-content;
+  max-width: 11.5rem;
+  transform: translateX(-50%);
+  font-family: var(--hand);
+  font-size: 1.02rem;
+  line-height: 1.35;
+  text-align: center;
+  color: var(--ink2);
+  opacity: 0;
+  animation: surface 1.4s ease 0.25s forwards;
+}
+
+.drop[data-mine] span {
+  color: var(--moss);
+}
+
+@keyframes surface {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -0.5rem);
+  }
+  to {
+    opacity: 0.92;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ---------- the words and the field ---------- */
+
+.center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 62rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: min(100%, 33rem);
+  height: 4.25rem;
+  margin-top: 2.5rem;
+  padding: 0 0.5rem 0 1.6rem;
+  border-radius: 999px;
+  background: var(--bone);
+  border: 1px solid color-mix(in srgb, var(--ink) 10%, transparent);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 24px 44px -26px rgba(44, 53, 49, 0.4),
+    0 2px 6px rgba(44, 53, 49, 0.05);
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.form:focus-within {
+  border-color: color-mix(in srgb, var(--moss) 60%, transparent);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 24px 44px -26px rgba(44, 53, 49, 0.4),
+    0 0 0 5px color-mix(in srgb, var(--moss) 14%, transparent);
+}
+
+.form input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  font-family: var(--hand);
+  font-size: 1.2rem;
+  color: var(--ink);
+}
+
+.form input::placeholder {
+  color: color-mix(in srgb, var(--ink2) 70%, transparent);
+}
+
+.form button {
+  flex: none;
+  height: 3.25rem;
+  padding: 0 1.5rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--moss);
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--bone);
+  cursor: pointer;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.form button:hover {
+  background: var(--moss-deep);
+}
+
+.form button:active {
+  transform: scale(0.97);
+}
+
+.form button:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 3px;
+}
+
+.status {
+  min-height: 1.6em;
+  margin-top: 1.1rem;
+  font-size: 0.95rem;
+  color: var(--ink2);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (max-width: 760px) {
+  .drop span {
+    max-width: 8.5rem;
+    font-size: 0.95rem;
+  }
+  .form {
+    height: 3.9rem;
+    padding-left: 1.25rem;
+  }
+  .form input {
+    font-size: 1.1rem;
+  }
+  .form button {
+    height: 3rem;
+    padding: 0 1.1rem;
+    font-size: 0.95rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drop,
+  .ring,
+  .pebble,
+  .drop span {
+    animation: none;
+  }
+  .ring {
+    display: none;
+  }
+  .pebble {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .drop span {
+    opacity: 0.92;
+  }
+}

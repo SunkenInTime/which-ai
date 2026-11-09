@@ -32,6 +32,11 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "without-design-skill", model: "fable-5.2", iteration: "1" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "2" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "3" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "4" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "5" },
   { group: "with-design-skill", model: "fable-5.2", iteration: "1" },
   { group: "with-design-skill", model: "fable-5.2", iteration: "2" },
   { group: "with-design-skill", model: "fable-5.2", iteration: "3" },

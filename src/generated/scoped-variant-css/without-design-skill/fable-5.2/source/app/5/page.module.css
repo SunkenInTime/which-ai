@@ -1,0 +1,829 @@
+/* ------------------------------------------------------------------
+   /5 — STILLWATER
+   Quiet and humane. Fog, bone, moss, a little clay. Round type,
+   long line-height, and nothing that blinks.
+   ------------------------------------------------------------------ */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]):has(.page) {
+  background: #e9eee8;
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page {
+  --fog: #e9eee8;
+  --mist: #f1f4ef;
+  --bone: #f9f8f3;
+  --ink: #2c3531;
+  --ink2: #58645e;
+  --moss: #3f5a49;
+  --moss-deep: #2f4638;
+  --stone: #7c8881;
+  --clay: #c9a58e;
+  --sand: #e6dfd2;
+  --sans: var(--font-quicksand), ui-rounded, "Nunito", "Avenir Next", system-ui, sans-serif;
+  --hand: var(--font-delius), var(--font-quicksand), ui-rounded, system-ui, sans-serif;
+
+  min-height: 100vh;
+  background: var(--fog);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: 0.005em;
+  overflow-x: clip;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page ::selection {
+  background: color-mix(in srgb, var(--moss) 24%, transparent);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page a:focus-visible {
+  outline: 2px solid var(--moss);
+  outline-offset: 4px;
+  border-radius: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page em {
+  font-family: var(--hand);
+  font-style: normal;
+  color: var(--moss);
+}
+
+/* ---------- nav ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .nav {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem clamp(1.25rem, 4vw, 3rem);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .logoRing {
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 1;
+  opacity: 0.55;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .logoStone {
+  fill: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .nav nav {
+  display: flex;
+  gap: clamp(1.25rem, 2.5vw, 2.25rem);
+  margin-left: auto;
+  font-size: 1rem;
+  color: var(--ink2);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .nav nav a {
+  transition: color 0.25s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .nav nav a:hover {
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .navCta {
+  display: inline-flex;
+  align-items: center;
+  height: 2.75rem;
+  padding: 0 1.3rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--moss) 45%, transparent);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--moss);
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .navCta:hover {
+  background: var(--moss);
+  color: var(--bone);
+}
+
+/* ---------- hero ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: max(100svh, 46rem);
+  padding: 8.5rem 1.5rem 9.5rem;
+  background:
+    repeating-radial-gradient(
+      circle at 50% 47%,
+      transparent 0 5.4rem,
+      color-mix(in srgb, var(--moss) 5%, transparent) 5.4rem calc(5.4rem + 1px)
+    ),
+    radial-gradient(75% 65% at 50% 46%, #f6f8f4 0%, var(--fog) 58%, #dde6df 100%);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .hero h1 {
+  font-size: clamp(3.5rem, 11.5vw, 9.5rem);
+  line-height: 1;
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .lede {
+  max-width: 36rem;
+  margin-top: 1.6rem;
+  font-size: clamp(1.1rem, 0.45vw + 1rem, 1.3rem);
+  line-height: 1.7;
+  color: var(--ink2);
+  text-wrap: balance;
+}
+
+/* ---------- sections ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .section {
+  width: min(100%, 74rem);
+  margin-inline: auto;
+  padding: clamp(5rem, 11vw, 9.5rem) clamp(1.25rem, 4vw, 3rem) 0;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .head {
+  max-width: 44rem;
+  margin: 0 auto clamp(2.5rem, 5vw, 4rem);
+  text-align: center;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin-bottom: 1.3rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .eyebrow::before {
+  content: "";
+  width: 0.7rem;
+  height: 0.52rem;
+  border-radius: 58% 42% 52% 48% / 56% 48% 52% 44%;
+  background: var(--clay);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page h2 {
+  font-size: clamp(2.1rem, 3.6vw + 0.8rem, 3.9rem);
+  line-height: 1.14;
+  font-weight: 300;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+/* ---------- the trouble: loops that settle ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loud {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 30rem);
+  gap: clamp(2.5rem, 6vw, 6rem);
+  align-items: center;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loud > div:first-child > p:not(.eyebrow) {
+  max-width: 31rem;
+  margin-top: 1.4rem;
+  color: var(--ink2);
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops {
+  --k: 1;
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops ul {
+  position: relative;
+  height: 27rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops li {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform: translate(calc(var(--sx) * var(--k) * 1rem), calc(var(--sy) * 1rem)) rotate(calc(var(--sr) * 1deg));
+  transition: transform 1.3s cubic-bezier(0.25, 0.9, 0.25, 1);
+  transition-delay: calc(var(--i) * 70ms);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops li span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.5rem 1.15rem 0.55rem;
+  border-radius: 999px;
+  background: var(--bone);
+  border: 1px solid color-mix(in srgb, var(--ink) 9%, transparent);
+  box-shadow: 0 10px 22px -14px rgba(44, 53, 49, 0.35);
+  font-family: var(--hand);
+  font-size: 1.05rem;
+  line-height: 1.5;
+  white-space: nowrap;
+  color: var(--ink);
+  animation: gallery-without-design-skill-fable-5-2-source-app-5-page-module-hum 5.2s ease-in-out infinite;
+  animation-delay: calc(var(--i) * -0.8s);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops li span::before {
+  content: "";
+  flex: none;
+  width: 0.62rem;
+  height: 0.46rem;
+  border-radius: 58% 42% 52% 48% / 56% 48% 52% 44%;
+  background: var(--clay);
+  transition: background-color 0.8s ease 0.9s;
+}
+
+@keyframes gallery-without-design-skill-fable-5-2-source-app-5-page-module-hum {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(5px, -7px);
+  }
+  70% {
+    transform: translate(-4px, 5px);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops[data-in] li {
+  transform: translate(0, calc(var(--i) * 3.35rem)) rotate(0deg);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops[data-in] li span {
+  animation: none;
+  box-shadow: 0 4px 10px -8px rgba(44, 53, 49, 0.25);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops[data-in] li span::before {
+  background: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loopsCaption {
+  display: grid;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--ink2);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loopsCaption span {
+  grid-area: 1 / 1;
+  transition: opacity 0.7s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loopsCaption span:last-child {
+  opacity: 0;
+  color: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops[data-in] .loopsCaption span:first-child {
+  opacity: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops[data-in] .loopsCaption span:last-child {
+  opacity: 1;
+  transition-delay: 1.2s;
+}
+
+/* ---------- gestures ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .gestures {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .gestures article {
+  padding: 1rem 1rem 2rem;
+  border-radius: 2.25rem;
+  background: var(--bone);
+  border: 1px solid color-mix(in srgb, var(--ink) 6%, transparent);
+  box-shadow: 0 30px 50px -40px rgba(44, 53, 49, 0.35);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .gestures svg {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1.4rem;
+  border-radius: 1.5rem;
+  background: radial-gradient(80% 90% at 50% 60%, #f6f8f4, var(--fog));
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .gestures h3 {
+  padding-inline: 1rem;
+  font-size: 1.75rem;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: -0.015em;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .gestures p {
+  margin-top: 0.5rem;
+  padding-inline: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ink2);
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .rip {
+  fill: none;
+  stroke: var(--moss);
+  stroke-width: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .trail,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) 
+.page svg .lift,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) 
+.page svg .thread {
+  fill: none;
+  stroke: var(--stone);
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .trail {
+  stroke-dasharray: 1 6;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .thread {
+  stroke: var(--clay);
+  stroke-dasharray: 2 5;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .lift {
+  stroke: var(--moss);
+  opacity: 0.7;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .shade {
+  fill: rgba(44, 53, 49, 0.1);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .stoneA {
+  fill: var(--stone);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .stoneB {
+  fill: var(--clay);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .stoneC {
+  fill: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page svg .stoneD {
+  fill: #9aa49e;
+}
+
+/* ---------- quiet ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .quiet {
+  margin-top: clamp(5rem, 11vw, 9.5rem);
+  padding: clamp(5rem, 10vw, 8.5rem) clamp(1.25rem, 4vw, 3rem);
+  background: var(--moss-deep);
+  color: var(--bone);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .quietInner {
+  width: min(100%, 58rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .quiet .eyebrow {
+  color: #b9cdbf;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.2em 1.1em;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.5rem, 2.9vw, 2.5rem);
+  line-height: 1.3;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: color-mix(in srgb, var(--bone) 52%, transparent);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck li {
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck li::after {
+  content: "";
+  position: absolute;
+  left: -0.18em;
+  right: -0.18em;
+  top: 56%;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--clay);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.7s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck li:nth-child(2)::after {
+  transition-delay: 0.18s;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck li:nth-child(3)::after {
+  transition-delay: 0.36s;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck li:nth-child(4)::after {
+  transition-delay: 0.54s;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .struck li:nth-child(5)::after {
+  transition-delay: 0.72s;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .quietInner[data-in] .struck li::after {
+  transform: scaleX(1);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .quiet h2 {
+  max-width: 26ch;
+  margin-inline: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .quiet h2 + p {
+  max-width: 36rem;
+  margin: 1.6rem auto 0;
+  color: color-mix(in srgb, var(--bone) 74%, transparent);
+  text-wrap: pretty;
+}
+
+/* ---------- a day ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0.75rem;
+  height: 1px;
+  background: color-mix(in srgb, var(--ink) 16%, transparent);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day li {
+  position: relative;
+  padding-top: 2.6rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day i {
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 1.3rem;
+  height: 0.95rem;
+  border-radius: 58% 42% 52% 48% / 56% 48% 52% 44%;
+  background: var(--stone);
+  box-shadow: 0 0 0 6px var(--fog);
+  transform: translateY(-50%);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day li:nth-child(2) i {
+  width: 1rem;
+  height: 0.75rem;
+  background: var(--clay);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day li:nth-child(3) i {
+  width: 1.5rem;
+  height: 1.05rem;
+  background: #9aa49e;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day li:nth-child(4) i {
+  width: 1.15rem;
+  height: 0.85rem;
+  background: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day time {
+  display: block;
+  font-family: var(--hand);
+  font-size: 1.5rem;
+  line-height: 1.2;
+  color: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day h3 {
+  margin-top: 0.15rem;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day p {
+  margin-top: 0.4rem;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  color: var(--ink2);
+  text-wrap: pretty;
+}
+
+/* ---------- voice ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .voice {
+  padding: clamp(6rem, 13vw, 11rem) 1.5rem 0;
+  text-align: center;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .voice blockquote p {
+  max-width: 21ch;
+  margin-inline: auto;
+  font-size: clamp(1.9rem, 3.6vw + 0.6rem, 3.6rem);
+  line-height: 1.26;
+  font-weight: 300;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .voice footer {
+  margin-top: 1.75rem;
+  font-size: 1rem;
+  color: var(--ink2);
+}
+
+/* ---------- price ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: min(100%, 54rem);
+  margin-inline: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans article {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.75rem, 3vw, 2.5rem);
+  border-radius: 2.25rem;
+  background: var(--bone);
+  border: 1px solid color-mix(in srgb, var(--ink) 6%, transparent);
+  box-shadow: 0 30px 50px -40px rgba(44, 53, 49, 0.35);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans article[data-warm] {
+  background: linear-gradient(180deg, #f4efe6, var(--bone) 70%);
+  border-color: color-mix(in srgb, var(--clay) 60%, transparent);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .amount {
+  margin: 0.6rem 0 0.75rem;
+  font-size: clamp(3rem, 5vw, 4.25rem);
+  line-height: 1.05;
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .amount span {
+  font-size: 1.1rem;
+  letter-spacing: 0;
+  color: var(--ink2);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans article > p:not(.amount) {
+  margin-bottom: 2rem;
+  color: var(--ink2);
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .solid,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) 
+.soft {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.5rem;
+  padding: 0 1.9rem;
+  border-radius: 999px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .solid {
+  background: var(--moss);
+  color: var(--bone);
+  box-shadow: 0 18px 30px -18px rgba(47, 70, 56, 0.7);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .solid:hover {
+  background: var(--moss-deep);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .soft {
+  border: 1px solid color-mix(in srgb, var(--moss) 45%, transparent);
+  color: var(--moss);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .soft:hover {
+  background: var(--moss);
+  color: var(--bone);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .solid:active,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) 
+.soft:active {
+  transform: scale(0.98);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans a {
+  margin-top: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .fine {
+  max-width: 34rem;
+  margin: 2rem auto 0;
+  font-size: 0.98rem;
+  text-align: center;
+  color: var(--ink2);
+  text-wrap: balance;
+}
+
+/* ---------- cta ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .cta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: clamp(5rem, 11vw, 9.5rem);
+  padding: clamp(4rem, 8vw, 6.5rem) 1.5rem clamp(4.5rem, 9vw, 7.5rem);
+  background: linear-gradient(180deg, var(--fog), #dbe5dd);
+  text-align: center;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .cairn {
+  width: 11rem;
+  height: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .cta h2 {
+  margin: 1.75rem 0 2.25rem;
+  font-size: clamp(2.6rem, 6vw, 5.5rem);
+  letter-spacing: -0.035em;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .cta p {
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink2);
+}
+
+/* ---------- footer ---------- */
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem 2.5rem;
+  padding: 2.25rem clamp(1.25rem, 4vw, 3rem) 6.5rem;
+  background: #dbe5dd;
+  font-size: 0.98rem;
+  color: var(--ink2);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.75rem;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .footer nav a:hover {
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .footer .logo {
+  color: var(--ink);
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 960px) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .nav nav {
+    display: none;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .navCta {
+    margin-left: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loud {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops {
+    --k: 0.62;
+    width: min(100%, 30rem);
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .gestures {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+    width: min(100%, 30rem);
+    margin-inline: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day::before {
+    left: 0.65rem;
+    right: auto;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    height: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day li {
+    padding: 0 0 2.25rem 3rem;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .day i {
+    left: 0.65rem;
+    top: 1rem;
+    transform: translate(-50%, -50%);
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .plans {
+    grid-template-columns: minmax(0, 1fr);
+    width: min(100%, 30rem);
+  }
+}
+
+@media (max-width: 560px) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .page {
+    font-size: 1.05rem;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+    padding: 8rem 1.25rem 10rem;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops {
+    --k: 0.22;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops li span {
+    font-size: 0.98rem;
+    padding-inline: 0.95rem;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]):has(.page) {
+    scroll-behavior: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops li,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) 
+  .struck li::after,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) 
+  .loopsCaption span {
+    transition: none;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="fable-5.2"]) .loops li span {
+    animation: none;
+  }
+}

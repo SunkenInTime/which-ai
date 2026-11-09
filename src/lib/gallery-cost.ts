@@ -60,6 +60,7 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "without-design-skill/composer-2.5": 0.74,
   "without-design-skill/fable": 8.96,
   "without-design-skill/fable-5.1": 4.95,
+  "without-design-skill/fable-5.2": 41.13,
   "without-design-skill/gemini": 0.34,
   "without-design-skill/gemini-3.5-flash": 1.15,
   "without-design-skill/grok-4.5": 3.65,

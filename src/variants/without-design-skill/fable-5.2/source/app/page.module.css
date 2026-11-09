@@ -1,0 +1,232 @@
+/* The overview: deliberately plain, so the five directions do the talking. */
+
+html:has(.page) {
+  background: #f3f3f0;
+}
+
+.page {
+  width: min(100%, 68rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1.25rem, 4vw, 2.5rem) 8rem;
+  color: #111;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.5;
+}
+
+.kicker {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #74746e;
+}
+
+.head h1 {
+  margin-top: 0.9rem;
+  font-size: clamp(2.25rem, 4.5vw + 0.75rem, 4rem);
+  line-height: 1.02;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+}
+
+.head h1 span {
+  font-weight: 400;
+  color: #8a8a84;
+}
+
+.intro {
+  max-width: 40rem;
+  margin-top: 1.25rem;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: #44443f;
+  text-wrap: pretty;
+}
+
+.hint {
+  margin-top: 1.1rem;
+  font-size: 0.9rem;
+  color: #74746e;
+}
+
+.hint kbd {
+  display: inline-block;
+  min-width: 1.5rem;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid #d5d5cf;
+  border-bottom-width: 2px;
+  border-radius: 5px;
+  background: #fff;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.78rem;
+  text-align: center;
+  color: #333;
+}
+
+.list {
+  margin-top: clamp(2.25rem, 5vw, 3.5rem);
+  border-top: 1px solid #d9d9d3;
+}
+
+.list li {
+  border-bottom: 1px solid #d9d9d3;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 15rem minmax(0, 1fr) 13.5rem;
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  align-items: center;
+  padding: 1.25rem 0.75rem;
+  margin: 0.25rem -0.75rem;
+  border-radius: 14px;
+  transition: background-color 0.18s ease;
+}
+
+.row:hover {
+  background: #fff;
+}
+
+.row:focus-visible {
+  outline: 2px solid #111;
+  outline-offset: 2px;
+}
+
+.thumb,
+.body > span,
+.type {
+  display: block;
+}
+
+.thumb {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow:
+    0 0 0 1px rgba(17, 17, 17, 0.08),
+    0 14px 24px -18px rgba(17, 17, 17, 0.45);
+  transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.thumb svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.row:hover .thumb {
+  transform: translateY(-3px) scale(1.015);
+}
+
+.num {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.8rem;
+  color: #8a8a84;
+}
+
+.name {
+  margin-top: 0.1rem;
+  font-size: 1.7rem;
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.tagline {
+  margin-top: 0.3rem;
+  font-size: 1.02rem;
+  font-weight: 500;
+  color: #111;
+}
+
+.rationale {
+  max-width: 34rem;
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #5c5c56;
+  text-wrap: pretty;
+}
+
+.meta {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 0.25rem 0;
+}
+
+.swatches {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.swatches i {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.12);
+}
+
+.type {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: #74746e;
+}
+
+.open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: auto;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.open svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.2s ease;
+}
+
+.row:hover .open svg {
+  transform: translateX(3px);
+}
+
+@media (max-width: 860px) {
+  .row {
+    grid-template-columns: 9.5rem minmax(0, 1fr);
+    align-items: start;
+  }
+  .meta {
+    grid-column: 2;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem 1rem;
+    padding: 0;
+  }
+  .open {
+    margin-top: 0;
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 520px) {
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .meta {
+    grid-column: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .thumb,
+  .open svg {
+    transition: none;
+  }
+}

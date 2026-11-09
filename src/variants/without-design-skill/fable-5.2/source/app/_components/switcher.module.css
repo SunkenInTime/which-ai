@@ -1,0 +1,203 @@
+/* A neutral "tool layer" pill: dark glass with a light hairline so it reads
+   on every one of the five palettes without belonging to any of them. */
+
+.switcher {
+  position: fixed;
+  /* Centred with auto margins rather than left: 50%, which would cap the
+     pill at half the viewport and squeeze the label on phones. */
+  left: 0;
+  right: 0;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  width: max-content;
+  max-width: calc(100vw - 12px);
+  margin-inline: auto;
+  z-index: 2147483000;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  height: 44px;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: rgba(18, 18, 20, 0.88);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.35),
+    0 10px 30px -8px rgba(0, 0, 0, 0.45),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: 0;
+  font-feature-settings: "tnum";
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.home,
+.arrow,
+.item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 999px;
+  color: inherit;
+  text-decoration: none;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease;
+}
+
+.home svg {
+  fill: currentColor;
+}
+
+.arrow svg {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.home:hover,
+.arrow:hover,
+.item:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.home[aria-current="page"] {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.home:focus-visible,
+.arrow:focus-visible,
+.item:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.rule {
+  width: 1px;
+  height: 18px;
+  margin: 0 4px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.item {
+  padding: 0 11px;
+  font-weight: 500;
+}
+
+.item[data-active] {
+  padding: 0 14px 0 12px;
+  background: #fff;
+  color: #111;
+  font-weight: 600;
+}
+
+.item[data-active]:hover {
+  background: #fff;
+  color: #111;
+}
+
+.num {
+  display: inline-block;
+  min-width: 1ch;
+  text-align: center;
+}
+
+/* The active item opens up to show its name. */
+.name {
+  display: grid;
+  grid-template-columns: 0fr;
+  transition: grid-template-columns 0.28s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.name > span {
+  overflow: hidden;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.item[data-active] .name {
+  grid-template-columns: 1fr;
+}
+
+.item[data-active] .name > span {
+  padding-left: 7px;
+  opacity: 1;
+}
+
+/* Tooltips */
+.tip {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translate(-50%, 4px);
+  padding: 6px 9px;
+  border-radius: 7px;
+  background: rgba(18, 18, 20, 0.94);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
+}
+
+.home:hover .tip,
+.home:focus-visible .tip,
+.item:hover .tip,
+.item:focus-visible .tip {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (max-width: 420px) {
+  .switcher {
+    height: 42px;
+    padding: 0 4px;
+  }
+  .item {
+    padding: 0 9px;
+  }
+  .rule {
+    margin: 0 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .name,
+  .name > span,
+  .tip {
+    transition: none;
+  }
+}
+
+@media print {
+  .switcher {
+    display: none;
+  }
+}
