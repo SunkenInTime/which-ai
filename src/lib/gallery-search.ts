@@ -28,6 +28,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "mistral-large-4": ["le chonk", "large 4", "mistralai/mistral-large-4-0"],
   fable: ["fable 5", "fable5", "mythos"],
   "fable-5.1": ["fable5.1", "mythos", "mythos 5.1"],
+  "fable-5.2": ["fable5.2", "mythos", "mythos 5.2"],
   "opus-5": ["claude opus 5", "opus5"],
   "sonnet-5": ["claude sonnet 5", "sonnet5"],
   "gpt-5.5-low": ["gpt5.5", "gpt 5.5", "low reasoning", "5.5 low"],

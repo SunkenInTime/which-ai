@@ -10,6 +10,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "mimo-x-pro-preview": { familyOrder: 8, tier: 1 },
   fable: { familyOrder: 0, tier: 50 },
   "fable-5.1": { familyOrder: 0, tier: 51 },
+  "fable-5.2": { familyOrder: 0, tier: 52 },
   "opus-4.6": { familyOrder: 1, tier: 46 },
   "opus-4.7": { familyOrder: 1, tier: 47 },
   "opus-4.8": { familyOrder: 1, tier: 48 },

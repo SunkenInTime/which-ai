@@ -55,6 +55,7 @@ const MODEL_GALLERY_GENERATION = {
   "sonnet-5": { family: "anthropic-sonnet", tier: 50 },
   fable: { family: "anthropic-fable", tier: 50 },
   "fable-5.1": { family: "anthropic-fable", tier: 51 },
+  "fable-5.2": { family: "anthropic-fable", tier: 52 },
   "glm-5-turbo": { family: "glm", tier: 1 },
   "glm-5.1": { family: "glm", tier: 2 },
   "glm-5.2": { family: "glm", tier: 3 },

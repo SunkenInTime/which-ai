@@ -32,6 +32,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   "composer-2.5": { slug: "cursor", label: "Cursor" },
   fable: { slug: "anthropic", label: "Anthropic" },
   "fable-5.1": { slug: "anthropic", label: "Anthropic" },
+  "fable-5.2": { slug: "anthropic", label: "Anthropic" },
   gemini: { slug: "google", label: "Google" },
   "gemini-3.5-flash": { slug: "google", label: "Google" },
   "gemini-3.7-flash": { slug: "google", label: "Google" },
