@@ -540,8 +540,8 @@ test("gallery shell background stays consistent after client navigation into a v
 
   expect(initialShellStyles.isDark).toBe(true);
 
-  await page.locator("a[href='/without-design-skill/fable-5.1/1']").first().click();
-  await expect(page).toHaveURL("/without-design-skill/fable-5.1/1");
+  await page.locator("a[href='/without-design-skill/fable-5.2/1']").first().click();
+  await expect(page).toHaveURL("/without-design-skill/fable-5.2/1");
   await page.getByRole("link", { name: /Back to Which AI Made This/ }).click();
   await expect(page).toHaveURL("/");
 
