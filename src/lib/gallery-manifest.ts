@@ -594,6 +594,17 @@ export const galleryManifest: GalleryEntry[] = [
   {
     group: "with-design-skill",
     groupLabel: "With Design Skill",
+    model: "fable-5.2",
+    modelLabel: "Fable 5.2",
+    sourceDir: "fable-5-2/frontend-design",
+    sourceAppType: "next",
+    defaultIteration: "1",
+    summary: "Five Fable 5.2 design-skill landing generations rendered without the source app's local switcher.",
+    iterations: iterations(["1", "2", "3", "4", "5"], "with-design-skill", "fable-5.2"),
+  },
+  {
+    group: "with-design-skill",
+    groupLabel: "With Design Skill",
     model: "fable-5.1",
     modelLabel: "Fable 5.1",
     sourceDir: "fable-5-1/frontend-design",

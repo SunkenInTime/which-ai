@@ -60,6 +60,7 @@ const entries = [
   { group: "with-design-skill", model: "composer-2.5", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "fable", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "fable-5.1", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-design-skill", model: "fable-5.2", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "gemini", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "gemini-3.5-flash", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "grok-4.5", iterations: ["1", "2", "3", "4", "5"] },

@@ -1,0 +1,38 @@
+@import "tailwindcss";
+
+:root {
+  color-scheme: light;
+}
+
+html {
+  background: #ffffff;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Each iteration owns its page colour, so overscroll matches the design. */
+html:has([data-iteration="1"]) {
+  background: #1d5646;
+}
+html:has([data-iteration="2"]) {
+  background: #e2a32e;
+}
+html:has([data-iteration="3"]) {
+  background: #ffffff;
+}
+html:has([data-iteration="4"]) {
+  background: #1a36c4;
+}
+html:has([data-iteration="5"]) {
+  background: #f4a3c0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}

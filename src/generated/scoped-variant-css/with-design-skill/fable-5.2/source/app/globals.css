@@ -1,0 +1,36 @@
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) {
+  color-scheme: light;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) {
+  background: #ffffff;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* Each iteration owns its page colour, so overscroll matches the design. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]):has([data-iteration="1"]) {
+  background: #1d5646;
+}
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]):has([data-iteration="2"]) {
+  background: #e2a32e;
+}
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]):has([data-iteration="3"]) {
+  background: #ffffff;
+}
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]):has([data-iteration="4"]) {
+  background: #1a36c4;
+}
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]):has([data-iteration="5"]) {
+  background: #f4a3c0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) {
+    scroll-behavior: smooth;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) {
+  margin: 0;
+  min-height: 100vh;
+}

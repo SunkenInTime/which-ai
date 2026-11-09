@@ -42,6 +42,7 @@ const ENTRY_COST_USD: Partial<Record<GalleryEntryKey, number>> = {
   "with-design-skill/composer-2.5": 3.07,
   "with-design-skill/fable": 22.35,
   "with-design-skill/fable-5.1": 12.29,
+  "with-design-skill/fable-5.2": 20.52,
   "with-design-skill/gemini": 0.44,
   "with-design-skill/gemini-3.5-flash": 0.64,
   "with-design-skill/grok-4.5": 2.7,

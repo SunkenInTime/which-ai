@@ -1,0 +1,467 @@
+/* Design 4: The page is a note.
+   One ink, one highlighter. The landing page runs as the app: notes open
+   beside each other and slide under their neighbours. */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .app {
+  --blue: #1a36c4;
+  --blue-deep: #10248f;
+  --yellow: #fff04a;
+  --pale: #cbd4ff;
+  --rule: rgba(255, 255, 255, 0.36);
+  --spine: 48px;
+
+  min-height: 100dvh;
+  background: var(--blue);
+  color: #fff;
+  font-family: var(--font-note), Georgia, "Times New Roman", serif;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .app :focus-visible {
+  outline: 2.5px solid var(--yellow);
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- bar ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+  padding: 0 20px;
+  border-bottom: 1px solid var(--rule);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wordmark {
+  font-size: 27px;
+  font-style: italic;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .barButton,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.cta,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.captureButton {
+  display: inline-block;
+  padding: 9px 16px 8px;
+  background: var(--yellow);
+  color: var(--blue-deep);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  border-radius: 4px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .barButton:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.cta:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.captureButton:hover {
+  background: #fff;
+}
+
+/* ---------- panes ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane {
+  position: relative;
+  background: var(--blue);
+  border-top: 1px solid var(--rule);
+  scroll-margin-top: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane:first-child {
+  border-top: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .paneInner {
+  padding: 26px 20px 44px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane:last-of-type .paneInner {
+  padding-bottom: 104px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .spine,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.ghost {
+  display: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .paneTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  min-height: 26px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .meta {
+  color: var(--pale);
+  font-size: 15px;
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .close {
+  color: var(--pale);
+  font-size: 15px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .close:hover {
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .title {
+  max-width: 14em;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.018em;
+  outline: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane:first-child .title {
+  font-size: clamp(40px, 4.5vw, 64px);
+  line-height: 1.02;
+  letter-spacing: -0.028em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .p {
+  max-width: 34em;
+  margin-top: 0.85em;
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane:first-child .p {
+  font-size: 20px;
+  line-height: 1.55;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .title + .p {
+  margin-top: 1.1em;
+}
+
+/* a link is a stroke of highlighter */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .link {
+  padding: 0 0.24em;
+  background: linear-gradient(transparent 10%, var(--yellow) 10%, var(--yellow) 90%, transparent 90%);
+  color: var(--blue-deep);
+  font-weight: 500;
+  border-radius: 3px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .link:hover {
+  background: linear-gradient(transparent 10%, #fff 10%, #fff 90%, transparent 90%);
+}
+
+/* the note it leads to is already open beside this one */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .link[data-open] {
+  background: linear-gradient(transparent 86%, var(--yellow) 86%, var(--yellow) 93%, transparent 93%);
+  color: var(--yellow);
+}
+
+/* a link Mull proposes but you have not accepted */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .suggest {
+  color: var(--yellow);
+  text-decoration: underline dashed;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .suggest:hover,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.backlink:hover {
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 18px;
+  margin-top: 1.6em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cta {
+  padding: 13px 22px 12px;
+  font-size: 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .aside {
+  color: var(--pale);
+  font-size: 16px;
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .linkedFrom {
+  margin-top: 44px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .linkedFrom h3 {
+  color: var(--pale);
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .linkedFrom ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 18px;
+  margin-top: 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .backlink {
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+/* ---------- blocks inside notes ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .qa {
+  max-width: 34em;
+  margin-top: 1.3em;
+  padding: 16px 20px 18px;
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .q {
+  font-size: 20px;
+  font-style: italic;
+  line-height: 1.35;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .a {
+  margin-top: 0.6em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .source {
+  max-width: 34em;
+  margin-top: 0.9em;
+  padding: 16px 18px;
+  overflow-x: auto;
+  background: var(--blue-deep);
+  color: var(--pale);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  border-radius: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .platforms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 1.4em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .quiet {
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 5px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .quiet:hover {
+  color: var(--yellow);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .entries {
+  display: grid;
+  gap: 14px;
+  margin-top: 1.4em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .entry {
+  display: grid;
+  grid-template-columns: 50px minmax(0, 1fr);
+  column-gap: 10px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .entry time {
+  padding-top: 0.22em;
+  color: var(--pale);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .related {
+  margin-top: 1px;
+  color: var(--pale);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .captureForm {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  margin-top: 22px;
+  padding-left: 60px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .captureInput {
+  flex: 1;
+  min-width: 0;
+  padding: 6px 0 5px;
+  background: transparent;
+  color: #fff;
+  font: inherit;
+  border: 0;
+  border-bottom: 2px solid #fff;
+  border-radius: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .captureInput::placeholder {
+  color: var(--pale);
+  font-style: italic;
+  opacity: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .app .captureInput:focus-visible {
+  outline: none;
+  border-bottom-color: var(--yellow);
+  box-shadow: 0 2px 0 var(--yellow);
+}
+
+/* ---------- motion that answers an action ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane[data-new] {
+    animation: gallery-with-design-skill-fable-5-2-source-app-4-page-module-slideIn 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane[data-flash] {
+    animation: gallery-with-design-skill-fable-5-2-source-app-4-page-module-flash 0.7s ease-out;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .entry[data-mine] {
+    animation: gallery-with-design-skill-fable-5-2-source-app-4-page-module-land 0.3s ease-out;
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-4-page-module-slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(36px);
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-4-page-module-flash {
+  25% {
+    background: var(--blue-deep);
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-4-page-module-land {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ---------- wide screens: notes side by side, sliding under each other ---------- */
+
+@media (min-width: 860px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .bar {
+    padding: 0 28px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .panes {
+    display: flex;
+    height: calc(100dvh - 61px);
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-color: var(--pale) transparent;
+    scrollbar-width: thin;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane {
+    position: sticky;
+    left: calc(var(--i) * var(--spine));
+    flex: none;
+    width: clamp(380px, 41vw, 590px);
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-color: var(--pale) transparent;
+    scrollbar-width: thin;
+    border-top: 0;
+    border-left: 1px solid var(--rule);
+    box-shadow: -22px 0 34px -22px rgba(5, 12, 70, 0.7);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane:first-child {
+    width: clamp(420px, 46vw, 670px);
+    border-left: 0;
+    box-shadow: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .paneInner {
+    padding: 34px 44px 120px;
+    transition: opacity 0.15s;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane:first-child .paneInner {
+    padding: 44px 56px 120px 28px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane[data-covered] .paneInner {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .spine {
+    position: absolute;
+    inset: 0 auto 0 0;
+    z-index: 1;
+    display: block;
+    width: var(--spine);
+    padding: 26px 0;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: var(--spine);
+    text-align: left;
+    white-space: nowrap;
+    writing-mode: vertical-lr;
+    opacity: 0;
+    pointer-events: none;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pane[data-covered] .spine {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .spine:hover {
+    color: var(--yellow);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .ghost {
+    flex: 1 0 340px;
+    display: block;
+    padding: 38px 28px;
+    border-left: 1px dashed var(--rule);
+    color: var(--pale);
+    font-size: 16px;
+    font-style: italic;
+  }
+}

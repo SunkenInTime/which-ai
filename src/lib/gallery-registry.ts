@@ -51,6 +51,7 @@ import withComposer20 from "@/variants/with-design-skill/composer-2.0";
 import withComposer25 from "@/variants/with-design-skill/composer-2.5";
 import withFable from "@/variants/with-design-skill/fable";
 import withFable51 from "@/variants/with-design-skill/fable-5.1";
+import withFable52 from "@/variants/with-design-skill/fable-5.2";
 import withGemini from "@/variants/with-design-skill/gemini";
 import withGemini35Flash from "@/variants/with-design-skill/gemini-3.5-flash";
 import withGemini37Flash from "@/variants/with-design-skill/gemini-3.7-flash";
@@ -190,6 +191,7 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-design-skill:composer-2.5": withComposer25,
   "with-design-skill:fable": withFable,
   "with-design-skill:fable-5.1": withFable51,
+  "with-design-skill:fable-5.2": withFable52,
   "with-design-skill:gemini": withGemini,
   "with-design-skill:gemini-3.5-flash": withGemini35Flash,
   "with-design-skill:gemini-3.7-flash": withGemini37Flash,

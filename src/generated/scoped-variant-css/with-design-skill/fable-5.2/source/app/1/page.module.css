@@ -1,0 +1,600 @@
+/* Design 1: Slip box.
+   Everything typed sits on a 32px ruled grid, the way it would on an index card. */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .desk {
+  --green: #1d5646;
+  --green-deep: #143d32;
+  --card: #fdfdfa;
+  --yellow: #f6e16a;
+  --manila: #e5c46c;
+  --manila-deep: #cfa94a;
+  --red: #d63a2c;
+  --red-ink: #b92c1f;
+  --rule: #a9c6e8;
+  --stamp: #3847a5;
+  --ink: #000;
+  --row: 32px;
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--green);
+  color: #fff;
+  font-family: var(--font-typed), "Courier New", Courier, monospace;
+  font-size: 17px;
+  line-height: var(--row);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .desk a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .card a:focus-visible,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.tab:focus-visible {
+  outline-color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* ---------- top ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 0 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wordmark {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .topButton {
+  padding: 0 16px;
+  background: var(--card);
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 40px;
+  border-radius: 2px;
+  box-shadow: 4px 5px 0 rgba(0, 0, 0, 0.25);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .topButton:hover {
+  background: var(--yellow);
+}
+
+/* ---------- cards ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .card {
+  position: relative;
+  z-index: 1;
+  background: var(--card);
+  color: var(--ink);
+  border-radius: 3px;
+  box-shadow: 7px 9px 0 rgba(0, 0, 0, 0.24);
+  rotate: var(--tilt, 0deg);
+  scroll-margin-top: 48px;
+}
+
+/* the hole the drawer rod goes through */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .card::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 20px;
+  width: 24px;
+  height: 24px;
+  margin-left: -12px;
+  border-radius: 50%;
+  background: var(--green-deep);
+  box-shadow: inset 3px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardHead {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+  height: calc(var(--row) * 2);
+  padding: 0 20px 7px;
+  border-bottom: 2px solid var(--red);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .no {
+  color: var(--red-ink);
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardTitle {
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardHead .no {
+  font-size: 22px;
+}
+
+/* 5px of air under the red rule; the blue rules are offset to match */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardBody {
+  padding: 5px 20px calc(var(--row) * 2 - 5px);
+  background-image: linear-gradient(var(--rule) 1px, transparent 1px);
+  background-size: 100% var(--row);
+  background-position: 0 31px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardBody p {
+  text-wrap: pretty;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardBody p + p,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.cardBody p + .qa,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.cardBody p + .listing,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.cardBody p + .platforms {
+  margin-top: var(--row);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .refs {
+  margin-top: var(--row);
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .refs a {
+  color: var(--red-ink);
+  font-style: normal;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .refs a:hover {
+  background: var(--yellow);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  /* following a cross-reference pulls that card out of the pile */
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .card:target {
+    animation: gallery-with-design-skill-fable-5-2-source-app-1-page-module-pull 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-1-page-module-pull {
+  35% {
+    translate: 0 -16px;
+    box-shadow: 14px 24px 0 rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ---------- hero ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .heroStack {
+  position: relative;
+}
+
+/* the manila guide card that the tabs belong to */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .heroStack::before {
+  content: "";
+  position: absolute;
+  inset: 34px -8px 18px 8px;
+  background: var(--manila);
+  border-radius: 3px;
+  rotate: 0.9deg;
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .divider {
+  position: relative;
+  display: flex;
+  gap: 5px;
+  padding-left: 14px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .tab {
+  margin-bottom: -6px;
+  padding: 8px 12px 14px;
+  background: var(--manila);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 20px;
+  border-radius: 7px 7px 0 0;
+  box-shadow: inset 0 -8px 0 var(--manila-deep);
+  transition: translate 0.12s ease-out;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .tab:hover {
+  translate: 0 -4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .heroTitle {
+  position: relative;
+  top: calc(19px - 0.2em);
+  font-size: clamp(34px, 8.2vw, 72px);
+  font-weight: 700;
+  line-height: calc(var(--row) * 2);
+  letter-spacing: -0.04em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .lede {
+  max-width: 61ch;
+  margin-top: var(--row);
+  font-size: 18px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 20px;
+  margin-top: var(--row);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .aside {
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .button,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.buttonQuiet {
+  display: inline-block;
+  height: 48px;
+  margin: 8px 0;
+  padding: 0 20px;
+  font-weight: 700;
+  line-height: 48px;
+  border-radius: 2px;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .button {
+  background: var(--ink);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .button:hover {
+  background: var(--red-ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .buttonQuiet {
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: inset 0 0 0 2px var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .buttonQuiet:hover {
+  background: var(--yellow);
+}
+
+/* ---------- small cards ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slip {
+  --row: 24px;
+  position: relative;
+  width: min(300px, 82vw);
+  background: var(--card);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: var(--row);
+  border-radius: 2px;
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.24);
+  rotate: var(--tilt, 0deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipYellow {
+  background: var(--yellow);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipHead {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 36px;
+  padding: 0 14px 4px;
+  border-bottom: 1.5px solid var(--red);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipTitle {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipDate {
+  margin-left: auto;
+  color: var(--stamp);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipBody {
+  padding: 3px 14px calc(var(--row) - 3px);
+  background-image: linear-gradient(var(--rule) 1px, transparent 1px);
+  background-size: 100% var(--row);
+  background-position: 0 23px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipYellow .slipBody {
+  background-image: linear-gradient(#9fb6cf 1px, transparent 1px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .slipRefs {
+  color: var(--red-ink);
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fan {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: -24px;
+  padding-right: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanB {
+  margin-top: -14px;
+  margin-right: 28px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanC {
+  margin-top: -12px;
+}
+
+/* ---------- pairs of cards ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pair {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 56px;
+  margin-top: 56px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+}
+
+/* small cards hang off the bottom edge, over the two empty rows */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pinned {
+  position: relative;
+  z-index: 2;
+  justify-self: end;
+  margin-top: -44px;
+  margin-right: 10px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pinnedPair {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pinnedPair .slip {
+  width: min(280px, 80vw);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pairSecond {
+  margin-top: 22px;
+  margin-left: -36px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .last {
+  margin-top: 72px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .dateSlip {
+  width: 196px;
+  padding: 10px 16px 18px;
+  background: var(--card);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 24px;
+  border-radius: 2px;
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.24);
+  rotate: var(--tilt, 0deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .dateSlipHead {
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--ink);
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .stamps {
+  margin-top: 6px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .stamps li {
+  padding: 3px 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--stamp);
+  font-weight: 700;
+  opacity: 0.55;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .stamps li:nth-child(2) {
+  padding-left: 14px;
+  color: var(--red-ink);
+  opacity: 0.65;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .stamps li:nth-child(3) {
+  padding-left: 5px;
+  opacity: 0.75;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .stamps li:last-child {
+  padding-left: 20px;
+  color: var(--red-ink);
+  opacity: 1;
+}
+
+/* ---------- typed blocks inside cards ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .qa {
+  display: grid;
+  grid-template-columns: 3ch minmax(0, 1fr);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .qa dt {
+  color: var(--red-ink);
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .listing li + li {
+  padding-left: 3ch;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .listing li:first-child {
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .price {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .price + .price {
+  margin-top: var(--row);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .price dt {
+  flex: 1;
+  display: flex;
+  align-items: baseline;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* dot leader, as on a typed price list */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .price dt::after {
+  content: "";
+  flex: 1;
+  margin: 0 10px;
+  border-bottom: 2px dotted var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .amount {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .detail {
+  flex-basis: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .platforms {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 12px;
+}
+
+/* ---------- foot ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding: 88px 0 112px;
+  font-size: 15px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .foot a {
+  margin-left: 2ch;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .foot a:first-child {
+  margin-left: 0;
+}
+
+/* ---------- wider screens ---------- */
+
+@media (min-width: 640px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wrap {
+    padding: 0 28px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardHead {
+    padding: 0 40px 7px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cardBody {
+    padding: 5px 40px calc(var(--row) * 2 - 5px);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .divider {
+    padding-left: 36px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .tab {
+    padding: 8px 18px 14px;
+    font-size: 15px;
+  }
+}
+
+@media (min-width: 960px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+    grid-template-columns: minmax(0, 840px) minmax(0, 1fr);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fan {
+    align-items: flex-start;
+    margin: 150px 0 0 -64px;
+    padding-right: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanB {
+    margin-right: 0;
+    margin-left: 44px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanC {
+    margin-left: 4px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .pair {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px;
+    margin-top: 96px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .cellLow {
+    margin-top: 88px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .last {
+    max-width: 840px;
+    margin-top: 104px;
+    margin-left: auto;
+  }
+}
+
+/* ---------- the one load moment: cards dealt onto the desk ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .heroCard {
+    animation: gallery-with-design-skill-fable-5-2-source-app-1-page-module-deal 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanA {
+    animation: gallery-with-design-skill-fable-5-2-source-app-1-page-module-deal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.28s both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanB {
+    animation: gallery-with-design-skill-fable-5-2-source-app-1-page-module-deal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.4s both;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fanC {
+    animation: gallery-with-design-skill-fable-5-2-source-app-1-page-module-deal 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) 0.52s both;
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-1-page-module-deal {
+  from {
+    opacity: 0;
+    translate: 40px -70px;
+    rotate: calc(var(--tilt, 0deg) + 9deg);
+  }
+}

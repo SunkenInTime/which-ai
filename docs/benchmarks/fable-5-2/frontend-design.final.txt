@@ -1,0 +1,22 @@
+The five landing pages are live at http://localhost:3402/1 through /5, and the dev server is still running. `/` redirects to `/1`.
+
+To switch, use the pill fixed at the bottom right (it shows the current design's name and five numbered buttons), or press the keys 1 to 5 anywhere outside a text field.
+
+All five sell the same invented product so you can compare the design rather than the pitch: "Mull", a note-taking app that captures, links, resurfaces and answers questions from your notes. The name, copy, sample notes and $6 pricing are my placeholders.
+
+| | Direction | What to try |
+|---|---|---|
+| /1 | **Slip box.** Typed index cards on a green desk, with all text sitting on the ruled lines. | Click a "see also" reference and that card is pulled out of the pile. |
+| /2 | **Golgi plate.** A neuron draws itself in black ink on amber, and its axon runs down the page with each section branching off it. | Reload to watch it grow. |
+| /3 | **Train of thought.** Your notes as a transit map, where a note on two lines is an interchange. | Click stations, follow "Next stops", hover the line buttons. |
+| /4 | **The page is a note.** The landing page runs as the app: yellow links open notes side by side, and older ones collapse into spines. | Type in the capture box; it suggests related notes and their "Linked from" list updates. |
+| /5 | **Forgetting curve.** The headline loses weight word by word as you would forget it. | Toggle "With Mull" to restore it and draw the review line on the 1885 chart. |
+
+Typecheck, lint and a production build pass. I checked each page at desktop (1440px) and phone (390px) widths in Chromium only.
+
+- **Capture box in /4:** it matches keywords against five sample notes, not meaning; the page says so when nothing matches.
+- **White line in /5:** it is an illustration of review, not data, and is labelled that way. The pink line uses Ebbinghaus's published figures.
+- **Phone layouts:** /2 drops the continuous axon and stacks the sections, and /4 stacks notes vertically instead of side by side.
+- **Download buttons:** they are placeholders that point at the download section.
+
+Nothing is committed. The work is in `app/1` to `app/5`, plus the switcher in `app/_components/`.
