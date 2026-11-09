@@ -1,0 +1,22 @@
+The five landing pages are built and running at **http://localhost:3401** — open `/1` to `/5`, or `/` for an overview of all five.
+
+I checked each page in a browser at desktop and phone widths; type-check, lint and a production build all pass. Nothing is committed.
+
+The product is a placeholder I called **Engram**. Each direction takes a different angle on "second brain":
+
+| | Direction | What it is |
+|---|---|---|
+| `/1` | **Workbench** | Light, product-led. The hero is a working editor: type and older notes surface beside it, `[[` opens link autocomplete. |
+| `/2` | **Marginalia** | An essay on paper with real margin notes, highlighter and red pencil. Linked phrases show a preview on hover; testimonials appear as backlinks. |
+| `/3` | **Atlas** | Dark celestial chart. Notes are stars, subjects are constellations; hover one and it lights up with a catalogue card. |
+| `/4` | **Zettel** | Loud vermilion poster built on the index card, with a deck you drag through and features filed A to V. |
+| `/5` | **Stillwater** | Calm and soft. Type a thought, it drops into the water and stays; nothing leaves the page. |
+
+**Switching:** a small dark pill sits at the bottom centre of every page with ‹ 1 2 3 4 5 › and the current direction's name. Keys `1`–`5` and `←` / `→` also work, except while you're typing in a field.
+
+Things you might not expect:
+- I replaced the starter home page with the overview rather than leaving the Next.js boilerplate.
+- All copy, names, testimonials and numbers are invented for the mock-ups.
+- In dev mode on a phone-width window, Next's own "N" badge overlaps the left end of the pill.
+
+The dev server is still running in the background. If it stops, restart it with `npx next dev -p 3401`; I left `package.json` alone, so plain `npm run dev` would use port 3000.

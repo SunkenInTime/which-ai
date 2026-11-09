@@ -1,0 +1,506 @@
+/* The explorable sky in the hero of /3. Colours come from the page tokens. */
+
+.wrap {
+  --px: 0;
+  --py: 0;
+  grid-area: chart;
+  position: absolute;
+  top: 50%;
+  right: -9vw;
+  width: min(66vw, 122vh);
+  aspect-ratio: 1;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.chart {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  font-family: var(--display);
+}
+
+/* ---------- background ---------- */
+
+.river {
+  transform-box: view-box;
+}
+
+.grid circle,
+.grid line {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 0.6;
+  opacity: 0.11;
+  vector-effect: non-scaling-stroke;
+}
+
+.grid circle {
+  stroke-dasharray: 2 5;
+  opacity: 0.2;
+}
+
+.grid .ecliptic {
+  stroke: var(--gold);
+  stroke-dasharray: 9 7;
+  opacity: 0.3;
+}
+
+.ring {
+  transform-origin: 500px 500px;
+  animation: turn 720s linear infinite;
+}
+
+.ring circle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.8;
+  opacity: 0.55;
+  vector-effect: non-scaling-stroke;
+}
+
+.ring line {
+  stroke: var(--gold);
+  stroke-width: 0.8;
+  opacity: 0.5;
+  vector-effect: non-scaling-stroke;
+}
+
+.ring text {
+  fill: var(--gold);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-anchor: middle;
+  opacity: 0.8;
+}
+
+@keyframes turn {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.field {
+  transform: translate(calc(var(--px) * -5px), calc(var(--py) * -5px));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.field circle {
+  fill: #dfe7ff;
+}
+
+.field circle[data-tw] {
+  animation: twinkle 4.6s ease-in-out infinite;
+}
+
+.field circle[data-tw="2"] {
+  animation-duration: 6.2s;
+  animation-delay: -2.1s;
+}
+
+.field circle[data-tw="3"] {
+  animation-duration: 3.4s;
+  animation-delay: -1.3s;
+}
+
+@keyframes twinkle {
+  50% {
+    opacity: 0.12;
+  }
+}
+
+/* ---------- unexpected links ---------- */
+
+.crossings {
+  transform: translate(calc(var(--px) * -11px), calc(var(--py) * -11px));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.crossings line {
+  stroke: var(--gold);
+  stroke-width: 1;
+  stroke-dasharray: 1.5 6;
+  stroke-linecap: round;
+  opacity: 0.38;
+  vector-effect: non-scaling-stroke;
+  transition: opacity 0.6s ease;
+}
+
+.crossings line[data-on] {
+  opacity: 0.95;
+  animation: creep 2.4s linear infinite;
+}
+
+@keyframes creep {
+  to {
+    stroke-dashoffset: -15;
+  }
+}
+
+/* ---------- the pole ---------- */
+
+.pole circle {
+  fill: none;
+  stroke: var(--gold);
+  stroke-width: 0.8;
+  opacity: 0.6;
+  vector-effect: non-scaling-stroke;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.pole path {
+  fill: var(--gold);
+}
+
+.pole text {
+  fill: var(--gold);
+  font-size: 14px;
+  font-style: italic;
+  text-anchor: middle;
+  opacity: 0.85;
+}
+
+@keyframes breathe {
+  50% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* ---------- constellations ---------- */
+
+.figure {
+  pointer-events: auto;
+  cursor: pointer;
+  outline: none;
+  transform: translate(calc(var(--px) * -11px), calc(var(--py) * -11px));
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.hit {
+  fill: transparent;
+  stroke: transparent;
+  stroke-width: 34;
+  stroke-linecap: round;
+}
+
+.edge {
+  stroke: var(--cream);
+  stroke-width: 0.9;
+  opacity: 0.34;
+  vector-effect: non-scaling-stroke;
+  transition:
+    stroke 0.5s ease,
+    opacity 0.5s ease;
+}
+
+.star path,
+.star > circle:not(.halo) {
+  fill: var(--cream);
+  transition: fill 0.5s ease;
+}
+
+.halo {
+  fill: var(--cream);
+  opacity: 0.07;
+  transform-box: fill-box;
+  transform-origin: center;
+  transition:
+    opacity 0.5s ease,
+    transform 0.6s ease,
+    fill 0.5s ease;
+}
+
+.star text {
+  fill: var(--cream);
+  font-size: 15px;
+  font-style: italic;
+  opacity: 0.42;
+  transition:
+    opacity 0.5s ease,
+    fill 0.5s ease;
+}
+
+.name {
+  fill: var(--cream);
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: 0.34em;
+  text-anchor: middle;
+  opacity: 0.5;
+  transition:
+    opacity 0.5s ease,
+    fill 0.5s ease;
+}
+
+.gloss {
+  fill: var(--cream);
+  font-size: 14px;
+  font-style: italic;
+  text-anchor: middle;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* lit */
+.figure[data-on] .edge {
+  stroke: var(--gold);
+  opacity: 1;
+}
+
+.figure[data-on] .star path,
+.figure[data-on] .star > circle:not(.halo) {
+  fill: #fff6dc;
+}
+
+.figure[data-on] .halo {
+  fill: var(--gold);
+  opacity: 0.22;
+  transform: scale(1.35);
+}
+
+.figure[data-on] .star text {
+  fill: var(--gold);
+  opacity: 1;
+}
+
+.figure[data-on] .name {
+  fill: var(--gold);
+  opacity: 1;
+}
+
+.figure[data-on] .gloss {
+  opacity: 0.8;
+}
+
+.figure:focus-visible .name {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* ---------- meteor ---------- */
+
+.meteor {
+  stroke: #fff;
+  stroke-width: 1.2;
+  stroke-linecap: round;
+  stroke-dasharray: 110 400;
+  stroke-dashoffset: 110;
+  opacity: 0;
+  animation: meteor 13s ease-in 5s infinite;
+}
+
+@keyframes meteor {
+  0% {
+    stroke-dashoffset: 110;
+    opacity: 0;
+  }
+  1.5% {
+    opacity: 0.9;
+  }
+  6% {
+    stroke-dashoffset: -110;
+    opacity: 0;
+  }
+  100% {
+    stroke-dashoffset: -110;
+    opacity: 0;
+  }
+}
+
+/* ---------- catalogue card ---------- */
+
+.legend {
+  grid-area: legend;
+  position: relative;
+  z-index: 2;
+  align-self: end;
+  width: min(100%, 29rem);
+  font-family: var(--body);
+}
+
+.legendHint {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-weight: 300;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.legendHint i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--gold) 22%, transparent);
+}
+
+.legendCard {
+  padding: 0.85rem 1.15rem 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--gold) 42%, transparent);
+  background: color-mix(in srgb, var(--night) 72%, transparent);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: plate 0.6s ease both;
+}
+
+@keyframes plate {
+  from {
+    opacity: 0;
+  }
+}
+
+.legendCard header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  padding-bottom: 0.45rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--cream) 14%, transparent);
+}
+
+.legendCard h2 {
+  font-family: var(--display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.legendCard header p {
+  font-family: var(--display);
+  font-size: 1.12rem;
+  line-height: 1.2;
+  font-style: italic;
+  color: var(--cream);
+  opacity: 0.8;
+}
+
+.legendCard header span {
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.legendCard header span,
+.legendMeta {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  font-weight: 300;
+  letter-spacing: 0.04em;
+  color: var(--dim);
+}
+
+.legendCard li {
+  display: grid;
+  grid-template-columns: 1.4rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.25rem;
+  padding: 0.2rem 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--cream) 9%, transparent);
+  font-size: 1rem;
+  line-height: 1.3;
+}
+
+.legendCard li b {
+  font-family: var(--display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.08rem;
+  color: var(--gold);
+}
+
+.legendCard li span {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--cream);
+}
+
+.legendCard li em {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  font-style: normal;
+  font-weight: 300;
+  color: var(--dim);
+}
+
+.legendMeta {
+  display: flex;
+  gap: 0 0.8rem;
+  margin-top: 0.5rem;
+}
+
+.legendMeta span + span::before {
+  content: "·";
+  margin-right: 0.8rem;
+}
+
+/* ---------- small screens: the sky moves below the words ---------- */
+
+@media (max-width: 960px) {
+  .wrap {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 128vw;
+    max-width: 760px;
+    margin: -1rem 0 -1rem 50%;
+    transform: translateX(-50%);
+  }
+
+  .legend {
+    width: 100%;
+    max-width: 30rem;
+    margin-inline: auto;
+  }
+
+  .legendCard header {
+    flex-wrap: wrap;
+    row-gap: 0.1rem;
+  }
+
+  .legendCard header span {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .name {
+    font-size: 19px;
+  }
+
+  .gloss,
+  .star text {
+    font-size: 17px;
+  }
+
+  .ring text {
+    font-size: 15px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring,
+  .field circle[data-tw],
+  .crossings line[data-on],
+  .pole circle,
+  .meteor,
+  .legendCard {
+    animation: none;
+  }
+
+  .field,
+  .crossings,
+  .figure {
+    transition: none;
+    transform: none;
+  }
+}

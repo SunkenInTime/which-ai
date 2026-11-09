@@ -1,0 +1,1259 @@
+/* ------------------------------------------------------------------
+   /2 — MARGINALIA
+   An essay on paper. Ink, one highlighter, one red pencil.
+   The right-hand margin does what the app's margin does.
+   ------------------------------------------------------------------ */
+
+html:has(.page) {
+  background: #f4f1e9;
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+.page {
+  --paper: #f4f1e9;
+  --paper2: #ebe7db;
+  --card: #fbf9f3;
+  --ink: #1b1a17;
+  --ink2: #48453d;
+  --muted: #6e695e;
+  --rule: #d8d2c2;
+  --red: #cf3a29;
+  --hl: #ffe566;
+  --serif: var(--font-newsreader), "Iowan Old Style", Georgia, serif;
+  --mono: var(--font-plex-mono), ui-monospace, Menlo, monospace;
+  --hand: var(--font-hand), "Bradley Hand", "Segoe Print", cursive;
+
+  --main: 40rem;
+  --gutter: 4.5rem;
+  --margin: 17rem;
+
+  min-height: 100vh;
+  color: var(--ink);
+  font-family: var(--serif);
+  font-size: 1.25rem;
+  line-height: 1.62;
+  font-optical-sizing: auto;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  background-color: var(--paper);
+  /* paper grain */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.1 0 0 0 0 0.09 0 0 0 0 0.07 0 0 0 .55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.1'/%3E%3C/svg%3E");
+  overflow-x: clip;
+}
+
+.page ::selection {
+  background: var(--hl);
+  color: var(--ink);
+}
+
+.page a:focus-visible,
+.wiki:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.page em {
+  font-style: italic;
+}
+
+/* ---------- top bar ---------- */
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.barInner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 60px;
+  max-width: calc(var(--main) + var(--gutter) + var(--margin) + 5rem);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1;
+}
+
+.logoInk {
+  fill: var(--ink);
+}
+
+.logoPencil {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.barNav {
+  display: flex;
+  gap: 1.75rem;
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink2);
+}
+
+.barNav a {
+  padding: 0.4rem 0;
+  background: linear-gradient(var(--hl), var(--hl)) no-repeat 0 78% / 0% 42%;
+  transition: background-size 0.25s ease;
+}
+
+.barNav a:hover {
+  background-size: 100% 42%;
+  color: var(--ink);
+}
+
+.barCta {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+  padding: 0 1rem;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.15s ease;
+}
+
+.barCta:hover {
+  background: var(--red);
+}
+
+/* reading progress — where scroll-driven animation is supported */
+.progress {
+  height: 2px;
+  margin-bottom: -2px;
+  background: var(--red);
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+@supports (animation-timeline: scroll()) {
+  .progress {
+    animation: read linear both;
+    animation-timeline: scroll(root block);
+  }
+}
+
+@keyframes read {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ---------- the sheet ---------- */
+
+.sheet {
+  max-width: calc(var(--main) + var(--gutter) + var(--margin) + 5rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 7vw, 6rem) clamp(1.25rem, 4vw, 2.5rem) 0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: minmax(0, var(--main)) minmax(0, var(--margin));
+  column-gap: var(--gutter);
+  align-items: start;
+}
+
+.main > p + p {
+  margin-top: 1.1em;
+}
+
+.row + .row {
+  margin-top: 1.15em;
+}
+
+.main p {
+  text-wrap: pretty;
+  hanging-punctuation: first;
+}
+
+/* ---------- title ---------- */
+
+.kicker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.kicker span + span::before {
+  content: "/";
+  margin: 0 0.85em;
+  color: var(--rule);
+}
+
+.kicker span:first-child {
+  color: var(--red);
+}
+
+.title h1 {
+  max-width: 17ch;
+  margin: 1.6rem 0 2.4rem;
+  font-size: clamp(2.9rem, 6.4vw + 0.6rem, 6rem);
+  line-height: 0.98;
+  font-weight: 400;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+.title h1 em {
+  font-weight: 300;
+  letter-spacing: -0.035em;
+}
+
+/* red pencil under a phrase */
+.scored {
+  position: relative;
+  white-space: nowrap;
+}
+
+.scored svg {
+  position: absolute;
+  left: -1%;
+  bottom: -0.16em;
+  width: 100%;
+  height: 0.16em;
+  overflow: visible;
+}
+
+.scored path,
+.circled path,
+.scribble path {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.9s cubic-bezier(0.6, 0.05, 0.3, 1);
+}
+
+.scored svg[data-seen] path,
+.circled svg[data-seen] path,
+.scribble[data-seen] path {
+  stroke-dashoffset: 0;
+}
+
+.deck {
+  font-size: clamp(1.3rem, 0.7vw + 1.1rem, 1.6rem);
+  line-height: 1.42;
+  letter-spacing: -0.008em;
+  color: var(--ink);
+}
+
+.titleActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+.titleActions span {
+  font-size: 1rem;
+  line-height: 1.35;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 54px;
+  padding: 0 1.5rem;
+  border-radius: 3px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 1.15rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  box-shadow: 4px 4px 0 var(--hl);
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--hl);
+}
+
+.button:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--hl);
+}
+
+.rule {
+  width: 100%;
+  height: 0;
+  margin: clamp(3rem, 6vw, 5rem) 0 0;
+  border: 0;
+  border-top: 1px solid var(--ink);
+}
+
+/* ---------- sections ---------- */
+
+.section {
+  padding-top: clamp(3rem, 6vw, 4.75rem);
+}
+
+.section h2 {
+  position: relative;
+  max-width: var(--main);
+  margin-bottom: 1.35rem;
+  font-size: clamp(1.8rem, 1.6vw + 1.3rem, 2.5rem);
+  line-height: 1.1;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.section h2 span {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--red);
+}
+
+/* drop cap */
+.lead::first-letter {
+  -webkit-initial-letter: 3;
+  initial-letter: 3;
+  margin-right: 0.07em;
+  font-weight: 500;
+}
+
+@supports not (initial-letter: 3) {
+  .lead::first-letter {
+    float: left;
+    margin: 0.07em 0.08em 0 -0.02em;
+    font-size: 5.7em;
+    line-height: 0.74;
+  }
+}
+
+.runin {
+  font-weight: 600;
+  font-style: italic;
+  margin-right: 0.15em;
+}
+
+.ref,
+.note sup,
+.note figcaption sup {
+  font-family: var(--mono);
+  font-size: 0.6em;
+  font-weight: 500;
+  color: var(--red);
+  vertical-align: 0.6em;
+  line-height: 0;
+  margin-left: 0.12em;
+  font-variant-numeric: lining-nums;
+}
+
+.note sup {
+  margin: 0 0.3em 0 0;
+}
+
+/* highlighter */
+.hl {
+  background-image: linear-gradient(
+    100deg,
+    transparent 0.4%,
+    var(--hl) 1.6%,
+    var(--hl) 98.4%,
+    transparent 99.6%
+  );
+  background-repeat: no-repeat;
+  background-position: 0 62%;
+  background-size: 0% 78%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 0.12em;
+  margin: 0 -0.12em;
+  transition: background-size 1.1s cubic-bezier(0.5, 0, 0.2, 1);
+}
+
+.hl[data-seen] {
+  background-size: 100% 78%;
+}
+
+/* [[wiki links]] */
+.wiki {
+  position: relative;
+  white-space: nowrap;
+  cursor: help;
+}
+
+.wikiBr {
+  font-family: var(--mono);
+  font-size: 0.68em;
+  letter-spacing: -0.08em;
+  color: var(--muted);
+  vertical-align: 0.08em;
+}
+
+.wikiText {
+  margin: 0 0.1em;
+  text-decoration: underline dotted var(--ink);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 0.2em;
+  background: linear-gradient(var(--hl), var(--hl)) no-repeat 0 60% / 0% 80%;
+  transition: background-size 0.25s ease;
+}
+
+.wiki:hover .wikiText,
+.wiki:focus .wikiText {
+  background-size: 100% 80%;
+}
+
+.preview {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.6rem);
+  z-index: 20;
+  display: block;
+  width: min(21rem, 78vw);
+  padding: 0.9rem 1rem 0.85rem;
+  background: var(--card);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  box-shadow: 5px 5px 0 rgba(27, 26, 23, 0.14);
+  white-space: normal;
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 6px) rotate(-0.6deg);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease,
+    visibility 0s linear 0.18s;
+  pointer-events: none;
+}
+
+.wiki:hover .preview,
+.wiki:focus .preview {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0) rotate(-0.6deg);
+  transition-delay: 0s;
+}
+
+.preview > span {
+  display: block;
+}
+
+.previewMeta,
+.previewFoot {
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.previewTitle {
+  margin-top: 0.3rem;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+.previewBody {
+  margin-top: 0.35rem;
+  font-size: 0.98rem;
+  line-height: 1.42;
+  color: var(--ink2);
+}
+
+.previewFoot {
+  margin-top: 0.7rem;
+  padding-top: 0.55rem;
+  border-top: 1px dotted var(--rule);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* ---------- the margin ---------- */
+
+.side {
+  padding-top: 0.35rem;
+}
+
+.note {
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink2);
+}
+
+.note p + p {
+  margin-top: 0.6rem;
+}
+
+.note figcaption {
+  margin-top: 0.5rem;
+}
+
+.curve {
+  width: 100%;
+  max-width: 17rem;
+  height: auto;
+  overflow: visible;
+}
+
+.curve path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.axis {
+  stroke: var(--ink);
+  stroke-width: 1;
+}
+
+.forget,
+.relearn {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s ease-out;
+}
+
+.forget {
+  stroke: var(--ink);
+  stroke-width: 1.75;
+}
+
+.relearn {
+  stroke: var(--red);
+  stroke-width: 1.5;
+  transition-delay: 0.9s;
+  transition-duration: 2.2s;
+}
+
+.curve[data-seen] .forget,
+.curve[data-seen] .relearn {
+  stroke-dashoffset: 0;
+}
+
+.curve text {
+  font-family: var(--mono);
+  font-size: 8.5px;
+  fill: var(--muted);
+}
+
+/* pencilled scribbles */
+.scribble {
+  position: relative;
+  width: fit-content;
+  font-family: var(--hand);
+  font-size: 1.75rem;
+  line-height: 1;
+  color: var(--red);
+  transform: rotate(-4deg);
+  transform-origin: 0 50%;
+  opacity: 0;
+  transition: opacity 0.5s ease 0.15s;
+}
+
+.scribble[data-seen] {
+  opacity: 1;
+}
+
+.scribble svg {
+  position: absolute;
+  overflow: visible;
+}
+
+.scribble path {
+  stroke-width: 1.75;
+  transition-delay: 0.45s;
+  transition-duration: 0.6s;
+}
+
+.scribbleTop {
+  margin: 0.4rem 0 0 1.2rem;
+}
+
+.scribbleTop svg {
+  right: calc(100% - 1.4rem);
+  top: 105%;
+  width: 3.4rem;
+  height: 2.5rem;
+}
+
+.scribbleLeft {
+  margin: 0.2rem 0 0 2.2rem;
+  transform: rotate(-3deg);
+}
+
+.scribbleLeft svg {
+  right: calc(100% + 0.3rem);
+  top: 10%;
+  width: 3.6rem;
+  height: 1.7rem;
+}
+
+/* keys */
+.keys {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.7rem;
+}
+
+.keys i {
+  font-family: var(--mono);
+  font-style: normal;
+  color: var(--muted);
+}
+
+.keys kbd {
+  display: inline-grid;
+  place-items: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.6rem;
+  border: 1px solid var(--ink);
+  border-radius: 5px;
+  background: var(--card);
+  box-shadow: 0 3px 0 var(--ink);
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--ink);
+}
+
+.keys .keyWide {
+  min-width: 6.5rem;
+}
+
+.path {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+
+/* notes that "arrive" in the margin */
+.related {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.relatedLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--mono);
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+}
+
+.relatedLabel::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--red);
+}
+
+.related article {
+  padding: 0.7rem 0.85rem 0.75rem;
+  background: var(--card);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  box-shadow: 4px 4px 0 rgba(27, 26, 23, 0.12);
+  opacity: 0;
+  transform: translateX(1.5rem) rotate(0.8deg);
+  transition:
+    opacity 0.6s ease,
+    transform 0.7s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+.related article:nth-of-type(2) {
+  transition-delay: 0.35s;
+}
+
+.related article[data-seen] {
+  opacity: 1;
+  transform: none;
+}
+
+.related span,
+.appMargin span {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.related b,
+.appMargin b {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 1.02rem;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+}
+
+.related p,
+.appMargin div p {
+  margin-top: 0.2rem;
+  font-size: 0.88rem;
+  line-height: 1.38;
+  color: var(--ink2);
+}
+
+/* ---------- Fig. 2 — the app, drawn ---------- */
+
+.fig {
+  margin: clamp(2.5rem, 5vw, 4rem) 0;
+}
+
+.fig figcaption {
+  max-width: var(--main);
+  margin-top: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--ink2);
+}
+
+.fig figcaption b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.app {
+  position: relative;
+  border: 1.5px solid var(--ink);
+  border-radius: 8px;
+  background: var(--card);
+  box-shadow: 8px 8px 0 rgba(27, 26, 23, 0.1);
+}
+
+.appBar {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  height: 2.5rem;
+  padding: 0 0.9rem;
+  border-bottom: 1.5px solid var(--ink);
+}
+
+.appBar i {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: 1.5px solid var(--ink);
+  border-radius: 50%;
+}
+
+.appBar span {
+  margin-left: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.appBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 19rem);
+}
+
+.appNote {
+  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 3.4vw, 3rem) clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.appDate {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+}
+
+.appNote h4 {
+  margin: 0.5rem 0 0.9rem;
+  font-size: clamp(1.5rem, 1.4vw + 1.1rem, 2.1rem);
+  line-height: 1.1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.appNote > p:not(.appDate) {
+  max-width: 34rem;
+  font-size: 1.1rem;
+  line-height: 1.55;
+  color: var(--ink2);
+}
+
+.appNote > p + p {
+  margin-top: 0.9em;
+}
+
+.page mark {
+  background: linear-gradient(100deg, transparent 1%, var(--hl) 4%, var(--hl) 96%, transparent 99%)
+    no-repeat 0 60% / 100% 78%;
+  color: inherit;
+  padding: 0 0.12em;
+  margin: 0 -0.12em;
+}
+
+.appNote u {
+  text-decoration: underline dotted;
+  text-underline-offset: 0.2em;
+  white-space: nowrap;
+  color: var(--ink);
+}
+
+.appNote u i {
+  font-family: var(--mono);
+  font-size: 0.7em;
+  font-style: normal;
+  color: var(--muted);
+}
+
+.appMargin {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+  padding: 1.25rem 1.1rem 1.5rem;
+  border-left: 1.5px solid var(--ink);
+  background: var(--paper2);
+  border-radius: 0 0 6px 0;
+}
+
+.appMargin > p {
+  font-family: var(--mono);
+  font-size: 0.64rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.appMargin div {
+  padding: 0.65rem 0.8rem 0.7rem;
+  border: 1px solid var(--ink);
+  border-left: 3px solid var(--red);
+  border-radius: 2px;
+  background: var(--card);
+}
+
+.scribbleFig {
+  position: absolute;
+  right: 20.5rem;
+  bottom: 1.6rem;
+  font-size: 1.6rem;
+  transform: rotate(-5deg);
+}
+
+.scribbleFig svg {
+  left: calc(100% + 0.2rem);
+  bottom: 60%;
+  width: 3.6rem;
+  height: 2.1rem;
+}
+
+/* ---------- prices ---------- */
+
+.prices > div {
+  padding: 1rem 0 1.1rem;
+  border-top: 1px solid var(--rule);
+}
+
+.prices > div:first-child {
+  border-top: 1px solid var(--ink);
+}
+
+.prices > div:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+
+.prices dt {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.prices dt b {
+  font-size: 1.7rem;
+  line-height: 1.1;
+  font-weight: 500;
+  font-style: italic;
+  letter-spacing: -0.02em;
+}
+
+.prices dt i {
+  flex: 1;
+  border-bottom: 2px dotted var(--rule);
+  transform: translateY(-0.3em);
+}
+
+.prices dt span {
+  font-family: var(--mono);
+  font-size: 0.88rem;
+  font-variant-numeric: lining-nums;
+}
+
+.prices dd {
+  max-width: 32rem;
+  margin-top: 0.25rem;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  color: var(--ink2);
+}
+
+/* ---------- close ---------- */
+
+.close {
+  padding: clamp(3.5rem, 8vw, 6.5rem) 0 clamp(4rem, 9vw, 7.5rem);
+}
+
+.close > p {
+  max-width: 22ch;
+  font-size: clamp(2rem, 3.6vw + 0.8rem, 3.9rem);
+  line-height: 1.06;
+  font-weight: 400;
+  letter-spacing: -0.026em;
+  text-wrap: balance;
+}
+
+.circled {
+  position: relative;
+  white-space: nowrap;
+  font-style: italic;
+}
+
+.circled svg {
+  position: absolute;
+  left: -9%;
+  top: -14%;
+  width: 118%;
+  height: 132%;
+  overflow: visible;
+}
+
+.circled path {
+  transition-duration: 1.1s;
+}
+
+.closeActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.25rem 2rem;
+  margin-top: clamp(2rem, 4vw, 3.25rem);
+}
+
+.closeActions p {
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
+
+.buttonBig {
+  height: 66px;
+  padding: 0 2.1rem;
+  font-size: 1.4rem;
+}
+
+/* ---------- linked mentions ---------- */
+
+.mentions {
+  border-top: 1px solid var(--ink);
+  background: color-mix(in srgb, var(--paper2) 70%, transparent);
+}
+
+.mentionsInner {
+  max-width: calc(var(--main) + var(--gutter) + var(--margin) + 5rem);
+  margin-inline: auto;
+  padding: clamp(3rem, 6vw, 4.5rem) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.mentions header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.25rem 1.25rem;
+  margin-bottom: 1.75rem;
+}
+
+.mentions h2 {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.mentions h2::before {
+  content: "↩";
+  margin-right: 0.6em;
+  color: var(--red);
+}
+
+.mentions header p {
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.mentions ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.mentions li {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.35rem 1.2rem;
+  background: var(--card);
+  border: 1px solid var(--ink);
+  border-radius: 3px;
+  box-shadow: 5px 5px 0 rgba(27, 26, 23, 0.1);
+}
+
+.mentions li:nth-child(1) {
+  transform: rotate(-0.5deg);
+}
+
+.mentions li:nth-child(3) {
+  transform: rotate(0.6deg);
+}
+
+.mentions h3 {
+  font-size: 1.3rem;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.012em;
+}
+
+.mentions li p {
+  margin: 0.55rem 0 1.1rem;
+  font-size: 1.08rem;
+  line-height: 1.48;
+  color: var(--ink2);
+}
+
+.mentions mark {
+  font-family: var(--mono);
+  font-size: 0.82em;
+  color: var(--ink);
+}
+
+.mentions li span {
+  margin-top: auto;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+}
+
+/* ---------- colophon ---------- */
+
+.colophon {
+  border-top: 1px solid var(--ink);
+}
+
+.colophonInner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 2rem 3rem;
+  max-width: calc(var(--main) + var(--gutter) + var(--margin) + 5rem);
+  margin-inline: auto;
+  padding: 3rem clamp(1.25rem, 4vw, 2.5rem) 7rem;
+}
+
+.colophon p {
+  max-width: 30rem;
+  margin-top: 0.9rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--muted);
+}
+
+.colophon nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-content: start;
+  gap: 0.3rem 1.5rem;
+  font-size: 1.05rem;
+}
+
+.colophon nav a {
+  width: fit-content;
+  text-decoration: underline dotted var(--muted);
+  text-underline-offset: 0.22em;
+}
+
+.colophon nav a:hover {
+  text-decoration-color: var(--red);
+  color: var(--red);
+}
+
+.colophon .fine {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  max-width: none;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-style: normal;
+}
+
+/* ---------- narrower: the margin folds into the column ---------- */
+
+@media (max-width: 1100px) {
+  .sheet,
+  .barInner,
+  .mentionsInner,
+  .colophonInner {
+    max-width: calc(var(--main) + 5rem);
+  }
+
+  .row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .side {
+    margin-top: 1.1rem;
+    padding: 0 0 0 1rem;
+    border-left: 2px solid var(--red);
+  }
+
+  .side:has(> .scribble) {
+    display: none;
+  }
+
+  .related article {
+    max-width: 24rem;
+  }
+
+  .appBody {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .appMargin {
+    border-left: 0;
+    border-top: 1.5px solid var(--ink);
+    border-radius: 0 0 6px 6px;
+  }
+
+  .scribbleFig {
+    display: none;
+  }
+
+  .mentions ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .mentions li:nth-child(n) {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .page {
+    font-size: 1.125rem;
+  }
+
+  .barNav {
+    display: none;
+  }
+
+  .kicker span:last-child {
+    display: none;
+  }
+
+  .barCta {
+    margin-left: auto;
+  }
+
+  .title h1 {
+    margin: 1.25rem 0 1.75rem;
+  }
+
+  .titleActions span br {
+    display: none;
+  }
+
+  .colophonInner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .preview {
+    left: 0;
+    transform: translate(0, 6px) rotate(-0.6deg);
+  }
+
+  .wiki:hover .preview,
+  .wiki:focus .preview {
+    transform: translate(0, 0) rotate(-0.6deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:has(.page) {
+    scroll-behavior: auto;
+  }
+
+  .hl,
+  .scribble,
+  .related article,
+  .scored path,
+  .circled path,
+  .scribble path,
+  .forget,
+  .relearn,
+  .preview {
+    transition: none;
+  }
+
+  .progress {
+    animation: none;
+  }
+}

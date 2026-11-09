@@ -1,0 +1,593 @@
+/* Design 2: Golgi plate.
+   Black silver-stain ink on amber. The neuron's axon runs down the page and
+   every section hangs from it. */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .plate {
+  --stain: #e2a32e;
+  --ink: #000;
+  --glass: #fff6df;
+  --violet: #43217f;
+  --line: 1.6px;
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--stain);
+  color: var(--ink);
+  font-family: var(--font-plate), "Times New Roman", Times, serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .plate a:focus-visible {
+  outline: 2.5px solid var(--violet);
+  outline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wrap {
+  --fig: 0px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- top ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 40px;
+  padding-top: 22px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wordmark {
+  font-size: 34px;
+  font-style: italic;
+  line-height: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .nav {
+  display: flex;
+  gap: 18px;
+  font-size: 17px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .nav a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .nav a:hover {
+  color: var(--violet);
+}
+
+/* ---------- hero ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .heroText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 44px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .h1 {
+  font-size: clamp(46px, 6.4vw, 92px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .lede {
+  max-width: 29em;
+  margin-top: 28px;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 32px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .button {
+  display: inline-block;
+  padding: 15px 28px 13px;
+  background: var(--ink);
+  color: var(--stain);
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .button:hover {
+  background: var(--violet);
+  color: var(--glass);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .small {
+  max-width: 17em;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .caption {
+  margin-top: 56px;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .figNo {
+  font-style: normal;
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .key {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2px 28px;
+  max-width: 540px;
+  margin-top: 10px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .key div {
+  display: flex;
+  gap: 10px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .key dt {
+  width: 1ch;
+  color: var(--violet);
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .key dd {
+  font-style: normal;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .key span {
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .figure {
+  width: 100%;
+  max-width: 500px;
+  margin: 8px auto 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .neuron {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .ink {
+  fill: none;
+  stroke: var(--ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .spines {
+  stroke-width: 1.15;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .soma,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+.bouton {
+  fill: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .label circle {
+  fill: var(--stain);
+  stroke: var(--violet);
+  stroke-width: 2.6;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .label text {
+  fill: var(--violet);
+  font-size: 42px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* The one moment of motion: the cell grows outward from its body. */
+@media (prefers-reduced-motion: no-preference) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .limb {
+    opacity: 0;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: gallery-with-design-skill-fable-5-2-source-app-2-page-module-draw var(--dur) linear var(--delay) forwards;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .spines,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+  .soma,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+  .bouton,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) 
+  .label {
+    opacity: 0;
+    animation: gallery-with-design-skill-fable-5-2-source-app-2-page-module-appear var(--dur) ease-out var(--delay) forwards;
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-2-page-module-draw {
+  from {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes gallery-with-design-skill-fable-5-2-source-app-2-page-module-appear {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- sections hanging from the axon ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .body {
+  position: relative;
+  padding-top: 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .section {
+  position: relative;
+  padding-bottom: 64px;
+  scroll-margin-top: 24px;
+}
+
+/* a collateral: leaves the axon, runs left, ends in a bouton */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .collateral {
+  position: relative;
+  width: 84px;
+  margin-left: 6px;
+  border-bottom: var(--line) solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .collateral::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: -6.3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .sectionBody {
+  max-width: 620px;
+  padding-top: 22px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .h2 {
+  margin-bottom: 16px;
+  font-size: clamp(34px, 3.6vw, 46px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.012em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .sectionBody p + p {
+  margin-top: 0.75em;
+}
+
+/* ---------- the inverted band: figure 2 ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .band {
+  margin: 0 calc(50% - 50vw) 64px;
+  padding: 64px calc(50vw - 50%);
+  background: var(--ink);
+  color: var(--stain);
+  scroll-margin-top: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .band a:focus-visible {
+  outline-color: var(--glass);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .bandInner {
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .bandIntro {
+  max-width: 620px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fig2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .when {
+  font-size: 16px;
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .writing {
+  max-width: 19em;
+  margin-top: 8px;
+  color: var(--glass);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired {
+  display: grid;
+  gap: 24px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--stain);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .firedTitle {
+  color: var(--glass);
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fig2Caption {
+  max-width: 26em;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* ---------- smaller pieces ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .exchange {
+  margin-top: 26px;
+  padding-left: 22px;
+  border-left: var(--line) solid var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .question {
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .exchange cite {
+  color: var(--violet);
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .exchange cite::before {
+  content: "(";
+  font-style: normal;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .exchange cite::after {
+  content: ")";
+  font-style: normal;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px 40px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .prices dt {
+  font-style: italic;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .amount {
+  margin-bottom: 6px;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .platforms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  margin-top: 24px;
+  font-size: 20px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .platforms a:not(.button) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .platforms a:not(.button):hover {
+  color: var(--violet);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .terminal {
+  display: none;
+}
+
+/* ---------- foot ---------- */
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding: 24px 0 112px;
+  border-top: var(--line) solid var(--ink);
+  font-size: 16px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .footLinks {
+  display: flex;
+  gap: 22px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .footLinks a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* ---------- plate layout: the figure beside the text, the axon as a spine ---------- */
+
+@media (min-width: 980px) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .plate {
+    font-size: 20px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .wrap {
+    --fig: min(46vw, 640px);
+    padding: 0 48px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .nav {
+    gap: 30px;
+    font-size: 19px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+    grid-template-columns: minmax(0, 1fr) var(--fig);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .heroText {
+    padding: 56px 24px 72px 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .caption {
+    margin-top: auto;
+    padding-top: 56px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .figure {
+    max-width: none;
+    margin: -62px 0 0;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .body {
+    padding-top: 0;
+    padding-bottom: 104px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 104px;
+    right: calc(var(--fig) / 2 - 0.8px);
+    width: var(--line);
+    background: var(--ink);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .section {
+    margin-right: calc(var(--fig) / 2);
+    padding-bottom: 88px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .collateral {
+    width: auto;
+    height: 52px;
+    margin-right: -0.8px;
+    border-right: var(--line) solid var(--ink);
+    border-bottom-right-radius: 52px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .band {
+    margin-bottom: 0;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .band + .section {
+    padding-top: 0;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .bandInner::before {
+    content: "";
+    position: absolute;
+    top: -96px;
+    bottom: -96px;
+    right: calc(var(--fig) / 2 - 0.8px);
+    width: var(--line);
+    background: var(--stain);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .bandIntro {
+    margin-right: calc(var(--fig) / 2 + 40px);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fig2 {
+    grid-template-columns: minmax(0, 1fr) calc(var(--fig) / 2);
+    gap: 0;
+    margin-top: 56px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .today {
+    position: relative;
+    padding-right: 56px;
+  }
+  /* today's note feeds the axon */
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .today::after {
+    content: "";
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 40px;
+    border-top: var(--line) solid var(--stain);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired {
+    padding-left: 0;
+  }
+  /* and the axon fires the old notes */
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired li {
+    padding-left: 56px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired li::before {
+    left: 36px;
+    top: 0.68em;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fired li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(0.68em + 3.7px);
+    width: 38px;
+    border-top: var(--line) solid var(--stain);
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .fig2Caption {
+    grid-column: 1;
+    margin-top: 48px;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .terminal {
+    position: absolute;
+    right: calc(var(--fig) / 2 - 60px);
+    bottom: 0;
+    display: block;
+    width: 120px;
+    height: 104px;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .terminal path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="fable-5.2"]) .terminal circle {
+    fill: var(--ink);
+  }
+}

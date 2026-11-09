@@ -1,0 +1,593 @@
+/* Design 2: Golgi plate.
+   Black silver-stain ink on amber. The neuron's axon runs down the page and
+   every section hangs from it. */
+
+.plate {
+  --stain: #e2a32e;
+  --ink: #000;
+  --glass: #fff6df;
+  --violet: #43217f;
+  --line: 1.6px;
+
+  min-height: 100vh;
+  overflow-x: clip;
+  background: var(--stain);
+  color: var(--ink);
+  font-family: var(--font-plate), "Times New Roman", Times, serif;
+  font-size: 19px;
+  line-height: 1.6;
+}
+
+.plate a:focus-visible {
+  outline: 2.5px solid var(--violet);
+  outline-offset: 4px;
+}
+
+.wrap {
+  --fig: 0px;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ---------- top ---------- */
+
+.top {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 40px;
+  padding-top: 22px;
+}
+
+.wordmark {
+  font-size: 34px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.nav {
+  display: flex;
+  gap: 18px;
+  font-size: 17px;
+}
+
+.nav a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.nav a:hover {
+  color: var(--violet);
+}
+
+/* ---------- hero ---------- */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 44px;
+}
+
+.h1 {
+  font-size: clamp(46px, 6.4vw, 92px);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+.lede {
+  max-width: 29em;
+  margin-top: 28px;
+  font-size: 22px;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 32px;
+}
+
+.button {
+  display: inline-block;
+  padding: 15px 28px 13px;
+  background: var(--ink);
+  color: var(--stain);
+  font-size: 20px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.button:hover {
+  background: var(--violet);
+  color: var(--glass);
+}
+
+.small {
+  max-width: 17em;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.caption {
+  margin-top: 56px;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.figNo {
+  font-style: normal;
+  font-weight: 700;
+}
+
+.key {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 2px 28px;
+  max-width: 540px;
+  margin-top: 10px;
+}
+
+.key div {
+  display: flex;
+  gap: 10px;
+}
+
+.key dt {
+  width: 1ch;
+  color: var(--violet);
+  font-weight: 700;
+}
+
+.key dd {
+  font-style: normal;
+}
+
+.key span {
+  font-style: italic;
+}
+
+.figure {
+  width: 100%;
+  max-width: 500px;
+  margin: 8px auto 0;
+}
+
+.neuron {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.ink {
+  fill: none;
+  stroke: var(--ink);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.spines {
+  stroke-width: 1.15;
+}
+
+.soma,
+.bouton {
+  fill: var(--ink);
+}
+
+.label circle {
+  fill: var(--stain);
+  stroke: var(--violet);
+  stroke-width: 2.6;
+}
+
+.label text {
+  fill: var(--violet);
+  font-size: 42px;
+  font-style: italic;
+  font-weight: 700;
+}
+
+/* The one moment of motion: the cell grows outward from its body. */
+@media (prefers-reduced-motion: no-preference) {
+  .limb {
+    opacity: 0;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    animation: draw var(--dur) linear var(--delay) forwards;
+  }
+  .spines,
+  .soma,
+  .bouton,
+  .label {
+    opacity: 0;
+    animation: appear var(--dur) ease-out var(--delay) forwards;
+  }
+}
+
+@keyframes draw {
+  from {
+    opacity: 1;
+    stroke-dashoffset: 1;
+  }
+  to {
+    opacity: 1;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes appear {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ---------- sections hanging from the axon ---------- */
+
+.body {
+  position: relative;
+  padding-top: 40px;
+}
+
+.section {
+  position: relative;
+  padding-bottom: 64px;
+  scroll-margin-top: 24px;
+}
+
+/* a collateral: leaves the axon, runs left, ends in a bouton */
+.collateral {
+  position: relative;
+  width: 84px;
+  margin-left: 6px;
+  border-bottom: var(--line) solid var(--ink);
+}
+
+.collateral::before {
+  content: "";
+  position: absolute;
+  left: -6px;
+  bottom: -6.3px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--ink);
+}
+
+.sectionBody {
+  max-width: 620px;
+  padding-top: 22px;
+}
+
+.h2 {
+  margin-bottom: 16px;
+  font-size: clamp(34px, 3.6vw, 46px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.012em;
+}
+
+.sectionBody p + p {
+  margin-top: 0.75em;
+}
+
+/* ---------- the inverted band: figure 2 ---------- */
+
+.band {
+  margin: 0 calc(50% - 50vw) 64px;
+  padding: 64px calc(50vw - 50%);
+  background: var(--ink);
+  color: var(--stain);
+  scroll-margin-top: 0;
+}
+
+.band a:focus-visible {
+  outline-color: var(--glass);
+}
+
+.bandInner {
+  position: relative;
+}
+
+.bandIntro {
+  max-width: 620px;
+}
+
+.fig2 {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  margin-top: 40px;
+}
+
+.when {
+  font-size: 16px;
+  font-style: italic;
+}
+
+.writing {
+  max-width: 19em;
+  margin-top: 8px;
+  color: var(--glass);
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+.fired {
+  display: grid;
+  gap: 24px;
+}
+
+.fired li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 17px;
+  line-height: 1.45;
+}
+
+.fired li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--stain);
+}
+
+.firedTitle {
+  color: var(--glass);
+  font-size: 23px;
+  line-height: 1.2;
+}
+
+.fig2Caption {
+  max-width: 26em;
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+/* ---------- smaller pieces ---------- */
+
+.exchange {
+  margin-top: 26px;
+  padding-left: 22px;
+  border-left: var(--line) solid var(--ink);
+}
+
+.question {
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.exchange cite {
+  color: var(--violet);
+  font-style: italic;
+}
+
+.exchange cite::before {
+  content: "(";
+  font-style: normal;
+}
+
+.exchange cite::after {
+  content: ")";
+  font-style: normal;
+}
+
+.prices {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 28px 40px;
+}
+
+.prices dt {
+  font-style: italic;
+}
+
+.amount {
+  margin-bottom: 6px;
+  font-size: 40px;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+
+.platforms {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 24px;
+  margin-top: 24px;
+  font-size: 20px;
+}
+
+.platforms a:not(.button) {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+}
+
+.platforms a:not(.button):hover {
+  color: var(--violet);
+}
+
+.terminal {
+  display: none;
+}
+
+/* ---------- foot ---------- */
+
+.foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 32px;
+  padding: 24px 0 112px;
+  border-top: var(--line) solid var(--ink);
+  font-size: 16px;
+}
+
+.footLinks {
+  display: flex;
+  gap: 22px;
+}
+
+.footLinks a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+/* ---------- plate layout: the figure beside the text, the axon as a spine ---------- */
+
+@media (min-width: 980px) {
+  .plate {
+    font-size: 20px;
+  }
+  .wrap {
+    --fig: min(46vw, 640px);
+    padding: 0 48px;
+  }
+  .nav {
+    gap: 30px;
+    font-size: 19px;
+  }
+  .hero {
+    grid-template-columns: minmax(0, 1fr) var(--fig);
+  }
+  .heroText {
+    padding: 56px 24px 72px 0;
+  }
+  .caption {
+    margin-top: auto;
+    padding-top: 56px;
+  }
+  .figure {
+    max-width: none;
+    margin: -62px 0 0;
+  }
+
+  .body {
+    padding-top: 0;
+    padding-bottom: 104px;
+  }
+  .body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 104px;
+    right: calc(var(--fig) / 2 - 0.8px);
+    width: var(--line);
+    background: var(--ink);
+  }
+  .section {
+    margin-right: calc(var(--fig) / 2);
+    padding-bottom: 88px;
+  }
+  .collateral {
+    width: auto;
+    height: 52px;
+    margin-right: -0.8px;
+    border-right: var(--line) solid var(--ink);
+    border-bottom-right-radius: 52px;
+  }
+
+  .band {
+    margin-bottom: 0;
+    padding-top: 96px;
+    padding-bottom: 96px;
+  }
+  .band + .section {
+    padding-top: 0;
+  }
+  .bandInner::before {
+    content: "";
+    position: absolute;
+    top: -96px;
+    bottom: -96px;
+    right: calc(var(--fig) / 2 - 0.8px);
+    width: var(--line);
+    background: var(--stain);
+  }
+  .bandIntro {
+    margin-right: calc(var(--fig) / 2 + 40px);
+  }
+  .fig2 {
+    grid-template-columns: minmax(0, 1fr) calc(var(--fig) / 2);
+    gap: 0;
+    margin-top: 56px;
+  }
+  .today {
+    position: relative;
+    padding-right: 56px;
+  }
+  /* today's note feeds the axon */
+  .today::after {
+    content: "";
+    position: absolute;
+    top: 52px;
+    right: 0;
+    width: 40px;
+    border-top: var(--line) solid var(--stain);
+  }
+  .fired {
+    padding-left: 0;
+  }
+  /* and the axon fires the old notes */
+  .fired li {
+    padding-left: 56px;
+  }
+  .fired li::before {
+    left: 36px;
+    top: 0.68em;
+  }
+  .fired li::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: calc(0.68em + 3.7px);
+    width: 38px;
+    border-top: var(--line) solid var(--stain);
+  }
+  .fig2Caption {
+    grid-column: 1;
+    margin-top: 48px;
+  }
+
+  .terminal {
+    position: absolute;
+    right: calc(var(--fig) / 2 - 60px);
+    bottom: 0;
+    display: block;
+    width: 120px;
+    height: 104px;
+  }
+  .terminal path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+  .terminal circle {
+    fill: var(--ink);
+  }
+}

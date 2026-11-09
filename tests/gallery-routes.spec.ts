@@ -32,6 +32,16 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "without-design-skill", model: "fable-5.2", iteration: "1" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "2" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "3" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "4" },
+  { group: "without-design-skill", model: "fable-5.2", iteration: "5" },
+  { group: "with-design-skill", model: "fable-5.2", iteration: "1" },
+  { group: "with-design-skill", model: "fable-5.2", iteration: "2" },
+  { group: "with-design-skill", model: "fable-5.2", iteration: "3" },
+  { group: "with-design-skill", model: "fable-5.2", iteration: "4" },
+  { group: "with-design-skill", model: "fable-5.2", iteration: "5" },
   { group: "without-design-skill", model: "deepseek-v4-1-flash", iteration: "1" },
   { group: "without-design-skill", model: "deepseek-v4-1-flash", iteration: "2" },
   { group: "without-design-skill", model: "deepseek-v4-1-flash", iteration: "3" },
@@ -530,8 +540,8 @@ test("gallery shell background stays consistent after client navigation into a v
 
   expect(initialShellStyles.isDark).toBe(true);
 
-  await page.locator("a[href='/without-design-skill/fable-5.1/1']").first().click();
-  await expect(page).toHaveURL("/without-design-skill/fable-5.1/1");
+  await page.locator("a[href='/without-design-skill/fable-5.2/1']").first().click();
+  await expect(page).toHaveURL("/without-design-skill/fable-5.2/1");
   await page.getByRole("link", { name: /Back to Which AI Made This/ }).click();
   await expect(page).toHaveURL("/");
 

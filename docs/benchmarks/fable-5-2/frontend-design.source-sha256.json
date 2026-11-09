@@ -1,0 +1,25 @@
+{
+  "baselineCommit": "7d73089f64b6640fa987bd4aa4f1fdcdb1e9efb0",
+  "note": "Files the model changed or added, hashed before gallery adaptation. .shots/ (its own screenshots) and .playwright-mcp/ are left out.",
+  "files": {
+    "app/1/page.module.css": "3cda0f5f14863915f10ef52743b6ca45bdb56ac8597a7412598123434049dbaf",
+    "app/1/page.tsx": "7fdca074ab7f07f37e563f681b6a70430dda65c36a26ed9d09748d1fbfda6041",
+    "app/2/neuron.ts": "f58fbf20b7078ae7425d5df9c71a716bca7d81c320597c3692318778a6a7df29",
+    "app/2/page.module.css": "0e48f875c117061b9641ee1f3a0d01a7aac1dbbcf1bb8ef1fae6b9dd87e029be",
+    "app/2/page.tsx": "91bf65db210e27f1a1cd3759e7f907f014fbbf86e24187988c2adbbf6215e07e",
+    "app/3/network.tsx": "47641e66845e8328e356c16d4e78b0095841ad5ef34531c8227261a608f41730",
+    "app/3/page.module.css": "7ad4d05c6742cf4ab355abb4f89d87ce1031642595c4c5edcb4faf0f519248ea",
+    "app/3/page.tsx": "201666d1cdca815e5363b24095cb126735b9075363ce1203eb29dad41b26e98d",
+    "app/4/notes.tsx": "258ca604c312604faa3900cdeee1c1ceb8f870a39c0eb4605c66469bfbc92d7d",
+    "app/4/page.module.css": "d99dbfc8323e9ed82e43a1c7e57f761c63533b8b3603cb68706ae8b4dbf566b1",
+    "app/4/page.tsx": "c36ac02b8451854e1f3cc6e9702cde6e1e62f061133d89097decd7a48ff14398",
+    "app/5/memory.tsx": "e46b2ee3cf68e364ece0a998233200a5bd10ab811557671ff58571be10f4eb23",
+    "app/5/page.module.css": "cee8c5b776bdfc7cfdf2b44f64d3810e885216aa22854b8b6301f66aeef8139f",
+    "app/5/page.tsx": "5a316e96c143e2de88eb207158eab48a22a684487a4299da6daf61e1b2e428af",
+    "app/_components/switcher.module.css": "50d29f29e475f3f64e881963a6dbe619dfdb7a02b5d66aaad5c75cdf12adb29c",
+    "app/_components/switcher.tsx": "bf9202d437d2b5a10d6c2e1cfefd882ee8caa651c524c75757c5fe2a6068ec1b",
+    "app/globals.css": "7399bd241a56c296d8d9cf60beb1b3649c027d5367a9068d6b41fe2166dabbd6",
+    "app/layout.tsx": "7eeb4622aab2f8ff60f65e10003cdce91b4a6dd37f77f49a07111940f13ce86f",
+    "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd"
+  }
+}

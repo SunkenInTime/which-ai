@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Only what is truly global lives here. Each direction (/1 … /5) carries its
+   own palette, type and components in a CSS Module so they can't leak into
+   one another. */
+
+/* Each route paints the canvas itself with html:has(…), so overscroll and
+   scrollbar gutters match the design that is showing. */
+html {
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  color: #111;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}

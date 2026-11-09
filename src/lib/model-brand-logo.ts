@@ -17,6 +17,7 @@ const MODEL_BRAND_LOGO: Record<ModelSlug, ModelBrandLogoPaths> = {
   "composer-2.5": { light: "/cursor-composer.webp" },
   fable: { light: "/anthropic-claude.webp" },
   "fable-5.1": { light: "/anthropic-claude.webp" },
+  "fable-5.2": { light: "/anthropic-claude.webp" },
   gemini: { light: "/google-gemini.webp" },
   "gemini-3.5-flash": { light: "/google-gemini.webp" },
   "gemini-3.7-flash": { light: "/google-gemini.webp" },
