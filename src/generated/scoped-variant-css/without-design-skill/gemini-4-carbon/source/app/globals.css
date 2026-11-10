@@ -1,0 +1,78 @@
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) [data-source-html] {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+/* Gallery adaptation: the gallery strips Tailwind's @theme, so the source's font utilities are materialized here. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-sans {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-mono {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-newsreader {
+  font-family: var(--font-newsreader-var), Georgia, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-instrument {
+  font-family: var(--font-instrument-var), Georgia, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-fraunces {
+  font-family: var(--font-fraunces-var), Georgia, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-space {
+  font-family: var(--font-space-var), ui-sans-serif, system-ui, sans-serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-jakarta {
+  font-family: var(--font-jakarta-var), ui-sans-serif, system-ui, sans-serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-plex-mono {
+  font-family: var(--font-plex-mono-var), ui-monospace, monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .font-jetbrains {
+  font-family: var(--font-jetbrains-var), ui-monospace, monospace;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) [data-source-html] {
+  scroll-behavior: smooth;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) [data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Subtle paper grain & spatial dot patterns */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .bg-studio-dots {
+  background-image: radial-gradient(rgba(28, 25, 23, 0.16) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .bg-obsidian-grid {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+@keyframes gallery-without-design-skill-gemini-4-carbon-source-app-globals-pulse-slow {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="gemini-4-carbon"]) .animate-pulse-slow {
+  animation: gallery-without-design-skill-gemini-4-carbon-source-app-globals-pulse-slow 3.2s ease-in-out infinite;
+}
