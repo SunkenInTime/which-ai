@@ -160,7 +160,7 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash", "swe-2-flash", "fable-5.2"] as string[]).includes(entry.model))) {
+  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash", "swe-2-flash", "fable-5.2", "gemini-4-carbon"] as string[]).includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
   }
