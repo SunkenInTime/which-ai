@@ -1,0 +1,29 @@
+I have designed and built five distinct landing page iterations for **Engram**, a second-brain note-taking application, running live on port 3281 ([http://localhost:3281](http://localhost:3281)). Visiting / redirects to /1, and a compact floating switcher in the bottom-right corner lets you cycle (‹ / ›), pick any design from a popover menu, or press keys 1–5 on your keyboard.
+---
+### Iteration 1 (/1) — *The Archivist’s Desk*
+- **Aesthetic & Typography**: Warm archival vellum (#F7F3EA), ink black, and terracotta (#C84B31), set in Newsreader and IBM Plex Mono.
+- **Interactive Experience**: A live two-pane Zettelkasten slip-box where clicking [[Wiki-Links]] or slip codes (12a.4, 19c.1, 27d.2, 31b.8) traverses connected notes and author marginalia, paired with an interactive 13-month idea-compounding timeline (app/1/page.tsx).
+![Iteration 1 — The Archivist's Desk](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-1.png)
+---
+### Iteration 2 (/2) — *Neural Obsidian*
+- **Aesthetic & Typography**: Deep obsidian (#080A0E) with emerald (#34D399) and amber synaptic accents, set in Geist and JetBrains Mono.
+- **Interactive Experience**: An interactive SVG synaptic node graph paired with a live semantic filter (⌘K input + quick-recall presets) and a Markdown note inspector showing 1-hop synaptic bridges and local SQLite-Vec similarity scores (app/2/page.tsx).
+![Iteration 2 — Neural Obsidian](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-2.png)
+---
+### Iteration 3 (/3) — *Swiss Cognitive Index*
+- **Aesthetic & Typography**: International Typographic Style with stark 1px architectural grid rules on crisp stone (#F4F4F1) and signal vermilion (#FF3B1D), set in Space Grotesk and IBM Plex Mono.
+- **Interactive Experience**: A 4-stage cognitive operations matrix (OP.01 INGEST → OP.02 ATOMIZE → OP.03 CROSS-LINK → OP.04 RETRIEVE), a comparative forgetting-curve benchmark table, and expandable architectural specification drawers (app/3/page.tsx).
+![Iteration 3 — Swiss Cognitive Index](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-3.png)
+---
+### Iteration 4 (/4) — *Spatial Studio Desk*
+- **Aesthetic & Typography**: Tactile dotted drafting desk (#EFECE6) with cobalt (#1D4ED8) and persimmon (#E05A37) accents, set in Fraunces and Plus Jakarta Sans.
+- **Interactive Experience**: Switchable creative workspaces (*Calm Computing Thesis*, *Oceanic Acoustic Atlas*, *Courtyard Microclimates*), a playable voice-memo waveform card, connected clipping/diagram cards, and a live 2D Spatial ↔ 1D Outline manuscript toggle (app/4/page.tsx).
+![Iteration 4 — Spatial Studio Desk](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-4.png)
+---
+### Iteration 5 (/5) — *Quiet Sanctuary*
+- **Aesthetic & Typography**: Calm botanical sage mist (#F5F7F2), deep forest ink (#14281D), and warm brass (#B6822A), set in Instrument Serif and Plus Jakarta Sans.
+- **Interactive Experience**: A zero-folder, zero-maintenance daily stream where you can type freely (or load sample memories) and watch Engram quietly recognize people/themes and surface gentle past echoes alongside your entry (app/5/page.tsx).
+![Iteration 5 — Quiet Sanctuary](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-5.png)
+---
+### Floating Switcher (components/IterationSwitcher.tsx)
+Mounted globally in app/layout.tsx, the bottom-right pill displays your current iteration (1/5–5/5), prefetches all five routes for instant switching, expands into a titled menu when clicked, and supports ‹ / › arrows as well as pressing keys 1–5.

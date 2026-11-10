@@ -1,0 +1,16 @@
+{
+  "baselineCommit": "005d1e8fdfc2f8a6325b1c3d1637a5dc98b001fb",
+  "note": "Files the model changed or added, hashed before gallery adaptation.",
+  "files": {
+    "app/1/page.tsx": "9f55c0295816ad7055e71ae340b5e36de0733c2d211c8975867775fddfe17072",
+    "app/2/page.tsx": "534520b1ea010b2fbb114b38685bc8ebbf4923890b3297246e1e5b3c53e2209c",
+    "app/3/page.tsx": "28656e06a1f55f86326b1f70c748facfa4a14887a1c1a5f4fba0d66bdac09ef2",
+    "app/4/page.tsx": "fd9cdab0ab032a61812ca2b2400bce44c68bb160fe272ad44cd4ca7c2a3b8209",
+    "app/5/page.tsx": "a68ad4154984baa86d70936ed9606247f9d3835543af3e35580bdd910fd8ce19",
+    "app/components/IterationSwitcher.tsx": "5ac31a54de7acc5dc0cfff96a5d3c508367f93e75e1b26009e601e29188002cd",
+    "app/globals.css": "a9705de3c95a6fd5eeacd37b6d9c44dae429b1bd63988b193f3720181ee91fc5",
+    "app/layout.tsx": "03945c078a76383c9ae24ca82f914cdbd9c209cb626f7875499afbbae5496d52",
+    "app/page.tsx": "ee869110c02dcda5dcb34e83bf4da7c6228735727d6450a292daf038f4f03e6d",
+    "package.json": "2f14b2a78ff1164c42720cab15c01272ec1f88f6308d218722ab50668307319b"
+  }
+}

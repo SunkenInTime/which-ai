@@ -1,0 +1,107 @@
+{
+  "model": "gemini-4-carbon",
+  "runner": "Cursor desktop 3.29.15 on macOS (Agents window)",
+  "reasoningEffort": "high",
+  "source": "manual",
+  "date": "2026-11-10",
+  "generationPolicy": "One scored prompt per condition; no follow-ups, coaching or approvals were needed. The two sessions ran concurrently. Original source hashes recorded before gallery adaptation.",
+  "starter": "Next.js 16.3.8 / React 19.2.8, same starter commits as Gemini 4 Argon",
+  "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "assignedSkillSha256": {
+    "next-agents.md": "63f2c50380ed6303237cce215ce27af1d620d094c215e28d1b1538a3c070e3bb",
+    "frontend-design.skill.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+  },
+  "promptSha256": {
+    "no-skills": "d790708f2719fda99b48bde69c3f78b0b7679c58ef53854c8c3e69bffcdb1625",
+    "frontend-design": "41b91ecc608c3d26df6a16513c590b68c88919fba72c2ac8bb16e277a275e7b4"
+  },
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "composerId": "01de1f2d-ea9d-4734-9c17-fdd828733766",
+      "workspace": "/Users/Shared/whichai-gemini-4-carbon/no-skills",
+      "baselineCommit": "eeeb0084e3b676b1c42f9a9fbdb57054fb4aedb1",
+      "startedAt": "2026-11-10T16:47:31.055Z",
+      "lastBubbleAt": "2026-11-10T17:07:30.270Z",
+      "cursorWorked": "19m 50s",
+      "userTurns": 1,
+      "toolCalls": {
+        "glob_file_search": 6,
+        "read_file_v2": 17,
+        "run_terminal_command_v2": 6,
+        "ripgrep_raw_search": 1,
+        "edit_file_v2": 12,
+        "get_mcp_tools": 2,
+        "await": 1,
+        "browser_tabs": 1,
+        "browser_navigate": 7,
+        "browser_lock": 2,
+        "browser_click": 2,
+        "browser_snapshot": 1,
+        "browser_take_screenshot": 5
+      },
+      "instructionFilesRead": [],
+      "productName": "Engram"
+    },
+    {
+      "condition": "anthropic-frontend-design",
+      "composerId": "ff621a33-bf76-4420-b7da-cd68dfb29e7c",
+      "workspace": "/Users/Shared/whichai-gemini-4-carbon/anthropic-frontend-design",
+      "baselineCommit": "005d1e8fdfc2f8a6325b1c3d1637a5dc98b001fb",
+      "startedAt": "2026-11-10T16:48:14.071Z",
+      "lastBubbleAt": "2026-11-10T17:10:38.805Z",
+      "cursorWorked": "22m 15s",
+      "userTurns": 1,
+      "toolCalls": {
+        "read_file_v2": 14,
+        "glob_file_search": 4,
+        "run_terminal_command_v2": 13,
+        "edit_file_v2": 18,
+        "get_mcp_tools": 9,
+        "browser_tabs": 1,
+        "browser_lock": 2,
+        "browser_take_screenshot": 9,
+        "browser_snapshot": 3,
+        "browser_click": 6,
+        "browser_cdp": 4,
+        "browser_navigate": 6
+      },
+      "instructionFilesRead": [
+        ".agents/skills/frontend-design/SKILL.md",
+        "CLAUDE.md"
+      ],
+      "productName": "Cairn"
+    }
+  ],
+  "preflight": {
+    "composerId": "022d8593-5dc9-4840-b9d7-91c21d13e8ed",
+    "startedAt": "2026-11-10T16:40:56.981Z",
+    "scored": false,
+    "reply": "preflight.final.txt"
+  },
+  "isolation": {
+    "moved": [
+      "~/.agents/skills",
+      "~/.cursor/rules",
+      "~/.cursor/skills"
+    ],
+    "movedAt": "2026-11-10T16:38:51Z",
+    "restoredAt": "2026-11-10T17:13:28Z",
+    "note": "Context isolation only; Cursor built-in skills (18) and installed-plugin skills (58) stay available. No filesystem jail."
+  },
+  "persistedModelConfig": {
+    "modelName": "gemini-4-carbon",
+    "maxMode": true,
+    "reasoning_effort": "high"
+  },
+  "billingModeNote": "Cursor persists maxMode true for these chats, as it did for Argon; the operator kept Max Mode off in the picker. Labeled High reasoning, not Max Mode.",
+  "cost": null,
+  "costNote": "Not recorded yet. Cursor keeps per-request token usage only in its dashboard usage export; the local state database has no token totals for these chats.",
+  "integrationChanges": [
+    "Root html/body became data-source-html/data-source-body divs; globals.css imported through its scoped copy; LayoutProps replaced by an explicit ReactNode children type.",
+    "The model's IterationSwitcher is not rendered (the gallery has its own); its file is kept.",
+    "Without Design Skill only: :root/html/body rules moved onto the wrapper divs, and the Tailwind @theme font utilities (font-sans, font-mono, font-newsreader, font-instrument, font-fraunces, font-space, font-jakarta, font-plex-mono, font-jetbrains) materialized in globals.css because the gallery strips @theme.",
+    "Gemini 4 Carbon gets its own archive family (gemini-carbon) so it does not move Gemini 4 Argon under Show Archived.",
+    "lucide-react resolves to the gallery's 0.542 instead of the model's ^1.71 (ArrowUpRight, Plus, Minus, Check only)."
+  ]
+}

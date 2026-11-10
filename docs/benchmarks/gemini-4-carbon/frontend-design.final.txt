@@ -1,0 +1,37 @@
+I designed five distinct landing page directions for **Cairn** — a local-first "second brain" note-taking application — accessible at [http://localhost:3282/1](http://localhost:3282/1) through [http://localhost:3282/5](http://localhost:3282/5) (with / redirecting to /1).
+Each page avoids generic SaaS card grids and AI template defaults, grounding its palette, typography, layout, and hero interaction in a different physical or cognitive vernacular of personal memory:
+---
+### /1 — Slip-Box Tray (app/1/page.tsx)
+- **Direction & Palette:** Grounded in physical Zettelkasten slip-trays and library guide cards — warm manila folder buff (#EDE2C4), cotton ruled index stock (#FFFDF7) with a crimson ledger top rule (#C84646), deep petrol fountain-pen ink (#123536), and die-cut divider tabs (#E8BE48, #79B497, #6BA2D6, #DE7A68).
+- **Typography:** Besley slab-serif headings paired with Figtree body copy.
+- **Interactive Hero:** Clicking any protruding colored tab or inline [14b] / [27a] cross-reference pulls that slip-card to the front of the tray and updates the neighboring cards surfaced alongside it.
+![Iteration 1: Slip-box tray](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/cairn-1.png)
+---
+### /2 — Nocturnal Reading Lamp (app/2/page.tsx)
+- **Direction & Palette:** Built around late-night reading and marginalia — nocturnal aubergine (#191624), bookbinder's cloth (#242033), glare-free vellum ivory (#EDE6D6), and warm tungsten lamp amber (#E4A84A).
+- **Typography:** Single-family Literata across display headlines, book passages, and outdented scholarly marginalia.
+- **Interactive Hero:** An open book spread where clicking any amber-underlined sentence in the text wakes up the personal margin note and older archived highlight connected to it, with a toggle to pin the link in the margin.
+![Iteration 2: Reading lamp](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/cairn-2.png)
+---
+### /3 — Blueprint Spatial Table (app/3/page.tsx)
+- **Direction & Palette:** Inspired by an architect's cyanotype drafting board where patterns emerge in 2D space — Prussian blueprint blue (#153259) with 24px ruling, chalk white (#F4F7FB), and cadmium pin yellow (#F2C14E).
+- **Typography:** Bricolage Grotesque display headings paired with Spline Sans.
+- **Interactive Hero:** A 2D spatial canvas with live SVG connector threads, cluster filters (Solar & shade, Courtyards & airflow), node inspection, and a toggle between **Spatial table** and **Ordinary folder list** to show how linear lists hide relationships.
+![Iteration 3: Blueprint table](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-3-native.png)
+---
+### /4 — Field Herbarium (app/4/page.tsx)
+- **Direction & Palette:** Inspired by botanical specimen presses and field notebooks that compound slowly across years — pressed celadon sage (#DCE3D8), lichen mounting paper (#F2F5EF), pine bark ink (#182920), and gentian violet (#4D43A3).
+- **Typography:** Fraunces headlines paired with Hanken Grotesk field labels and prose.
+- **Interactive Hero:** A mounted specimen sheet where switching across October 2024, March 2025, and November 2026 traces how a rough two-sentence kitchen observation links to later reading and matures into a finished guide without manual folder sorting.
+![Iteration 4: Field herbarium](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/iteration-4-herbarium.png)
+---
+### /5 — Pocket Recorder Instrument (app/5/page.tsx)
+- **Direction & Palette:** Inspired by tactile polycarbonate field recorders focused on sub-second capture — alabaster casing (#F4F6F9), anodized chassis (#E2E6EC), graphite legend ink (#141923), signal cobalt (#1849D6), and capture orange (#E87411).
+- **Typography:** Schibsted Grotesk across headlines and controls, with Recursive inside the live plain-text capture buffer.
+- **Interactive Hero:** A working live scratchpad right in the hero — type anything (or click a quick-try keycap) to watch matching notes surface in real time below the input, and press **Save note to vault** (Cmd + Enter) to store new notes into the live recall pool.
+![Iteration 5: Pocket recorder](/var/folders/y4/8wf4dvh5329dp8l9_dpblls40000gn/T/cursor/screenshots/cairn-5.png)
+---
+### Iteration Switcher (app/components/IterationSwitcher.tsx)
+- Pinned in the bottom-right corner across /1–/5:  
+- Click < or Next > to cycle through /1 through /5 in a single click.  
+- Click the center pill (e.g. 1/5 Slip-box tray) to open the popover menu and jump straight to any iteration, or press Alt + 1 through Alt + 5.
