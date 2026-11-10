@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Ruled 3x5 cotton index card surface for /1 */
+.index-card-ruled {
+  background-color: #fffdf7;
+  background-image:
+    linear-gradient(to bottom, transparent 43px, #c84646 43px, #c84646 44.5px, transparent 44.5px),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 31px,
+      rgba(43, 91, 158, 0.14) 31px,
+      rgba(43, 91, 158, 0.14) 32px
+    );
+  background-position: 0 0, 0 45px;
+}
+
+/* Prussian cyanotype drafting ruling for /3 */
+.blueprint-grid {
+  background-color: #153259;
+  background-image:
+    linear-gradient(to right, rgba(169, 198, 235, 0.11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 198, 235, 0.11) 1px, transparent 1px),
+    linear-gradient(to right, rgba(169, 198, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 198, 235, 0.05) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}

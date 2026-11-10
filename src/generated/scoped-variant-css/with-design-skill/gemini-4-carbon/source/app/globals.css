@@ -1,0 +1,54 @@
+@layer base {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) 
+  *::after {
+    box-sizing: border-box;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) {
+      scroll-behavior: auto;
+    }
+
+    :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) 
+    *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) 
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Ruled 3x5 cotton index card surface for /1 */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) .index-card-ruled {
+  background-color: #fffdf7;
+  background-image:
+    linear-gradient(to bottom, transparent 43px, #c84646 43px, #c84646 44.5px, transparent 44.5px),
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0px,
+      transparent 31px,
+      rgba(43, 91, 158, 0.14) 31px,
+      rgba(43, 91, 158, 0.14) 32px
+    );
+  background-position: 0 0, 0 45px;
+}
+
+/* Prussian cyanotype drafting ruling for /3 */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-carbon"]) .blueprint-grid {
+  background-color: #153259;
+  background-image:
+    linear-gradient(to right, rgba(169, 198, 235, 0.11) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 198, 235, 0.11) 1px, transparent 1px),
+    linear-gradient(to right, rgba(169, 198, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(169, 198, 235, 0.05) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}

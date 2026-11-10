@@ -1,0 +1,113 @@
+### Rules & Instruction Files (Inlined in Startup Context)
+
+1. **`AGENTS.md`** (`nextjs-agent-rules`)
+   - **Path:** `/Users/Shared/whichai-gemini-4-carbon/preflight/AGENTS.md`
+   - **Source:** Always-applied workspace rule (full contents loaded in startup context; its body also references `node_modules/next/dist/docs/` and `node_modules/next/dist/server/lib/generate-agent-files.js`, which are not loaded).
+
+*(No other `.cursor/rules`, `.cursorrules`, `CLAUDE.md`, user rules, or memory files are present in startup context.)*
+
+---
+
+### Agent Skills (76 Total — Indexed with Descriptions in Startup Context)
+
+#### Cursor Built-in Skills (Source: `/Users/dara/.cursor/skills-cursor`)
+1. **`agent-sdk-create-agent`** — `/Users/dara/.cursor/skills-cursor/agent-sdk-create-agent/SKILL.md`
+2. **`automate`** — `/Users/dara/.cursor/skills-cursor/automate/SKILL.md`
+3. **`autopilot`** — `/Users/dara/.cursor/skills-cursor/autopilot/SKILL.md`
+4. **`create-hook`** — `/Users/dara/.cursor/skills-cursor/create-hook/SKILL.md`
+5. **`create-rule`** — `/Users/dara/.cursor/skills-cursor/create-rule/SKILL.md`
+6. **`create-skill`** — `/Users/dara/.cursor/skills-cursor/create-skill/SKILL.md`
+7. **`loop`** — `/Users/dara/.cursor/skills-cursor/loop/SKILL.md`
+8. **`new-repo`** — `/Users/dara/.cursor/skills-cursor/new-repo/SKILL.md`
+9. **`origin`** — `/Users/dara/.cursor/skills-cursor/origin/SKILL.md`
+10. **`review-bugbot`** — `/Users/dara/.cursor/skills-cursor/review-bugbot/SKILL.md`
+11. **`review-security`** — `/Users/dara/.cursor/skills-cursor/review-security/SKILL.md`
+12. **`sdk`** — `/Users/dara/.cursor/skills-cursor/sdk/SKILL.md`
+13. **`share`** — `/Users/dara/.cursor/skills-cursor/share/SKILL.md`
+14. **`split-to-prs`** — `/Users/dara/.cursor/skills-cursor/split-to-prs/SKILL.md`
+15. **`statusline`** — `/Users/dara/.cursor/skills-cursor/statusline/SKILL.md`
+16. **`update-cursor-settings`** — `/Users/dara/.cursor/skills-cursor/update-cursor-settings/SKILL.md`
+17. **`visualize`** — `/Users/dara/.cursor/skills-cursor/visualize/SKILL.md`
+18. **`canvas`** — `/Users/dara/.cursor/skills-cursor/.kits/cursor-pages/canvas/SKILL.md`
+
+#### Supabase Plugin Skills (Source: `cursor-public/supabase` plugin)
+19. **`supabase`** — `/Users/dara/.cursor/plugins/cache/cursor-public/supabase/release_v0.1.4/skills/supabase/SKILL.md`
+20. **`supabase-postgres-best-practices`** — `/Users/dara/.cursor/plugins/cache/cursor-public/supabase/release_v0.1.4/skills/supabase-postgres-best-practices/SKILL.md`
+
+#### Slack Plugin Skills (Source: `cursor-public/slack` plugin)
+21. **`block-kit`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/block-kit/SKILL.md`
+22. **`create-slack-app`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/create-slack-app/SKILL.md`
+23. **`slack-api`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/slack-api/SKILL.md`
+24. **`slack-cli`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/slack-cli/SKILL.md`
+25. **`slack-docs`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/slack-docs/SKILL.md`
+26. **`slack-messaging`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/slack-messaging/SKILL.md`
+27. **`slack-search`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/slack-search/SKILL.md`
+28. **`test-slack-app`** — `/Users/dara/.cursor/plugins/cache/cursor-public/slack/64c3f33fa13beb98c96d736390f80f3454a93a88/skills/test-slack-app/SKILL.md`
+
+#### Granola Plugin Skills (Source: `cursor-public/granola` plugin)
+29. **`granola-context`** — `/Users/dara/.cursor/plugins/cache/cursor-public/granola/ffbeb66b8b8115e9973dd14570768fbe5ec7edc0/skills/granola-context/SKILL.md`
+30. **`granola-prep`** — `/Users/dara/.cursor/plugins/cache/cursor-public/granola/ffbeb66b8b8115e9973dd14570768fbe5ec7edc0/skills/granola-prep/SKILL.md`
+31. **`granola-review`** — `/Users/dara/.cursor/plugins/cache/cursor-public/granola/ffbeb66b8b8115e9973dd14570768fbe5ec7edc0/skills/granola-review/SKILL.md`
+
+#### pstack, Google Drive, and X Plugin Skills (Source: `cursor-public` plugins)
+32. **`setup-pstack`** — `/Users/dara/.cursor/plugins/cache/cursor-public/pstack/de8ee15dd1194627d21eb5fcd41cb1873208dabb/skills/setup-pstack/SKILL.md` (Source: `cursor-public/pstack` plugin)
+33. **`google-drive`** — `/Users/dara/.cursor/plugins/cache/cursor-public/google-drive/de8ee15dd1194627d21eb5fcd41cb1873208dabb/skills/google-drive/SKILL.md` (Source: `cursor-public/google-drive` plugin)
+34. **`x-api-mcp-guide`** — `/Users/dara/.cursor/plugins/cache/cursor-public/x/de8ee15dd1194627d21eb5fcd41cb1873208dabb/skills/x-api-mcp-guide/SKILL.md` (Source: `cursor-public/x` plugin)
+
+#### ElevenLabs Plugin Skills — General & MCP (Source: `cursor-public/elevenlabs` plugin)
+35. **`agents`** (`general/agents`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/agents/SKILL.md`
+36. **`dubbing`** (`general/dubbing`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/dubbing/SKILL.md`
+37. **`music`** (`general/music`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/music/SKILL.md`
+38. **`setup-api-key`** (`general/setup-api-key`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/setup-api-key/SKILL.md`
+39. **`sound-effects`** (`general/sound-effects`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/sound-effects/SKILL.md`
+40. **`speech-engine`** (`general/speech-engine`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/speech-engine/SKILL.md`
+41. **`speech-to-text`** (`general/speech-to-text`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/speech-to-text/SKILL.md`
+42. **`text-to-speech`** (`general/text-to-speech`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/text-to-speech/SKILL.md`
+43. **`voice-changer`** (`general/voice-changer`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/voice-changer/SKILL.md`
+44. **`voice-isolator`** (`general/voice-isolator`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/general/voice-isolator/SKILL.md`
+45. **`agents-platform`** (`mcp/agents-platform`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/mcp/agents-platform/SKILL.md`
+46. **`creative-studio`** (`mcp/creative-studio`) — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/skills/mcp/creative-studio/SKILL.md`
+
+#### ElevenLabs Plugin Skills — Architect (Source: `cursor-public/elevenlabs` plugin)
+47. **`agent-simplification`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/agent-simplification/SKILL.md`
+48. **`architect-agent-memory`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-agent-memory/SKILL.md`
+49. **`architect-branches-versions-merge`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-branches-versions-merge/SKILL.md`
+50. **`architect-create-client-tool`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-create-client-tool/SKILL.md`
+51. **`architect-create-llm-test`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-create-llm-test/SKILL.md`
+52. **`architect-create-simulation-test`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-create-simulation-test/SKILL.md`
+53. **`architect-create-tool-test`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-create-tool-test/SKILL.md`
+54. **`architect-create-webhook-tool`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-create-webhook-tool/SKILL.md`
+55. **`architect-edit-existing-tool`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-edit-existing-tool/SKILL.md`
+56. **`architect-edit-string-fields`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-edit-string-fields/SKILL.md`
+57. **`architect-edit-workflows`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-edit-workflows/SKILL.md`
+58. **`architect-explain-test-runs`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-explain-test-runs/SKILL.md`
+59. **`architect-explore-agent`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-explore-agent/SKILL.md`
+60. **`architect-generate-agent`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-generate-agent/SKILL.md`
+61. **`architect-get-agent-ci-green`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-get-agent-ci-green/SKILL.md`
+62. **`architect-llm-selection`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-llm-selection/SKILL.md`
+63. **`architect-manage-procedures`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-manage-procedures/SKILL.md`
+64. **`architect-migrate-from-competitor`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-migrate-from-competitor/SKILL.md`
+65. **`architect-migrate-to-procedures`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-migrate-to-procedures/SKILL.md`
+66. **`architect-mock-all-tools`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-mock-all-tools/SKILL.md`
+67. **`architect-post-call-data`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-post-call-data/SKILL.md`
+68. **`architect-review-live-calls`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-review-live-calls/SKILL.md`
+69. **`architect-schedule-launch`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-schedule-launch/SKILL.md`
+70. **`architect-secure-for-production`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-secure-for-production/SKILL.md`
+71. **`architect-structured-procedures`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-structured-procedures/SKILL.md`
+72. **`architect-troubleshoot-tool-errors`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-troubleshoot-tool-errors/SKILL.md`
+73. **`architect-turn-taking-latency`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-turn-taking-latency/SKILL.md`
+74. **`architect-update-config-safely`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/architect-update-config-safely/SKILL.md`
+75. **`code-tools`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/code-tools/SKILL.md`
+76. **`fix-agent-qa-ticket`** — `/Users/dara/.cursor/plugins/cache/cursor-public/elevenlabs/1c5f1de18e1d28a3c84a9aa2146a6a5e9484488c/architect/skills/fix-agent-qa-ticket/SKILL.md`
+
+---
+
+### Other Non-File Instruction Blocks in Startup Context
+
+- **Dynamic Tool / MCP Namespace Instructions (`namespaceUseInstructions`):**
+  - **`cursor-origin`** — Source: `cursor-origin` MCP server
+  - **`cursor-computer-use`** — Source: `cursor-computer-use` MCP server
+  - **`cursor-ide-browser`** — Source: `cursor-ide-browser` MCP server
+  - **`cursor`** — Source: Native Cursor dynamic tool namespace
+- **Subagent Mention Only (Not Loaded or Registered as an Available Skill):**
+  - **`poteto-mode` (`SKILL.md`)** — Mentioned in the `poteto-agent` subagent description (no path provided, not in `<available_skills>`). 
