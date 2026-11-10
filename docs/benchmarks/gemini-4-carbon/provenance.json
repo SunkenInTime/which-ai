@@ -100,7 +100,7 @@
   "integrationChanges": [
     "Root html/body became data-source-html/data-source-body divs; globals.css imported through its scoped copy; LayoutProps replaced by an explicit ReactNode children type.",
     "The model's IterationSwitcher is not rendered (the gallery has its own); its file is kept.",
-    "Without Design Skill only: :root/html/body rules moved onto the wrapper divs, and the Tailwind @theme font utilities (font-sans, font-mono, font-newsreader, font-instrument, font-fraunces, font-space, font-jakarta, font-plex-mono, font-jetbrains) materialized in globals.css because the gallery strips @theme.",
+    "Without Design Skill only: :root/html/body rules moved onto the wrapper divs, and the Tailwind @theme font utilities (font-sans, font-mono, font-newsreader, font-instrument, font-fraunces, font-space, font-jakarta, font-plex-mono, font-jetbrains) materialized in globals.css because the gallery strips @theme; the body's overflow-x: hidden becomes overflow-x: clip on the wrapper so the sticky headers keep sticking.",
     "Gemini 4 Carbon gets its own archive family (gemini-carbon) so it does not move Gemini 4 Argon under Show Archived.",
     "lucide-react resolves to the gallery's 0.542 instead of the model's ^1.71 (ArrowUpRight, Plus, Minus, Check only)."
   ]

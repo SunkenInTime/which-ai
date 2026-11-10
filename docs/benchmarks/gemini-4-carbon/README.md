@@ -34,7 +34,7 @@ Not recorded yet. Cursor keeps per-request token usage only in its dashboard usa
 The gallery changes these things and nothing else:
 
 - `<html>`/`<body>` become `data-source-html`/`data-source-body` divs. `globals.css` goes through the scoped copy, and the model's iteration switcher is not rendered.
-- Without Design Skill only: the gallery strips Tailwind's `@theme` block, which held the model's font utilities (`font-newsreader`, `font-space`, `font-plex-mono` and others). Those utilities are written out in `globals.css`, and the `:root`/`html`/`body` rules move onto the wrapper divs. Without this, every heading fell back to the gallery's Geist.
+- Without Design Skill only: the gallery strips Tailwind's `@theme` block, which held the model's font utilities (`font-newsreader`, `font-space`, `font-plex-mono` and others). Those utilities are written out in `globals.css`, and the `:root`/`html`/`body` rules move onto the wrapper divs. The body's `overflow-x: hidden` becomes `clip` on its wrapper, because `hidden` on a div makes it a scroll container and the sticky headers on pages 1, 3 and 4 stop sticking. Without this, every heading fell back to the gallery's Geist.
 - The no-skill pages import four icons from `lucide-react`. The model installed ^1.71; the gallery resolves its own 0.542.
 - Gemini 4 Carbon gets its own archive family, so Gemini 4 Argon stays on the home page.
 
