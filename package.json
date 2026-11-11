@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --webpack",
     "build": "next build --webpack",
     "predev": "node scripts/scope-variant-css.mjs",
     "prebuild": "node scripts/patch-next-font-fetch.mjs && node scripts/scope-variant-css.mjs",
