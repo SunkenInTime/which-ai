@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { GeistSans } from "geist/font/sans";
+import { Analytics } from "@vercel/analytics/next";
 import { GalleryThemeProvider } from "@/components/gallery/gallery-theme-provider";
 import { galleryThemeInitScript } from "@/lib/gallery-theme";
 import "./globals.css";
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body>
         <GalleryThemeProvider>{children}</GalleryThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
