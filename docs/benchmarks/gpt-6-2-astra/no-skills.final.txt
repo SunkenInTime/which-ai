@@ -1,0 +1,11 @@
+Built five landing pages for **Daymark**, a second-brain note-taking app. Use the **Design** button in the lower-right corner to switch between them.
+
+1. [Alpine](http://localhost:3421/1) — illustrated mountain landscape
+2. [Constellation](http://localhost:3421/2) — interactive star map of connected notes
+3. [Commonplace](http://localhost:3421/3) — editorial layout inspired by clothbound notebooks
+4. [Pinboard](http://localhost:3421/4) — colorful collage of sketches and handwritten ideas
+5. [Still Life](http://localhost:3421/5) — sunlit writing desk with quiet typography
+
+The [home page](http://localhost:3421) opens Alpine. All five include a searchable notebook that saves edits in your browser.
+
+Verified desktop and mobile layouts, navigation, and note persistence. Lint and the production build pass.

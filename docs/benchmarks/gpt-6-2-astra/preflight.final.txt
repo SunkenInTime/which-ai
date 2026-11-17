@@ -1,0 +1,53 @@
+### 1. Available skills
+
+`design-taste-frontend` is the only skill listed for this session.
+
+### 2. MCP servers and tools
+
+`browser` is the only MCP server exposing callable tools in this session. Its 25 tools share the prefix `mcp__browser__`.
+
+```text
+browser_click             browser_close             browser_console_messages
+browser_drag              browser_drop              browser_emulate_media
+browser_evaluate          browser_file_upload       browser_fill_form
+browser_find              browser_handle_dialog     browser_hover
+browser_navigate          browser_navigate_back     browser_network_request
+browser_network_requests  browser_press_key         browser_resize
+browser_run_code_unsafe   browser_select_option     browser_snapshot
+browser_tabs              browser_take_screenshot   browser_type
+browser_wait_for
+```
+
+The session also exposes these tools outside the browser MCP server.
+
+| Interface | Tools |
+|---|---|
+| `functions` | `exec`, `wait`, `request_user_input_async`, `send_message_to_user_async` |
+| Workspace tools through `functions.exec` | `apply_patch`, `exec_command`, `write_stdin`, `view_image` |
+| MCP discovery through `functions.exec` | `list_mcp_resources`, `list_mcp_resource_templates`, `read_mcp_resource` |
+| Goals through `functions.exec` | `create_goal`, `get_goal`, `update_goal` |
+| Other tools through `functions.exec` | `clock__curr_time`, `image_gen__imagegen`, `web__run` |
+| `clock` | `sleep` |
+| `collaboration` | `spawn_agent`, `followup_task`, `interrupt_agent`, `list_agents`, `send_message`, `wait_agent` |
+
+`functions.request_user_input` is also defined, but is available only in Plan mode. This session is in Default mode.
+
+### 3. Loaded instructions
+
+Session-level system and developer instructions were loaded alongside the project instructions. I can confirm their presence, but their verbatim text is private. No separate personal `AGENTS.md`, `CLAUDE.md`, user rules file, or memory was identified as loaded in the context I received.
+
+### 4. Screenshot
+
+A solid gold-yellow circle sits near the upper left on a dark navy background. A bright cyan square sits to its right. Below the shapes, white text reads **ORCHID 47**. [View screenshot](/home/dara/Code/bench-astra-6-2/preflight/work/.playwright-mcp/page-2026-11-17T18-33-49-440Z.png)
+
+### 5. Command output
+
+`ls -a ~; ls .agents/skills; echo $CHROME_PATH` exited with status `0`.
+
+```text
+.
+..
+.codex
+design-taste-frontend
+/home/dara/Code/bench-astra-6-2/ms-playwright/chromium-1247/chrome-linux64/chrome
+```

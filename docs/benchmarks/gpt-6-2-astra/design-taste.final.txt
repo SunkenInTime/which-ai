@@ -1,0 +1,13 @@
+Built five landing pages for **Foliohm**, a second-brain note-taking app, running on port **3423**.
+
+| Page | Design |
+|---|---|
+| [1 · Commonplace](http://localhost:3423/1) | Editorial typography and cut-paper collage |
+| [2 · Field journal](http://localhost:3423/2) | Panoramic landscape and serif typography |
+| [3 · Observatory](http://localhost:3423/3) | Dark workspace with an interactive note graph |
+| [4 · Card index](http://localhost:3423/4) | Vermilion palette and illustrated index cards |
+| [5 · Daybook](http://localhost:3423/5) | Blue ink and a ruled notebook spread |
+
+Use the **Design** button in the bottom-right corner to switch. Each page opens the same working notebook, with notes saved in your browser.
+
+Build, lint, and interaction tests passed. Responsive checks covered all five pages at six widths. The design skill recorded 12 open review findings on the first edition. [Design review](/home/dara/Code/bench-astra-6-2/design-taste/work/.taste-skill/design-review.md)

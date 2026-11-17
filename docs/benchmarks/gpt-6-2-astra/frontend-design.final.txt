@@ -1,0 +1,9 @@
+Five landing pages for **Notefold** are running on port **3422**. Use the **Design** button in the bottom-right corner to switch between them.
+
+1. [Paper system](http://localhost:3422/1) — illustrated notebook layers and yellow accents.
+2. [Pinboard](http://localhost:3422/2) — sticky notes and photographic references.
+3. [Constellation](http://localhost:3422/3) — an interactive map of linked thoughts.
+4. [Field journal](http://localhost:3422/4) — landscape photography and journal entries.
+5. [Card index](http://localhost:3422/5) — alphabetized tabs and searchable notes.
+
+All five share a working notebook that saves notes and connections in your browser. Desktop, mobile, and keyboard navigation checks passed, along with lint and the production build.

@@ -1,0 +1,29 @@
+{
+  "baselineCommit": "ee1964c8e5bb3bcb1b6a5c80f3eb342fb32b5a2b",
+  "note": "Files the model changed or added, hashed before gallery adaptation.",
+  "files": {
+    "app/[edition]/page.tsx": "bc1f58f6495ab0ffeae72feabcc8f1efe6ef8fa0d4c8962b987d6b0cda9b0207",
+    "app/components/Designs.tsx": "11d700505e30a6cd513b929fe94caea26ebe9ae72cdc766992c989e287f2b149",
+    "app/components/Icons.tsx": "1b40a8731f3c5a5a37ca8d6648d88afc2225dd389419f228e1d1250b317a9130",
+    "app/components/Landing.tsx": "4fa9445b7f239809d14ceae86ef878c48c80df2886649ec4d584a8b921fbe773",
+    "app/components/Notebook.tsx": "7595b3b24bed9fd8d24697989477bf5e3b1886b2b878e5096785bc2cb410bd73",
+    "app/components/content.ts": "6ff18e1a422acb18f0a7e85e0a2e937ef43316191b4d196a0a8b992c45b98af5",
+    "app/favicon.ico": "02ce70cb543204329e0a6f810ff4845ce6ce07967a56f65b6ea38949adc123e7",
+    "app/globals.css": "f871a24e2798a1177555b52588adab2fc24f41f55435350ca4c4119019a547a4",
+    "app/layout.tsx": "80197af6f3b4dbf202b23ba8fde010adffecccec22c85c1666270b7d663e1a97",
+    "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd",
+    "next.config.ts": "9e47f0ea31b6916759a7eeb433f205826831c81be522acdf894bcba924e73ecb",
+    "public/art/architecture.webp": "54c47a33e6fdb0b5cf095a590fa6426e9038aa0979d3f3870000747c610fb340",
+    "public/art/capture.webp": "60c999d2066fe483cb828b5b1f46dd965d51b8fdeb97fd5bdbfdb8a8586297b5",
+    "public/art/connect.webp": "0176188b995af123973706abc4e7f4b70bc64765f8651539ccaf1f728e214a4e",
+    "public/art/field-mountain.webp": "922e3e85819f0e7b24f40a7d73eaabcfa3473becb575dab8e19f169e034ec8b2",
+    "public/art/isometric-notes.webp": "a4a5a4690f9f8d828fa43b5a506474533a112cb7c79d337e8ea49ae4f3af8055",
+    "public/art/recall.webp": "194aa9d257a78550ad296ff52f7e2681adfc958d82fa2f55006794a1aef55bfb",
+    "public/fonts/barlow-condensed.woff2": "f653a5b9992ff6592eb790e795f289533797c499e5bde0c2705f33d2118f1e5a",
+    "public/fonts/bricolage.woff2": "eae2e0b69690f7a3ffa3c5cf433695296df0c9337c96574a3fb4ccde3edb7341",
+    "public/fonts/dm-sans.woff2": "91df72dc9c7129b53b35f39cf4b4c97e13fc37de8f07ae4c78896d2faeddd0c8",
+    "public/fonts/instrument-serif.woff2": "deb7e58f79be35e7385b328e40d697a5fb895194ad2e66cf18403ef71e847c5d",
+    "public/fonts/licenses.txt": "fe2d3603dcac61c1d6d904de0cf4148fdb06d08b7f7b13321dfa3875db2eee1f",
+    "public/fonts/plex-mono.woff2": "3be309de0dd3b8b71d3993c254e4eaf79c08b8b2f011e76c4b696e69aff319b7"
+  }
+}
