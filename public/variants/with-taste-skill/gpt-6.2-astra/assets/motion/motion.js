@@ -28,8 +28,10 @@
 */
 // Gallery adaptation: the marks this file sets on <html> (classes, data-motion, data-moments-*) go on the
 // source's root div, so they don't touch the gallery's own page. Looked up on each use, because the gallery
-// can swap that div when it moves between designs.
-const sourceRoot = () => document.querySelector('[data-source-html]') ?? document.documentElement;
+// can swap that div when it moves between designs. When no design is showing (a timer firing after the visitor
+// left), the marks go to a detached element nobody sees.
+const offPage = document.createElement('div');
+const sourceRoot = () => document.querySelector('[data-source-html]') ?? offPage;
 const html = new Proxy({}, { get(_, key) { const el = sourceRoot(); const v = el[key]; return typeof v === 'function' ? v.bind(el) : v; } });
 const reducedQ = matchMedia('(prefers-reduced-motion: reduce)');
 const reduced = () => reducedQ.matches;
