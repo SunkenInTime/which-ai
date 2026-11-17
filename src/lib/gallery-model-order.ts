@@ -22,6 +22,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "gpt-5.5-low": { familyOrder: 2, tier: 55 },
   "gpt-5.5-high": { familyOrder: 2, tier: 56 },
   "gpt-6-astra": { familyOrder: 2, tier: 60 },
+  "gpt-6.2-astra": { familyOrder: 2, tier: 62 },
   sol: { familyOrder: 2, tier: 59 },
   "sol-6": { familyOrder: 2, tier: 60 },
   "luna-6": { familyOrder: 2, tier: 60 },

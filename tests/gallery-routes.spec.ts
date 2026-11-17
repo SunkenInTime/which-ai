@@ -32,6 +32,21 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "1" },
+  { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "2" },
+  { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "3" },
+  { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "4" },
+  { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "5" },
+  { group: "with-design-skill", model: "gpt-6.2-astra", iteration: "1" },
+  { group: "with-design-skill", model: "gpt-6.2-astra", iteration: "2" },
+  { group: "with-design-skill", model: "gpt-6.2-astra", iteration: "3" },
+  { group: "with-design-skill", model: "gpt-6.2-astra", iteration: "4" },
+  { group: "with-design-skill", model: "gpt-6.2-astra", iteration: "5" },
+  { group: "with-taste-skill", model: "gpt-6.2-astra", iteration: "1" },
+  { group: "with-taste-skill", model: "gpt-6.2-astra", iteration: "2" },
+  { group: "with-taste-skill", model: "gpt-6.2-astra", iteration: "3" },
+  { group: "with-taste-skill", model: "gpt-6.2-astra", iteration: "4" },
+  { group: "with-taste-skill", model: "gpt-6.2-astra", iteration: "5" },
   { group: "without-design-skill", model: "gemini-4-carbon", iteration: "1" },
   { group: "without-design-skill", model: "gemini-4-carbon", iteration: "2" },
   { group: "without-design-skill", model: "gemini-4-carbon", iteration: "3" },
@@ -679,7 +694,7 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
 }
 
 // Taste-skill v2 reruns replace the model's v1 "With Taste Skill" entry in place.
-const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5", "deepseek-v4-1-flash"] as const;
+const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5", "deepseek-v4-1-flash", "gpt-6.2-astra"] as const;
 
 test("taste-skill v2 reruns are marked on their card and in the skill picker", async ({ page }) => {
   const v2Entries = galleryManifest.filter((entry) => entry.skillVersion === "v2");
