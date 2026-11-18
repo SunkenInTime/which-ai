@@ -1,0 +1,11 @@
+Built five responsive landing pages for **Morrow**, a second-brain note-taking app. The preview is running on **port 3432**, and the **Design** button in the bottom-right corner switches between all five.
+
+- [**/1 · Signal**](http://localhost:3432/1) — Luminous artwork and floating notes show how ideas connect.
+- [**/2 · Field Notes**](http://localhost:3432/2) — A scrapbook-inspired design for collecting observations.
+- [**/3 · Atlas**](http://localhost:3432/3) — A clickable map lets you follow connections between notes.
+- [**/4 · After Hours**](http://localhost:3432/4) — A dark, search-first design for finding half-remembered ideas.
+- [**/5 · Commonplace**](http://localhost:3432/5) — A library preview lets you browse sample collections.
+
+The home page opens Signal. Demo notes are saved in your browser and can be found from any of the five designs.
+
+Verified all five pages at six screen widths, including keyboard navigation for the switcher. The production build and lint checks passed.

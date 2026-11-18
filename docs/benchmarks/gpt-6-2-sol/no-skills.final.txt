@@ -1,0 +1,11 @@
+Built five responsive landing pages for **Morrow**, a note-taking app designed as a second brain. [Open the preview on port 3431](http://localhost:3431).
+
+- [**/1 Room to think**](http://localhost:3431/1) — Editorial typography and a cobalt paper sculpture.
+- [**/2 In connection**](http://localhost:3431/2) — A dark layout built around a glowing knowledge graph.
+- [**/3 The idea garden**](http://localhost:3431/3) — A botanical collage of linked notes.
+- [**/4 The capture desk**](http://localhost:3431/4) — Bold orange typography and a paper inbox motif.
+- [**/5 A mind of its own**](http://localhost:3431/5) — A lavender layout with a workspace preview.
+
+Use the **Design** button in the bottom-right corner to switch between versions. Each page includes an editable demo whose changes last until you reload or leave the page.
+
+Verified all five routes, mobile layouts, keyboard switching, and note editing. The production build and lint checks passed.

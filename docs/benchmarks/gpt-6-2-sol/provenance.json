@@ -1,0 +1,164 @@
+{
+  "model": "gpt-6.2-sol",
+  "modelLabel": "Sol 6.2",
+  "date": "2026-11-18",
+  "runner": "Codex CLI 0.169.0, headless (codex exec --json), on t3os (Ubuntu 26.04, Ryzen 7 5700U)",
+  "reasoningEffort": "xhigh",
+  "source": "runner",
+  "argv": [
+    "exec",
+    "--model",
+    "gpt-6.2-sol",
+    "-c",
+    "model_reasoning_effort=xhigh",
+    "-c",
+    "skills.bundled.enabled=false",
+    "--disable",
+    "skill_search",
+    "--disable",
+    "apps",
+    "--disable",
+    "plugins",
+    "--disable",
+    "remote_plugin",
+    "--disable",
+    "tool_suggest",
+    "--disable",
+    "memories",
+    "--disable",
+    "browser_use",
+    "--disable",
+    "browser_use_external",
+    "--disable",
+    "in_app_browser",
+    "--disable",
+    "computer_use",
+    "--dangerously-bypass-approvals-and-sandbox",
+    "--skip-git-repo-check",
+    "--json",
+    "-C",
+    "/home/dara/Code/bench-sol-6-2/no-skills/work",
+    "-"
+  ],
+  "wrapper": "sudo unshare --mount (private mount namespace, no user namespace): an empty folder bound over /etc/codex and the run's own tmp folder over /tmp, then setpriv back to the normal user with env -i and the listed environment",
+  "isolation": "Fresh HOME and CODEX_HOME per session holding only a copy of the Codex ChatGPT login and a config with one MCP server. Bundled skills, skill search, ChatGPT apps, plugins, remote plugins, tool suggestions and memories off. Codex's built-in browser (browser_use, browser_use_external, in_app_browser) and computer use off, so the browser is Playwright MCP as in every earlier gallery run. Shell, patches, web search, image generation and subagents left on. The box's managed Codex config (/etc/codex/managed_config.toml, which adds the box's own developer instructions) was hidden from the session. Context isolation, not a filesystem jail.",
+  "browser": "Playwright MCP 0.0.83, --browser chromium --isolated --headless --viewport-size 1440x960 --image-responses allow, Chromium 1247 (155.0.8059.12)",
+  "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, the same tarball as the Fable 5.2 runs",
+  "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "assignedSkillSha256": {
+    "frontend-design/SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+    "design-taste-frontend/SKILL.md": "0c7a5852a5217be79cab422c6d58329b776f0c25bd6da8a7a01707ce75be6206"
+  },
+  "skillVersions": {
+    "frontend-design": "same SKILL.md as the Fable 5.2 and Gemini 4 Carbon runs",
+    "design-taste-frontend": "tasteskill 2.5.1, the copy the Fable 5.2 taste run used (all 1,633 skill files match that run's hash list)"
+  },
+  "skillLocation": "work/.agents/skills/<name> (Codex's project skill folder)",
+  "promptSha256": {
+    "no-skills": "35701b05495eaa7da26427b20e33cef8b12a1b93055a01f8ff9e00d47fe8477d",
+    "frontend-design": "6507cba92e78aa22ecdf385b63d87b62cd6a3233486fe540dd73b61254442dee",
+    "design-taste": "41dbca6e10cef9fe58d517a87319cb46a967c88198eca1668fd76d07b6ebd61d"
+  },
+  "promptPolicy": "The gallery prompt with only the port changed (3431, 3432, 3433). One prompt, no follow-up, no orchestrator edits to the generated apps.",
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "galleryGroup": "without-design-skill",
+      "threadId": "01a1ec50-83dd-7973-8557-d74153dbd972",
+      "baselineCommit": "2485ce978ab3adc2a30ecf7bf6a05fc34a759422",
+      "assignedSkill": null,
+      "startedAt": "2026-11-18T01:41:01.407Z",
+      "finishedAt": "2026-11-18T01:56:03.435Z",
+      "exitCode": 0,
+      "userTurns": 1,
+      "transcriptItems": {
+        "agent_message": 4,
+        "command_execution": 29,
+        "mcp_tool_call": 8,
+        "file_change": 2
+      },
+      "browserMcpCalls": {
+        "browser_navigate": 1,
+        "browser_take_screenshot": 1,
+        "browser_console_messages": 1,
+        "browser_run_code_unsafe": 5
+      },
+      "generatedImages": 5,
+      "productName": "Morrow",
+      "skillCatalog": []
+    },
+    {
+      "condition": "frontend-design",
+      "galleryGroup": "with-design-skill",
+      "threadId": "01a1ec50-83e8-7462-9610-ee5157d910a4",
+      "baselineCommit": "4a46e5a41a611fcd79a52dfe572ef1f722557816",
+      "assignedSkill": "frontend-design",
+      "startedAt": "2026-11-18T01:41:01.429Z",
+      "finishedAt": "2026-11-18T02:01:43.732Z",
+      "exitCode": 0,
+      "userTurns": 1,
+      "transcriptItems": {
+        "agent_message": 5,
+        "command_execution": 33,
+        "file_change": 4,
+        "mcp_tool_call": 6
+      },
+      "browserMcpCalls": {
+        "browser_navigate": 1,
+        "browser_console_messages": 1,
+        "browser_take_screenshot": 1,
+        "browser_run_code_unsafe": 3
+      },
+      "generatedImages": 3,
+      "productName": "Morrow",
+      "skillCatalog": [
+        "frontend-design"
+      ]
+    },
+    {
+      "condition": "design-taste",
+      "galleryGroup": "with-taste-skill",
+      "threadId": "01a1ec50-83e4-7111-92c0-39a5382fb6e4",
+      "baselineCommit": "7ac99bd428a90db040349b248e2d60d154580684",
+      "assignedSkill": "design-taste-frontend",
+      "startedAt": "2026-11-18T01:41:01.435Z",
+      "finishedAt": "2026-11-18T02:13:38.196Z",
+      "exitCode": 0,
+      "userTurns": 1,
+      "transcriptItems": {
+        "agent_message": 6,
+        "command_execution": 88,
+        "web_search": 2,
+        "file_change": 15
+      },
+      "browserMcpCalls": {},
+      "generatedImages": 2,
+      "productName": "Veybrin",
+      "skillCatalog": [
+        "design-taste-frontend"
+      ]
+    }
+  ],
+  "preflight": {
+    "threadId": "01a1ec4f-36d6-7d12-8620-c45b62a13b8e",
+    "scored": false,
+    "reply": "preflight.final.txt",
+    "prompt": "preflight.prompt.txt",
+    "result": "Model gpt-6.2-sol at xhigh. Skill catalog: design-taste-frontend only. MCP: browser only. The canvas test page was described correctly from screenshot pixels. The session's rollout file holds no box or personal instructions."
+  },
+  "costs": "costs.json",
+  "timing": "The three sessions ran at the same time on one machine; this is not a controlled latency benchmark.",
+  "generationPolicy": "Original sources hashed before gallery adaptation (<condition>.source-sha256.json). Generation happened outside the gallery checkout, in ~/Code/bench-sol-6-2 on t3os, with the same scripts, starter, skills and isolation as the GPT-6.2 Astra runs (../gpt-6-2-astra).",
+  "environment (no-skills; the other conditions use their own folders)": {
+    "HOME": "/home/dara/Code/bench-sol-6-2/no-skills/home",
+    "CODEX_HOME": "/home/dara/Code/bench-sol-6-2/no-skills/home/.codex",
+    "TMPDIR": "/home/dara/Code/bench-sol-6-2/no-skills/tmp",
+    "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb",
+    "USER": "dara",
+    "CHROME_PATH": "/home/dara/Code/bench-sol-6-2/ms-playwright/chromium-1247/chrome-linux64/chrome",
+    "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-sol-6-2/ms-playwright",
+    "npm_config_cache": "/home/dara/Code/bench-sol-6-2/npm-cache"
+  }
+}

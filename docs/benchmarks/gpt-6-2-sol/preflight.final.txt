@@ -1,0 +1,49 @@
+1. **Available skill**  
+   `design-taste-frontend`
+
+2. **MCP servers and tools**  
+   `browser` is the only MCP server available to me. It exposes these 25 tools:
+
+   ```text
+   browser_click
+   browser_close
+   browser_console_messages
+   browser_drag
+   browser_drop
+   browser_emulate_media
+   browser_evaluate
+   browser_file_upload
+   browser_fill_form
+   browser_find
+   browser_handle_dialog
+   browser_hover
+   browser_navigate
+   browser_navigate_back
+   browser_network_request
+   browser_network_requests
+   browser_press_key
+   browser_resize
+   browser_run_code_unsafe
+   browser_select_option
+   browser_snapshot
+   browser_tabs
+   browser_take_screenshot
+   browser_type
+   browser_wait_for
+   ```
+
+3. **Instructions outside the project**  
+   System and developer instructions are active. Their verbatim text is private. No separate personal instructions, user-level `AGENTS.md` or `CLAUDE.md`, or memories were surfaced in this session.
+
+4. **Screenshot**  
+   A dark navy background fills the view. Near the upper left is a gold circle, with a bright cyan square to its right. White text below the shapes reads **ORCHID 47**.
+
+5. **Shell output**
+
+   ```text
+   .
+   ..
+   .codex
+   design-taste-frontend
+   /home/dara/Code/bench-sol-6-2/ms-playwright/chromium-1247/chrome-linux64/chrome
+   ```

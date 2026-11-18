@@ -11,6 +11,7 @@ export type ModelSlug =
   | "muse-wonder-1.0"
   | "haiku-5-5"
   | "sol-6-1"
+  | "sol-6-2"
   | "mistral-large-4"
   | "union-alpha"
   | "mimo-x-flash-preview"

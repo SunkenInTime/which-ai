@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-11-18",
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "method": "Per request, from each rollout's token_count records (repeated records for the same request counted once): uncached input = input - cached input; output includes reasoning. A request whose input exceeds 272K tokens is priced at the long-context rates; all others at the short-context rates. No cache writes were reported. Codex ran on a ChatGPT sign-in, so these are estimates, not charges.",
+  "records": [
+    {
+      "model": "sol-6-2",
+      "modelId": "gpt-6.2-sol",
+      "condition": "no-skills",
+      "rolloutFiles": 1,
+      "ratesUsdPerMillion": {
+        "shortContext": {
+          "input": 2.0,
+          "cachedInput": 0.1,
+          "output": 10.0
+        },
+        "longContext": {
+          "input": 4.0,
+          "cachedInput": 0.2,
+          "output": 15.0
+        }
+      },
+      "tiers": {
+        "shortContext": {
+          "requests": 35,
+          "uncachedInput": 103061,
+          "cachedInput": 1791488,
+          "output": 30731,
+          "usd": 0.6925808
+        },
+        "longContext": {
+          "requests": 0,
+          "uncachedInput": 0,
+          "cachedInput": 0,
+          "output": 0,
+          "usd": 0.0
+        }
+      },
+      "totals": {
+        "requests": 35,
+        "inputTokens": 1894549,
+        "cachedInputTokens": 1791488,
+        "outputTokens": 30731,
+        "reasoningOutputTokens": 5855
+      },
+      "largestRequestInputTokens": 74245,
+      "apiEquivalentUsd": 0.6925808,
+      "cardUsd": 0.69,
+      "allShortContextUsd": 0.6925808
+    },
+    {
+      "model": "sol-6-2",
+      "modelId": "gpt-6.2-sol",
+      "condition": "frontend-design",
+      "rolloutFiles": 1,
+      "ratesUsdPerMillion": {
+        "shortContext": {
+          "input": 2.0,
+          "cachedInput": 0.1,
+          "output": 10.0
+        },
+        "longContext": {
+          "input": 4.0,
+          "cachedInput": 0.2,
+          "output": 15.0
+        }
+      },
+      "tiers": {
+        "shortContext": {
+          "requests": 42,
+          "uncachedInput": 104585,
+          "cachedInput": 2575872,
+          "output": 34491,
+          "usd": 0.8116672
+        },
+        "longContext": {
+          "requests": 0,
+          "uncachedInput": 0,
+          "cachedInput": 0,
+          "output": 0,
+          "usd": 0.0
+        }
+      },
+      "totals": {
+        "requests": 42,
+        "inputTokens": 2680457,
+        "cachedInputTokens": 2575872,
+        "outputTokens": 34491,
+        "reasoningOutputTokens": 6998
+      },
+      "largestRequestInputTokens": 85725,
+      "apiEquivalentUsd": 0.8116672,
+      "cardUsd": 0.81,
+      "allShortContextUsd": 0.8116672
+    },
+    {
+      "model": "sol-6-2",
+      "modelId": "gpt-6.2-sol",
+      "condition": "design-taste",
+      "rolloutFiles": 1,
+      "ratesUsdPerMillion": {
+        "shortContext": {
+          "input": 2.0,
+          "cachedInput": 0.1,
+          "output": 10.0
+        },
+        "longContext": {
+          "input": 4.0,
+          "cachedInput": 0.2,
+          "output": 15.0
+        }
+      },
+      "tiers": {
+        "shortContext": {
+          "requests": 90,
+          "uncachedInput": 241267,
+          "cachedInput": 14096256,
+          "output": 66298,
+          "usd": 2.5551396
+        },
+        "longContext": {
+          "requests": 0,
+          "uncachedInput": 0,
+          "cachedInput": 0,
+          "output": 0,
+          "usd": 0.0
+        }
+      },
+      "totals": {
+        "requests": 90,
+        "inputTokens": 14337523,
+        "cachedInputTokens": 14096256,
+        "outputTokens": 66298,
+        "reasoningOutputTokens": 19958
+      },
+      "largestRequestInputTokens": 223196,
+      "apiEquivalentUsd": 2.5551396,
+      "cardUsd": 2.56,
+      "allShortContextUsd": 2.5551396
+    }
+  ]
+}

@@ -32,6 +32,21 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "without-design-skill", model: "sol-6-2", iteration: "1" },
+  { group: "without-design-skill", model: "sol-6-2", iteration: "2" },
+  { group: "without-design-skill", model: "sol-6-2", iteration: "3" },
+  { group: "without-design-skill", model: "sol-6-2", iteration: "4" },
+  { group: "without-design-skill", model: "sol-6-2", iteration: "5" },
+  { group: "with-design-skill", model: "sol-6-2", iteration: "1" },
+  { group: "with-design-skill", model: "sol-6-2", iteration: "2" },
+  { group: "with-design-skill", model: "sol-6-2", iteration: "3" },
+  { group: "with-design-skill", model: "sol-6-2", iteration: "4" },
+  { group: "with-design-skill", model: "sol-6-2", iteration: "5" },
+  { group: "with-taste-skill", model: "sol-6-2", iteration: "1" },
+  { group: "with-taste-skill", model: "sol-6-2", iteration: "2" },
+  { group: "with-taste-skill", model: "sol-6-2", iteration: "3" },
+  { group: "with-taste-skill", model: "sol-6-2", iteration: "4" },
+  { group: "with-taste-skill", model: "sol-6-2", iteration: "5" },
   { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "1" },
   { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "2" },
   { group: "without-design-skill", model: "gpt-6.2-astra", iteration: "3" },
@@ -694,7 +709,7 @@ for (const { group, model, iteration, source } of routeSmokeCases) {
 }
 
 // Taste-skill v2 reruns replace the model's v1 "With Taste Skill" entry in place.
-const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5", "deepseek-v4-1-flash", "gpt-6.2-astra"] as const;
+const TASTE_SKILL_V2_MODELS = ["sol-6-1", "gemini-4-argon", "sonnet-5.5", "fable-5.1", "opus-5.5", "deepseek-v4-1-flash", "gpt-6.2-astra", "sol-6-2"] as const;
 
 test("taste-skill v2 reruns are marked on their card and in the skill picker", async ({ page }) => {
   const v2Entries = galleryManifest.filter((entry) => entry.skillVersion === "v2");
@@ -703,6 +718,9 @@ test("taste-skill v2 reruns are marked on their card and in the skill picker", a
   );
 
   await page.goto("/");
+  // Some v2 entries have a newer model in their lineage (Sol 6.1 under Sol 6.2), so open every archived fold.
+  const showArchived = page.getByRole("button", { name: "Show Archived" });
+  while ((await showArchived.count()) > 0) await showArchived.first().click();
   await expect(page.getByTestId("gallery-card-skill-version")).toHaveCount(TASTE_SKILL_V2_MODELS.length);
   for (const model of TASTE_SKILL_V2_MODELS) {
     const card = page
