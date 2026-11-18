@@ -37,6 +37,7 @@ export type ModelSlug =
   | "sonnet-5.5"
   | "grok-4.7"
   | "gpt-6-astra"
+  | "gpt-6.2-astra"
   | "gpt-5.4"
   | "gpt-5.5-low"
   | "gpt-5.5-high"

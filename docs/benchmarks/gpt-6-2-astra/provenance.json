@@ -1,0 +1,173 @@
+{
+  "model": "gpt-6.2-astra",
+  "modelLabel": "GPT-6.2 Astra",
+  "date": "2026-11-17",
+  "runner": "Codex CLI 0.169.0, headless (codex exec --json), on t3os (Ubuntu 26.04, Ryzen 7 5700U)",
+  "reasoningEffort": "xhigh",
+  "source": "runner",
+  "argv": [
+    "exec",
+    "--model",
+    "gpt-6.2-astra",
+    "-c",
+    "model_reasoning_effort=xhigh",
+    "-c",
+    "skills.bundled.enabled=false",
+    "--disable",
+    "skill_search",
+    "--disable",
+    "apps",
+    "--disable",
+    "plugins",
+    "--disable",
+    "remote_plugin",
+    "--disable",
+    "tool_suggest",
+    "--disable",
+    "memories",
+    "--disable",
+    "browser_use",
+    "--disable",
+    "browser_use_external",
+    "--disable",
+    "in_app_browser",
+    "--disable",
+    "computer_use",
+    "--dangerously-bypass-approvals-and-sandbox",
+    "--skip-git-repo-check",
+    "--json",
+    "-C",
+    "/home/dara/Code/bench-astra-6-2/no-skills/work",
+    "-"
+  ],
+  "wrapper": "sudo unshare --mount (private mount namespace, no user namespace): an empty folder bound over /etc/codex and the run's own tmp folder over /tmp, then setpriv back to the normal user with env -i and the listed environment",
+  "environment": {
+    "HOME": "/home/dara/Code/bench-astra-6-2/no-skills/home",
+    "CODEX_HOME": "/home/dara/Code/bench-astra-6-2/no-skills/home/.codex",
+    "TMPDIR": "/home/dara/Code/bench-astra-6-2/no-skills/tmp",
+    "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb",
+    "USER": "dara",
+    "CHROME_PATH": "/home/dara/Code/bench-astra-6-2/ms-playwright/chromium-1247/chrome-linux64/chrome",
+    "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-astra-6-2/ms-playwright",
+    "npm_config_cache": "/home/dara/Code/bench-astra-6-2/npm-cache"
+  },
+  "isolation": "Fresh HOME and CODEX_HOME per session holding only a copy of the Codex ChatGPT login and a config with one MCP server. Bundled skills, skill search, ChatGPT apps, plugins, remote plugins, tool suggestions and memories off. Codex's built-in browser (browser_use, browser_use_external, in_app_browser) and computer use off, so the browser is Playwright MCP as in every earlier gallery run. Shell, patches, web search, image generation and subagents left on. The box's managed Codex config (/etc/codex/managed_config.toml, which adds the box's own developer instructions) was hidden from the session. Context isolation, not a filesystem jail.",
+  "browser": "Playwright MCP 0.0.83, --browser chromium --isolated --headless --viewport-size 1440x960 --image-responses allow, Chromium 1247 (155.0.8059.12)",
+  "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, the same tarball as the Fable 5.2 runs",
+  "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "assignedSkillSha256": {
+    "frontend-design/SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3",
+    "design-taste-frontend/SKILL.md": "0c7a5852a5217be79cab422c6d58329b776f0c25bd6da8a7a01707ce75be6206"
+  },
+  "skillVersions": {
+    "frontend-design": "same SKILL.md as the Fable 5.2 and Gemini 4 Carbon runs",
+    "design-taste-frontend": "tasteskill 2.5.1, the copy the Fable 5.2 taste run used (all 1,633 skill files match that run's hash list)"
+  },
+  "skillLocation": "work/.agents/skills/<name> (Codex's project skill folder)",
+  "promptSha256": {
+    "no-skills": "192f775c93db066a0a399d79bb106b4a998de1a9f56be555c95513484e0fdab0",
+    "frontend-design": "9608dfe35f456b23900e659ccaa7746beb2d273dbf26734e312e8ab03732dcdc",
+    "design-taste": "b3eba9b78bb0d201f496bb00f079412886d958b672cc35aa236929bc8b67777f"
+  },
+  "promptPolicy": "The gallery prompt with only the port changed (3421, 3422, 3423). One prompt, no follow-up, no orchestrator edits to the generated apps.",
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "galleryGroup": "without-design-skill",
+      "threadId": "01a1eace-fed9-73b2-9727-3bfd2d164466",
+      "baselineCommit": "3841ceb5a228748b276994a94dbadb121f938e56",
+      "assignedSkill": null,
+      "startedAt": "2026-11-17T18:39:56.125Z",
+      "finishedAt": "2026-11-17T18:55:00.486Z",
+      "exitCode": 0,
+      "userTurns": 1,
+      "transcriptItems": {
+        "agent_message": 5,
+        "command_execution": 378,
+        "mcp_tool_call": 7
+      },
+      "browserMcpCalls": {
+        "browser_navigate": 1,
+        "browser_run_code_unsafe": 4,
+        "browser_console_messages": 2
+      },
+      "generatedImages": 6,
+      "productName": "Daymark",
+      "skillCatalog": []
+    },
+    {
+      "condition": "frontend-design",
+      "galleryGroup": "with-design-skill",
+      "threadId": "01a1eace-fedf-78c2-898d-2b85e1b3735b",
+      "baselineCommit": "ee1964c8e5bb3bcb1b6a5c80f3eb342fb32b5a2b",
+      "assignedSkill": "frontend-design",
+      "startedAt": "2026-11-17T18:39:56.125Z",
+      "finishedAt": "2026-11-17T18:57:27.889Z",
+      "exitCode": 0,
+      "userTurns": 1,
+      "transcriptItems": {
+        "agent_message": 5,
+        "command_execution": 212,
+        "mcp_tool_call": 7,
+        "file_change": 1
+      },
+      "browserMcpCalls": {
+        "browser_run_code_unsafe": 5,
+        "browser_console_messages": 2
+      },
+      "generatedImages": 3,
+      "productName": "Notefold",
+      "skillCatalog": [
+        "frontend-design"
+      ]
+    },
+    {
+      "condition": "design-taste",
+      "galleryGroup": "with-taste-skill",
+      "threadId": "01a1eace-fee1-7df3-9e17-674a6fe5ecfa",
+      "baselineCommit": "43fde079aeb090a47fb1d335dd3ab75d77920432",
+      "assignedSkill": "design-taste-frontend",
+      "startedAt": "2026-11-17T18:39:56.139Z",
+      "finishedAt": "2026-11-17T19:09:57.123Z",
+      "exitCode": 0,
+      "userTurns": 1,
+      "transcriptItems": {
+        "agent_message": 5,
+        "command_execution": 168,
+        "web_search": 2
+      },
+      "browserMcpCalls": {},
+      "generatedImages": 2,
+      "productName": "Foliohm",
+      "skillCatalog": [
+        "design-taste-frontend"
+      ]
+    }
+  ],
+  "preflight": {
+    "threadId": "01a1eac9-2406-7ca0-8374-0fa3036e541f",
+    "scored": false,
+    "reply": "preflight.final.txt",
+    "prompt": "preflight.prompt.txt",
+    "result": "Skill catalog: design-taste-frontend only. MCP: browser only. The canvas test page was described correctly from screenshot pixels. The session's rollout file holds no box or personal instructions."
+  },
+  "discardedAttempts": [
+    {
+      "what": "preflight 1",
+      "why": "The session's rollout file showed /etc/codex/managed_config.toml had added the box's developer instructions (a -c override does not outrank it). The model itself said no extra instructions were loaded."
+    },
+    {
+      "what": "preflight 2",
+      "why": "bubblewrap hid /etc/codex, but Ubuntu's bwrap AppArmor profile stops Chrome from starting its sandbox, which the taste skill's inspector needs."
+    },
+    {
+      "what": "first launch of all three conditions, stopped about 1 minute in (18:38:45 to 18:39:50 UTC)",
+      "why": "The no-skills session listed the box's shared /tmp, which held other projects' files. Each session now gets its own /tmp. Workspaces were rebuilt from the starter before relaunching."
+    }
+  ],
+  "costs": "costs.json",
+  "timing": "The three sessions ran at the same time on one machine; this is not a controlled latency benchmark.",
+  "generationPolicy": "Original sources hashed before gallery adaptation (<condition>.source-sha256.json). Generation happened outside the gallery checkout, in ~/Code/bench-astra-6-2 on t3os."
+}

@@ -27,12 +27,13 @@ export type GalleryIsoDate = `${number}-${number}-${number}`;
 export const NEW_ARRIVAL_WINDOW_DAYS = 14;
 
 /** Explicitly selected arrivals; a recent date alone does not earn a New badge. */
-const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["gemini-4-carbon", "fable-5.2", "swe-2-flash", "deepseek-v4-1-flash", "kimi-k3-1-pro", "gemini-4-argon", "muse-wonder-1.0"]);
+const NEW_ARRIVAL_MODELS = new Set<ModelSlug>(["gpt-6.2-astra", "gemini-4-carbon", "fable-5.2", "swe-2-flash", "deepseek-v4-1-flash", "kimi-k3-1-pro", "gemini-4-argon", "muse-wonder-1.0"]);
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
 /** First day each model's generations landed in the gallery. */
 const MODEL_ADDED_AT: Partial<Record<ModelSlug, GalleryIsoDate>> = {
+  "gpt-6.2-astra": "2026-11-17",
   "gemini-4-carbon": "2026-11-10",
   "fable-5.2": "2026-11-09",
   "deepseek-v4-1-flash": "2026-10-29",

@@ -4,6 +4,9 @@ import withoutDeepSeek41Flash from "@/variants/without-design-skill/deepseek-v4-
 import withTasteKimi31Pro from "@/variants/with-taste-skill/kimi-k3-1-pro";
 import withKimi31Pro from "@/variants/with-design-skill/kimi-k3-1-pro";
 import withoutKimi31Pro from "@/variants/without-design-skill/kimi-k3-1-pro";
+import withAstra62 from "@/variants/with-design-skill/gpt-6.2-astra";
+import withTasteAstra62 from "@/variants/with-taste-skill/gpt-6.2-astra";
+import withoutAstra62 from "@/variants/without-design-skill/gpt-6.2-astra";
 import withTasteArgon from "@/variants/with-taste-skill/gemini-4-argon";
 import withArgon from "@/variants/with-design-skill/gemini-4-argon";
 import withoutArgon from "@/variants/without-design-skill/gemini-4-argon";
@@ -148,6 +151,9 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-design-skill:kimi-k3-1-pro": withKimi31Pro,
   "with-taste-skill:kimi-k3-1-pro": withTasteKimi31Pro,
 
+  "with-design-skill:gpt-6.2-astra": withAstra62,
+  "with-taste-skill:gpt-6.2-astra": withTasteAstra62,
+  "without-design-skill:gpt-6.2-astra": withoutAstra62,
   "with-taste-skill:gemini-4-argon": withTasteArgon,
   "with-design-skill:gemini-4-argon": withArgon,
   "without-design-skill:gemini-4-argon": withoutArgon,

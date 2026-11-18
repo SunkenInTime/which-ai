@@ -153,7 +153,10 @@ export function isolatedEnv(home, harnessId) {
 // Claude Code ships built-in skills (one is a design skill); --disable-slash-commands turns them all off.
 // Codex ships bundled skills too, and on Windows it finds the user's ~/.agents/skills through the OS profile
 // folder, whatever HOME and USERPROFILE say. codexIsolation turns both off, along with skill search, ChatGPT
-// apps, and plugins. Its stock tools (shell, patches, web search, image generation, subagents) stay on.
+// apps, plugins, tool suggestions and memories. Newer Codex versions also ship a built-in browser and computer
+// use, which the earlier Codex runs didn't have; they're off too, and computer use would drive the real desktop
+// of the machine running the session. Its stock tools (shell, patches, web search, image generation, subagents)
+// stay on.
 const codexIsolation = [
   "skills.bundled.enabled=false",
   "skills.include_instructions=false",
@@ -161,6 +164,12 @@ const codexIsolation = [
   "features.apps=false",
   "features.plugins=false",
   "features.remote_plugin=false",
+  "features.tool_suggest=false",
+  "features.memories=false",
+  "features.browser_use=false",
+  "features.browser_use_external=false",
+  "features.in_app_browser=false",
+  "features.computer_use=false",
 ].flatMap((setting) => ["-c", setting]);
 
 export function harnessCommand(harness, model, prompt, workdir, home) {

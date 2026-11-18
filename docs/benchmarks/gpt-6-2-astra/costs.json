@@ -1,0 +1,142 @@
+{
+  "checkedAt": "2026-11-17",
+  "source": "https://developers.openai.com/api/docs/pricing",
+  "method": "Per request, from each rollout's token_count records (repeated records for the same request counted once): uncached input = input - cached input; output includes reasoning. A request whose input exceeds 272K tokens is priced at the long-context rates; all others at the short-context rates. No cache writes were reported. Codex ran on a ChatGPT sign-in, so these are estimates, not charges.",
+  "records": [
+    {
+      "model": "gpt-6.2-astra",
+      "modelId": "gpt-6.2-astra",
+      "condition": "no-skills",
+      "rolloutFiles": 1,
+      "ratesUsdPerMillion": {
+        "shortContext": {
+          "input": 8.0,
+          "cachedInput": 0.4,
+          "output": 40.0
+        },
+        "longContext": {
+          "input": 16.0,
+          "cachedInput": 0.8,
+          "output": 60.0
+        }
+      },
+      "tiers": {
+        "shortContext": {
+          "requests": 37,
+          "uncachedInput": 73156,
+          "cachedInput": 2008576,
+          "output": 31437,
+          "usd": 2.6461584
+        },
+        "longContext": {
+          "requests": 0,
+          "uncachedInput": 0,
+          "cachedInput": 0,
+          "output": 0,
+          "usd": 0.0
+        }
+      },
+      "totals": {
+        "requests": 37,
+        "inputTokens": 2081732,
+        "cachedInputTokens": 2008576,
+        "outputTokens": 31437,
+        "reasoningOutputTokens": 7751
+      },
+      "largestRequestInputTokens": 81284,
+      "apiEquivalentUsd": 2.6461584,
+      "cardUsd": 2.65,
+      "allShortContextUsd": 2.6461584
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "modelId": "gpt-6.2-astra",
+      "condition": "frontend-design",
+      "rolloutFiles": 1,
+      "ratesUsdPerMillion": {
+        "shortContext": {
+          "input": 8.0,
+          "cachedInput": 0.4,
+          "output": 40.0
+        },
+        "longContext": {
+          "input": 16.0,
+          "cachedInput": 0.8,
+          "output": 60.0
+        }
+      },
+      "tiers": {
+        "shortContext": {
+          "requests": 38,
+          "uncachedInput": 144628,
+          "cachedInput": 2089344,
+          "output": 34386,
+          "usd": 3.3682016
+        },
+        "longContext": {
+          "requests": 0,
+          "uncachedInput": 0,
+          "cachedInput": 0,
+          "output": 0,
+          "usd": 0.0
+        }
+      },
+      "totals": {
+        "requests": 38,
+        "inputTokens": 2233972,
+        "cachedInputTokens": 2089344,
+        "outputTokens": 34386,
+        "reasoningOutputTokens": 6340
+      },
+      "largestRequestInputTokens": 86543,
+      "apiEquivalentUsd": 3.3682016,
+      "cardUsd": 3.37,
+      "allShortContextUsd": 3.3682016
+    },
+    {
+      "model": "gpt-6.2-astra",
+      "modelId": "gpt-6.2-astra",
+      "condition": "design-taste",
+      "rolloutFiles": 1,
+      "ratesUsdPerMillion": {
+        "shortContext": {
+          "input": 8.0,
+          "cachedInput": 0.4,
+          "output": 40.0
+        },
+        "longContext": {
+          "input": 16.0,
+          "cachedInput": 0.8,
+          "output": 60.0
+        }
+      },
+      "tiers": {
+        "shortContext": {
+          "requests": 78,
+          "uncachedInput": 151371,
+          "cachedInput": 8521600,
+          "output": 56329,
+          "usd": 6.872768
+        },
+        "longContext": {
+          "requests": 0,
+          "uncachedInput": 0,
+          "cachedInput": 0,
+          "output": 0,
+          "usd": 0.0
+        }
+      },
+      "totals": {
+        "requests": 78,
+        "inputTokens": 8672971,
+        "cachedInputTokens": 8521600,
+        "outputTokens": 56329,
+        "reasoningOutputTokens": 15577
+      },
+      "largestRequestInputTokens": 158101,
+      "apiEquivalentUsd": 6.872768,
+      "cardUsd": 6.87,
+      "allShortContextUsd": 6.872768
+    }
+  ]
+}
