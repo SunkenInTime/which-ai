@@ -767,6 +767,141 @@
       }
     }
   },
+  "baseline/gpt-6.2-sol/1": {
+    "source": "runner",
+    "harnessVersion": "0.169.0",
+    "modelArg": "gpt-6.2-sol",
+    "effort": "xhigh",
+    "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",
+    "startedAt": "2026-11-18T03:09:50.599Z",
+    "wallSeconds": 1333,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 2624003,
+      "previewSizeBytes": 257644,
+      "masterSizeBytes": 3503680,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 24.5,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "no WebGL",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 4463653,
+        "cached_input_tokens": 4356608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 43425,
+        "reasoning_output_tokens": 9769
+      }
+    }
+  },
+  "baseline/gpt-6.2-sol/2": {
+    "source": "runner",
+    "harnessVersion": "0.169.0",
+    "modelArg": "gpt-6.2-sol",
+    "effort": "xhigh",
+    "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",
+    "startedAt": "2026-11-18T03:09:50.599Z",
+    "wallSeconds": 1333,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 9872905,
+      "previewSizeBytes": 586315,
+      "masterSizeBytes": 16046771,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 44,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "no WebGL",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 4463653,
+        "cached_input_tokens": 4356608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 43425,
+        "reasoning_output_tokens": 9769
+      }
+    }
+  },
+  "baseline/gpt-6.2-sol/3": {
+    "source": "runner",
+    "harnessVersion": "0.169.0",
+    "modelArg": "gpt-6.2-sol",
+    "effort": "xhigh",
+    "promptSha256": "01bc5d30f5a19a8f9acd9ac766600a49e5cc8fea2bc5d8b69398d00c0825ad86",
+    "startedAt": "2026-11-18T03:09:50.599Z",
+    "wallSeconds": 1333,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 5067989,
+      "previewSizeBytes": 389146,
+      "masterSizeBytes": 7274283,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 33.4,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (NVIDIA, NVIDIA GeForce RTX 4070 (0x00002709) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "win32",
+      "cpu": "AMD Ryzen 7 5800X 8-Core Processor             ",
+      "memoryGb": 32
+    },
+    "usage": {
+      "tokens": {
+        "input_tokens": 4463653,
+        "cached_input_tokens": 4356608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 43425,
+        "reasoning_output_tokens": 9769
+      }
+    }
+  },
   "baseline/haiku-5.5/1": {
     "source": "runner",
     "harnessVersion": "2.1.289",

@@ -40,6 +40,8 @@ const MODEL_GALLERY_GENERATION = {
   "gpt-5.5-high": { family: "gpt", tier: 3 },
   "gpt-6-astra": { family: "gpt-astra", tier: 60 },
   "gpt-6.2-astra": { family: "gpt-astra", tier: 62 },
+  "sol-6-1": { family: "gpt-sol", tier: 61 },
+  "sol-6-2": { family: "gpt-sol", tier: 62 },
   sol: { family: "gpt", tier: 4 },
   "sol-6": { family: "gpt", tier: 6 },
   "luna-6": { family: "gpt", tier: 6 },

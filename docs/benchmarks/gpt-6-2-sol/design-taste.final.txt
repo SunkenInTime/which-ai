@@ -1,0 +1,11 @@
+`GATE: OPEN` — the design audit left eight findings on `/1`. [Audit report](/home/dara/Code/bench-sol-6-2/design-taste/work/.taste-skill/summary.txt)
+
+Built five landing pages for **Veybrin**, a second-brain notes app. They’re live on port **3433**, and the **Design** button in the header switches between them.
+
+1. [Field notes](/1) — a journal-style design with linked notes
+2. [Mind map](/2) — a dark design centered on a visual map of ideas
+3. [Scratchpad](/3) — a warm design for capturing passing thoughts
+4. [The index](/4) — an editorial design organized around collections
+5. [Recall](/5) — a search-first design for finding old notes
+
+The interactive preview lets you write, link, and search notes. Notes are saved in your browser and carry across all five designs. The build, lint, and browser interaction checks passed.

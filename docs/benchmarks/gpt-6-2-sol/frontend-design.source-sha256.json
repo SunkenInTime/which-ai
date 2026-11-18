@@ -1,0 +1,29 @@
+{
+  "baselineCommit": "4a46e5a41a611fcd79a52dfe572ef1f722557816",
+  "note": "Files the model changed or added, hashed before gallery adaptation.",
+  "files": {
+    "app/[edition]/page.tsx": "f471b75146cba5d9fec789896b5e96f34487704dd5961174dac9fae665004e31",
+    "app/demo.tsx": "ec41b561364e5d2920f7ec3c126606f218baec973bd996d91953865455d72f53",
+    "app/favicon.ico": "deleted",
+    "app/globals.css": "728381740b60b1b7680326cfd44416e4ce9d050b5ddb92bd4e95c23f320af8fb",
+    "app/icon.svg": "7dfe7aa748340339bfd53b7d4cfc5d79c47e8ee977b47f73b553b58c85e630e0",
+    "app/icons.tsx": "3b9406d9f63c56297c0edf39fd0403a14603e171ab5e2fc08175d7dd953a5a5b",
+    "app/landing.tsx": "aa242c86ff3fa6672c5cbb083f4ff0c0e9cf5b0d2caac19b99621b1ee8498c12",
+    "app/layout.tsx": "a2a20d16045c177e65068035836362289f1e67b8d7cb46285aa59fe8ab10bcfa",
+    "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd",
+    "app/previews.tsx": "3bcfc1c1714d96ccd25efc5ad9a0e9fa2f65224cfb6fb25020e3ebb1fbf849ea",
+    "public/art/after.webp": "d7d4f9d4408f6a8926d5d0a2f34a0d002a16d9dd946ce11bba01b5a8a1b655cf",
+    "public/art/field.webp": "0b7d348f5457574d3d97d171c841c5e0126e53c85bc745ffb561d6dffbbe92d2",
+    "public/art/signal.webp": "f8e475828586c01aa0c3ac92751484f1773f922f033f2b8c317a16972daf84c1",
+    "public/fonts/barlow-condensed-OFL.txt": "186d750eb496a4c17a76385f82be6aea2ac1cf2de074a811d63786cf374ea73f",
+    "public/fonts/barlow-condensed.woff2": "215a93c696f442034a46fbb382958f753fda60e30490683aeea6b235fcbb2b66",
+    "public/fonts/bricolage-OFL.txt": "4b5a7d8f37f5602621c8a8d7358a6a2e71317e6c231c661e15aef0275d3e07ba",
+    "public/fonts/bricolage.woff2": "a97804dc9fbe5fc972a08018c5eda4dab7ef2346f64c57e61419d05e6de4ea1c",
+    "public/fonts/geist-OFL.txt": "1781d2806a07d91c4edf4740b88449fab7d0eadad53f7c351b94cd4d4eb8c00f",
+    "public/fonts/geist.woff2": "19f9c92546aa300c312235e3125af1b81394d8db9a4bc4a425cd5b641d2d54e1",
+    "public/fonts/instrument-serif-OFL.txt": "129ed7618959716959f2941fdd5b49e0ad6e6c1d78726761786a00253d865521",
+    "public/fonts/instrument-serif.woff2": "5eb09b5ac0e28b67c2f041c8ba6d244604ca0c0980d65912ab2d47fed84ddc31",
+    "public/fonts/space-grotesk-OFL.txt": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+    "public/fonts/space-grotesk.woff2": "0640890476fc1198ab4de571fb658de443c4d85b66466ec09534a8737ab1ce9d"
+  }
+}
