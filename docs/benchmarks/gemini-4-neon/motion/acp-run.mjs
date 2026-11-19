@@ -36,6 +36,11 @@ let exited = null;
 child.on("exit", (code, signal) => {
   exited = { code, signal };
   write("exit", exited);
+  // A server that dies mid-turn never answers; fail whatever is waiting so the reply so far is saved and the client exits.
+  for (const [id, p] of pending) {
+    pending.delete(id);
+    p.reject(new Error(`${p.method}: agy_acp_server exited (${signal ?? `code ${code}`}) before answering`));
+  }
 });
 
 let nextId = 1;
