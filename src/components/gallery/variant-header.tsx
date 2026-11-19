@@ -151,7 +151,8 @@ export function VariantSwitcher({
       : [
           "max-xl:fixed max-xl:top-[calc(var(--switcher-visible-top,0px)+0.75rem)] max-xl:right-auto",
           "max-xl:left-[var(--switcher-sheet-left,0.75rem)] max-xl:w-[var(--switcher-sheet-width,min(28rem,calc(100vw-1.5rem)))]",
-          "max-xl:max-h-[calc(var(--switcher-visible-height,100dvh)-1.5rem)]",
+          // Short enough to leave the bar in view below it, so the button that opened it can close it again.
+          "max-xl:max-h-[max(3.5rem,calc(var(--switcher-visible-height,100dvh)-5.5rem))]",
         ],
   );
   const dividerClass = clsx(
