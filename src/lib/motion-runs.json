@@ -362,6 +362,141 @@
       "outputTokens": 125634
     }
   },
+  "baseline/gemini-4-neon/1": {
+    "source": "headless",
+    "harnessVersion": "Antigravity ACP 1.4.5",
+    "modelArg": "gemini-4-neon",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-11-19T05:41:25.256Z",
+    "wallSeconds": 1327,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 9510180,
+      "previewSizeBytes": 289598,
+      "masterSizeBytes": 14752954,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 72.2,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "linux",
+      "cpu": "AMD Ryzen 7 5700U with Radeon Graphics",
+      "memoryGb": 31
+    },
+    "usage": {
+      "turns": 1,
+      "costUsd": 3.2268,
+      "costBasis": "API-equivalent estimate from Antigravity's reported usage at Google's Gemini 4 Neon paid-tier rates; subscription usage",
+      "inputTokens": 5331788,
+      "cacheReadTokens": 5088369,
+      "outputTokens": 94283,
+      "thoughtTokens": 21271
+    }
+  },
+  "baseline/gemini-4-neon/2": {
+    "source": "headless",
+    "harnessVersion": "Antigravity ACP 1.4.5",
+    "modelArg": "gemini-4-neon",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-11-19T05:41:25.256Z",
+    "wallSeconds": 1327,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 6234892,
+      "previewSizeBytes": 485793,
+      "masterSizeBytes": 8253456,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 43.3,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "linux",
+      "cpu": "AMD Ryzen 7 5700U with Radeon Graphics",
+      "memoryGb": 31
+    },
+    "usage": {
+      "turns": 1,
+      "costUsd": 3.2268,
+      "costBasis": "API-equivalent estimate from Antigravity's reported usage at Google's Gemini 4 Neon paid-tier rates; subscription usage",
+      "inputTokens": 5331788,
+      "cacheReadTokens": 5088369,
+      "outputTokens": 94283,
+      "thoughtTokens": 21271
+    }
+  },
+  "baseline/gemini-4-neon/3": {
+    "source": "headless",
+    "harnessVersion": "Antigravity ACP 1.4.5",
+    "modelArg": "gemini-4-neon",
+    "effort": "xhigh",
+    "promptSha256": "6e6d97b80212486a941151d8836dc47da228230cdb0c808a8d6c27c7f93f16fc",
+    "startedAt": "2026-11-19T05:41:25.256Z",
+    "wallSeconds": 1327,
+    "exitCode": 0,
+    "timedOut": false,
+    "status": "ok",
+    "video": {
+      "durationSec": 15,
+      "width": 1920,
+      "height": 1080,
+      "fps": 60,
+      "audio": true,
+      "sizeBytes": 1901516,
+      "previewSizeBytes": 261420,
+      "masterSizeBytes": 2422698,
+      "posterSec": 1
+    },
+    "render": {
+      "renderSeconds": 20,
+      "workers": 4,
+      "gl": "gpu",
+      "renderer": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+      "warnings": [],
+      "pageErrors": []
+    },
+    "machine": {
+      "platform": "linux",
+      "cpu": "AMD Ryzen 7 5700U with Radeon Graphics",
+      "memoryGb": 31
+    },
+    "usage": {
+      "turns": 1,
+      "costUsd": 3.2268,
+      "costBasis": "API-equivalent estimate from Antigravity's reported usage at Google's Gemini 4 Neon paid-tier rates; subscription usage",
+      "inputTokens": 5331788,
+      "cacheReadTokens": 5088369,
+      "outputTokens": 94283,
+      "thoughtTokens": 21271
+    }
+  },
   "baseline/gpt-6-astra/1": {
     "source": "runner",
     "harnessVersion": "0.160.0",

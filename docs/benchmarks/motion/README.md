@@ -65,3 +65,7 @@ Each render is a CRF 18 master, kept in the run folder as `<n>/final.mp4`. What 
 Gemini 4 Argon uses Cursor desktop and is marked `manualOnly` in the harness configuration. `motion:run -- all` skips it; targeting it directly explains the manual workflow instead of invoking an unrelated CLI. Use `motion:new -- gemini-4-argon`, open the printed project in Cursor, select the configured model and reasoning level, and preserve the session's source, usage export and context audit before `motion:finish`.
 
 The October 13 run's [methodology and evidence](../gemini-4-argon/README.md) document personal-rule isolation, remaining built-in/plugin tools, native screenshot access, the cost estimate and its uniform SwiftShader rendering exception. Do not describe it as equivalent to the isolated CLI runs.
+
+## Antigravity runs
+
+Gemini 4 Neon ran in Antigravity through its ACP server (the build T3 Code installs), which the runner doesn't drive, so Antigravity is also `manualOnly`. Antigravity's `agy` CLI could become a runner harness later. Its session was set up with `motion:new -- gemini-4-neon` and run headless by a small ACP client in the same isolated setup as the runner's sessions, then recorded with `motion:finish` as `"source": "headless"`. Its [README](../gemini-4-neon/motion/README.md) has the client, the isolation, the cost estimate, its SwiftShader rendering on t3os, and a flaky contract check on video 2.
