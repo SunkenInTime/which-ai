@@ -8,11 +8,13 @@ playwright-report/
 !.agents/skills/
 .agents/skills/*
 !.agents/skills/add-generation-to-gallery/
+!.agents/skills/side-by-side-reel/
 
 .claude/*
 !.claude/skills/
 .claude/skills/*
 !.claude/skills/add-generation-to-gallery/
+!.claude/skills/side-by-side-reel/
 .windsurf/
 
 # Motion videos live in R2; scripts/motion/upload.mjs copies them there.
