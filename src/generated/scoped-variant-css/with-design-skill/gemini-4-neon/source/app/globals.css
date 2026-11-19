@@ -1,0 +1,63 @@
+/* Gallery adaptation: the gallery strips Tailwind's @theme, so the source's font utilities are written out here. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-newsreader {
+  font-family: var(--font-newsreader);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-hanken {
+  font-family: var(--font-hanken);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-fraunces {
+  font-family: var(--font-fraunces);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-instrument {
+  font-family: var(--font-instrument);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-bricolage {
+  font-family: var(--font-bricolage);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-archivo {
+  font-family: var(--font-archivo);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-source-serif {
+  font-family: var(--font-source-serif);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) .font-literata {
+  font-family: var(--font-literata);
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) [data-source-html] {
+  scroll-behavior: smooth;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) [data-source-body] {
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible, consistent keyboard focus ring across every iteration */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) :where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) [data-source-html] {
+    scroll-behavior: auto;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="gemini-4-neon"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

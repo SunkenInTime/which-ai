@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-editorial: var(--font-instrument-serif), Georgia, serif;
+  --font-organic: var(--font-fraunces), Georgia, serif;
+  --font-geo: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-studio: var(--font-bricolage), system-ui, sans-serif;
+  --font-humanist: var(--font-jakarta), system-ui, sans-serif;
+  --font-neo: var(--font-dm-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+/* Gallery adaptation: the gallery strips Tailwind's @theme, so the source's font utilities are written out here. */
+.font-editorial {
+  font-family: var(--font-instrument-serif), Georgia, serif;
+}
+
+.font-organic {
+  font-family: var(--font-fraunces), Georgia, serif;
+}
+
+.font-geo {
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+}
+
+.font-studio {
+  font-family: var(--font-bricolage), system-ui, sans-serif;
+}
+
+.font-humanist {
+  font-family: var(--font-jakarta), system-ui, sans-serif;
+}
+
+.font-neo {
+  font-family: var(--font-dm-sans), system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+[data-source-html] {
+  scroll-behavior: smooth;
+}
+
+[data-source-body] {
+  margin: 0;
+  padding: 0;
+  /* Gallery adaptation: clip, not hidden, so this wrapper div doesn't become a scroll container. */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Iteration 1: Subtle archival paper grain */
+.bg-paper-grain {
+  background-color: #faf7f2;
+  background-image:
+    radial-gradient(rgba(28, 25, 23, 0.03) 1px, transparent 0),
+    linear-gradient(to bottom, rgba(255, 252, 245, 0.6), rgba(244, 238, 228, 0.35));
+  background-size: 24px 24px, 100% 100%;
+}
+
+/* Iteration 2: Deep obsidian subtle grid */
+.bg-obsidian-grid {
+  background-color: #07080c;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Iteration 4: Gentle organic linen texture */
+.bg-garden-linen {
+  background-color: #f3f5ef;
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(114, 158, 124, 0.09), transparent 45%),
+    radial-gradient(circle at 88% 22%, rgba(217, 138, 43, 0.07), transparent 42%);
+}
+
+/* Iteration 5: Tactile studio dot grid */
+.bg-studio-dots {
+  background-color: #fffdf5;
+  background-image: radial-gradient(#d4cfc0 1.25px, transparent 1.25px);
+  background-size: 22px 22px;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-pulse-soft {
+  animation: pulseSoft 3.5s ease-in-out infinite;
+}

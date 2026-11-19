@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-newsreader: var(--font-newsreader);
+  --font-hanken: var(--font-hanken);
+  --font-fraunces: var(--font-fraunces);
+  --font-instrument: var(--font-instrument);
+  --font-bricolage: var(--font-bricolage);
+  --font-archivo: var(--font-archivo);
+  --font-source-serif: var(--font-source-serif);
+  --font-literata: var(--font-literata);
+}
+
+/* Gallery adaptation: the gallery strips Tailwind's @theme, so the source's font utilities are written out here. */
+.font-newsreader {
+  font-family: var(--font-newsreader);
+}
+
+.font-hanken {
+  font-family: var(--font-hanken);
+}
+
+.font-fraunces {
+  font-family: var(--font-fraunces);
+}
+
+.font-instrument {
+  font-family: var(--font-instrument);
+}
+
+.font-bricolage {
+  font-family: var(--font-bricolage);
+}
+
+.font-archivo {
+  font-family: var(--font-archivo);
+}
+
+.font-source-serif {
+  font-family: var(--font-source-serif);
+}
+
+.font-literata {
+  font-family: var(--font-literata);
+}
+
+[data-source-html] {
+  scroll-behavior: smooth;
+}
+
+[data-source-body] {
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Visible, consistent keyboard focus ring across every iteration */
+:where(a, button, input, textarea, [tabindex]):focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-source-html] {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

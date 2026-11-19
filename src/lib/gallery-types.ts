@@ -8,6 +8,7 @@ export type GalleryGroupSlug =
 export type ModelSlug =
   | "gemini-4-argon"
   | "gemini-4-carbon"
+  | "gemini-4-neon"
   | "muse-wonder-1.0"
   | "haiku-5-5"
   | "sol-6-1"
