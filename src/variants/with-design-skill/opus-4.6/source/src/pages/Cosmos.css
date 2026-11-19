@@ -11,7 +11,7 @@
   min-height: 100vh;
   background: var(--navy);
   color: var(--text);
-  font-family: 'Syne', sans-serif;
+  font-family: 'Opus46 Syne', sans-serif;
   position: relative;
   overflow-x: hidden;
 }
@@ -205,7 +205,7 @@
   color: var(--navy);
   border: none;
   border-radius: 999px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Opus46 Syne', sans-serif;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -229,7 +229,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text);
   border-radius: 999px;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Opus46 Syne', sans-serif;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;

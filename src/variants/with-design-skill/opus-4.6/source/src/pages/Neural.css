@@ -9,7 +9,7 @@
   min-height: 100vh;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Space Mono', monospace;
+  font-family: 'Opus46 Space Mono', monospace;
   position: relative;
   overflow-x: hidden;
 }
@@ -216,7 +216,7 @@
   color: var(--bg);
   border: none;
   border-radius: 8px;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Opus46 Space Mono', monospace;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -245,7 +245,7 @@
   border: 1px solid rgba(0, 255, 136, 0.2);
   color: var(--green);
   border-radius: 8px;
-  font-family: 'Space Mono', monospace;
+  font-family: 'Opus46 Space Mono', monospace;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s;

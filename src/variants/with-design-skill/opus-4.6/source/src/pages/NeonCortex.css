@@ -9,7 +9,7 @@
   min-height: 100vh;
   background: var(--dark);
   color: var(--text);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Opus46 Orbitron', sans-serif;
   position: relative;
   overflow-x: hidden;
 }
@@ -207,7 +207,7 @@
 }
 
 .nc-subtitle {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Opus46 JetBrains Mono', monospace;
   font-size: 14px;
   font-weight: 300;
   line-height: 1.8;
@@ -230,7 +230,7 @@
   background: transparent;
   border: 1px solid var(--cyan);
   color: var(--cyan);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Opus46 Orbitron', sans-serif;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -269,7 +269,7 @@
   background: none;
   border: 1px solid rgba(255, 0, 128, 0.3);
   color: var(--pink);
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Opus46 Orbitron', sans-serif;
   font-size: 12px;
   letter-spacing: 0.15em;
   cursor: pointer;
@@ -399,7 +399,7 @@
 }
 
 .nc-module-desc {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Opus46 JetBrains Mono', monospace;
   font-size: 12px;
   font-weight: 300;
   line-height: 1.6;
@@ -452,7 +452,7 @@
 }
 
 .nc-bottom-sub {
-  font-family: 'JetBrains Mono', monospace;
+  font-family: 'Opus46 JetBrains Mono', monospace;
   font-size: 14px;
   color: var(--muted);
   margin-bottom: 40px;
