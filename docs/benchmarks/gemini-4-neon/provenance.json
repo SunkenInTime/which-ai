@@ -1,0 +1,97 @@
+{
+  "model": "gemini-4-neon-xhigh",
+  "modelLabel": "Gemini 4 Neon",
+  "reasoning": "Extra High (Cursor's xhigh, the model's highest level; offered: low, medium, high, xhigh)",
+  "date": "2026-11-19",
+  "runner": "cursor-agent CLI 2026.11.17-f532c45, headless, on t3os (Ubuntu 26.04, Ryzen 7 5700U)",
+  "source": "runner",
+  "argv": [
+    "--print", "--output-format", "stream-json", "--model", "gemini-4-neon-xhigh", "--force", "--approve-mcps", "--trust",
+    "--sandbox", "disabled", "--workspace", "/home/dara/Code/bench-neon/<condition>/work", "<prompt file contents>"
+  ],
+  "wrapper": "sudo unshare --mount (private mount namespace, no user namespace): an empty folder bound over /etc/codex and /etc/claude-code and the run's own tmp folder over /tmp, then setpriv back to the normal user with env -i and the listed environment",
+  "environment": {
+    "HOME": "/home/dara/Code/bench-neon/<condition>/home",
+    "XDG_CONFIG_HOME": "<HOME>/.config",
+    "XDG_CACHE_HOME": "<HOME>/.cache",
+    "XDG_DATA_HOME": "<HOME>/.local/share",
+    "TMPDIR": "/home/dara/Code/bench-neon/<condition>/tmp",
+    "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+    "SHELL": "/bin/bash",
+    "LANG": "C.UTF-8",
+    "TERM": "dumb",
+    "USER": "dara",
+    "CHROME_PATH": "/home/dara/Code/bench-neon/ms-playwright/chromium-1247/chrome-linux64/chrome",
+    "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-neon/ms-playwright",
+    "npm_config_cache": "/home/dara/Code/bench-neon/npm-cache"
+  },
+  "isolation": "Fresh HOME per session holding only a copy of the Cursor CLI login (~/.config/cursor/auth.json). The box's agent instruction folders (/etc/codex, /etc/claude-code) and the shared /tmp were hidden from the session. cursor-agent syncs the account's marketplace plugins into any home it runs in: their ten MCP servers (Slack, Granola, Gmail, Google Calendar, X, ElevenLabs, X Money, Google Drive, Supabase, Wispr Flow) needed sign-in and were also turned off per workspace with `cursor-agent mcp disable`; their skills and subagents still show in Cursor's catalog. Context isolation, not a filesystem jail.",
+  "browser": "Playwright MCP 0.0.83 as the project MCP server (work/.cursor/mcp.json): --browser chromium --isolated --headless --viewport-size 1440x960 --image-responses allow, Chromium 1247 (155.0.8059.12), the same setup as the GPT-6.2 Astra and Sol runs",
+  "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, the same tarball as the Fable 5.2, GPT-6.2 Astra and GPT-6.2 Sol runs",
+  "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "assignedSkillSha256": {
+    "frontend-design/SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+  },
+  "skillVersions": {
+    "frontend-design": "same SKILL.md as the Fable 5.2, Gemini 4 Carbon, GPT-6.2 Astra and GPT-6.2 Sol runs"
+  },
+  "skillLocation": "work/.agents/skills/<name>",
+  "promptSha256": {
+    "no-skills": "00e29f5a3a9154fc32f936a06d39a9444c54c05fb55d2ca3c8060d7ab93be04c",
+    "frontend-design": "67647b14c870bd51b4e55fced961d972958409f864ead3edce536c6a893719e0",
+    "preflight": "5bef94f1d06fee0ee552556bb8f28470f246e77b8dc2384c6f69f0d7d433c6ce"
+  },
+  "promptPolicy": "The gallery prompt with only the port changed (3451, 3452). One prompt, no follow-up, no orchestrator edits to the generated apps.",
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "galleryGroup": "without-design-skill",
+      "chatId": "75817bfc-0b78-4bca-972a-663a3e9b0441",
+      "baselineCommit": "92578a2dccffa8cef7c5695f8300bb0f7efcb21d",
+      "assignedSkill": null,
+      "startedAt": "2026-11-19T01:27:49.970Z",
+      "lastModelEvent": "2026-11-19T01:41:58.115Z",
+      "endedAt": "2026-11-19T01:52:28.950Z",
+      "exitCode": 143,
+      "ending": "Ran tsc, lint and a production build (all passing), curled /, /1-/5, marked its last to-do done and ran git status, then went silent before a final message. Ended by the operator (SIGTERM) after 10 minutes of silence; not resumed.",
+      "userTurns": 1,
+      "toolCalls": { "read": 31, "edit": 22, "shell": 7, "glob": 6, "grep": 4, "updateTodos": 8, "getMcpTools": 2, "mcp": 38 },
+      "browserMcpCalls": { "browser_navigate": 4, "browser_take_screenshot": 17, "browser_click": 8, "browser_type": 1, "browser_resize": 2, "browser_console_messages": 5, "browser_close": 1 },
+      "imageReads": 15,
+      "skillOrInstructionFilesRead": [],
+      "productName": "Noema"
+    },
+    {
+      "condition": "frontend-design",
+      "galleryGroup": "with-design-skill",
+      "chatId": "3033a668-a6a4-4683-bda2-6505ac99e47c",
+      "baselineCommit": "05fd8cc84c21c0d8ef60d0c73b14c63588049d73",
+      "assignedSkill": "frontend-design",
+      "startedAt": "2026-11-19T01:27:49.979Z",
+      "lastModelEvent": "2026-11-19T01:42:56.669Z",
+      "endedAt": "2026-11-19T01:52:56.152Z",
+      "exitCode": 143,
+      "ending": "Ran a production build and lint (passing), curled /1-/5, marked its last to-do done and ran git status, then went silent before a final message. Ended by the operator (SIGTERM) after 10 minutes of silence; not resumed.",
+      "userTurns": 1,
+      "toolCalls": { "read": 42, "edit": 35, "shell": 4, "glob": 9, "grep": 3, "updateTodos": 8, "getMcpTools": 2, "mcp": 54 },
+      "browserMcpCalls": { "browser_navigate": 15, "browser_take_screenshot": 23, "browser_click": 2, "browser_evaluate": 6, "browser_find": 2, "browser_resize": 2, "browser_console_messages": 3, "browser_close": 1 },
+      "imageReads": 21,
+      "skillOrInstructionFilesRead": ["work/.agents/skills/frontend-design/SKILL.md"],
+      "productName": "Cairn"
+    }
+  ],
+  "preflight": {
+    "chatId": "c1134f75-28ad-4534-a3dd-979ff0f42420",
+    "scored": false,
+    "prompt": "preflight.prompt.txt",
+    "reply": "preflight.final.txt",
+    "workspace": "A separate copy of the frontend-design setup, before the plugin MCP servers were turned off.",
+    "result": "Skills: the workspace's frontend-design, 15 Cursor built-in skills and the account plugins' skills (Supabase, Slack, Granola, pstack, Google Drive, X, X Money, ElevenLabs); none are design skills. MCP: browser ready; the ten plugin servers listed as needing sign-in with no tools. No personal, user-level or box instructions; only the starter's AGENTS.md and CLAUDE.md and Cursor's own developer prompt. Described the canvas test page (gold circle, cyan square, 'HERON 63') from screenshot pixels. The prompt contains the page source, so this shows the screenshot pipeline works, not that the model couldn't have read the URL.",
+    "usage": { "inputTokens": 37114, "cacheReadTokens": 52994, "outputTokens": 6824, "reasoningTokens": 4961 }
+  },
+  "unscoredProbe": "One 'Reply with exactly: OK' request before the preflight, to check that the account could run Neon (15,442 input tokens, 5 output).",
+  "stalls": "Headless cursor-agent went silent at the end of both scored sessions: the process stayed alive with no new events after a git status, before the model's final message, as in three of the four DeepSeek V4.1 Flash sessions. The operator ended each after 10 minutes of silence. Neither was resumed: both had finished their own to-do lists and checks, and a resume in the DeepSeek run started another round of polishing.",
+  "cost": "Unknown. A session's token usage only appears in cursor-agent's final result event, which the stalled sessions never wrote, and the Cursor dashboard's usage list for this account shows no events after 2026-10-31 (third-party models on The X Subscription bill from prepaid credit at grok.com). The cards show no cost.",
+  "timing": "The two scored sessions ran at the same time on one machine; this is not a latency benchmark.",
+  "generationPolicy": "Original sources hashed before gallery adaptation (<condition>.source-sha256.json). Generation happened outside the gallery checkout, in ~/Code/bench-neon on t3os. The original projects aren't uploaded anywhere."
+}

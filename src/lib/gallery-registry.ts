@@ -15,6 +15,8 @@ import withArgon from "@/variants/with-design-skill/gemini-4-argon";
 import withoutArgon from "@/variants/without-design-skill/gemini-4-argon";
 import withCarbon from "@/variants/with-design-skill/gemini-4-carbon";
 import withoutCarbon from "@/variants/without-design-skill/gemini-4-carbon";
+import withNeon from "@/variants/with-design-skill/gemini-4-neon";
+import withoutNeon from "@/variants/without-design-skill/gemini-4-neon";
 import withoutSwe2Flash from "@/variants/without-design-skill/swe-2-flash";
 import withTasteSwe2Flash from "@/variants/with-taste-skill/swe-2-flash";
 import withSwe2Flash from "@/variants/with-design-skill/swe-2-flash";
@@ -165,6 +167,8 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "without-design-skill:gemini-4-argon": withoutArgon,
   "with-design-skill:gemini-4-carbon": withCarbon,
   "without-design-skill:gemini-4-carbon": withoutCarbon,
+  "with-design-skill:gemini-4-neon": withNeon,
+  "without-design-skill:gemini-4-neon": withoutNeon,
   "with-design-skill:sol-6-1": withSol61,
   "with-taste-skill:sol-6-1": withTasteSol61,
   "without-design-skill:sol-6-1": withoutSol61,
