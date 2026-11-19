@@ -123,7 +123,7 @@ export default function ObservatoryPage() {
           ctx.strokeStyle = "rgba(124, 108, 240, 0.8)";
           ctx.lineWidth = 1;
           ctx.stroke();
-          ctx.font = "12px 'JetBrains Mono', monospace";
+          ctx.font = "12px 'Mistral4 JetBrains Mono', monospace";
           ctx.fillStyle = "#c9c2b8";
           ctx.fillText(p.label, p.x + p.r + 12, p.y + 4);
         }

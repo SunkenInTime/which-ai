@@ -11,7 +11,7 @@ const cards = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#F4F2ED] px-6 py-16 pb-36 text-[#171717]" style={{ fontFamily: "'Inter',sans-serif" }}>
+    <main className="min-h-screen bg-[#F4F2ED] px-6 py-16 pb-36 text-[#171717]" style={{ fontFamily: "'MuseWonder Inter',sans-serif" }}>
       <div className="mx-auto max-w-5xl">
         <p className="text-sm font-semibold text-black/50">Noema — your second brain</p>
         <h1 className="mt-3 max-w-2xl text-5xl font-black leading-[1.02] tracking-tight sm:text-6xl">Five ways to remember everything.</h1>

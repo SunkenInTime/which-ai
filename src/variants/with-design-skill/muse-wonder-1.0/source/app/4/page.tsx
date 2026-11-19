@@ -1,9 +1,9 @@
 import Switcher from "../components/Switcher";
 
 export default function Page4() {
-  const serif = { fontFamily: "'Cormorant Garamond',serif" } as const;
+  const serif = { fontFamily: "'MuseWonder Cormorant Garamond',serif" } as const;
   return (
-    <main className="min-h-screen bg-[#1E1526] pb-36 text-[#F3EAD8]" style={{ fontFamily: "'Inter',sans-serif" }}>
+    <main className="min-h-screen bg-[#1E1526] pb-36 text-[#F3EAD8]" style={{ fontFamily: "'MuseWonder Inter',sans-serif" }}>
       <header className="border-b border-[#C9A86A]/20">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-6 py-5">
           <a href="/with-design-skill/muse-wonder-1.0/4" className="text-2xl font-semibold tracking-wide" style={serif}>Noema <span className="text-[#C9A86A]">·</span> <span className="text-base italic text-[#F3EAD8]/60">the midnight library</span></a>

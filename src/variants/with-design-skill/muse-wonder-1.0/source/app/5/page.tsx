@@ -1,7 +1,7 @@
 import Switcher from "../components/Switcher";
 
 export default function Page5() {
-  const sora = { fontFamily: "'Sora',sans-serif" } as const;
+  const sora = { fontFamily: "'MuseWonder Sora',sans-serif" } as const;
   const shadow = "shadow-[6px_6px_0_#171717]";
   return (
     <main className="min-h-screen bg-[#FFD93D] pb-36 text-[#171717]" style={sora}>

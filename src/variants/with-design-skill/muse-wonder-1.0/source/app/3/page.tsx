@@ -1,8 +1,8 @@
 import Switcher from "../components/Switcher";
 
 export default function Page3() {
-  const mono = { fontFamily: "'Space Mono',monospace" } as const;
-  const arch = { fontFamily: "'Archivo',sans-serif" } as const;
+  const mono = { fontFamily: "'MuseWonder Space Mono',monospace" } as const;
+  const arch = { fontFamily: "'MuseWonder Archivo',sans-serif" } as const;
   return (
     <main className="min-h-screen bg-white pb-36 text-[#101014]" style={arch}>
       <header className="border-b-2 border-[#101014]">

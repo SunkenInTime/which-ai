@@ -2,7 +2,7 @@ import Switcher from "../components/Switcher";
 
 export default function Page2() {
   return (
-    <main className="min-h-screen bg-[#0B1026] pb-36 text-[#E8EAF6]" style={{ fontFamily: "'Space Grotesk',sans-serif" }}>
+    <main className="min-h-screen bg-[#0B1026] pb-36 text-[#E8EAF6]" style={{ fontFamily: "'MuseWonder Space Grotesk',sans-serif" }}>
       <div aria-hidden className="pointer-events-none fixed inset-0 opacity-60" style={{ backgroundImage: "radial-gradient(1px 1px at 12% 22%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 78% 12%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 62% 38%, #B9C2FF 50%, transparent 51%), radial-gradient(1px 1px at 34% 66%, #fff 50%, transparent 51%), radial-gradient(1px 1px at 88% 58%, #fff 50%, transparent 51%), radial-gradient(1.5px 1.5px at 22% 84%, #8B7CF0 50%, transparent 51%)" }} />
       <div className="relative">
         <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
@@ -23,10 +23,10 @@ export default function Page2() {
             <svg viewBox="0 0 800 340" className="mx-auto w-full max-w-3xl" role="img" aria-label="Constellation graph of connected notes">
               <g stroke="#8B7CF0" strokeOpacity="0.45" strokeWidth="1.2"><path d="M120 240 L280 140 L430 200 L560 90 L690 160" fill="none" /><path d="M280 140 L390 60 L560 90" fill="none" /><path d="M430 200 L540 270 L690 160" fill="none" /></g>
               {[[120,240,7,"#67E8F9","Habit loop"],[280,140,9,"#8B7CF0","Deep work"],[430,200,6,"#FFD166","Talk draft"],[560,90,8,"#FF8FAB","Novel idea"],[690,160,6,"#67E8F9","Research"],[390,60,5,"#fff","Focus"],[540,270,5,"#fff","Outline"]].map(([cx,cy,r,fill,label]) => (
-                <g key={label as string}><circle cx={cx as number} cy={cy as number} r={r as number} fill={fill as string} /><circle cx={cx as number} cy={cy as number} r={(r as number) * 2.4} fill={fill as string} opacity="0.14" /><text x={(cx as number) + 14} y={(cy as number) + 4} fill="#C9CFF5" fontSize="13" fontFamily="Space Grotesk">{label as string}</text></g>
+                <g key={label as string}><circle cx={cx as number} cy={cy as number} r={r as number} fill={fill as string} /><circle cx={cx as number} cy={cy as number} r={(r as number) * 2.4} fill={fill as string} opacity="0.14" /><text x={(cx as number) + 14} y={(cy as number) + 4} fill="#C9CFF5" fontSize="13" fontFamily="MuseWonder Space Grotesk">{label as string}</text></g>
               ))}
             </svg>
-            <div className="mt-6 flex flex-wrap justify-center gap-2 text-[13px]" style={{ fontFamily: "'IBM Plex Mono',monospace" }}><span className="rounded-full bg-white/8 px-3 py-1.5 text-white/70">2,847 stars</span><span className="rounded-full bg-white/8 px-3 py-1.5 text-white/70">6,102 links</span><span className="rounded-full bg-[#8B7CF0]/25 px-3 py-1.5 text-[#C9C2FF]">New cluster forming: “attention”</span></div>
+            <div className="mt-6 flex flex-wrap justify-center gap-2 text-[13px]" style={{ fontFamily: "'MuseWonder IBM Plex Mono',monospace" }}><span className="rounded-full bg-white/8 px-3 py-1.5 text-white/70">2,847 stars</span><span className="rounded-full bg-white/8 px-3 py-1.5 text-white/70">6,102 links</span><span className="rounded-full bg-[#8B7CF0]/25 px-3 py-1.5 text-[#C9C2FF]">New cluster forming: “attention”</span></div>
           </div>
           <div className="mt-10 flex flex-wrap justify-center gap-x-12 gap-y-4 text-center">{[["2.8k", "notes per power user"], ["38%", "more ideas connected"], ["<1s", "to find anything"]].map(([v,l]) => (<p key={l} className="text-sm text-white/45"><span className="block text-3xl font-bold text-white">{v}</span>{l}</p>))}</div>
         </section>
