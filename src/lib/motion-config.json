@@ -16,6 +16,7 @@
     { "id": "grok-cli", "label": "Grok CLI", "bin": "grok" },
     { "id": "muse-code", "label": "Muse Code", "bin": "muse" },
     { "id": "cursor", "label": "Cursor", "bin": "cursor", "manualOnly": true },
+    { "id": "antigravity", "label": "Antigravity", "bin": "agy", "manualOnly": true },
     { "id": "devin", "label": "Devin", "bin": "devin" }
   ],
   "models": [
@@ -32,6 +33,7 @@
     { "id": "grok-4.7", "label": "Grok 4.7", "lab": "xAI", "harness": "grok-cli", "modelArg": "grok-4.7" },
     { "id": "muse-wonder-1.0", "label": "Muse Wonder 1.0", "lab": "Meta", "harness": "muse-code", "modelArg": "muse-wonder-1.0" },
     { "id": "gemini-4-argon", "label": "Gemini 4 Argon", "lab": "Google", "harness": "cursor", "modelArg": "gemini-4-argon", "effort": "high" },
+    { "id": "gemini-4-neon", "label": "Gemini 4 Neon", "lab": "Google", "harness": "antigravity", "modelArg": "gemini-4-neon", "effort": "xhigh" },
     { "id": "swe-2-flash", "label": "SWE-2 Flash", "lab": "Cognition", "harness": "devin", "modelArg": "swe-2-flash", "effort": "high" }
   ]
 }

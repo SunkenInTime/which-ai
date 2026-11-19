@@ -9,7 +9,7 @@ export type MotionRunStatus = "ok" | "no-video" | "failed";
 
 export interface MotionRun {
   /** "runner" for headless sessions with isolated homes, "manual" for runs made by hand in an agent thread. */
-  source?: "runner" | "manual";
+  source?: "runner" | "manual" | "headless";
   harnessVersion: string | null;
   modelArg: string;
   startedAt: string;

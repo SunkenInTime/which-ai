@@ -1,0 +1,21 @@
+Created three distinct 15-second launch videos (1920×1080, 60fps, self-contained with local fonts and bespoke stereo audio) for **Kora**, a second-brain note-taking app. Every folder passes `node motion.mjs check` with zero external network dependencies.
+
+### 1. Warm Editorial Tactile Paper-Craft — [1/index.html](file:///var/tmp/motionbench/sandbox/624def78-b2b5-4484-8cb6-e9915ccc047f/project/1/index.html)
+- **Visual Direction**: Archival warm cotton paper, subtle procedural paper grain, terracotta & sage accents, `Instrument Serif` + `Inter` + `JetBrains Mono`.
+- **Story Arc**: Opens on *"Your best ideas don't wait for folders."* with a live Quick Capture bar (`⌘ K`) that morphs cleanly into a spatial note card; three companion cards glide onto the desk (a highlighted Klaus Klemp book excerpt, an animated Kyoto walk voice-memo waveform, and a self-drawing SVG Braun T3 pocket radio) linked by Bezier silk threads; pulls back into a 16-card spatial knowledge canvas with live semantic recall & synthesis; converges into the Kora double-orbit emblem and flips via a dark ink iris into the final brand lockup.
+- **Audio**: [1/audio.wav](file:///var/tmp/motionbench/sandbox/624def78-b2b5-4484-8cb6-e9915ccc047f/project/1/audio.wav) — warm felt-piano chord progression (`Fmaj9 → Dm9 → Bbmaj7 → C6/9 → Fmaj9`), mechanical typing clicks synced to capture, paper-slide foley, kalimba link chimes, and swelling analog strings.
+- **Check Result**: `PASS` (`ready after 147ms, ~271ms/frame, final render ~61s`).
+
+### 2. Obsidian Volumetric 3D Constellation — [2/index.html](file:///var/tmp/motionbench/sandbox/624def78-b2b5-4484-8cb6-e9915ccc047f/project/2/index.html)
+- **Visual Direction**: Midnight obsidian space, electric amber-gold & ice-cyan volumetric lighting, `Space Grotesk` + `Inter` + `JetBrains Mono`.
+- **Story Arc**: Opens on a glowing 3D ignition node and *"Every thought has gravity."* → introduces a 3D-tilted dark-glass Kora desktop app where live `[[wikilinks]]` shoot luminous Bezier sparks directly to instant backlink cards → clicks `⌘ G Graph` and dives into a full-bleed 260-node, 155-synapse deterministic 3D Canvas constellation with traveling neural light impulses and 6 floating 3D-projected glass note cards → spirals all 260 particles directly into the Kora emblem above the obsidian hero lockup (*"Think once. Connect forever."*).
+- **Audio**: [2/audio.wav](file:///var/tmp/motionbench/sandbox/624def78-b2b5-4484-8cb6-e9915ccc047f/project/2/audio.wav) — deep pulsing sub-bass, glass bell ignitions, crisp UI backlink snaps, resonant dive whoosh, shimmering stereo synaptic arpeggio, vortex riser, and a radiant `Dmaj9` resolution.
+- **Check Result**: `PASS` (`ready after 178ms, ~157ms/frame, final render ~35s`).
+
+### 3. 128 BPM Kinetic Swiss Editorial — [3/index.html](file:///var/tmp/motionbench/sandbox/624def78-b2b5-4484-8cb6-e9915ccc047f/project/3/index.html)
+- **Visual Direction**: High-contrast Swiss graphic design in jet black, pure white, electric cobalt, acid lime, and signal orange, using `Syne` + `Plus Jakarta Sans` + `JetBrains Mono`.
+- **Story Arc**: Locked mathematically to 8 bars (32 beats) at **128 BPM** (`0.46875s`/beat = `15.000s` exact): rapid-fire beat cuts (`47 TABS.` / `12 APPS.` / `ZERO CLUE` / `WHERE THAT NOTE WENT.`) → crisp wipe to *"Meet Kora."* → 6 animated Swiss Bento tiles snapping in on the beat (instant capture, beat-reactive voice equalizer, acid-lime web highlight, auto-tags, live graph, and `0.02s` recall odometer) → full-screen *"Ask Your Second Brain"* synthesis view with synchronized source cards and citations → beat-locked `CAPTURE. / CONNECT. / RECALL.` climax → jet-black Kora finale lockup.
+- **Audio**: [3/audio.wav](file:///var/tmp/motionbench/sandbox/624def78-b2b5-4484-8cb6-e9915ccc047f/project/3/audio.wav) — tight, beat-locked 128 BPM minimal electronic groove with staccato opening slams, funky syncopated bassline, marimba tile pops, chord stabs, 16th-note build roll, and euphoric finale hit.
+- **Check Result**: `PASS` (`ready after 167ms, ~78ms/frame, final render ~18s`).
+
+*(Note: When running `node motion.mjs` in this sandbox, `TMPDIR=/tmp` was used because the default sandbox `TMPDIR` path exceeds Linux's 108-byte `UNIX_PATH_MAX` limit for Chromium's `SingletonSocket`.)*
