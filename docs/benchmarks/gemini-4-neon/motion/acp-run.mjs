@@ -109,11 +109,13 @@ function stop(code) {
     log.end(() => process.exit(code));
   }, 3000);
 }
-process.on("SIGTERM", () => {
-  write("note", "client got SIGTERM; stopping the server");
-  fs.writeFileSync(o.final, reply);
-  stop(143);
-});
+for (const [signal, code] of [["SIGTERM", 143], ["SIGINT", 130]]) {
+  process.on(signal, () => {
+    write("note", `client got ${signal}; stopping the server`);
+    fs.writeFileSync(o.final, reply);
+    stop(code);
+  });
+}
 
 try {
   const init = await request("initialize", {
