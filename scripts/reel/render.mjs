@@ -235,8 +235,9 @@ try {
     );
     let failure = null;
     ff.stdin.on("error", (err) => (failure ??= err));
+    ff.on("error", (err) => (failure ??= new Error(`Could not start ffmpeg: ${err.message}`)));
     const closed = new Promise((r, j) =>
-      ff.on("close", (c) => (c ? j((failure = new Error(`ffmpeg exited ${c}`))) : r())),
+      ff.on("close", (c) => (c ? j((failure ??= new Error(`ffmpeg exited ${c}`))) : r())),
     );
     closed.catch(() => {});
     const cdp = await ctx.newCDPSession(page);
@@ -254,7 +255,9 @@ try {
       if (i % 300 === 0) console.log(`frame ${i}/${n}`);
     }
     ff.stdin.end();
-    await closed;
+    await closed.catch((err) => {
+      throw failure ?? err;
+    });
     // Nine frames spread across the whole video, skipping the fades, for checking the result at a glance.
     const sheet = opts.out.replace(/\.mp4$/, "") + "-sheet.png";
     execFileSync(process.env.MOTION_FFMPEG || "ffmpeg", [
