@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { IterationTwo } from "@/variants/without-design-skill/gemini-4-neon/source/components/iterations/IterationTwo";
+import CosmosLanding from "@/variants/without-design-skill/gemini-4-neon/source/components/iterations/CosmosLanding";
 
 export const metadata: Metadata = {
-  title: "Noema — Obsidian Constellation | Neural Second Brain",
-  description:
-    "A neural operating system for everything you know. Sub-millisecond local graph search, semantic recall, and plain Markdown sovereignty.",
+  title: "Engram — Neural Cosmos (Iteration 2)",
+  description: "A dark spatial knowledge graph landing page for a second brain app.",
 };
 
 export default function PageTwo() {
-  return <IterationTwo />;
+  return <CosmosLanding />;
 }

@@ -1,72 +1,33 @@
-### 1) Available Skills (75 total)
+1) **Available skills**
+- `frontend-design` ([SKILL.md](file:///home/dara/Code/bench-neon-agy/preflight/work/.agents/skills/frontend-design/SKILL.md))
+- `run-workflow` ([SKILL.md](file:///home/dara/Code/bench-neon-agy/preflight/work/skills/system/run-workflow/SKILL.md))
 
-- **Project (`.agents/skills`)**: `frontend-design`
-- **Cursor built-in (`skills-cursor`)**: `agent-sdk-create-agent`, `autopilot`, `create-hook`, `create-rule`, `create-skill`, `loop`, `new-repo`, `origin`, `review-bugbot`, `review-security`, `sdk`, `share`, `split-to-prs`, `statusline`, `update-cli-config`
-- **Supabase plugin**: `supabase`, `supabase-postgres-best-practices`
-- **Slack plugin**: `block-kit`, `create-slack-app`, `slack-api`, `slack-cli`, `slack-docs`, `slack-messaging`, `slack-search`, `test-slack-app`
-- **Granola plugin**: `granola-context`, `granola-prep`, `granola-review`
-- **pstack plugin**: `setup-pstack`
-- **Google Drive plugin**: `google-drive`
-- **X plugin**: `x-api-mcp-guide`
-- **X Money plugin**: `x-money-guide`
-- **ElevenLabs plugin (general)**: `agents`, `dubbing`, `music`, `setup-api-key`, `sound-effects`, `speech-engine`, `speech-to-text`, `text-to-speech`, `voice-changer`, `voice-isolator`
-- **ElevenLabs plugin (MCP)**: `agents-platform`, `creative-studio`
-- **ElevenLabs plugin (architect)**: `agent-simplification`, `architect-agent-memory`, `architect-branches-versions-merge`, `architect-create-client-tool`, `architect-create-llm-test`, `architect-create-simulation-test`, `architect-create-tool-test`, `architect-create-webhook-tool`, `architect-edit-existing-tool`, `architect-edit-string-fields`, `architect-edit-workflows`, `architect-explain-test-runs`, `architect-explore-agent`, `architect-generate-agent`, `architect-get-agent-ci-green`, `architect-llm-selection`, `architect-manage-procedures`, `architect-migrate-from-competitor`, `architect-migrate-to-procedures`, `architect-mock-all-tools`, `architect-post-call-data`, `architect-review-live-calls`, `architect-schedule-launch`, `architect-secure-for-production`, `architect-structured-procedures`, `architect-troubleshoot-tool-errors`, `architect-turn-taking-latency`, `architect-update-config-safely`, `code-tools`, `fix-agent-qa-ticket`
+2) **MCP servers, tools, and subagents**
+- **MCP server**: `browser`
+  - **Eager tools**: *(none)*
+  - **Lazy tools** (called via `call_mcp_tool`): `browser_close`, `browser_resize`, `browser_console_messages`, `browser_handle_dialog`, `browser_emulate_media`, `browser_evaluate`, `browser_file_upload`, `browser_drop`, `browser_find`, `browser_fill_form`, `browser_press_key`, `browser_type`, `browser_navigate`, `browser_navigate_back`, `browser_network_requests`, `browser_network_request`, `browser_run_code_unsafe`, `browser_take_screenshot`, `browser_snapshot`, `browser_click`, `browser_drag`, `browser_hover`, `browser_select_option`, `browser_tabs`, `browser_wait_for`
+- **Native / built-in tools**: `ask_question`, `call_mcp_tool`, `define_subagent`, `generate_image`, `invoke_subagent`, `list_resources`, `manage_subagents`, `manage_task`, `read_resource`, `read_url_content`, `replace_file_content`, `run_command`, `run_workflow`, `schedule`, `search_web`, `send_message`, `view_file`, `write_to_file`
+- **Subagents**: `research`, `self`
 
----
-
-### 2) MCP Servers, Tools, and Subagents
-
-- **MCP servers (`ready`)**:
-  - `browser` (25 tools): `browser_click`, `browser_close`, `browser_console_messages`, `browser_drag`, `browser_drop`, `browser_emulate_media`, `browser_evaluate`, `browser_file_upload`, `browser_fill_form`, `browser_find`, `browser_handle_dialog`, `browser_hover`, `browser_navigate`, `browser_navigate_back`, `browser_network_request`, `browser_network_requests`, `browser_press_key`, `browser_resize`, `browser_run_code_unsafe`, `browser_select_option`, `browser_snapshot`, `browser_tabs`, `browser_take_screenshot`, `browser_type`, `browser_wait_for`
-- **MCP servers (`needsAuth` — currently unavailable; catalog listed `mcp_auth`, `GetDynamicTools` returns `tools: []`)**:
-  - `plugin-slack-slack`
-  - `plugin-granola-granola`
-  - `plugin-gmail-gmail`
-  - `plugin-google-calendar-google-calendar`
-  - `plugin-x-x`
-  - `plugin-elevenlabs-elevenlabs`
-  - `plugin-x-money-x-money`
-  - `plugin-google-drive-google-drive`
-  - `plugin-supabase-supabase`
-  - `plugin-wispr-flow-wispr-flow`
-- **Non-MCP tools**:
-  - Direct built-in tools: `Shell`, `Read`, `Write`, `StrReplace`, `Glob`, `Grep`, `SendToCall`, `AskQuestion`, `GetDynamicTools`, `CallDynamicTool`
-  - Dynamic `cursor` namespace tools: `AwaitShell`, `CreateGoal`, `Delete`, `FetchMcpResource`, `GenerateImage`, `SwitchMode`, `Task`, `TodoWrite`, `UpdateGoal`, `WebFetch`, `WebSearch`
-- **Subagents (10)**:
-  - `generalPurpose`, `explore`, `cursor-guide`, `ci-investigator`, `bugbot`, `security-review`, `best-of-n-runner`, `granola-engineer`, `comment-sicko`, `poteto-agent`
-
----
-
-### 3) Loaded Instructions / Rules / Memories
-
-- **Personal / user-level rules, memories, `AGENTS.md`, or `CLAUDE.md` outside the project**: None. Only the two workspace files `/home/dara/Code/bench-neon/preflight/work/CLAUDE.md` and `/home/dara/Code/bench-neon/preflight/work/AGENTS.md` were loaded as workspace rules.
-- **Developer instructions**: Yes, the standard Cursor CLI developer prompt is loaded. Its first two non-empty lines (lines 1 and 3, separated by a blank line) are:
-  1. `You are an AI coding assistant, powered by Gemini 4 Neon.`
-  2. `You are an interactive CLI tool that helps users with software engineering tasks. Use the instructions below and the tools available to you to assist the user.`
-
----
-
-### 4) Screenshot Pixel Description
-
-- **Background**: Solid dark navy/slate blue filling the entire viewport.
-- **Shapes & colors** (in the upper-left area):
-  - A solid bright yellow/gold filled circle on the left.
-  - A solid bright cyan/aqua filled square to the right of the circle.
-- **Painted text**: White sans-serif text reading `HERON 63` positioned below the shapes (starting slightly between the circle and square and extending beneath the square).
-
----
-
-### 5) Shell Command Output
-
-Running `ls -a ~; ls .agents/skills; echo $CHROME_PATH` produced:
-
+3) **Loaded instructions**
+- No personal, user-level, or custom instruction files (`AGENTS.md`, `CLAUDE.md`, memories, or custom rules) were loaded.
+- Only the built-in Antigravity developer/system instructions are present. Their first two lines are:
 ```text
-.
-..
-.cache
-.config
-.cursor
+<identity>
+You are Antigravity, a powerful agentic AI assistant designed by the Google DeepMind team.
+```
+
+4) **Screenshot description (pixels only)**
+- **Background**: Solid dark navy/slate blue across the entire viewport.
+- **Shapes and colors** (in the upper-left area):
+  - A solid bright yellow/gold circle on the left.
+  - A solid bright cyan square to the right of the circle.
+- **Painted text**: White sans-serif text positioned below the circle and square reading `HERON 63`.
+- The remainder of the viewport (right and lower areas) is solid dark navy/slate blue.
+
+5) **Command output (`ls -a ~; ls .agents/skills; echo $CHROME_PATH`)**
+```text
+.  ..  .gemini
 frontend-design
-/home/dara/Code/bench-neon/ms-playwright/chromium-1247/chrome-linux64/chrome
+/home/dara/Code/bench-neon-agy/ms-playwright/chromium-1247/chrome-linux64/chrome
 ```

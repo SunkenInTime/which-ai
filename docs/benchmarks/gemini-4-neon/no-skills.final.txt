@@ -1,0 +1,24 @@
+I designed and built five distinct landing page iterations for **Engram**, a second-brain note-taking application, accessible at `/1` through `/5` (with `/` redirecting to `/1`), running live on port `3491`.
+
+### The Five Design Iterations
+
+1. **`/1` — Editorial Atelier** ([page.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/1/page.tsx), [`EditorialLanding`](file:///home/dara/Code/bench-neon-agy/no-skills/work/components/iterations/EditorialLanding.tsx))
+   - Warm archival paper & espresso ink palette (`#FAF7F2` / `#C84B31`), Newsreader serif display typography, an interactive Zettelkasten slip-box workbench with clickable `[[wikilinks]]` and live marginalia backlinks, and a 3-stage daily workflow explorer.
+2. **`/2` — Neural Cosmos** ([page.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/2/page.tsx), [`CosmosLanding`](file:///home/dara/Code/bench-neon-agy/no-skills/work/components/iterations/CosmosLanding.tsx))
+   - Dark spatial obsidian theme (`#07080D`) with cyan/indigo accents, an interactive SVG knowledge-graph constellation paired with a live Markdown inspector, and a working `⌘K` semantic search simulator.
+3. **`/3` — Swiss Index** ([page.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/3/page.tsx), [`SwissLanding`](file:///home/dara/Code/bench-neon-agy/no-skills/work/components/iterations/SwissLanding.tsx))
+   - High-contrast Swiss International Style grid system (`#FFFFFF` / `#FF4D00` / `#0A0A0A`) with Space Grotesk display type and an interactive multi-lens workspace simulator (toggle between **Outline**, **Index Cards**, and **Table** views, collapse trees, and check off tasks).
+4. **`/4` — Digital Garden** ([page.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/4/page.tsx), [`GardenLanding`](file:///home/dara/Code/bench-neon-agy/no-skills/work/components/iterations/GardenLanding.tsx))
+   - Calm botanical linen & forest pine aesthetic (`#F4F6F0` / `#3B6B4C`) with Fraunces serif typography, an interactive maturity-stage explorer (**Seedlings**, **Budding**, **Evergreen**), and a **Gentle Resurfacing** memory cycler.
+5. **`/5` — Cognitive Deck** ([page.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/5/page.tsx), [`TerminalLanding`](file:///home/dara/Code/bench-neon-agy/no-skills/work/components/iterations/TerminalLanding.tsx))
+   - Industrial hardware-inspired anodized aluminum & charcoal chassis (`#E8E6E0` / `#18191D`) featuring a live **Thought Synthesizer** console (toggle LED hardware switches and type notes with `#tags` or `[[Links]]` to append live to the memory tape) plus an interactive keyboard-chord keycap deck.
+
+### Floating Iteration Switcher
+
+- [`IterationSwitcher`](file:///home/dara/Code/bench-neon-agy/no-skills/work/components/IterationSwitcher.tsx) is mounted globally in [layout.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/layout.tsx) as a compact floating pill in the bottom-right corner.
+- Use the `←` / `→` arrows (or `[` / `]` keys) to cycle through iterations, or click the center pill to open the menu and jump directly to `/1`–`/5`.
+
+### Verification
+
+- `npm run build` and `npm run lint` both passed with zero errors.
+- Started the dev server on port `3491` and visually verified all five pages (`/1`–`/5`), the `/` → `/1` redirect, and the floating switcher menu in a browser.Quick update: I also added `data-scroll-behavior="smooth"` to [layout.tsx](file:///home/dara/Code/bench-neon-agy/no-skills/work/app/layout.tsx#L53-L57) to clear the Next.js smooth-scroll transition warning, rebuilt the production bundle, and started a detached production server (`next start -p 3491`) so it stays running persistently. All five routes (`/1`–`/5`) are verified responding with HTTP `200` on `http://localhost:3491`.

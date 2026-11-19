@@ -1,0 +1,42 @@
+{
+  "checkedAt": "2026-11-19",
+  "source": "https://aistudio.google.com/docs/pricing (Gemini 4 Neon, paid tier, standard)",
+  "ratesUsdPerMillion": {
+    "input": 3.0,
+    "cachedInput": 0.15,
+    "output": 15.0
+  },
+  "method": "From the usage Antigravity reports when the turn ends: uncached input = inputTokens - cachedReadTokens; output = outputTokens + thoughtTokens (Google bills thinking at the output rate). No cache writes were reported, and Neon has no long-context surcharge. Antigravity ran on a subscription, so these are estimates, not charges.",
+  "records": [
+    {
+      "condition": "no-skills",
+      "usage": {
+        "totalTokens": 2187416,
+        "inputTokens": 2126567,
+        "outputTokens": 51641,
+        "thoughtTokens": 9208,
+        "cachedReadTokens": 1989713,
+        "cachedWriteTokens": 0
+      },
+      "uncachedInput": 136854,
+      "cachedInput": 1989713,
+      "outputIncludingThinking": 60849,
+      "usd": 1.6218
+    },
+    {
+      "condition": "frontend-design",
+      "usage": {
+        "totalTokens": 2640437,
+        "inputTokens": 2576382,
+        "outputTokens": 48975,
+        "thoughtTokens": 15080,
+        "cachedReadTokens": 2428594,
+        "cachedWriteTokens": 0
+      },
+      "uncachedInput": 147788,
+      "cachedInput": 2428594,
+      "outputIncludingThinking": 64055,
+      "usd": 1.7685
+    }
+  ]
+}

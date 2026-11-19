@@ -1,656 +1,650 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useState } from "react";
 
-interface IndexCard {
+interface WorkspaceDoc {
   id: string;
-  tab: "Reading" | "Field notes" | "Drafts" | "Quotes" | "Questions";
+  tab: string;
   title: string;
   date: string;
-  body: string;
-  source: string;
-  relatedIds: string[];
+  paragraphs: Array<{
+    text: string;
+    link?: { label: string; targetId: string };
+    after?: string;
+  }>;
+  backlinks: Array<{
+    fromId: string;
+    fromTitle: string;
+    snippet: string;
+  }>;
 }
 
-const INITIAL_CARDS: IndexCard[] = [
+const DOCS: WorkspaceDoc[] = [
   {
-    id: "reading-1",
-    tab: "Reading",
-    title: "Why small cards beat long documents",
-    date: "Oct 18, 2025",
-    body: "When a note has to fit on one index card, you stop pasting whole chapters and start rewriting the claim in your own words. That single constraint turns passive highlights into actual thinking.",
-    source: "From notes on Sönke Ahrens",
-    relatedIds: ["drafts-1", "questions-1"],
+    id: "daily",
+    tab: "Daily log",
+    title: "Tuesday, November 19",
+    date: "Updated 09:14",
+    paragraphs: [
+      {
+        text: "Finished rereading Christopher Alexander on quiet rooms and alcoves. Good software should borrow the same rule: ",
+        link: { label: "Spatial memory in tools", targetId: "books" },
+        after: " beats burying work behind nested menus.",
+      },
+      {
+        text: "Pulled three older paragraphs into ",
+        link: { label: "Why small notes travel further", targetId: "draft" },
+        after: " before the afternoon review.",
+      },
+    ],
+    backlinks: [
+      {
+        fromId: "books",
+        fromTitle: "Spatial memory in tools",
+        snippet: "Referenced during morning review on November 19.",
+      },
+      {
+        fromId: "draft",
+        fromTitle: "Why small notes travel further",
+        snippet: "Three source passages moved from the daily log.",
+      },
+    ],
   },
   {
-    id: "field-1",
-    tab: "Field notes",
-    title: "Morning ferry harbor fog",
-    date: "Nov 02, 2025",
-    body: "Diesel engines carry farther across flat water than across open streets. You hear the horn three seconds before the white bow clears the channel marker.",
-    source: "Bainbridge crossing, 6:40 am",
-    relatedIds: ["quotes-1", "drafts-1"],
+    id: "books",
+    tab: "Book notes",
+    title: "Spatial memory in tools",
+    date: "Created May 08",
+    paragraphs: [
+      {
+        text: "People recall where an object sits on a desk long after they forget its category name. Opening two linked documents side by side mirrors spreading papers on a drafting table.",
+      },
+      {
+        text: "Compare with notes in ",
+        link: { label: "Why small notes travel further", targetId: "draft" },
+        after: " and this morning's daily log.",
+      },
+    ],
+    backlinks: [
+      {
+        fromId: "daily",
+        fromTitle: "Tuesday, November 19",
+        snippet:
+          "Good software should borrow the same rule: spatial memory in tools beats nested menus.",
+      },
+      {
+        fromId: "draft",
+        fromTitle: "Why small notes travel further",
+        snippet:
+          "Quoted in section two on drafting tables versus deep folder trees.",
+      },
+    ],
   },
   {
-    id: "drafts-1",
-    tab: "Drafts",
-    title: "Opening paragraph for essay on memory tools",
-    date: "Jan 11, 2026",
-    body: "Software taught us to store notes the way warehouses store pallets: sealed inside nested folders nobody opens twice. A real second brain works more like a workbench where active pieces stay within reach.",
-    source: "Working draft, revision 3",
-    relatedIds: ["reading-1", "quotes-1"],
-  },
-  {
-    id: "quotes-1",
-    tab: "Quotes",
-    title: "Dieter Rams on quiet design",
-    date: "Feb 26, 2025",
-    body: "Indifference toward people and the reality in which they live is actually the one and only cardinal sin in design. Good tools recede while you work.",
-    source: "Less and More, page 118",
-    relatedIds: ["field-1", "questions-1"],
-  },
-  {
-    id: "questions-1",
-    tab: "Questions",
-    title: "How many links make a note useful?",
-    date: "Apr 04, 2026",
-    body: "Linking every noun creates visual spaghetti. Two or three deliberate bridges to contrasting subjects seem to spark far more ideas than twenty automatic keyword matches.",
-    source: "Open question for weekend review",
-    relatedIds: ["reading-1", "drafts-1"],
-  },
-];
-
-const ARCHIVE_SLIPS = [
-  {
-    id: "s1",
-    tab: "Reading",
-    title: "Spaced repetition without flashcards",
-    excerpt:
-      "Surfacing an old note while drafting a new one refreshes memory naturally without daily review queues.",
-    date: "Sep 2025",
-  },
-  {
-    id: "s2",
-    tab: "Field notes",
-    title: "Library reading lamps in Stockholm",
-    excerpt:
-      "Green glass shades focus light onto the page while keeping the surrounding room calm enough to think.",
-    date: "Nov 2025",
-  },
-  {
-    id: "s3",
-    tab: "Craft",
-    title: "Pour-over bloom timing at high altitude",
-    excerpt:
-      "Water boils at 94 degrees in Denver, so extend the initial bloom by ten seconds for balanced extraction.",
-    date: "Jan 2026",
-  },
-  {
-    id: "s4",
-    tab: "Drafts",
-    title: "Why folders collapse after three hundred notes",
-    excerpt:
-      "Every interesting note belongs in two categories at once. Forcing one folder forces you to forget where it lives.",
-    date: "Feb 2026",
-  },
-  {
-    id: "s5",
-    tab: "Questions",
-    title: "What makes software feel durable?",
-    excerpt:
-      "Plain files on disk, predictable keyboard shortcuts, and zero features that require a remote server to open.",
-    date: "Mar 2026",
-  },
-  {
-    id: "s6",
-    tab: "Quotes",
-    title: "Richard Feynman on his notebooks",
-    excerpt:
-      "No, these aren't a record of my thinking process. They actually are my thinking process; I did the work on the paper.",
-    date: "Aug 2025",
+    id: "draft",
+    tab: "Essay draft",
+    title: "Why small notes travel further",
+    date: "Draft revision 4",
+    paragraphs: [
+      {
+        text: "Long documents lock ideas inside a single occasion. When a note captures one clear observation instead of an entire meeting, you can reuse it across memos, talks, and books.",
+      },
+      {
+        text: "This connects directly to ",
+        link: { label: "Spatial memory in tools", targetId: "books" },
+        after: " and our running observations from Tuesday's log.",
+      },
+    ],
+    backlinks: [
+      {
+        fromId: "daily",
+        fromTitle: "Tuesday, November 19",
+        snippet: "Pulled three older paragraphs into this essay draft.",
+      },
+      {
+        fromId: "books",
+        fromTitle: "Spatial memory in tools",
+        snippet: "Paired as companion note on working across projects.",
+      },
+    ],
   },
 ];
 
-const TABS: IndexCard["tab"][] = [
-  "Reading",
-  "Field notes",
-  "Drafts",
-  "Quotes",
-  "Questions",
+const CAPABILITIES = [
+  {
+    id: "capture",
+    title: "Capture in under two seconds",
+    summary:
+      "A global shortcut opens a blank entry above any window so a thought never interrupts your current work.",
+    metric: "14 ms cold open",
+    detailTitle: "Global quick-entry bar",
+    detailLines: [
+      "Shortcut: Command + Shift + N anywhere on desktop",
+      "Saves straight into today's Markdown log",
+      "Automatically suggests matching existing note titles as you type",
+    ],
+  },
+  {
+    id: "markdown",
+    title: "Plain Markdown on your disk",
+    summary:
+      "Every note is a normal .md file inside a folder you choose. Open your archive in any editor, back it up with Git, and keep it forever.",
+    metric: "Zero lock-in",
+    detailTitle: "Standard file layout",
+    detailLines: [
+      "~/Commonplace/2026-11-19.md",
+      "~/Commonplace/spatial-memory-in-tools.md",
+      "Standard [[wikilinks]] and clean YAML frontmatter only when needed",
+    ],
+  },
+  {
+    id: "panes",
+    title: "Side-by-side writing panes",
+    summary:
+      "Keep research notes open beside a fresh draft without juggling floating windows or losing your scroll position.",
+    metric: "Up to 4 linked panes",
+    detailTitle: "Split drafting table",
+    detailLines: [
+      "Pin any reference note while writing on the right",
+      "Drag a paragraph link directly into your outline",
+      "Keyboard navigation moves cleanly between panes without touching the mouse",
+    ],
+  },
+  {
+    id: "sync",
+    title: "Private encrypted sync",
+    summary:
+      "Notes stay local by default. Turn on optional sync to mirror changes across desktop, tablet, and phone with zero-knowledge encryption.",
+    metric: "End-to-end encrypted",
+    detailTitle: "Device sync architecture",
+    detailLines: [
+      "Encrypted on your device before a single byte leaves",
+      "Works offline on flights and merges edits cleanly on reconnect",
+      "Full version history saved locally for 365 days",
+    ],
+  },
 ];
+
+const PLATFORMS = ["macOS", "Windows", "Linux", "iOS"] as const;
 
 export function IterationThree() {
-  const [cards, setCards] = useState<IndexCard[]>(INITIAL_CARDS);
-  const [activeCardId, setActiveCardId] = useState<string>("reading-1");
-  const [addingSlip, setAddingSlip] = useState(false);
-  const [newTitle, setNewTitle] = useState("");
-  const [newBody, setNewBody] = useState("");
-  const [newTab, setNewTab] = useState<IndexCard["tab"]>("Questions");
-  const [searchQuery, setSearchQuery] = useState("");
-  const [downloadNotice, setDownloadNotice] = useState<string | null>(null);
+  const [activeDocId, setActiveDocId] = useState<string>("daily");
+  const [showBacklinks, setShowBacklinks] = useState<boolean>(true);
+  const [scratchInput, setScratchInput] = useState<string>("");
+  const [extraLines, setExtraLines] = useState<string[]>([]);
+  const [activeCapId, setActiveCapId] = useState<string>("capture");
+  const [selectedPlatform, setSelectedPlatform] =
+    useState<(typeof PLATFORMS)[number]>("macOS");
+  const [downloadAck, setDownloadAck] = useState<boolean>(false);
 
-  const activeCard =
-    cards.find((card) => card.id === activeCardId) ?? cards[0];
+  const activeDoc = DOCS.find((d) => d.id === activeDocId) ?? DOCS[0];
+  const activeCap =
+    CAPABILITIES.find((c) => c.id === activeCapId) ?? CAPABILITIES[0];
 
-  const filteredSlips = useMemo(() => {
-    const q = searchQuery.trim().toLowerCase();
-    if (!q) return ARCHIVE_SLIPS;
-    return ARCHIVE_SLIPS.filter((slip) =>
-      `${slip.title} ${slip.excerpt} ${slip.tab} ${slip.date}`
-        .toLowerCase()
-        .includes(q)
-    );
-  }, [searchQuery]);
-
-  function handleSelectTab(tab: IndexCard["tab"]) {
-    setAddingSlip(false);
-    const match = cards.find((c) => c.tab === tab);
-    if (match) {
-      setActiveCardId(match.id);
-    }
-  }
-
-  function handleAddCard(event: React.FormEvent) {
-    event.preventDefault();
-    const title = newTitle.trim();
-    const body = newBody.trim();
-    if (!title || !body) return;
-    const created: IndexCard = {
-      id: `slip-${Date.now()}`,
-      tab: newTab,
-      title,
-      date: "Added today",
-      body,
-      source: "Created in live drawer",
-      relatedIds: ["reading-1"],
-    };
-    setCards((prev) => [created, ...prev]);
-    setActiveCardId(created.id);
-    setNewTitle("");
-    setNewBody("");
-    setAddingSlip(false);
+  function handleAppendLine(e: React.FormEvent) {
+    e.preventDefault();
+    const cleaned = scratchInput.trim();
+    if (!cleaned) return;
+    setExtraLines((prev) => [...prev, cleaned]);
+    setScratchInput("");
   }
 
   return (
     <div
-      className="min-h-screen bg-[#E4E2DC] text-[#161E2E]"
-      style={{ fontFamily: "var(--font-bricolage), system-ui, sans-serif" }}
+      className="min-h-screen bg-[#FFFFFF] text-[#000000]"
+      style={{
+        fontFamily: "var(--font-schibsted), system-ui, sans-serif",
+      }}
     >
-      {/* Top navigation */}
-      <header className="border-b border-[#C8C5BC] bg-[#E4E2DC]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 sm:px-8">
-          <a href="#top" className="inline-flex items-center gap-2.5">
-            <span className="inline-flex h-7 w-7 items-center justify-center rounded-sm border border-[#161E2E] bg-[#EBC96E] text-sm font-bold text-[#161E2E]">
-              C
-            </span>
-            <span className="text-xl font-semibold tracking-[-0.03em] text-[#161E2E]">
-              Cairn
-            </span>
+      {/* Swiss Precision Header */}
+      <header className="border-b border-black/15">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-10">
+          <a
+            href="#top"
+            className="flex items-center gap-2.5 text-lg font-semibold tracking-[-0.02em] text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C81E1E]"
+          >
+            <span
+              aria-hidden="true"
+              className="inline-block h-3 w-3 bg-[#C81E1E]"
+            />
+            <span>Commonplace</span>
           </a>
 
-          <nav aria-label="Primary" className="hidden items-center gap-7 text-sm text-[#4A5468] md:flex">
-            <a href="#workflow" className="hover:text-[#161E2E] transition-colors">
-              How it works
+          <nav
+            aria-label="Primary"
+            className="hidden items-center gap-8 text-sm text-[#4D4D4D] md:flex"
+          >
+            <a
+              href="#workspace"
+              className="transition-colors hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C81E1E]"
+            >
+              Workspace
             </a>
-            <a href="#finder" className="hover:text-[#161E2E] transition-colors">
-              Instant recall
+            <a
+              href="#capabilities"
+              className="transition-colors hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C81E1E]"
+            >
+              Architecture
             </a>
-            <a href="#pricing" className="hover:text-[#161E2E] transition-colors">
+            <a
+              href="#pricing"
+              className="transition-colors hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#C81E1E]"
+            >
               Pricing
             </a>
           </nav>
 
-          <button
-            type="button"
-            onClick={() =>
-              setDownloadNotice(
-                "Cairn desktop installer queued for macOS, Windows, and Linux."
-              )
-            }
-            className="rounded-sm bg-[#1F44A8] px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#173585] cursor-pointer"
+          <a
+            href="#pricing"
+            className="bg-black px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-[#C81E1E] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E]"
           >
-            Download Cairn
-          </button>
+            Download
+          </a>
         </div>
       </header>
 
-      {downloadNotice && (
-        <div
-          role="status"
-          className="border-b border-[#161E2E] bg-[#EBC96E] px-6 py-2.5 text-sm text-[#161E2E]"
-        >
-          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
-            <span className="font-medium">{downloadNotice}</span>
-            <button
-              type="button"
-              onClick={() => setDownloadNotice(null)}
-              className="text-xs underline underline-offset-4 cursor-pointer"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-
       <main id="top">
-        {/* Hero: Asymmetric Swiss layout with tactile manila-tab index drawer */}
-        <section className="mx-auto max-w-6xl px-6 pb-20 pt-14 sm:px-8 lg:pb-24 lg:pt-20">
-          <div className="grid items-start gap-12 lg:grid-cols-12 lg:gap-10">
-            {/* Left typographic authority */}
-            <div className="lg:col-span-5">
-              <h1 className="text-[2.75rem] leading-[1.03] font-semibold tracking-[-0.035em] text-[#161E2E] sm:text-[3.75rem]">
-                Think on cards that link themselves.
+        {/* Monumental Typographic Hero */}
+        <section className="mx-auto max-w-6xl px-6 pb-16 pt-14 lg:px-10 lg:pb-24 lg:pt-24">
+          <div className="grid items-end gap-8 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <h1 className="text-5xl font-semibold leading-[0.98] tracking-[-0.035em] text-black sm:text-6xl lg:text-7xl">
+                A quiet room for long-term thinking.
               </h1>
+            </div>
 
-              <p className="mt-6 max-w-[44ch] text-lg leading-[1.6] text-[#354055]">
-                Cairn gives you the physical clarity of a wooden slip-box with
-                the speed of local software. Capture short ideas, connect them
-                across topics, and lay them out whenever you sit down to write.
+            <div className="lg:col-span-5 lg:pb-1">
+              <p className="max-w-[42ch] text-base leading-[1.65] text-[#4D4D4D] sm:text-lg">
+                Write in plain Markdown. Link any thought to any other. Own
+                every file on your machine without subscriptions holding your
+                archive hostage.
               </p>
-
-              <div className="mt-8 flex flex-wrap items-center gap-3">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setDownloadNotice(
-                      "Prepared Cairn 2.4 for macOS. Local folder storage, zero account required."
-                    )
-                  }
-                  className="rounded-sm bg-[#1F44A8] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-[#173585] cursor-pointer"
-                >
-                  Download for desktop
-                </button>
+              <div className="mt-6 flex flex-wrap gap-3">
                 <a
-                  href="#finder"
-                  className="rounded-sm border border-[#161E2E] bg-[#E4E2DC] px-5 py-3 text-sm font-medium text-[#161E2E] transition-colors hover:bg-white"
+                  href="#pricing"
+                  className="bg-[#C81E1E] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E]"
                 >
-                  Try card search
+                  Download for macOS
+                </a>
+                <a
+                  href="#workspace"
+                  className="border border-black px-5 py-3 text-sm font-medium text-black transition-colors hover:bg-[#F3F3F1] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E]"
+                >
+                  Try the editor below
                 </a>
               </div>
+            </div>
+          </div>
 
-              <div className="mt-8 border-t border-[#C5C2B8] pt-5 text-sm text-[#4A5468]">
-                Free for unlimited local cards on macOS, Windows, and Linux.
-                Stored as standard Markdown files in any folder you choose.
+          {/* Interactive Live Workspace */}
+          <div
+            id="workspace"
+            className="mt-14 border border-black bg-[#FFFFFF]"
+          >
+            {/* Workspace top bar */}
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-black/15 bg-[#F3F3F1] px-4 py-2.5 sm:px-5">
+              <div className="flex flex-wrap items-center gap-1" role="tablist" aria-label="Sample notes">
+                {DOCS.map((doc) => {
+                  const isActive = doc.id === activeDoc.id;
+                  return (
+                    <button
+                      key={doc.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setActiveDocId(doc.id)}
+                      className={`px-3.5 py-1.5 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#C81E1E] ${
+                        isActive
+                          ? "bg-white text-black shadow-[inset_0_2px_0_0_#C81E1E]"
+                          : "text-[#4D4D4D] hover:text-black"
+                      }`}
+                    >
+                      {doc.tab}
+                    </button>
+                  );
+                })}
               </div>
+
+              <button
+                type="button"
+                onClick={() => setShowBacklinks((prev) => !prev)}
+                className="border border-black/20 bg-white px-3 py-1 text-xs font-medium text-black transition-colors hover:border-black focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#C81E1E]"
+              >
+                {showBacklinks
+                  ? `Hide backlinks (${activeDoc.backlinks.length})`
+                  : `Show backlinks (${activeDoc.backlinks.length})`}
+              </button>
             </div>
 
-            {/* Right Signature Bold Element: Physical Manila-Tabbed 3x5 Index Card Drawer */}
-            <div className="min-w-0 lg:col-span-7">
-              <div className="relative">
-                {/* Physical protruding manila folder tabs */}
-                <div
-                  role="tablist"
-                  aria-label="Index card tabs"
-                  className="flex flex-nowrap items-end gap-1 overflow-x-auto pl-2"
-                >
-                  {TABS.map((tab) => {
-                    const isSelected = !addingSlip && activeCard.tab === tab;
-                    return (
-                      <button
-                        key={tab}
-                        type="button"
-                        role="tab"
-                        aria-selected={isSelected}
-                        onClick={() => handleSelectTab(tab)}
-                        className={`shrink-0 whitespace-nowrap rounded-t-md border border-b-0 px-3.5 py-2 text-xs font-medium transition-colors cursor-pointer ${
-                          isSelected
-                            ? "relative z-10 -mb-px border-[#161E2E] bg-white text-[#161E2E] pb-2.5"
-                            : "border-[#BFA869] bg-[#EBC96E] text-[#161E2E] hover:bg-[#F1D484]"
-                        }`}
-                      >
-                        {tab}
-                      </button>
-                    );
-                  })}
+            {/* Split panes */}
+            <div className="grid lg:grid-cols-12">
+              {/* Editor pane */}
+              <div
+                className={`p-6 sm:p-10 ${
+                  showBacklinks ? "lg:col-span-8 lg:border-r lg:border-black/15" : "lg:col-span-12"
+                }`}
+              >
+                <div className="flex flex-wrap items-baseline justify-between gap-2 border-b border-black/10 pb-4">
+                  <h2 className="text-2xl font-semibold tracking-[-0.02em] text-black sm:text-3xl">
+                    {activeDoc.title}
+                  </h2>
+                  <span className="text-xs text-[#6B6B6B]">
+                    {activeDoc.date}
+                  </span>
+                </div>
 
+                <div className="mt-6 max-w-[60ch] space-y-4 text-base leading-[1.72] text-[#1A1A1A]">
+                  {activeDoc.paragraphs.map((p, idx) => (
+                    <p key={idx}>
+                      {p.text}
+                      {p.link && (
+                        <button
+                          type="button"
+                          onClick={() => setActiveDocId(p.link!.targetId)}
+                          className="border-b border-[#C81E1E] font-medium text-[#C81E1E] transition-colors hover:bg-[#C81E1E] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#C81E1E]"
+                        >
+                          {p.link.label}
+                        </button>
+                      )}
+                      {p.after}
+                    </p>
+                  ))}
+
+                  {activeDoc.id === "daily" &&
+                    extraLines.map((line, i) => (
+                      <p key={i} className="border-l-2 border-[#C81E1E] pl-3">
+                        {line}
+                      </p>
+                    ))}
+                </div>
+
+                {/* Live quick-append form inside Daily log */}
+                {activeDoc.id === "daily" && (
+                  <form
+                    onSubmit={handleAppendLine}
+                    className="mt-8 flex flex-col gap-2 border-t border-black/10 pt-5 sm:flex-row"
+                  >
+                    <label htmlFor="swiss-scratch" className="sr-only">
+                      Add a line to today&apos;s log
+                    </label>
+                    <input
+                      id="swiss-scratch"
+                      type="text"
+                      value={scratchInput}
+                      onChange={(e) => setScratchInput(e.target.value)}
+                      placeholder="Type a line to add to today's log..."
+                      className="flex-1 border border-black/20 bg-[#F3F3F1] px-3.5 py-2.5 text-sm text-black placeholder:text-[#6B6B6B] focus:border-black focus:bg-white focus:outline-none"
+                    />
+                    <button
+                      type="submit"
+                      className="bg-black px-4 py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#C81E1E] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E]"
+                    >
+                      Add entry
+                    </button>
+                  </form>
+                )}
+              </div>
+
+              {/* Backlinks pane */}
+              {showBacklinks && (
+                <aside className="border-t border-black/15 bg-[#F8F8F6] p-6 sm:p-8 lg:col-span-4 lg:border-t-0">
+                  <h3 className="text-sm font-semibold text-black">
+                    Linked mentions ({activeDoc.backlinks.length})
+                  </h3>
+                  <p className="mt-1 text-xs text-[#6B6B6B]">
+                    Select a note to jump straight to it.
+                  </p>
+
+                  <ul className="mt-5 space-y-4">
+                    {activeDoc.backlinks.map((item) => (
+                      <li
+                        key={item.fromId}
+                        className="border-t border-black/12 pt-4"
+                      >
+                        <button
+                          type="button"
+                          onClick={() => setActiveDocId(item.fromId)}
+                          className="text-left group focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E]"
+                        >
+                          <span className="block text-sm font-semibold text-black group-hover:text-[#C81E1E]">
+                            {item.fromTitle}
+                          </span>
+                          <span className="mt-1 block text-xs leading-[1.6] text-[#4D4D4D]">
+                            {item.snippet}
+                          </span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+              )}
+            </div>
+          </div>
+        </section>
+
+        {/* Interactive Capability Matrix */}
+        <section
+          id="capabilities"
+          className="border-t border-black/15 bg-[#F3F3F1] py-20 lg:py-28"
+        >
+          <div className="mx-auto max-w-6xl px-6 lg:px-10">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-semibold tracking-[-0.025em] text-black sm:text-4xl">
+                Designed to stay out of the way of your sentence.
+              </h2>
+            </div>
+
+            <div className="mt-12 grid gap-10 lg:grid-cols-12">
+              <div className="divide-y divide-black/15 border-y border-black/15 lg:col-span-6">
+                {CAPABILITIES.map((cap) => {
+                  const selected = cap.id === activeCap.id;
+                  return (
+                    <button
+                      key={cap.id}
+                      type="button"
+                      onClick={() => setActiveCapId(cap.id)}
+                      aria-pressed={selected}
+                      className={`flex w-full items-start justify-between gap-4 py-5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E] ${
+                        selected ? "text-black" : "text-[#4D4D4D] hover:text-black"
+                      }`}
+                    >
+                      <div className="flex items-start gap-3.5">
+                        <span
+                          aria-hidden="true"
+                          className={`mt-2 h-2 w-2 shrink-0 ${
+                            selected ? "bg-[#C81E1E]" : "bg-black/20"
+                          }`}
+                        />
+                        <div>
+                          <span className="block text-lg font-semibold tracking-[-0.015em]">
+                            {cap.title}
+                          </span>
+                          <span className="mt-1.5 block max-w-[44ch] text-sm leading-[1.6] text-[#4D4D4D]">
+                            {cap.summary}
+                          </span>
+                        </div>
+                      </div>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Architectural Spec Preview */}
+              <div className="flex flex-col justify-between border border-black bg-white p-8 lg:col-span-6">
+                <div>
+                  <div className="flex items-baseline justify-between gap-4 border-b border-black/12 pb-5">
+                    <h3 className="text-xl font-semibold tracking-[-0.02em] text-black">
+                      {activeCap.detailTitle}
+                    </h3>
+                    <span className="text-sm font-semibold text-[#C81E1E]">
+                      {activeCap.metric}
+                    </span>
+                  </div>
+
+                  <ul className="mt-6 space-y-4">
+                    {activeCap.detailLines.map((line) => (
+                      <li
+                        key={line}
+                        className="flex items-start gap-3 text-sm leading-[1.65] text-[#1A1A1A]"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-2 h-1.5 w-1.5 shrink-0 bg-black"
+                        />
+                        <span>{line}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Architectural mini-diagram for the selected capability */}
+                  <div className="mt-8 border border-black/15 bg-[#F8F8F6] p-5">
+                    {activeCap.id === "capture" && (
+                      <div>
+                        <div className="flex items-center justify-between text-xs text-[#6B6B6B]">
+                          <span>Quick entry</span>
+                          <span className="border border-black/20 bg-white px-2 py-0.5 font-medium text-black">
+                            Cmd + Shift + N
+                          </span>
+                        </div>
+                        <div className="mt-3 border border-black bg-white px-3.5 py-2.5 text-sm text-black">
+                          Remember to cite Alexander on courtyard light
+                          <span
+                            aria-hidden="true"
+                            className="ml-0.5 inline-block h-3.5 w-[2px] bg-[#C81E1E] align-middle"
+                          />
+                        </div>
+                        <p className="mt-2 text-xs text-[#4D4D4D]">
+                          Suggested link: Spatial memory in tools
+                        </p>
+                      </div>
+                    )}
+
+                    {activeCap.id === "markdown" && (
+                      <div className="space-y-1.5 text-xs text-[#1A1A1A]">
+                        <div className="font-semibold text-black">
+                          Commonplace/
+                        </div>
+                        <div className="pl-4 text-[#4D4D4D]">
+                          2026-11-19.md (1.4 KB)
+                        </div>
+                        <div className="pl-4 text-[#C81E1E] font-medium">
+                          spatial-memory-in-tools.md (3.1 KB)
+                        </div>
+                        <div className="pl-4 text-[#4D4D4D]">
+                          why-small-notes-travel-further.md (4.8 KB)
+                        </div>
+                      </div>
+                    )}
+
+                    {activeCap.id === "panes" && (
+                      <div className="grid grid-cols-2 gap-3 text-xs">
+                        <div className="border border-black/20 bg-white p-3">
+                          <div className="font-semibold text-black">
+                            Pane 1 (Reference)
+                          </div>
+                          <div className="mt-1.5 text-[#4D4D4D]">
+                            Spatial memory in tools
+                          </div>
+                        </div>
+                        <div className="border border-[#C81E1E] bg-white p-3">
+                          <div className="font-semibold text-[#C81E1E]">
+                            Pane 2 (Active draft)
+                          </div>
+                          <div className="mt-1.5 text-[#4D4D4D]">
+                            Why small notes travel further
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {activeCap.id === "sync" && (
+                      <div className="flex flex-wrap items-center justify-between gap-3 text-xs">
+                        <div className="border border-black bg-white px-3 py-2 font-medium text-black">
+                          MacBook Pro (Local key)
+                        </div>
+                        <span className="font-medium text-[#C81E1E]">
+                          Encrypted mirror
+                        </span>
+                        <div className="border border-black/30 bg-white px-3 py-2 text-[#4D4D4D]">
+                          iPhone &amp; Linux Desktop
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                <div className="mt-10 border-t border-black/12 pt-5 text-xs text-[#6B6B6B]">
+                  Works identically offline. Zero cloud account required to
+                  open, edit, or search your library.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Plain Ownership & Platform Download */}
+        <section id="pricing" className="mx-auto max-w-6xl px-6 py-20 lg:px-10 lg:py-28">
+          <div className="grid items-start gap-12 lg:grid-cols-12">
+            <div className="lg:col-span-7">
+              <h2 className="text-4xl font-semibold leading-[1.06] tracking-[-0.03em] text-black sm:text-5xl">
+                Free locally.
+                <br />
+                Eight dollars a month to sync.
+              </h2>
+              <p className="mt-5 max-w-[48ch] text-base leading-[1.7] text-[#4D4D4D]">
+                Download the complete desktop application at zero cost. Add
+                encrypted multi-device sync and daily mobile capture only when
+                you need your library in your pocket.
+              </p>
+            </div>
+
+            <div className="border border-black p-6 sm:p-8 lg:col-span-5">
+              <p className="text-sm font-semibold text-black">
+                Choose your platform
+              </p>
+              <div className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-4">
+                {PLATFORMS.map((platform) => (
                   <button
+                    key={platform}
                     type="button"
-                    onClick={() => setAddingSlip((v) => !v)}
-                    className={`ml-auto shrink-0 whitespace-nowrap rounded-t-md border border-b-0 px-3 py-2 text-xs font-medium transition-colors cursor-pointer ${
-                      addingSlip
-                        ? "relative z-10 -mb-px border-[#161E2E] bg-white text-[#1F44A8] pb-2.5"
-                        : "border-[#B9B6AC] bg-[#D6D3CB] text-[#161E2E] hover:bg-[#ECEAE4]"
+                    onClick={() => {
+                      setSelectedPlatform(platform);
+                      setDownloadAck(false);
+                    }}
+                    className={`border py-2 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[#C81E1E] ${
+                      selectedPlatform === platform
+                        ? "border-black bg-black text-white"
+                        : "border-black/20 bg-white text-black hover:border-black"
                     }`}
                   >
-                    {addingSlip ? "Cancel slip" : "+ Add a slip"}
+                    {platform}
                   </button>
-                </div>
-
-                {/* Main crisp ruled index card */}
-                <div className="relative z-10 rounded-b-md rounded-tr-md border border-[#161E2E] bg-white">
-                  {/* Classic red-pink top ruling line of an index card, shifted to archival cobalt-slate */}
-                  <div className="flex items-center justify-between border-b-2 border-[#1F44A8]/30 px-6 py-3.5">
-                    <span className="text-xs font-medium text-[#1F44A8]">
-                      {addingSlip ? "New slip" : activeCard.tab}
-                    </span>
-                    <span className="text-xs text-[#4A5468]">
-                      {addingSlip ? "Saved straight to this stack" : activeCard.date}
-                    </span>
-                  </div>
-
-                  {addingSlip ? (
-                    <form onSubmit={handleAddCard} className="space-y-4 p-6 sm:p-7">
-                      <div>
-                        <label
-                          htmlFor="slip-tab"
-                          className="block text-xs font-medium text-[#4A5468]"
-                        >
-                          Drawer tab
-                        </label>
-                        <div className="mt-1.5 flex flex-wrap gap-1.5">
-                          {TABS.map((t) => (
-                            <button
-                              key={t}
-                              type="button"
-                              onClick={() => setNewTab(t)}
-                              className={`rounded-sm border px-2.5 py-1 text-xs cursor-pointer ${
-                                newTab === t
-                                  ? "border-[#161E2E] bg-[#EBC96E] font-medium text-[#161E2E]"
-                                  : "border-[#D4D2CA] bg-[#F7F6F3] text-[#4A5468]"
-                              }`}
-                            >
-                              {t}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="slip-title"
-                          className="block text-xs font-medium text-[#4A5468]"
-                        >
-                          Card headline
-                        </label>
-                        <input
-                          id="slip-title"
-                          type="text"
-                          value={newTitle}
-                          onChange={(e) => setNewTitle(e.target.value)}
-                          placeholder="One concise thought..."
-                          required
-                          className="mt-1 w-full rounded-sm border border-[#B9B6AC] px-3 py-2 text-sm text-[#161E2E]"
-                        />
-                      </div>
-                      <div>
-                        <label
-                          htmlFor="slip-body"
-                          className="block text-xs font-medium text-[#4A5468]"
-                        >
-                          Note
-                        </label>
-                        <textarea
-                          id="slip-body"
-                          rows={3}
-                          value={newBody}
-                          onChange={(e) => setNewBody(e.target.value)}
-                          placeholder="Write two or three plain sentences in your own words."
-                          required
-                          className="mt-1 w-full rounded-sm border border-[#B9B6AC] px-3 py-2 text-sm text-[#161E2E]"
-                        />
-                      </div>
-                      <button
-                        type="submit"
-                        className="rounded-sm bg-[#1F44A8] px-4 py-2 text-xs font-medium text-white hover:bg-[#173585] cursor-pointer"
-                      >
-                        File card in drawer
-                      </button>
-                    </form>
-                  ) : (
-                    <div
-                      className="p-6 sm:p-8"
-                      style={{
-                        backgroundImage:
-                          "repeating-linear-gradient(to bottom, transparent 0px, transparent 31px, #EEF1F6 31px, #EEF1F6 32px)",
-                        backgroundPosition: "0 18px",
-                      }}
-                    >
-                      <h2 className="text-2xl leading-snug font-semibold tracking-[-0.02em] text-[#161E2E]">
-                        {activeCard.title}
-                      </h2>
-
-                      <p className="mt-4 max-w-[54ch] text-[1.03rem] leading-[2rem] text-[#242F42]">
-                        {activeCard.body}
-                      </p>
-
-                      <div className="mt-6 text-xs text-[#4A5468]">
-                        {activeCard.source}
-                      </div>
-
-                      <div className="mt-6 border-t border-[#DCE0E8] bg-white pt-4">
-                        <div className="text-xs font-medium text-[#4A5468]">
-                          Linked slips in this drawer
-                        </div>
-                        <div className="mt-2.5 flex flex-wrap gap-2">
-                          {activeCard.relatedIds.map((relId) => {
-                            const target = cards.find((c) => c.id === relId);
-                            if (!target) return null;
-                            return (
-                              <button
-                                key={target.id}
-                                type="button"
-                                onClick={() => setActiveCardId(target.id)}
-                                className="rounded-sm border border-[#C7CEDB] bg-[#F4F6FA] px-3 py-1.5 text-xs font-medium text-[#1F44A8] transition-colors hover:border-[#1F44A8] hover:bg-[#E7EEFC] cursor-pointer"
-                              >
-                                {target.title}
-                              </button>
-                            );
-                          })}
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
-
-                {/* Physical stacked index cards peeking cleanly underneath (no generic soft shadow) */}
-                <div
-                  aria-hidden="true"
-                  className="mx-2.5 h-2.5 rounded-b-sm border border-t-0 border-[#9FA29A] bg-[#F7F6F2]"
-                />
-                <div
-                  aria-hidden="true"
-                  className="mx-5 h-2 rounded-b-sm border border-t-0 border-[#B2B0A7] bg-[#EFECE5]"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Section 1: Genuine 3-step sequential workflow */}
-        <section
-          id="workflow"
-          className="border-t border-[#C8C5BC] bg-white py-20"
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8">
-            <h2 className="max-w-xl text-3xl leading-[1.1] font-semibold tracking-[-0.03em] text-[#161E2E] sm:text-4xl">
-              From a pocket note to a clear draft in three habits.
-            </h2>
-
-            <ol className="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
-              <li className="border-t-2 border-[#161E2E] pt-5">
-                <div className="text-xs font-semibold text-[#1F44A8]">Step 1</div>
-                <h3 className="mt-2 text-xl font-semibold tracking-[-0.02em] text-[#161E2E]">
-                  Keep one idea per slip
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#4A5468]">
-                  Hit Command+N from anywhere and jot down a single claim,
-                  measurement, or book passage. Short notes are far easier to
-                  recombine later than sprawling 30-page documents.
-                </p>
-              </li>
-
-              <li className="border-t-2 border-[#161E2E] pt-5">
-                <div className="text-xs font-semibold text-[#1F44A8]">Step 2</div>
-                <h3 className="mt-2 text-xl font-semibold tracking-[-0.02em] text-[#161E2E]">
-                  Link to what it reminds you of
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#4A5468]">
-                  Type two brackets to connect your new slip to an older note.
-                  Cairn keeps backlinks updated in both directions automatically
-                  even if you rename files on disk.
-                </p>
-              </li>
-
-              <li className="border-t-2 border-[#161E2E] pt-5">
-                <div className="text-xs font-semibold text-[#1F44A8]">Step 3</div>
-                <h3 className="mt-2 text-xl font-semibold tracking-[-0.02em] text-[#161E2E]">
-                  Spread cards out when drafting
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#4A5468]">
-                  Pull a trail of linked slips onto a side-by-side table view,
-                  arrange their order until the argument clicks, and merge them
-                  into one clean Markdown document.
-                </p>
-              </li>
-            </ol>
-          </div>
-        </section>
-
-        {/* Section 2: Interactive Live Drawer Search */}
-        <section
-          id="finder"
-          className="border-t border-[#C8C5BC] bg-[#E4E2DC] py-20"
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8">
-            <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div>
-                <h2 className="text-3xl leading-[1.1] font-semibold tracking-[-0.03em] text-[#161E2E] sm:text-4xl">
-                  Find any card before you finish typing.
-                </h2>
-                <p className="mt-3 max-w-xl text-base text-[#354055]">
-                  Every word in your local folder stays indexed in memory. Try
-                  filtering these six sample slips right now.
-                </p>
-              </div>
-
-              <div className="w-full md:w-80">
-                <label htmlFor="slip-search" className="sr-only">
-                  Filter sample cards
-                </label>
-                <input
-                  id="slip-search"
-                  type="search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Try lamp, folders, coffee, Feynman..."
-                  className="w-full rounded-sm border border-[#161E2E] bg-white px-4 py-2.5 text-sm text-[#161E2E] placeholder:text-[#697386]"
-                />
-              </div>
-            </div>
-
-            {filteredSlips.length === 0 ? (
-              <div className="mt-8 rounded-sm border border-dashed border-[#8E929B] bg-[#EFECE6] p-8 text-sm text-[#354055]">
-                No slips match &ldquo;{searchQuery}&rdquo;. Clear the search box
-                or try words like folders, Stockholm, coffee, or durable.
-              </div>
-            ) : (
-              <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                {filteredSlips.map((slip) => (
-                  <article
-                    key={slip.id}
-                    className="flex flex-col justify-between overflow-hidden rounded-sm border border-[#161E2E]/30 bg-white"
-                  >
-                    <div className="flex items-center justify-between gap-2 border-b border-[#1F44A8]/25 px-4 py-2.5">
-                      <span className="inline-block rounded-sm bg-[#EBC96E] px-2 py-0.5 text-xs font-medium text-[#161E2E]">
-                        {slip.tab}
-                      </span>
-                      <span className="text-xs text-[#596377]">
-                        {slip.date}
-                      </span>
-                    </div>
-                    <div className="flex-1 p-4">
-                      <h3 className="text-lg font-semibold leading-snug tracking-[-0.02em] text-[#161E2E]">
-                        {slip.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-[#424D61]">
-                        {slip.excerpt}
-                      </p>
-                    </div>
-                  </article>
                 ))}
               </div>
-            )}
-          </div>
-        </section>
 
-        {/* Section 3: High-contrast archival cabinet closing & pricing */}
-        <section
-          id="pricing"
-          className="border-t border-[#161E2E] bg-[#161E2E] py-20 text-white"
-        >
-          <div className="mx-auto max-w-6xl px-6 sm:px-8">
-            <div className="grid gap-12 lg:grid-cols-12">
-              <div className="lg:col-span-5">
-                <h2 className="text-3xl leading-[1.1] font-semibold tracking-[-0.03em] sm:text-4xl">
-                  Own the software. Own the files.
-                </h2>
-                <p className="mt-4 text-base leading-relaxed text-[#BCC4D4]">
-                  Use Cairn free on your desktop forever. Add encrypted sync
-                  only if you want the same slip-box on your phone and laptop.
+              <button
+                type="button"
+                onClick={() => setDownloadAck(true)}
+                className="mt-5 w-full bg-[#C81E1E] py-3.5 text-sm font-medium text-white transition-colors hover:bg-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C81E1E]"
+              >
+                Download for {selectedPlatform}
+              </button>
+
+              {downloadAck && (
+                <p role="status" className="mt-3 text-xs text-[#1A1A1A]">
+                  Commonplace 2.4 for {selectedPlatform} is ready to install. No
+                  sign-up needed.
                 </p>
-              </div>
-
-              <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
-                <div className="flex flex-col justify-between rounded-sm border border-white/20 p-6">
-                  <div>
-                    <div className="text-sm text-[#EBC96E]">Desktop app</div>
-                    <div className="mt-2 text-3xl font-semibold">$0 forever</div>
-                    <p className="mt-3 text-sm leading-relaxed text-[#C8D0DF]">
-                      Unlimited cards, backlinks, table layout, offline instant
-                      search, and plain Markdown storage in your own folder.
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setDownloadNotice("Downloading Cairn Desktop (Free forever).")
-                    }
-                    className="mt-6 w-full rounded-sm border border-white/40 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white hover:text-[#161E2E] cursor-pointer"
-                  >
-                    Download desktop app
-                  </button>
-                </div>
-
-                <div className="flex flex-col justify-between rounded-sm bg-[#EBC96E] p-6 text-[#161E2E]">
-                  <div>
-                    <div className="text-sm font-medium">Encrypted sync</div>
-                    <div className="mt-2 text-3xl font-semibold">$6 a month</div>
-                    <p className="mt-3 text-sm leading-relaxed text-[#252E42]">
-                      End-to-end encrypted sync for Mac, Windows, Linux, iPhone,
-                      and Android, plus 365-day card version history.
-                    </p>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setDownloadNotice(
-                        "Sync includes a 30-day free trial inside the desktop app."
-                      )
-                    }
-                    className="mt-6 w-full rounded-sm bg-[#161E2E] py-2.5 text-sm font-medium text-white transition-colors hover:bg-[#1F44A8] cursor-pointer"
-                  >
-                    Start 30-day sync trial
-                  </button>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </section>
       </main>
 
-      <footer className="border-t border-white/10 bg-[#161E2E] py-8 pb-20 text-sm text-[#A5B0C4]">
-        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 px-6 sm:flex-row sm:items-center sm:px-8">
-          <p>Cairn. Plain-text index cards for independent thinkers.</p>
-          <div className="flex gap-6">
-            <a href="#workflow" className="hover:text-white">
-              Manual
-            </a>
-            <a href="#finder" className="hover:text-white">
-              Import guide
-            </a>
-            <a href="#pricing" className="hover:text-white">
-              Privacy
-            </a>
-          </div>
+      <footer className="border-t border-black/15 py-8 text-sm text-[#4D4D4D]">
+        <div className="mx-auto flex max-w-6xl flex-col justify-between gap-4 px-6 sm:flex-row sm:items-center lg:px-10">
+          <span className="font-semibold text-black">Commonplace</span>
+          <span>Plain Markdown notes built to last decades</span>
         </div>
       </footer>
     </div>

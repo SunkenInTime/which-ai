@@ -1,100 +1,92 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import {
-  Archivo,
   Bricolage_Grotesque,
+  DM_Sans,
   Fraunces,
-  Hanken_Grotesk,
   Instrument_Sans,
   Literata,
   Newsreader,
+  Plus_Jakarta_Sans,
+  Schibsted_Grotesk,
   Source_Serif_4,
 } from "next/font/google";
 import "@/generated/scoped-variant-css/with-design-skill/gemini-4-neon/source/app/globals.css";
 
-const newsreader = Newsreader({
+const literata = Literata({
+  variable: "--font-literata",
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-newsreader",
-  display: "swap",
-});
-
-const hankenGrotesk = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-hanken",
-  display: "swap",
-});
-
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  axes: ["SOFT", "opsz"],
-  variable: "--font-fraunces",
-  display: "swap",
+  axes: ["opsz"],
 });
 
 const instrumentSans = Instrument_Sans({
+  variable: "--font-instrument-sans",
   subsets: ["latin"],
-  variable: "--font-instrument",
-  display: "swap",
 });
 
-const bricolage = Bricolage_Grotesque({
+const fraunces = Fraunces({
+  variable: "--font-fraunces",
   subsets: ["latin"],
-  axes: ["opsz", "wdth"],
+  axes: ["SOFT", "opsz"],
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+  variable: "--font-plus-jakarta",
+  subsets: ["latin"],
+});
+
+const schibstedGrotesk = Schibsted_Grotesk({
+  variable: "--font-schibsted",
+  subsets: ["latin"],
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  axes: ["opsz"],
+});
+
+const dmSans = DM_Sans({
+  variable: "--font-dm-sans",
+  subsets: ["latin"],
+});
+
+const bricolageGrotesque = Bricolage_Grotesque({
   variable: "--font-bricolage",
-  display: "swap",
-});
-
-const archivo = Archivo({
   subsets: ["latin"],
-  axes: ["wdth"],
-  variable: "--font-archivo",
-  display: "swap",
+  axes: ["opsz"],
 });
 
 const sourceSerif = Source_Serif_4({
-  subsets: ["latin"],
-  style: ["normal", "italic"],
   variable: "--font-source-serif",
-  display: "swap",
-});
-
-const literata = Literata({
   subsets: ["latin"],
-  style: ["normal", "italic"],
   axes: ["opsz"],
-  variable: "--font-literata",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Cairn — A quiet second brain for your notes",
+  title: "Commonplace — A second brain for lasting thought",
   description:
-    "Capture fleeting thoughts, connect ideas across years, and keep everything in plain local Markdown files you own forever.",
+    "Five distinct landing page design directions for Commonplace, a personal second-brain note-taking app.",
 };
 
-const fontVariables = [
-  newsreader.variable,
-  hankenGrotesk.variable,
-  fraunces.variable,
-  instrumentSans.variable,
-  bricolage.variable,
-  archivo.variable,
-  sourceSerif.variable,
+const fontVars = [
   literata.variable,
+  instrumentSans.variable,
+  fraunces.variable,
+  plusJakarta.variable,
+  schibstedGrotesk.variable,
+  newsreader.variable,
+  dmSans.variable,
+  bricolageGrotesque.variable,
+  sourceSerif.variable,
 ].join(" ");
 
 // Gallery adaptation: <html>/<body> become wrapper divs, the source's globals.css is imported through its scoped
 // copy, and the model's <IterationSwitcher /> isn't rendered (the gallery has its own). Original: see source-sha256.
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <div
-      data-source-html
-      lang="en"
-      className={`${fontVariables} h-full antialiased`}
-    >
-      <div data-source-body className="min-h-full flex flex-col">
+    <div data-source-html lang="en" data-scroll-behavior="smooth" className={`${fontVars} h-full`}>
+      <div data-source-body className="min-h-full">
         {children}
       </div>
     </div>

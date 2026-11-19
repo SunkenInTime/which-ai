@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { IterationFour } from "@/variants/without-design-skill/gemini-4-neon/source/components/iterations/IterationFour";
+import GardenLanding from "@/variants/without-design-skill/gemini-4-neon/source/components/iterations/GardenLanding";
 
 export const metadata: Metadata = {
-  title: "Noema — Mind Garden Edition | Calm Second Brain",
-  description:
-    "A quiet digital garden where half-formed thoughts grow into clarity. Gentle spaced resurfacing, organic note-linking, and zero notification anxiety.",
+  title: "Engram — Digital Garden (Iteration 4)",
+  description: "An organic botanical digital-garden landing page for a second brain app.",
 };
 
 export default function PageFour() {
-  return <IterationFour />;
+  return <GardenLanding />;
 }

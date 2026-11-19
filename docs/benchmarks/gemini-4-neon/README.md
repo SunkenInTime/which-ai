@@ -1,61 +1,47 @@
-# Gemini 4 Neon in the Cursor CLI
+# Gemini 4 Neon in Antigravity
 
-Two frontend runs on 2026-11-19 (UTC): Without Design Skill and With Design Skill (Anthropic frontend-design), with Gemini 4 Neon at Extra High reasoning (`gemini-4-neon-xhigh`) in the headless Cursor CLI, cursor-agent 2026.11.17-f532c45, on t3os (Ubuntu 26.04). Google released Neon on 2026-11-18. Cursor offers it at low, medium, high and xhigh; Dara picked xhigh, Neon's top level and the level the GPT-6.2 and Claude entries run at. Argon and Carbon ran at High, their highest level, so the Gemini 4 cards aren't a like-for-like reasoning match. The taste-skill and motion runs will come later.
+Two frontend runs on 2026-11-19 (UTC), with Gemini 4 Neon at thinking level `xhigh` in Google's Antigravity, driven headless over ACP on t3os (Ubuntu 26.04). They replace the Cursor CLI runs from earlier the same day, which Dara suspected the Cursor harness had made worse than Neon is. Those runs' records are in [cursor/](cursor/README.md). Everything but the harness is the same: model and reasoning level, prompts (only the port differs), starter, skill file and browser.
 
-## Prompts and source
+## How it ran
 
-The prompts are the gallery prompt with only the port changed (3451, 3452), saved next to this file. Each workspace is a fresh copy of the usual Next.js 16.3.8 / React 19.2.8 starter (`@eeeb008`, the same tarball as the Fable 5.2, GPT-6.2 Astra and GPT-6.2 Sol runs, lockfile SHA-256 `ce550054…cb915`) with a baseline commit. The With Design Skill workspace has the frontend-design `SKILL.md` that the Fable 5.2, Gemini 4 Carbon, GPT-6.2 Astra and GPT-6.2 Sol runs used, at `.agents/skills/frontend-design`. [provenance.json](provenance.json) has the exact argv, environment and hashes.
+Antigravity has no headless CLI on Linux. Its agent runs as an ACP (Agent Client Protocol) server: `agy_acp_server.par` with `localharness_external`, release 1.4.5, the build T3 Code installs. [runner/acp-run.mjs](runner/acp-run.mjs) is a small client for it. It opens one session in the workspace, switches to full-access mode (`yolo`), selects `gemini-4-neon` and `thinking_level` `xhigh`, sends the prompt once, approves every permission request, and logs every message both ways. It offers no file system or terminal of its own, so the agent uses Antigravity's built-in tools. The other scripts in [runner/](runner/) set up the workspaces and run sessions; [provenance.json](provenance.json) has the exact environment and hashes.
 
-## Isolation
+Isolation matches the Cursor runs. Each session had its own home whose `GEMINI_HOME` held only a copy of the Antigravity sign-in, ran under `env -i` with a short PATH, and ran in a private mount namespace with an empty folder over `/etc/codex` and `/etc/claude-code` (the box's own agent instructions) and its own folder over `/tmp`.
 
-Each session had its own home folder holding only a copy of the Cursor CLI login, and ran under `env -i` with a short PATH. It ran in a private mount namespace with an empty folder over `/etc/codex` and `/etc/claude-code` (the box's own agent instructions) and its own folder over `/tmp`. The browser was the same Playwright MCP setup as the GPT-6.2 runs: Playwright MCP 0.0.83, isolated headless Chromium 1247, 1440×960, screenshots returned to the model.
+Antigravity's ACP server has no browser. An unscored preflight without one listed no browser tool, browser subagent or MCP server, and couldn't take the test screenshot. So the scored sessions got the same browser as the Cursor, GPT-6.2 Astra and GPT-6.2 Sol runs: Playwright MCP 0.0.83 with isolated headless Chromium 1247 at 1440×960 and screenshots returned to the model, passed as a session MCP server. A preflight with it ([prompt](preflight.prompt.txt), [reply](preflight.final.txt)) listed the workspace's frontend-design skill, Antigravity's built-in `run-workflow` skill, the 25 browser tools, Antigravity's built-in tools (files, shell, web search, image generation, subagents), and no personal, user-level or box instructions beyond the starter's `AGENTS.md` and `CLAUDE.md` and Antigravity's own system prompt. It described the canvas test page from screenshot pixels.
 
-cursor-agent copies the account's marketplace plugins into any home it runs in, as it did for DeepSeek V4.1 Flash. Their ten MCP servers needed sign-in, and were also turned off in both workspaces with `cursor-agent mcp disable`. Their skills (Slack, ElevenLabs, Supabase, Granola and others; none are design skills) and plugin subagents still show in Cursor's catalog. Neither scored session read any file outside its workspace.
-
-An unscored preflight ([prompt](preflight.prompt.txt), [reply](preflight.final.txt)) listed the workspace's frontend-design skill, Cursor's built-in skills, the plugin skills, the browser as the only working MCP server, and no personal, user-level or box instructions beyond the starter's `AGENTS.md` and `CLAUDE.md` and Cursor's own developer prompt. It described the canvas test page from screenshot pixels. This is context isolation, not a filesystem jail.
+Antigravity writes its `run-workflow` skill into every workspace it opens, at `skills/system/run-workflow/SKILL.md`. That file is in the source hashes and left out of the gallery copy.
 
 ## Sessions
 
-| Condition | Product | Started (UTC) | Model time | Browser use | Instruction files read |
-| --- | --- | --- | ---: | --- | --- |
-| Without Design Skill | Noema | 01:27:50 | 14m 08s | 4 navigations, 17 screenshots, 8 clicks | none |
-| With Design Skill | Cairn | 01:27:50 | 15m 07s | 15 navigations, 23 screenshots, 6 scripted checks | `frontend-design/SKILL.md` |
+| Condition | Product | Started (UTC) | Model time | Browser use | Instruction files read | Tokens (cached) | API-equivalent cost |
+| --- | --- | --- | ---: | --- | --- | ---: | ---: |
+| Without Design Skill | Engram | 05:39:35 | 18m 42s | 7 navigations, 9 screenshots, 3 clicks | `AGENTS.md` | 2.19M (1.99M) | $1.62 |
+| With Design Skill | Commonplace | 05:39:35 | 20m 39s | 18 navigations, 19 screenshots, 2 clicks | `AGENTS.md`, `frontend-design/SKILL.md` | 2.64M (2.43M) | $1.77 |
 
-Each session got one prompt and nothing else. They ran at the same time on one machine, so the times aren't a latency comparison. Model time runs from the start to the last model event.
+Each session got one prompt and nothing else, and ended on its own with a final reply ([without](no-skills.final.txt), [with](frontend-design.final.txt)), after a production build, lint and a look at all five pages. Neither used a subagent. The Cursor sessions both went silent before their final message and were ended by the run operator. The two ran at the same time on one machine, alongside a Motion session, so the times aren't a latency comparison.
 
-Both sessions ended the way three of the four DeepSeek V4.1 Flash sessions did: headless cursor-agent went silent before the model's final message. Each had built the pages, run a production build and lint (both passing), fetched /1 to /5, marked its last to-do done and run `git status`. Then nothing more came for 10 minutes, and the run operator (the orchestrating agent, not Dara) ended the process. Neither was resumed: both had finished their own checks, and in the DeepSeek run a resume started another round of polishing. So there are no final replies in this folder.
+Costs are API-equivalent estimates at Google's paid-tier rates for Neon ($3 per million input tokens, $0.15 cached, $15 output including thinking), from the usage Antigravity reports at the end of each turn; [costs.json](costs.json) has the arithmetic. Antigravity ran on Dara's subscription, so they aren't charges. The Cursor runs had no cost, because the Cursor CLI never wrote its usage.
 
 ## What it made
 
-- **Without Design Skill (Noema):** five editions from one `Iteration*` component each: an editorial paper page with a Zettelkasten note reader, a dark "neural operating system" with a constellation graph, a Swiss-grid page in black and orange, a calm "mind garden" in greens and Fraunces italics, and a tactile studio of sticky-note cards on a dot grid.
-- **With Design Skill (Cairn):** a drafting desk (a draft with related notes beside it), a botanical archive with a memory map, an index drawer of linked cards, a cobalt studio with a quick-capture window, and a reading room where clicking a sentence clips it into a note.
-
-Cairn is also what Gemini 4 Carbon and DeepSeek V4.1 Flash named their With Design Skill apps.
-
-## Cost
-
-Unknown. cursor-agent only reports a session's token usage in its final result event, which neither stalled session wrote. The Cursor dashboard's usage list for this account shows nothing after 2026-10-31: on The X Subscription, third-party models such as Gemini are paid from prepaid credit managed at grok.com, which the CLI login can't read. The cards show no cost. For scale, the preflight used 37,114 input tokens, 52,994 cached and 6,824 output.
+- **Without Design Skill (Engram):** Editorial Atelier (paper and ink, a note reader with marginalia and backlinks), Neural Cosmos (a dark knowledge graph), Swiss Index (a brutalist grid), Digital Garden (botanical), and Cognitive Deck (a hardware-style console in aluminium and charcoal where typed notes append to a "memory tape").
+- **With Design Skill (Commonplace):** Index-Card Desk (an archival paper grid), Botanical Garden, Swiss Spatial Studio, Midnight Observatory (notes as stars joined by sight-lines, with a memory-depth slider), and Risograph Notebook (violet and citron, with a quick-capture playground).
 
 ## Gallery adaptation
 
-The same adaptation as Gemini 4 Carbon's:
+The same as the Cursor runs' and Gemini 4 Carbon's:
 
 - `<html>`/`<body>` become `data-source-html`/`data-source-body` divs, `globals.css` goes through the scoped copy, the layout takes a plain `{ children }` type instead of Next's generated `LayoutProps`, and the model's iteration switcher isn't rendered (the gallery has its own). Imports through `@/components/` point into the variant folder.
-- The gallery strips Tailwind's `@theme`, which held the models' font utilities (`font-editorial`, `font-organic`, `font-mono` and others without the skill; `font-newsreader`, `font-fraunces` and others with it). They're written out as plain rules in `globals.css`, and the `html`/`body` rules move onto the wrapper divs. Without Design Skill's `overflow-x: hidden` on body becomes `clip` on its wrapper, so the div doesn't become a scroll container.
+- The gallery strips Tailwind's `@theme`. Without Design Skill's theme set Geist as the sans and mono fonts and defined `--font-serif-editorial`, `--font-serif-garden` and `--font-grotesk`, which its pages use in arbitrary values such as `font-[family-name:var(--font-serif-editorial)]`. Those variables are set on the wrapper instead, with `.font-sans` and `.font-mono` written out. Its theme's `--font-jakarta` pointed at itself, so the wrapper keeps next/font's own `--font-jakarta`. The `html`/`body` rules move onto the wrapper divs, and `overflow-x: hidden` on body becomes `clip`, so the div doesn't become a scroll container.
+- Without Design Skill added `lucide-react` 1.75. It uses four icons (Check, ChevronLeft, ChevronRight, Layers), all of which exist in the gallery's 0.542, so the gallery's dependency is unchanged.
 
 Source hashes for every file the models changed or added are in `no-skills.source-sha256.json` and `frontend-design.source-sha256.json`.
 
 ## Gallery verification
 
-Each original ran on its own production server on t3os next to the production gallery build. All 10 pages were captured full-page at 1440×1000 and 390×844, with reduced motion, from both. In all 20 pairs the first heading matches in text, font family, weight and size, with no page errors, failed requests, broken images or horizontal overflow on the gallery side.
+Each original ran on its own production server on t3os next to the production gallery build. All 10 pages were loaded at 1440×1000 and 390×844 with reduced motion, from both. In all 20 pairs, every element with its own text had the same computed font family, size, weight and style on both sides, in the same order. Neither side had page errors, failed requests, broken images or horizontal overflow. The only extra text on the originals is the model's own iteration switcher.
 
-Rendered text widths first differed by 1–7%. The gallery builds with webpack and patches `next/font` to fetch Google's TTF response, so every `next/font` entry gets full TTF files where the originals (built with Turbopack) get WOFF2 subsets. Rebuilding copies of the originals with webpack and the same patch closed most of that: 14 of the 20 pairs then match exactly in heading width, paragraph width and page height. The rest:
+8 of the 20 gallery pages are the same height as the original. The rest are 1 to 71 px shorter, because some text wraps differently. The clearest case is the hero on With Design Skill /3, which takes two lines in the gallery and three in the original. The cause is gallery-wide, not this entry. Every entry's fonts load into one page, and next/font names each face after its font, so the gallery registers dozens to hundreds of faces under each family name (for example 29 for Schibsted Grotesk and 270 for Newsreader, against 2 to 6 in the original), many of them static cuts with slightly different metrics. That is the same font collision the Cursor runs' [verification](cursor/README.md#gallery-verification) found with Fraunces and Space Grotesk, and it's left for its own change.
 
-- **Fraunces headings** (Without Design Skill /4 and With Design Skill /2, both widths). Two older entries, Mistral Large 4 and Muse Wonder 1.0, load Fraunces from Google Fonts with a global `@import`. Their variable face (with the optical-size axis) replaces every other entry's `next/font` Fraunces across the gallery, so these headings render in Fraunces' narrower display cut and wrap differently: "it." moves up a line on With Design Skill /2, which makes the page 60 px shorter at 1440. This affects every gallery entry that uses Fraunces through `next/font`, not only Neon, so it's left for its own change.
-- **Without Design Skill /2** (both widths): 8 px taller in the gallery. The nav's Space Grotesk comes from another entry's global Google Fonts import the same way, and sits about 2 px off.
-
-The complete Playwright suite passed (565 tests) against the final production build, including route smoke tests for the 10 new pages. In an earlier full run, one existing test (the gallery shell keeping its dark background after opening a Fable 5.2 page) timed out waiting for the click to navigate. It passed in five reruns on its own and in the final full run. `npm run lint` reports 209 errors, the same count as master, and nothing in the new or changed files. On the gallery home, With Design Skill and Without Design Skill each show a Gemini 4 Neon card with the New badge, first in its section, and Gemini 4 Carbon and Argon stay visible: Neon has its own archive family.
-
-## Not archived
-
-The original projects aren't uploaded anywhere. They stay on t3os under `~/Code/bench-neon/<condition>/work`, and the `*.source-sha256.json` files record every file.
+The complete Playwright suite passed (565 tests) against the final production build, including the route smoke tests for the 10 Neon pages. `npm run lint` reports 209 errors, the same count as master, and nothing in the new or changed files.

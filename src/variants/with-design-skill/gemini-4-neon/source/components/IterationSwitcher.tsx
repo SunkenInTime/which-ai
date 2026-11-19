@@ -1,15 +1,15 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
 
 const ITERATIONS = [
-  { id: 1, href: "/1", name: "Drafting desk", note: "Cool rag paper & live margin" },
-  { id: 2, href: "/2", name: "Botanical archive", note: "Deep pine & memory web" },
-  { id: 3, href: "/3", name: "Index drawer", note: "Putty & manila slip-box" },
-  { id: 4, href: "/4", name: "Cobalt studio", note: "Ultramarine & live app" },
-  { id: 5, href: "/5", name: "Reading room", note: "Wisteria commonplace essay" },
+  { id: 1, path: "/1", name: "Index-Card Desk", swatch: "#1D4ED8" },
+  { id: 2, path: "/2", name: "Botanical Garden", swatch: "#0F241D" },
+  { id: 3, path: "/3", name: "Swiss Spatial", swatch: "#C81E1E" },
+  { id: 4, path: "/4", name: "Midnight Observatory", swatch: "#0C1324" },
+  { id: 5, path: "/5", name: "Risograph Notebook", swatch: "#4C3AE3" },
 ] as const;
 
 export function IterationSwitcher() {
@@ -18,18 +18,13 @@ export function IterationSwitcher() {
   const [open, setOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const activeIndex = Math.max(
-    0,
-    ITERATIONS.findIndex((item) => pathname === item.href)
-  );
-  const active = ITERATIONS[activeIndex] ?? ITERATIONS[0];
-  const prev = ITERATIONS[(activeIndex + ITERATIONS.length - 1) % ITERATIONS.length];
-  const next = ITERATIONS[(activeIndex + 1) % ITERATIONS.length];
-
-  const isDarkSurface = active.id === 2;
+  const current =
+    ITERATIONS.find((item) => pathname === item.path) ?? ITERATIONS[0];
+  const nextItem =
+    ITERATIONS[current.id % ITERATIONS.length];
 
   useEffect(() => {
-    function handlePointerDown(event: MouseEvent) {
+    function handleOutsideClick(event: MouseEvent) {
       if (
         containerRef.current &&
         !containerRef.current.contains(event.target as Node)
@@ -39,106 +34,62 @@ export function IterationSwitcher() {
     }
 
     function handleKeyDown(event: KeyboardEvent) {
-      const target = event.target as HTMLElement | null;
-      const isEditable =
-        target &&
-        (target.tagName === "INPUT" ||
-          target.tagName === "TEXTAREA" ||
-          target.isContentEditable);
-
       if (event.key === "Escape") {
         setOpen(false);
-        return;
-      }
-
-      if (isEditable) return;
-
-      if (event.key === "[") {
-        router.push(prev.href);
-      } else if (event.key === "]") {
-        router.push(next.href);
       }
     }
 
-    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("mousedown", handleOutsideClick);
     document.addEventListener("keydown", handleKeyDown);
     return () => {
-      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("mousedown", handleOutsideClick);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [next.href, prev.href, router]);
+  }, []);
 
   return (
     <div
       ref={containerRef}
       className="fixed bottom-5 right-5 z-50 flex flex-col items-end gap-2"
-      style={{ fontFamily: "var(--font-hanken), system-ui, sans-serif" }}
+      style={{ fontFamily: "var(--font-instrument-sans), system-ui, sans-serif" }}
     >
       {open && (
         <nav
           aria-label="Design iterations"
-          className={`w-64 rounded-xl border p-1.5 backdrop-blur-md transition-opacity ${
-            isDarkSurface
-              ? "border-[#2B4942] bg-[#132622]/95 text-[#F0EDE5] shadow-lg shadow-black/40"
-              : "border-[#D5D8DC] bg-white/95 text-[#182026] shadow-lg shadow-slate-900/12"
-          }`}
+          className="w-60 rounded-xl border border-neutral-800/15 bg-white/95 p-1.5 text-neutral-900 shadow-lg backdrop-blur-md"
         >
-          <div
-            className={`px-2.5 py-1.5 text-xs ${
-              isDarkSurface ? "text-[#9BB8AD]" : "text-[#5A6570]"
-            }`}
-          >
+          <div className="px-2.5 py-1.5 text-xs font-medium text-neutral-500">
             Switch design iteration
           </div>
           <ul className="space-y-0.5">
             {ITERATIONS.map((item) => {
-              const isCurrent = item.id === active.id;
+              const isActive = item.id === current.id;
               return (
                 <li key={item.id}>
                   <Link
-                    href={item.href}
+                    href={item.path}
                     onClick={() => setOpen(false)}
-                    aria-current={isCurrent ? "page" : undefined}
-                    className={`flex items-center justify-between rounded-lg px-2.5 py-2 text-sm transition-colors ${
-                      isCurrent
-                        ? isDarkSurface
-                          ? "bg-[#D6A954] text-[#0F1F1C] font-medium"
-                          : "bg-[#182026] text-white font-medium"
-                        : isDarkSurface
-                          ? "hover:bg-[#1E3B34] text-[#E6E2D8]"
-                          : "hover:bg-[#EFF1F4] text-[#182026]"
+                    aria-current={isActive ? "page" : undefined}
+                    className={`flex items-center justify-between rounded-lg px-2.5 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-neutral-900 ${
+                      isActive
+                        ? "bg-neutral-900 font-medium text-white"
+                        : "text-neutral-700 hover:bg-neutral-100"
                     }`}
                   >
                     <span className="flex items-center gap-2.5">
                       <span
-                        className={`inline-flex h-5 w-5 items-center justify-center rounded text-xs font-medium ${
-                          isCurrent
-                            ? isDarkSurface
-                              ? "bg-[#0F1F1C]/15 text-[#0F1F1C]"
-                              : "bg-white/20 text-white"
-                            : isDarkSurface
-                              ? "bg-[#23433B] text-[#B9D0C6]"
-                              : "bg-[#E9ECEF] text-[#45505B]"
-                        }`}
-                      >
-                        {item.id}
-                      </span>
-                      <span className="flex flex-col leading-tight">
-                        <span>{item.name}</span>
-                        <span
-                          className={`text-[11px] font-normal ${
-                            isCurrent
-                              ? isDarkSurface
-                                ? "text-[#0F1F1C]/75"
-                                : "text-white/75"
-                              : isDarkSurface
-                                ? "text-[#8BA99E]"
-                                : "text-[#636F7B]"
-                          }`}
-                        >
-                          {item.note}
-                        </span>
-                      </span>
+                        aria-hidden="true"
+                        className="h-2.5 w-2.5 rounded-full border border-black/15"
+                        style={{ backgroundColor: item.swatch }}
+                      />
+                      <span>{item.name}</span>
+                    </span>
+                    <span
+                      className={`text-xs ${
+                        isActive ? "text-neutral-300" : "text-neutral-400"
+                      }`}
+                    >
+                      /{item.id}
                     </span>
                   </Link>
                 </li>
@@ -148,60 +99,66 @@ export function IterationSwitcher() {
         </nav>
       )}
 
-      <div
-        className={`inline-flex items-center rounded-full border p-0.5 backdrop-blur-md ${
-          isDarkSurface
-            ? "border-[#2F524A] bg-[#152B26]/95 text-[#F0EDE5] shadow-md shadow-black/40"
-            : "border-[#182026]/15 bg-[#182026]/92 text-white shadow-md shadow-slate-900/15"
-        }`}
-      >
-        <Link
-          href={prev.href}
-          aria-label={`Previous design (${prev.name})`}
-          title={`Previous: ${prev.name} ([)`}
-          className={`inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-            isDarkSurface ? "hover:bg-[#23443C]" : "hover:bg-white/15"
-          }`}
+      <div className="flex items-center rounded-full border border-white/20 bg-neutral-950/90 p-1 text-white shadow-lg backdrop-blur-md">
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-expanded={open}
+          aria-haspopup="true"
+          className="flex items-center gap-2 rounded-full px-3 py-1.5 text-xs font-medium tracking-normal text-white transition-colors hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
-            fill="none"
+          <span
             aria-hidden="true"
+            className="h-2 w-2 rounded-full ring-1 ring-white/40"
+            style={{ backgroundColor: current.swatch }}
+          />
+          <span>
+            {current.id} / {ITERATIONS.length}
+          </span>
+          <span className="hidden text-neutral-300 sm:inline">
+            {current.name}
+          </span>
+          <svg
+            aria-hidden="true"
+            width="12"
+            height="12"
+            viewBox="0 0 12 12"
+            fill="none"
+            className={`text-neutral-300 transition-transform ${
+              open ? "rotate-180" : ""
+            }`}
           >
             <path
-              d="M10 3.5L5.5 8L10 12.5"
+              d="M3 7.5L6 4.5L9 7.5"
               stroke="currentColor"
-              strokeWidth="1.6"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
-        </Link>
+        </button>
+
+        <span aria-hidden="true" className="mx-0.5 h-4 w-px bg-white/15" />
 
         <button
           type="button"
-          onClick={() => setOpen((value) => !value)}
-          aria-expanded={open}
-          aria-label={`Design ${active.id} of 5: ${active.name}. Open design switcher`}
-          className={`inline-flex h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium tracking-tight transition-colors cursor-pointer ${
-            isDarkSurface ? "hover:bg-[#23443C]" : "hover:bg-white/15"
-          }`}
+          onClick={() => {
+            setOpen(false);
+            router.push(nextItem.path);
+          }}
+          title={`Next design: ${nextItem.name}`}
+          aria-label={`Switch to next design: ${nextItem.name}`}
+          className="flex h-7 w-7 items-center justify-center rounded-full text-neutral-200 transition-colors hover:bg-white/15 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
         >
-          <span className="tabular-nums">
-            {active.id} / {ITERATIONS.length}
-          </span>
           <svg
-            width="12"
-            height="12"
-            viewBox="0 0 16 16"
-            fill="none"
             aria-hidden="true"
-            className={`transition-transform ${open ? "rotate-180" : ""}`}
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
           >
             <path
-              d="M4.5 9.5L8 6L11.5 9.5"
+              d="M5.25 3.5L8.75 7L5.25 10.5"
               stroke="currentColor"
               strokeWidth="1.6"
               strokeLinecap="round"
@@ -209,31 +166,6 @@ export function IterationSwitcher() {
             />
           </svg>
         </button>
-
-        <Link
-          href={next.href}
-          aria-label={`Next design (${next.name})`}
-          title={`Next: ${next.name} (])`}
-          className={`inline-flex h-8 w-8 items-center justify-center rounded-full transition-colors ${
-            isDarkSurface ? "hover:bg-[#23443C]" : "hover:bg-white/15"
-          }`}
-        >
-          <svg
-            width="14"
-            height="14"
-            viewBox="0 0 16 16"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M6 3.5L10.5 8L6 12.5"
-              stroke="currentColor"
-              strokeWidth="1.6"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </Link>
       </div>
     </div>
   );

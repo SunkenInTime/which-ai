@@ -1,78 +1,62 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import {
-  Bricolage_Grotesque,
-  DM_Sans,
+  Geist,
+  Geist_Mono,
+  Newsreader,
   Fraunces,
-  Instrument_Serif,
-  JetBrains_Mono,
-  Plus_Jakarta_Sans,
   Space_Grotesk,
+  Plus_Jakarta_Sans,
 } from "next/font/google";
 import "@/generated/scoped-variant-css/without-design-skill/gemini-4-neon/source/app/globals.css";
 
-const instrumentSerif = Instrument_Serif({
-  weight: "400",
-  style: ["normal", "italic"],
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  variable: "--font-instrument-serif",
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 const fraunces = Fraunces({
-  style: ["normal", "italic"],
-  subsets: ["latin"],
   variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
 });
 
 const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
   variable: "--font-space-grotesk",
-});
-
-const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
-  variable: "--font-bricolage",
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
   variable: "--font-jakarta",
-});
-
-const dmSans = DM_Sans({
   subsets: ["latin"],
-  variable: "--font-dm-sans",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Noema — Your Second Brain",
+  title: "Engram — Your Second Brain",
   description:
-    "A calm, networked note-taking application built to capture, connect, and resurface everything you think and read.",
+    "A note-taking application designed as a living second brain. Five distinct design explorations.",
 };
 
 // Gallery adaptation: <html>/<body> become wrapper divs, the source's globals.css is imported through its scoped
 // copy, and the model's <IterationSwitcher /> isn't rendered (the gallery has its own). Original: see source-sha256.
 export default function RootLayout({ children }: { children: ReactNode }) {
-  const fontClasses = [
-    instrumentSerif.variable,
-    fraunces.variable,
-    spaceGrotesk.variable,
-    bricolage.variable,
-    plusJakarta.variable,
-    dmSans.variable,
-    jetbrainsMono.variable,
-  ].join(" ");
-
   return (
     <div
       data-source-html
       lang="en"
-      className={`${fontClasses} h-full antialiased`}
+      data-scroll-behavior="smooth"
+      className={`${geistSans.variable} ${geistMono.variable} ${newsreader.variable} ${fraunces.variable} ${spaceGrotesk.variable} ${plusJakarta.variable} h-full antialiased`}
     >
       <div data-source-body className="min-h-full flex flex-col">
         {children}
