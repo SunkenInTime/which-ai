@@ -1,71 +1,18 @@
 @import "tailwindcss";
 
-@theme inline {
-  --font-newsreader: var(--font-newsreader);
-  --font-hanken: var(--font-hanken);
-  --font-fraunces: var(--font-fraunces);
-  --font-instrument: var(--font-instrument);
-  --font-bricolage: var(--font-bricolage);
-  --font-archivo: var(--font-archivo);
-  --font-source-serif: var(--font-source-serif);
-  --font-literata: var(--font-literata);
-}
-
-/* Gallery adaptation: the gallery strips Tailwind's @theme, so the source's font utilities are written out here. */
-.font-newsreader {
-  font-family: var(--font-newsreader);
-}
-
-.font-hanken {
-  font-family: var(--font-hanken);
-}
-
-.font-fraunces {
-  font-family: var(--font-fraunces);
-}
-
-.font-instrument {
-  font-family: var(--font-instrument);
-}
-
-.font-bricolage {
-  font-family: var(--font-bricolage);
-}
-
-.font-archivo {
-  font-family: var(--font-archivo);
-}
-
-.font-source-serif {
-  font-family: var(--font-source-serif);
-}
-
-.font-literata {
-  font-family: var(--font-literata);
+:root {
+  --background: #ffffff;
+  --foreground: #141414;
 }
 
 [data-source-html] {
   scroll-behavior: smooth;
 }
 
-[data-source-body] {
-  margin: 0;
-  padding: 0;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Visible, consistent keyboard focus ring across every iteration */
-:where(a, button, input, textarea, [tabindex]):focus-visible {
-  outline: 2px solid currentColor;
-  outline-offset: 3px;
-}
-
 @media (prefers-reduced-motion: reduce) {
   [data-source-html] {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
@@ -73,4 +20,51 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+[data-source-body] {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Iteration 1 subtle archival paper grid */
+.desk-grid-bg {
+  background-color: #f5f7fa;
+  background-image:
+    linear-gradient(to right, rgba(20, 33, 61, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(20, 33, 61, 0.045) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.index-card-rules {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    rgba(29, 78, 216, 0.08) 27px,
+    rgba(29, 78, 216, 0.08) 28px
+  );
+}
+
+/* Iteration 4 subtle starfield texture */
+.observatory-bg {
+  background-color: #0c1324;
+  background-image: radial-gradient(
+    circle at 72% 24%,
+    rgba(40, 68, 128, 0.32),
+    transparent 55%
+  );
+}
+
+/* Iteration 5 risograph subtle dot grain */
+.riso-paper {
+  background-color: #f4f2fa;
+  background-image: radial-gradient(
+    rgba(30, 19, 56, 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
 }

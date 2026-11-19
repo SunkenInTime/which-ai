@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { IterationFour } from "@/variants/with-design-skill/gemini-4-neon/source/components/iterations/IterationFour";
 
 export const metadata: Metadata = {
-  title: "Cairn — Cobalt studio",
+  title: "Commonplace — Midnight Observatory (Design 4)",
   description:
-    "One calm local workspace for everything you read, notice, and build. Editable Markdown notes with live backlinks.",
+    "Connect late-night hunches, reading highlights, and past notes inside a quiet nocturnal graph.",
 };
 
-export default function PageFour() {
+export default function IterationFourPage() {
   return <IterationFour />;
 }

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { IterationThree } from "@/variants/with-design-skill/gemini-4-neon/source/components/iterations/IterationThree";
 
 export const metadata: Metadata = {
-  title: "Cairn — Index drawer",
+  title: "Commonplace — Swiss Spatial Studio (Design 3)",
   description:
-    "Think on digital index cards that connect across topics. Plain local Markdown files with instant recall.",
+    "A quiet room for long-term thinking in plain Markdown with instant backlinks.",
 };
 
-export default function PageThree() {
+export default function IterationThreePage() {
   return <IterationThree />;
 }

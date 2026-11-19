@@ -1,0 +1,32 @@
+I designed and built five distinct landing page iterations for **Commonplace**, a local-first second-brain note-taking application, accessible at `/1`, `/2`, `/3`, `/4`, and `/5` (with `/` redirecting to `/1`) and served live on port `3492`.
+
+### The Five Design Iterations
+
+1. **`/1` — Index-Card Desk** ([`IterationOne`](file:///home/dara/Code/bench-neon-agy/frontend-design/work/components/iterations/IterationOne.tsx), [page.tsx](file:///home/dara/Code/bench-neon-agy/frontend-design/work/app/1/page.tsx))
+   - **Direction**: Physical 3×5 slip-box stationery on cool archival graph paper (`#F5F7FA`) with Prussian ink (`#14213D`), archival cobalt (`#1D4ED8`), and yellow highlighter marks (`#FEF08A`).
+   - **Typography**: `Literata` for display & card text paired with `Instrument Sans` for UI controls.
+   - **Interactive centerpiece**: Clickable ruled slip-box desk in the hero where visitors filter cards by thread (`Memory`, `Reading`, `Place`) and trace direct card-to-card links, followed by a sequential 3-step note maturation walkthrough and margin-annotated prose.
+
+2. **`/2` — Botanical Garden** ([`IterationTwo`](file:///home/dara/Code/bench-neon-agy/frontend-design/work/components/iterations/IterationTwo.tsx), [page.tsx](file:///home/dara/Code/bench-neon-agy/frontend-design/work/app/2/page.tsx))
+   - **Direction**: Living digital garden alternating deep conservatory green (`#0F241D`) and pressed sage herbarium paper (`#E8EFEA`) with sprout green (`#86C596`) and pollen gold (`#E9C46A`).
+   - **Typography**: `Fraunces` for organic display headings paired with `Plus Jakarta Sans` for body and controls.
+   - **Interactive centerpiece**: Clickable SVG botanical root graph with an expanding specimen card in the hero, plus a live real-time search sandbox filtering a curated set of notes with backlink counts.
+
+3. **`/3` — Swiss Spatial Studio** ([`IterationThree`](file:///home/dara/Code/bench-neon-agy/frontend-design/work/components/iterations/IterationThree.tsx), [page.tsx](file:///home/dara/Code/bench-neon-agy/frontend-design/work/app/3/page.tsx))
+   - **Direction**: High-clarity gallery white (`#FFFFFF`), architectural stone (`#F3F3F1`), true black (`#000000`), and restrained Swiss crimson (`#C81E1E`).
+   - **Typography**: Single-family `Schibsted Grotesk` throughout, structured purely by scale, weight, and spacing.
+   - **Interactive centerpiece**: Live 3-tab Markdown workspace (`Daily log`, `Book notes`, `Essay draft`) with clickable cross-note links, a toggleable backlinks pane, a live scratchpad input that appends entries, and an interactive capability matrix with architectural specimen diagrams.
+
+4. **`/4` — Midnight Observatory** ([`IterationFour`](file:///home/dara/Code/bench-neon-agy/frontend-design/work/components/iterations/IterationFour.tsx), [page.tsx](file:///home/dara/Code/bench-neon-agy/frontend-design/work/app/4/page.tsx))
+   - **Direction**: Nocturnal star-chart calm in deep observatory midnight navy (`#0C1324`) and twilight slate (`#131E36`) with warm brass starlight (`#F5B971`) and sky cyan (`#7DD3FC`).
+   - **Typography**: `Newsreader` for refined headings and excerpts paired with `DM Sans` for UI and body prose.
+   - **Interactive centerpiece**: Clickable SVG constellation map with a linked note drawer, paired with an interactive memory-depth resurfacing slider (`Tonight`, `8 months ago`, `3 years ago`).
+
+5. **`/5` — Risograph Notebook** ([`IterationFive`](file:///home/dara/Code/bench-neon-agy/frontend-design/work/components/iterations/IterationFive.tsx), [page.tsx](file:///home/dara/Code/bench-neon-agy/frontend-design/work/app/5/page.tsx))
+   - **Direction**: Tactile independent print-press and stationery feel on lavender rag paper (`#F4F2FA`) with deep plum ink (`#1E1338`), risograph violet (`#4C3AE3`), and citron badges (`#DCF56B`).
+   - **Typography**: Inverted pairing of expressive `Bricolage Grotesque` display headings with `Source Serif 4` body text.
+   - **Interactive centerpiece**: Live quick-capture playground where visitors load prompts or type their own notes to tuck them directly into the notebook stream with automatic link suggestions, plus a physical-tabbed daily notebook spread (`Morning capture`, `Midday links`, `Evening draft`).
+
+### Switcher & Setup
+- **Floating Switcher**: [`IterationSwitcher`](file:///home/dara/Code/bench-neon-agy/frontend-design/work/components/IterationSwitcher.tsx) is mounted globally in [layout.tsx](file:///home/dara/Code/bench-neon-agy/frontend-design/work/app/layout.tsx) in the bottom-right corner — click the pill to open the 5-design picker (`/1`–`/5`), or click the chevron beside it to step straight to the next design.
+- **Verification**: Visually reviewed all five pages in desktop and mobile viewports (refining SVG label placement on `/2` and `/4`, adding architectural diagrams to `/3`, and attaching divider tabs flush on `/5`), verified `npm run lint` and `npm run build` pass cleanly, and started the production server on port `3492`.The local server on port `3492` hit the command runner's 10-minute task timeout, so I restarted it detached in the background and confirmed `http://localhost:3492/1` is live (`HTTP 200`). All five iterations (`/1`–`/5`) and the floating switcher remain ready to browse.

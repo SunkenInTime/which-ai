@@ -1,112 +1,66 @@
 @import "tailwindcss";
 
 @theme inline {
-  --font-editorial: var(--font-instrument-serif), Georgia, serif;
-  --font-organic: var(--font-fraunces), Georgia, serif;
-  --font-geo: var(--font-space-grotesk), system-ui, sans-serif;
-  --font-studio: var(--font-bricolage), system-ui, sans-serif;
-  --font-humanist: var(--font-jakarta), system-ui, sans-serif;
-  --font-neo: var(--font-dm-sans), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-serif-editorial: var(--font-newsreader), Georgia, serif;
+  --font-serif-garden: var(--font-fraunces), Georgia, serif;
+  --font-grotesk: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-jakarta: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
 }
 
-/* Gallery adaptation: the gallery strips Tailwind's @theme, so the source's font utilities are written out here. */
-.font-editorial {
-  font-family: var(--font-instrument-serif), Georgia, serif;
-}
-
-.font-organic {
-  font-family: var(--font-fraunces), Georgia, serif;
-}
-
-.font-geo {
-  font-family: var(--font-space-grotesk), system-ui, sans-serif;
-}
-
-.font-studio {
-  font-family: var(--font-bricolage), system-ui, sans-serif;
-}
-
-.font-humanist {
-  font-family: var(--font-jakarta), system-ui, sans-serif;
-}
-
-.font-neo {
-  font-family: var(--font-dm-sans), system-ui, sans-serif;
-}
-
-.font-mono {
-  font-family: var(--font-jetbrains-mono), ui-monospace, monospace;
-}
-
+/* Gallery adaptation: the gallery strips Tailwind's @theme, so the theme's font variables are set on the wrapper
+   (the pages use them in arbitrary values like font-[family-name:var(--font-serif-editorial)]) and the font
+   utilities are written out. --font-jakarta stays next/font's own variable; the theme's entry pointed at itself. */
 [data-source-html] {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+  --font-serif-editorial: var(--font-newsreader), Georgia, serif;
+  --font-serif-garden: var(--font-fraunces), Georgia, serif;
+  --font-grotesk: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   scroll-behavior: smooth;
 }
 
+.font-sans {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-mono {
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
 [data-source-body] {
-  margin: 0;
-  padding: 0;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   /* Gallery adaptation: clip, not hidden, so this wrapper div doesn't become a scroll container. */
   overflow-x: clip;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Iteration 1: Subtle archival paper grain */
-.bg-paper-grain {
-  background-color: #faf7f2;
+/* Subtle dot-grid pattern helper */
+.bg-dot-grid {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Subtle architectural line-grid helper */
+.bg-line-grid {
   background-image:
-    radial-gradient(rgba(28, 25, 23, 0.03) 1px, transparent 0),
-    linear-gradient(to bottom, rgba(255, 252, 245, 0.6), rgba(244, 238, 228, 0.35));
-  background-size: 24px 24px, 100% 100%;
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 36px 36px;
 }
 
-/* Iteration 2: Deep obsidian subtle grid */
-.bg-obsidian-grid {
-  background-color: #07080c;
+.bg-line-grid-dark {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 56px 56px;
+    linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
 
-/* Iteration 4: Gentle organic linen texture */
-.bg-garden-linen {
-  background-color: #f3f5ef;
-  background-image:
-    radial-gradient(circle at 15% 10%, rgba(114, 158, 124, 0.09), transparent 45%),
-    radial-gradient(circle at 88% 22%, rgba(217, 138, 43, 0.07), transparent 42%);
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.45; }
+  50% { opacity: 0.85; }
 }
 
-/* Iteration 5: Tactile studio dot grid */
-.bg-studio-dots {
-  background-color: #fffdf5;
-  background-image: radial-gradient(#d4cfc0 1.25px, transparent 1.25px);
-  background-size: 22px 22px;
-}
-
-@keyframes floatSlow {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-@keyframes pulseSoft {
-  0%, 100% {
-    opacity: 0.45;
-  }
-  50% {
-    opacity: 1;
-  }
-}
-
-.animate-float-slow {
-  animation: floatSlow 6s ease-in-out infinite;
-}
-
-.animate-pulse-soft {
-  animation: pulseSoft 3.5s ease-in-out infinite;
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
 }

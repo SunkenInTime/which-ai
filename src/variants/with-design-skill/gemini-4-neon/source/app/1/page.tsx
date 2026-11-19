@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { IterationOne } from "@/variants/with-design-skill/gemini-4-neon/source/components/iterations/IterationOne";
 
 export const metadata: Metadata = {
-  title: "Cairn — Drafting desk",
+  title: "Commonplace — Index-Card Desk (Design 1)",
   description:
-    "A local-first second brain where every note stays a plain Markdown file and older thoughts surface beside your writing.",
+    "Keep every useful thought within arm's reach with a digital slip-box modeled on physical index cards.",
 };
 
-export default function PageOne() {
+export default function IterationOnePage() {
   return <IterationOne />;
 }

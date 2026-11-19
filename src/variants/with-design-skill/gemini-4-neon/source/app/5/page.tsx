@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { IterationFive } from "@/variants/with-design-skill/gemini-4-neon/source/components/iterations/IterationFive";
 
 export const metadata: Metadata = {
-  title: "Cairn — Reading room",
+  title: "Commonplace — Risograph Notebook (Design 5)",
   description:
-    "A digital commonplace book and second brain built for quiet reading, linked thoughts, and plain local files.",
+    "Catch sparks before they cool in a tactile digital notebook that links every page automatically.",
 };
 
-export default function PageFive() {
+export default function IterationFivePage() {
   return <IterationFive />;
 }

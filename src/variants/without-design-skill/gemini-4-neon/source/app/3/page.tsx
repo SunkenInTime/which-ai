@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { IterationThree } from "@/variants/without-design-skill/gemini-4-neon/source/components/iterations/IterationThree";
+import SwissLanding from "@/variants/without-design-skill/gemini-4-neon/source/components/iterations/SwissLanding";
 
 export const metadata: Metadata = {
-  title: "Noema — Swiss Grid Edition | Architectural Second Brain",
-  description:
-    "Externalize every thought. A disciplined, keyboard-first second brain engineered with International Typographic clarity and local Markdown files.",
+  title: "Engram — Swiss Index (Iteration 3)",
+  description: "A Swiss brutalist grid-system landing page for a second brain app.",
 };
 
 export default function PageThree() {
-  return <IterationThree />;
+  return <SwissLanding />;
 }

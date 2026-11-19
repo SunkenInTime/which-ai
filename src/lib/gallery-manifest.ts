@@ -222,7 +222,7 @@ export const galleryManifest: GalleryEntry[] = [
     sourceDir: "gemini-4-neon/frontend-design",
     sourceAppType: "next",
     defaultIteration: "1",
-    summary: "Five Gemini 4 Neon second-brain landing pages, with design skill, at Extra High reasoning in the Cursor CLI.",
+    summary: "Five Gemini 4 Neon second-brain landing pages, with design skill, at Extra High reasoning in Antigravity.",
     iterations: iterations(["1", "2", "3", "4", "5"], "with-design-skill", "gemini-4-neon"),
   },
   {
@@ -233,7 +233,7 @@ export const galleryManifest: GalleryEntry[] = [
     sourceDir: "gemini-4-neon/no-skills",
     sourceAppType: "next",
     defaultIteration: "1",
-    summary: "Five Gemini 4 Neon second-brain landing pages, without design skill, at Extra High reasoning in the Cursor CLI.",
+    summary: "Five Gemini 4 Neon second-brain landing pages, without design skill, at Extra High reasoning in Antigravity.",
     iterations: iterations(["1", "2", "3", "4", "5"], "without-design-skill", "gemini-4-neon"),
   },
   {
