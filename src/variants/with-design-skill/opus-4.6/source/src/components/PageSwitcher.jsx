@@ -15,7 +15,7 @@ export default function PageSwitcher({ pages }) {
       bottom: '28px',
       right: '28px',
       zIndex: 99999,
-      fontFamily: "'JetBrains Mono', monospace",
+      fontFamily: "'Opus46 JetBrains Mono', monospace",
     }}>
       <AnimatePresence>
         {isOpen && (

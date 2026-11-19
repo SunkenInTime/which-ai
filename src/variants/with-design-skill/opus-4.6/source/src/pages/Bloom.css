@@ -12,7 +12,7 @@
   min-height: 100vh;
   background: var(--cream);
   color: var(--text);
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Opus46 Quicksand', sans-serif;
   position: relative;
   overflow-x: hidden;
 }
@@ -48,7 +48,7 @@
 }
 
 .bloom-logo-text {
-  font-family: 'Caveat', cursive;
+  font-family: 'Opus46 Caveat', cursive;
   font-size: 26px;
   font-weight: 700;
   color: var(--sage-dark);
@@ -119,7 +119,7 @@
 }
 
 .bloom-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Opus46 Quicksand', sans-serif;
   font-size: clamp(34px, 4vw, 52px);
   font-weight: 700;
   line-height: 1.2;
@@ -145,7 +145,7 @@
 }
 
 .bloom-title-script {
-  font-family: 'Caveat', cursive;
+  font-family: 'Opus46 Caveat', cursive;
   color: var(--earth);
   font-size: 1.1em;
 }
@@ -173,7 +173,7 @@
   color: #fff;
   border: none;
   border-radius: 999px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Opus46 Quicksand', sans-serif;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -201,7 +201,7 @@
   border: 1.5px solid var(--sage);
   color: var(--sage-dark);
   border-radius: 999px;
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Opus46 Quicksand', sans-serif;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
@@ -275,7 +275,7 @@
   bottom: 16px;
   left: 50%;
   transform: translateX(-50%);
-  font-family: 'Caveat', cursive;
+  font-family: 'Opus46 Caveat', cursive;
   font-size: 14px;
   color: var(--text-muted);
   white-space: nowrap;
@@ -293,7 +293,7 @@
 }
 
 .bloom-section-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Opus46 Quicksand', sans-serif;
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 700;
   color: var(--bark);
@@ -454,7 +454,7 @@
 }
 
 .bloom-cta-title {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Opus46 Quicksand', sans-serif;
   font-size: clamp(32px, 4vw, 48px);
   font-weight: 700;
   color: var(--bark);

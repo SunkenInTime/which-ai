@@ -7,6 +7,8 @@ import NeonCortex from "@/variants/with-design-skill/opus-4.6/source/src/pages/N
 import Neural from "@/variants/with-design-skill/opus-4.6/source/src/pages/Neural";
 import Velvet from "@/variants/with-design-skill/opus-4.6/source/src/pages/Velvet";
 import { OpusPageSwitcher } from "@/variants/with-design-skill/opus-4.6/page-switcher";
+// The original index.html loaded the pages' Google Fonts with a <link>; fonts.css serves the same faces.
+import "@/generated/scoped-variant-css/with-design-skill/opus-4.6/source/src/fonts.css";
 
 const pages = {
   "1": Neural,
