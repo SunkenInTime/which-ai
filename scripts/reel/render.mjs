@@ -132,7 +132,16 @@ await new Promise((r) => server.listen(0, "127.0.0.1", r));
 
 const browser = await chromium.launch({
   channel: "chromium",
-  args: ["--hide-scrollbars", "--force-color-profile=srgb", "--font-render-hinting=none", "--disable-lcd-text"],
+  args: [
+    "--hide-scrollbars",
+    "--force-color-profile=srgb",
+    "--font-render-hinting=none",
+    "--disable-lcd-text",
+    // Keeps the page iframes in the stage's own renderer, so a screenshot always includes their latest scroll.
+    // As separate processes they sometimes showed the previous frame, a visible stutter.
+    "--disable-site-isolation-trials",
+    "--disable-features=IsolateOrigins,site-per-process",
+  ],
 });
 try {
   const ctx = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: 2 });
@@ -247,9 +256,15 @@ try {
       const shot = await cdp.send("Page.captureScreenshot", { format: "png", optimizeForSpeed: true });
       if (failure) break;
       if (!ff.stdin.write(Buffer.from(shot.data, "base64"))) {
+        // Wait for ffmpeg to catch up or exit, then drop both listeners.
         await new Promise((r) => {
-          ff.stdin.once("drain", r);
-          ff.once("close", r);
+          const settle = () => {
+            ff.stdin.off("drain", settle);
+            ff.off("close", settle);
+            r();
+          };
+          ff.stdin.on("drain", settle);
+          ff.on("close", settle);
         });
       }
       if (i % 300 === 0) console.log(`frame ${i}/${n}`);
