@@ -246,12 +246,20 @@ export function VariantSwitcher({
       setOpenPicker(null);
     }
 
+    // Tabbing out of the switcher closes the picker too, so keyboard focus never lands on the design behind a sheet.
+    function handleFocusIn(event: FocusEvent) {
+      if (pickerRef.current?.contains(event.target as Node)) return;
+      setOpenPicker(null);
+    }
+
     document.addEventListener("mousedown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
+    document.addEventListener("focusin", handleFocusIn);
     window.addEventListener("blur", handleBlur);
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("focusin", handleFocusIn);
       window.removeEventListener("blur", handleBlur);
     };
   }, [openPicker]);
