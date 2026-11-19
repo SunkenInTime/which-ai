@@ -41,6 +41,8 @@ export function GalleryIterationView({
       >
         {resolvedVariantModule.render({ entry, iteration, preview })}
       </div>
+      {/* Below xl the switcher is a bar along the bottom of the screen; this room lets the design's end scroll clear of it. */}
+      {!preview ? <div aria-hidden className="h-[calc(4.5rem+env(safe-area-inset-bottom))] xl:hidden" /> : null}
     </main>
   );
 }

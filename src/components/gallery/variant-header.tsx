@@ -26,6 +26,9 @@ type HrefFor = (group: GalleryGroupSlug, model: ModelSlug, iteration: IterationI
 export const switcherButtonClass =
   "inline-flex size-7 cursor-pointer items-center justify-center rounded-md text-[var(--gallery-text-secondary)] transition-colors outline-none hover:bg-[var(--gallery-hover-bg)] hover:text-[var(--gallery-text-primary)] focus-visible:ring-1 focus-visible:ring-[var(--gallery-accent)]";
 
+const searchFieldClass =
+  "relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]";
+
 const popoverBaseClass =
   "absolute top-0 z-[120] flex max-h-[min(26rem,calc(100vh-3rem))] w-[min(19rem,calc(100vw-5.5rem))] flex-col gap-1.5 overflow-auto rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-body-bg)] p-2 text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-md)] backdrop-blur-[12px]";
 
@@ -136,12 +139,26 @@ export function VariantSwitcher({
   );
   const [paneSide, setPaneSide] = useState<GallerySwitcherSide>(pane?.defaultSide ?? "right");
   const side = pane ? paneSide : storedSide;
-  // A phone stacks the compare panes, which leaves each too short for the column, so a pane's switcher runs across.
+  // On narrower screens the switcher runs across instead of down. A phone stacks the compare panes, which leaves
+  // each too short for the column, so below md a pane's switcher sits along its top and opens its popovers downward.
+  // On its own, below xl, the column would cover the top-right corner of the design, where landing pages put their
+  // header buttons, so it sits centred along the bottom edge, and its pickers open as a sheet at the top of the
+  // visible area: search field first, so a phone keyboard only ever covers the bottom of the list.
   const popoverClass = clsx(
     getPopoverClass(side),
-    pane && "max-md:top-[calc(100%+0.5rem)] max-md:right-auto max-md:left-0",
+    pane
+      ? "max-md:top-[calc(100%+0.5rem)] max-md:right-auto max-md:left-0"
+      : [
+          "max-xl:fixed max-xl:top-[calc(var(--switcher-visible-top,0px)+0.75rem)] max-xl:right-auto",
+          "max-xl:left-[var(--switcher-sheet-left,0.75rem)] max-xl:w-[var(--switcher-sheet-width,min(28rem,calc(100vw-1.5rem)))]",
+          // Short enough to leave the bar in view below it, so the button that opened it can close it again.
+          "max-xl:max-h-[max(3.5rem,calc(var(--switcher-visible-height,100dvh)-5.5rem))]",
+        ],
   );
-  const dividerClass = clsx("h-px w-full shrink-0 bg-[var(--gallery-border)]", pane && "max-md:h-5 max-md:w-px");
+  const dividerClass = clsx(
+    "h-px w-full shrink-0 bg-[var(--gallery-border)]",
+    pane ? "max-md:h-5 max-md:w-px" : "max-xl:h-5 max-xl:w-px",
+  );
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const [compareSearch, setCompareSearch] = useState("");
   const [modelSearch, setModelSearch] = useState("");
@@ -229,52 +246,132 @@ export function VariantSwitcher({
       setOpenPicker(null);
     }
 
+    // Tabbing out of the switcher closes the picker too, so keyboard focus never lands on the design behind a sheet.
+    function handleFocusIn(event: FocusEvent) {
+      if (pickerRef.current?.contains(event.target as Node)) return;
+      setOpenPicker(null);
+    }
+
     document.addEventListener("mousedown", handlePointerDown);
     document.addEventListener("keydown", handleEscape);
+    document.addEventListener("focusin", handleFocusIn);
     window.addEventListener("blur", handleBlur);
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
       document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("focusin", handleFocusIn);
       window.removeEventListener("blur", handleBlur);
     };
   }, [openPicker]);
 
   // Keeps an open popover on screen. A compare pane can be narrow, docked toward the middle, or low on a phone,
   // so the popover tries the other side of the switcher, then slides in, and stops above the bottom edge.
+  // It runs again whenever the window or the visible area changes size, since the space it fits in changes with it.
   useLayoutEffect(() => {
     const popover = popoverRef.current;
     if (!openPicker || !popover) return;
+    const viewport = window.visualViewport;
 
-    const margin = 12;
-    const overflow = () => {
-      const rect = popover.getBoundingClientRect();
-      return Math.max(margin - rect.left, 0) + Math.max(rect.right - (window.innerWidth - margin), 0);
-    };
+    function fit() {
+      if (!popover) return;
+      const margin = 12;
+      const overflow = () => {
+        const rect = popover.getBoundingClientRect();
+        return Math.max(margin - rect.left, 0) + Math.max(rect.right - (window.innerWidth - margin), 0);
+      };
 
-    popover.style.left = "";
-    popover.style.right = "";
-    popover.style.transform = "";
-    popover.style.maxHeight = "";
+      popover.style.left = "";
+      popover.style.right = "";
+      popover.style.transform = "";
+      popover.style.maxHeight = "";
+      // A sheet is placed and sized by its classes against the visible area.
+      if (getComputedStyle(popover).position === "fixed") return;
 
-    // Flipping sides only makes sense for the column; a switcher running across opens its popovers downward.
-    const nav = popover.closest("nav");
-    const across = nav ? getComputedStyle(nav).flexDirection === "row" : false;
-    if (!across && overflow() > 0) {
-      const before = overflow();
-      const [from, to] = side === "left" ? (["left", "right"] as const) : (["right", "left"] as const);
-      popover.style[from] = "auto";
-      popover.style[to] = "calc(100% + 0.5rem)";
-      if (overflow() >= before) {
-        popover.style[from] = "";
-        popover.style[to] = "";
+      // Flipping sides only makes sense for the column; a switcher running across opens its popovers above or below.
+      const nav = popover.closest("nav");
+      const across = nav ? getComputedStyle(nav).flexDirection === "row" : false;
+      if (!across && overflow() > 0) {
+        const before = overflow();
+        const [from, to] = side === "left" ? (["left", "right"] as const) : (["right", "left"] as const);
+        popover.style[from] = "auto";
+        popover.style[to] = "calc(100% + 0.5rem)";
+        if (overflow() >= before) {
+          popover.style[from] = "";
+          popover.style[to] = "";
+        }
       }
+
+      const rect = popover.getBoundingClientRect();
+      const shift = Math.max(margin - rect.left, 0) - Math.max(rect.right - (window.innerWidth - margin), 0);
+      if (shift) popover.style.transform = `translateX(${shift}px)`;
+      popover.style.maxHeight = `${Math.max(160, Math.min(416, window.innerHeight - rect.top - margin))}px`;
     }
 
-    const rect = popover.getBoundingClientRect();
-    const shift = Math.max(margin - rect.left, 0) - Math.max(rect.right - (window.innerWidth - margin), 0);
-    if (shift) popover.style.transform = `translateX(${shift}px)`;
-    popover.style.maxHeight = `${Math.max(160, Math.min(416, window.innerHeight - rect.top - margin))}px`;
+    let frame = 0;
+    const refit = () => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(fit);
+    };
+    fit();
+    viewport?.addEventListener("resize", refit);
+    window.addEventListener("resize", refit);
+    return () => {
+      cancelAnimationFrame(frame);
+      viewport?.removeEventListener("resize", refit);
+      window.removeEventListener("resize", refit);
+    };
   }, [openPicker, side]);
+
+  // The bottom bar and the picker sheet are fixed to the layout viewport. A design wider than the phone, or a phone
+  // keyboard, makes that viewport larger than the visible area, which would put them off screen, so below xl they
+  // follow the visible area instead. Positions are measured from the top left, which stays put when a wide design
+  // grows the layout viewport after load. Zoomed in, the bar is wider than the visible area, so both stay put and the
+  // visitor pans.
+  useEffect(() => {
+    const nav = pickerRef.current;
+    const viewport = window.visualViewport;
+    if (pane || !nav || !viewport) return;
+    const wide = window.matchMedia("(min-width: 1280px)");
+    const placement = ["top", "left", "bottom", "right", "margin"] as const;
+    const sheetVars = ["--switcher-visible-top", "--switcher-visible-height", "--switcher-sheet-left", "--switcher-sheet-width"];
+
+    function reset() {
+      if (!nav) return;
+      for (const name of placement) nav.style[name] = "";
+      for (const name of sheetVars) nav.style.removeProperty(name);
+    }
+
+    function update() {
+      if (!nav || !viewport) return;
+      reset();
+      if (wide.matches || viewport.scale > 1.01) return;
+      // The gap the classes leave under the bar (at least 1rem, more above a home indicator).
+      const gap = window.innerHeight - nav.getBoundingClientRect().bottom;
+      nav.style.top = `${viewport.offsetTop + viewport.height - gap - nav.offsetHeight}px`;
+      nav.style.left = `${viewport.offsetLeft + (viewport.width - nav.offsetWidth) / 2}px`;
+      nav.style.bottom = "auto";
+      nav.style.right = "auto";
+      nav.style.margin = "0";
+      const sheetWidth = Math.min(448, viewport.width - 24);
+      nav.style.setProperty("--switcher-visible-top", `${viewport.offsetTop}px`);
+      nav.style.setProperty("--switcher-visible-height", `${viewport.height}px`);
+      nav.style.setProperty("--switcher-sheet-left", `${viewport.offsetLeft + (viewport.width - sheetWidth) / 2}px`);
+      nav.style.setProperty("--switcher-sheet-width", `${sheetWidth}px`);
+    }
+
+    update();
+    viewport.addEventListener("resize", update);
+    viewport.addEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    wide.addEventListener("change", update);
+    return () => {
+      viewport.removeEventListener("resize", update);
+      viewport.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+      wide.removeEventListener("change", update);
+      reset();
+    };
+  }, [pane]);
 
   useEffect(() => {
     if (pane) return;
@@ -377,9 +474,19 @@ export function VariantSwitcher({
       aria-label={pane?.label ?? `${entry.modelLabel} gallery navigation`}
       data-side={side}
       className={clsx(
-        "gallery-variant-switcher gallery-elevated-surface top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
-        pane ? "absolute max-md:flex-row" : "fixed",
-        side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6",
+        "gallery-variant-switcher gallery-elevated-surface z-[100] flex items-center gap-1 rounded-lg border border-[var(--gallery-border)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)]",
+        pane
+          ? clsx(
+              "absolute top-5 w-auto flex-col bg-[var(--gallery-nav-bg)] backdrop-blur-[12px] max-md:flex-row sm:top-6",
+              side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6",
+            )
+          : clsx(
+              // A transform or backdrop filter here would make the bar, not the screen, the frame of the picker sheet,
+              // so below xl the bar is centred with auto margins and drawn solid.
+              "fixed bottom-[max(1rem,env(safe-area-inset-bottom))] left-0 right-0 mx-auto w-max flex-row bg-[var(--gallery-body-bg)]",
+              "xl:top-6 xl:bottom-auto xl:mx-0 xl:w-auto xl:flex-col xl:bg-[var(--gallery-nav-bg)] xl:backdrop-blur-[12px]",
+              side === "left" ? "xl:left-6 xl:right-auto" : "xl:left-auto xl:right-6",
+            ),
       )}
     >
       <Link
@@ -402,7 +509,7 @@ export function VariantSwitcher({
       </button>
       {openPicker === "compare" ? (
         <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Choose compare model">
-          <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
+          <label className={searchFieldClass}>
             <Search
               className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]"
               aria-hidden
@@ -486,7 +593,7 @@ export function VariantSwitcher({
       <span
         className={clsx(
           "relative inline-flex flex-col items-center gap-0.5 py-0.5",
-          pane && "max-md:flex-row max-md:px-0.5 max-md:py-0",
+          pane ? "max-md:flex-row max-md:px-0.5 max-md:py-0" : "max-xl:flex-row max-xl:px-0.5 max-xl:py-0",
         )}
       >
         <button
@@ -528,7 +635,7 @@ export function VariantSwitcher({
         </button>
         {openPicker === "model" ? (
           <div ref={popoverRef} className={popoverClass} role="menu" aria-label="Switch model">
-            <label className="relative flex h-10 shrink-0 items-center rounded-md border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] text-[var(--gallery-text-primary)] shadow-[var(--gallery-shadow-sm)] focus-within:border-[var(--gallery-accent)] focus-within:ring-1 focus-within:ring-[var(--gallery-accent)]">
+            <label className={searchFieldClass}>
               <Search
                 className="pointer-events-none ml-3 size-3.5 shrink-0 text-[var(--gallery-text-quaternary)]"
                 aria-hidden
@@ -666,7 +773,7 @@ export function VariantSwitcher({
       </span>
       <div className={dividerClass} aria-hidden="true" />
       <div
-        className={clsx("flex flex-col items-center gap-1", pane && "max-md:flex-row")}
+        className={clsx("flex flex-col items-center gap-1", pane ? "max-md:flex-row" : "max-xl:flex-row")}
         role="group"
         aria-label="Iterations"
       >
@@ -691,13 +798,14 @@ export function VariantSwitcher({
           );
         })}
       </div>
-      <div className={dividerClass} aria-hidden="true" />
+      {/* The bottom bar is centred, so docking left or right only applies to the column, from xl up. */}
+      <div className={clsx(dividerClass, !pane && "max-xl:hidden")} aria-hidden="true" />
       <button
         type="button"
         onClick={toggleSide}
         aria-label={side === "left" ? "Dock sidebar on the right" : "Dock sidebar on the left"}
         title={side === "left" ? "Dock right" : "Dock left"}
-        className={switcherButtonClass}
+        className={clsx(switcherButtonClass, !pane && "max-xl:hidden")}
       >
         {side === "left" ? (
           <PanelRight className="size-4 shrink-0 opacity-80" aria-hidden="true" />
