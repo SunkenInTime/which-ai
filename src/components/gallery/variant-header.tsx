@@ -136,12 +136,20 @@ export function VariantSwitcher({
   );
   const [paneSide, setPaneSide] = useState<GallerySwitcherSide>(pane?.defaultSide ?? "right");
   const side = pane ? paneSide : storedSide;
-  // A phone stacks the compare panes, which leaves each too short for the column, so a pane's switcher runs across.
+  // On narrower screens the switcher runs across instead of down. A phone stacks the compare panes, which leaves
+  // each too short for the column, so below md a pane's switcher sits along its top and opens its popovers downward.
+  // On its own, below xl, the column would cover the top-right corner of the design, where landing pages put their
+  // header buttons, so it sits centred along the bottom edge and opens its popovers upward.
   const popoverClass = clsx(
     getPopoverClass(side),
-    pane && "max-md:top-[calc(100%+0.5rem)] max-md:right-auto max-md:left-0",
+    pane
+      ? "max-md:top-[calc(100%+0.5rem)] max-md:right-auto max-md:left-0"
+      : "max-xl:top-auto max-xl:bottom-[calc(100%+0.5rem)] max-xl:right-auto max-xl:left-0",
   );
-  const dividerClass = clsx("h-px w-full shrink-0 bg-[var(--gallery-border)]", pane && "max-md:h-5 max-md:w-px");
+  const dividerClass = clsx(
+    "h-px w-full shrink-0 bg-[var(--gallery-border)]",
+    pane ? "max-md:h-5 max-md:w-px" : "max-xl:h-5 max-xl:w-px",
+  );
   const popoverRef = useRef<HTMLDivElement | null>(null);
   const [compareSearch, setCompareSearch] = useState("");
   const [modelSearch, setModelSearch] = useState("");
@@ -273,8 +281,37 @@ export function VariantSwitcher({
     const rect = popover.getBoundingClientRect();
     const shift = Math.max(margin - rect.left, 0) - Math.max(rect.right - (window.innerWidth - margin), 0);
     if (shift) popover.style.transform = `translateX(${shift}px)`;
-    popover.style.maxHeight = `${Math.max(160, Math.min(416, window.innerHeight - rect.top - margin))}px`;
+    // A popover that opens upward, from the bottom bar, has the space above the bar; one that opens downward, the
+    // space below its own top.
+    const navTop = nav?.getBoundingClientRect().top ?? 0;
+    const room = rect.bottom <= navTop ? navTop - 8 - margin : window.innerHeight - rect.top - margin;
+    popover.style.maxHeight = `${Math.max(160, Math.min(416, room))}px`;
   }, [openPicker, side]);
+
+  // The bottom bar is fixed to the layout viewport. A design wider than the phone makes that viewport larger than the
+  // visible area, which would put the bar below the screen, so it follows the visible area instead.
+  useEffect(() => {
+    const nav = pickerRef.current;
+    const viewport = window.visualViewport;
+    if (pane || !nav || !viewport) return;
+
+    function update() {
+      if (!nav || !viewport) return;
+      const below = window.innerHeight - (viewport.offsetTop + viewport.height);
+      nav.style.setProperty("--switcher-visible-bottom", `${Math.max(0, below)}px`);
+      nav.style.setProperty("--switcher-visible-center", `${viewport.offsetLeft + viewport.width / 2}px`);
+    }
+
+    update();
+    viewport.addEventListener("resize", update);
+    viewport.addEventListener("scroll", update);
+    window.addEventListener("resize", update);
+    return () => {
+      viewport.removeEventListener("resize", update);
+      viewport.removeEventListener("scroll", update);
+      window.removeEventListener("resize", update);
+    };
+  }, [pane]);
 
   useEffect(() => {
     if (pane) return;
@@ -377,9 +414,14 @@ export function VariantSwitcher({
       aria-label={pane?.label ?? `${entry.modelLabel} gallery navigation`}
       data-side={side}
       className={clsx(
-        "gallery-variant-switcher gallery-elevated-surface top-5 z-[100] flex w-auto flex-col items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px] sm:top-6",
-        pane ? "absolute max-md:flex-row" : "fixed",
-        side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6",
+        "gallery-variant-switcher gallery-elevated-surface z-[100] flex w-auto items-center gap-1 rounded-lg border border-[var(--gallery-border)] bg-[var(--gallery-nav-bg)] px-1 py-1 text-[var(--gallery-text-tertiary)] shadow-[var(--gallery-shadow-sm)] backdrop-blur-[12px]",
+        pane
+          ? clsx("absolute top-5 flex-col max-md:flex-row sm:top-6", side === "left" ? "left-5 sm:left-6" : "right-5 sm:right-6")
+          : clsx(
+              "fixed bottom-[calc(max(1rem,env(safe-area-inset-bottom))+var(--switcher-visible-bottom,0px))] left-[var(--switcher-visible-center,50%)] -translate-x-1/2 flex-row",
+              "xl:top-6 xl:bottom-auto xl:translate-x-0 xl:flex-col",
+              side === "left" ? "xl:left-6" : "xl:left-auto xl:right-6",
+            ),
       )}
     >
       <Link
@@ -486,7 +528,7 @@ export function VariantSwitcher({
       <span
         className={clsx(
           "relative inline-flex flex-col items-center gap-0.5 py-0.5",
-          pane && "max-md:flex-row max-md:px-0.5 max-md:py-0",
+          pane ? "max-md:flex-row max-md:px-0.5 max-md:py-0" : "max-xl:flex-row max-xl:px-0.5 max-xl:py-0",
         )}
       >
         <button
@@ -666,7 +708,7 @@ export function VariantSwitcher({
       </span>
       <div className={dividerClass} aria-hidden="true" />
       <div
-        className={clsx("flex flex-col items-center gap-1", pane && "max-md:flex-row")}
+        className={clsx("flex flex-col items-center gap-1", pane ? "max-md:flex-row" : "max-xl:flex-row")}
         role="group"
         aria-label="Iterations"
       >
@@ -691,13 +733,14 @@ export function VariantSwitcher({
           );
         })}
       </div>
-      <div className={dividerClass} aria-hidden="true" />
+      {/* The bottom bar is centred, so docking left or right only applies to the column, from xl up. */}
+      <div className={clsx(dividerClass, !pane && "max-xl:hidden")} aria-hidden="true" />
       <button
         type="button"
         onClick={toggleSide}
         aria-label={side === "left" ? "Dock sidebar on the right" : "Dock sidebar on the left"}
         title={side === "left" ? "Dock right" : "Dock left"}
-        className={switcherButtonClass}
+        className={clsx(switcherButtonClass, !pane && "max-xl:hidden")}
       >
         {side === "left" ? (
           <PanelRight className="size-4 shrink-0 opacity-80" aria-hidden="true" />
