@@ -6,11 +6,13 @@
 // fill half of a 1848×1200 frame: the screen ratio of current MacBooks, within Twitter's 1920×1200 landscape limit.
 // A slim header names each side with its model logo. Both pages hold at the top, then scroll at the same speed; a
 // shorter page reaches its footer first and rests there. Frames are captured at 2x and downscaled by ffmpeg.
+// The pages run on a fake clock advanced exactly one video frame per capture, so carousels, marquees and other
+// timed animations play at real speed in the video however long each capture takes.
 import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { parseArgs } from "node:util";
-import { spawn } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { chromium } from "playwright-core";
 
 const root = path.resolve(import.meta.dirname, "../..");
@@ -66,6 +68,11 @@ function side(spec, labelOverride) {
   };
 }
 const sides = [side(opts.left, opts["left-label"]), side(opts.right, opts["right-label"])];
+for (const s of sides) {
+  const res = await fetch(s.url);
+  if (!res.ok) throw new Error(`${s.url} returned ${res.status}; is the entry deployed at --base?`);
+}
+fs.mkdirSync(path.dirname(path.resolve(opts.out)), { recursive: true });
 
 const escapeHtml = (s) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const stage = `<!doctype html>
@@ -129,58 +136,86 @@ const browser = await chromium.launch({
 });
 try {
   const ctx = await browser.newContext({ viewport: { width: WIDTH, height: HEIGHT }, deviceScaleFactor: 2 });
+  // Fakes Date, timers and requestAnimationFrame in every frame; CSS animations are stepped separately below.
+  // The real requestAnimationFrame is kept first, to wait for each scroll to be painted before a capture.
+  await ctx.addInitScript(() => {
+    const raf = window.requestAnimationFrame.bind(window);
+    window.__painted = () => new Promise((r) => raf(() => raf(r)));
+  });
+  await ctx.clock.install();
   const page = await ctx.newPage();
   const errors = [];
   page.on("pageerror", (e) => errors.push(e.message));
   await page.goto(`http://127.0.0.1:${server.address().port}/`);
   const frames = [];
   for (const [i, s] of sides.entries()) {
-    await page.locator("iframe").nth(i).evaluate((el, src) => (el.src = src), s.url);
-  }
-  await page.waitForLoadState("networkidle");
-  for (const s of sides) {
-    const frame = page.frames().find((f) => f.url().split("?")[0] === s.url);
+    const iframe = page.locator("iframe").nth(i);
+    await iframe.evaluate((el, src) => (el.src = src), s.url);
+    const frame = await (await iframe.elementHandle()).contentFrame();
     if (!frame) throw new Error(`${s.url} did not load in its frame`);
+    await frame.waitForURL(s.url, { waitUntil: "load" });
     await frame.waitForLoadState("networkidle");
     await frame.addStyleTag({ content: "html{scroll-behavior:auto!important}" });
     await frame.evaluate(() => document.fonts.ready);
     frames.push(frame);
   }
+  // Every step advances the fake clock and every page's CSS animations and transitions by the same amount.
+  const step = async (seconds) => {
+    await ctx.clock.runFor(Math.round(seconds * 1000));
+    await Promise.all(
+      frames.map((f) =>
+        f.evaluate((ms) => {
+          // Scroll-driven animations follow the scroll position on their own; only time-based ones are stepped.
+          for (const a of document.getAnimations()) {
+            if (!(a.timeline instanceof DocumentTimeline)) continue;
+            const t = Number(a.currentTime ?? 0);
+            a.pause();
+            a.currentTime = (Number.isFinite(t) ? t : 0) + ms;
+          }
+        }, seconds * 1000),
+      ),
+    );
+  };
   // Let entrance animations settle before the first frame.
-  await page.waitForTimeout(2500);
+  await step(2.5);
   const ranges = await Promise.all(frames.map((f) => f.evaluate(() => document.documentElement.scrollHeight - innerHeight)));
 
-  // Same speed for both: ramp up, cruise at SPEED, ramp down at each page's own end.
-  const travel = (d) => d / SPEED + RAMP;
+  // Same speed for both: ramp up, cruise at SPEED, ramp down at each page's own end. A page shorter than one
+  // ramp's worth of travel gets shorter ramps, so it never overshoots and comes back.
+  const ramp = (d) => Math.min(RAMP, d / SPEED);
+  const travel = (d) => d / SPEED + ramp(d);
   const scrolled = (t, d) => {
-    const T = travel(d), a = SPEED / RAMP;
+    const r = ramp(d), T = travel(d), a = SPEED / r;
     if (t <= 0 || d <= 0) return 0;
     if (t >= T) return d;
-    if (t < RAMP) return 0.5 * a * t * t;
-    if (t > T - RAMP) return d - 0.5 * a * (T - t) ** 2;
-    return 0.5 * SPEED * RAMP + SPEED * (t - RAMP);
+    if (t < r) return 0.5 * a * t * t;
+    if (t > T - r) return d - 0.5 * a * (T - t) ** 2;
+    return 0.5 * SPEED * r + SPEED * (t - r);
   };
   const duration = HOLD_TOP + Math.max(...ranges.map(travel)) + HOLD_END;
   console.log(`scroll: ${sides.map((s, i) => `${s.label} ${ranges[i]}px in ${travel(ranges[i]).toFixed(1)}s`).join(", ")}; video ${duration.toFixed(1)}s`);
 
+  let now = 0;
   const draw = async (t) => {
+    if (t > now) await step(t - now);
+    now = t;
     await Promise.all(
       frames.map((f, i) =>
-        f.evaluate(async (y) => {
+        f.evaluate((y) => {
           window.scrollTo({ top: y, behavior: "instant" });
-          await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+          return window.__painted();
         }, Math.round(scrolled(t - HOLD_TOP, ranges[i]) * 2) / 2),
       ),
     );
     const fade = Math.max(0, 1 - t / FADE, (t - (duration - FADE)) / FADE);
-    await page.evaluate(async (o) => {
+    await page.evaluate((o) => {
       document.getElementById("fade").style.opacity = o;
-      await new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)));
+      return window.__painted();
     }, fade);
   };
 
   if (opts.stills) {
-    for (const t of opts.stills.split(",").map(Number)) {
+    for (const t of opts.stills.split(",").map(Number).sort((a, b) => a - b)) {
       await draw(t);
       const file = opts.out.replace(/\.mp4$/, "") + `-still-${t}.png`;
       await page.screenshot({ path: file });
@@ -198,18 +233,36 @@ try {
       ],
       { stdio: ["pipe", "inherit", "inherit"] },
     );
-    const closed = new Promise((r, j) => ff.on("close", (c) => (c ? j(new Error(`ffmpeg exited ${c}`)) : r())));
+    let failure = null;
+    ff.stdin.on("error", (err) => (failure ??= err));
+    const closed = new Promise((r, j) =>
+      ff.on("close", (c) => (c ? j((failure = new Error(`ffmpeg exited ${c}`))) : r())),
+    );
+    closed.catch(() => {});
     const cdp = await ctx.newCDPSession(page);
     const n = Math.round(duration * FPS);
     for (let i = 0; i < n; i++) {
       await draw(i / FPS);
       const shot = await cdp.send("Page.captureScreenshot", { format: "png", optimizeForSpeed: true });
-      if (!ff.stdin.write(Buffer.from(shot.data, "base64"))) await new Promise((r) => ff.stdin.once("drain", r));
+      if (failure) break;
+      if (!ff.stdin.write(Buffer.from(shot.data, "base64"))) {
+        await new Promise((r) => {
+          ff.stdin.once("drain", r);
+          ff.once("close", r);
+        });
+      }
       if (i % 300 === 0) console.log(`frame ${i}/${n}`);
     }
     ff.stdin.end();
     await closed;
+    // Nine frames spread across the whole video, skipping the fades, for checking the result at a glance.
+    const sheet = opts.out.replace(/\.mp4$/, "") + "-sheet.png";
+    execFileSync(process.env.MOTION_FFMPEG || "ffmpeg", [
+      "-v", "error", "-y", "-ss", "0.5", "-i", opts.out,
+      "-vf", `fps=9/${(duration - 1).toFixed(2)},scale=616:-1,tile=3x3`, "-frames:v", "1", sheet,
+    ]);
     console.log(opts.out);
+    console.log(sheet);
   }
   if (errors.length) console.warn("page errors:", errors);
 } finally {
