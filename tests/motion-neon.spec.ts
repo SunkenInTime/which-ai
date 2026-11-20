@@ -14,13 +14,12 @@ for (const iteration of [1, 2, 3]) {
   });
 }
 
-// The Antigravity session ran headless and isolated, so its card names the harness without a "manual session" note.
+// The Antigravity session ran headless and isolated, so its card names the harness and the day, with no "manual session" note.
 test("Google motion search includes Neon from Antigravity with one session cost", async ({ page }) => {
   await page.goto("/motion?q=google");
   const card = page.locator("article").filter({ has: page.getByRole("heading", { name: "Gemini 4 Neon", exact: true }) });
   await expect(card).toHaveCount(1);
-  await expect(card.getByText("Antigravity", { exact: true })).toBeVisible();
-  await expect(card.getByText("manual session")).toHaveCount(0);
+  await expect(card.locator("p", { hasText: "Antigravity" })).toHaveText("Antigravity · made Nov 19");
   await expect(card.getByText("Session cost: $3.23")).toBeVisible();
   await expect(card.locator('[title*="API-equivalent"]')).toBeVisible();
   for (const iteration of [1, 2, 3]) {
