@@ -10,6 +10,7 @@ import {
   buildMotionHref,
   describeMissingRun,
   getMotionModelLogo,
+  getMotionModelMadeOn,
   type MotionClip,
 } from "@/lib/motion";
 
@@ -25,6 +26,7 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
   const compareTarget = clips.find((c) => c.key !== clip.key && c.run?.status === "ok");
   const logo = getMotionModelLogo(clip.model);
   const cost = clip.run?.usage?.costUsd;
+  const madeOn = getMotionModelMadeOn(clip.model);
 
   return (
     <article className="group gallery-card-shell gallery-elevated-surface relative flex flex-col overflow-hidden rounded-lg border bg-[var(--gallery-surface)]">
@@ -95,6 +97,13 @@ export function MotionCard({ clips }: { clips: MotionClip[] }) {
         </div>
         <p className="text-xs text-[var(--gallery-text-tertiary)]">
           {clip.harness.label}{clip.run?.source === "manual" ? " · manual session" : ""}
+          {madeOn ? (
+            <>
+              {" · "}
+              <span className="sr-only">made </span>
+              <time dateTime={madeOn.dateTime}>{madeOn.label}</time>
+            </>
+          ) : null}
         </p>
         <div className="mt-auto flex flex-wrap items-center justify-between gap-x-2 gap-y-1.5">
           <div className="flex min-w-0 flex-wrap gap-1.5" role="group" aria-label={`${clip.model.label} videos`}>

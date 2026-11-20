@@ -61,10 +61,33 @@ const runs = motionRuns as Record<string, MotionRun>;
 
 export const MOTION_ITERATIONS = Array.from({ length: motionConfig.iterations }, (_, i) => i + 1);
 export const motionGroups = motionConfig.groups;
-/** Only models with at least one recorded run get a card and pages; the config can list models not run yet. */
-export const motionModels = motionConfig.models.filter((model) =>
-  Object.keys(runs).some((key) => key.split("/")[1] === model.id),
-);
+/** When each model's first session started, across every group. One session makes all of a model's videos. */
+const firstRunMs = new Map<string, number>();
+for (const [key, run] of Object.entries(runs)) {
+  const modelId = key.split("/")[1];
+  const startedMs = Date.parse(run.startedAt);
+  firstRunMs.set(modelId, Math.min(firstRunMs.get(modelId) ?? Infinity, startedMs));
+}
+
+/**
+ * Only models with at least one recorded run get a card and pages; the config can list models not run yet.
+ * Newest first, by when the model's videos were made, so a new run lands at the top without editing the config.
+ * Models made in the same session keep their config order.
+ */
+export const motionModels = motionConfig.models
+  .filter((model) => firstRunMs.has(model.id))
+  .toSorted((a, b) => firstRunMs.get(b.id)! - firstRunMs.get(a.id)!);
+
+/** `Nov 19`: the day the model's videos were made. Fixed to UTC so server and client agree. */
+export function getMotionModelMadeOn(model: MotionModel) {
+  const startedMs = firstRunMs.get(model.id);
+  if (startedMs === undefined) return null;
+  const date = new Date(startedMs);
+  return {
+    dateTime: date.toISOString().slice(0, 10),
+    label: date.toLocaleDateString("en-US", { month: "short", day: "numeric", timeZone: "UTC" }),
+  };
+}
 
 const LAB_LOGOS: Record<string, { light: string; dark?: string }> = {
   Moonshot: { light: "/kimi-k2.webp" },
