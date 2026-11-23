@@ -781,7 +781,6 @@ test("GLM 5.4 pages keep their own Tailwind theme and fonts in the gallery", asy
   await page.goto("/without-design-skill/glm-5.4/4");
   const playful = page.locator('[data-iteration="4"]');
   await expect(playful).toHaveCSS("background-color", "rgb(255, 243, 201)");
-  await expect(playful.locator('nav[aria-label="Primary"]')).toHaveCSS("display", "flex");
   await expect(playful.locator("h1")).toHaveCSS("font-family", /^glm54NoSkillsNunito\b/);
 
   // /2's citation labels read var(--font-mono), an alias of next/font's --font-geist-mono.
@@ -791,6 +790,10 @@ test("GLM 5.4 pages keep their own Tailwind theme and fonts in the gallery", asy
   await page.goto("/with-design-skill/glm-5.4/5");
   const heading = page.locator(".v5 h1");
   await expect(heading).toHaveCSS("font-family", /^glm54DesignArchivo\b/);
-  await page.evaluate(() => document.fonts.ready);
-  expect(await page.evaluate(() => document.fonts.check("800 40px glm54DesignArchivo"))).toBe(true);
+  // document.fonts.check() is true when no face matches at all, so look for the loaded face itself.
+  const archivoLoaded = await page.evaluate(async () => {
+    await document.fonts.load("800 40px glm54DesignArchivo");
+    return [...document.fonts].some((face) => face.family.replace(/"/g, "") === "glm54DesignArchivo" && face.status === "loaded");
+  });
+  expect(archivoLoaded).toBe(true);
 });

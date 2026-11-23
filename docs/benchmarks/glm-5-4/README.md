@@ -55,4 +55,4 @@ Each original ran as a production build with `next start` on t3os, next to the p
 
 This checks that the embed is faithful. It is not an aesthetic score.
 
-The complete Playwright suite passed (582 tests) against the final production build, including route smoke tests for the 10 new pages, a new-arrival test for GLM 5.4, and a test that the theme layer and the bundled fonts apply (it fails with the theme layer removed, and on the original `next/font/google` family names). `npm run lint` reports 209 errors and 253 warnings, the same as master, and nothing in the new files.
+The complete Playwright suite passed (582 tests) against the final production build, including route smoke tests for the 10 new pages, a new-arrival test for GLM 5.4, and a test that the theme layer and the bundled fonts apply (it fails with the theme layer removed, on the original `next/font/google` family names, and with the Archivo face missing). `npm run lint` reports 209 errors and 253 warnings, the same as master, and nothing in the new files.
