@@ -160,7 +160,7 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash", "gpt-6.2-astra", "sol-6-2", "gemini-4-neon"] as string[]).includes(entry.model))) {
+  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash", "gpt-6.2-astra", "sol-6-2", "gemini-4-neon", "glm-5.4"] as string[]).includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
   }
@@ -195,5 +195,16 @@ test("DeepSeek V4.1 Flash leads all groups on October 29 and its badge expires",
     expect(getGalleryEntryNewArrival(entries, deepseek, now)).not.toBeNull();
     expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("deepseek-v4-1-flash");
     expect(getGalleryEntryNewArrival(entries, deepseek, isoDateToUtcMs("2026-11-12"))).toBeNull();
+  }
+});
+
+test("GLM 5.4 leads its two groups on November 23 and its badge expires", () => {
+  for (const group of ["with-design-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    const glm = entries.find(entry => entry.model === "glm-5.4")!;
+    const now = isoDateToUtcMs("2026-11-23");
+    expect(getGalleryEntryNewArrival(entries, glm, now)).not.toBeNull();
+    expect(sortGalleryEntriesForHome(entries, { now })[0].model).toBe("glm-5.4");
+    expect(getGalleryEntryNewArrival(entries, glm, isoDateToUtcMs("2026-12-07"))).toBeNull();
   }
 });

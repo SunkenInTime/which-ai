@@ -1,0 +1,143 @@
+.aurora {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  filter: blur(70px);
+}
+
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  opacity: 0.85;
+}
+
+.blob1 {
+  width: 48rem;
+  height: 48rem;
+  left: -14rem;
+  top: -18rem;
+  background: #f7d6c4;
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+.blob2 {
+  width: 44rem;
+  height: 44rem;
+  right: -12rem;
+  top: -10rem;
+  background: #cfe5f4;
+  animation: drift 22s ease-in-out infinite alternate-reverse;
+}
+
+.blob3 {
+  width: 42rem;
+  height: 42rem;
+  left: 28%;
+  top: 18rem;
+  background: #d7ebdb;
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+.glowTeal {
+  width: 34rem;
+  height: 34rem;
+  left: -8%;
+  top: -60%;
+  background: #3aa58a;
+  opacity: 0.6;
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+.glowPeach {
+  width: 30rem;
+  height: 30rem;
+  right: -6%;
+  top: -30%;
+  background: #f0a58a;
+  opacity: 0.5;
+  animation: drift 24s ease-in-out infinite alternate-reverse;
+}
+
+.glass {
+  background: rgb(255 255 255 / 0.62);
+  border: 1px solid rgb(255 255 255 / 0.85);
+  box-shadow:
+    0 30px 60px -30px rgb(29 43 42 / 0.28),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+.window {
+  background: rgb(255 255 255 / 0.72);
+  border: 1px solid rgb(255 255 255 / 0.9);
+  box-shadow:
+    0 60px 120px -50px rgb(29 43 42 / 0.4),
+    0 0 0 1px rgb(29 43 42 / 0.04);
+  -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
+  animation: float 9s ease-in-out infinite;
+}
+
+.serif {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.tintPeach {
+  background: #fbe0d3;
+  color: #a9502f;
+}
+
+.tintMint {
+  background: #d8ecdf;
+  color: #22664f;
+}
+
+.tintSky {
+  background: #dbe9f6;
+  color: #2a5c85;
+}
+
+.tintLilac {
+  background: #e9e2f6;
+  color: #5a4387;
+}
+
+.softCard {
+  background: rgb(255 255 255 / 0.6);
+  border: 1px solid rgb(255 255 255 / 0.85);
+  box-shadow:
+    0 24px 50px -34px rgb(29 43 42 / 0.3),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+  transition:
+    transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 500ms ease;
+}
+
+.softCard:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 40px 70px -36px rgb(29 43 42 / 0.38),
+    inset 0 1px 0 rgb(255 255 255 / 0.9);
+}
+
+.pro {
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgb(255 255 255 / 0.18), transparent 60%),
+    linear-gradient(160deg, #2f8571, #1f5f50);
+  color: #fff;
+  box-shadow: 0 40px 80px -40px rgb(31 95 80 / 0.6);
+}
+
+.spine {
+  background: linear-gradient(to bottom, var(--accent), var(--accent-2));
+  opacity: 0.35;
+}
+
+.dot {
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 18%, transparent);
+}

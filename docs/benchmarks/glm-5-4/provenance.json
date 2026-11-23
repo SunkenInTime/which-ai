@@ -1,0 +1,274 @@
+{
+ "model": "glm-5.4",
+ "modelLabel": "GLM 5.4",
+ "date": "2026-11-23",
+ "provider": "Z.ai GLM Coding Plan (subscription), OpenCode provider zai-coding-plan, endpoint https://api.z.ai/api/coding/paas/v4",
+ "runner": "OpenCode 1.19.6, headless (opencode run --format json), on t3os (Ubuntu 26.04, Ryzen 7 5700U)",
+ "reasoningEffort": "high (OpenCode --variant high; GLM-5.4 offers low, high and max)",
+ "contextWindow": 1000000,
+ "outputTokenCap": 131072,
+ "wrapper": "sudo unshare --mount (private mount namespace, no user namespace): the run's own tmp folder bound over /tmp, then setpriv back to the normal user with env -i and the listed environment",
+ "isolation": "Fresh HOME and XDG config/data/cache/state folders per session, holding only an OpenCode config with the Z.ai provider (API key read from a file outside the session's folders), one MCP server (the browser) and OpenCode's built-in customize-opencode skill denied. OpenCode ran with --pure (no external plugins) and --auto (every permission approved). A file-access trace of a preflight session showed OpenCode read no instruction files outside the workspace: not the box's /etc/t3os/AGENTS.md, ~/.claude or ~/.agents. The only rules file it loaded was the starter's own AGENTS.md. Context isolation, not a filesystem jail.",
+ "browser": "Playwright MCP 0.0.83, --browser chromium --isolated --headless --viewport-size 1440x960 --image-responses allow, Chromium 1247",
+ "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, the same tarball as the GPT-6.2 Astra and Fable 5.2 runs",
+ "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+ "skillLocation": "work/.agents/skills/<name>",
+ "assignedSkillSha256": {
+  "frontend-design/SKILL.md": "d91970639e9f5c37682ac7ab60094d35f1c7c1f38d731bd56396563aee10c1d3"
+ },
+ "resumePrompt": "Continue the original task from the interrupted request.",
+ "conditions": {
+  "no-skills": {
+   "baselineCommit": "8483517ca4fa5af6e0ba3358971a40710f579f4d",
+   "attempts": [
+    {
+     "label": "no-skills",
+     "started": "2026-11-23T05:32:39.384Z",
+     "finished": "2026-11-23T06:12:34.276Z",
+     "exitCode": 1,
+     "steps": 50,
+     "toolCalls": 109,
+     "stepFinishReasons": {
+      "tool-calls": 50
+     },
+     "tokens": {
+      "input": 210661,
+      "output": 55530,
+      "reasoning": 65095,
+      "cacheRead": 6317888
+     },
+     "error": "Usage limit reached for 5 hour. Your limit will reset at 2026-11-23 18:16:48",
+     "promptFile": "no-skills.txt",
+     "promptSha256": "35701b05495eaa7da26427b20e33cef8b12a1b93055a01f8ff9e00d47fe8477d",
+     "argv": [
+      "run",
+      "--pure",
+      "--auto",
+      "--format",
+      "json",
+      "--print-logs",
+      "--log-level",
+      "INFO",
+      "-m",
+      "zai-coding-plan/glm-5.4",
+      "--variant",
+      "high",
+      "--dir",
+      "/home/dara/Code/bench-glm-5-4/no-skills/work",
+      "<prompt file contents>"
+     ],
+     "environment": {
+      "HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home",
+      "XDG_CONFIG_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.config",
+      "XDG_DATA_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.local/share",
+      "XDG_CACHE_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.cache",
+      "XDG_STATE_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.local/state",
+      "TMPDIR": "/home/dara/Code/bench-glm-5-4/no-skills/tmp",
+      "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "TERM": "dumb",
+      "USER": "dara",
+      "CHROME_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright/chromium-1247/chrome-linux64/chrome",
+      "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright",
+      "npm_config_cache": "/home/dara/Code/bench-glm-5-4/npm-cache"
+     }
+    },
+    {
+     "label": "resume-1",
+     "started": "2026-11-23T13:22:47.383Z",
+     "finished": "2026-11-23T13:44:12.341Z",
+     "exitCode": 0,
+     "steps": 48,
+     "toolCalls": 79,
+     "stepFinishReasons": {
+      "tool-calls": 47,
+      "stop": 1
+     },
+     "tokens": {
+      "input": 537795,
+      "output": 11092,
+      "reasoning": 16554,
+      "cacheRead": 12011456
+     },
+     "error": null,
+     "promptFile": "resume.txt",
+     "promptSha256": "b4a1b237601887792a2f53d5ce4e0f29f9010d2c8ac1e3978fdf2219ceb37d7b",
+     "argv": [
+      "run",
+      "--pure",
+      "--auto",
+      "--format",
+      "json",
+      "--print-logs",
+      "--log-level",
+      "INFO",
+      "-m",
+      "zai-coding-plan/glm-5.4",
+      "--variant",
+      "high",
+      "--session",
+      "ses_df91b9cd1ffeOpUOxsZJjapS3c",
+      "--dir",
+      "/home/dara/Code/bench-glm-5-4/no-skills/work",
+      "<prompt file contents>"
+     ],
+     "environment": {
+      "HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home",
+      "XDG_CONFIG_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.config",
+      "XDG_DATA_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.local/share",
+      "XDG_CACHE_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.cache",
+      "XDG_STATE_HOME": "/home/dara/Code/bench-glm-5-4/no-skills/home/.local/state",
+      "TMPDIR": "/home/dara/Code/bench-glm-5-4/no-skills/tmp",
+      "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "TERM": "dumb",
+      "USER": "dara",
+      "CHROME_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright/chromium-1247/chrome-linux64/chrome",
+      "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright",
+      "npm_config_cache": "/home/dara/Code/bench-glm-5-4/npm-cache"
+     }
+    }
+   ]
+  },
+  "frontend-design": {
+   "baselineCommit": "d3bc2eb7f0b41335b885c64b2e9b87ac700c1d65",
+   "attempts": [
+    {
+     "label": "frontend-design",
+     "started": "2026-11-23T14:06:23.869Z",
+     "finished": "2026-11-23T14:59:38.685Z",
+     "exitCode": 1,
+     "steps": 81,
+     "toolCalls": 141,
+     "stepFinishReasons": {
+      "tool-calls": 81
+     },
+     "tokens": {
+      "input": 336139,
+      "output": 47542,
+      "reasoning": 93909,
+      "cacheRead": 16308480
+     },
+     "error": "Usage limit reached for 5 hour. Your limit will reset at 2026-11-24 02:23:18",
+     "promptFile": "frontend-design.txt",
+     "promptSha256": "6507cba92e78aa22ecdf385b63d87b62cd6a3233486fe540dd73b61254442dee",
+     "argv": [
+      "run",
+      "--pure",
+      "--auto",
+      "--format",
+      "json",
+      "--print-logs",
+      "--log-level",
+      "INFO",
+      "-m",
+      "zai-coding-plan/glm-5.4",
+      "--variant",
+      "high",
+      "--dir",
+      "/home/dara/Code/bench-glm-5-4/frontend-design/work",
+      "<prompt file contents>"
+     ],
+     "environment": {
+      "HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home",
+      "XDG_CONFIG_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.config",
+      "XDG_DATA_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.local/share",
+      "XDG_CACHE_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.cache",
+      "XDG_STATE_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.local/state",
+      "TMPDIR": "/home/dara/Code/bench-glm-5-4/frontend-design/tmp",
+      "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "TERM": "dumb",
+      "USER": "dara",
+      "CHROME_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright/chromium-1247/chrome-linux64/chrome",
+      "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright",
+      "npm_config_cache": "/home/dara/Code/bench-glm-5-4/npm-cache",
+      "OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX": "131072"
+     }
+    },
+    {
+     "label": "resume-1",
+     "started": "2026-11-23T18:25:19.622Z",
+     "finished": "2026-11-23T18:31:59.177Z",
+     "exitCode": 0,
+     "steps": 29,
+     "toolCalls": 46,
+     "stepFinishReasons": {
+      "tool-calls": 28,
+      "stop": 1
+     },
+     "tokens": {
+      "input": 306562,
+      "output": 2977,
+      "reasoning": 6391,
+      "cacheRead": 8208256
+     },
+     "error": null,
+     "promptFile": "resume.txt",
+     "promptSha256": "b4a1b237601887792a2f53d5ce4e0f29f9010d2c8ac1e3978fdf2219ceb37d7b",
+     "argv": [
+      "run",
+      "--pure",
+      "--auto",
+      "--format",
+      "json",
+      "--print-logs",
+      "--log-level",
+      "INFO",
+      "-m",
+      "zai-coding-plan/glm-5.4",
+      "--variant",
+      "high",
+      "--session",
+      "ses_df7454377ffewguSB5Ceyb5bP2",
+      "--dir",
+      "/home/dara/Code/bench-glm-5-4/frontend-design/work",
+      "<prompt file contents>"
+     ],
+     "environment": {
+      "HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home",
+      "XDG_CONFIG_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.config",
+      "XDG_DATA_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.local/share",
+      "XDG_CACHE_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.cache",
+      "XDG_STATE_HOME": "/home/dara/Code/bench-glm-5-4/frontend-design/home/.local/state",
+      "TMPDIR": "/home/dara/Code/bench-glm-5-4/frontend-design/tmp",
+      "PATH": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+      "LANG": "C.UTF-8",
+      "TERM": "dumb",
+      "USER": "dara",
+      "CHROME_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright/chromium-1247/chrome-linux64/chrome",
+      "PLAYWRIGHT_BROWSERS_PATH": "/home/dara/Code/bench-glm-5-4/ms-playwright",
+      "npm_config_cache": "/home/dara/Code/bench-glm-5-4/npm-cache",
+      "OPENCODE_EXPERIMENTAL_OUTPUT_TOKEN_MAX": "131072"
+     }
+    }
+   ]
+  }
+ },
+ "discardedBeforeScoring": [
+  {
+   "what": "preflight-1",
+   "why": "OpenCode's built-in customize-opencode skill was listed; denied in the config before the scored runs."
+  },
+  {
+   "what": "preflight-2",
+   "why": "Unscored check: the session listed one skill (design-taste-frontend) and one rules file (the starter's AGENTS.md)."
+  },
+  {
+   "what": "no-skills at max reasoning",
+   "why": "Started at --variant max and stopped about 6 minutes in; all conditions restarted from fresh workspaces at high."
+  },
+  {
+   "what": "frontend-design and design-taste, first launch",
+   "why": "The plan's 5-hour usage limit was already reached; neither made a model request."
+  },
+  {
+   "what": "frontend-design at OpenCode's default 32,000-token output cap",
+   "why": "One step spent all 32,000 tokens on reasoning (finish reason 'length') and OpenCode ended the session with nothing built. Rerun from a fresh workspace with the cap at GLM-5.4's own 131,072."
+  },
+  {
+   "what": "no-skills resume attempt with a malformed session argument",
+   "why": "The runner passed the session ID twice; OpenCode answered 'Session not found' before any model request."
+  }
+ ]
+}

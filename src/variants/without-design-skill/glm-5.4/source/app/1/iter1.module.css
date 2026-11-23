@@ -1,0 +1,25 @@
+.mark {
+  background-image: linear-gradient(100deg, transparent 0%, var(--accent) 3%, var(--accent) 97%, transparent 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 36%;
+  background-position: 0 88%;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  animation: mark 900ms cubic-bezier(0.2, 0.7, 0.2, 1) 450ms both;
+}
+
+@keyframes mark {
+  from {
+    background-size: 0% 36%;
+  }
+  to {
+    background-size: 100% 36%;
+  }
+}
+
+.dots {
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 16%, transparent) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+/* Gallery adaptation: the details-marker rule moved to globals.css (webpack's CSS modules reject selectors without a local class). */

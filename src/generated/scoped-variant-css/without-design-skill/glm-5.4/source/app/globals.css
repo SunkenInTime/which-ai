@@ -1,0 +1,179 @@
+/* Gallery adaptation: :root moves onto the <html> stand-in, where next/font sets --font-geist-*, so the aliases
+   below resolve to the bundled faces. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-html] {
+  --background: #f6f4ee;
+  --foreground: #141414;
+  --canvas: #f6f4ee;
+  --surface: #ffffff;
+  --ink: #141414;
+  --soft: #63635c;
+  --line: #e1ded4;
+  --accent: #f4e63a;
+  --on-accent: #141414;
+  --accent-2: #141414;
+  --on-accent-2: #ffffff;
+  --font-display: var(--font-geist-sans);
+  --font-hand: var(--font-geist-sans);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-iteration="1"] {
+  --canvas: #f6f4ee;
+  --surface: #ffffff;
+  --ink: #141414;
+  --soft: #63635c;
+  --line: #e1ded4;
+  --accent: #f4e63a;
+  --on-accent: #141414;
+  --accent-2: #141414;
+  --on-accent-2: #ffffff;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-iteration="2"] {
+  --canvas: #f3ecdf;
+  --surface: #fbf6ec;
+  --ink: #1e1b16;
+  --soft: #6e6557;
+  --line: #dcd1bd;
+  --accent: #1f3a2e;
+  --on-accent: #f3ecdf;
+  --accent-2: #b4452b;
+  --on-accent-2: #fbf6ec;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-iteration="3"] {
+  --canvas: #08080c;
+  --surface: #0f0f16;
+  --ink: #ececf2;
+  --soft: #9494a6;
+  --line: #22222e;
+  --accent: #a78bfa;
+  --on-accent: #0b0b12;
+  --accent-2: #22d3ee;
+  --on-accent-2: #06121a;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-iteration="4"] {
+  --canvas: #fff3c9;
+  --surface: #fffdf5;
+  --ink: #17140f;
+  --soft: #5b5342;
+  --line: #d9cc9c;
+  --accent: #ff5ca8;
+  --on-accent: #17140f;
+  --accent-2: #5cc9ff;
+  --on-accent-2: #17140f;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-iteration="5"] {
+  --canvas: #eef3ec;
+  --surface: #fbfdfb;
+  --ink: #1d2b2a;
+  --soft: #5a6c69;
+  --line: #d3dfd8;
+  --accent: #2e7d6b;
+  --on-accent: #ffffff;
+  --accent-2: #e98a6a;
+  --on-accent-2: #1d2b2a;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-body]:has([data-iteration="1"]) {
+  background: #f6f4ee;
+  color-scheme: light;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-body]:has([data-iteration="2"]) {
+  background: #f3ecdf;
+  color-scheme: light;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-body]:has([data-iteration="3"]) {
+  background: #08080c;
+  color-scheme: dark;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-body]:has([data-iteration="4"]) {
+  background: #fff3c9;
+  color-scheme: light;
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-body]:has([data-iteration="5"]) {
+  background: #eef3ec;
+  color-scheme: light;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-html] {
+  scroll-behavior: smooth;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) ::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) :focus-visible {
+  outline: 2px solid var(--ink, currentColor);
+  outline-offset: 3px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) .ds-pill,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) 
+.ds-menu {
+  color-scheme: dark;
+  background: rgb(22 22 26 / 0.86);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.13),
+    0 18px 44px -14px rgb(0 0 0 / 0.65);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) .ds-menu {
+  transform-origin: bottom center;
+  animation: gallery-without-design-skill-glm-5-4-source-app-globals-rise 200ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) ::view-transition-group(iteration) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) ::view-transition-old(iteration),:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) 
+::view-transition-new(iteration) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  mix-blend-mode: normal;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) ::view-transition {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-html] {
+    scroll-behavior: auto;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) *,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) 
+  ::before,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) 
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) ::view-transition-group(*),:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) 
+  ::view-transition-old(*),:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) 
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Gallery adaptation: moved from 1/iter1.module.css, where Turbopack applied it globally; webpack's CSS modules
+   reject selectors without a local class. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) details summary::-webkit-details-marker {
+  display: none;
+}

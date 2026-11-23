@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+[data-source-html] {
+  background: #ffffff;
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+[data-source-html]:has(.v1) {
+  background: #5a1f26;
+  color-scheme: dark;
+}
+[data-source-html]:has(.v2) {
+  background: #f8e27c;
+}
+[data-source-html]:has(.v3) {
+  background: #fdfdfb;
+}
+[data-source-html]:has(.v4) {
+  background: #213a31;
+  color-scheme: dark;
+}
+[data-source-html]:has(.v5) {
+  background: #ffffff;
+}
+
+[data-source-body] {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-source-html] {
+    scroll-behavior: auto;
+  }
+}
+
+/* Iteration switcher: shared chrome, deliberately outside each design's system */
+.vs {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 2147483647;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: #ffffff;
+}
+.vs-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 16px 0 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #161616;
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.35);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+.vs-trigger:hover {
+  background: #2a2a2a;
+}
+.vs-trigger:active {
+  transform: scale(0.96);
+}
+.vs-trigger:focus-visible,
+.vs-item:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+.vs-trigger svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+.vs-count {
+  font-variant-numeric: tabular-nums;
+}
+.vs-of {
+  color: #a3a3a3;
+}
+.vs-panel {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 10px);
+  width: min(324px, calc(100vw - 32px));
+  padding: 8px;
+  border-radius: 16px;
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 24px 48px -16px rgba(0, 0, 0, 0.7);
+  animation: vs-in 0.16s ease-out;
+}
+@keyframes vs-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+.vs-title {
+  margin: 8px 12px 6px;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+.vs-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 2px;
+}
+.vs-item {
+  display: grid;
+  grid-template-columns: 14px 16px 1fr auto;
+  column-gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: 10px;
+  color: #ffffff;
+  text-decoration: none;
+  transition: background-color 0.12s ease;
+}
+.vs-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+.vs-item[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.1);
+}
+.vs-swatch {
+  grid-row: span 2;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.22);
+}
+.vs-n {
+  font-size: 12px;
+  color: #a3a3a3;
+  font-variant-numeric: tabular-nums;
+}
+.vs-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+.vs-here {
+  font-size: 11px;
+  color: #a3a3a3;
+}
+.vs-blurb {
+  grid-column: 3 / -1;
+  font-size: 12px;
+  line-height: 1.35;
+  color: #a3a3a3;
+}
+.vs-hint {
+  margin: 8px 12px 6px;
+  font-size: 11px;
+  color: #737373;
+}
+@media (prefers-reduced-motion: reduce) {
+  .vs-panel,
+  .vs-trigger {
+    animation: none;
+    transition: none;
+  }
+}

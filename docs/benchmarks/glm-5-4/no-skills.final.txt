@@ -1,0 +1,27 @@
+All five iterations are live on http://localhost:3431, with the switcher in place. Lint, typecheck and a production build all pass, and I checked every page in the browser from 390px to 1920px wide with no console errors.
+
+All five are landing pages for the same fictional product, "Axon", so you're comparing design directions rather than content.
+
+| Route | Direction | Look |
+|---|---|---|
+| `/1` | Minimal | Warm paper, large tight type, hairline grids, a highlighter-yellow accent |
+| `/2` | Editorial | Serif headline, cream and deep green, notebook spread, chapters I–III, drop caps |
+| `/3` | Neural | Dark, an interactive knowledge graph as the hero, violet-to-cyan gradient, bento grid |
+| `/4` | Playful | Cream dot grid, thick outlines, hard shadows, stickers, sticky notes, handwritten notes |
+| `/5` | Calm | Soft aurora gradients, frosted glass, floating pill nav, a serif italic accent |
+
+**The switcher** is a small dark pill at the bottom centre of every page:
+- **Flip through:** the ‹ › arrows step to the previous or next design, wrapping around.
+- **Jump:** clicking the label opens a menu of all five with their palette swatches.
+- **Keyboard:** ← → also switch designs, except while typing in a field.
+
+Switching crossfades between designs.
+
+A few things I did that you didn't ask for:
+- `/` now redirects to `/1`.
+- I removed the starter template page and its five unused SVGs in `public/`.
+- Each page sets its own browser tab title, e.g. "Iteration 1 — Minimal · Axon".
+
+The dev server is running in the background; stop it with `pkill -f "next dev -p 3431"`. Nothing is committed or staged.
+
+Product visuals (the app windows, graph, mascot) are all built in CSS and inline SVG, so there are no image assets. The copy, pricing and testimonials are placeholder and shared across all five from `lib/content.ts`.
