@@ -64,6 +64,7 @@ const MODEL_GALLERY_GENERATION = {
   "glm-5-turbo": { family: "glm", tier: 1 },
   "glm-5.1": { family: "glm", tier: 2 },
   "glm-5.2": { family: "glm", tier: 3 },
+  "glm-5.4": { family: "glm", tier: 4 },
   "grok-4.5": { family: "x-ai-grok", tier: 45 },
   "grok-4.6": { family: "x-ai-grok", tier: 46 },
   "grok-4.7": { family: "x-ai-grok", tier: 47 },

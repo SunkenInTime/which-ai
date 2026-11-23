@@ -1,0 +1,25 @@
+{
+  "baselineCommit": "8483517ca4fa5af6e0ba3358971a40710f579f4d",
+  "note": "Files the model changed or added, hashed before gallery adaptation.",
+  "files": {
+    "app/1/iter1.module.css": "7f46d72beeef7470152f843e0566526023ad9419611cfda07e3aca53d20a8a43",
+    "app/1/page.tsx": "faafe48838a1d9398268306f3dabf697c84674c00f7febdb785a84d00ddf859a",
+    "app/2/iter2.module.css": "0a2a5b75aa6b6ba0a0bc10a594013c2ab8922940a3709034ce254915b548b2bc",
+    "app/2/page.tsx": "bb3c5aef92b5e0c7b0c60347cdacef6c380d0b7bc24c79702c76b2ffe9a06735",
+    "app/3/graph.tsx": "096567da6db45549696d8f8a1b68b2ae1cc2e0fa93f0f15e36e52f4f8353a990",
+    "app/3/iter3.module.css": "68dc02c5c2f12d2741ab723a5311fa129828b385f8e04eaa294e0691a0afd187",
+    "app/3/page.tsx": "165faf492d0460833af174070c0c8c0a874b6d97a90e41871fef95182da349e1",
+    "app/4/iter4.module.css": "9db1e110c4c980d00f275a21eb52519bdd6fa3fb57205e9ae1928adbf04a4fa1",
+    "app/4/page.tsx": "a0d493930163f61ce542d52700e84ff83d42fe4348efede97f2f546c6d9e0f55",
+    "app/5/iter5.module.css": "2d64ea4cd0d834724f4709c6c2e129a1e07b62e1043282a94c05e39ad8b718ea",
+    "app/5/page.tsx": "061fbf551ca7b2d9ec8fcd8b6cffc2cdbdfdb5edd894a9b2ab38139302815761",
+    "app/globals.css": "ac3d1f223c4fd8f7e7461bdfefbe9dd251053463a90048586e629c75bc7a0001",
+    "app/layout.tsx": "86ba34813228e048f6a0f400bb337f72a0f4f2b1a03d947e4dd35049d0a8c1ca",
+    "components/design-switcher.tsx": "99b4f41e2c2ee823015e3c52516a64816b570ba872dc4a2d31cce5a4a0ddc615",
+    "components/icons.tsx": "d89f2a820d54518e3ee8e5f7f5ebd7cafc22edca9f5582a659198ebde6532156",
+    "components/logo.tsx": "6f9834dc449d5dc36f8d3fd264841ce638eb024a3aa967d3170c8536a2ab2b4b",
+    "lib/content.ts": "48cd7c0bb58b2ab552c5b971c1b46a4e411af9e2bf1533186e2a8ba8fbd04e7a",
+    "lib/iterations.ts": "4c69033991bb5a1177e44077045f4131cc2f512b43ea8150d4d8baaf809954b3",
+    "next.config.ts": "9454d012454a9911bc7cd53cfcc479ef8e330f8c806cdeff6eea350f0fccb7c0"
+  }
+}

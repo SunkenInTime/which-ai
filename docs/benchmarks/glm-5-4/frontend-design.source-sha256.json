@@ -1,0 +1,27 @@
+{
+  "baselineCommit": "d3bc2eb7f0b41335b885c64b2e9b87ac700c1d65",
+  "note": "Files the model changed or added, hashed before gallery adaptation.",
+  "files": {
+    "app/1/deck.tsx": "07724d370516b5ea6dc1e21ea1b07a4cf0033ed99ec76b7c6d6a9e5ebca177b0",
+    "app/1/page.tsx": "a5567721ba17ee03315ca4d3cc22eba78a6debd515b00ff4004bbd2c863e1de7",
+    "app/1/slip.module.css": "4cd26b449c874aab14ddb19aaeacf47d65177843363bec5c52812e0139cb3847",
+    "app/2/pad.module.css": "6201e3994d6b8ef659048fab3745482545267184e21d83dd6a37c94aa5e4cffc",
+    "app/2/page.tsx": "2600f4a1e34ce95c9e18b48619b3bcbdbe9f93e38c5ebabd9b87c5ebf8a1ab81",
+    "app/2/signup-check.tsx": "ccecbd126c07032d508885d88d8497925bb122d2bd38975039bd243abaee4b43",
+    "app/3/book.module.css": "76807346968689b3e57ec5c8dc748f63378f31a852e730145a0b3c148f8317e5",
+    "app/3/page.tsx": "bad66a8dabff5c674cd3273d7e758b3532425cc823828bb917f3f86763ae02cd",
+    "app/3/spread.tsx": "fcdd1d1b2f5fcf2ec4ed0828866458a26eb0638cf36e3dfabb8ac4cafc2fb318",
+    "app/4/board.module.css": "c8117403cab7036856cdbbe15b544e34cf2e22a5ddea7fb6105ff7f8649e8ffe",
+    "app/4/graph.tsx": "9533766862f67d93d82f0f8afeb7f8e4cad27f122c91b0d1c16008006c2d1667",
+    "app/4/page.tsx": "29136c9bf7ac7ab22642303b78c171ec578f0dfccf0e951f0abfe6ad9f66fc55",
+    "app/5/hero.tsx": "e5a8ce4b4b630fe0aca77668b634fa0cb3573358b4bebe88e8beff26012ab76d",
+    "app/5/page.tsx": "81f205d6aeedd8761832dfcd1d11b71eba0b4779328f5bb5fe81a36ae69e59e4",
+    "app/5/split.module.css": "bc5c38bd337291804df44adb27ba47e70691bbdceec27ebad24fdd9d437aec0f",
+    "app/_shared/signup.tsx": "068dacb7ca38661dce1702b43c10b6f6ae8bd272218cd74ec628ce390d2d4593",
+    "app/_shared/switcher.tsx": "16efb008e6d375318a41cb2c7b50eab39db1d965c5fd08e34b3ab05f9487cafd",
+    "app/_shared/variants.ts": "d9f0089ac15cfae9ae6b7019b5c1a1f3937f2ef84d5360fdd39b3e070909e686",
+    "app/globals.css": "dd56367798dccaf547ac624e434c19b56573abde4f1d77f90e13231061c9e313",
+    "app/layout.tsx": "f531549f7f733162bd864422e9105591186b73f93b703f48bd0c460348f667eb",
+    "next.config.ts": "ac049df33271fe65406c4df3466cd4188ab3fe08f7aee9f9f2b86f96b8c5883d"
+  }
+}

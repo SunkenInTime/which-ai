@@ -49,6 +49,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "glm-5.1": { familyOrder: 6, tier: 51 },
   "glm-5.2": { familyOrder: 6, tier: 52 },
   "glm-5.3-flash": { familyOrder: 6, tier: 53 },
+  "glm-5.4": { familyOrder: 6, tier: 54 },
   "kimi-k-2.5": { familyOrder: 7, tier: 25 },
   "kimi-k-2.6": { familyOrder: 7, tier: 26 },
   "kimi-k3-1-pro": { familyOrder: 7, tier: 31 },

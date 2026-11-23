@@ -54,6 +54,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
   "deepseek-v4-1-flash": ["deepseek v4.1 flash", "deepseek v4.1", "deepseek flash", "v4.1 flash", "high", "cursor"],
   "kimi-k3": ["kimi k3", "k3"],
   "glm-5.3-flash": ["ox alpha", "ox-alpha", "ox"],
+  "glm-5.4": ["glm 5.4", "glm5.4", "z.ai", "zai", "zhipu", "coding plan", "opencode", "high"],
   "muse-spark-1.3": ["muse", "spark"],
   "muse-wonder-1.0": ["muse", "wonder", "muse wonder", "muse-wonder-1.0", "extra high", "xhigh"],
   "swe-2": ["swe2", "swe 2", "swe-2 max"],

@@ -1,0 +1,266 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f6f4ee;
+  --foreground: #141414;
+  --canvas: #f6f4ee;
+  --surface: #ffffff;
+  --ink: #141414;
+  --soft: #63635c;
+  --line: #e1ded4;
+  --accent: #f4e63a;
+  --on-accent: #141414;
+  --accent-2: #141414;
+  --on-accent-2: #ffffff;
+  --font-display: var(--font-geist-sans);
+  --font-hand: var(--font-geist-sans);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-hand: var(--font-hand);
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-on-accent: var(--on-accent);
+  --color-accent-2: var(--accent-2);
+  --color-on-accent-2: var(--on-accent-2);
+}
+
+@theme {
+  --animate-marquee: marquee 36s linear infinite;
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-drift: drift 16s ease-in-out infinite alternate;
+  --animate-travel: travel 5s linear infinite;
+  --animate-rise: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-blink: blink 1.1s steps(1) infinite;
+  --animate-dash: dash 1.4s linear infinite;
+
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -18;
+    }
+  }
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-14px);
+    }
+  }
+  @keyframes drift {
+    from {
+      transform: translate3d(0, 0, 0) scale(1);
+    }
+    to {
+      transform: translate3d(8%, -10%, 0) scale(1.15);
+    }
+  }
+  @keyframes travel {
+    0% {
+      offset-distance: 0%;
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    88% {
+      opacity: 1;
+    }
+    100% {
+      offset-distance: 100%;
+      opacity: 0;
+    }
+  }
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes blink {
+    50% {
+      opacity: 0;
+    }
+  }
+}
+
+[data-iteration="1"] {
+  --canvas: #f6f4ee;
+  --surface: #ffffff;
+  --ink: #141414;
+  --soft: #63635c;
+  --line: #e1ded4;
+  --accent: #f4e63a;
+  --on-accent: #141414;
+  --accent-2: #141414;
+  --on-accent-2: #ffffff;
+}
+
+[data-iteration="2"] {
+  --canvas: #f3ecdf;
+  --surface: #fbf6ec;
+  --ink: #1e1b16;
+  --soft: #6e6557;
+  --line: #dcd1bd;
+  --accent: #1f3a2e;
+  --on-accent: #f3ecdf;
+  --accent-2: #b4452b;
+  --on-accent-2: #fbf6ec;
+}
+
+[data-iteration="3"] {
+  --canvas: #08080c;
+  --surface: #0f0f16;
+  --ink: #ececf2;
+  --soft: #9494a6;
+  --line: #22222e;
+  --accent: #a78bfa;
+  --on-accent: #0b0b12;
+  --accent-2: #22d3ee;
+  --on-accent-2: #06121a;
+}
+
+[data-iteration="4"] {
+  --canvas: #fff3c9;
+  --surface: #fffdf5;
+  --ink: #17140f;
+  --soft: #5b5342;
+  --line: #d9cc9c;
+  --accent: #ff5ca8;
+  --on-accent: #17140f;
+  --accent-2: #5cc9ff;
+  --on-accent-2: #17140f;
+}
+
+[data-iteration="5"] {
+  --canvas: #eef3ec;
+  --surface: #fbfdfb;
+  --ink: #1d2b2a;
+  --soft: #5a6c69;
+  --line: #d3dfd8;
+  --accent: #2e7d6b;
+  --on-accent: #ffffff;
+  --accent-2: #e98a6a;
+  --on-accent-2: #1d2b2a;
+}
+
+[data-source-body]:has([data-iteration="1"]) {
+  background: #f6f4ee;
+  color-scheme: light;
+}
+[data-source-body]:has([data-iteration="2"]) {
+  background: #f3ecdf;
+  color-scheme: light;
+}
+[data-source-body]:has([data-iteration="3"]) {
+  background: #08080c;
+  color-scheme: dark;
+}
+[data-source-body]:has([data-iteration="4"]) {
+  background: #fff3c9;
+  color-scheme: light;
+}
+[data-source-body]:has([data-iteration="5"]) {
+  background: #eef3ec;
+  color-scheme: light;
+}
+
+[data-source-html] {
+  scroll-behavior: smooth;
+}
+
+[data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink, currentColor);
+  outline-offset: 3px;
+}
+
+.ds-pill,
+.ds-menu {
+  color-scheme: dark;
+  background: rgb(22 22 26 / 0.86);
+  -webkit-backdrop-filter: blur(16px) saturate(1.4);
+  backdrop-filter: blur(16px) saturate(1.4);
+  box-shadow:
+    0 0 0 1px rgb(255 255 255 / 0.13),
+    0 18px 44px -14px rgb(0 0 0 / 0.65);
+}
+
+.ds-menu {
+  transform-origin: bottom center;
+  animation: rise 200ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+::view-transition-group(iteration) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+::view-transition-old(iteration),
+::view-transition-new(iteration) {
+  animation-duration: 380ms;
+  animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  mix-blend-mode: normal;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-source-html] {
+    scroll-behavior: auto;
+  }
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Gallery adaptation: moved from 1/iter1.module.css, where Turbopack applied it globally; webpack's CSS modules
+   reject selectors without a local class. */
+details summary::-webkit-details-marker {
+  display: none;
+}

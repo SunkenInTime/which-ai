@@ -1,0 +1,24 @@
+All five iterations are built and running at **http://localhost:3432** (dev server is up; `/` redirects to `/1`).
+
+## The five takes
+
+One product across all five — a second-brain notes app called **Slip** — so you're comparing directions, not different briefs. Each direction comes from the note-taking world rather than a generic SaaS kit:
+
+| Route | Name | Idea | Type |
+|---|---|---|---|
+| `/1` | **Slip box** | Manila index cards (Zettelkasten IDs) on an oxblood leather desk. Hover a card and red threads run to the cards it links to. | Courier Prime (typewriter) |
+| `/2` | **Legal pad** | The page *is* a canary legal pad with real rules and a red margin. The CTA is an unticked checkbox that opens the sign-up form. | Shantell Sans (hand-drawn) |
+| `/3` | **Margins** | A book page with highlighter marks connected by pencil lines to margin notes; colours mean something (quote / question / idea). Hover to follow a thread. | Newsreader (book serif) |
+| `/4` | **Chalkboard** | A chalk-drawn graph of notes that draws itself in on load; hovering a dot lights up its links. Features sit on a chalk tray. | Rubik |
+| `/5` | **Two brains** | Pure black/white split with type that inverts across the line. **Drag the divider** (or arrow keys) — the Ebbinghaus forgetting curve snaps to a flat line wherever you drop it. | Archivo (variable width) |
+
+## The switcher
+
+A small pill at the bottom-right (`▤ 2 / 5`) opens a panel listing all five takes with a colour swatch, marks the one you're on, and closes on Escape, outside click, or navigation. Bonus: press **1–5** on any page to jump.
+
+## Notes
+
+- Verified at 1440px and 390px; `npm run lint`, `tsc --noEmit`, and `npm run build` all pass (all routes static).
+- I removed the boilerplate `app/page.tsx` and redirected `/` → `/1`; nothing is committed or staged.
+- Copy, pricing, and testimonials are placeholder content written for the brief; the signup forms only show a success state.
+- One console hydration warning appeared only under the screenshot tooling (it injects an inline caret style into inputs) — it's not present in a normal browser.
