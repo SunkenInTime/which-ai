@@ -771,3 +771,26 @@ test("Sol 6 and Opus 5.5 appear in all groups with the correct labs", async ({ p
   expect(getModelBrandLogoPath("sol-6")).toBe("/openai-gpt.svg");
   expect(getModelBrandLogoPath("opus-5.5")).toBe("/anthropic-claude.webp");
 });
+
+// GLM 5.4's Without Design Skill pages depend on their own Tailwind theme (compiled into a scoped layer by
+// scripts/compile-variant-tailwind.mjs) and both entries on their own bundled fonts. Without either, the pages
+// still render, just in the gallery's colors and other entries' faces, so check the computed result.
+test("GLM 5.4 pages keep their own Tailwind theme and fonts in the gallery", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+
+  await page.goto("/without-design-skill/glm-5.4/4");
+  const playful = page.locator('[data-iteration="4"]');
+  await expect(playful).toHaveCSS("background-color", "rgb(255, 243, 201)");
+  await expect(playful.locator('nav[aria-label="Primary"]')).toHaveCSS("display", "flex");
+  await expect(playful.locator("h1")).toHaveCSS("font-family", /^glm54NoSkillsNunito\b/);
+
+  // /2's citation labels read var(--font-mono), an alias of next/font's --font-geist-mono.
+  await page.goto("/without-design-skill/glm-5.4/2");
+  await expect(page.locator('[data-iteration="2"] g[font-family="var(--font-mono)"]').first()).toHaveCSS("font-family", /^glm54NoSkillsGeistMono\b/);
+
+  await page.goto("/with-design-skill/glm-5.4/5");
+  const heading = page.locator(".v5 h1");
+  await expect(heading).toHaveCSS("font-family", /^glm54DesignArchivo\b/);
+  await page.evaluate(() => document.fonts.ready);
+  expect(await page.evaluate(() => document.fonts.check("800 40px glm54DesignArchivo"))).toBe(true);
+});

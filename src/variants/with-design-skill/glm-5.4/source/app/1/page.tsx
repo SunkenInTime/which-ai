@@ -6,7 +6,8 @@ import Deck from "./deck";
 import styles from "./slip.module.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54DesignCourierPrime = localFont({
   src: [
     { path: "../fonts/courier-prime-normal-400.woff2", weight: "400", style: "normal" },
@@ -15,6 +16,7 @@ const glm54DesignCourierPrime = localFont({
     { path: "../fonts/courier-prime-italic-700.woff2", weight: "700", style: "italic" },
   ],
   variable: "--font-typed",
+  preload: false,
   display: "swap",
 });
 

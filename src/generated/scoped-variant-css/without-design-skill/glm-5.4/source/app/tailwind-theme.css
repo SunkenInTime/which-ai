@@ -70,7 +70,7 @@
 }
 
 @layer theme {
-  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]),:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"])  :host {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-html] {
     --font-mono: var(--font-geist-mono);
     --color-black: #000;
     --color-white: #fff;

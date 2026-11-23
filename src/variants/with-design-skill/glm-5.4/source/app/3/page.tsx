@@ -6,10 +6,12 @@ import Spread from "./spread";
 import styles from "./book.module.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54DesignNewsreader = localFont({
   src: "../fonts/newsreader-normal.woff2",
   variable: "--font-book",
+  preload: false,
   weight: "200 800",
   style: "normal",
   display: "swap",

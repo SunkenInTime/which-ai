@@ -1,4 +1,6 @@
-:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) {
+/* Gallery adaptation: :root moves onto the <html> stand-in, where next/font sets --font-geist-*, so the aliases
+   below resolve to the bundled faces. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="glm-5.4"]) [data-source-html] {
   --background: #f6f4ee;
   --foreground: #141414;
   --canvas: #f6f4ee;

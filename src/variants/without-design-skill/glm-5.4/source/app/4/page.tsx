@@ -8,16 +8,19 @@ import { features, plans, steps, testimonials } from "@/variants/without-design-
 import styles from "./iter4.module.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54NoSkillsNunito = localFont({
   src: "../fonts/nunito-normal.woff2",
   variable: "--font-page",
+  preload: false,
   weight: "200 1000",
   style: "normal",
 });
 const glm54NoSkillsCaveat = localFont({
   src: "../fonts/caveat-normal.woff2",
   variable: "--font-hand",
+  preload: false,
   weight: "400 700",
   style: "normal",
 });

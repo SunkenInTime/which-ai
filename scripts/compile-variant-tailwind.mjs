@@ -51,6 +51,13 @@ root.walkDecls(/^animation(-name)?$/, (decl) => {
   decl.value = decl.value.replace(/var\((--animate-[\w-]+)\)/g, (match, name) => animateVars.get(name) ?? match);
 });
 
+// Theme variables go on the source's <html> stand-in, not :root. The scoper would turn :root into the gallery's
+// outer wrapper, above the [data-source-html] div where next/font sets its variables, so an alias such as
+// --font-mono: var(--font-geist-mono) would resolve there to nothing.
+root.walkRules((rule) => {
+  if (rule.selector.replace(/\s+/g, "") === ":root,:host") rule.selector = "[data-source-html]";
+});
+
 const layer = postcss.atRule({ name: "layer", params: layerName });
 const topLevel = [];
 root.each((node) => {

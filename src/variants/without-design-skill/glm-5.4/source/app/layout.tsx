@@ -7,10 +7,12 @@ import "@/generated/scoped-variant-css/without-design-skill/glm-5.4/source/app/g
 import "@/generated/scoped-variant-css/without-design-skill/glm-5.4/source/app/tailwind-theme.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54NoSkillsGeist = localFont({
   src: "./fonts/geist-normal.woff2",
   variable: "--font-geist-sans",
+  preload: false,
   weight: "100 900",
   style: "normal",
 });
@@ -18,6 +20,7 @@ const glm54NoSkillsGeist = localFont({
 const glm54NoSkillsGeistMono = localFont({
   src: "./fonts/geist-mono-normal.woff2",
   variable: "--font-geist-mono",
+  preload: false,
   weight: "100 900",
   style: "normal",
 });

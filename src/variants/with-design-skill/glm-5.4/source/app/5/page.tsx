@@ -6,10 +6,12 @@ import SplitHero from "./hero";
 import styles from "./split.module.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54DesignArchivo = localFont({
   src: "../fonts/archivo-normal.woff2",
   variable: "--font-grot",
+  preload: false,
   weight: "100 900",
   style: "normal",
   display: "swap",

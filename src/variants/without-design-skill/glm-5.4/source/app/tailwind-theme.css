@@ -70,7 +70,7 @@
 }
 
 @layer theme {
-  :root, :host {
+  [data-source-html] {
     --font-mono: var(--font-geist-mono);
     --color-black: #000;
     --color-white: #fff;

@@ -7,13 +7,15 @@ import { plans, testimonials } from "@/variants/without-design-skill/glm-5.4/sou
 import styles from "./iter2.module.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54NoSkillsInstrumentSerif2 = localFont({
   src: [
     { path: "../fonts/instrument-serif-normal.woff2", weight: "400", style: "normal" },
     { path: "../fonts/instrument-serif-italic.woff2", weight: "400", style: "italic" },
   ],
   variable: "--font-display",
+  preload: false,
 });
 
 export const metadata: Metadata = { title: "Iteration 2 — Editorial" };

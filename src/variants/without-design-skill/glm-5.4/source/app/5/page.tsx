@@ -8,10 +8,12 @@ import { features, plans, testimonials } from "@/variants/without-design-skill/g
 import styles from "./iter5.module.css";
 
 // Gallery adaptation: next/font/local with the Latin file the original next/font/google build served, under a GLM 5.4
-// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4).
+// family name, so other entries' same-named Google faces can't stand in for it (see docs/benchmarks/glm-5-4). Not preloaded:
+// the gallery registry imports every entry, so a preload would fetch these on every gallery page.
 const glm54NoSkillsManrope = localFont({
   src: "../fonts/manrope-normal.woff2",
   variable: "--font-page",
+  preload: false,
   weight: "200 800",
   style: "normal",
 });
@@ -21,6 +23,7 @@ const glm54NoSkillsInstrumentSerif5 = localFont({
     { path: "../fonts/instrument-serif-italic.woff2", weight: "400", style: "italic" },
   ],
   variable: "--font-display",
+  preload: false,
 });
 
 export const metadata: Metadata = { title: "Iteration 5 — Calm" };
