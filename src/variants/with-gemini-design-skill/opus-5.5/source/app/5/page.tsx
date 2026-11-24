@@ -13,9 +13,11 @@ const MONTHS = Array.from({ length: 60 }, (_, i) => i);
 
 export default function NightShift() {
   return (
-    <div className={styles.page}>
+    <div className={styles.page} id="top">
       <header className={styles.header}>
-        <a href="/with-gemini-design-skill/opus-5.5/5" className={styles.brand} aria-label="Kept home">
+        {/* Gallery adaptation: the source linked to "/5", reloading the page at its top; inside the gallery (and its
+            compare panes) a jump to the top of the page does the same without leaving the embed. */}
+        <a href="#top" className={styles.brand} aria-label="Kept home">
           <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
             <path d="M11 1.5l2.2 7.3 7.3 2.2-7.3 2.2-2.2 7.3-2.2-7.3-7.3-2.2 7.3-2.2z" fill="#ffb547" />
           </svg>

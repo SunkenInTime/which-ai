@@ -818,3 +818,31 @@ test("GLM 5.4 pages keep their own Tailwind theme and fonts in the gallery", asy
   });
   expect(archivoLoaded).toBe(true);
 });
+
+test("With Gemini Design Skill pages draw their headings in their own fonts and stay in the compare pane", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  // next/font named these faces plainly, so other entries' same-named faces stood in for them (Opus /3's condensed
+  // Archivo lost its width). Each entry now loads its original build's faces under a prefixed name.
+  const cases = [
+    ["opus-5.5", "3", "Opus Gemini Archivo"],
+    ["fable-5.2", "1", "Fable Gemini Bricolage Grotesque"],
+    ["gemini-4-neon", "4", "Neon Gemini Fraunces"],
+    ["gpt-6.2-astra", "1", "Astra62 Gemini Instrument Serif"],
+  ] as const;
+  for (const [model, iteration, family] of cases) {
+    await page.goto(`/preview/with-gemini-design-skill/${model}/${iteration}`);
+    const heading = page.locator("[data-source-body] h1").first();
+    await expect(heading).toHaveCSS("font-family", new RegExp(`^"${family}"`));
+    // document.fonts.check() is true when no face matches at all, so look for the loaded face itself.
+    const loaded = await page.evaluate(async (family) => {
+      await document.fonts.load(`40px "${family}"`);
+      return [...document.fonts].some((face) => face.family.replace(/"/g, "") === family && face.status === "loaded");
+    }, family);
+    expect(loaded, `${model}/${iteration} ${family}`).toBe(true);
+  }
+
+  // Opus /5's logo used to point at the gallery route, which loaded a whole gallery page inside a compare pane.
+  await page.goto("/preview/with-gemini-design-skill/opus-5.5/5");
+  await page.getByRole("link", { name: "Kept home" }).click();
+  await expect(page).toHaveURL(/\/preview\/with-gemini-design-skill\/opus-5\.5\/5#top$/);
+});

@@ -31,7 +31,7 @@ const markSwitcher = (p) => p.evaluate(() => {
     if (s.position === "fixed" && t.length < 80 && (/\b[1-5]\s*\/\s*5\b/.test(t) || (/\b1\b/.test(t) && /\b5\b/.test(t))) && el.querySelector("a,button") && !el.closest("[data-bench-switcher]")) el.setAttribute("data-bench-switcher", "");
   }
 });
-let total = 0, mismatched = 0;
+let total = 0, mismatched = 0, skipped = 0, failed = 0;
 for (const i of [1, 2, 3, 4, 5]) {
   const a = await open(`${orig}/${i}`, "body");
   const b = await open(`${gal}/${i}`, "[data-source-body]");
@@ -39,15 +39,18 @@ for (const i of [1, 2, 3, 4, 5]) {
   const sel = "button:visible:not([data-bench-switcher] *), [role=tab]:visible:not([data-bench-switcher] *), [role=radio]:visible:not([data-bench-switcher] *), summary:visible";
   const n = Math.min(await a.page.locator(sel).count(), await b.page.locator(sel).count());
   const na = await a.page.locator(sel).count(), nb = await b.page.locator(sel).count();
-  if (na !== nb) console.log(`${name} /${i}: button count differs ${na} vs ${nb}`);
+  if (na !== nb) { failed++; console.log(`${name} /${i}: button count differs ${na} vs ${nb}`); }
   let t0a = await textOf(a.page, "body"), t0b = await textOf(b.page, "[data-source-body]");
   if (t0a !== t0b) { mismatched++; console.log(`${name} /${i} initial text differs`); }
   for (let k = 0; k < n; k++) {
     const la = a.page.locator(sel).nth(k), lb = b.page.locator(sel).nth(k);
     const label = ((await la.innerText({ timeout: 2000 }).catch(() => "")) || (await la.getAttribute("aria-label", { timeout: 2000 }).catch(() => "")) || "").slice(0, 40);
-    try {
-      await la.click({ timeout: 3000 }); await lb.click({ timeout: 3000 });
-    } catch { continue; }
+    // Click each side on its own: a control that works in the original but not in the gallery (or the reverse) is a
+    // mismatch, not a skip. Controls neither side can click (hidden behind another element, say) are counted apart.
+    const okA = await la.click({ timeout: 3000 }).then(() => true, () => false);
+    const okB = await lb.click({ timeout: 3000 }).then(() => true, () => false);
+    if (okA !== okB) { mismatched++; console.log(`${name} /${i} "${label}": clickable in ${okA ? "original only" : "gallery only"}`); continue; }
+    if (!okA) { skipped++; console.log(`${name} /${i} "${label}": not clickable on either side`); continue; }
     await a.page.waitForTimeout(250); await b.page.waitForTimeout(250);
     total++;
     // Leave any dialog or menu the click opened.
@@ -57,8 +60,11 @@ for (const i of [1, 2, 3, 4, 5]) {
     if (!a.page.url().startsWith(`${orig}/${i}`)) await a.page.goto(`${orig}/${i}`);
     if (!b.page.url().startsWith(`${gal}/${i}`)) await b.page.goto(`${gal}/${i}`);
   }
+  if (a.errors.length || b.errors.length) failed++;
   if (a.errors.length || b.errors.length) console.log(`${name} /${i} errors orig=${a.errors.length} gallery=${b.errors.length}`, b.errors.slice(0, 2));
   await a.ctx.close(); await b.ctx.close();
 }
-console.log(`${name}: ${total} clicks, ${mismatched} text mismatches`);
+console.log(`${name}: ${total} clicks, ${mismatched} mismatches, ${skipped} not clickable on either side`);
 await browser.close();
+// Nonzero when anything differed: text, clickability, control counts or page errors.
+process.exitCode = mismatched || failed ? 1 : 0;
