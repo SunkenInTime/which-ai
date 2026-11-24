@@ -1,0 +1,11 @@
+Built five landing pages for **Folio**, a second-brain notebook app, running on port **3443**.
+
+1. [Paper studio](http://localhost:3443/1) — handwritten notes, taped photographs, and blue ink.
+2. [Field journal](http://localhost:3443/2) — an alpine panorama and field-journal typography.
+3. [Idea atlas](http://localhost:3443/3) — a colorful map with clickable, connected notes.
+4. [Reading room](http://localhost:3443/4) — an editorial layout inspired by annotated books.
+5. [Night desk](http://localhost:3443/5) — a lamp-lit writing space with quick thought capture.
+
+Use the **Design** button in the bottom-right corner to switch. All five share a working notebook that saves notes in your browser.
+
+Verified desktop and mobile layouts, note persistence, and navigation. Lint and production build pass.

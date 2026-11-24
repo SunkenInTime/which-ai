@@ -1,0 +1,14 @@
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"]) *,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"])  *::before,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"])  *::after { box-sizing: border-box; }
+/* Gallery adaptation: html/body rules move onto the wrapper divs. overflow-x: hidden becomes clip, so the wrapper
+   div doesn't become a scroll container (that would stop the pinned sections on /2 and /4 from sticking). */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"]) [data-source-html],:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"])  [data-source-body] { margin: 0; padding: 0; }
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"]) [data-source-body] { font-family: system-ui, sans-serif; overflow-x: clip; }
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"]) *,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"])  *::before,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="opus-5.5"])  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+}
+
+[data-source-html] {
+  scroll-behavior: smooth;
+}
+
+[data-source-body] {
+  margin: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-source-html] {
+    scroll-behavior: auto;
+  }
+}

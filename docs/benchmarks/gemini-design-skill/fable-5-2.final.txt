@@ -1,0 +1,20 @@
+All five landing pages are built and running at **http://localhost:3442** (`/` redirects to `/1`). The dev server is still up.
+
+The switcher is a small pill fixed at the bottom center of every page, numbered 1 to 5. You can also press the `1`–`5` keys or the left/right arrows to move between designs.
+
+All five are for the same product, which I named "Engram", so you are comparing design direction rather than copy:
+
+| Route | Direction | What it looks like |
+|---|---|---|
+| `/1` | Constellation | Deep marine with a citron accent. The hero is a full-bleed canvas of linked notes that responds to the cursor; below it, a pinned diagram steps through capture, connect and recall as you scroll. |
+| `/2` | Poster | Cobalt, tomato and lemon color blocks with wall-to-wall condensed type. Includes a "try it" wall where you type a thought and it lands as a sticky note linked to a related one. |
+| `/3` | Commonplace | Lilac editorial with a serif headline and highlighter yellow. Papers on a desk in the hero, a book page with a highlighted pull quote, and notes pinned on a string. |
+| `/4` | Workbench | Crisp white with a working note editor as the hero. Typing `[[` suggests notes to link, and the related-notes panel and mini graph update as you write. |
+| `/5` | Depth | Forest green and pink. Giant "Total recall" lettering sits behind and in front of a 3D card stack that tilts with the cursor; on scroll, a stack of cards fans out into a row. |
+
+I checked each page in the browser at 1440×900 and 390×844, top to bottom, and fixed what turned up. Lint, typecheck and a production build all pass.
+
+- **Styling:** each design uses its own CSS module rather than Tailwind utilities, to keep the five visual systems isolated. The switcher uses Tailwind.
+- **Imagery:** there was no image-generation tool available, so all visuals are CSS, SVG or canvas.
+
+Nothing is committed. The starter's `app/page.tsx`, `app/layout.tsx` and `app/globals.css` were modified; everything else is new under `app/1` to `app/5` and `app/_components`.

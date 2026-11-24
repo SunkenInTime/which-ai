@@ -1,0 +1,36 @@
+{
+ "checkedAt": "2026-11-24",
+ "note": "API-equivalent estimates at list prices. Every run used a subscription, so none are charges.",
+ "records": [
+  {
+   "model": "opus-5.5",
+   "usd": 9.1181,
+   "method": "Claude Code's own total_cost_usd (costBasis list). Matches $4/M input, $5/M 5-minute and $8/M 1-hour cache writes, $0.20/M cache reads, $20/M output."
+  },
+  {
+   "model": "fable-5.2",
+   "usd": 11.1943,
+   "method": "Claude Code's own total_cost_usd (costBasis list) for claude-fable-5-2."
+  },
+  {
+   "model": "gpt-6.2-astra",
+   "usd": 2.1485,
+   "rates": {
+    "input": 8.0,
+    "cachedInput": 0.4,
+    "output": 40.0
+   },
+   "method": "OpenAI Standard short-context rates (no request over 272K input): 37,426 uncached x $8 + 1,617,024 cached x $0.40 + 30,057 output (incl. reasoning) x $40, per million. Two image generations not priced."
+  },
+  {
+   "model": "gemini-4-neon",
+   "usd": 1.4669,
+   "rates": {
+    "input": 3.0,
+    "cachedInput": 0.15,
+    "output": 15.0
+   },
+   "method": "Rates from the earlier Neon costs.json. Antigravity 1.5 reports totalTokens = inputTokens + cachedReadTokens + outputTokens, so inputTokens here is uncached input and thinking is inside outputTokens (the 1.4.5 server counted them differently): 131,200 x $3 + 1,234,055 x $0.15 + 59,209 x $15, per million. Image generation by the subagents is not priced."
+  }
+ ]
+}

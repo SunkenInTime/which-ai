@@ -1,0 +1,420 @@
+{
+ "batch": "gemini-design-skill",
+ "purpose": "Try Google's gemini-frontend-design skill on four models with the gallery prompt. New gallery group: with-gemini-design-skill.",
+ "skill": {
+  "name": "gemini-frontend-design",
+  "version": "1.0.0",
+  "source": "google-gemini/demolab@cd0c1f8540c0186ec9592af972a0700fa20909d4 skills/gemini-frontend-design",
+  "files": 1,
+  "skillMdSha256": "ddb259be8994bd83beaac0c70eaa0d199175c4b54e4200bed5b82c0ec1614e23",
+  "license": "Apache-2.0",
+  "copy": "gemini-frontend-design.SKILL.md"
+ },
+ "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008 (starter-eeeb008.tar, sha256 da4eca43db848f6b03f7eabeb62e65c8dc01b802fd5fc113a5d3cf5775fe3f0f)",
+ "starterLockfileSha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+ "promptPolicy": "The gallery's frontend-design prompt with the skill name changed to gemini-frontend-design and the port changed (3441-3444). One prompt per model, no follow-up.",
+ "generationPolicy": "Generated outside the gallery checkout on t3os (Ubuntu 26.04), all four at once on one machine. No operator edits to generated source. Source hashes describe the original files before gallery adaptation.",
+ "browser": "Playwright MCP 0.0.83, isolated headless Chromium 1247, 1440x960, image responses allowed",
+ "isolation": "Private mount namespace: empty folders over /etc/codex and /etc/claude-code (the box's agent instructions), read-only empty folders over /home/dara/.claude, /home/dara/.agents and /home/dara/.gemini (the user's own agent folders), and the run's own folder over /tmp; then setpriv to the normal user and env -i with only the listed environment. Context isolation, not a filesystem jail.",
+ "sessions": [
+  {
+   "model": "opus-5.5",
+   "modelId": "claude-opus-5-5",
+   "effort": "high",
+   "harness": "Claude Code 2.1.331 headless (claude -p, stream-json)",
+   "auth": "The box's claude.ai login (Max), copied with the access token only (refresh token removed so the copy can't rotate the real login).",
+   "invocation": {
+    "harness": "claude",
+    "exe": "/home/dara/.local/share/claude/versions/2.1.331",
+    "version": "2.1.331 (Claude Code)",
+    "model": "claude-opus-5-5",
+    "effort": "high",
+    "wrapper": "sudo unshare --mount; mount --bind empty-etc over /etc/codex and /etc/claude-code; read-only empty folder over /home/dara/.claude, .agents and .gemini; mount --bind <run>/tmp /tmp; setpriv --reuid=dara --regid=dara --init-groups; env -i",
+    "argv": [
+     "-p",
+     "--model",
+     "claude-opus-5-5",
+     "--effort",
+     "high",
+     "--strict-mcp-config",
+     "--mcp-config",
+     "/home/dara/Code/bench-gemini-skill/opus-5-5/mcp.json",
+     "--dangerously-skip-permissions",
+     "--output-format",
+     "stream-json",
+     "--verbose"
+    ],
+    "promptFile": "/home/dara/Code/bench-gemini-skill/prompts/opus-5-5.txt",
+    "promptSha256": "28c76886156787c18963cf39132f088bfb47827e2e1e130e4337d41c789534fe",
+    "env": [
+     "HOME=/home/dara/Code/bench-gemini-skill/opus-5-5/home",
+     "TMPDIR=/home/dara/Code/bench-gemini-skill/opus-5-5/tmp",
+     "PATH=/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+     "SHELL=/bin/bash",
+     "LANG=C.UTF-8",
+     "TERM=dumb",
+     "USER=dara",
+     "CHROME_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright/chromium-1247/chrome-linux64/chrome",
+     "PLAYWRIGHT_BROWSERS_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright",
+     "npm_config_cache=/home/dara/Code/bench-gemini-skill/npm-cache",
+     "CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1",
+     "CLAUDE_CODE_SYNC_SKILLS=0",
+     "CLAUDE_CODE_SYNC_PLUGINS=0",
+     "CLAUDE_CODE_DISABLE_POLICY_SKILLS=1",
+     "DISABLE_AUTOUPDATER=1",
+     "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1"
+    ]
+   },
+   "skillPlacement": ".claude/skills/gemini-frontend-design",
+   "claudeSettings": {
+    "syncClaudeAiSkills": false,
+    "syncClaudeAiPlugins": false
+   },
+   "initSkills": [
+    "gemini-frontend-design",
+    "design",
+    "doctor",
+    "plugin-authoring"
+   ],
+   "initPlugins": [
+    "cc-plugin-agents-md",
+    "cc-plugin-telemetry",
+    "cc-plugin-privacy",
+    "cc-plugin-plugin-authoring"
+   ],
+   "startedAt": "2026-11-24T19:06:07.789Z",
+   "finishedAt": "2026-11-24T19:21:40.970Z",
+   "exitCode": 0,
+   "numTurns": 114,
+   "baselineCommit": "6bf92b1080dded714f2b2095d74b7e50803f6fa0",
+   "promptSha256": "28c76886156787c18963cf39132f088bfb47827e2e1e130e4337d41c789534fe",
+   "toolUse": {
+    "mainThread": {
+     "Skill": 1,
+     "Bash": 35,
+     "Agent": 5,
+     "ToolSearch": 1,
+     "browser_navigate": 10,
+     "browser_take_screenshot": 31,
+     "browser_evaluate": 25,
+     "browser_resize": 2,
+     "browser_console_messages": 2
+    },
+    "helpers": {
+     "Bash": 39,
+     "Write": 19
+    }
+   },
+   "subAgents": "Five forks, one per page; all completed.",
+   "permissionDenials": "One helper Bash call (a heredoc writing three components) was refused by Claude Code's command check ('can't be sure it read this command the way the shell will'); the helper wrote the files another way.",
+   "imageGeneration": "None available in Claude Code; visuals are SVG, canvas and CSS.",
+   "usage": {
+    "inputTokens": 278,
+    "cacheWrite5m": 231883,
+    "cacheWrite1h": 123373,
+    "cacheRead": 10447312,
+    "outputTokens": 244055,
+    "thinkingTokens": 78821
+   },
+   "apiEquivalentUsd": 9.1181,
+   "product": "Kept"
+  },
+  {
+   "model": "fable-5.2",
+   "modelId": "claude-fable-5-2",
+   "effort": "high",
+   "harness": "Claude Code 2.1.331 headless (claude -p, stream-json)",
+   "auth": "Dara's CLIProxyAPI hub on t3os (ANTHROPIC_BASE_URL=http://127.0.0.1:8317, key via apiKeyHelper reading the hub's client-key file), which routes to Dara's Claude subscriptions. The box's own login had used its weekly Fable limit (resets 2026-11-28); Dara: 'hit it from my cli proxy'. The init event reports apiKeySource apiKeyHelper; the hub's quota guard showed the Max 5x account active at 14-15% of its weekly window.",
+   "invocation": {
+    "harness": "claude",
+    "exe": "/home/dara/.local/share/claude/versions/2.1.331",
+    "version": "2.1.331 (Claude Code)",
+    "model": "claude-fable-5-2",
+    "effort": "high",
+    "wrapper": "sudo unshare --mount; mount --bind empty-etc over /etc/codex and /etc/claude-code; read-only empty folder over /home/dara/.claude, .agents and .gemini; mount --bind <run>/tmp /tmp; setpriv --reuid=dara --regid=dara --init-groups; env -i",
+    "argv": [
+     "-p",
+     "--model",
+     "claude-fable-5-2",
+     "--effort",
+     "high",
+     "--strict-mcp-config",
+     "--mcp-config",
+     "/home/dara/Code/bench-gemini-skill/fable-5-2/mcp.json",
+     "--dangerously-skip-permissions",
+     "--output-format",
+     "stream-json",
+     "--verbose"
+    ],
+    "promptFile": "/home/dara/Code/bench-gemini-skill/prompts/fable-5-2.txt",
+    "promptSha256": "5848c8b083b58517eabc1481fe612dd9195d671b61edcc79a677357e5665a906",
+    "env": [
+     "HOME=/home/dara/Code/bench-gemini-skill/fable-5-2/home",
+     "TMPDIR=/home/dara/Code/bench-gemini-skill/fable-5-2/tmp",
+     "PATH=/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+     "SHELL=/bin/bash",
+     "LANG=C.UTF-8",
+     "TERM=dumb",
+     "USER=dara",
+     "CHROME_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright/chromium-1247/chrome-linux64/chrome",
+     "PLAYWRIGHT_BROWSERS_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright",
+     "npm_config_cache=/home/dara/Code/bench-gemini-skill/npm-cache",
+     "CLAUDE_CODE_DISABLE_BUNDLED_SKILLS=1",
+     "CLAUDE_CODE_SYNC_SKILLS=0",
+     "CLAUDE_CODE_SYNC_PLUGINS=0",
+     "CLAUDE_CODE_DISABLE_POLICY_SKILLS=1",
+     "DISABLE_AUTOUPDATER=1",
+     "CLAUDE_CODE_DISABLE_BACKGROUND_TASKS=1",
+     "ANTHROPIC_BASE_URL=http://127.0.0.1:8317"
+    ]
+   },
+   "skillPlacement": ".claude/skills/gemini-frontend-design",
+   "initSkills": [
+    "gemini-frontend-design",
+    "design",
+    "doctor",
+    "plugin-authoring"
+   ],
+   "startedAt": "2026-11-24T19:36:34.357Z",
+   "finishedAt": "2026-11-24T20:05:40.259Z",
+   "exitCode": 0,
+   "numTurns": 214,
+   "baselineCommit": "8961b854a43b26cc42af795021b60a9e09d57f21",
+   "promptSha256": "5848c8b083b58517eabc1481fe612dd9195d671b61edcc79a677357e5665a906",
+   "toolUse": {
+    "mainThread": {
+     "Skill": 1,
+     "Bash": 37,
+     "Read": 40,
+     "ToolSearch": 1,
+     "browser_navigate": 29,
+     "browser_take_screenshot": 50,
+     "browser_evaluate": 50,
+     "browser_resize": 3,
+     "browser_console_messages": 1
+    }
+   },
+   "subAgents": "None.",
+   "imageGeneration": "None available; the final message says so. Visuals are CSS, SVG and canvas.",
+   "usage": {
+    "inputTokens": 140,
+    "cacheWrite5m": 277623,
+    "cacheRead": 11353221,
+    "outputTokens": 153657,
+    "thinkingTokens": 64400
+   },
+   "apiEquivalentUsd": 11.1943,
+   "product": "Engram"
+  },
+  {
+   "model": "gpt-6.2-astra",
+   "modelId": "gpt-6.2-astra",
+   "effort": "xhigh",
+   "harness": "Codex CLI 0.172.0 headless (codex exec --json). The earlier GPT-6.2 Astra gallery runs used 0.169.0, which is no longer installed.",
+   "auth": "Copy of the box's Codex ChatGPT login; unchanged by the run.",
+   "invocation": {
+    "harness": "codex",
+    "exe": "/home/dara/.codex/packages/standalone/releases/0.172.0-x86_64-unknown-linux-musl/bin/codex",
+    "version": "codex-cli 0.172.0",
+    "model": "gpt-6.2-astra",
+    "effort": "xhigh",
+    "wrapper": "sudo unshare --mount; mount --bind empty-etc over /etc/codex and /etc/claude-code; read-only empty folder over /home/dara/.claude, .agents and .gemini; mount --bind <run>/tmp /tmp; setpriv --reuid=dara --regid=dara --init-groups; env -i",
+    "argv": [
+     "exec",
+     "--model",
+     "gpt-6.2-astra",
+     "-c",
+     "model_reasoning_effort=xhigh",
+     "-c",
+     "skills.bundled.enabled=false",
+     "--disable",
+     "skill_search",
+     "--disable",
+     "apps",
+     "--disable",
+     "plugins",
+     "--disable",
+     "remote_plugin",
+     "--disable",
+     "tool_suggest",
+     "--disable",
+     "memories",
+     "--disable",
+     "browser_use",
+     "--disable",
+     "browser_use_external",
+     "--disable",
+     "in_app_browser",
+     "--disable",
+     "computer_use",
+     "--dangerously-bypass-approvals-and-sandbox",
+     "--skip-git-repo-check",
+     "--json",
+     "-C",
+     "/home/dara/Code/bench-gemini-skill/astra-6-2/work",
+     "-"
+    ],
+    "promptFile": "/home/dara/Code/bench-gemini-skill/prompts/astra-6-2.txt",
+    "promptSha256": "1b065bcb74d647989b189f6339d0162cb9f69df4f57b85e875ed09807cceebc4",
+    "env": [
+     "HOME=/home/dara/Code/bench-gemini-skill/astra-6-2/home",
+     "TMPDIR=/home/dara/Code/bench-gemini-skill/astra-6-2/tmp",
+     "PATH=/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+     "SHELL=/bin/bash",
+     "LANG=C.UTF-8",
+     "TERM=dumb",
+     "USER=dara",
+     "CHROME_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright/chromium-1247/chrome-linux64/chrome",
+     "PLAYWRIGHT_BROWSERS_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright",
+     "npm_config_cache=/home/dara/Code/bench-gemini-skill/npm-cache",
+     "CODEX_HOME=/home/dara/Code/bench-gemini-skill/astra-6-2/home/.codex"
+    ]
+   },
+   "skillPlacement": ".agents/skills/gemini-frontend-design",
+   "startedAt": "2026-11-24T19:06:07.809Z",
+   "finishedAt": "2026-11-24T19:20:26.536Z",
+   "exitCode": 0,
+   "baselineCommit": "4593a3a669e18d6fd9e670547834ab339331cb4c",
+   "promptSha256": "1b065bcb74d647989b189f6339d0162cb9f69df4f57b85e875ed09807cceebc4",
+   "toolUse": {
+    "requests": 30,
+    "codeModeExec": 29,
+    "commandExecutions": 100,
+    "browser_run_code_unsafe": 7,
+    "imageGenerations": 2
+   },
+   "networkFetchesByModel": "DM Sans and Instrument Serif woff2 files from Google Fonts, saved into public/fonts.",
+   "usage": {
+    "inputTokens": 1654450,
+    "cachedInputTokens": 1617024,
+    "outputTokens": 30057,
+    "reasoningOutputTokens": 4776,
+    "largestRequestInput": 76446
+   },
+   "apiEquivalentUsd": 2.1485,
+   "costNote": "Image generation is billed separately and not priced.",
+   "product": "Folio"
+  },
+  {
+   "model": "gemini-4-neon",
+   "modelId": "gemini-4-neon",
+   "effort": "high (thought_level)",
+   "harness": "Antigravity CLI 1.5.14 (release 83311d3f...), `antigravity acp --gemini-dir <home>/.gemini --app-data-dir antigravity-acp`, driven headless by acp-run.mjs with Playwright MCP passed as a session MCP server. The earlier Gemini 4 Neon runs used the 1.4.5 ACP server (agy_acp_server.par) at xhigh.",
+   "auth": "Copies of T3's Antigravity sign-in files (acp_token.json, antigravity-oauth-token); SSH_CONNECTION set so the 1.5 CLI uses file storage, as T3 does.",
+   "invocation": {
+    "harness": "agy",
+    "exe": "/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node",
+    "version": "antigravity-acp 83311d3f354567612dc16c1ae2ea9b503d6f6833aa4e138d39aa229da3f3bb99",
+    "model": "gemini-4-neon",
+    "effort": "high",
+    "wrapper": "sudo unshare --mount; mount --bind empty-etc over /etc/codex and /etc/claude-code; read-only empty folder over /home/dara/.claude, .agents and .gemini; mount --bind <run>/tmp /tmp; setpriv --reuid=dara --regid=dara --init-groups; env -i",
+    "argv": [
+     "/home/dara/Code/bench-gemini-skill/bin/acp-run.mjs",
+     "--workspace",
+     "/home/dara/Code/bench-gemini-skill/neon/work",
+     "--prompt-file",
+     "/home/dara/Code/bench-gemini-skill/prompts/neon.txt",
+     "--log",
+     "/home/dara/Code/bench-gemini-skill/neon/neon.jsonl",
+     "--final",
+     "/home/dara/Code/bench-gemini-skill/neon/neon.final.txt",
+     "--model",
+     "gemini-4-neon",
+     "--thinking",
+     "high",
+     "--browser-mcp"
+    ],
+    "promptFile": "/home/dara/Code/bench-gemini-skill/prompts/neon.txt",
+    "promptSha256": "3f32ba0471a7538fbaf6eeac83d84b7064ecd1902b71fce07e39d6653ffd2b8e",
+    "env": [
+     "HOME=/home/dara/Code/bench-gemini-skill/neon/home",
+     "TMPDIR=/home/dara/Code/bench-gemini-skill/neon/tmp",
+     "PATH=/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin:/usr/local/bin:/usr/bin:/bin",
+     "SHELL=/bin/bash",
+     "LANG=C.UTF-8",
+     "TERM=dumb",
+     "USER=dara",
+     "CHROME_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright/chromium-1247/chrome-linux64/chrome",
+     "PLAYWRIGHT_BROWSERS_PATH=/home/dara/Code/bench-gemini-skill/ms-playwright",
+     "npm_config_cache=/home/dara/Code/bench-gemini-skill/npm-cache",
+     "XDG_CONFIG_HOME=/home/dara/Code/bench-gemini-skill/neon/home/.config",
+     "XDG_CACHE_HOME=/home/dara/Code/bench-gemini-skill/neon/home/.cache",
+     "XDG_DATA_HOME=/home/dara/Code/bench-gemini-skill/neon/home/.local/share",
+     "GEMINI_HOME=/home/dara/Code/bench-gemini-skill/neon/home/.gemini",
+     "AGY_ACP_FORCE_FILE_STORAGE=1",
+     "AGY_CLI_DISABLE_AUTO_UPDATE=1",
+     "SSH_CONNECTION=127.0.0.1 0 127.0.0.1 0",
+     "AGY_ARGS=[\"acp\",\"--gemini-dir\",\"/home/dara/Code/bench-gemini-skill/neon/home/.gemini\",\"--app-data-dir\",\"antigravity-acp\"]",
+     "BROWSER=/bin/false",
+     "PYTHONUNBUFFERED=1",
+     "ELECTRON_RUN_AS_NODE=1",
+     "AGY_BIN=/home/dara/.t3/tools/antigravity-acp/linux-x64/versions/83311d3f354567612dc16c1ae2ea9b503d6f6833aa4e138d39aa229da3f3bb99/antigravity",
+     "NODE_BIN=/home/dara/.local/share/vite-plus/js_runtime/node/26.13.1/bin/node",
+     "BENCH_DIR=/home/dara/Code/bench-gemini-skill"
+    ]
+   },
+   "skillPlacement": ".agents/skills/gemini-frontend-design",
+   "skillsListedInPreflight": [
+    "agy-customizations",
+    "antigravity-guide",
+    "gemini-frontend-design",
+    "run-workflow",
+    "swarm_monitor",
+    "swarm_pane"
+   ],
+   "skillsNote": "All but gemini-frontend-design are Antigravity 1.5's built-in skills; none exist as files in the workspace or home.",
+   "startedAt": "2026-11-24T19:06:07.830Z",
+   "finishedAt": "2026-11-24T19:17:00.885Z",
+   "exitCode": 0,
+   "baselineCommit": "5e426cf080166594349fd71b355a443420940a66",
+   "promptSha256": "3f32ba0471a7538fbaf6eeac83d84b7064ecd1902b71fce07e39d6653ffd2b8e",
+   "toolUse": {
+    "read": 26,
+    "edit": 18,
+    "execute": 7,
+    "invoke_subagent": 3,
+    "browser_run_code_unsafe": 3
+   },
+   "imageGeneration": "The three subagents generated 9 pictures; 6 are used in public/images.",
+   "usage": {
+    "inputTokens": 131200,
+    "cachedReadTokens": 1234055,
+    "outputTokens": 59209,
+    "thoughtTokens": 12239,
+    "totalTokens": 1424464
+   },
+   "apiEquivalentUsd": 1.4669,
+   "product": "Cairn"
+  }
+ ],
+ "preflights": [
+  {
+   "run": "preflight-opus-5-5 (first)",
+   "outcome": "Discarded: loaded /home/dara/.claude/CLAUDE.md (Claude Code reads .claude/CLAUDE.md in every folder above the workspace) and the account's claude.ai skills. Fixed by hiding the user's agent folders and setting syncClaudeAiSkills/Plugins false."
+  },
+  {
+   "run": "preflight-opus-5-5 (second)",
+   "outcome": "Clean: only gemini-frontend-design plus Claude Code's built-ins, browser connected, no user or box instructions, canvas read from pixels."
+  },
+  {
+   "run": "preflight-fable-5-2 (box login)",
+   "outcome": "429 usage_limit_reached for Fable; no model output."
+  },
+  {
+   "run": "preflight-fable-5-2 (proxy)",
+   "outcome": "Clean, same as Opus; key passed in the environment for this check only, then moved to apiKeyHelper for the scored run."
+  },
+  {
+   "run": "preflight-astra-6-2",
+   "outcome": "Clean: rollout developer messages are Codex's built-ins, one skill in the catalog, canvas read from pixels."
+  },
+  {
+   "run": "preflight-neon (first)",
+   "outcome": "Client failed to start the server: the 1.5 CLI replaced the .par server."
+  },
+  {
+   "run": "preflight-neon (second)",
+   "outcome": "Clean: built-in Antigravity skills plus gemini-frontend-design, 25 browser tools, only the starter's AGENTS.md, canvas read from pixels. Ran before the user-folder mounts were added."
+  }
+ ]
+}

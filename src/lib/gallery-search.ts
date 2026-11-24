@@ -64,6 +64,7 @@ const MODEL_ALIASES: Partial<Record<ModelSlug, string[]>> = {
 const GROUP_ALIASES: Record<GalleryGroupSlug, string[]> = {
   "with-design-skill": ["design skill", "frontend design", "frontend-design", "anthropic skill", "skill"],
   "with-taste-skill": ["taste", "taste skill", "tasteskill", "skill"],
+  "with-gemini-design-skill": ["gemini skill", "gemini design skill", "gemini-frontend-design", "google skill", "skill"],
   "without-design-skill": ["baseline", "no skill", "raw", "vanilla", "plain"],
   miscellaneous: ["uncodexify", "misc", "skill"],
 };

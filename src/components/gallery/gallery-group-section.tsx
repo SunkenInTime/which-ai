@@ -6,6 +6,7 @@ import { Archive } from "lucide-react";
 import type { GalleryEntry, GalleryGroupSlug } from "@/lib/gallery-types";
 import {
   ANTHROPIC_FRONTEND_DESIGN_SKILL_URL,
+  GEMINI_FRONTEND_DESIGN_SKILL_URL,
   UNCODEXIFY_SKILL_URL,
 } from "@/lib/gallery-anthropic-skill";
 import { GalleryCard } from "@/components/gallery/gallery-card";
@@ -78,6 +79,18 @@ export function GalleryGroupSection({
           className="underline decoration-2 decoration-[var(--gallery-text-tertiary)] underline-offset-[6px] transition-colors hover:text-[var(--gallery-accent)] hover:decoration-[var(--gallery-accent)]"
         >
           Taste Skill
+        </Link>
+      </>
+    ) : group === "with-gemini-design-skill" ? (
+      <>
+        With{" "}
+        <Link
+          href={GEMINI_FRONTEND_DESIGN_SKILL_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline decoration-2 decoration-[var(--gallery-text-tertiary)] underline-offset-[6px] transition-colors hover:text-[var(--gallery-accent)] hover:decoration-[var(--gallery-accent)]"
+        >
+          Gemini Design Skill
         </Link>
       </>
     ) : group === "miscellaneous" ? (

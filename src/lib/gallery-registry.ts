@@ -1,3 +1,7 @@
+import GeminiSkillFable52 from "@/variants/with-gemini-design-skill/fable-5.2";
+import GeminiSkillOpus55 from "@/variants/with-gemini-design-skill/opus-5.5";
+import GeminiSkillAstra62 from "@/variants/with-gemini-design-skill/gpt-6.2-astra";
+import GeminiSkillNeon from "@/variants/with-gemini-design-skill/gemini-4-neon";
 import withTasteDeepSeek41Flash from "@/variants/with-taste-skill/deepseek-v4-1-flash";
 import withDeepSeek41Flash from "@/variants/with-design-skill/deepseek-v4-1-flash";
 import withoutDeepSeek41Flash from "@/variants/without-design-skill/deepseek-v4-1-flash";
@@ -172,6 +176,10 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-design-skill:gemini-4-carbon": withCarbon,
   "without-design-skill:gemini-4-carbon": withoutCarbon,
   "with-design-skill:gemini-4-neon": withNeon,
+  "with-gemini-design-skill:fable-5.2": GeminiSkillFable52,
+  "with-gemini-design-skill:opus-5.5": GeminiSkillOpus55,
+  "with-gemini-design-skill:gpt-6.2-astra": GeminiSkillAstra62,
+  "with-gemini-design-skill:gemini-4-neon": GeminiSkillNeon,
   "without-design-skill:gemini-4-neon": withoutNeon,
   "with-design-skill:sol-6-1": withSol61,
   "with-taste-skill:sol-6-1": withTasteSol61,

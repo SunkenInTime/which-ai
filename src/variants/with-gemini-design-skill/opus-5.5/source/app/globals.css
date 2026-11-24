@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; }
+/* Gallery adaptation: html/body rules move onto the wrapper divs. overflow-x: hidden becomes clip, so the wrapper
+   div doesn't become a scroll container (that would stop the pinned sections on /2 and /4 from sticking). */
+[data-source-html], [data-source-body] { margin: 0; padding: 0; }
+[data-source-body] { font-family: system-ui, sans-serif; overflow-x: clip; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

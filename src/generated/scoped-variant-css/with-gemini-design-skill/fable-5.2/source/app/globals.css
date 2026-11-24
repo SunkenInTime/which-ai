@@ -1,0 +1,16 @@
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) [data-source-html] {
+  scroll-behavior: smooth;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) [data-source-body] {
+  margin: 0;
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) [data-source-html] {
+    scroll-behavior: auto;
+  }
+}
