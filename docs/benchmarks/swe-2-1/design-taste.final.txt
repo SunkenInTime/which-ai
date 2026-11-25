@@ -1,0 +1,41 @@
+Done — the dev server is running at `http://localhost:3513`.
+
+### Iterations
+
+- `/1` — precise light “graph memory” direction  
+  http://localhost:3513/1
+- `/2` — warm editorial “research archive” direction  
+  http://localhost:3513/2
+- `/3` — airy centered “assistant notes” direction  
+  http://localhost:3513/3
+- `/4` — dark technical “recall engine” direction  
+  http://localhost:3513/4
+- `/5` — calm literary “commonplace book” direction  
+  http://localhost:3513/5
+
+`/` redirects to `/1`.
+
+A small iteration switcher is fixed at the bottom-right on desktop and bottom-center on mobile, with direct `1–5` links.
+
+### Implementation
+
+- Variant pages and product copy: <ref_file file="/home/dara/Code/bench-swe-2-1/design-taste/work/app/components/landing.tsx" />
+- Route implementation: <ref_file file="/home/dara/Code/bench-swe-2-1/design-taste/work/app/[variant]/page.tsx" />
+- Visual systems and responsive CSS: <ref_file file="/home/dara/Code/bench-swe-2-1/design-taste/work/app/globals.css" />
+- Product name verification record: <ref_file file="/home/dara/Code/bench-swe-2-1/design-taste/work/names.json" />
+
+The fictional product is named **Notomind**. Each iteration has different typography, palette, hero composition, product-interface treatment, section rhythm, and closing treatment while sharing the same underlying product concept.
+
+### Verification
+
+- `npm run build` — passed
+- `npx tsc --noEmit` — passed
+- `npx eslint app --max-warnings=0` — passed
+- `/1`–`/5` — all return `200`
+- `/` — redirects with `307`
+- Checked responsive widths `1440`, `1024`, `820`, `768`, and `390` across all five routes — no horizontal overflow
+- Browser-inspected desktop and mobile screenshots
+- Design-skill copy lint — `0 FAIL` for every page
+- Ran the stricter consistency audit on `/1`; actionable contrast, semantic footer placement, button consistency, tap-target, and hero-entrance findings were fixed
+
+Remaining deliberate limitations: the beta form uses a prototype `mailto:` stand-in rather than a backend, and the fixed iteration switcher necessarily overlays a small amount of page chrome while scrolling. The strict taste-skill audit still has house-rule findings around exact one-screen section geometry and the React/Next page shell; I did not distort the prototype architecture solely to satisfy those static-kit assumptions.

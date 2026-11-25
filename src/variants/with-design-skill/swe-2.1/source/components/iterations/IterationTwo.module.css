@@ -1,0 +1,437 @@
+.page {
+  --plaster: #e9eae2;
+  --plaster-light: #f4f4ed;
+  --ink: #20242b;
+  --muted: #626a72;
+  --blueprint: #263f6d;
+  --blueprint-soft: rgba(38, 63, 109, 0.16);
+  --brass: #a5792e;
+  --rose: #a75f55;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(38, 63, 109, 0.055) 1px, transparent 1px),
+    linear-gradient(rgba(38, 63, 109, 0.055) 1px, transparent 1px),
+    var(--plaster);
+  background-size: 4.5rem 4.5rem;
+  color: var(--ink);
+  font-family: "Nimbus Narrow", Arial, sans-serif;
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem clamp(1.2rem, 4vw, 4rem);
+  border-bottom: 2px solid var(--ink);
+  background: rgba(233, 234, 226, 0.91);
+  backdrop-filter: blur(12px);
+}
+
+.wordmark {
+  font-family: "C059", Georgia, serif;
+  font-size: 1.42rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--blueprint);
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(24rem, 0.86fr) minmax(34rem, 1.14fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  min-height: calc(100vh - 4.4rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.2rem, 4vw, 4rem);
+}
+
+.heroCopy {
+  position: relative;
+  z-index: 2;
+}
+
+.kicker,
+.sectionLabel,
+.roomKind {
+  margin: 0 0 1.1rem;
+  color: var(--blueprint);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+}
+
+.heroCopy h1 {
+  max-width: 8.4ch;
+  margin: 0;
+  font-family: "C059", Georgia, serif;
+  font-size: clamp(4.15rem, 8vw, 8.7rem);
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 0.85;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 1.8rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+  font-size: 0.92rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0 1rem;
+  text-decoration: none;
+}
+
+.primaryAction {
+  border: 2px solid var(--ink);
+  background: var(--blueprint);
+  color: var(--plaster-light);
+  box-shadow: 0.42rem 0.42rem 0 var(--ink);
+}
+
+.secondaryAction {
+  border: 1px solid rgba(32, 36, 43, 0.42);
+  color: var(--ink);
+}
+
+.primaryAction:hover {
+  transform: translate(0.14rem, 0.14rem);
+  box-shadow: 0.22rem 0.22rem 0 var(--ink);
+}
+
+.secondaryAction:hover {
+  border-color: var(--blueprint);
+  color: var(--blueprint);
+}
+
+.planFigure {
+  position: relative;
+  margin: 0;
+  padding: clamp(0.8rem, 1.5vw, 1.3rem);
+  border: 2px solid var(--ink);
+  background: var(--plaster-light);
+  box-shadow: 1rem 1rem 0 var(--blueprint-soft);
+}
+
+.planFigure::before {
+  position: absolute;
+  top: -1rem;
+  left: 9%;
+  width: 8rem;
+  height: 2rem;
+  border: 1px solid rgba(32, 36, 43, 0.16);
+  background: rgba(167, 95, 85, 0.18);
+  content: "";
+  transform: rotate(-2deg);
+}
+
+.floorPlan {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: var(--blueprint);
+  background:
+    linear-gradient(90deg, rgba(38, 63, 109, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(38, 63, 109, 0.07) 1px, transparent 1px),
+    #f7f6ef;
+  background-size: 2rem 2rem;
+}
+
+.wall {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 7;
+  stroke-linecap: square;
+}
+
+.opening {
+  fill: none;
+  stroke: #f7f6ef;
+  stroke-width: 10;
+}
+
+.route {
+  fill: none;
+  stroke: var(--brass);
+  stroke-dasharray: 1 15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 7;
+}
+
+.routeNode {
+  fill: var(--rose);
+  stroke: #f7f6ef;
+  stroke-width: 4;
+}
+
+.roomLabel {
+  fill: var(--blueprint);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 18px;
+}
+
+.scaleLabel {
+  fill: rgba(32, 36, 43, 0.58);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 14px;
+}
+
+.planFigure figcaption {
+  margin-top: 0.85rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.45;
+}
+
+.rooms {
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 6rem);
+  border-top: 2px solid var(--ink);
+}
+
+.sectionIntro {
+  max-width: 78rem;
+  margin: 0 auto;
+}
+
+.sectionIntro h2,
+.routeCopy h2 {
+  max-width: 13ch;
+  margin: 0;
+  font-family: "C059", Georgia, serif;
+  font-size: clamp(2.55rem, 5vw, 5.8rem);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 0.9;
+}
+
+.roomGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.95fr 0.95fr;
+  align-items: stretch;
+  max-width: 78rem;
+  margin: clamp(3rem, 5vw, 5rem) auto 0;
+  border: 2px solid var(--ink);
+  background: var(--plaster-light);
+}
+
+.roomGrid article {
+  min-height: 23rem;
+  padding: clamp(1.3rem, 2.5vw, 2.3rem);
+}
+
+.roomGrid article + article {
+  border-left: 2px solid var(--ink);
+}
+
+.roomGrid .roomLarge {
+  background:
+    linear-gradient(135deg, transparent 0 72%, rgba(38, 63, 109, 0.08) 72%),
+    var(--plaster-light);
+}
+
+.roomGrid h3 {
+  margin: 0;
+  font-family: "C059", Georgia, serif;
+  font-size: clamp(2rem, 3.1vw, 3.3rem);
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
+.roomGrid article > p:last-child {
+  max-width: 26rem;
+  margin: 1.35rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.52;
+}
+
+.routeSection {
+  display: grid;
+  grid-template-columns: minmax(24rem, 0.85fr) minmax(26rem, 1.15fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 6rem);
+  background: var(--blueprint);
+  color: var(--plaster-light);
+}
+
+.routeCopy .sectionLabel {
+  color: #c7d1ee;
+}
+
+.routeCopy > p:last-child {
+  max-width: 34rem;
+  margin: 1.7rem 0 0;
+  color: rgba(244, 244, 237, 0.78);
+  font-size: 1.12rem;
+  line-height: 1.55;
+}
+
+.routeBoard {
+  border: 1px solid rgba(244, 244, 237, 0.46);
+  background:
+    linear-gradient(90deg, rgba(244, 244, 237, 0.08) 1px, transparent 1px),
+    linear-gradient(rgba(244, 244, 237, 0.08) 1px, transparent 1px);
+  background-size: 2.4rem 2.4rem;
+}
+
+.routeBoard div {
+  position: relative;
+  padding: clamp(1.4rem, 3vw, 2.2rem) clamp(1.2rem, 3vw, 2.4rem);
+}
+
+.routeBoard div + div {
+  border-top: 1px solid rgba(244, 244, 237, 0.46);
+}
+
+.routeBoard div::before {
+  position: absolute;
+  top: 50%;
+  left: -0.42rem;
+  width: 0.82rem;
+  height: 0.82rem;
+  border: 2px solid var(--brass);
+  border-radius: 50%;
+  background: var(--blueprint);
+  content: "";
+  transform: translateY(-50%);
+}
+
+.routeBoard span {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: #c7d1ee;
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+}
+
+.routeBoard p {
+  margin: 0;
+  font-family: "C059", Georgia, serif;
+  font-size: clamp(1.35rem, 2.5vw, 2.2rem);
+  letter-spacing: -0.035em;
+  line-height: 1.1;
+}
+
+.enter {
+  display: grid;
+  place-items: center;
+  min-height: 24rem;
+  padding: 4rem clamp(1.2rem, 5vw, 6rem);
+  background: var(--ink);
+  color: var(--plaster-light);
+  text-align: center;
+}
+
+.enter p {
+  max-width: 45rem;
+  margin: 0;
+  font-family: "C059", Georgia, serif;
+  font-size: clamp(2.25rem, 5vw, 5.2rem);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.92;
+}
+
+.enter a {
+  margin-top: 2.2rem;
+  padding: 0.9rem 1.1rem;
+  border: 1px solid rgba(244, 244, 237, 0.76);
+  color: var(--plaster-light);
+  text-decoration: none;
+}
+
+.enter a:hover {
+  background: var(--plaster-light);
+  color: var(--ink);
+}
+
+@media (max-width: 1050px) {
+  .hero,
+  .routeSection {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCopy h1 {
+    max-width: 10ch;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 2.8rem;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(3.5rem, 17vw, 5.2rem);
+  }
+
+  .planFigure {
+    margin-top: 1rem;
+  }
+
+  .roomGrid {
+    display: block;
+  }
+
+  .roomGrid article {
+    min-height: 0;
+  }
+
+  .roomGrid article + article {
+    border-top: 2px solid var(--ink);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .roomLabel {
+    font-size: 24px;
+  }
+
+  .scaleLabel {
+    display: none;
+  }
+}

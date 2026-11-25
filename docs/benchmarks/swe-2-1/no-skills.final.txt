@@ -1,0 +1,24 @@
+Implemented and verified the five landing-page iterations.
+
+- `/1` — **Neural Noir**: cinematic dark knowledge-graph interface <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/components/landing/variant-one.tsx" />
+- `/2` — **Editorial Zen**: warm paper-like commonplace-book aesthetic <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/components/landing/variant-two.tsx" />
+- `/3` — **Command Center**: dense brutalist productivity system <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/components/landing/variant-three.tsx" />
+- `/4` — **Ambient Memory**: soft, emotional, human-centered memory field <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/components/landing/variant-four.tsx" />
+- `/5` — **Cortex Console**: technical AI memory terminal <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/components/landing/variant-five.tsx" />
+
+Also added:
+
+- A floating circular `1/5` button in the bottom-right corner that opens a polished iteration menu <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/components/landing/iteration-switcher.tsx" />
+- `/` redirects to `/1`
+- Shared animation, texture, grid, shadow, and reduced-motion styling <ref_file file="/home/dara/Code/bench-swe-2-1/no-skills/work/app/globals.css" />
+
+Verification completed:
+
+- `npm run lint` passes
+- `npm run build` passes
+- `/1` through `/5` return `200`
+- `/` returns a `307` redirect to `/1`
+- Desktop and mobile layouts were visually inspected
+- Browser console has no errors or warnings
+
+The development server is running at `http://localhost:3511`.

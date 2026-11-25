@@ -1,0 +1,566 @@
+.page {
+  --paper: #edefe8;
+  --paper-deep: #dde3d9;
+  --ink: #17231f;
+  --soft-ink: #59665f;
+  --verdigris: #327167;
+  --verdigris-deep: #17463f;
+  --annotation: #a34f43;
+  --rule: #bec8bd;
+  --slip: #f8f8f1;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 82% 8%, rgba(50, 113, 103, 0.13), transparent 32rem),
+    linear-gradient(90deg, rgba(23, 35, 31, 0.025) 1px, transparent 1px),
+    var(--paper);
+  background-size: auto, 7.5rem 7.5rem, auto;
+  color: var(--ink);
+  font-family: "P052", Georgia, serif;
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.15rem clamp(1.2rem, 4vw, 4rem);
+  border-bottom: 1px solid rgba(23, 35, 31, 0.14);
+  background: rgba(237, 239, 232, 0.86);
+  backdrop-filter: blur(14px);
+}
+
+.wordmark {
+  font-family: "P052", Georgia, serif;
+  font-size: 1.38rem;
+  font-style: italic;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 2.8vw, 2.4rem);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.76rem;
+}
+
+.nav a {
+  color: var(--soft-ink);
+  text-decoration: none;
+  text-underline-offset: 0.28em;
+}
+
+.nav a:hover {
+  color: var(--ink);
+  text-decoration: underline;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(3.5rem, 6vw) minmax(24rem, 0.88fr) minmax(28rem, 1.12fr);
+  gap: clamp(1.5rem, 4vw, 4.5rem);
+  min-height: calc(100vh - 4.2rem);
+  padding: clamp(3rem, 7vw, 7rem) clamp(1.2rem, 4vw, 4rem) clamp(4rem, 7vw, 7rem) 0;
+}
+
+.marginGloss {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  border-right: 1px solid rgba(23, 35, 31, 0.2);
+  color: var(--annotation);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+}
+
+.marginGloss span {
+  position: absolute;
+  top: 6%;
+  bottom: 12%;
+  left: 50%;
+  width: 1px;
+  background: linear-gradient(var(--annotation), transparent);
+  opacity: 0.48;
+}
+
+.marginGloss p {
+  align-self: center;
+  margin: 0;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+}
+
+.heroCopy {
+  align-self: center;
+  max-width: 42rem;
+}
+
+.kicker,
+.sectionLabel {
+  margin: 0 0 1.2rem;
+  color: var(--verdigris);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  line-height: 1.5;
+}
+
+.heroCopy h1 {
+  max-width: 8.6ch;
+  margin: 0;
+  font-size: clamp(4.2rem, 8.2vw, 8.8rem);
+  font-weight: 400;
+  letter-spacing: -0.056em;
+  line-height: 0.87;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 2rem 0 0;
+  color: var(--soft-ink);
+  font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+  line-height: 1.62;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2.15rem;
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.82rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: 0 1rem;
+  text-decoration: none;
+}
+
+.primaryAction {
+  border: 1px solid var(--verdigris-deep);
+  background: var(--verdigris-deep);
+  color: #f5f4eb;
+  box-shadow: 0.35rem 0.35rem 0 rgba(23, 35, 31, 0.18);
+}
+
+.secondaryAction {
+  border-bottom: 1px solid rgba(23, 35, 31, 0.36);
+  color: var(--ink);
+}
+
+.primaryAction:hover {
+  transform: translate(0.12rem, 0.12rem);
+  box-shadow: 0.2rem 0.2rem 0 rgba(23, 35, 31, 0.18);
+}
+
+.secondaryAction:hover {
+  border-color: var(--verdigris);
+  color: var(--verdigris-deep);
+}
+
+.paperStack {
+  position: relative;
+  align-self: center;
+  min-height: 39rem;
+}
+
+.connectiveTissue {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.connectiveTissue path {
+  fill: none;
+  stroke: var(--annotation);
+  stroke-dasharray: 2 7;
+  stroke-linecap: round;
+  stroke-width: 2;
+  opacity: 0.7;
+}
+
+.connectiveTissue circle {
+  fill: var(--annotation);
+}
+
+.mainSlip,
+.marginCardOne,
+.marginCardTwo,
+.marginCardThree {
+  position: absolute;
+  border: 1px solid rgba(23, 35, 31, 0.18);
+  background:
+    linear-gradient(rgba(50, 113, 103, 0.075) 1px, transparent 1px),
+    var(--slip);
+  background-size: 100% 1.65rem;
+  box-shadow: 0 1.2rem 2.4rem rgba(23, 35, 31, 0.14);
+}
+
+.mainSlip {
+  top: 7%;
+  left: 19%;
+  width: min(25.5rem, 70%);
+  padding: 2rem 2.15rem 1.6rem;
+  clip-path: polygon(0 1.8%, 97% 0, 100% 96.5%, 3% 100%);
+  transform: rotate(-2.2deg);
+}
+
+.slipMeta {
+  margin: 0 0 1rem;
+  color: var(--verdigris);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+}
+
+.mainSlip h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.55rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.mainSlip > p:not(.slipMeta) {
+  margin: 1.2rem 0 0;
+  color: #435149;
+  font-size: 1rem;
+  line-height: 1.64;
+}
+
+.slipLinks {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.48rem 0.7rem;
+  margin-top: 1.45rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(23, 35, 31, 0.16);
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.72rem;
+}
+
+.slipLinks span {
+  color: var(--soft-ink);
+}
+
+.slipLinks a {
+  color: var(--verdigris-deep);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.26em;
+}
+
+.marginCardOne,
+.marginCardTwo,
+.marginCardThree {
+  width: 13.4rem;
+  padding: 1rem;
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+}
+
+.marginCardOne {
+  top: 22%;
+  left: -3.2rem;
+  width: 12.4rem;
+  transform: rotate(4deg);
+}
+
+.marginCardTwo {
+  top: 48%;
+  right: 0;
+  transform: rotate(-3.5deg);
+}
+
+.marginCardThree {
+  bottom: 5%;
+  left: 4%;
+  transform: rotate(2deg);
+}
+
+.marginCardOne span,
+.marginCardTwo span,
+.marginCardThree span {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--annotation);
+  font-size: 0.66rem;
+}
+
+.marginCardOne p,
+.marginCardTwo p,
+.marginCardThree p {
+  margin: 0;
+  color: #39443f;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.annotationSection,
+.practice,
+.begin {
+  padding-inline: clamp(1.2rem, 6vw, 7rem);
+}
+
+.annotationSection {
+  padding-top: clamp(4.5rem, 8vw, 8rem);
+  padding-bottom: clamp(4.5rem, 8vw, 7rem);
+  border-top: 1px solid rgba(23, 35, 31, 0.17);
+}
+
+.sectionIntro {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.34fr) minmax(24rem, 0.66fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.sectionIntro h2,
+.practiceHeading h2 {
+  margin: 0;
+  font-size: clamp(2.15rem, 4.4vw, 4.9rem);
+  font-weight: 400;
+  letter-spacing: -0.043em;
+  line-height: 0.98;
+}
+
+.annotationsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 3vw, 3rem);
+  max-width: 72rem;
+  margin: clamp(3rem, 6vw, 5.5rem) auto 0;
+}
+
+.annotation {
+  position: relative;
+  padding: 1.35rem 0 0;
+}
+
+.annotation:nth-child(2) {
+  transform: translateY(2.8rem);
+}
+
+.annotation:nth-child(3) {
+  transform: translateY(5.6rem);
+}
+
+.annotationRule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--rule);
+}
+
+.annotationRule::after {
+  position: absolute;
+  right: 0;
+  top: -0.26rem;
+  width: 0.52rem;
+  height: 0.52rem;
+  border: 1px solid var(--annotation);
+  border-radius: 50%;
+  background: var(--paper);
+  content: "";
+}
+
+.annotation h3,
+.practiceList h3 {
+  margin: 0;
+  font-size: 1.42rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.annotation p,
+.practiceList p {
+  margin: 0.85rem 0 0;
+  color: var(--soft-ink);
+  font-size: 1rem;
+  line-height: 1.64;
+}
+
+.practice {
+  padding-top: clamp(6.5rem, 10vw, 10rem);
+  padding-bottom: clamp(4.5rem, 8vw, 8rem);
+  background:
+    linear-gradient(90deg, rgba(23, 35, 31, 0.08) 1px, transparent 1px) 0 0 / 25% 100%,
+    rgba(221, 227, 217, 0.5);
+}
+
+.practiceHeading {
+  display: grid;
+  grid-template-columns: minmax(12rem, 0.34fr) minmax(24rem, 0.66fr);
+  gap: clamp(1.5rem, 4vw, 4rem);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.practiceList {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+  max-width: 72rem;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid rgba(23, 35, 31, 0.18);
+  border-bottom: 1px solid rgba(23, 35, 31, 0.18);
+}
+
+.practiceList li {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1rem;
+  padding: 1.7rem clamp(1rem, 2vw, 2rem) 1.9rem;
+}
+
+.practiceList li + li {
+  border-left: 1px solid rgba(23, 35, 31, 0.18);
+}
+
+.practiceList li > span {
+  color: var(--annotation);
+  font-size: 3.2rem;
+  font-style: italic;
+  line-height: 0.9;
+}
+
+.begin {
+  display: grid;
+  place-items: center;
+  min-height: 24rem;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  background: var(--ink);
+  color: #edf0e8;
+  text-align: center;
+}
+
+.begin p {
+  max-width: 40rem;
+  margin: 0;
+  font-size: clamp(2rem, 4.7vw, 4.7rem);
+  font-style: italic;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.begin a {
+  margin-top: 2rem;
+  padding: 0.85rem 1.05rem;
+  border: 1px solid rgba(237, 239, 232, 0.7);
+  color: #edf0e8;
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.begin a:hover {
+  background: #edf0e8;
+  color: var(--ink);
+}
+
+@media (max-width: 1050px) {
+  .hero {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .paperStack {
+    grid-column: 2;
+    width: min(42rem, 100%);
+    margin-top: 2rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+
+  .hero {
+    display: block;
+    padding: 2.7rem 1.2rem 3.5rem;
+  }
+
+  .marginGloss {
+    display: none;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(3.6rem, 18vw, 5.2rem);
+  }
+
+  .paperStack {
+    min-height: 38rem;
+    margin-top: 3rem;
+  }
+
+  .mainSlip {
+    left: 8%;
+    width: 82%;
+  }
+
+  .marginCardOne {
+    top: 42%;
+    left: 0;
+  }
+
+  .marginCardTwo {
+    top: 61%;
+  }
+
+  .marginCardThree {
+    bottom: 0;
+  }
+
+  .sectionIntro,
+  .practiceHeading,
+  .annotationsGrid,
+  .practiceList {
+    display: block;
+  }
+
+  .annotation,
+  .annotation:nth-child(2),
+  .annotation:nth-child(3) {
+    margin-top: 2.2rem;
+    transform: none;
+  }
+
+  .practiceList li {
+    border-top: 1px solid rgba(23, 35, 31, 0.18);
+  }
+
+  .practiceList li + li {
+    border-left: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .paperStack {
+    min-height: 42rem;
+  }
+
+  .marginCardOne,
+  .marginCardTwo,
+  .marginCardThree {
+    width: 11.5rem;
+  }
+
+  .actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

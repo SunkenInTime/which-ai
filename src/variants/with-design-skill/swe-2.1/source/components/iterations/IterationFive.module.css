@@ -1,0 +1,522 @@
+.page {
+  --lichen: #edf3e5;
+  --lichen-light: #f7faf1;
+  --ink: #1e3024;
+  --muted: #60705e;
+  --moss: #486449;
+  --moss-dark: #263f2d;
+  --spore: #d4a542;
+  --rose: #b97c88;
+  --soil: #776047;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(185, 124, 136, 0.16), transparent 24rem),
+    radial-gradient(circle at 8% 78%, rgba(72, 100, 73, 0.16), transparent 28rem),
+    var(--lichen);
+  color: var(--ink);
+  font-family: "URW Bookman", Georgia, serif;
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.05rem clamp(1.2rem, 4vw, 4rem);
+  background: rgba(237, 243, 229, 0.86);
+  backdrop-filter: blur(14px);
+}
+
+.wordmark {
+  color: var(--moss-dark);
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.4rem);
+  color: var(--muted);
+  font-size: 0.94rem;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--moss-dark);
+  text-decoration: underline;
+  text-underline-offset: 0.28em;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(24rem, 0.86fr) minmax(30rem, 1.14fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  min-height: calc(100vh - 4.2rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.2rem, 4vw, 4rem);
+}
+
+.kicker,
+.sectionLabel {
+  margin: 0 0 1.2rem;
+  color: var(--soil);
+  font-size: 0.9rem;
+}
+
+.heroCopy h1 {
+  max-width: 8.4ch;
+  margin: 0;
+  font-size: clamp(4.4rem, 8.4vw, 9rem);
+  font-weight: 700;
+  letter-spacing: -0.075em;
+  line-height: 0.85;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 1.85rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.08rem, 1.5vw, 1.28rem);
+  line-height: 1.65;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2.1rem;
+  font-size: 0.92rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3.1rem;
+  padding: 0 1.1rem;
+  text-decoration: none;
+}
+
+.primaryAction {
+  border-radius: 999px 999px 999px 1.4rem;
+  background: var(--moss-dark);
+  color: var(--lichen-light);
+  box-shadow: 0 1rem 2rem rgba(38, 63, 45, 0.18);
+}
+
+.secondaryAction {
+  border-bottom: 1px solid rgba(30, 48, 36, 0.38);
+  color: var(--ink);
+}
+
+.primaryAction:hover {
+  background: var(--moss);
+  transform: translateY(-1px);
+}
+
+.secondaryAction:hover {
+  border-color: var(--rose);
+  color: var(--rose);
+}
+
+.colony {
+  position: relative;
+  min-height: 42rem;
+}
+
+.hyphae {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.mainHypha,
+.hyphaBranch,
+.hyphaFine {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.mainHypha {
+  stroke: var(--moss);
+  stroke-width: 18;
+  opacity: 0.25;
+}
+
+.hyphaBranch {
+  stroke: var(--moss);
+  stroke-width: 10;
+  opacity: 0.23;
+}
+
+.hyphaFine {
+  stroke: var(--soil);
+  stroke-dasharray: 1 13;
+  stroke-width: 5;
+  opacity: 0.48;
+}
+
+.spore,
+.sporeRose {
+  stroke: var(--lichen-light);
+  stroke-width: 5;
+}
+
+.spore {
+  fill: var(--spore);
+}
+
+.sporeRose {
+  fill: var(--rose);
+}
+
+.noteBloomOne,
+.noteBloomTwo,
+.noteBloomThree,
+.noteBloomFour {
+  position: absolute;
+  width: 14.5rem;
+  padding: 1.1rem 1.25rem;
+  border: 1px solid rgba(30, 48, 36, 0.14);
+  background: rgba(247, 250, 241, 0.82);
+  box-shadow: 0 1.3rem 2.6rem rgba(38, 63, 45, 0.13);
+  backdrop-filter: blur(8px);
+}
+
+.noteBloomOne {
+  top: 3%;
+  left: 0;
+  border-radius: 58% 42% 55% 45% / 45% 54% 46% 55%;
+  transform: rotate(-4deg);
+}
+
+.noteBloomTwo {
+  top: 16%;
+  right: 0;
+  border-radius: 42% 58% 44% 56% / 56% 42% 58% 44%;
+  transform: rotate(3deg);
+}
+
+.noteBloomThree {
+  right: 9%;
+  bottom: 8%;
+  border-radius: 52% 48% 60% 40% / 44% 58% 42% 56%;
+  transform: rotate(-2deg);
+}
+
+.noteBloomFour {
+  bottom: 3%;
+  left: 3%;
+  border-radius: 44% 56% 48% 52% / 58% 42% 58% 42%;
+  transform: rotate(4deg);
+}
+
+.noteBloomOne span,
+.noteBloomTwo span,
+.noteBloomThree span,
+.noteBloomFour span {
+  display: block;
+  margin-bottom: 0.55rem;
+  color: var(--soil);
+  font-size: 0.74rem;
+  font-style: italic;
+}
+
+.noteBloomOne p,
+.noteBloomTwo p,
+.noteBloomThree p,
+.noteBloomFour p {
+  margin: 0;
+  color: #405240;
+  font-size: 0.94rem;
+  line-height: 1.48;
+}
+
+.network {
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 6rem);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(212, 165, 66, 0.1), transparent 28rem),
+    rgba(247, 250, 241, 0.45);
+}
+
+.sectionIntro {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.sectionIntro h2,
+.seasonCopy h2 {
+  max-width: 14ch;
+  margin: 0;
+  font-size: clamp(2.7rem, 5.2vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.88;
+}
+
+.growthGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 4rem);
+  max-width: 76rem;
+  margin: clamp(3rem, 5vw, 5rem) auto 0;
+}
+
+.growthGrid article {
+  position: relative;
+  padding-top: 1.5rem;
+}
+
+.growthGrid article::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--moss), transparent);
+  border-radius: 50%;
+  content: "";
+}
+
+.growthGlyph {
+  display: block;
+  width: 2.2rem;
+  height: 2.2rem;
+  margin-bottom: 1.2rem;
+  border: 0.5rem solid rgba(72, 100, 73, 0.18);
+  border-radius: 48% 52% 56% 44% / 52% 44% 56% 48%;
+  background: var(--spore);
+}
+
+.growthGrid article:nth-child(2) .growthGlyph {
+  background: var(--rose);
+  transform: rotate(28deg);
+}
+
+.growthGrid article:nth-child(3) .growthGlyph {
+  background: var(--moss);
+  transform: rotate(-18deg);
+}
+
+.growthGrid h3 {
+  margin: 0;
+  font-size: clamp(1.65rem, 2.7vw, 2.55rem);
+  letter-spacing: -0.05em;
+  line-height: 0.95;
+}
+
+.growthGrid p {
+  margin: 0.95rem 0 0;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.66;
+}
+
+.seasons {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(17rem, 0.48fr) minmax(24rem, 0.74fr) minmax(21rem, 0.58fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(5rem, 9vw, 9rem) clamp(1.2rem, 5vw, 6rem);
+  background: var(--moss-dark);
+  color: var(--lichen-light);
+  overflow: hidden;
+}
+
+.seasons .sectionLabel {
+  color: #cbd9bc;
+}
+
+.seasonCopy {
+  position: relative;
+  z-index: 1;
+}
+
+.seasonCopy > p:last-child {
+  margin: 1.55rem 0 0;
+  color: rgba(247, 250, 241, 0.72);
+  font-size: 1.05rem;
+  line-height: 1.68;
+}
+
+.rings {
+  position: relative;
+  width: min(100%, 21rem);
+  aspect-ratio: 1;
+  margin-inline: auto;
+}
+
+.rings span {
+  position: absolute;
+  inset: calc(var(--ring, 0) * 10%);
+  border: 1px solid rgba(237, 243, 229, 0.24);
+  border-radius: 48% 52% 50% 50% / 52% 48% 52% 48%;
+  transform: rotate(calc(var(--ring, 0) * 12deg));
+}
+
+.rings span:nth-child(1) {
+  --ring: 0;
+  background: rgba(212, 165, 66, 0.12);
+}
+
+.rings span:nth-child(2) {
+  --ring: 1;
+}
+
+.rings span:nth-child(3) {
+  --ring: 2;
+  background: rgba(185, 124, 136, 0.1);
+}
+
+.rings span:nth-child(4) {
+  --ring: 3;
+  background: rgba(237, 243, 229, 0.12);
+}
+
+.seasonList {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.seasonList div {
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(237, 243, 229, 0.22);
+  border-radius: 999px 999px 999px 1.3rem;
+  background: rgba(237, 243, 229, 0.07);
+}
+
+.seasonList span {
+  display: block;
+  color: #cbd9bc;
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.seasonList p {
+  margin: 0.3rem 0 0;
+  font-size: 1.02rem;
+  line-height: 1.4;
+}
+
+.grow {
+  display: grid;
+  place-items: center;
+  min-height: 24rem;
+  padding: 4rem clamp(1.2rem, 5vw, 6rem);
+  text-align: center;
+}
+
+.grow p {
+  max-width: 46rem;
+  margin: 0;
+  font-size: clamp(2.4rem, 5.2vw, 5.7rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.88;
+}
+
+.grow a {
+  margin-top: 2.2rem;
+  padding: 0.92rem 1.18rem;
+  border: 1px solid rgba(30, 48, 36, 0.48);
+  border-radius: 999px 999px 999px 1.2rem;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.grow a:hover {
+  background: var(--moss-dark);
+  color: var(--lichen-light);
+}
+
+@media (max-width: 1050px) {
+  .hero,
+  .seasons {
+    grid-template-columns: 1fr;
+  }
+
+  .colony {
+    width: min(42rem, 100%);
+    margin-inline: auto;
+  }
+
+  .seasons {
+    justify-items: start;
+  }
+
+  .rings {
+    width: min(100%, 16rem);
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 2.8rem;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(3.65rem, 17vw, 5.3rem);
+  }
+
+  .colony {
+    min-height: 46rem;
+  }
+
+  .noteBloomOne,
+  .noteBloomTwo,
+  .noteBloomThree,
+  .noteBloomFour {
+    width: 12.7rem;
+  }
+
+  .growthGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .seasonList div {
+    border-radius: 1.3rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .colony {
+    min-height: 52rem;
+  }
+
+  .noteBloomOne {
+    left: 0.7rem;
+  }
+
+  .noteBloomTwo {
+    top: 24%;
+  }
+
+  .noteBloomThree {
+    right: 0;
+    bottom: 16%;
+  }
+
+  .noteBloomFour {
+    bottom: 0;
+  }
+}

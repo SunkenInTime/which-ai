@@ -57,6 +57,7 @@ const MODEL_HOME_ORDER: Record<ModelSlug, { familyOrder: number; tier: number }>
   "deepseek-v4-1-flash": { familyOrder: 7.5, tier: 41 },
   "swe-2": { familyOrder: 8, tier: 20 },
   "swe-2-flash": { familyOrder: 8, tier: 15 },
+  "swe-2.1": { familyOrder: 8, tier: 21 },
 };
 
 /**
