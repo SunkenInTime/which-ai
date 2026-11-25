@@ -1,0 +1,33 @@
+Checking the production build result before launching the server on port 3444 for visual verification across all five iterations.
+
+I have designed and built five distinct landing-page iterations for **Cairn**, a local-first second-brain note-taking application, served locally at `http://localhost:3444` (with `/` redirecting to `/1`).
+
+### The Five Iterations
+
+1. **Gallery Light — [`/1`](http://localhost:3444/1)** ([app/1/page.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/1/page.tsx), [app/1/layout.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/1/layout.tsx))
+   - **Direction**: Crisp gallery white (`#F8F9FA`) and silver stone with a single electric cobalt accent (`#1D4ED8`), pairing `Instrument Serif` and `Plus Jakarta Sans`.
+   - **Opening & Interactivity**: Centered monumental `<h1>` with an inline node-link glyph above an interactive 3-pane notebook workbench where you can switch notes, follow backlinks, and append thoughts live, followed by a segmented Capture / Connect / Recall explorer and studio photography.
+
+2. **Nocturne Archive — [`/2`](http://localhost:3444/2)** ([app/2/page.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/2/page.tsx), [app/2/layout.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/2/layout.tsx))
+   - **Direction**: Deep evergreen-pine (`#0B1A16`) and spruce surfaces with a luminous citron accent (`#C8F558`), pairing `Syne` and `Inter`.
+   - **Opening & Interactivity**: Full-bleed studio prism photography bleeding behind a borderless header, leading into an interactive knowledge-graph synthesis stage where clicking topic tabs and connected clippings updates the synthesized outline.
+
+3. **Swiss Studio — [`/3`](http://localhost:3444/3)** ([app/3/page.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/3/page.tsx), [app/3/layout.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/3/layout.tsx))
+   - **Direction**: High-contrast International Typographic Style with vermilion color-blocking (`#E12D1B`), chalk white, and pitch black, set in single-family `Space Grotesk`.
+   - **Opening & Interactivity**: Wall-to-wall vermilion poster headline balanced diagonally against an interactive instant-capture scratchpad that extracts links from notes you type, followed by a segmented recall timeline and Swiss modular still-life photography.
+
+4. **Cerulean Monograph — [`/4`](http://localhost:3444/4)** ([app/4/page.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/4/page.tsx), [app/4/layout.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/4/layout.tsx))
+   - **Direction**: Sunlit cerulean paper (`#F2F6FB`), deep marine navy (`#0E1E36`), and marigold (`#F4B41A`), pairing `Fraunces` and `DM Sans`.
+   - **Opening & Interactivity**: Layered depth hero with ultra-wide display lettering occluded behind a central sculptural cobalt-glass folio, anchored by horizon typography and followed by an interactive margin-annotation reader and sunlit atelier reading photography.
+
+5. **Live Workspace — [`/5`](http://localhost:3444/5)** ([app/5/page.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/5/page.tsx), [app/5/layout.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/5/layout.tsx))
+   - **Direction**: Brushed aluminum (`#F3F5F7`), pure white inspector panes, and deep teal (`#0D7A6F`), pairing `Plus Jakarta Sans` and `JetBrains Mono`.
+   - **Opening & Interactivity**: Direct-entry utility layout (skipping a marketing hero banner) that opens immediately into a working 3-pane Markdown second-brain sandbox with live search filtering, clickable `[[wiki-links]]`, a `Read / Edit Markdown` switcher, new note creation, and dynamically recalculated incoming/outgoing backlinks.
+
+### Iteration Switcher
+- A compact floating switcher button ([components/IterationSwitcher.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/components/IterationSwitcher.tsx)) is fixed in the bottom-right corner across all five routes (mounted via [app/layout.tsx](file:///home/dara/Code/bench-gemini-skill/neon/work/app/layout.tsx)).
+- Use the `<` / `>` arrows to step immediately between designs, click `Design X / 5` to jump directly to any iteration from the menu, or press `Alt + [` and `Alt + ]` on your keyboard.
+
+### Verification
+- Audited all 5 pages visually in Playwright across desktop (`1440x900` opening viewport, scrolled header, and full page) and mobile (`390x844`) with zero console errors and zero horizontal overflow.
+- Verified clean TypeScript (`npx tsc --noEmit`), ESLint (`npm run lint`), and Next.js production build (`npm run build`), with the dev server currently live on port `3444`.

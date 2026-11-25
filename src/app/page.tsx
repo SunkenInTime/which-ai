@@ -19,6 +19,7 @@ export default function HomePage() {
     "with-design-skill",
     "without-design-skill",
     "with-taste-skill",
+    "with-gemini-design-skill",
     "miscellaneous",
   ] as const;
   const generationPrompt =

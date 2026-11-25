@@ -7,6 +7,7 @@ const HOME_GALLERY_GROUPS = [
   "with-design-skill",
   "without-design-skill",
   "with-taste-skill",
+  "with-gemini-design-skill",
   "miscellaneous",
 ] as const;
 
@@ -32,6 +33,26 @@ const latestRouteSmokeCases = galleryManifest
   }));
 
 const sampleRouteSmokeCases = [
+  { group: "with-gemini-design-skill", model: "fable-5.2", iteration: "1" },
+  { group: "with-gemini-design-skill", model: "fable-5.2", iteration: "2" },
+  { group: "with-gemini-design-skill", model: "fable-5.2", iteration: "3" },
+  { group: "with-gemini-design-skill", model: "fable-5.2", iteration: "4" },
+  { group: "with-gemini-design-skill", model: "fable-5.2", iteration: "5" },
+  { group: "with-gemini-design-skill", model: "opus-5.5", iteration: "1" },
+  { group: "with-gemini-design-skill", model: "opus-5.5", iteration: "2" },
+  { group: "with-gemini-design-skill", model: "opus-5.5", iteration: "3" },
+  { group: "with-gemini-design-skill", model: "opus-5.5", iteration: "4" },
+  { group: "with-gemini-design-skill", model: "opus-5.5", iteration: "5" },
+  { group: "with-gemini-design-skill", model: "gpt-6.2-astra", iteration: "1" },
+  { group: "with-gemini-design-skill", model: "gpt-6.2-astra", iteration: "2" },
+  { group: "with-gemini-design-skill", model: "gpt-6.2-astra", iteration: "3" },
+  { group: "with-gemini-design-skill", model: "gpt-6.2-astra", iteration: "4" },
+  { group: "with-gemini-design-skill", model: "gpt-6.2-astra", iteration: "5" },
+  { group: "with-gemini-design-skill", model: "gemini-4-neon", iteration: "1" },
+  { group: "with-gemini-design-skill", model: "gemini-4-neon", iteration: "2" },
+  { group: "with-gemini-design-skill", model: "gemini-4-neon", iteration: "3" },
+  { group: "with-gemini-design-skill", model: "gemini-4-neon", iteration: "4" },
+  { group: "with-gemini-design-skill", model: "gemini-4-neon", iteration: "5" },
   { group: "without-design-skill", model: "sol-6-2", iteration: "1" },
   { group: "without-design-skill", model: "sol-6-2", iteration: "2" },
   { group: "without-design-skill", model: "sol-6-2", iteration: "3" },
@@ -472,8 +493,8 @@ test("home page hides superseded-generation cards until Show Archived", async ({
   );
   await expect(page.getByTestId("gallery-card").filter({ hasText: "GPT 5.5 low" })).toHaveCount(0);
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
-  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
-  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
+  // One card per section, With Gemini Design Skill included; the With Taste Skill card carries "v2" in its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(4);
   for (const { label } of forceArchivedModels) {
     await expect(page.getByTestId("gallery-card").filter({ hasText: label })).toHaveCount(0);
   }
@@ -506,8 +527,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(lowCards).toHaveCount(2);
   await expect(lowCards.first()).toContainText("Archived");
   await expect(page.getByRole("heading", { name: "Opus 5", exact: true })).toHaveCount(0);
-  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
-  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
+  // One card per section, With Gemini Design Skill included; the With Taste Skill card carries "v2" in its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(4);
   await expect(page.getByRole("button", { name: "Show Archived" })).toHaveCount(0);
   await expect(page).toHaveURL(/\?q=5\.5$/);
 
@@ -516,8 +537,8 @@ test("home search surfaces archived rows and syncs the URL", async ({ page }) =>
   await expect(page.getByText("No models match")).toBeVisible();
 
   await page.getByRole("button", { name: "Clear search" }).last().click();
-  // The With Taste Skill card carries the taste-skill "v2" label inside its heading.
-  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(3);
+  // One card per section, With Gemini Design Skill included; the With Taste Skill card carries "v2" in its heading.
+  await expect(page.getByRole("heading", { name: /^Opus 5\.5( v2)?$/ })).toHaveCount(4);
   await expect(page).toHaveURL(/\/$/);
 });
 
@@ -796,4 +817,32 @@ test("GLM 5.4 pages keep their own Tailwind theme and fonts in the gallery", asy
     return [...document.fonts].some((face) => face.family.replace(/"/g, "") === "glm54DesignArchivo" && face.status === "loaded");
   });
   expect(archivoLoaded).toBe(true);
+});
+
+test("With Gemini Design Skill pages draw their headings in their own fonts and stay in the compare pane", async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  // next/font named these faces plainly, so other entries' same-named faces stood in for them (Opus /3's condensed
+  // Archivo lost its width). Each entry now loads its original build's faces under a prefixed name.
+  const cases = [
+    ["opus-5.5", "3", "Opus Gemini Archivo"],
+    ["fable-5.2", "1", "Fable Gemini Bricolage Grotesque"],
+    ["gemini-4-neon", "4", "Neon Gemini Fraunces"],
+    ["gpt-6.2-astra", "1", "Astra62 Gemini Instrument Serif"],
+  ] as const;
+  for (const [model, iteration, family] of cases) {
+    await page.goto(`/preview/with-gemini-design-skill/${model}/${iteration}`);
+    const heading = page.locator("[data-source-body] h1").first();
+    await expect(heading).toHaveCSS("font-family", new RegExp(`^"${family}"`));
+    // document.fonts.check() is true when no face matches at all, so look for the loaded face itself.
+    const loaded = await page.evaluate(async (family) => {
+      await document.fonts.load(`40px "${family}"`);
+      return [...document.fonts].some((face) => face.family.replace(/"/g, "") === family && face.status === "loaded");
+    }, family);
+    expect(loaded, `${model}/${iteration} ${family}`).toBe(true);
+  }
+
+  // Opus /5's logo used to point at the gallery route, which loaded a whole gallery page inside a compare pane.
+  await page.goto("/preview/with-gemini-design-skill/opus-5.5/5");
+  await page.getByRole("link", { name: "Kept home" }).click();
+  await expect(page).toHaveURL(/\/preview\/with-gemini-design-skill\/opus-5\.5\/5#top$/);
 });

@@ -1,0 +1,780 @@
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page {
+  --cobalt: #1b39ee;
+  --tomato: #ff4f2b;
+  --lemon: #ffe14d;
+  --paper: #f3f5fb;
+  --ink: #0b1033;
+  --muted: #474d70;
+  --text-heading: clamp(3rem, 8.4vw, 7.75rem);
+  --text-body: 1.125rem;
+  --text-sm: 0.9375rem;
+  --pad: clamp(1.25rem, 5vw, 5rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-archivo), system-ui, sans-serif;
+  font-size: var(--text-body);
+  line-height: 1.5;
+  min-height: 100dvh;
+  overflow-x: clip;
+}
+
+:global(:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"])):has(.page) {
+  background: #1b39ee;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page h1,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.page h2,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.page p,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.page ul {
+  margin: 0;
+  padding: 0;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page ul {
+  list-style: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page a {
+  color: inherit;
+  text-decoration: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page h2,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.poster,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.signoff,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.ribbon p,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.price {
+  font-stretch: 62%;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page h2,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.signoff,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.ribbon p,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.price {
+  font-size: var(--text-heading);
+  line-height: 0.86;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page a:focus-visible,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.page button:focus-visible,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.page input:focus-visible {
+  outline: 3px solid var(--lemon);
+  outline-offset: 3px;
+}
+
+/* Header */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem var(--pad);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .brand {
+  font-size: 2.25rem;
+  font-weight: 900;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .nav {
+  display: flex;
+  gap: 2.25rem;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .nav a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 2px no-repeat;
+  padding-bottom: 3px;
+  transition: background-size 200ms var(--ease);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .nav a:hover {
+  background-size: 100% 2px;
+}
+
+/* Hero */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+  position: relative;
+  min-height: 100dvh;
+  padding: 5.5rem var(--pad) 3rem;
+  background: var(--cobalt);
+  color: #fff;
+  overflow: clip;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sun {
+  position: absolute;
+  right: -18vw;
+  top: 50%;
+  width: 40vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--lemon);
+  transform: translateY(-34%);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(4.25rem, min(18.4vw, 27.5vh), 22rem);
+  line-height: 0.83;
+  letter-spacing: -0.025em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster > span,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.poster > mark {
+  display: inline-block;
+  animation: gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-slam 700ms var(--ease) both;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster > :nth-child(3) {
+  animation-delay: 60ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster > :nth-child(5) {
+  animation-delay: 120ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster > :nth-child(7) {
+  animation-delay: 180ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster > :nth-child(9) {
+  animation-delay: 240ms;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster mark {
+  padding: 0.04em 0.1em 0;
+  margin-left: 0.02em;
+  background: var(--lemon);
+  color: var(--ink);
+  transform: rotate(-2.5deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .brMobile {
+  display: none;
+}
+
+@keyframes gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-slam {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .heroNote {
+  position: absolute;
+  z-index: 2;
+  right: var(--pad);
+  bottom: clamp(3.5rem, 10vh, 6.5rem);
+  width: min(23rem, 30vw);
+  display: grid;
+  gap: 1.25rem;
+  justify-items: start;
+  padding: 1.75rem;
+  background: var(--tomato);
+  color: var(--ink);
+  transform: rotate(2.5deg);
+  animation: gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-noteIn 700ms var(--ease) 320ms both;
+}
+
+@keyframes gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-noteIn {
+  from {
+    opacity: 0;
+    transform: translateY(28px) rotate(-3deg);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .heroNote p {
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .buttonInk {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3.25rem;
+  padding: 0 1.6rem;
+  background: var(--ink);
+  color: #fff !important;
+  font-weight: 700;
+  transition:
+    transform 180ms var(--ease),
+    box-shadow 180ms var(--ease);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .buttonInk:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--lemon);
+}
+
+/* Ribbon */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .ribbon {
+  position: relative;
+  z-index: 3;
+  margin: -2.5rem -4vw 0;
+  padding: 1.25rem 0 1rem;
+  background: var(--lemon);
+  transform: rotate(-2deg);
+  overflow: clip;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .ribbon p {
+  display: flex;
+  gap: 0.6em;
+  width: max-content;
+  white-space: nowrap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .ribbon span::after {
+  content: "";
+  display: inline-block;
+  width: 0.36em;
+  height: 0.36em;
+  margin-left: 0.6em;
+  border-radius: 50%;
+  background: var(--tomato);
+  vertical-align: 0.14em;
+}
+
+@supports (animation-timeline: view()) {
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .ribbon p {
+    animation: gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-drift linear both;
+    animation-timeline: view();
+  }
+}
+
+@keyframes gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-drift {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-38%);
+  }
+}
+
+/* Bands */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .band {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: center;
+  padding: clamp(4.5rem, 10vw, 9rem) var(--pad);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandPaper {
+  padding-top: clamp(6rem, 12vw, 11rem);
+  margin-top: -3rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandTomato {
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  background: var(--tomato);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandInk {
+  background: var(--ink);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandCopy {
+  display: grid;
+  gap: 1.75rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandCopy p {
+  max-width: 34rem;
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandPaper .bandCopy p {
+  color: var(--muted);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandInk .bandCopy p {
+  color: #cfd5f7;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .keys {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .keyRow {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .keyRow span {
+  display: flex;
+  align-items: flex-end;
+  height: clamp(7rem, 13vw, 11rem);
+  padding: 1rem 1.1rem;
+  background: var(--cobalt);
+  color: #fff;
+  font-weight: 700;
+  flex: 1;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .keyRow span + span {
+  flex: 2.2;
+  background: var(--tomato);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .keys p {
+  width: 100%;
+  padding: 1.1rem 1.25rem;
+  border: 3px solid var(--ink);
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .keys p::after {
+  content: "";
+  display: inline-block;
+  width: 3px;
+  height: 1.1em;
+  margin-left: 4px;
+  background: var(--cobalt);
+  vertical-align: -0.18em;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked {
+  position: relative;
+  aspect-ratio: 1 / 0.9;
+  width: 100%;
+  max-width: 34rem;
+  justify-self: center;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked line {
+  stroke: var(--ink);
+  stroke-width: 3;
+  vector-effect: non-scaling-stroke;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked span {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  width: 36%;
+  aspect-ratio: 1;
+  padding: 0.9rem;
+  font-weight: 700;
+  line-height: 1.15;
+  transform: translate(-50%, -50%) rotate(var(--r, 0deg));
+  transition: transform 220ms var(--ease);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked:hover span {
+  transform: translate(-50%, -50%) rotate(0deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked span:nth-of-type(1) {
+  left: 22%;
+  top: 24%;
+  --r: -5deg;
+  background: var(--paper);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked span:nth-of-type(2) {
+  left: 76%;
+  top: 36%;
+  --r: 4deg;
+  background: var(--lemon);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .linked span:nth-of-type(3) {
+  left: 42%;
+  top: 80%;
+  --r: -2deg;
+  background: var(--cobalt);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .answer {
+  display: grid;
+  gap: 1rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .answer p {
+  padding: 1.4rem 1.5rem;
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .answer p:first-child {
+  width: 82%;
+  background: var(--lemon);
+  color: var(--ink);
+  transform: rotate(-1.5deg);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .answer p:last-child {
+  width: 88%;
+  justify-self: end;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .answer span {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--muted);
+}
+
+/* Try it */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .try {
+  padding: clamp(4.5rem, 10vw, 9rem) var(--pad);
+  background: var(--lemon);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .try h2 {
+  max-width: 16ch;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wall {
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm {
+  display: grid;
+  gap: 0.6rem;
+  max-width: 52rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm label {
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm div {
+  display: flex;
+  gap: 0.75rem;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm input {
+  flex: 1;
+  min-width: 0;
+  height: 3.75rem;
+  padding: 0 1.1rem;
+  border: 3px solid var(--ink);
+  border-radius: 0;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm input::placeholder {
+  color: #6a6f8c;
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm button {
+  height: 3.75rem;
+  padding: 0 1.6rem;
+  border: 0;
+  background: var(--ink);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 180ms var(--ease),
+    box-shadow 180ms var(--ease);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm button:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 var(--tomato);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallNotes {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(13.5rem, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem !important;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sticky {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  aspect-ratio: 1;
+  padding: 1.25rem;
+  transform: rotate(var(--tilt));
+  transition: transform 200ms var(--ease);
+  animation: gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-stick 420ms var(--ease) both;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sticky:hover {
+  transform: rotate(0deg) translateY(-4px);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sticky p {
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sticky span {
+  font-size: var(--text-sm);
+  font-weight: 500;
+}
+
+@keyframes gallery-with-gemini-design-skill-fable-5-2-source-app-2-page-module-stick {
+  from {
+    opacity: 0;
+    transform: rotate(0deg) scale(1.15) translateY(-16px);
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .toneWhite {
+  background: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .toneCobalt {
+  background: var(--cobalt);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .toneTomato {
+  background: var(--tomato);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .toneInk {
+  background: var(--ink);
+  color: #fff;
+}
+
+/* Pricing */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .pricing {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .planFree,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+.planSync {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.75rem;
+  padding: clamp(4rem, 8vw, 7.5rem) var(--pad);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .planSync {
+  background: var(--cobalt);
+  color: #fff;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .pricing h2 {
+  font-size: var(--text-body);
+  font-stretch: 100%;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .price span {
+  font-size: var(--text-body);
+  font-stretch: 100%;
+  font-weight: 600;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .pricing ul {
+  display: grid;
+  gap: 0;
+  width: 100%;
+  max-width: 30rem;
+  margin-bottom: 0.5rem !important;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .pricing li {
+  padding: 0.85rem 0;
+  border-top: 2px solid currentColor;
+  font-weight: 500;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .planLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3.25rem;
+  font-weight: 700;
+  background: linear-gradient(currentColor, currentColor) 0 78% / 100% 2px no-repeat;
+  transition: background-size 200ms var(--ease);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .planLink:hover {
+  background-size: 0 2px;
+  background-position: 100% 78%;
+}
+
+/* Footer */
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footer {
+  position: relative;
+  padding: clamp(4rem, 8vw, 7.5rem) var(--pad) 5.5rem;
+  background: var(--tomato);
+  overflow: clip;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footer::before {
+  content: "";
+  position: absolute;
+  right: -7vw;
+  top: -13vw;
+  width: 38vw;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--lemon);
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footer > * {
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .signoff {
+  max-width: 13ch;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 1rem 2.5rem;
+  margin-top: clamp(3rem, 6vw, 5rem);
+  padding-top: 1.5rem;
+  border-top: 3px solid var(--ink);
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footRow nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+  margin-right: auto;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footRow a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .footBrand {
+  font-weight: 900;
+  font-stretch: 62%;
+  text-transform: uppercase;
+  font-size: var(--text-body);
+}
+
+@media (max-width: 960px) {
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .nav a:nth-child(-n + 2) {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .hero {
+    display: flex;
+    flex-direction: column;
+    padding-top: 6rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sun {
+    right: -30vw;
+    width: 70vw;
+    top: auto;
+    bottom: 12%;
+    transform: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .heroNote {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    width: min(100%, 26rem);
+    margin-top: auto;
+    transform: rotate(-1.5deg);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster {
+    margin-bottom: 2.5rem;
+    font-size: clamp(4.25rem, 24vw, 15rem);
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .brMobile {
+    display: inline;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .brDesktop {
+    display: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm input {
+    flex: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .band,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+  .bandTomato {
+    grid-template-columns: 1fr;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .bandTomato .linked {
+    order: 2;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .pricing {
+    grid-template-columns: 1fr;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallForm div {
+    flex-direction: column;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .wallNotes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .sticky {
+    padding: 0.9rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .poster > span,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+  .poster > mark,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+  .heroNote,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+  .sticky,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+  .ribbon p {
+    animation: none;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) .page *,:where(.gallery-generation[data-gallery-group="with-gemini-design-skill"][data-gallery-model="fable-5.2"]) 
+  .page *::before {
+    transition-duration: 0.01ms !important;
+  }
+}

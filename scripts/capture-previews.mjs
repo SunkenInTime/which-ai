@@ -7,6 +7,10 @@ import sharp from "sharp";
 import { chromium } from "@playwright/test";
 
 const entries = [
+  { group: "with-gemini-design-skill", model: "fable-5.2", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-gemini-design-skill", model: "opus-5.5", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-gemini-design-skill", model: "gpt-6.2-astra", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-gemini-design-skill", model: "gemini-4-neon", iterations: ["1", "2", "3", "4", "5"] },
   { group: "without-design-skill", model: "glm-5.4", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "glm-5.4", iterations: ["1", "2", "3", "4", "5"] },
   { group: "without-design-skill", model: "deepseek-v4-1-flash", iterations: ["1", "2", "3", "4", "5"] },

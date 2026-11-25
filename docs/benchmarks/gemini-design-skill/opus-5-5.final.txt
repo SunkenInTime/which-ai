@@ -1,0 +1,19 @@
+I've built five landing pages for **Kept**, a made-up note-taking app pitched as a second brain. They're at http://localhost:3441/1 through `/5`, and `/` redirects to `/1`. All five sell the same product: quick capture, automatic links between notes, a map of your ideas, answers drawn from your own notes, old ideas brought back at the right time, and offline use with encryption and markdown export. I checked each one in the browser at desktop and phone size, and none of them shows errors.
+
+**Switching between them:** there's a small dark pill in the bottom-right corner showing the design's name and buttons 1 to 5. You can also press `1` to `5` to jump to a design, or `[` and `]` to go to the previous or next one.
+
+| | Name | Look | Main interactive bit |
+|---|---|---|---|
+| **/1** | Gallery | White page, black text, one cobalt blue, strict grid with thin lines | Big centred headline with a small animated link icon inside it. Below it, a mock editor where typing makes related notes light up |
+| **/2** | Mycelium | Deep forest green with one coral accent | A living network fills the hero and reaches toward your mouse. A section stays pinned while you scroll and walks one voice memo through being linked, resurfaced and used to answer a question |
+| **/3** | Poster | Loud blocks of red, blue and yellow, huge condensed type | Note cards you can drag around the hero; two cards close together get joined by a thick line |
+| **/4** | Daylight | Soft pastel sky, white cards, navy text, one blue accent | A huge pale "Remember" behind a 3D stack of note cards that tilts with the mouse. A pinned mock app changes screen as you scroll |
+| **/5** | Night shift | Deep navy and silver with amber, serif headings | A night sky of notes where hovering a star shows its title and its links. Also an essay with linked notes shown in the margin, and an answer that types itself out with sources |
+
+**How I built them:** each design was written by a separate parallel agent working only in its own folder (`app/1/` to `app/5/`). I then reviewed the screenshots and fixed these myself:
+- **/2:** lines in the pinned diagram ran through the labels instead of ending at the dots.
+- **/3:** source numbers in "Ask your notes" overlapped the line above, and the source list had lost its numbering.
+- **/4:** map labels were crossed by lines, the app's sidebar always highlighted "Inbox", and "Remember" was cut off on phones.
+- **/5:** sections stayed invisible until scrolled well into view, and one quote was squeezed into a very narrow column. On phones, the night sky also ran into the headline (a star read as a full stop after "brain"), and a star's label was cut off.
+
+The shared files I changed are `app/layout.tsx`, `app/page.tsx`, `app/globals.css` and the switcher in `app/components/`. The dev server is still running on port 3441. Nothing is committed.

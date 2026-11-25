@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer base {
+  [data-source-html] {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  [data-source-body] {
+    margin: 0;
+    padding: 0;
+    overflow-x: clip;
+  }
+
+  /* Strict 3-size body scale tokens shared across iterations */
+  :root {
+    --text-heading: clamp(1.85rem, 3vw, 2.65rem);
+    --text-body: 1.0625rem;
+    --text-sm: 0.875rem;
+    --ease-out-expo: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes cairnFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal {
+  animation: cairnFadeUp 560ms var(--ease-out-expo) both;
+}
+
+.animate-reveal-delay-1 {
+  animation: cairnFadeUp 560ms var(--ease-out-expo) 90ms both;
+}
+
+.animate-reveal-delay-2 {
+  animation: cairnFadeUp 560ms var(--ease-out-expo) 180ms both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-source-html] {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

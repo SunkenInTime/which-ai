@@ -41,6 +41,7 @@ export const compareGroupOrder = [
   "with-design-skill",
   "without-design-skill",
   "with-taste-skill",
+  "with-gemini-design-skill",
   "miscellaneous",
 ] as const satisfies readonly GalleryGroupSlug[];
 

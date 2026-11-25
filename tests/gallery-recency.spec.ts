@@ -160,9 +160,26 @@ test("Sonnet 5.5 no longer has a new badge", () => {
 });
 
 test("all previous models stay unbadged even on their addition dates", () => {
-  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash", "gpt-6.2-astra", "sol-6-2", "gemini-4-neon", "glm-5.4"] as string[]).includes(entry.model))) {
+  for (const entry of galleryManifest.filter(entry => !(["muse-wonder-1.0", "gemini-4-argon", "kimi-k3-1-pro", "deepseek-v4-1-flash", "gpt-6.2-astra", "sol-6-2", "gemini-4-neon", "glm-5.4", "opus-5.5", "fable-5.2"] as string[]).includes(entry.model))) {
     const date = getGalleryEntryAddedAt(entry)!;
     expect(getGalleryEntryNewArrival(groupEntries(entry.group), entry, isoDateToUtcMs(date))).toBeNull();
+  }
+});
+
+test("the With Gemini Design Skill cards are new on November 24; Opus 5.5 and Fable 5.2 elsewhere stay unbadged", () => {
+  const now = isoDateToUtcMs("2026-11-24");
+  const gemini = groupEntries("with-gemini-design-skill");
+  expect(gemini.map((entry) => entry.model).sort()).toEqual(["fable-5.2", "gemini-4-neon", "gpt-6.2-astra", "opus-5.5"]);
+  for (const entry of gemini) {
+    expect(getGalleryEntryNewArrival(gemini, entry, now)).toBe("2026-11-24");
+    expect(getGalleryEntryNewArrival(gemini, entry, isoDateToUtcMs("2026-12-08"))).toBeNull();
+  }
+  for (const group of ["with-design-skill", "with-taste-skill", "without-design-skill"] as const) {
+    const entries = groupEntries(group);
+    for (const model of ["opus-5.5", "fable-5.2"]) {
+      const entry = entries.find((e) => e.model === model);
+      if (entry) expect(getGalleryEntryNewArrival(entries, entry, now)).toBeNull();
+    }
   }
 });
 
