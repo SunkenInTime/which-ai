@@ -26,6 +26,21 @@ The reel puts two gallery pages next to each other, each taking half the frame, 
 
 Hand the user the MP4 path and the sheet.
 
+## All five pages of a model
+
+When the post compares a model's two conditions across all five pages, render one pair per page and join them. Here both sides of a pair take the same time instead of moving at the same speed: `--scroll-time` gives each side the speed that covers its whole page in that many seconds, so they reach their footers together. The GLM 5.4 reel used 10 s per page with shorter holds, about 12 s a pair and a minute in total:
+
+```sh
+for n in 1 2 3 4 5; do
+  node scripts/reel/render.mjs --left without-design-skill/<model>/$n --right with-design-skill/<model>/$n \
+    --scroll-time 10 --hold-top 1.2 --hold-end 1 --out ~/Code/reels/<name>/p$n.mp4
+done
+printf "file 'p%s.mp4'\n" 1 2 3 4 5 > ~/Code/reels/<name>/list.txt
+ffmpeg -f concat -safe 0 -i ~/Code/reels/<name>/list.txt -c copy -movflags +faststart ~/Code/reels/<name>.mp4
+```
+
+Each pair fades out and the next fades in, so the joins dip to black. Check the joined file the same way as above; repeats then belong in each pair's holds only.
+
 ## Pages that aren't on whichai.dev yet
 
 `--base` defaults to `https://www.whichai.dev`, so it only sees merged entries; the script stops with the URL if a page returns an error. For an entry on a branch, build it, run `npm run start` and pass `--base http://localhost:3000`.

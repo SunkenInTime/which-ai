@@ -5,7 +5,8 @@
 // Each side is a gallery preview page (`/preview/{group}/{model}/{iteration}`) at a 1440px desktop width, scaled to
 // fill half of a 1848×1200 frame: the screen ratio of current MacBooks, within Twitter's 1920×1200 landscape limit.
 // A slim header names each side with its model logo. Both pages hold at the top, then scroll at the same speed; a
-// shorter page reaches its footer first and rests there. Frames are captured at 2x and downscaled by ffmpeg.
+// shorter page reaches its footer first and rests there. With --scroll-time, each side instead scrolls its whole
+// page in that many seconds, so both reach their footers together. Frames are captured at 2x and downscaled by ffmpeg.
 // The pages run on a fake clock advanced exactly one video frame per capture, so carousels, marquees and other
 // timed animations play at real speed in the video however long each capture takes.
 import fs from "node:fs";
@@ -25,6 +26,9 @@ const { values: opts } = parseArgs({
     base: { type: "string", default: "https://www.whichai.dev" },
     out: { type: "string", default: "reel.mp4" },
     speed: { type: "string", default: "220" },
+    "scroll-time": { type: "string" },
+    "hold-top": { type: "string", default: "1.5" },
+    "hold-end": { type: "string", default: "1.8" },
     fps: { type: "string", default: "60" },
     stills: { type: "string" },
   },
@@ -35,8 +39,9 @@ if (!opts.left || !opts.right) {
 }
 
 const WIDTH = 1848, HEIGHT = 1200, HEADER = 52, PAGE_WIDTH = 1440;
-const HOLD_TOP = 1.5, HOLD_END = 1.8, RAMP = 0.6, FADE = 0.35;
+const HOLD_TOP = Number(opts["hold-top"]), HOLD_END = Number(opts["hold-end"]), RAMP = 0.6, FADE = 0.35;
 const SPEED = Number(opts.speed); // page pixels per second, the same for both sides
+const SCROLL_TIME = opts["scroll-time"] ? Number(opts["scroll-time"]) : null; // seconds each side takes instead
 const FPS = Number(opts.fps);
 
 // Wording for each gallery group in the header.
@@ -189,20 +194,22 @@ try {
   await step(2.5);
   const ranges = await Promise.all(frames.map((f) => f.evaluate(() => document.documentElement.scrollHeight - innerHeight)));
 
-  // Same speed for both: ramp up, cruise at SPEED, ramp down at each page's own end. A page shorter than one
-  // ramp's worth of travel gets shorter ramps, so it never overshoots and comes back.
-  const ramp = (d) => Math.min(RAMP, d / SPEED);
-  const travel = (d) => d / SPEED + ramp(d);
-  const scrolled = (t, d) => {
-    const r = ramp(d), T = travel(d), a = SPEED / r;
+  // Ramp up, cruise, ramp down at the page's own end. By default both sides cruise at SPEED; with --scroll-time each
+  // side cruises at the speed that covers its page in that time (ramps included). A page shorter than one ramp's
+  // worth of travel gets shorter ramps, so it never overshoots and comes back.
+  const speeds = ranges.map((d) => (SCROLL_TIME ? Math.max(d, 1) / Math.max(SCROLL_TIME - RAMP, 0.1) : SPEED));
+  const ramp = (d, v) => Math.min(RAMP, d / v);
+  const travel = (d, v) => d / v + ramp(d, v);
+  const scrolled = (t, d, v) => {
+    const r = ramp(d, v), T = travel(d, v), a = v / r;
     if (t <= 0 || d <= 0) return 0;
     if (t >= T) return d;
     if (t < r) return 0.5 * a * t * t;
     if (t > T - r) return d - 0.5 * a * (T - t) ** 2;
-    return 0.5 * SPEED * r + SPEED * (t - r);
+    return 0.5 * v * r + v * (t - r);
   };
-  const duration = HOLD_TOP + Math.max(...ranges.map(travel)) + HOLD_END;
-  console.log(`scroll: ${sides.map((s, i) => `${s.label} ${ranges[i]}px in ${travel(ranges[i]).toFixed(1)}s`).join(", ")}; video ${duration.toFixed(1)}s`);
+  const duration = HOLD_TOP + Math.max(...ranges.map((d, i) => travel(d, speeds[i]))) + HOLD_END;
+  console.log(`scroll: ${sides.map((s, i) => `${s.label} ${ranges[i]}px in ${travel(ranges[i], speeds[i]).toFixed(1)}s at ${Math.round(speeds[i])}px/s`).join(", ")}; video ${duration.toFixed(1)}s`);
 
   let now = 0;
   const draw = async (t) => {
@@ -213,7 +220,7 @@ try {
         f.evaluate((y) => {
           window.scrollTo({ top: y, behavior: "instant" });
           return window.__painted();
-        }, Math.round(scrolled(t - HOLD_TOP, ranges[i]) * 2) / 2),
+        }, Math.round(scrolled(t - HOLD_TOP, ranges[i], speeds[i]) * 2) / 2),
       ),
     );
     const fade = Math.max(0, 1 - t / FADE, (t - (duration - FADE)) / FADE);
