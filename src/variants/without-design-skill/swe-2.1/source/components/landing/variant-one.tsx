@@ -108,7 +108,7 @@ function KnowledgeGraph() {
 
 export default function VariantOne() {
   return (
-    <main className="noise-texture dark-noise relative min-h-screen overflow-hidden bg-[#030712] text-white">
+    <main id="top" className="noise-texture dark-noise relative min-h-screen overflow-hidden bg-[#030712] text-white">
       <div className="pointer-events-none absolute inset-0">
         <div className="blueprint-grid absolute inset-0 opacity-60" />
         <div className="absolute left-1/2 top-[-18rem] h-[42rem] w-[42rem] -translate-x-1/2 rounded-full bg-cyan-500/16 blur-3xl" />
@@ -118,7 +118,9 @@ export default function VariantOne() {
 
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 sm:px-8 lg:px-10">
         <header className="flex items-center justify-between py-6">
-          <a href="/without-design-skill/swe-2.1/1" className="flex items-center gap-3" aria-label="Engram home">
+          {/* Gallery adaptation: the source linked to "/1", reloading the page at its top; inside the gallery (and its
+              compare and Lab Guess panes) that would load a whole gallery page, so it scrolls to the top instead. */}
+          <a href="#top" className="flex items-center gap-3" aria-label="Engram home">
             <span className="relative flex h-10 w-10 items-center justify-center rounded-2xl border border-cyan-300/30 bg-cyan-300/10 shadow-lg shadow-cyan-500/10">
               <span className="h-3.5 w-3.5 rounded-full bg-cyan-300 shadow-[0_0_24px_rgba(103,232,249,.9)]" />
               <span className="absolute h-6 w-6 rounded-full border border-cyan-200/30" />

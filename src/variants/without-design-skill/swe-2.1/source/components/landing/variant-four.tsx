@@ -37,7 +37,7 @@ const qualities = [
 
 export default function VariantFour() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#fbf0e5] via-[#eee9fb] to-[#e3f3eb] text-[#2d3140]">
+    <main id="top" className="relative min-h-screen overflow-hidden bg-gradient-to-br from-[#fbf0e5] via-[#eee9fb] to-[#e3f3eb] text-[#2d3140]">
       <div className="pointer-events-none absolute inset-0">
         <div className="aurora-blob animate-drift absolute left-[-8rem] top-[-9rem] h-[28rem] w-[28rem] rounded-full bg-[#ffd0bd]/60 blur-3xl" />
         <div className="aurora-blob animate-drift absolute right-[-10rem] top-[20%] h-[32rem] w-[32rem] rounded-full bg-[#c9bcff]/50 blur-3xl" style={{ animationDelay: "1.8s" }} />
@@ -47,7 +47,9 @@ export default function VariantFour() {
       <div className="relative z-10 mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 sm:px-8 lg:px-10">
         <header className="pt-6">
           <div className="mx-auto flex max-w-5xl items-center justify-between rounded-full border border-white/65 bg-white/45 px-4 py-3 shadow-lg shadow-[#8874aa]/10 backdrop-blur-xl">
-            <a href="/without-design-skill/swe-2.1/4" className="flex items-center gap-3" aria-label="Engram home">
+            {/* Gallery adaptation: the source linked to "/4", reloading the page at its top; inside the gallery (and its
+                compare and Lab Guess panes) that would load a whole gallery page, so it scrolls to the top instead. */}
+            <a href="#top" className="flex items-center gap-3" aria-label="Engram home">
               <span className="relative flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-br from-[#ffc9b2] to-[#beb0ff] shadow-inner">
                 <span className="h-3 w-3 rounded-full bg-white/85" />
               </span>

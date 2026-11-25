@@ -35,7 +35,7 @@ const ledgerRows = [
 
 export default function VariantFive() {
   return (
-    <main className="relative min-h-screen overflow-hidden bg-[#080807] text-[#f2eee4]">
+    <main id="top" className="relative min-h-screen overflow-hidden bg-[#080807] text-[#f2eee4]">
       <div className="pointer-events-none absolute inset-0">
         <div className="blueprint-grid absolute inset-0 opacity-35" />
         <div className="absolute left-[-12rem] top-[-14rem] h-[34rem] w-[34rem] rounded-full bg-[#ff9f1c]/10 blur-3xl" />
@@ -44,7 +44,9 @@ export default function VariantFive() {
 
       <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <header className="flex items-center justify-between border-b border-white/12 py-5">
-          <a href="/without-design-skill/swe-2.1/5" className="flex items-center gap-3" aria-label="Engram home">
+          {/* Gallery adaptation: the source linked to "/5", reloading the page at its top; inside the gallery (and its
+              compare and Lab Guess panes) that would load a whole gallery page, so it scrolls to the top instead. */}
+          <a href="#top" className="flex items-center gap-3" aria-label="Engram home">
             <span className="flex h-10 w-10 items-center justify-center border border-[#ff9f1c]/60 bg-[#ff9f1c]/10 font-mono text-sm font-bold text-[#ffb545]">
               EN
             </span>

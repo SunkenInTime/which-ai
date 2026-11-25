@@ -58,7 +58,7 @@ function ModuleCard({ module, index }: { module: (typeof modules)[number]; index
 
 export default function VariantThree() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#e8ebe4] text-[#11140f]">
+    <main id="top" className="min-h-screen overflow-hidden bg-[#e8ebe4] text-[#11140f]">
       <div className="overflow-hidden border-b-2 border-[#11140f] bg-[#11140f] py-2 text-[#d9ff4d]">
         <div className="animate-ticker-x flex w-max whitespace-nowrap font-mono text-[0.66rem] font-bold uppercase tracking-[0.22em]">
           {[0, 1].map((copy) => (
@@ -75,7 +75,9 @@ export default function VariantThree() {
 
       <div className="mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10">
         <header className="flex items-center justify-between border-b-2 border-[#11140f] py-5">
-          <a href="/without-design-skill/swe-2.1/3" className="flex items-center gap-3" aria-label="Engram home">
+          {/* Gallery adaptation: the source linked to "/3", reloading the page at its top; inside the gallery (and its
+              compare and Lab Guess panes) that would load a whole gallery page, so it scrolls to the top instead. */}
+          <a href="#top" className="flex items-center gap-3" aria-label="Engram home">
             <span className="flex h-10 w-10 items-center justify-center border-2 border-[#11140f] bg-[#d9ff4d] font-mono text-lg font-black neo-shadow-sm">
               E
             </span>

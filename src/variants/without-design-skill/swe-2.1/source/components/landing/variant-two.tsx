@@ -28,11 +28,13 @@ const indexEntries = [
 
 export default function VariantTwo() {
   return (
-    <main className="noise-texture min-h-screen overflow-hidden bg-[#f2ecdf] text-[#262118]">
+    <main id="top" className="noise-texture min-h-screen overflow-hidden bg-[#f2ecdf] text-[#262118]">
       <div className="paper-grid pointer-events-none fixed inset-0 opacity-55" />
       <div className="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 sm:px-8 lg:px-10">
         <header className="grid grid-cols-2 items-center border-b border-[#2d261a]/15 py-5 md:grid-cols-3">
-          <a href="/without-design-skill/swe-2.1/2" className="flex items-center gap-3" aria-label="Engram home">
+          {/* Gallery adaptation: the source linked to "/2", reloading the page at its top; inside the gallery (and its
+              compare and Lab Guess panes) that would load a whole gallery page, so it scrolls to the top instead. */}
+          <a href="#top" className="flex items-center gap-3" aria-label="Engram home">
             <span className="flex h-9 w-9 items-center justify-center rounded-full border border-[#2d261a]/25 bg-[#fffaf0] font-serif-display text-lg italic shadow-sm">
               e
             </span>
