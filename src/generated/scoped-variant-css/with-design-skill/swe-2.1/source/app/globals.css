@@ -1,0 +1,156 @@
+@font-face {
+  font-family: "P052";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/p052-roman.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "P052";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/p052-italic.otf") format("opentype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "P052";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/p052-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "C059";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/c059-roman.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "C059";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/c059-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Narrow";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/nimbus-narrow-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Narrow";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/nimbus-narrow-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "URW Gothic";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/urw-gothic-book.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "URW Gothic";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/urw-gothic-demi.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "URW Bookman";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/urw-bookman-light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "URW Bookman";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/urw-bookman-demi.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Mono";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/nimbus-mono-regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Nimbus Mono";
+  src: url("/variants/with-design-skill/swe-2.1/fonts/nimbus-mono-bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) * {
+  box-sizing: border-box;
+}
+
+/* Gallery adaptation: html and body rules sit on the data-source-html/data-source-body divs, and the fonts are served
+   from /variants/with-design-skill/swe-2.1/fonts. */
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) [data-source-html] {
+  min-height: 100%;
+  scroll-behavior: smooth;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) [data-source-body] {
+  min-height: 100vh;
+  margin: 0;
+  background: #ffffff;
+  color: #171717;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) a {
+  color: inherit;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) button,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) 
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) :focus-visible {
+  outline: 3px solid #8f6fff;
+  outline-offset: 4px;
+}
+
+:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) ::selection {
+  background: rgba(143, 111, 255, 0.28);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) [data-source-html] {
+    scroll-behavior: auto;
+  }
+
+  :where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) *,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="with-design-skill"][data-gallery-model="swe-2.1"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

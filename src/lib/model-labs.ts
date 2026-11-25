@@ -76,6 +76,7 @@ const MODEL_TO_LAB: Record<ModelSlug, ModelLab> = {
   "sonnet-5": { slug: "anthropic", label: "Anthropic" },
   "swe-2": { slug: "cognition", label: "Cognition" },
   "swe-2-flash": { slug: "cognition", label: "Cognition" },
+  "swe-2.1": { slug: "cognition", label: "Cognition" },
 };
 
 export const LAB_OPTIONS: ModelLab[] = [

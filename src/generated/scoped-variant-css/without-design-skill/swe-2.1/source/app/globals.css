@@ -1,0 +1,200 @@
+/* Gallery adaptation: :root, html and body rules sit on the data-source-html/data-source-body divs, below the
+   next/font variables, so var(--font-geist-sans) resolves there. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) [data-source-html] {
+  --background: #f8f7f3;
+  --foreground: #161711;
+}
+
+/* Gallery adaptation: the scoper strips @theme, so the theme's font utilities are written out here. */
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) [data-source-html] {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .font-sans { font-family: var(--font-geist-sans); }
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .font-mono { font-family: var(--font-geist-mono); }
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) * {
+  box-sizing: border-box;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) [data-source-html] {
+  scroll-behavior: smooth;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) [data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) ::selection {
+  background: #c8ff4d;
+  color: #11140f;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .font-serif-display {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .noise-texture {
+  position: relative;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .noise-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.16) 0 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.25) 0 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .dark-noise::before {
+  opacity: 0.1;
+  mix-blend-mode: screen;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .blueprint-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .paper-grid {
+  background-image:
+    linear-gradient(rgba(41, 35, 25, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 35, 25, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .aurora-blob {
+  filter: blur(2px);
+  transform: translateZ(0);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .memory-card-shadow {
+  box-shadow:
+    0 24px 70px rgba(86, 67, 118, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .neo-shadow {
+  box-shadow: 8px 8px 0 #11140f;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .neo-shadow-sm {
+  box-shadow: 4px 4px 0 #11140f;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .terminal-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .terminal-scan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 5px,
+    rgba(255, 255, 255, 0.025) 6px
+  );
+}
+
+@keyframes gallery-without-design-skill-swe-2-1-source-app-globals-float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(var(--float-rotate, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(var(--float-rotate, 0deg));
+  }
+}
+
+@keyframes gallery-without-design-skill-swe-2-1-source-app-globals-drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -20px, 0) scale(1.04);
+  }
+}
+
+@keyframes gallery-without-design-skill-swe-2-1-source-app-globals-pulse-node {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes gallery-without-design-skill-swe-2-1-source-app-globals-shimmer-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes gallery-without-design-skill-swe-2-1-source-app-globals-ticker-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gallery-without-design-skill-swe-2-1-source-app-globals-glow-breathe {
+  0%, 100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .animate-float-slow {
+  animation: gallery-without-design-skill-swe-2-1-source-app-globals-float-slow 7s ease-in-out infinite;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .animate-drift {
+  animation: gallery-without-design-skill-swe-2-1-source-app-globals-drift 12s ease-in-out infinite;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .animate-pulse-node {
+  animation: gallery-without-design-skill-swe-2-1-source-app-globals-pulse-node 3.4s ease-in-out infinite;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .animate-shimmer-line {
+  animation: gallery-without-design-skill-swe-2-1-source-app-globals-shimmer-line 3.8s ease-in-out infinite;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .animate-ticker-x {
+  animation: gallery-without-design-skill-swe-2-1-source-app-globals-ticker-x 28s linear infinite;
+}
+
+:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) .animate-glow-breathe {
+  animation: gallery-without-design-skill-swe-2-1-source-app-globals-glow-breathe 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) *,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) 
+  *::before,:where(.gallery-generation[data-gallery-group="without-design-skill"][data-gallery-model="swe-2.1"]) 
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

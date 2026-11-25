@@ -73,6 +73,7 @@ const MODEL_GALLERY_GENERATION = {
   "muse-wonder-1.0": { family: "meta-muse-wonder", tier: 10 },
   "swe-2": { family: "cognition-swe", tier: 2 },
   "swe-2-flash": { family: "cognition-swe-flash", tier: 1 },
+  "swe-2.1": { family: "cognition-swe", tier: 21 },
 } as const satisfies Partial<
   Record<ModelSlug, { family: string; tier: number }>
 >;

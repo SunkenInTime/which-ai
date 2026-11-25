@@ -1,0 +1,494 @@
+.page {
+  --midnight: #101426;
+  --midnight-deep: #090d1b;
+  --nebula: #28254f;
+  --text: #e9ecff;
+  --muted: #a2a9c4;
+  --periwinkle: #9ca9ff;
+  --amber: #e7b956;
+  --rose: #d98ca6;
+  --line: rgba(233, 236, 255, 0.17);
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 77% 9%, rgba(156, 169, 255, 0.2), transparent 30rem),
+    radial-gradient(circle at 10% 80%, rgba(217, 140, 166, 0.12), transparent 26rem),
+    var(--midnight);
+  color: var(--text);
+  font-family: "URW Gothic", Avenir, sans-serif;
+}
+
+.page::before {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle, rgba(233, 236, 255, 0.58) 0 1px, transparent 1.6px),
+    radial-gradient(circle, rgba(233, 236, 255, 0.3) 0 1px, transparent 1.5px);
+  background-position: 0 0, 2.1rem 3.4rem;
+  background-size: 8rem 8rem, 11rem 11rem;
+  content: "";
+  opacity: 0.34;
+}
+
+.page > * {
+  position: relative;
+  z-index: 1;
+}
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.05rem clamp(1.2rem, 4vw, 4rem);
+  border-bottom: 1px solid var(--line);
+  background: rgba(9, 13, 27, 0.7);
+  backdrop-filter: blur(16px);
+}
+
+.wordmark {
+  font-size: 1.16rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+}
+
+.nav {
+  display: flex;
+  gap: clamp(1rem, 3vw, 2.4rem);
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.nav a {
+  text-decoration: none;
+}
+
+.nav a:hover {
+  color: var(--text);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(23rem, 0.82fr) minmax(31rem, 1.18fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  min-height: calc(100vh - 4.25rem);
+  padding: clamp(3rem, 6vw, 6rem) clamp(1.2rem, 4vw, 4rem);
+}
+
+.kicker,
+.sectionLabel {
+  margin: 0 0 1.2rem;
+  color: var(--periwinkle);
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+}
+
+.heroCopy h1 {
+  max-width: 8.5ch;
+  margin: 0;
+  font-size: clamp(4.25rem, 8vw, 8.5rem);
+  font-weight: 700;
+  letter-spacing: -0.075em;
+  line-height: 0.85;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 1.8rem 0 0;
+  color: var(--muted);
+  font-size: clamp(1.04rem, 1.4vw, 1.22rem);
+  line-height: 1.66;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  margin-top: 2.2rem;
+  font-size: 0.92rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  min-height: 3rem;
+  border-radius: 999px;
+  padding: 0 1.1rem;
+  text-decoration: none;
+}
+
+.primaryAction {
+  background: var(--text);
+  color: var(--midnight-deep);
+}
+
+.secondaryAction {
+  border: 1px solid rgba(233, 236, 255, 0.28);
+  color: var(--text);
+}
+
+.primaryAction:hover {
+  background: var(--amber);
+}
+
+.secondaryAction:hover {
+  border-color: var(--periwinkle);
+  color: var(--periwinkle);
+}
+
+.observatory {
+  position: relative;
+  margin: 0;
+  padding: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+.starMap {
+  display: block;
+  width: min(100%, 43rem);
+  height: auto;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+.orbitLine {
+  fill: none;
+  stroke: rgba(233, 236, 255, 0.14);
+  stroke-width: 1.5;
+}
+
+.orbitSpin {
+  transform-origin: 350px 350px;
+  animation: orbit 52s linear infinite;
+}
+
+.connection,
+.connectionSoft {
+  fill: none;
+  stroke-linecap: round;
+}
+
+.connection {
+  stroke: rgba(156, 169, 255, 0.66);
+  stroke-width: 2.4;
+}
+
+.connectionSoft {
+  stroke: rgba(233, 236, 255, 0.23);
+  stroke-width: 1.4;
+}
+
+.centerGlow {
+  fill: rgba(156, 169, 255, 0.14);
+}
+
+.centerNode {
+  fill: var(--text);
+}
+
+.centerLabel {
+  fill: var(--midnight);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.nodeBright circle {
+  fill: var(--periwinkle);
+}
+
+.nodeWarm circle {
+  fill: var(--amber);
+}
+
+.nodeDim circle {
+  fill: var(--rose);
+}
+
+.nodeBright text,
+.nodeWarm text,
+.nodeDim text {
+  fill: rgba(233, 236, 255, 0.78);
+  font-size: 15px;
+}
+
+.starPin circle {
+  fill: rgba(233, 236, 255, 0.72);
+}
+
+.observatory figcaption {
+  max-width: 29rem;
+  margin: -0.5rem auto 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.constellation {
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 6rem);
+  border-top: 1px solid var(--line);
+  background: rgba(9, 13, 27, 0.34);
+}
+
+.sectionIntro {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.sectionIntro h2,
+.driftCopy h2 {
+  max-width: 15ch;
+  margin: 0;
+  font-size: clamp(2.7rem, 5.4vw, 6rem);
+  font-weight: 700;
+  letter-spacing: -0.068em;
+  line-height: 0.9;
+}
+
+.featureRows {
+  max-width: 76rem;
+  margin: clamp(3rem, 5vw, 5rem) auto 0;
+  border-top: 1px solid var(--line);
+}
+
+.featureRows article {
+  display: grid;
+  grid-template-columns: 6rem minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2.4rem);
+  align-items: start;
+  padding: clamp(1.6rem, 3vw, 2.7rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.featureGlyph,
+.featureGlyphAmber,
+.featureGlyphRose {
+  width: 3.1rem;
+  height: 3.1rem;
+  margin-top: 0.2rem;
+  border: 1px solid rgba(233, 236, 255, 0.28);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, var(--periwinkle) 0 0.38rem, transparent 0.42rem),
+    radial-gradient(circle at 72% 28%, rgba(233, 236, 255, 0.82) 0 0.14rem, transparent 0.18rem);
+  box-shadow: inset 0 0 0 0.7rem rgba(156, 169, 255, 0.06);
+}
+
+.featureGlyphAmber {
+  background:
+    radial-gradient(circle at 50% 50%, var(--amber) 0 0.38rem, transparent 0.42rem),
+    radial-gradient(circle at 72% 28%, rgba(233, 236, 255, 0.82) 0 0.14rem, transparent 0.18rem);
+}
+
+.featureGlyphRose {
+  background:
+    radial-gradient(circle at 50% 50%, var(--rose) 0 0.38rem, transparent 0.42rem),
+    radial-gradient(circle at 72% 28%, rgba(233, 236, 255, 0.82) 0 0.14rem, transparent 0.18rem);
+}
+
+.featureRows h3 {
+  margin: 0;
+  font-size: clamp(1.45rem, 2.4vw, 2.3rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.featureRows p {
+  max-width: 45rem;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+  font-size: 1.03rem;
+  line-height: 1.66;
+}
+
+.drift {
+  display: grid;
+  grid-template-columns: minmax(23rem, 0.86fr) minmax(25rem, 1.14fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+  padding: clamp(4.5rem, 8vw, 8rem) clamp(1.2rem, 5vw, 6rem);
+  background:
+    radial-gradient(circle at 80% 30%, rgba(231, 185, 86, 0.14), transparent 24rem),
+    var(--midnight-deep);
+}
+
+.driftCopy > p:last-child {
+  max-width: 34rem;
+  margin: 1.6rem 0 0;
+  color: var(--muted);
+  font-size: 1.08rem;
+  line-height: 1.66;
+}
+
+.alignmentPanel {
+  position: relative;
+  border: 1px solid rgba(233, 236, 255, 0.24);
+  border-radius: 2rem;
+  padding: clamp(1.2rem, 3vw, 2rem);
+  background:
+    radial-gradient(circle at 20% 15%, rgba(156, 169, 255, 0.16), transparent 14rem),
+    rgba(233, 236, 255, 0.055);
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.26);
+}
+
+.alignmentPanel::before {
+  position: absolute;
+  inset: 1rem;
+  border: 1px solid rgba(233, 236, 255, 0.1);
+  border-radius: 50%;
+  content: "";
+  pointer-events: none;
+}
+
+.currentDraft {
+  position: relative;
+  z-index: 1;
+  padding: clamp(1.2rem, 2vw, 1.8rem);
+  border-radius: 1.4rem;
+  background: var(--text);
+  color: var(--midnight-deep);
+}
+
+.currentDraft span {
+  color: #555d7d;
+  font-size: 0.82rem;
+}
+
+.currentDraft h3 {
+  margin: 0.6rem 0 0;
+  font-size: clamp(1.5rem, 2.6vw, 2.5rem);
+  letter-spacing: -0.045em;
+  line-height: 1;
+}
+
+.currentDraft p {
+  margin: 0.8rem 0 0;
+  color: #596178;
+}
+
+.alignments {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.alignments p {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(233, 236, 255, 0.2);
+  border-radius: 999px;
+  color: rgba(233, 236, 255, 0.82);
+  background: rgba(9, 13, 27, 0.42);
+}
+
+.alignments span {
+  flex: 0 0 auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: var(--amber);
+  box-shadow: 0 0 1.2rem rgba(231, 185, 86, 0.76);
+}
+
+.launch {
+  display: grid;
+  place-items: center;
+  min-height: 24rem;
+  padding: 4rem clamp(1.2rem, 5vw, 6rem);
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.launch p {
+  max-width: 46rem;
+  margin: 0;
+  font-size: clamp(2.3rem, 5.5vw, 5.8rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  line-height: 0.9;
+}
+
+.launch a {
+  margin-top: 2.1rem;
+  padding: 0.92rem 1.2rem;
+  border: 1px solid rgba(233, 236, 255, 0.4);
+  border-radius: 999px;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.launch a:hover {
+  background: var(--text);
+  color: var(--midnight-deep);
+}
+
+@keyframes orbit {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 1050px) {
+  .hero,
+  .drift {
+    grid-template-columns: 1fr;
+  }
+
+  .heroCopy h1 {
+    max-width: 10ch;
+  }
+
+  .observatory {
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .nav {
+    display: none;
+  }
+
+  .hero {
+    padding-top: 2.8rem;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(3.5rem, 17vw, 5.2rem);
+  }
+
+  .featureRows article {
+    grid-template-columns: 1fr;
+  }
+
+  .nodeBright text,
+  .nodeWarm text,
+  .nodeDim text {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 520px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .alignmentPanel {
+    border-radius: 1.3rem;
+  }
+
+  .alignments p {
+    align-items: flex-start;
+    border-radius: 1rem;
+  }
+}

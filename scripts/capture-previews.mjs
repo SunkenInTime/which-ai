@@ -27,6 +27,9 @@ const entries = [
   { group: "without-design-skill", model: "gemini-4-neon", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "gemini-4-neon", iterations: ["1", "2", "3", "4", "5"] },
 
+  { group: "without-design-skill", model: "swe-2.1", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-design-skill", model: "swe-2.1", iterations: ["1", "2", "3", "4", "5"] },
+  { group: "with-taste-skill", model: "swe-2.1", iterations: ["1", "2", "3", "4", "5"] },
   { group: "without-design-skill", model: "swe-2-flash", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-taste-skill", model: "swe-2-flash", iterations: ["1", "2", "3", "4", "5"] },
   { group: "with-design-skill", model: "swe-2-flash", iterations: ["1", "2", "3", "4", "5"] },

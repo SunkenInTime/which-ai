@@ -1,0 +1,27 @@
+Done — the dev server is running at **http://localhost:3512** and redirects to `/1`.
+
+### Iterations
+
+1. **/1 — Marginalia**: literary manuscript aesthetic with annotated paper slips, marginal notes, serif typography, and muted verdigris ink.
+2. **/2 — Memory palace**: architectural floor-plan visual language with blueprint walls, rooms, corridors, and spatial wayfinding.
+3. **/3 — Neural observatory**: dark celestial knowledge map with orbital note clusters, constellation labels, and resurfacing “alignments.”
+4. **/4 — Field notes**: graph-paper research notebook with ruler markings, specimen entries, tape, evidence tables, and condensed typography.
+5. **/5 — Mycelium**: organic living-network direction with branching hyphae, soft bloom-shaped notes, seasonal review, and botanical colors.
+
+A small floating **“Design n”** button in the bottom-right opens numbered links for switching between iterations.
+
+### Implementation
+
+- Routes are statically generated through <ref_file file="/home/dara/Code/bench-swe-2-1/frontend-design/work/app/[iteration]/page.tsx" />
+- The switcher is implemented in <ref_file file="/home/dara/Code/bench-swe-2-1/frontend-design/work/components/iterations/IterationSwitcher.tsx" />
+- Each design has its own component and CSS module in <ref_file file="/home/dara/Code/bench-swe-2-1/frontend-design/work/components/iterations" />
+- Fonts are self-hosted from <ref_file file="/home/dara/Code/bench-swe-2-1/frontend-design/work/public/fonts" />
+- Global font loading, focus states, and reduced-motion handling are in <ref_file file="/home/dara/Code/bench-swe-2-1/frontend-design/work/app/globals.css" />
+
+### Verified
+
+- `npm run lint` passes
+- `npx tsc --noEmit` passes
+- `npm run build` passes
+- `/`, `/1` through `/5`, and invalid `/6` behave correctly
+- Visually reviewed all five iterations at desktop and mobile widths; no horizontal overflow or console errors found.

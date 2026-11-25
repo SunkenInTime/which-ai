@@ -1,0 +1,89 @@
+.switcher {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+  font-family: "Nimbus Mono", ui-monospace, monospace;
+  font-size: 0.78rem;
+  color: #f7f7f2;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.22));
+}
+
+.switcher summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.48rem;
+  min-height: 2.35rem;
+  padding: 0 0.82rem;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: 999px;
+  background: rgba(22, 24, 28, 0.78);
+  backdrop-filter: blur(14px);
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.switcher summary::-webkit-details-marker {
+  display: none;
+}
+
+.dot {
+  width: 0.48rem;
+  height: 0.48rem;
+  border-radius: 50%;
+  background: #b9c7ff;
+  box-shadow: 0 0 0 3px rgba(185, 199, 255, 0.18);
+}
+
+.menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 0.55rem);
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.38rem;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  background: rgba(22, 24, 28, 0.84);
+  backdrop-filter: blur(14px);
+}
+
+.menu a {
+  display: grid;
+  width: 2rem;
+  height: 2rem;
+  place-items: center;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
+.menu a.active,
+.menu a[aria-current="page"] {
+  background: #f2f0e7;
+  color: #17191f;
+}
+
+@media (max-width: 560px) {
+  .switcher {
+    right: 50%;
+    bottom: 0.75rem;
+    transform: translateX(50%);
+  }
+
+  .menu {
+    right: 50%;
+    transform: translateX(50%);
+  }
+}

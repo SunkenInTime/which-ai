@@ -1,0 +1,194 @@
+{
+  "model": "swe-2.1",
+  "modelLabel": "SWE-2.1",
+  "date": "2026-11-25",
+  "runner": "Devin CLI 3000.14.30821 (a09cd7f323ee), the copy T3 Code installed, pinned for the batch. Headless `devin -p --prompt-file <prompt> --model swe-2-1-xhigh --permission-mode dangerous --respect-workspace-trust false --process-model in-process --export <file>` on t3os (Ubuntu 26.04, Ryzen 7 5700U).",
+  "reasoning_effort": "xhigh (Devin picks the tier through the model id; SWE-2.1 offers low, medium, high, xhigh and max)",
+  "context_window": 262144,
+  "wrapper": "sudo unshare --mount (private mount namespace, no user namespace): the run's own tmp folder bound over /tmp and an empty read-only folder over ~/.claude, ~/.agents, ~/.cursor, ~/.gemini, ~/.codex, /etc/claude-code and /etc/codex; then setpriv back to the normal user with env -i and only the run's environment. --process-model in-process, so no shared Devin daemon served the session.",
+  "isolation": "Each session had its own HOME and XDG folders holding only a copy of the Devin login, a Devin config, one MCP server and a machine-only plugin whose manifest forbids every other plugin. read_config_from turned off imports from Cursor, Windsurf, Claude Code, Copilot, Codex, Kiro, OpenCode, Zed and Devin Cloud; agents_standard stayed on so the starter's AGENTS.md and the condition's .agents/skills loaded, as in the SWE-2 Flash run. Before the runs, `devin skills list`, `rules list`, `mcp list` and `plugins list` in each condition showed only Devin's three built-in skills (devin-cli, declarative-repo-setup, upload-secrets) plus the condition's skill, the starter's AGENTS.md, the playwright server, bench-lockdown, and an account-uploaded plugin named default with no skills, agents, hooks, rules or MCP servers. Context isolation, not a filesystem jail.",
+  "preflight": "Three unscored sessions at swe-2-1-medium (one per condition) listed their skills and rules files: each named only the built-in skills plus its own skill, and only the starter's AGENTS.md. A file-access trace (strace) of the no-skills preflight showed Devin opened nothing under /home/dara outside the run folder and nothing in /etc/t3os. A fourth unscored session described a canvas-only test page (blue background, yellow circle, the word KESTREL) from a Playwright screenshot alone, with no DOM or JavaScript queries, so SWE-2.1 sees its screenshots in Devin; SWE-2 Flash could not.",
+  "browser": "Playwright MCP 0.0.83, --browser chromium --isolated --headless --viewport-size 1440x960 --image-responses allow, Chromium 1247 (same install as the GLM 5.4 run)",
+  "starter": "Next.js 16.3.8 / React 19.2.8 starter @eeeb008, the same tarball as the GLM 5.4, GPT-6.2 Astra and Fable 5.2 runs",
+  "starter_lockfile_sha256": "ce550054f4cc7927b16ae799d6108b8e122542ea0f17dd57142fbbd4ec1cb915",
+  "skill_location": "work/.agents/skills/<name>, byte-identical to the GLM 5.4 run's inputs",
+  "prompt_policy": "Gallery prompt with only the assigned-skill clause and the port (3511, 3512, 3513) changed; one prompt per session, no follow-ups or resumes.",
+  "sessions": [
+    {
+      "condition": "no-skills",
+      "session_id": "abyssinian-cheddar",
+      "model": "swe-2-1-xhigh",
+      "model_reported": "SWE-2.1 XHigh",
+      "skills": [],
+      "completed": true,
+      "exit_code": 0,
+      "started": "2026-11-25T16:55:41.515Z",
+      "finished": "2026-11-25T17:09:04.880Z",
+      "wall_time_seconds": 803,
+      "baseline_commit": "7ff60ad7a6aa55f15d285009a291f1f05b30a416",
+      "prompt_sha256": "b34b155d798dc775cff8258441a67842d2d497317c14697db860497779235cfd",
+      "argv": [
+        "-p",
+        "--prompt-file",
+        "/home/dara/Code/bench-swe-2-1/prompts/no-skills.txt",
+        "--model",
+        "swe-2-1-xhigh",
+        "--permission-mode",
+        "dangerous",
+        "--respect-workspace-trust",
+        "false",
+        "--process-model",
+        "in-process",
+        "--export",
+        "/home/dara/Code/bench-swe-2-1/no-skills/home/no-skills.export.json"
+      ],
+      "tokens": {
+        "input": 9427889,
+        "cached_input": 9314816,
+        "output": 49224
+      },
+      "total_steps": 120,
+      "tool_calls_in_export": {
+        "todo_write": 4,
+        "exec": 24,
+        "write": 14,
+        "browser_preview": 1,
+        "mcp_list_tools": 1,
+        "mcp_call_tool": 47,
+        "read": 17
+      },
+      "browser_calls_in_export": {
+        "browser_resize": 3,
+        "browser_navigate": 17,
+        "browser_take_screenshot": 17,
+        "browser_click": 3,
+        "browser_console_messages": 2,
+        "browser_evaluate": 5
+      }
+    },
+    {
+      "condition": "frontend-design",
+      "session_id": "efficient-headline",
+      "model": "swe-2-1-xhigh",
+      "model_reported": "SWE-2.1 XHigh",
+      "skills": [
+        "frontend-design"
+      ],
+      "completed": true,
+      "exit_code": 0,
+      "started": "2026-11-25T16:55:41.562Z",
+      "finished": "2026-11-25T17:24:03.482Z",
+      "wall_time_seconds": 1702,
+      "baseline_commit": "5a7a3d9f4c86d67082c0f1a3b2c3810238029c36",
+      "prompt_sha256": "c52a47ca3ef58c4f30a384dec0586b419885e817f0de3d1bccaca1b50a835dc3",
+      "argv": [
+        "-p",
+        "--prompt-file",
+        "/home/dara/Code/bench-swe-2-1/prompts/frontend-design.txt",
+        "--model",
+        "swe-2-1-xhigh",
+        "--permission-mode",
+        "dangerous",
+        "--respect-workspace-trust",
+        "false",
+        "--process-model",
+        "in-process",
+        "--export",
+        "/home/dara/Code/bench-swe-2-1/frontend-design/home/frontend-design.export.json"
+      ],
+      "tokens": {
+        "input": 9752878,
+        "cached_input": 9608960,
+        "output": 57995
+      },
+      "total_steps": 111,
+      "tool_calls_in_export": {
+        "skill": 1,
+        "todo_write": 6,
+        "exec": 42,
+        "get_output": 2,
+        "browser_preview": 1,
+        "mcp_list_tools": 1,
+        "mcp_call_tool": 37,
+        "read": 18
+      },
+      "browser_calls_in_export": {
+        "browser_resize": 2,
+        "browser_navigate": 13,
+        "browser_take_screenshot": 12,
+        "browser_console_messages": 4,
+        "browser_run_code_unsafe": 2,
+        "browser_snapshot": 2,
+        "browser_click": 2
+      },
+      "assigned_skill_invoked": true
+    },
+    {
+      "condition": "design-taste",
+      "session_id": "gamy-capybara",
+      "model": "swe-2-1-xhigh",
+      "model_reported": "SWE-2.1 XHigh",
+      "skills": [
+        "design-taste-frontend"
+      ],
+      "completed": true,
+      "exit_code": 0,
+      "started": "2026-11-25T16:55:41.608Z",
+      "finished": "2026-11-25T17:19:20.273Z",
+      "wall_time_seconds": 1419,
+      "baseline_commit": "bd09d2a6e3b6041bc07f74bc91ef74eaea6a7786",
+      "prompt_sha256": "f8aadd7a35878432fc56d8b5d0c1cdb2ffdb273c6581257373c347caba6b24bf",
+      "argv": [
+        "-p",
+        "--prompt-file",
+        "/home/dara/Code/bench-swe-2-1/prompts/design-taste.txt",
+        "--model",
+        "swe-2-1-xhigh",
+        "--permission-mode",
+        "dangerous",
+        "--respect-workspace-trust",
+        "false",
+        "--process-model",
+        "in-process",
+        "--export",
+        "/home/dara/Code/bench-swe-2-1/design-taste/home/design-taste.export.json"
+      ],
+      "tokens": {
+        "input": 10327069,
+        "cached_input": 10105056,
+        "output": 53468
+      },
+      "total_steps": 116,
+      "tool_calls_in_export": {
+        "exec": 46,
+        "todo_write": 3,
+        "get_output": 5,
+        "browser_preview": 1,
+        "mcp_list_tools": 1,
+        "mcp_call_tool": 31,
+        "read": 12,
+        "kill_shell": 1
+      },
+      "browser_calls_in_export": {
+        "browser_navigate": 12,
+        "browser_resize": 4,
+        "browser_take_screenshot": 12,
+        "browser_console_messages": 1,
+        "browser_evaluate": 2
+      },
+      "assigned_skill_invoked": true,
+      "context_summarized": "The session reached Devin's 262K-token context limit and was summarized once, at 17:08:22 UTC. The export holds only the steps after the summary, so its tool counts leave out the first 13 minutes; Devin's saved pre-summary transcript (34 assistant turns, 50 tool results) shows the skill tool invoked as the first action."
+    }
+  ],
+  "discarded": [
+    "Three preflight sessions and one screenshot check at swe-2-1-medium (unscored).",
+    "A first batch at swe-2-1-medium started 2026-11-25T16:41:56Z and was stopped at about 16:50 when Dara asked for xhigh: no-skills and frontend-design had already finished on their own (about 5 and 6 minutes); design-taste was stopped mid-run. None of it is scored; the xhigh sessions started from fresh workspaces."
+  ],
+  "timing": "Concurrent sessions, not a controlled latency benchmark. Each `devin -p` exited on its own after its final reply.",
+  "cost": "SWE-2.1 (swe-2-1-xhigh) is listed as Free in `devin models list` for this account, so the sessions cost nothing. Token counts come from each session's --export file (final_metrics); input includes cached input.",
+  "run_caveats": [
+    "frontend-design self-hosts URW base35 fonts (P052, C059, Nimbus Narrow, URW Gothic, URW Bookman, Nimbus Mono) that it copied from the box's system font folder, with the package's copyright file (AGPL-3 with font exception).",
+    "Each session also called Devin's built-in browser_preview tool, which only opens the page for a human; it returns nothing to the model.",
+    "next-env.d.ts is regenerated by Next.js whenever a dev server starts; it is left out of the source hashes."
+  ]
+}

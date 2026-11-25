@@ -1,0 +1,209 @@
+@import "tailwindcss";
+
+/* Gallery adaptation: :root, html and body rules sit on the data-source-html/data-source-body divs, below the
+   next/font variables, so var(--font-geist-sans) resolves there. */
+[data-source-html] {
+  --background: #f8f7f3;
+  --foreground: #161711;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Gallery adaptation: the scoper strips @theme, so the theme's font utilities are written out here. */
+[data-source-html] {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+.font-sans { font-family: var(--font-geist-sans); }
+.font-mono { font-family: var(--font-geist-mono); }
+
+* {
+  box-sizing: border-box;
+}
+
+[data-source-html] {
+  scroll-behavior: smooth;
+}
+
+[data-source-body] {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: #c8ff4d;
+  color: #11140f;
+}
+
+.font-serif-display {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.noise-texture {
+  position: relative;
+}
+
+.noise-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: multiply;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(0, 0, 0, 0.16) 0 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, rgba(255, 255, 255, 0.25) 0 1px, transparent 1px);
+  background-size: 7px 7px, 11px 11px;
+}
+
+.dark-noise::before {
+  opacity: 0.1;
+  mix-blend-mode: screen;
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+  background-size: 44px 44px;
+}
+
+.paper-grid {
+  background-image:
+    linear-gradient(rgba(41, 35, 25, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(41, 35, 25, 0.06) 1px, transparent 1px);
+  background-size: 42px 42px;
+}
+
+.aurora-blob {
+  filter: blur(2px);
+  transform: translateZ(0);
+}
+
+.memory-card-shadow {
+  box-shadow:
+    0 24px 70px rgba(86, 67, 118, 0.16),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.neo-shadow {
+  box-shadow: 8px 8px 0 #11140f;
+}
+
+.neo-shadow-sm {
+  box-shadow: 4px 4px 0 #11140f;
+}
+
+.terminal-scan {
+  position: relative;
+  overflow: hidden;
+}
+
+.terminal-scan::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent 5px,
+    rgba(255, 255, 255, 0.025) 6px
+  );
+}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(var(--float-rotate, 0deg));
+  }
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(var(--float-rotate, 0deg));
+  }
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(18px, -20px, 0) scale(1.04);
+  }
+}
+
+@keyframes pulse-node {
+  0%, 100% {
+    opacity: 0.55;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes shimmer-line {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(240%);
+  }
+}
+
+@keyframes ticker-x {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes glow-breathe {
+  0%, 100% {
+    opacity: 0.42;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
+}
+
+.animate-drift {
+  animation: drift 12s ease-in-out infinite;
+}
+
+.animate-pulse-node {
+  animation: pulse-node 3.4s ease-in-out infinite;
+}
+
+.animate-shimmer-line {
+  animation: shimmer-line 3.8s ease-in-out infinite;
+}
+
+.animate-ticker-x {
+  animation: ticker-x 28s linear infinite;
+}
+
+.animate-glow-breathe {
+  animation: glow-breathe 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

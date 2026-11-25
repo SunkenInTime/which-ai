@@ -172,6 +172,21 @@ const sampleRouteSmokeCases = [
   { group: "with-taste-skill", model: "gemini-4-argon", iteration: "4" },
   { group: "with-taste-skill", model: "gemini-4-argon", iteration: "5" },
 
+  { group: "without-design-skill", model: "swe-2.1", iteration: "1" },
+  { group: "without-design-skill", model: "swe-2.1", iteration: "2" },
+  { group: "without-design-skill", model: "swe-2.1", iteration: "3" },
+  { group: "without-design-skill", model: "swe-2.1", iteration: "4" },
+  { group: "without-design-skill", model: "swe-2.1", iteration: "5" },
+  { group: "with-design-skill", model: "swe-2.1", iteration: "1" },
+  { group: "with-design-skill", model: "swe-2.1", iteration: "2" },
+  { group: "with-design-skill", model: "swe-2.1", iteration: "3" },
+  { group: "with-design-skill", model: "swe-2.1", iteration: "4" },
+  { group: "with-design-skill", model: "swe-2.1", iteration: "5" },
+  { group: "with-taste-skill", model: "swe-2.1", iteration: "1" },
+  { group: "with-taste-skill", model: "swe-2.1", iteration: "2" },
+  { group: "with-taste-skill", model: "swe-2.1", iteration: "3" },
+  { group: "with-taste-skill", model: "swe-2.1", iteration: "4" },
+  { group: "with-taste-skill", model: "swe-2.1", iteration: "5" },
   { group: "without-design-skill", model: "swe-2-flash", iteration: "1" },
   { group: "without-design-skill", model: "swe-2-flash", iteration: "2" },
   { group: "without-design-skill", model: "swe-2-flash", iteration: "3" },
@@ -845,4 +860,14 @@ test("With Gemini Design Skill pages draw their headings in their own fonts and 
   await page.goto("/preview/with-gemini-design-skill/opus-5.5/5");
   await page.getByRole("link", { name: "Kept home" }).click();
   await expect(page).toHaveURL(/\/preview\/with-gemini-design-skill\/opus-5\.5\/5#top$/);
+});
+
+test("SWE-2.1 Without Design Skill logos stay in the compare pane", async ({ page }) => {
+  // The source's logos linked to "/<n>"; pointed at the gallery route, they loaded a whole gallery page inside a
+  // compare or Lab Guess pane. They now scroll to the top of the design.
+  for (const iteration of ["1", "2", "3", "4", "5"]) {
+    await page.goto(`/preview/without-design-skill/swe-2.1/${iteration}`);
+    await page.getByRole("link", { name: "Engram home" }).click();
+    await expect(page).toHaveURL(new RegExp(`/preview/without-design-skill/swe-2\\.1/${iteration}#top$`));
+  }
 });

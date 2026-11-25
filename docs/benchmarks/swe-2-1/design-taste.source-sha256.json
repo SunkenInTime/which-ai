@@ -1,0 +1,11 @@
+{
+  "app/components/landing.tsx": "f22c8cbfd809a07a86a64673bc51ae73173f4910a58ba6915d49588a10e5cfb6",
+  "app/globals.css": "a2af83011ac3106922fc31bdd7b722362f730fc8ae0bb90ab3a88efac118e92b",
+  "app/layout.tsx": "0ece0dc906396c8eff5b241a339c712af4b07169ccd07534fde8359878371d86",
+  "app/page.tsx": "1d5c766491af74cdbaf39c461db0a1ae75552e7eefd48536986c74618dc491dd",
+  "app/[variant]/page.tsx": "369a4a9210f49012fc48017222fb30c3fbfc941866bd4b3038410d17854d5a97",
+  "names.json": "c8f866182fa2148fcf47339b212fa259282b233db40fc614a24109055ba913e7",
+  ".taste-skill/build.json": "58c7d0d1be1df60adba772956f889e3bfbcb45b51fba758b867acdd2fe675585",
+  ".taste-skill/history.json": "b5239ce6b27b43e8fd636cf394ea76f427f06c757cd64649c74c481bb939bb98",
+  ".taste-skill/layout-history.json": "81831aa63e356d7ec0d4d6250cff8dd8ba22c3417b10eaca4fe5028da45882f1"
+}

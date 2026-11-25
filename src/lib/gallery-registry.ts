@@ -26,6 +26,9 @@ import withoutNeon from "@/variants/without-design-skill/gemini-4-neon";
 import withoutSwe2Flash from "@/variants/without-design-skill/swe-2-flash";
 import withTasteSwe2Flash from "@/variants/with-taste-skill/swe-2-flash";
 import withSwe2Flash from "@/variants/with-design-skill/swe-2-flash";
+import withoutSwe21 from "@/variants/without-design-skill/swe-2.1";
+import withSwe21 from "@/variants/with-design-skill/swe-2.1";
+import withTasteSwe21 from "@/variants/with-taste-skill/swe-2.1";
 import withoutMuseWonder10 from "@/variants/without-design-skill/muse-wonder-1.0";
 import withTasteMuseWonder10 from "@/variants/with-taste-skill/muse-wonder-1.0";
 import withMuseWonder10 from "@/variants/with-design-skill/muse-wonder-1.0";
@@ -188,6 +191,9 @@ const registry: Partial<Record<RegistryKey, VariantModule>> = {
   "with-design-skill:swe-2-flash": withSwe2Flash,
   "with-taste-skill:swe-2-flash": withTasteSwe2Flash,
   "without-design-skill:swe-2-flash": withoutSwe2Flash,
+  "without-design-skill:swe-2.1": withoutSwe21,
+  "with-design-skill:swe-2.1": withSwe21,
+  "with-taste-skill:swe-2.1": withTasteSwe21,
   "with-taste-skill:muse-wonder-1.0": withTasteMuseWonder10,
   "without-design-skill:muse-wonder-1.0": withoutMuseWonder10,
   "with-design-skill:haiku-5-5": withHaiku55,
